@@ -6,7 +6,7 @@ $('#colValvesClosed').click(function(){
 
 $('#extractUp').click(function(){
   extractVal += 100;
-  $('#testVal').text(extractVal + "V  ");
+  $('#testVal').text(extractVal + "V");
   console.log(extractVal);
 });
 
