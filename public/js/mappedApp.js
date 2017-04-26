@@ -1,3 +1,5 @@
+'use strict';
+
 let gunLense = 1;
 let extractVal = 3500;
 let extractFinal = 4500;
@@ -24,7 +26,7 @@ $('#extractDown').click(function(){
 $('#extractSubmit').click(function(){
   extractFinal = extractVal;
   $('#extractFinal').text(extractFinal + " V");
-})
+});
 
 $('#gunLenseDown').click(function(){
   if (gunLense > 1){
@@ -32,10 +34,12 @@ $('#gunLenseDown').click(function(){
   }
   //min 1 max 7
   $('#gunLenseVal').text(gunLense);
-})
+});
 
 $('#gunLenseUp').click(function(){
-  ++gunLense;
-  $('#gunLenseVal').text(gunLense);
-})
+  if(gunLense < 7){
+    ++gunLense;
+    $('#gunLenseVal').text(gunLense);
+  }
+});
 
