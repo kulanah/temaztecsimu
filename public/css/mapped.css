@@ -36,7 +36,9 @@
     /* Not implemented yet */
     -o-user-select: none;
     user-select: none;    
-    display:block;    
+    display:block;
+    padding: 0;
+    margin: 0;
 }
 
 .imageBox{
