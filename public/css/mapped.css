@@ -41,10 +41,21 @@
 
 .imageDiv{
     display:block;
-    padding: 0;
-    margin: 0;
 }
 
 .imageBox{
   position: relative;
+}
+
+#content{
+  margin: 15px 0 0 15px;
+}
+
+#left-col{
+  float: left;
+}
+
+#right-col{
+  float: left;
+  width: 80%;
 }
