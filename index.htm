@@ -1,24 +1,27 @@
 <!doctype html>
 <html lang='en'>
   <head>
-    <link rel='stylesheet' href='./public/css/base.css'>
+    <link rel='stylesheet' href='./public/css/mapped.css'>
     <script src='./public/js/jquery-3.2.1.min.js'></script>
-    <script src='./public/js/mapster.js'></script>
   </head>
   <body>
-<img id="Image-Maps-Com-image-maps-2017-04-25-121013" src="./public/img/digitalSwitched.png" border="0" width="1680" height="1050" orgWidth="1680" orgHeight="1050" usemap="#image-maps-2017-04-25-121013" alt="" />
-<map name="image-maps-2017-04-25-121013" id="ImageMapsCom-image-maps-2017-04-25-121013">
-<area id="colValvesClosed" alt="" title="Col. Valves Closed" href="http://www.image-maps.com/" shape="rect" coords="12,243,78,279" style="outline:none;" target="_self"     />
-<area id="extractVal" alt="" title="Extraction Value" href="#" shape="rect" coords="186,622,213,638" style="outline:none;" target="_self">
-</area>
-<area id="extractUp" alt="" title="Extract Up" href="#" shape="rect" coords="134,589,150,599" style="outline:none;" target="_self"     />
-<area id="extractDown" alt="" title="Extract Down" href="#" shape="rect" coords="134,599,150,609" style="outline:none;" target="_self"     />
-<area shape="rect" coords="1678,1048,1680,1050" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
-</map>
-
-
-
-
-  <script src='./public/js/app.js'></script>
+    <div class='imageCanvas'>
+      <img class='imageDiv' src='./public/img/leftColumn.png'></img>
+      <div class='imageBox' stlye='border:red solid 10px;'>
+        <img class='imageDiv' src="./public/img/FEGControl.png" usemap='#fegControl'></img>
+        <map name='fegControl' id='fegControl'>
+          <area shape='rect' id='extractSubmit' coords='193,67,203,85' />
+          <area shape='rect' id='gunLenseUp' coords='134,42,150,50' />
+          <area shape='rect' id='gunLenseDown' coords='134,52,150,60' />
+          <area shape='rect' id='extractUp' coords='134,68,150,75' />
+          <area shape='rect' id='extractDown' coords='134,76,150,88' />
+        </map>  
+          <p id='extractFinal'>4500 V </p>
+          <p id='extractVal'>3500 V</p>
+          <p id='gunLenseVal'>1</p>
+      </div>
+      <img src='./public/img/startmenu.png'></img>
+    </div>
+    <script src='./public/js/app.js'></script>
   </body>
 </html>
