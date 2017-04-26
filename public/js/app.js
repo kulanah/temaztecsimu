@@ -43,3 +43,24 @@ $('#gunLenseUp').click(function(){
   }
 });
 
+function startTime() {
+    let today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let ampm = 'AM';
+    if (h > 12){
+      h -= 12;
+      ampm = 'PM';
+    };
+    m = checkTime(m);
+    document.getElementById('clock').innerHTML =
+    h + ":" + m + " " + ampm;
+    var t = setTimeout(startTime, 500);
+}
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+startTime();
