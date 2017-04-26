@@ -60,12 +60,13 @@
   margin: 15px 0 0 15px;
 }
 
-#left-col{
-  width: 13.5%;
+#col-left{
+  width: 12.6%;
+  padding: 0;
+  margin: 0;
   float: left;
 }
 
-#right-col{
+#col-right{
   float: left;
-  width: 80%;
 }
