@@ -6,15 +6,15 @@
   <body>
     <table cellspacing='0'>
       <tr>  
-        <td><img src='./public/img/tabs.png' /></td>
-        <td  rowspan='4'><img src='./public/img/mainScreen.png' /></td>
+        <td><img src='./public/img/tabs.png' id="tabs"/></td>
+        <td  rowspan='4'><img src='./public/img/mainScreen.png' id='mainimage' /></td>
       </tr>
       <tr>  
-        <td><img src='./public/img/leftColumn.png' /></td>
+        <td><img src='./public/img/leftColumn.png' id='leftcolumn' /></td>
       </tr>
       <tr>  
         <td class='relative'>
-          <img src='./public/img/FEGControl.png' usemap='fegControl' />
+          <img src='./public/img/FEGControl.png' id='fegcontrols' usemap='fegControl' />
           <map name='fegControl' id='fegControl'>
             <area shape='rect' id='extractSubmit' coords='193,67,203,85' />
             <area shape='rect' id='gunLenseUp' coords='134,42,150,50' />
@@ -28,16 +28,15 @@
         </td>
       </tr>
       <tr>  
-        <td><img src='./public/img/infopanel.png' /></td>
+        <td><img src='./public/img/infopanel.png' id='infopanel' /></td>
       </tr>
       <tr>
         <td colspan='2'>
           <p id='clock'>12:00 AM</p>
-          <img src='./public/img/startmenu.png' />
+          <img id='startmenu' src='./public/img/startmenu.png' />
         </td>
       </tr>
     </table>
-
     <script src='./public/js/app.js'></script>
   </body>
 </html>
