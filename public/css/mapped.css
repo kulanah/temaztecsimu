@@ -48,7 +48,7 @@
 
 #clock{
   position: absolute;
-  margin: 8px 0 0 0;
+  margin: 5px 0 0 0;
   white-space: nowrap;
   left:1830px;
   font-size: 12px;
@@ -60,32 +60,32 @@
 }
 
 #tabs{
-  height: 6.981vh;
+  height: 6.681vh;
   width: 14.28vw;
 }
 
 #startmenu{
-  width: 98vw;
-  height: 2.7735vh;
+  height: 2.4735vh;
+  width: 98.2vw;
 }
 
 #leftcolumn{
-  height: 42.452vh;
+  height: 42.152vh;
   width: 14.28vw;
 }
 
 #mainimage{
-  height: 95.8vh;
+  height: 95.5vh;
   width: 83.7vw;
 }
 
 #fegcontrols{
-  height: 21.0377vh;
+  height: 20.7377vh;
   width: 14.28vw;
 }
 
 #infopanel{
-  height: 25vh;
+  height: 24.7vh;
   width: 14.28vw;
 }
 
