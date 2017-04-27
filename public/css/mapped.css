@@ -1,6 +1,6 @@
 #extractFinal{
   position: absolute;
-  top: 94px;
+  top: 84px;
   left: 170px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: right;
@@ -9,7 +9,7 @@
 
 #extractVal{
   position: absolute;
-  top: 69px;
+  top: 59px;
   left: 152px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: right;
@@ -18,7 +18,7 @@
 
 #gunLenseVal  {
   position: absolute;
-  top: 40px;
+  top: 30px;
   left: 168px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -26,15 +26,6 @@
 
 .testButton{
   border: red solid 10px;
-}
-
-#clock{
-  position: absolute;
-  top:7px;
-  left:1635px;
-  font-size: 12px;
-  font-family: Arial, Helvetica, sans-serif;
-
 }
 
 
@@ -67,27 +58,4 @@
   border-collapse: collapse;
   margin: 0;
   padding: 0;
-}
-
-table{
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-
-table td{
-  text-align: left;
-  vertical-align: top;
-  padding: 0;
-
-}
-
-#col-left{
-  width: 12.6%;
-  padding: 0;
-  margin: 0;
-  float: left;
-}
-
-#col-right{
-  float: left;
 }
