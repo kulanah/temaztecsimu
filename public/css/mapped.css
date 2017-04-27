@@ -51,15 +51,6 @@
   margin: 15px 0 0 15px;
 }
 
-.noMargin{
-  align: left;
-  border: red 1px solid;
-  border-spacing: none;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-}
-
 #clock{
   position: absolute;
   margin: 8px 0 0 0;
