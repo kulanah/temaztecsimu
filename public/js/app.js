@@ -4,6 +4,8 @@ let gunLense = 1;
 let extractVal = 3500;
 let extractFinal = 4500;
 
+let controlShow = false;
+
 $('#colValvesClosed').click(function(){
   alert('test complete');
 });
@@ -43,6 +45,18 @@ $('#gunLenseUp').click(function(){
   }
 });
 
+$('#controls').click(function(){
+  if (controlShow){
+    $('#controlsLeft').hide();
+    $('#controlsRight').hide();
+    controlShow = false;
+  } else {
+    $('#controlsLeft').show();
+    $('#controlsRight').show();
+    controlShow = true;
+  }
+});
+
 
 function startTime() {
     let today = new Date();
@@ -64,6 +78,7 @@ function checkTime(i) {
     return i;
 }
 
-
+$('#controlsLeft').hide();
+$('#controlsRight').hide();
 
 startTime();

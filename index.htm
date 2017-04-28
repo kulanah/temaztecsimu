@@ -33,10 +33,17 @@
       <tr>
         <td colspan='2'>
           <p id='clock'>12:00 AM</p>
-          <img id='startmenu' src='./public/img/startmenu.png' />
+          <img id='startmenu' src='./public/img/startmenu.png' usemap='startmenu'/>
+          <map name='startmenu' id='startmenu'>
+            <area shape='rect' id='controls' coords='1043,5,1228,30' />
+          </map>
         </td>
       </tr>
     </table>
+    <div id='controls'>
+      <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='leftControl' />
+      <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='rightControl' />
+    </div>
     <script src='./public/js/app.js'></script>
   </body>
 </html>

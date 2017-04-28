@@ -93,3 +93,20 @@
   height: 100vh;
   max-height: 100vh;
 }
+
+#controls{
+
+
+}
+
+#controlsLeft{
+  position: absolute;
+  top: 600px;
+  left: 0;
+}
+
+#controlsRight{
+  position: absolute;
+  top: 600px;
+  right: 0;
+}
