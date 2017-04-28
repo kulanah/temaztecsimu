@@ -5,6 +5,7 @@ let extractVal = 3500;
 let extractFinal = 4500;
 
 let controlShow = false;
+let graphShow = false;
 
 $('#colValvesClosed').click(function(){
   alert('test complete');
@@ -57,6 +58,16 @@ $('#controls').click(function(){
   }
 });
 
+$('#graph').click(function(){
+  if(graphShow){
+    $('#microscopeGraph').hide();
+    graphShow = false;
+  } else{
+    $('#microscopeGraph').show();
+    graphShow = true;
+  }
+});
+
 
 function startTime() {
     let today = new Date();
@@ -80,5 +91,6 @@ function checkTime(i) {
 
 $('#controlsLeft').hide();
 $('#controlsRight').hide();
+$('#microscopeGraph').hide();
 
 startTime();

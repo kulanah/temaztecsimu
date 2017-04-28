@@ -94,11 +94,14 @@
   max-height: 100vh;
 }
 
-#controls{
+#microscopeGraph{
 
-
+  position: absolute;
+  top: 16vh;
+  right: 20vw;
 }
-
+  
+  
 #controlsLeft{
   position: absolute;
   top: 600px;
