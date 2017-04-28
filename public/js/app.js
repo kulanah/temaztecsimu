@@ -94,3 +94,8 @@ $('#controlsRight').hide();
 $('#microscopeGraph').hide();
 
 startTime();
+
+
+$('img').on('dragstart', function(event){ 
+  event.preventDefault(); 
+});
