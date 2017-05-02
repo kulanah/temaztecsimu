@@ -97,5 +97,5 @@ startTime();
 
 
 $('img').on('dragstart', function(event){ 
-  event.preventDefault(); 
+    event.preventDefault(); 
 });
