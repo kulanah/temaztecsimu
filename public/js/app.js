@@ -134,3 +134,8 @@ $('#colvalves').click(function(event){
   $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
 });
 
+$('#closedrop').click(function(event){
+  $('#vacuumoverview').hide();
+  $('#maindropdown').hide();
+  maindrop = false;
+});
