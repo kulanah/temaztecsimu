@@ -99,3 +99,13 @@ startTime();
 $('img').on('dragstart', function(event){ 
     event.preventDefault(); 
 });
+
+$('#temuistart').click(function(event){
+  $('#mainimage').attr('src', './public/img/tia.png');
+});
+
+$('#micrographstart').click(function(event){
+  $('#mainimage').attr('src', './public/img/mainScreen.png');
+
+})
+
