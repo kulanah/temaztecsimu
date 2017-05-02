@@ -11,11 +11,14 @@
       <tr>  
         <td><img src='./public/img/tabs.png' id="tabs"/></td>
         <td rowspan='4'>
-          <img src='./public/img/mainScreen.png' class='mainwindow' id='mainimage'/>
+          <img src='./public/img/mainScreen.png' class='mainwindow' id='mainimage' usemap='mainscreen'/>
+          <map name='mainscreen' id='mainscreen'>
+            <area shape='rect' id='mainscreendropdown' coords='1448,814,1575,830' />
+          </map>
         </td>
       </tr>
       <tr>  
-        <td><img src='./public/img/leftColumn.png' id='leftcolumn' /></td>
+        <td><img src='./public/img/leftColumn.png' id='leftcolumn' usemap='leftcol'/></td>
       </tr>
       <tr>  
         <td class='relative'>
@@ -53,8 +56,17 @@
       <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='leftControl' />
       <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='rightControl' />
     </div>
+    <div id='vacuumoverview'>
+      <img src='./public/img/vacuumoverview.png'>
+    </div>
     <div id='microscopeGraph'>
       <img src='./public/img/graphplaceholder.png' />
+    </div>
+    <div id='maindropdown'>
+      <img src='./public/img/button52.png' usemap='dropdownmap'>
+      <map name='dropdownmap' id='dropdownmap'>
+        <area shape='rect' id='vacuumbutton' coords='0,250,100,262' />
+      </map>
     </div>
     <script src='./public/js/app.js'></script>
   </body>

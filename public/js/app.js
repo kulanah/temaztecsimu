@@ -6,6 +6,7 @@ let extractFinal = 4500;
 
 let controlShow = false;
 let graphShow = false;
+let maindrop = false;
 
 $('#colValvesClosed').click(function(){
   alert('test complete');
@@ -92,6 +93,8 @@ function checkTime(i) {
 $('#controlsLeft').hide();
 $('#controlsRight').hide();
 $('#microscopeGraph').hide();
+$('#maindropdown').hide();
+$('#vacuumoverview').hide();
 
 startTime();
 
@@ -106,6 +109,24 @@ $('#temuistart').click(function(event){
 
 $('#micrographstart').click(function(event){
   $('#mainimage').attr('src', './public/img/mainScreen.png');
+});
+
+$('#mainscreendropdown').click(function(event){
+  if(maindrop){
+    $('#maindropdown').hide();
+    maindrop = false;
+  } else {
+    $('#maindropdown').show();
+    maindrop = true;
+  }
+});
+
+$('#vacuumbutton').click(function(event){
+  if(maindrop){
+    $('#vacuumoverview').show();
+    $('#maindropdown').hide();
+    maindrop = false;
+  }
 
 })
 
