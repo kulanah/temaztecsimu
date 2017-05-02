@@ -130,6 +130,7 @@ $('#vacuumbutton').click(function(event){
 });
 
 $('#colvalves').click(function(event){
+  $('#leftcolumn').attr('src', './public/img/leftcolclosed.png');
   $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
 });
 
