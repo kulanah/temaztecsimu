@@ -127,6 +127,9 @@ $('#vacuumbutton').click(function(event){
     $('#maindropdown').hide();
     maindrop = false;
   }
+});
 
-})
+$('#colvalves').click(function(event){
+  $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
+});
 
