@@ -145,5 +145,5 @@ $('#rightbutton').click(function(event){
 });
 
 $('#leftbutton').click(function(event){
-  $('#rabs').attr('src', './public/img/tabs1.png');
+  $('#tabs').attr('src', './public/img/tabs1.png');
 })
