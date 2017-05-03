@@ -7,7 +7,20 @@ let extractFinal = 4500;
 let controlShow = false;
 let graphShow = false;
 let maindrop = false;
+let micro = true;
 
+//current tab can be the followng values:
+//status, search, tune, stem, FEGregister, eftem, dark field
+let currenttab = 0;
+
+let beamslider = $('#beamrange').slider({
+  values: [1, 11], 
+  value: 7,
+});
+
+$('#beamrange').on("change", function(event, ui){
+  $('#beamvalue').text(beamslider.val());
+});
 
 $('#colValvesClosed').click(function(){
   alert('test complete');
@@ -153,10 +166,15 @@ $('.leftbutton').click(function(event){
 });
 
 $('#search').click(function(event){
-  $('#leftcolumn').attr('src', './public/img/leftcolsearch.png');
+  if (micro){
+    $('#leftcolumn').attr('src', './public/img/leftcolsearchmicro.png');
+  } else {
+    $('#leftcolumn').attr('src', './public/img/leftcolsearchnano.png');
+  }
   $('#leftcolumn').attr('usemap', 'leftcolsearch');
   $('#leftcolsetuptext').hide();
   $('#searchcontent').show();
+  currenttab = 1;
 });
 
 $('#setup').click(function(event){
@@ -164,4 +182,12 @@ $('#setup').click(function(event){
   $('#leftcolumn').attr('usemap', 'leftcolsearch');
   $('#leftcolsetuptext').show();
   $('#searchcontent').hide();
+  currenttab = 0;
+});
+
+$('#buttonr3').click(function(event){
+  if (currenttab == 1){
+    beamslider.val(9);
+    $('#beamvalue').text(beamslider.val());
+  };
 });

@@ -129,3 +129,9 @@
 #beamrange{
   width: 13vw;
 }
+
+#beamvalue{
+  position: absolute;
+  top: -5.7vh;
+  left: 3vw;
+}
