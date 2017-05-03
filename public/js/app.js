@@ -179,7 +179,7 @@ $('#search').click(function(event){
 
 $('#setup').click(function(event){
   $('#leftcolumn').attr('src', './public/img/leftcolsetup.png');
-  $('#leftcolumn').attr('usemap', 'leftcolsearch');
+  $('#leftcolumn').attr('usemap', 'leftcolsetup');
   $('#leftcolsetuptext').show();
   $('#searchcontent').hide();
   currenttab = 0;
@@ -190,4 +190,16 @@ $('#buttonr3').click(function(event){
     beamslider.val(9);
     $('#beamvalue').text(beamslider.val());
   };
+});
+
+$('#nano').click(function(event){
+  $('#leftcolumn').attr('src', './public/img/leftcolsearchmicro.png')
+  micro = true;
+
+});
+
+$('#micro').click(function(event){
+  $('#leftcolumn').attr('src', './public/img/leftcolsearchnano.png')
+  micro = false;
+
 });
