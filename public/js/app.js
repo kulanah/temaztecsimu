@@ -139,3 +139,11 @@ $('#closedrop').click(function(event){
   $('#maindropdown').hide();
   maindrop = false;
 });
+
+$('#rightbutton').click(function(event){
+  $('#tabs').attr('src', './public/img/tabs2.png');
+});
+
+$('#leftbutton').click(function(event){
+  $('#rabs').attr('src', './public/img/tabs1.png');
+})
