@@ -3,14 +3,12 @@
     <meta charset='UTF8'>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel='stylesheet' href='./public/css/mapped.css'>
-    <script src='./public/js/jquery-3.2.1.min.js'></script>
-    <script src='./public/js/jquery-ui.min.js'></script>
   </head>
   <body>
     <table cellspacing='0'>
       <tr>  
         <td>
-          <img src='./public/img/tabs1.png' id="tabs" usemap='tabs1'/>
+          <img src='./public/img/tabs1.png' id="tabs" usemap='tabs1' height='242' width='71'/>
           <map name='tabs1' id='tabs1'>
             <area shape='rect' id='setup' coords='5,27,58,44' />
             <area shape='rect' id='search' coords='59,27,112,44' />
@@ -24,7 +22,7 @@
           </map>
         </td>
         <td rowspan='4'>
-          <img src='./public/img/mainScreen.png' class='mainwindow' id='mainimage' usemap='mainscreen'/>
+          <img src='./public/img/mainScreen.png' class='mainwindow' id='mainimage' usemap='mainscreen' width='1437' height='1019'/>
           <map name='mainscreen' id='mainscreen'>
             <area shape='rect' id='mainscreendropdown' coords='1448,828,1575,847' />
             <area shape='rect' id='closedrop' coords='1576,828,1600,845' />
@@ -33,7 +31,7 @@
       </tr>
       <tr>  
         <td>
-          <img src='./public/img/leftcolsetup.png' id='leftcolumn' usemap='leftcolsetup'/>
+          <img src='./public/img/leftcolsetup.png' id='leftcolumn' usemap='leftcolsetup' height='243' width='797'/>
           <map name='leftcolsetup' id='leftcolsetup'>
             <area shape='rect' id='colvalves' coords='15,148,87,178' />
             <area shape='rect' id='gunLenseUp' coords='152,418,171,427' />
@@ -59,7 +57,7 @@
       <tr>
         <td colspan='2'>
           <p id='clock'>12:00 AM</p>
-          <img id='startmenu' src='./public/img/startmenu.png' usemap='startmenu'/>
+          <img id='startmenu' src='./public/img/startmenu.png' usemap='startmenu' height='29' width'1680'/>
           <map name='startmenu' id='startmenu'>
             <area shape='rect' id='micrographstart' coords='260,3,435,30' />
             <area shape='rect' id='unused' coords='440,3,615,30' />
@@ -93,6 +91,9 @@
       <input type='range' id='beamrange' name='beamrange' value='5' min='1' max='11'>
       <p id='beamvalue'>5</p>
     </div>
-    <script src='./public/js/app.js'></script>
+    <script src='./public/js/jquery-3.2.1.min.js'></script>
+    <script src='./public/js/jquery-ui.min.js'></script>
+    <script type='text/javascript' src='./public/js/app.js'></script>
+
   </body>
 </html>
