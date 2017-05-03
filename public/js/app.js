@@ -140,10 +140,24 @@ $('#closedrop').click(function(event){
   maindrop = false;
 });
 
-$('#rightbutton').click(function(event){
+$('.rightbutton').click(function(event){
   $('#tabs').attr('src', './public/img/tabs2.png');
+  $('#tabs').attr('usemap', 'tabs2');
 });
 
-$('#leftbutton').click(function(event){
+$('.leftbutton').click(function(event){
   $('#tabs').attr('src', './public/img/tabs1.png');
-})
+  $('#tabs').attr('usemap', 'tabs1');
+});
+
+$('#search').click(function(event){
+  $('#leftcolumn').attr('src', './public/img/leftcolsearch.png');
+  $('#leftcolumn').attr('usemap', 'leftcolsearch');
+  $('#leftcolsetuptext').hide();
+});
+
+$('#setup').click(function(event){
+  $('#leftcolumn').attr('src', './public/img/leftcolsetup.png');
+  $('#leftcolumn').attr('usemap', 'leftcolsearch');
+  $('#leftcolsetuptext').show();
+});
