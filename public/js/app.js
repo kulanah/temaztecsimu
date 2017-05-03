@@ -8,6 +8,7 @@ let controlShow = false;
 let graphShow = false;
 let maindrop = false;
 
+
 $('#colValvesClosed').click(function(){
   alert('test complete');
 });
@@ -94,6 +95,7 @@ $('#controlsLeft').hide();
 $('#controlsRight').hide();
 $('#microscopeGraph').hide();
 $('#maindropdown').hide();
+$('#searchcontent').hide();
 $('#vacuumoverview').hide();
 
 startTime();
@@ -154,10 +156,12 @@ $('#search').click(function(event){
   $('#leftcolumn').attr('src', './public/img/leftcolsearch.png');
   $('#leftcolumn').attr('usemap', 'leftcolsearch');
   $('#leftcolsetuptext').hide();
+  $('#searchcontent').show();
 });
 
 $('#setup').click(function(event){
   $('#leftcolumn').attr('src', './public/img/leftcolsetup.png');
   $('#leftcolumn').attr('usemap', 'leftcolsearch');
   $('#leftcolsetuptext').show();
+  $('#searchcontent').hide();
 });

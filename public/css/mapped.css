@@ -119,3 +119,13 @@
   top: 26.5vh;
   right: 2vw;
 }
+
+#searchcontent{
+  position: absolute;
+  top: 54vh;
+  left: 1vw;
+}
+
+#beamrange{
+  width: 13vw;
+}
