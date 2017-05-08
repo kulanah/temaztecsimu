@@ -10,8 +10,9 @@
 //turbo on/off maybe do color 
 
 //add labels to r and l byttons 1-3
-
 //file -> open OR start view open microscope image
+
+//break onclicks into sections for different image bases
 
 let clickFunctions = function(){
 
