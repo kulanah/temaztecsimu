@@ -10,7 +10,7 @@
 
 #extractFinal{
   position: absolute;
-  top: 53.5vh;
+  top: 54.5vh;
   left: 10vw; 
   font-family: Arial, Helvetica, sans-serif;
   text-align: right;
@@ -19,7 +19,7 @@
 
 #extractVal{
   position: absolute;
-  top: 51.7vh;
+  top: 52.7vh;
   left: 9.5vw;
   font-family: Arial, Helvetica, sans-serif;
   text-align: right;
@@ -28,7 +28,7 @@
 
 #gunLenseVal  {
   position: absolute;
-  top: 49.3vh;
+  top: 50.3vh;
   left: 10vw;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -43,7 +43,7 @@
 }
 
 #content{
-  margin: 15px 0 0 15px;
+  margin: 0;
 }
 
 #clock{
@@ -59,29 +59,29 @@
   position: relative;
 }
 
+#mainimage{
+  height: 95.2vh;
+  width: 83.7vw;
+}
+
 #tabs{
-  height: 6.681vh;
+  height: 6vh;
+  width: 14.28vw;
+}
+
+#leftcolumn{
+  height: 71vh;
+  width: 14.28vw;
+}
+
+#infopanel{
+  height: 17vh;
   width: 14.28vw;
 }
 
 #startmenu{
   height: 2.4735vh;
   width: 98.2vw;
-}
-
-#leftcolumn{
-  height: 69vh;
-  width: 14.28vw;
-}
-
-#mainimage{
-  height: 97.5vh;
-  width: 83.7vw;
-}
-
-#infopanel{
-  height: 19vh;
-  width: 14.28vw;
 }
 
 .responsive{
@@ -94,7 +94,6 @@
   top: 16vh;
   right: 20vw;
 }
-  
   
 #controlsLeft{
   position: absolute;
@@ -110,13 +109,13 @@
 
 #maindropdown{
   position: absolute;
-  top: 57vh;
+  top: 55vh;
   right: 3.5vw;
 }
 
 #vacuumoverview{
   position: absolute;
-  top: 26.5vh;
+  top: 25.5vh;
   right: 2vw;
 }
 
@@ -128,10 +127,17 @@
 
 #beamrange{
   width: 13vw;
+  position: absolute;
+  top: 1vh;
 }
 
 #beamvalue{
   position: absolute;
-  top: -5.7vh;
+  top: -4.7vh;
   left: 3vw;
+}
+
+#filtercontrol{
+  position: absolute;
+  
 }
