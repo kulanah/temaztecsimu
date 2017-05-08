@@ -58,4 +58,3 @@ $('img').on('dragstart', function(event){
 hideBatch();
 startTime();
 clickFunctions();
-alertFunc();
