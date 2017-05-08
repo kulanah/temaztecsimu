@@ -7,9 +7,8 @@
 //high tenson on/off - when off KV = 0 animate drop 
 //operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 //feg valuue should follow ratio of extraction va
-//turbo on/off maybe do color 
+//turbo on/off maybe do color along vaccuum
 
-//add labels to r and l byttons 1-3
 //file -> open OR start view open microscope image
 
 //break onclicks into sections for different image bases
