@@ -1,15 +1,12 @@
 'use strict';
 
-//r3 +1
-//l3 -1
+//l3 -1 onclick built, button needs to eb placed
 //nanoprobe set to 6
 //microprobe set to 3
-//vertical offsets of some buttosn
 //tune tab LATER 
 //high tenson on/off - when off KV = 0 animate drop 
 //operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 //feg valuue should follow ratio of extraction va
-//main window too low 
 //turbo on/off maybe do color 
 
 //add labels to r and l byttons 1-3
@@ -145,22 +142,35 @@ let clickFunctions = function(){
     currenttab = 0;
   });
 
+  $('#buttonl3').click(function(event){
+    if (currenttab == 1){
+      let value = beamslider.val();
+      --value;
+      beamslider.val(value);
+      $('#beamvalue').text(beamslider.val());
+    };
+  });
+
   $('#buttonr3').click(function(event){
     if (currenttab == 1){
-      beamslider.val(9);
+      let value = beamslider.val();
+      ++value;
+      beamslider.val(value);
       $('#beamvalue').text(beamslider.val());
     };
   });
 
   $('#nano').click(function(event){
-    $('#leftcolumn').attr('src', './public/img/leftcolsearchmicro.png')
+    $('#leftcolumn').attr('src', './public/img/leftcolsearchmicro.png');
+    beamslider.val(3);
+    $('#beamvalue').text(beamslider.val());
     micro = true;
-
   });
 
   $('#micro').click(function(event){
     $('#leftcolumn').attr('src', './public/img/leftcolsearchnano.png')
+    beamslider.val(6);
+    $('#beamvalue').text(beamslider.val());
     micro = false;
-
   });
 }
