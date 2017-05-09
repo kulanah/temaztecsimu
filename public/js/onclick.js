@@ -1,7 +1,9 @@
 'use strict';
 let colopen = true;
+
 //operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 //feg valuue should follow ratio of extraction va
+
 //turbo on/off maybe do color along vaccuum
 
 //file -> open OR start view open microscope image
@@ -13,10 +15,6 @@ let colopen = true;
 //remove the mess of booleans and create a 'isshown' function that returs true if shownn false if not
 
 let clickFunctions = function(){
-
-  $('#colValvesClosed').click(function(){
-    alert('test complete');
-  });
 
   $('#extractUp').click(function(){
     if (extractVal < 4500){
@@ -210,6 +208,10 @@ let clickFunctions = function(){
   
   $('#openbutton').click(function(event){
     $('#openfiledialogue').show();
-  })
+  });
+
+  $('#operate').click(function(event){
+    
+  });
 
 }

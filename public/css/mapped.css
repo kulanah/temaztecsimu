@@ -20,6 +20,12 @@
   text-align: right;
 }
 
+#fegvalue{
+  position: absolute;
+  top: 59vh;
+  left: 12.3vw;
+}
+
 #extractVal{
   position: absolute;
   top: 52.3vh;
