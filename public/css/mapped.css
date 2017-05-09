@@ -6,6 +6,15 @@
     /* Not implemented yet */
     -o-user-select: none;
     user-select: none;    
+
+    padding: 0;
+    border: 0;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+body{
+  overflow: hidden;
 }
 
 .wintext{
@@ -15,32 +24,28 @@
 
 #extractFinal{
   position: absolute;
-  top: 54.3vh;
+  top: 57.3vh;
   left: 11vw; 
   text-align: right;
 }
 
 #fegvalue{
   position: absolute;
-  top: 59vh;
-  left: 12.3vw;
+  top: 62.4vh;
+  left: 11.8vw;
 }
 
 #extractVal{
   position: absolute;
-  top: 52.3vh;
-  left: 9.5vw;
+  top: 54.7vh;
+  left: 9.2vw;
   text-align: right;
 }
 
 #gunLenseVal  {
   position: absolute;
-  top: 50vh;
+  top: 52.2vh;
   left: 10vw;
-}
-
-.testButton{
-  border: red solid 10px;
 }
 
 .imageDiv{
@@ -53,10 +58,10 @@
 
 #clock{
   position: absolute;
-  margin: 5px 0 0 0;
   white-space: nowrap;
-  right: 1.9vw;
-  font-size: 12px;
+  right: .5vw;
+  bottom: .7vh;
+  font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -65,8 +70,8 @@
 }
 
 #mainimage{
-  height: 95.2vh;
-  width: 83.7vw;
+  height: 97vh;
+  width: 85.67vw;
 }
 
 #tabs{
@@ -75,18 +80,39 @@
 }
 
 #leftcolumn{
-  height: 71vh;
+  height: 73vh;
   width: 14.28vw;
 }
 
+#leftcolvacuum{
+  width: 14.28vw;
+  height: 24.33vh;
+}
+
+.leftcol{
+  width: 14.28vw;
+}
+
+#leftcolumnvacuum{
+  height: 21vh;
+}
+
+#leftcolumntension{
+  height: 21vh;
+}
+
+#leftcolumnfegcontrol{
+  height: 34vh;
+}
+
 #infopanel{
-  height: 17.7vh;
+  height: 15vh;
   width: 14.28vw;
 }
 
 #startmenu{
-  height: 2.4735vh;
-  width: 98.2vw;
+  height: 3vh;
+  width: 100vw;
 }
 
 .responsive{
@@ -148,7 +174,7 @@
 
 #kvval{
   position: absolute;
-  top: 29.5vh;
+  top: 31vh;
   right: 87vw;
   font-size: 16px;
 }
