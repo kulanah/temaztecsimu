@@ -3,11 +3,16 @@
 let gunLense = 1;
 let extractVal = 3500;
 let extractFinal = 4500;
+let kvVal = 200;
 
 let controlShow = false;
 let graphShow = false;
 let maindrop = false;
 let micro = true;
+
+//array of elements that we close when you click outside of the item
+//we loop thorough this later on to set this behavior on all of them
+let closewhenoffclick = ['maindropdown', 'openfiledialogue'];
 
 //current tab can be the followng values:
 //status, search, tune, stem, FEGregister, eftem, dark field
@@ -22,24 +27,30 @@ $('#beamrange').on("change", function(event, ui){
   $('#beamvalue').text(beamslider.val());
 });
 
+$('#openfiledialogue').draggable({
+  addClasses: false 
+});
+
 let startTime = function() {
-    let today = new Date();
-    let h = today.getHours();
-    let m = today.getMinutes();
-    let ampm = 'AM';
-    if (h > 12){
-      h -= 12;
-      ampm = 'PM';
-    };
-    m = checkTime(m);
-    document.getElementById('clock').innerHTML =
-    h + ":" + m + " " + ampm;
-    var t = setTimeout(startTime, 500);
+  let today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let ampm = 'AM';
+  if (h > 12){
+    h -= 12;
+    ampm = 'PM';
+  };
+  m = checkTime(m);
+  document.getElementById('clock').innerHTML =
+  h + ":" + m + " " + ampm;
+  let t = setTimeout(startTime, 500);
 }
 
 let checkTime = function(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
+  if (i < 10){
+    i = "0" + i
+  };  // add zero in front of numbers < 10
+  return i;
 }
 
 let hideBatch = function(){
@@ -49,11 +60,33 @@ let hideBatch = function(){
   $('#maindropdown').hide();
   $('#searchcontent').hide();
   $('#vacuumoverview').hide();
+  $('#filemenu').hide();
+  $('#openfiledialogue').hide();
+};
+
+let kvSlide = function(){
+  if (kvVal > 0){
+    kvVal -= 8;
+    $('#kvval').text(kvVal + ' kV');
+    setTimeout(kvSlide, 100);
+  }
 };
 
 $('img').on('dragstart', function(event){ 
     event.preventDefault(); 
 });
+
+$(document).mouseup(function(e) {
+  for (let i = 0; i < closewhenoffclick.length; ++i){
+    var $container = $('#' + closewhenoffclick[i]);
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!$container.is(e.target) && $container.has(e.target).length === 0) {
+      $container.hide();
+    }
+  }
+});
+
 
 hideBatch();
 startTime();

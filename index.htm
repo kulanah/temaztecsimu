@@ -24,6 +24,8 @@
         <td rowspan='3'>
           <img src='./public/img/mainScreen.png' class='mainwindow' id='mainimage' usemap='mainscreen'/>
           <map name='mainscreen' id='mainscreen'>
+            <area shape='rect' id='filebutton' coords='5,64,34,80' />
+            <area shape='rect' id='openbutton' coords='13,85,40,100' />
             <area shape='rect' id='mainscreendropdown' coords='1448,810,1575,828' />
             <area shape='rect' id='closedrop' coords='1576,810,1600,828' />
           </map>
@@ -39,15 +41,17 @@
             <area shape='rect' id='extractUp' coords='152,455,171,464' />
             <area shape='rect' id='extractDown' coords='152,465,171,475' />
             <area shape='rect' id='extractSubmit' coords='217,455,233,475' />
+            <area shape='rect' id='hightension' coords='15,235,100,255' />
           </map>  
           <map name='leftcolsearch' id='leftcolsearch'> 
             <area shape='rect' id='nano' coords='10,480,90,515' />
             <area shape='rect' id='micro' coords='180,480,260,515' />
           </map>
           <div id='leftcolsetuptext'>
-            <p id='extractFinal'>4500 V </p>
-            <p id='extractVal'>3500 V</p>
-            <p id='gunLenseVal'>1</p>
+            <p class='wintext' id='extractFinal'>4500 V </p>
+            <p class='wintext' id='kvval'>200 kV</p>
+            <p class='wintext' id='extractVal'>3500 V</p>
+            <p class='wintext' id='gunLenseVal'>1</p>
           </div>
         </td>
       </tr>
@@ -97,6 +101,21 @@
     <!--<div id='filtercontrol'>
       <img src='./public/img/filtercontrol.png' />
     </div>-->
+
+    <div id='filemenu'>
+      <img src='./public/img/filedialogue.png' usemap='filemenu'/>
+      <map name='filemenu' id='filemenu'>
+        <area shape='rect' id='fileopen' coords='0,18,200,35' />
+      </map>
+    </div>
+    <div id='openfiledialogue'>
+      <img src='./public/img/fileopendialogue.png' usemap='openfile' />
+      <map id='openfile' name='openfile'>
+        <area shape='rect' id='xbox' coords='689,7,705,22' />
+        <area shape='rect' id='cancel' coords='627,504,700,528' />
+      </map>  
+    </div>
+
     <script src='./public/js/jquery-3.2.1.min.js'></script>
     <script src='./public/js/jquery-ui.min.js'></script>
     <script src='./public/js/onclick.js'></script>

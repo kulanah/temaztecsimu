@@ -1,10 +1,5 @@
 'use strict';
-
-//l3 -1 onclick built, button needs to eb placed
-//nanoprobe set to 6
-//microprobe set to 3
-//tune tab LATER 
-//high tenson on/off - when off KV = 0 animate drop 
+let colopen = true;
 //operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 //feg valuue should follow ratio of extraction va
 //turbo on/off maybe do color along vaccuum
@@ -12,6 +7,10 @@
 //file -> open OR start view open microscope image
 
 //break onclicks into sections for different image bases
+
+//tune tab LATER 
+
+//remove the mess of booleans and create a 'isshown' function that returs true if shownn false if not
 
 let clickFunctions = function(){
 
@@ -102,8 +101,15 @@ let clickFunctions = function(){
   });
 
   $('#colvalves').click(function(event){
-    $('#leftcolumn').attr('src', './public/img/leftcolclosed.png');
-    $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
+    if (colopen){
+      $('#leftcolumn').attr('src', './public/img/leftcolclosed.png');
+      $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
+      colopen = false;
+    } else {
+      $('#leftcolumn').attr('src', './public/img/leftcolsetup.png');
+      $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
+      colopen = true;
+    }
   });
 
   $('#closedrop').click(function(event){
@@ -131,6 +137,7 @@ let clickFunctions = function(){
     $('#leftcolumn').attr('usemap', 'leftcolsearch');
     $('#leftcolsetuptext').hide();
     $('#searchcontent').show();
+    $('#kvval').hide();
     currenttab = 1;
   });
 
@@ -139,6 +146,7 @@ let clickFunctions = function(){
     $('#leftcolumn').attr('usemap', 'leftcolsetup');
     $('#leftcolsetuptext').show();
     $('#searchcontent').hide();
+    $('#kvval').show();
     currenttab = 0;
   });
 
@@ -173,4 +181,35 @@ let clickFunctions = function(){
     $('#beamvalue').text(beamslider.val());
     micro = false;
   });
+
+  $('#hightension').click(function(event){
+    kvSlide();
+  });
+
+  $('#filebutton').click(function(event){
+    if($('#filemenu').css('display') == 'none'){
+      $('#filemenu').show();
+    } else {
+      $('#filemenu').hide();
+    }
+  });
+
+  $('#fileopen').click(function(event){
+    $('#filemenu').hide();
+    $('#openfiledialogue').show();
+  });
+
+  $('#xbox').click(function(event){
+    $('#openfiledialogue').hide();
+  });
+
+
+  $('#cancel').click(function(event){
+    $('#openfiledialogue').hide();
+  });
+  
+  $('#openbutton').click(function(event){
+    $('#openfiledialogue').show();
+  })
+
 }

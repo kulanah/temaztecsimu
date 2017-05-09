@@ -8,30 +8,29 @@
     user-select: none;    
 }
 
+.wintext{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
 #extractFinal{
   position: absolute;
-  top: 54.5vh;
-  left: 10vw; 
-  font-family: Arial, Helvetica, sans-serif;
+  top: 54.3vh;
+  left: 11vw; 
   text-align: right;
-  font-size: 12px;
 }
 
 #extractVal{
   position: absolute;
-  top: 52.7vh;
+  top: 52.3vh;
   left: 9.5vw;
-  font-family: Arial, Helvetica, sans-serif;
   text-align: right;
-  font-size: 11px;  
 }
 
 #gunLenseVal  {
   position: absolute;
-  top: 50.3vh;
+  top: 50vh;
   left: 10vw;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
 }
 
 .testButton{
@@ -126,18 +125,36 @@
 }
 
 #beamrange{
-  width: 13vw;
   position: absolute;
+  width: 13vw;
   top: 1vh;
 }
 
 #beamvalue{
   position: absolute;
-  top: -4.7vh;
-  left: 3vw;
+  top: -5vh;
+  left: 3.2vw;
 }
 
 #filtercontrol{
   position: absolute;
-  
+}
+
+#kvval{
+  position: absolute;
+  top: 29.5vh;
+  right: 87vw;
+  font-size: 16px;
+}
+
+#filemenu{
+  position: absolute;
+  top: 9vh;
+  left: 15vw;
+}
+
+#openfiledialogue{
+  position: absolute;
+  top: 22vh;
+  left: 35vw;
 }
