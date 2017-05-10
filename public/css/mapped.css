@@ -102,7 +102,11 @@ body{
 }
 
 #leftcolumnfegcontrol{
-  height: 34vh;
+  height: 22vh;
+}
+
+#leftcolumnsetupfiller{
+  height: 12vh;
 }
 
 #leftcolumnstage{
@@ -113,7 +117,7 @@ body{
   height: 23vh;
 }
 
-#filler{
+#leftcolumnsearchfiller{
   height: 8vh;
 }
 
@@ -165,12 +169,13 @@ body{
 #beamrange{
   position: absolute;
   width: 13vw;
-  top: 1vh;
+  top: 61vh;
+  left: .6vw;
 }
 
 #beamvalue{
   position: absolute;
-  top: -5vh;
+  top: 30vh;
   left: 3.2vw;
 }
 

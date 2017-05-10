@@ -100,11 +100,11 @@ let clickFunctions = function(){
 
   $('#colvalves').click(function(event){
     if (colopen){
-      $('#leftcolumn').attr('src', './public/img/leftcolclosed.png');
+      $('#leftcolumnvaccum').attr('src', './public/img/vacuummenuclosed.png');
       $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
       colopen = false;
     } else {
-      $('#leftcolumn').attr('src', './public/img/leftcolsetup.png');
+      $('#leftcolumn').attr('src', './public/img/vacuummenuopen.png');
       $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
       colopen = true;
     }
@@ -134,7 +134,6 @@ let clickFunctions = function(){
     } else {
       $('#leftcolumn').attr('src', './public/img/leftcolsearchnano.png');
     }
-    $('#kvval').hide();
     currenttab = 1;
   });
 
