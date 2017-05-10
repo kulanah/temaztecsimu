@@ -69,6 +69,8 @@ let kvSlide = function(){
     kvVal -= 8;
     $('#kvval').text(kvVal + ' kV');
     setTimeout(kvSlide, 100);
+  } else {
+    $('#leftcolumntension').attr('src', './public/img/hightensiondone.png');
   }
 };
 

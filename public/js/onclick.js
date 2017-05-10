@@ -4,8 +4,6 @@ let colopen = true;
 //operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 //feg valuue should follow ratio of extraction va
 
-//turbo on/off maybe do color along vaccuum
-
 //file -> open OR start view open microscope image
 
 //break onclicks into sections for different image bases
@@ -100,11 +98,11 @@ let clickFunctions = function(){
 
   $('#colvalves').click(function(event){
     if (colopen){
-      $('#leftcolumnvaccum').attr('src', './public/img/vacuummenuclosed.png');
+      $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
       $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
       colopen = false;
     } else {
-      $('#leftcolumn').attr('src', './public/img/vacuummenuopen.png');
+      $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopen.png');
       $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
       colopen = true;
     }
