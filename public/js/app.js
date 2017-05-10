@@ -58,10 +58,10 @@ let hideBatch = function(){
   $('#controlsRight').hide();
   $('#microscopeGraph').hide();
   $('#maindropdown').hide();
-  $('#searchcontent').hide();
   $('#vacuumoverview').hide();
   $('#filemenu').hide();
   $('#openfiledialogue').hide();
+  $('#leftcolsearch').hide();
 };
 
 let kvSlide = function(){

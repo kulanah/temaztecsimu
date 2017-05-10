@@ -127,24 +127,20 @@ let clickFunctions = function(){
   });
 
   $('#search').click(function(event){
+    $('#leftcolsearch').show();
+    $('#leftcolsetup').hide();
     if (micro){
       $('#leftcolumn').attr('src', './public/img/leftcolsearchmicro.png');
     } else {
       $('#leftcolumn').attr('src', './public/img/leftcolsearchnano.png');
     }
-    $('#leftcolumn').attr('usemap', 'leftcolsearch');
-    $('#leftcolsetuptext').hide();
-    $('#searchcontent').show();
     $('#kvval').hide();
     currenttab = 1;
   });
 
   $('#setup').click(function(event){
-    $('#leftcolumn').attr('src', './public/img/leftcolsetup.png');
-    $('#leftcolumn').attr('usemap', 'leftcolsetup');
-    $('#leftcolsetuptext').show();
-    $('#searchcontent').hide();
-    $('#kvval').show();
+    $('#leftcolsearch').hide();
+    $('#leftcolsetup').show();
     currenttab = 0;
   });
 

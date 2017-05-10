@@ -24,27 +24,27 @@ body{
 
 #extractFinal{
   position: absolute;
-  top: 57.3vh;
+  top: 58.3vh;
   left: 11vw; 
   text-align: right;
 }
 
 #fegvalue{
   position: absolute;
-  top: 62.4vh;
+  top: 63.4vh;
   left: 11.8vw;
 }
 
 #extractVal{
   position: absolute;
-  top: 54.7vh;
+  top: 55.7vh;
   left: 9.2vw;
   text-align: right;
 }
 
 #gunLenseVal  {
   position: absolute;
-  top: 52.2vh;
+  top: 53.2vh;
   left: 10vw;
 }
 
@@ -75,7 +75,7 @@ body{
 }
 
 #tabs{
-  height: 6vh;
+  height: 7vh;
   width: 14.28vw;
 }
 
@@ -105,8 +105,20 @@ body{
   height: 34vh;
 }
 
+#leftcolumnstage{
+  height: 45vh;
+}
+
+#leftcolumnbeamsettings{
+  height: 23vh;
+}
+
+#filler{
+  height: 8vh;
+}
+
 #infopanel{
-  height: 15vh;
+  height: 14vh;
   width: 14.28vw;
 }
 
@@ -148,12 +160,6 @@ body{
   position: absolute;
   top: 25.5vh;
   right: 2vw;
-}
-
-#searchcontent{
-  position: absolute;
-  top: 54vh;
-  left: 1vw;
 }
 
 #beamrange{
