@@ -4,6 +4,7 @@ let gunLense = 1;
 let extractVal = 3500;
 let extractFinal = 4500;
 let kvVal = 200;
+let fegVal = 63;
 
 let controlShow = false;
 let graphShow = false;

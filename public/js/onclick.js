@@ -2,7 +2,6 @@
 let colopen = true;
 
 //operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
-//feg valuue should follow ratio of extraction va
 
 //file -> open OR start view open microscope image
 
@@ -17,6 +16,7 @@ let clickFunctions = function(){
   $('#extractUp').click(function(){
     if (extractVal < 4500){
       extractVal += 100;
+      fegVal += (3/5);
       $('#extractVal').text(extractVal + " V");
     }
   });
@@ -24,6 +24,7 @@ let clickFunctions = function(){
   $('#extractDown').click(function(){
     if (extractVal > 3000){
       extractVal -= 100;
+      fegVal -= (3/5);
       $('#extractVal').text(extractVal + " V");
     }
   });
@@ -31,6 +32,7 @@ let clickFunctions = function(){
   $('#extractSubmit').click(function(){
     extractFinal = extractVal;
     $('#extractFinal').text(extractFinal + " V");
+    $('#fegvalue').text(Math.floor(fegVal));
   });
 
   $('#gunLenseDown').click(function(){
