@@ -12,7 +12,7 @@ let micro = true;
 
 //array of elements that we close when you click outside of the item
 //we loop thorough this later on to set this behavior on all of them
-let closewhenoffclick = ['maindropdown', 'openfiledialogue'];
+let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu'];
 
 //current tab can be the followng values:
 //status, search, tune, stem, FEGregister, eftem, dark field
@@ -62,6 +62,7 @@ let hideBatch = function(){
   $('#filemenu').hide();
   $('#openfiledialogue').hide();
   $('#leftcolsearch').hide();
+  $('#tabsright').hide();
 };
 
 let kvSlide = function(){

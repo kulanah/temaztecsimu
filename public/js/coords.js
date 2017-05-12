@@ -21,6 +21,13 @@ $( '.coords' ).
         }).show();
       }).
       mouseleave(function () {
-        $( tooltip ).hide();
+        $( tooltip ).show();
       }); 
+  });
+  
+  var $someElement = $("#tooltip");
+  $(document).mousemove(function (e) {
+      $someElement.offset({ top: e.pageY, left: e.pageX });
+  }).click(function () {
+    $(this).unbind("mousemove");
   });

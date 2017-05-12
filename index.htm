@@ -5,51 +5,57 @@
     <link rel='stylesheet' href='./public/css/mapped.css'>
   </head>
   <body>
-    <table cellspacing='0' cellpadding='0' height='99vh' width='99vw' >
+    <table>
       <tr>  
         <td>
-          <img src='./public/img/tabs1.png' id="tabs" usemap='tabs1' height='242' width='71'/>
-          <map name='tabs1' id='tabs1'>
-            <area shape='rect' id='setup' coords='5,27,58,44' />
-            <area shape='rect' id='search' coords='59,27,112,44' />
-            <area shape='rect' class='leftbutton' coords='229,24,250,44' />
-            <area shape='rect' class='rightbutton' coords='251,24,272,44' />
-          </map>
-          <map name='tabs2' id='tabs2'>
-            <area shape='rect' id='darkfield' coords='150,24,220,44' />
-            <area shape='rect' class='leftbutton' coords='229,24,250,44' />
-            <area shape='rect' class='rightbutton' coords='251,24,272,44' />
-          </map>
+          <div id='tabsleft'>
+            <img src='./public/img/tabs1.png' class='tabs' id='tabs1' usemap='tabs1' width='238' height='69'/>
+            <map name='tabs1'>
+              <area shape='rect' id='setup' coords='3,25,47,42' />
+              <area shape='rect' id='search' coords='48,25,91,42' />
+              <area shape='rect' class='leftbutton' coords='201,27,216,42' />
+              <area shape='rect' class='rightbutton' coords='217,27,233,42' />
+            </map>
+          </div>
+          <div id='tabsright'>
+            <img src='./public/img/tabs2.png' class='tabs' id='tabs2' usemap='tabs2' width='238' height='69'/>
+            <map name='tabs2'>
+              <area shape='rect' id='darkfield' coords='125,25,188,42' />
+              <area shape='rect' class='leftbutton' coords='201,27,216,42' />
+              <area shape='rect' class='rightbutton' coords='217,27,233,42' />
+            </map>
+          </div>
         </td>
         <td rowspan='3'>
-          <img src='./public/img/mainScreen.png' class='mainwindow' id='mainimage' usemap='mainscreen'/>
+          <img src='./public/img/mainscreen.png' class='mainwindow' id='mainimage' usemap='mainscreen'/>
           <map name='mainscreen' id='mainscreen'>
-            <area shape='rect' id='filebutton' coords='5,64,34,80' />
-            <area shape='rect' id='openbutton' coords='13,85,40,100' />
-            <area shape='rect' id='mainscreendropdown' coords='1480,825,1612,844' />
-            <area shape='rect' id='closedrop' coords='1613,825,1651,844' />
+            <area shape='rect' id='filebutton' coords='6,72,31,83' />
+            <area shape='rect' id='openbutton' coords='13,91,34,105' />
+            <area shape='rect' id='mainscreendropdown' coords='1293,878,1409,895' />
+            <area shape='rect' id='closedrop' coords='1410,879,1425,895' />
           </map>
         </td>
       </tr>
       <tr>  
         <td>
           <div id='leftcolsetup'>
-            <img src='./public/img/vacuummenuopen.png' class='leftcol' id='leftcolumnvacuum' usemap='vacuum' />
+            <img src='./public/img/vacuummenuopen.png' class='leftcol' id='leftcolumnvacuum' usemap='vacuum' width='243' height='224' />
             <map name='vacuum' id='vacuum'>
-              <area shape='rect' id='colvalves' coords='15,158,87,188' />
+              <area shape='rect' id='colvalves' coords='12,169,77,204' />
+              <area shape='rect' id='turboon' coords='87,169,152,204' />
             </map>  
-            <img src='./public/img/hightension.png' class='leftcol' id='leftcolumntension' usemap='tension'/>
+            <img src='./public/img/hightension.png' class='leftcol' id='leftcolumntension' usemap='tension' width='243' height='225' />
             <map name='tension'>
-              <area shape='rect' id='hightension' coords='15,35,100,62' />
+              <area shape='rect' id='hightension' coords='13,40,86,62' />
             </map>
-            <img src='./public/img/fegcontrol.png' class='leftcol' id='leftcolumnfegcontrol' usemap='feg'/>
+            <img src='./public/img/fegcontrol.png' class='leftcol' id='leftcolumnfegcontrol' usemap='feg' width='243' height='225'/>
             <map name='feg'>
-              <area shape='rect' id='gunLenseUp' coords='152,40,171,48' />
-              <area shape='rect' id='gunLenseDown' coords='152,49,171,60' />
-              <area shape='rect' id='extractUp' coords='152,65,171,73' />
-              <area shape='rect' id='extractDown' coords='152,74,171,83' />
-              <area shape='rect' id='extractSubmit' coords='200,65,233,83' />
-              <area shape='rect' id='operate' coords='15,37,90,63' />
+              <area shape='rect' id='gunLenseUp' coords='134,40,149,48' />
+              <area shape='rect' id='gunLenseDown' coords='134,49,149,59' />
+              <area shape='rect' id='extractUp' coords='134,66,149,74' />
+              <area shape='rect' id='extractDown' coords='134,75,149,84' />
+              <area shape='rect' id='extractSubmit' coords='192,66,204,84' />
+              <area shape='rect' id='operate' coords='13,40,77,62' />
             </map>
             <img src='./public/img/filler.png' class='leftcol' id='leftcolumnsetupfiller' />
             <div id='leftcolsetuptext'>
@@ -81,11 +87,11 @@
           <p id='clock'>12:00 AM</p>
           <img id='startmenu' src='./public/img/startmenu.png' usemap='startmenu' height='29' width'1680'/>
           <map name='startmenu' id='startmenu'>
-            <area shape='rect' id='micrographstart' coords='269,4,447,30' />
-            <area shape='rect' id='temuistart' coords='448,4,631,30' />
-            <!--<area shape='rect' id='unused' coords='621,4,808,30' />-->
-            <area shape='rect' id='controls' coords='825,4,1009,30' />
-            <area shape='rect' id='graph' coords='1010,4,1194,30' />
+            <area shape='rect' id='micrographstart' coords='232,4,389,23' />
+            <area shape='rect' id='temuistart' coords='395,4,552,23' />
+            <!--<area shape='rect' id='unused' coords='559,4,710,23' />-->
+            <area shape='rect' id='controls' coords='719,4,879,23' />
+            <area shape='rect' id='graph' coords='883,4,1045,23' />
           </map>
         </td>
       </tr>
@@ -136,6 +142,9 @@
     <script src='./public/js/jquery-ui.min.js'></script>
     <script src='./public/js/onclick.js'></script>
     <script src='./public/js/app.js'></script>
-
+    <script src='./public/js/mapping.js'></script>
+    <script>
+      $("img[usemap]").rwdImageMaps();
+    </script>
   </body>
 </html>

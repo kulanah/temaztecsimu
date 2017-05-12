@@ -38,7 +38,7 @@ body{
 #extractVal{
   position: absolute;
   top: 55.7vh;
-  left: 9.2vw;
+  left: 8.9vw;
   text-align: right;
 }
 
@@ -50,10 +50,6 @@ body{
 
 .imageDiv{
     display:block;
-}
-
-#content{
-  margin: 0;
 }
 
 #clock{
@@ -74,7 +70,7 @@ body{
   width: 85.67vw;
 }
 
-#tabs{
+.tabs{
   height: 7vh;
   width: 14.28vw;
 }

@@ -75,7 +75,7 @@ let clickFunctions = function(){
   });
 
   $('#micrographstart').click(function(event){
-    $('#mainimage').attr('src', './public/img/mainScreen.png');
+    $('#mainimage').attr('src', './public/img/mainscreen.png');
   });
 
   $('#mainscreendropdown').click(function(event){
@@ -115,13 +115,13 @@ let clickFunctions = function(){
   });
 
   $('.rightbutton').click(function(event){
-    $('#tabs').attr('src', './public/img/tabs2.png');
-    $('#tabs').attr('usemap', 'tabs2');
+    $('#tabsleft').hide();
+    $('#tabsright').show();
   });
 
   $('.leftbutton').click(function(event){
-    $('#tabs').attr('src', './public/img/tabs1.png');
-    $('#tabs').attr('usemap', 'tabs1');
+    $('#tabsleft').show();
+    $('#tabsright').hide();
   });
 
   $('#search').click(function(event){
