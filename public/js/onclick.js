@@ -129,6 +129,7 @@ let clickFunctions = function(){
   $('#search').click(function(event){
     $('#leftcolsearch').show();
     $('#leftcolsetup').hide();
+    $('#leftcoltune').hide();
     if (micro){
       $('#leftcolumn').attr('src', './public/img/leftcolsearchmicro.png');
     } else {
@@ -137,7 +138,16 @@ let clickFunctions = function(){
     currenttab = 1;
   });
 
+  $('#tune').click(function(event){
+    $('#leftcolsearch').hide();
+    $('#leftcolsetup').hide();
+    $('#leftcoltune').show();
+
+    currentTab = 2;
+  });
+
   $('#setup').click(function(event){
+    $('#leftcoltune').hide();
     $('#leftcolsearch').hide();
     $('#leftcolsetup').show();
     currenttab = 0;

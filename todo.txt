@@ -1,8 +1,4 @@
-image shift -> beam shift
-move L button to R button
 L button should move mask over image not actuall image
-high tension on should gradually increase
-slow down kv slide to 1 minute 
 
 digital micrograph should open TEM files root name
 
@@ -13,5 +9,3 @@ turbo button should have on/off and noise on ativation
 start view should open image same as file -> open or open file button 
 
 tune tab (button 14) inside box should have OEMP_TEM alignment into box 
-
-finish microscope controls 

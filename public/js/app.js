@@ -64,13 +64,32 @@ let hideBatch = function(){
   $('#openfiledialogue').hide();
   $('#leftcolsearch').hide();
   $('#tabsright').hide();
+  $('#leftcoltune').hide();
 };
 
 let kvSlide = function(){
-  if (kvVal > 0){
-    kvVal -= 8;
+  if (kvVal == 0){
+    kvIncrease();
+  } else if (kvVal == 200){
+    kvDecrease();
+  }
+};
+
+let kvIncrease = function(){
+  if (kvVal < 200){
+    kvVal += 1;
     $('#kvval').text(kvVal + ' kV');
-    setTimeout(kvSlide, 100);
+    setTimeout(kvIncrease, 300);
+  } else {
+    $('#leftcolumntension').attr('src', './public/img/hightension.png');
+  }
+};
+
+let kvDecrease = function(){
+  if (kvVal > 0){
+    kvVal -= 1;
+    $('#kvval').text(kvVal + ' kV');
+    setTimeout(kvDecrease, 300);
   } else {
     $('#leftcolumntension').attr('src', './public/img/hightensiondone.png');
   }

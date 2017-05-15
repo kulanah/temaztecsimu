@@ -117,6 +117,18 @@ body{
   height: 8vh;
 }
 
+#leftcolumnstigmator{
+  height: 20vh;
+}
+
+#leftcolumnalignments{
+  height: 50vh;
+}
+
+#leftcolumntunefiller{
+  height:  6vh;
+}
+
 #infopanel{
   height: 14vh;
   width: 14.28vw;
@@ -204,4 +216,16 @@ body{
   z-index: -1;
   top: 10vh;
   left: 35vw;
+}
+
+#alignmenttext{
+  position: absolute;
+  top: 31.6vh;
+  left: 1vw;
+  max-width: 12.3vw;
+  max-height: 17.8vh;
+  width: 12.3vw;
+  height: 17.8vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
