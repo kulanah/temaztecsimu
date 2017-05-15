@@ -15,6 +15,7 @@
 
 body{
   overflow: hidden;
+  line-height: 0;
 }
 
 .wintext{
