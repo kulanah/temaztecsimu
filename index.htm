@@ -34,6 +34,10 @@
             <area shape='rect' id='mainscreendropdown' coords='1293,878,1409,895' />
             <area shape='rect' id='closedrop' coords='1410,879,1425,895' />
           </map>
+          <!--<div id='microscopeimage'>
+            <img src=''>
+          </div>-->
+            
         </td>
       </tr>
       <tr>  
@@ -101,9 +105,11 @@
       <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='rightcontrol' />
       <map name='leftcontrol' id='leftcontrol'>
         <area shape='circle' id='buttonl3' coords='455,200,15' />
+        <area shape='circle' id='buttonrollerl' coords='379,60,30' />
       </map>
       <map name='rightcontrol' id='rightcontrol'>
         <area shape='circle' id='buttonr3' coords='45,200,15' />
+        <area shape='circle' id='buttonrollerr' coords='122,66,25' />
       </map>
     </div>
     <div id='vacuumoverview'>
@@ -126,8 +132,8 @@
 
     <div id='filemenu'>
       <img src='./public/img/filedialogue.png' usemap='filemenu'/>
-      <map name='filemenu' id='filemenu'>
-        <area shape='rect' id='fileopen' coords='0,18,200,35' />
+      <map name='filemenu'>
+        <area shape='rect' id='fileopen' coords='1,19,170,35' />  
       </map>
     </div>
     <div id='openfiledialogue'>
@@ -135,16 +141,17 @@
       <map id='openfile' name='openfile'>
         <area shape='rect' id='xbox' coords='689,7,705,22' />
         <area shape='rect' id='cancel' coords='627,504,700,528' />
+        <area shape='rect' id='imagefile' coords='106,77,242,96' />
       </map>  
     </div>
+    <img src='./public/img/32.png' id='testimage' />
 
     <script src='./public/js/jquery-3.2.1.min.js'></script>
     <script src='./public/js/jquery-ui.min.js'></script>
     <script src='./public/js/onclick.js'></script>
-    <script src='./public/js/app.js'></script>
     <script src='./public/js/mapping.js'></script>
+    <script src='./public/js/app.js'></script>
     <script>
-      $("img[usemap]").rwdImageMaps();
     </script>
   </body>
 </html>
