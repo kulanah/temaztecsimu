@@ -209,4 +209,44 @@ let clickFunctions = function(){
     
   });
 
+  $('#imagefile').click(function(event){
+    $('#openfiledialogue').hide();
+    $('#microscopeimage').show();
+  });
+    let startX, startY;
+
+
+  $('#buttonrollerr').mousedown(function(event){
+    startX = event.clientX;
+    startY = event.clientY;
+
+    /*
+    get starting x y
+    on mousemove:
+      look how far it's moved
+      shift image that much as well
+    */
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mousemove', mousemovetemplate);
+
+    console.log('start vals are x: ' + startX + ', y: ' + startY);
+  });
+
+  let mousemovetemplate = function(event){
+
+    console.log('clientx is ' + event.clientX);
+    let deltaX = event.clientX - startX;
+    let deltaY = event.clientY - startY;
+
+    startX = event.clientX;
+    startY = event.clientY;
+
+    moveImage(2 * deltaY, 2 * deltaX);
+  };
+
+  let mouseuptemplate = function(event){
+    $('body')[0].removeEventListener('mousemove', mousemovetemplate);
+  }
+
 }

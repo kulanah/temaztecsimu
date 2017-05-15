@@ -91,7 +91,21 @@ $(document).mouseup(function(e) {
   }
 });
 
+$("img[usemap]").rwdImageMaps();
 
-hideBatch();
-startTime();
-clickFunctions();
+let moveImage = function(deltax, deltay){
+  let element = $('#testimage');
+  let topVal = element.offset().top + deltax;
+  let leftVal = element.offset().left + deltay;
+
+  $('#testimage').offset({top: topVal, left: leftVal});
+
+  console.log('new offset is x: ' + element.offset().top + ' y: ' + element.offset().left);
+}
+
+
+$(document).ready(function(e) {
+  clickFunctions();
+  startTime();
+  hideBatch();
+});
