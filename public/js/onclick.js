@@ -13,7 +13,7 @@ let colopen = true;
 
 let clickFunctions = function(){
 
-  $('#extractUp').click(function(){
+  $('#extractUp').on('click', function(){
     if (extractVal < 4500){
       extractVal += 100;
       fegVal += (3/5);
@@ -21,7 +21,7 @@ let clickFunctions = function(){
     }
   });
 
-  $('#extractDown').click(function(){
+  $('#extractDown').on('click', function(){
     if (extractVal > 3000){
       extractVal -= 100;
       fegVal -= (3/5);
@@ -29,13 +29,13 @@ let clickFunctions = function(){
     }
   });
 
-  $('#extractSubmit').click(function(){
+  $('#extractSubmit').on('click', function(){
     extractFinal = extractVal;
     $('#extractFinal').text(extractFinal + " V");
     $('#fegvalue').text(Math.floor(fegVal));
   });
 
-  $('#gunLenseDown').click(function(){
+  $('#gunLenseDown').on('click', function(){
     if (gunLense > 1){
       --gunLense;
     }
@@ -43,14 +43,14 @@ let clickFunctions = function(){
     $('#gunLenseVal').text(gunLense);
   });
 
-  $('#gunLenseUp').click(function(){
+  $('#gunLenseUp').on('click', function(){
     if(gunLense < 7){
       ++gunLense;
       $('#gunLenseVal').text(gunLense);
     }
   });
 
-  $('#controls').click(function(){
+  $('#controls').on('click', function(){
     if (controlShow){
       $('#controlsLeft').hide();
       $('#controlsRight').hide();
@@ -62,7 +62,7 @@ let clickFunctions = function(){
     }
   });
 
-  $('#graph').click(function(){
+  $('#graph').on('click', function(){
     if(graphShow){
       $('#microscopeGraph').hide();
       graphShow = false;
@@ -72,15 +72,15 @@ let clickFunctions = function(){
     }
   });
 
-  $('#temuistart').click(function(event){
+  $('#temuistart').on('click', function(event){
     $('#mainimage').attr('src', './public/img/tia.png');
   });
 
-  $('#micrographstart').click(function(event){
+  $('#micrographstart').on('click', function(event){
     $('#mainimage').attr('src', './public/img/mainscreen.png');
   });
 
-  $('#mainscreendropdown').click(function(event){
+  $('#mainscreendropdown').on('click', function(event){
     if(maindrop){
       $('#maindropdown').hide();
       maindrop = false;
@@ -90,7 +90,7 @@ let clickFunctions = function(){
     }
   });
 
-  $('#vacuumbutton').click(function(event){
+  $('#vacuumbutton').on('click', function(event){
     if(maindrop){
       $('#vacuumoverview').show();
       $('#maindropdown').hide();
@@ -98,7 +98,7 @@ let clickFunctions = function(){
     }
   });
 
-  $('#colvalves').click(function(event){
+  $('#colvalves').on('click', function(event){
     if (colopen){
       $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
       $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
@@ -110,23 +110,23 @@ let clickFunctions = function(){
     }
   });
 
-  $('#closedrop').click(function(event){
+  $('#closedrop').on('click', function(event){
     $('#vacuumoverview').hide();
     $('#maindropdown').hide();
     maindrop = false;
   });
 
-  $('.rightbutton').click(function(event){
+  $('.rightbutton').on('click', function(event){
     $('#tabsleft').hide();
     $('#tabsright').show();
   });
 
-  $('.leftbutton').click(function(event){
+  $('.leftbutton').on('click', function(event){
     $('#tabsleft').show();
     $('#tabsright').hide();
   });
 
-  $('#search').click(function(event){
+  $('#search').on('click', function(event){
     $('#leftcolsearch').show();
     $('#leftcolsetup').hide();
     $('#leftcoltune').hide();
@@ -138,7 +138,7 @@ let clickFunctions = function(){
     currenttab = 1;
   });
 
-  $('#tune').click(function(event){
+  $('#tune').on('click', function(event){
     $('#leftcolsearch').hide();
     $('#leftcolsetup').hide();
     $('#leftcoltune').show();
@@ -146,14 +146,14 @@ let clickFunctions = function(){
     currentTab = 2;
   });
 
-  $('#setup').click(function(event){
+  $('#setup').on('click', function(event){
     $('#leftcoltune').hide();
     $('#leftcolsearch').hide();
     $('#leftcolsetup').show();
     currenttab = 0;
   });
 
-  $('#buttonl3').click(function(event){
+  $('#buttonl3').on('click', function(event){
     if (currenttab == 1){
       let value = beamslider.val();
       --value;
@@ -162,7 +162,7 @@ let clickFunctions = function(){
     };
   });
 
-  $('#buttonr3').click(function(event){
+  $('#buttonr3').on('click', function(event){
     if (currenttab == 1){
       let value = beamslider.val();
       ++value;
@@ -171,25 +171,25 @@ let clickFunctions = function(){
     };
   });
 
-  $('#nano').click(function(event){
+  $('#nano').on('click', function(event){
     $('#leftcolumn').attr('src', './public/img/leftcolsearchmicro.png');
     beamslider.val(3);
     $('#beamvalue').text(beamslider.val());
     micro = true;
   });
 
-  $('#micro').click(function(event){
+  $('#micro').on('click', function(event){
     $('#leftcolumn').attr('src', './public/img/leftcolsearchnano.png')
     beamslider.val(6);
     $('#beamvalue').text(beamslider.val());
     micro = false;
   });
 
-  $('#hightension').click(function(event){
+  $('#hightension').on('click', function(event){
     kvSlide();
   });
 
-  $('#filebutton').click(function(event){
+  $('#filebutton').on('click', function(event){
     if($('#filemenu').css('display') == 'none'){
       $('#filemenu').show();
     } else {
@@ -197,29 +197,29 @@ let clickFunctions = function(){
     }
   });
 
-  $('#fileopen').click(function(event){
+  $('#fileopen').on('click', function(event){
     $('#filemenu').hide();
     $('#openfiledialogue').show();
   });
 
-  $('#xbox').click(function(event){
+  $('#xbox').on('click', function(event){
     $('#openfiledialogue').hide();
   });
 
 
-  $('#cancel').click(function(event){
+  $('#cancel').on('click', function(event){
     $('#openfiledialogue').hide();
   });
   
-  $('#openbutton').click(function(event){
+  $('#openbutton').on('click', function(event){
     $('#openfiledialogue').show();
   });
 
-  $('#operate').click(function(event){
+  $('#operate').on('click', function(event){
     
   });
 
-  $('#imagefile').click(function(event){
+  $('#imagefile').on('click', function(event){
     $('#openfiledialogue').hide();
     $('#microscopeimage').show();
   });
