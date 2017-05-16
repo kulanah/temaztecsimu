@@ -229,4 +229,5 @@ body{
   height: 17.8vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  line-height: 1em;
 }

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF8'>
+    <link rel='stylesheet' href='../css/alignment.css'>
+  </head>
+  <body>
+    <div class='collapsable'>
+      <a href='#'>
+        <h5 id='1header'><img id='1icon' src='../img/plus.png' />1. Gun</h5>
+      </a>
+      <ol id='1content'>
+        <li>Gun tilt</li>
+        <li>Gun tilt pivot point</li>
+        <li>Gun shift</li>
+      </ol>
+      <a href='#'>
+      <h5 id='2header'><img id='2icon' src='../img/plus.png' />2. Beam HM-TEM</h5>
+      </a>
+      <ol id='2content'>
+        <li>Preparation</li>
+        <li>Minicondenser lens</li> 
+        <li>Beam shift pivot point</li> 
+        <li>Beam tilt pivot point</li>
+        <li>Dynamic conical dark field pivot point HM (STEM systems only)</li>
+        <li>Dynamic conical dark field distortion HM (STEM systems only)</li> 
+        <li>Rotation center</li>
+        <li>Align beam shift</li> 
+        <li>Beam shift calibration</li> 
+        <li>Beam tilt calibration</li> 
+        <li>Dynamic conical dark field beam tilt calibration HM (STEM systems only)</li> 
+        <li>Spot size-intensity calibration</li> 
+        <li>Coma-free amplitude</li> 
+        <li>Coma-free pivot points</li>
+        <li>Coma-free alignme</li> 
+      </ol>
+      <a href='#'>
+      <h5 id='3header'><img id='3icon' src='../img/plus.png' />Image HM-TEM</h5>
+      </a>
+      <ol id='3content'>
+        <li>Preparation</li>
+        <li>Image shift pivot point HM</li>
+        <li>Diffraction shift pivot point SA</li>
+        <li>SA objective lens preset</li>
+        <li>Diffraction shift pivot point Mh</li>
+        <li>Mh preset and alignment</li>
+        <li>SA magnifications alignment</li>
+        <li>Diffraction shift pivot point Mi</li>
+        <li>Mi preset and alignment</li>
+        <li>Align diffraction pattern</li>
+        <li>Align camera lengths</li>
+        <li>Image shift calibration</li>
+        <li>Diffraction shift calibration</li>
+        <li>Beam shift - image shift calibration</li>
+        <li>Off-axis TV HM image alignment (only if off-axis TV installed)</li>
+        <li>Off-axis TV diffraction alignment (only if off-axis TV installed</li>
+      </ol>
+      <a href='#'>
+      <h5 id='4header'><img id='4icon' src='../img/plus.png' />Beam LM</h5>
+      </a>
+      <ol id='4content'>
+        <li>Preparation</li>
+        <li>Beam shift pivot point</li>
+        <li>Beam tilt pivot point</li>
+        <li>Rotation center</li>
+        <li>Align beam shift</li>
+        <li>Beam shift calibration</li>
+        <li>Beam tilt calibration</li>
+        <li>Spot size-intensity calibratio</li>
+      </ol>
+      <a href='#'>
+      <h5 id='5header'><img id='5icon' src='../img/plus.png' />Image LM</h5>
+      </a>
+      <ol id='5content'>
+        <li>Preparation </li>
+        <li>Image shift pivot point </li>
+        <li>Diffraction shift pivot point </li>
+        <li>LM magnifications alignment </li>
+        <li>Align LAD pattern </li>
+        <li>Image shift calibration </li>
+        <li>Diffraction shift calibration </li>
+        <li>Beam shift - image shift calibration </li>
+        <li>Off-axis TV LM image alignment (only if off-axis TV installed</li>
+      </ol>
+
+    </div>
+    <script src='../js/jquery-3.2.1.min.js'></script>
+    <script src='../js/collapsable.js'></script>
+  </body>
+</html>
+
+<!--
+6. Beam Nanoprobe  
+6.1. Preparation  
+6.2. Beam shift pivot point  
+6.3. Beam tilt pivot point  
+6.4. Dynamic conical dark field pivot point Nanoprobe (STEM systems only)  
+6.5. Dynamic conical dark field distortion Nanoprobe (STEM systems only)  
+6.6. Rotation center  
+6.7. Align beam shift  
+6.8. Beam shift calibration  
+6.9. Beam tilt calibration  
+6.10. Dynamic conical dark field beam tilt calibration Nanoprobe (STEM systems only)  
+6.11. Spot size-intensity calibration 
+7. Image Nanoprobe  
+7.1. SA objective lens preset  
+7.2. Mh objective lens preset  
+7.3. Mi objective lens preset  
+7.4. Align diffraction pattern  
+7.5. Beam shift - image shift calibration Stigmators  
+7.6. Condenser  
+7.7. Condenser stigmator shunt  
+7.8. Objective  
+7.9. Diffraction 
+8. HM-STEM  
+8.1. Preparation  
+8.2. Objective / Intensity preset  
+8.3. Beam tilt pivot points  
+8.4. Rotation center  
+8.5. Beam shift pivot points  
+8.6. Align diffraction pattern  
+8.7. Detector alignment  
+8.8. Scan distortion adjustment  
+8.9. Default scan rotation  
+8.10. AC shunt  
+8.11. Calibration 
+9. LM-STEM  
+9.1. Preparation  
+9.2. Intensity preset  
+9.3. Beam shift pivot points  
+9.4. Align diffraction pattern  
+9.5. Detector alignment  
+9.6. Scan distortion adjustment  
+9.7. Default scan rotation
+10. EFTEM HM  
+10.1. Preparation  
+10.2. HM Image-shift pivot points  
+10.3. SA Diffraction-shift pivot points  
+10.4. Mh Diffraction-shift pivot points  
+10.5. Mi Diffraction-shift pivot points  
+10.6. Mh Pre-alignment  
+10.7. SA Image-shift pre-alignment  
+10.8. SA Cross-over correction pre-alignment  
+10.9. Mi Image shift pre-alignment  
+10.10. Mi Cross-over correction pre-alignment  
+10.11. Mh Image-shift alignment  
+10.12. SA Image-shift alignment  
+10.13. SA Cross-over correction alignment  
+10.14. Mi Image-shift alignment  
+10.15. Mi Cross-over correction alignment  
+10.16. Camera length pre-alignment  
+10.17. Camera length alignment 
+11. EFTEM LM  
+11.1. Preparation  
+11.2. Image-shift pivot points  
+11.3. Diffraction-shift pivot points  
+11.4. Image-shift pre-alignment  
+11.5. Image-shift alignment 
+12. EFTEM Nanoprobe  
+12.1. SA preset-->

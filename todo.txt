@@ -4,8 +4,8 @@ digital micrograph should open TEM files root name
 
 tem image + analysis should pen STEM files root
 
-turbo button should have on/off and noise on ativation
+turbo button should have on/off and noise(???) on ativation
 
 start view should open image same as file -> open or open file button 
 
-tune tab (button 14) inside box should have OEMP_TEM alignment into box 
+DONE BUT INCOMPLETE tune tab (button 14) inside box should have OEMP_TEM alignment into box collapsable 
