@@ -7,7 +7,3 @@ tem image + analysis should pen STEM files root
 turbo button should have on/off and noise(???) on ativation
 
 start view should open image same as file -> open or open file button 
-
-DONE BUT INCOMPLETE tune tab (button 14) inside box should have OEMP_TEM alignment into box collapsable 
-
-comepare nanolabsim drag functions to mine to fix compatibility issues
