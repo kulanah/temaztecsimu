@@ -15,6 +15,8 @@ let micro = true;
 //we loop thorough this later on to set this behavior on all of them
 let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu'];
 
+let draggableList = ['openfiledialogue', 'microscopeGraph']
+
 //current tab can be the followng values:
 //status, search, tune, stem, FEGregister, eftem, dark field
 let currenttab = 0;
@@ -27,6 +29,15 @@ let beamslider = $('#beamrange').slider({
 $('#beamrange').on("change", function(event, ui){
   $('#beamvalue').text(beamslider.val());
 });
+
+//makes everything in drabbalelist a draggable object
+for (let i = 0; i < draggableList.length; ++i){
+  let $container = $('#' + draggableList[i]);
+
+  $container.draggable({
+    addclass: false
+  });
+};
 
 $('#openfiledialogue').draggable({
   addClasses: false 
