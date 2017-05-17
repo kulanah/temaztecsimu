@@ -12,7 +12,6 @@ let colopen = true;
 //remove the mess of booleans and create a 'isshown' function that returs true if shownn false if not
 
 let clickFunctions = function(){
-
   $('#extractUp').on('click', function(){
     if (extractVal < 4500){
       extractVal += 100;
@@ -227,6 +226,7 @@ let clickFunctions = function(){
 
 
   $('#buttonrollerr').mousedown(function(event){
+    event.preventDefault();
     startX = event.clientX;
     startY = event.clientY;
 
