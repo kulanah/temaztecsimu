@@ -6,10 +6,10 @@
 let startX, startY;
 
 let clickFunctions = function(){
+  microscopeControllers();
+  mainScreen();
+  searchTab();
   setupTab();
   startMenu();
-  mainScreen();
   tabs();
-  searchTab();
-  microscopeControllers();
 };

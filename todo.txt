@@ -1,5 +1,4 @@
 - better documentation
-  - remove the mess of booleans and create a 'isshown' function that returs true if shownn false if not
 - digital micrograph should open TEM files root name
 - tem image + analysis should pen STEM files root
 - turbo button should have on/off and noise(???) on ativation
@@ -9,7 +8,5 @@
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - file -> open OR start view open microscope image
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
-- vacuum button doesn't work when window is shrunk, check if mapping function has issue with that window
-
 
 07fca6cec42096bc4ad52b5cf32752e

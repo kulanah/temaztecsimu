@@ -1,5 +1,15 @@
 'use strict';
 
+$("img[usemap]").rwdImageMaps();
+
+//when the html is all loaded it will call all the relevant javascript functions
+$(document).ready(function(e) {
+  pageSetup();
+  clickFunctions();
+  startTime();
+  hideBatch();
+});
+
 let hideBatch = function(){
   $('#microControls').hide();
   $('#microscopeGraph').hide();
@@ -12,20 +22,6 @@ let hideBatch = function(){
   $('#leftcoltune').hide();
 };
 
-
-
-$(document).mouseup(function(e) {
-  for (let i = 0; i < closewhenoffclick.length; ++i){
-    var $container = $('#' + closewhenoffclick[i]);
-
-    // if the target of the click isn't the container nor a descendant of the container
-    if (!$container.is(e.target) && $container.has(e.target).length === 0) {
-      $container.hide();
-    }
-  }
-});
-
-
 let moveImage = function(deltax, deltay){
   let element = $('#testimage');
   let topVal = element.offset().top + deltax;
@@ -37,20 +33,10 @@ let moveImage = function(deltax, deltay){
 }
 
 let isVisible = function(name){
-
   if ($('#' + name).css('display') == 'none'){
     return false;
   } else {
     return true;
   }
-}
+};
 
-
-//when the html is all loaded it will call all the relevant javascript functions
-$(document).ready(function(e) {
-  startTime();
-  $("img[usemap]").rwdImageMaps();
-  clickFunctions();
-  hideBatch();
-  pageSetup();
-});

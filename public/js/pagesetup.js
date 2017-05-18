@@ -4,6 +4,17 @@
 'use strict';
 
 let pageSetup = function(){
+  $(document).mouseup(function(e) {
+    for (let i = 0; i < closewhenoffclick.length; ++i){
+      var $container = $('#' + closewhenoffclick[i]);
+
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!$container.is(e.target) && $container.has(e.target).length === 0) {
+        $container.hide();
+      }
+    }
+  });
+
   $('img').on('dragstart', function(event){ 
       event.preventDefault(); 
   });
