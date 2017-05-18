@@ -1,6 +1,5 @@
 - better documentation
   - remove the mess of booleans and create a 'isshown' function that returs true if shownn false if not
-- L button should move mask over image not actuall image
 - digital micrograph should open TEM files root name
 - tem image + analysis should pen STEM files root
 - turbo button should have on/off and noise(???) on ativation

@@ -3,24 +3,18 @@
 let startMenu = function(){
 
   $('#controls').on('click', function(){
-    if (controlShow){
-      $('#controlsLeft').hide();
-      $('#controlsRight').hide();
-      controlShow = false;
+    if (isVisible('microControls')){
+      $('#microControls').hide();
     } else {
-      $('#controlsLeft').show();
-      $('#controlsRight').show();
-      controlShow = true;
+      $('#microControls').show();
     }
   });
 
   $('#graph').on('click', function(){
-    if(graphShow){
+    if(isVisible('microscopeGraph')){
       $('#microscopeGraph').hide();
-      graphShow = false;
     } else{
       $('#microscopeGraph').show();
-      graphShow = true;
     }
   });
 

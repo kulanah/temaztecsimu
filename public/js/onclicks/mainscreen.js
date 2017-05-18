@@ -1,30 +1,25 @@
 'use strict';
 
-let maindrop = false;
-
 let mainScreen = function(){
   $('#mainscreendropdown').on('click', function(event){
-    if(maindrop){
+    if(isVisible('maindropdown')){
       $('#maindropdown').hide();
       maindrop = false;
     } else {
       $('#maindropdown').show();
-      maindrop = true;
     }
   });
 
   $('#vacuumbutton').on('click', function(event){
-    if(maindrop){
+    if(isVisible('maindropdown')){
       $('#vacuumoverview').show();
       $('#maindropdown').hide();
-      maindrop = false;
     }
   });
 
   $('#closedrop').on('click', function(event){
     $('#vacuumoverview').hide();
     $('#maindropdown').hide();
-    maindrop = false;
   });
 
   $('#filebutton').on('click', function(event){

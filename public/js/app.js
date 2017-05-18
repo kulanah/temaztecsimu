@@ -1,8 +1,5 @@
 'use strict';
 
-let controlShow = false;
-let graphShow = false;
-
 let colopen = true;
 
 //array of elements that we close when you click outside of the item
@@ -24,8 +21,7 @@ $('#openfiledialogue').draggable({
 });
 
 let hideBatch = function(){
-  $('#controlsLeft').hide();
-  $('#controlsRight').hide();
+  $('#microControls').hide();
   $('#microscopeGraph').hide();
   $('#maindropdown').hide();
   $('#vacuumoverview').hide();
@@ -63,6 +59,14 @@ let moveImage = function(deltax, deltay){
   console.log('new offset is x: ' + element.offset().top + ' y: ' + element.offset().left);
 }
 
+let isVisible = function(name){
+
+  if ($('#' + name).css('display') == 'none'){
+    return false;
+  } else {
+    return true;
+  }
+}
 
 
 //when the html is all loaded it will call all the relevant javascript functions
