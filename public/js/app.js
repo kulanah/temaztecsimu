@@ -1,25 +1,5 @@
 'use strict';
 
-let colopen = true;
-
-//array of elements that we close when you click outside of the item
-//we loop thorough this later on to set this behavior on all of them
-let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu'];
-
-
-let beamslider = $('#beamrange').slider({
-  values: [1, 11], 
-  value: 7,
-});
-
-$('#beamrange').on("change", function(event, ui){
-  $('#beamvalue').text(beamslider.val());
-});
-
-$('#openfiledialogue').draggable({
-  addClasses: false 
-});
-
 let hideBatch = function(){
   $('#microControls').hide();
   $('#microscopeGraph').hide();
@@ -33,9 +13,6 @@ let hideBatch = function(){
 };
 
 
-$('img').on('dragstart', function(event){ 
-    event.preventDefault(); 
-});
 
 $(document).mouseup(function(e) {
   for (let i = 0; i < closewhenoffclick.length; ++i){
@@ -75,4 +52,5 @@ $(document).ready(function(e) {
   $("img[usemap]").rwdImageMaps();
   clickFunctions();
   hideBatch();
+  pageSetup();
 });
