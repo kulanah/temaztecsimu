@@ -11,3 +11,7 @@ start view should open image same as file -> open or open file button
 DONE BUT INCOMPLETE tune tab (button 14) inside box should have OEMP_TEM alignment into box collapsable 
 
 comepare nanolabsim drag functions to mine to fix compatibility issues
+
+
+
+07fca6cec42096bc4ad52b5cf32752e3
