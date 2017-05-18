@@ -6,6 +6,8 @@ let extractVal = 3500;
 let extractFinal = 4500;
 let fegVal = 63;
 let kvVal = 200;
+let colopen = true;
+
 
 let setupTab = function(){
   vacuumWindow();
