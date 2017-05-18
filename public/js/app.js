@@ -28,8 +28,6 @@ let moveImage = function(deltax, deltay){
   let leftVal = element.offset().left + deltay;
 
   $('#testimage').offset({top: topVal, left: leftVal});
-
-  console.log('new offset is x: ' + element.offset().top + ' y: ' + element.offset().left);
 }
 
 let isVisible = function(name){

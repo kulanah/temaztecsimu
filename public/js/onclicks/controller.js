@@ -3,8 +3,6 @@
 let microscopeControllers = function(){
 
   let mousemovetemplate = function(event){
-
-    console.log('clientx is ' + event.clientX);
     let deltaX = event.clientX - startX;
     let deltaY = event.clientY - startY;
 
