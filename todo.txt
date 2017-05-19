@@ -1,4 +1,5 @@
 - better documentation
+  - sort CSS into similar sections as onclicks
 - digital micrograph should open TEM files root name
 - tem image + analysis should pen STEM files root
 - turbo button should have on/off and noise(???) on ativation
@@ -8,5 +9,23 @@
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - file -> open OR start view open microscope image
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
+
+
+intensity button change radius of mask 
+size
+shape
+brightness at various 
+
+image shift should move mask (left roller) but keep underlying image in place
+
+color mask
+
+controlls care what window is open
+stem tab (button 15)
+
+add other tabs 
+
+filter control draggable
+microscope control 
 
 07fca6cec42096bc4ad52b5cf32752e

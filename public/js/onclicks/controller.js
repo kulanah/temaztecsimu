@@ -2,18 +2,30 @@
 
 let microscopeControllers = function(){
 
-  let mousemovetemplate = function(event){
-    let deltaX = event.clientX - startX;
-    let deltaY = event.clientY - startY;
+  let mousemovetemplateRight = function(event){
+    let deltaX = event.clientX - startXRight;
+    let deltaY = event.clientY - startYRight;
 
-    startX = event.clientX;
-    startY = event.clientY;
+    startXRight = event.clientX;
+    startYRight = event.clientY;
 
     moveImage(2 * deltaY, 2 * deltaX);
   };
 
+  let mousemovetemplateLeft = function(event){
+    let deltaX = event.clientX - startXLeft;
+    let deltaY = event.clientY - startYLeft;
+
+    startXLeft = event.clientX;
+    startYLeft = event.clientY;
+
+    moveMask(2 * deltaY, 2 * deltaX);
+  };
+
   let mouseuptemplate = function(event){
-    $('body')[0].removeEventListener('mousemove', mousemovetemplate);
+
+    $('body')[0].removeEventListener('mousemove', mousemovetemplateLeft);
+    $('body')[0].removeEventListener('mousemove', mousemovetemplateRight);
   };
   
   $('#buttonl3').on('click', function(event){
@@ -35,12 +47,19 @@ let microscopeControllers = function(){
   });
 
   $('#buttonrollerr').mousedown(function(event){
-    startX = event.clientX;
-    startY = event.clientY;
+    startXRight = event.clientX;
+    startYRight = event.clientY;
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
-    $('body')[0].addEventListener('mousemove', mousemovetemplate);
+    $('body')[0].addEventListener('mousemove', mousemovetemplateRight);
+  });
 
-    console.log('start vals are x: ' + startX + ', y: ' + startY);
+  $('#buttonrollerl').mousedown(function(event){
+    startXLeft = event.clientX;
+    startYLeft = event.clientY;
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mousemove', mousemovetemplateLeft);
+
   });
 };

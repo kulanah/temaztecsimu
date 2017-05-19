@@ -27,8 +27,17 @@ let moveImage = function(deltax, deltay){
   let topVal = element.offset().top + deltax;
   let leftVal = element.offset().left + deltay;
 
-  $('#testimage').offset({top: topVal, left: leftVal});
+  element.offset({top: topVal, left: leftVal});
 }
+
+let moveMask = function(deltax, deltay){
+  let element = $('#mask');
+  let topVal = element.offset().top + deltax;
+  let leftVal = element.offset().left + deltay;
+
+  element.offset({top: topVal, left: leftVal});
+}
+
 
 let isVisible = function(name){
   if ($('#' + name).css('display') == 'none'){
