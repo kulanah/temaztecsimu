@@ -110,13 +110,13 @@
         </td>
       </tr>
     </table>
-    <div id='controls'>
+    <div id='microControls'>
       <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='#leftcontrol' />
-      <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='#rightcontrol' />
       <map name='leftcontrol' id='leftcontrol'>
         <area shape='circle' id='buttonl3' coords='455,200,15' />
         <area shape='circle' id='buttonrollerl' coords='379,60,30' />
       </map>
+      <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='#rightcontrol' />
       <map name='rightcontrol' id='rightcontrol'>
         <area shape='circle' id='buttonr3' coords='45,200,15' />
         <area shape='circle' id='buttonrollerr' coords='122,66,25' />
@@ -154,14 +154,26 @@
         <area shape='rect' id='imagefile' coords='106,77,242,96' />
       </map>  
     </div>
+    <img src='./public/img/mask.svg' id='mask' />
     <img src='./public/img/32.png' id='testimage' />
 
+    <!--library imports-->
     <script src='./public/js/jquery-3.2.1.min.js'></script>
     <script src='./public/js/jquery-ui.min.js'></script>
-    <script src='./public/js/onclick.js'></script>
     <script src='./public/js/mapping.js'></script>
+
+    <!--onclick sets-->
+    <script src='./public/js/onclicks/setuptab.js'></script>
+    <script src='./public/js/onclicks/tabs.js'></script>
+    <script src='./public/js/onclicks/startmenu.js'></script>
+    <script src='./public/js/onclicks/mainscreen.js'></script>
+    <script src='./public/js/onclicks/controller.js'></script>
+    <script src='./public/js/onclicks/searchtab.js'></script>
+
+    <!--functionality imports -->
+    <script src='./public/js/pagesetup.js'></script>
+    <script src='./public/js/clock.js'></script>
+    <script src='./public/js/onclick.js'></script>
     <script src='./public/js/app.js'></script>
-    <script>
-    </script>
   </body>
 </html>

@@ -214,7 +214,7 @@ body{
 
 #testimage{
   position: absolute;
-  z-index: -1;
+  z-index: -2;
   top: 10vh;
   left: 35vw;
 }
@@ -230,4 +230,13 @@ body{
   overflow-y: scroll;
   overflow-x: hidden;
   line-height: 1em;
+}
+
+#mask{
+  position: absolute;
+  top: 30vh;
+  left: 20vw;
+  z-index: -1;
+  width: 200%;
+  height: 200%;
 }
