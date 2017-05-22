@@ -212,12 +212,6 @@ body{
 }
 
 
-#testimage{
-  position: absolute;
-  z-index: -2;
-  top: 10vh;
-  left: 35vw;
-}
 
 #alignmenttext{
   position: absolute;
@@ -232,11 +226,18 @@ body{
   line-height: 1em;
 }
 
+#testimage{
+  position: absolute;
+  z-index: -2;
+  top: -110vh;
+  left: -26vw;
+}
+
 #mask{
   position: absolute;
-  top: 30vh;
-  left: 20vw;
+  top: -55vh;
+  left: -47vw;
   z-index: -1;
-  width: 200%;
-  height: 200%;
+  width: 400%;
+  height: 400%;
 }
