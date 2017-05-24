@@ -21,6 +21,7 @@ let hideBatch = function(){
   $('#leftcolsearch').hide();
   $('#tabsright').hide();
   $('#leftcoltune').hide();
+  $('#leftcolstem').hide();
 };
 
 //from rcontroller roller

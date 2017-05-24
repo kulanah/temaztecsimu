@@ -3,8 +3,16 @@
 //current tab can be related to the following values:
 //status, search, tune, stem, FEGregister, eftem, dark field
 let currenttab = 0;
+let tabsList = ['leftcolsetup', 'leftcolsearch', 'leftcoltune', 'leftcolstem', 'leftcolfegregister', 'leftcoleftem', 'leftcoldarkfield'];
 
 let tabs = function(){
+
+  let setCurrentTab = function(next){
+    $('#' + tabsList[currenttab]).hide();
+    $('#' + tabsList[next]).show();
+    currenttab = next;
+  };
+
   $('.rightbutton').on('click', function(event){
     $('#tabsleft').hide();
     $('#tabsright').show();
@@ -15,30 +23,24 @@ let tabs = function(){
     $('#tabsright').hide();
   });
 
+  $('#setup').on('click', function(event){
+    setCurrentTab(0);
+  });
+
   $('#search').on('click', function(event){
-    $('#leftcolsearch').show();
-    $('#leftcolsetup').hide();
-    $('#leftcoltune').hide();
+    setCurrentTab(1)
     if (micro){
       $('#leftcolumn').attr('src', './public/img/leftcolsearchmicro.png');
     } else {
       $('#leftcolumn').attr('src', './public/img/leftcolsearchnano.png');
     }
-    currenttab = 1;
   });
 
   $('#tune').on('click', function(event){
-    $('#leftcolsearch').hide();
-    $('#leftcolsetup').hide();
-    $('#leftcoltune').show();
-
-    currenttab = 2;
+    setCurrentTab(2);
   });
 
-  $('#setup').on('click', function(event){
-    $('#leftcoltune').hide();
-    $('#leftcolsearch').hide();
-    $('#leftcolsetup').show();
-    currenttab = 0;
+  $('#stem').on('click', function(event){
+    setCurrentTab(3);
   });
 };
