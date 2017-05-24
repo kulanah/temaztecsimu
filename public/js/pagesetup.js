@@ -5,6 +5,8 @@
 
 let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview'];
 
+let beamslider; 
+
 let pageSetup = function(){
   $(document).mouseup(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
@@ -25,7 +27,7 @@ let pageSetup = function(){
   //we loop thorough this later on to set this behavior on all of them
   let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu'];
 
-  let beamslider = $('#beamrange').slider({
+  beamslider = $('#beamrange').slider({
     values: [1, 11], 
     value: 7,
   });
