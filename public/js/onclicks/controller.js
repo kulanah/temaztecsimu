@@ -33,10 +33,12 @@ let microscopeControllers = function(){
   };
   
   let mousedowntemplateintensity = function(event){
-    //TODO:  Change this to take the change in the image size and modify the left to account for that DUH
+    //TODO:  Change this to take the change in the image size and modify the left to account for that 
     let deltaIntensity = event.clientY - startIntensity;
     deltaIntensity = deltaIntensity / -100 + 1;
     startIntensity = event.clientY;
+
+    // console.log(deltaIntensity);
 
     changeIntensity(deltaIntensity);
 
