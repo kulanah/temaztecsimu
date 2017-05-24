@@ -1,5 +1,6 @@
 'use strict';
 
+
 $("img[usemap]").rwdImageMaps();
 
 //when the html is all loaded it will call all the relevant javascript functions
