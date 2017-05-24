@@ -16,8 +16,6 @@ size
 shape
 brightness at various 
 
-image shift should move mask (left roller) but keep underlying image in place
-
 color mask
 
 controlls care what window is open
@@ -26,6 +24,5 @@ stem tab (button 15)
 add other tabs 
 
 filter control draggable
-microscope control 
 
-07fca6cec42096bc4ad52b5cf32752e
+settingsync token: 07fca6cec42096bc4ad52b5cf32752e

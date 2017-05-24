@@ -3,6 +3,8 @@
 
 'use strict';
 
+let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview'];
+
 let pageSetup = function(){
   $(document).mouseup(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
@@ -32,7 +34,9 @@ let pageSetup = function(){
     $('#beamvalue').text(beamslider.val());
   });
 
-  $('#openfiledialogue').draggable({
-    addClasses: false 
-  });
+  for (let i = 0; i < listOfDraggables.length; ++i){
+    $('#' + listOfDraggables[i]).draggable({
+      addClasses: true 
+    });
+  }
 };
