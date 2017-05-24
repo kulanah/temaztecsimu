@@ -231,12 +231,16 @@ body{
   z-index: -2;
   top: -110vh;
   left: -26vw;
+  -webkit-mask-image: url('../img/mask.svg');
+  /*clip-path: circle(10% at 50% 50%);*/
 }
 
+
 #mask{
+  display:none;
   position: absolute;
-  top: -55vh;
-  left: -47vw;
+  top: -155vh;
+  left: -148vw;
   z-index: -1;
   width: 400%;
   height: 400%;

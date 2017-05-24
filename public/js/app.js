@@ -28,7 +28,7 @@ let moveImage = function(deltax, deltay){
   let leftVal = element.offset().left + deltay;
 
   element.offset({top: topVal, left: leftVal});
-}
+};
 
 let moveMask = function(deltax, deltay){
   let element = $('#mask');
@@ -36,8 +36,30 @@ let moveMask = function(deltax, deltay){
   let leftVal = element.offset().left + deltay;
 
   element.offset({top: topVal, left: leftVal});
-}
+};
 
+let changeIntensity = function(delta){
+  let element = $('#mask');
+
+  let startW = element.width();
+  let startH = element.height();
+
+  element.width(startW * delta);
+  element.height(startH * delta);
+
+  let topVal = element.offset().top * delta;
+  let leftVal = element.offset().left * delta;
+
+  console.log(startW);
+
+  element.offset({
+    top: topVal,
+    left: leftVal
+  });
+
+
+
+};
 
 let isVisible = function(name){
   if ($('#' + name).css('display') == 'none'){

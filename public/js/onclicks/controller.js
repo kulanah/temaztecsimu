@@ -1,5 +1,7 @@
 'use strict';
 
+let intensityValues = [400,]
+
 let microscopeControllers = function(){
 
   let mousemovetemplateRight = function(event){
@@ -26,8 +28,20 @@ let microscopeControllers = function(){
 
     $('body')[0].removeEventListener('mousemove', mousemovetemplateLeft);
     $('body')[0].removeEventListener('mousemove', mousemovetemplateRight);
+    $('body')[0].removeEventListener('mousemove', mousedowntemplateintensity);
+
   };
   
+  let mousedowntemplateintensity = function(event){
+    //TODO:  Change this to take the change in the image size and modify the left to account for that DUH
+    let deltaIntensity = event.clientY - startIntensity;
+    deltaIntensity = deltaIntensity / -100 + 1;
+    startIntensity = event.clientY;
+
+    changeIntensity(deltaIntensity);
+
+  };
+
   $('#buttonl3').on('click', function(event){
     if (currenttab == 1){
       let value = beamslider.val();
@@ -62,4 +76,14 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mousemove', mousemovetemplateLeft);
 
   });
+
+  $('#buttonintensity').mousedown(function(event){
+    startIntensity = event.clientY;
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mousemove', mousedowntemplateintensity);
+
+
+  })
+
 };

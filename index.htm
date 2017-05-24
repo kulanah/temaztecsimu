@@ -115,6 +115,7 @@
       <map name='leftcontrol' id='leftcontrol'>
         <area shape='circle' id='buttonl3' coords='455,200,15' />
         <area shape='circle' id='buttonrollerl' coords='379,60,30' />
+        <area shape='circle' id='buttonintensity' coords='261,129,25' />
       </map>
       <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='#rightcontrol' />
       <map name='rightcontrol' id='rightcontrol'>
@@ -155,6 +156,14 @@
       </map>  
     </div>
     <img src='./public/img/mask.svg' id='mask' />
+    <svg width='500', height='500', xmlns='http://www.w3.org/2000/svg'>
+      <defs>
+        <mask>
+          <circle cx="70" cy="70" r="20"/>
+        </mask>
+      </defs>
+    </svg>
+
     <img src='./public/img/32.png' id='testimage' />
 
     <!--library imports-->
