@@ -302,4 +302,9 @@ body{
   position: absolute;
   top: 10vh;
   left: 10vw;
+  /*width: 10vw;
+  height: 900vh;*/
+
+  /*max-height: 20vh;*/
+  background-color: grey;
 }
