@@ -19,11 +19,6 @@ brightness at various
 color mask
 
 controlls care what window is open
-stem tab (button 15)
-
-add other tabs 
-
-filter control draggable
 
 settingsync token: 07fca6cec42096bc4ad52b5cf32752e
 
