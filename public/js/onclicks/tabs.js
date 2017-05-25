@@ -43,4 +43,22 @@ let tabs = function(){
   $('#stem').on('click', function(event){
     setCurrentTab(3);
   });
+
+  $('#fegregister').on('click', function(event){
+    setCurrentTab(4);
+  });
+
+  $('#fegregtab1').on('click', function(event){
+    setCurrentTab(4);
+    $('#tabsleft').hide();
+    $('#tabsright').show();
+  });
+
+  $('#eftem').on('click', function(event){
+    setCurrentTab(5);
+  });
+
+  $('#darkfield').on('click', function(event){
+    setCurrentTab(6);
+  });
 };

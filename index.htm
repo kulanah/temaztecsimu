@@ -17,6 +17,7 @@
               <area shape='rect' id='search' coords='48,25,91,42' />
               <area shape='rect' id='tune' coords='93,25,133,42' />
               <area shape='rect' id='stem' coords='134,25,175,42' />
+              <area shape='rect' id='fegregtab1' coords='176,25,199,42' />
               <area shape='rect' class='leftbutton' coords='201,27,216,42' />
               <area shape='rect' class='rightbutton' coords='217,27,233,42' />
             </map>
@@ -24,6 +25,8 @@
           <div id='tabsright'>
             <img src='./public/img/tabs2.png' class='tabs' id='tabs2' usemap='#tabs2' width='238' height='69'/>
             <map name='tabs2'>
+              <area shape='rect' id='fegregister' coords='4,25,78,42' />
+              <area shape='rect' id='eftem' coords='79,25,124,42' />
               <area shape='rect' id='darkfield' coords='125,25,188,42' />
               <area shape='rect' class='leftbutton' coords='201,27,216,42' />
               <area shape='rect' class='rightbutton' coords='217,27,233,42' />
@@ -94,6 +97,19 @@
             <img class='leftcol' id='leftcolumndirectalignments' src='./public/img/directalignments.png' />
             <img class='leftcol' id='leftcolumnstemfiller' src='./public/img/filler.png' />
           </div>
+          <div id='leftcolfegregister'>
+            <img class='leftcol' id='leftcolumnregisterfiller' src='./public/img/filler.png' />
+          </div>
+          <div id='leftcoleftem'>
+            <img class='leftcol' id='leftcolumnfilter' src='./public/img/filter.png' />
+            <img class='leftcol' id='leftcolumnpeels' src='./public/img/peels.png' />
+            <img class='leftcol' id='leftcolumneftemstigmator' src='./public/img/eftemstigmator.png' />
+            <img class='leftcol' id='leftcolumneftemfiller' src='./public/img/filler.png' />
+          </div>
+          <div id='leftcoldarkfield'>
+            <img class='leftcol' id='leftcolumndarkfieldfiller' src='./public/img/filler.png' />
+          </div>
+
         </td>
       </tr>
       <tr>  
@@ -104,6 +120,7 @@
           <p id='clock'>12:00 AM</p>
           <img id='startmenu' src='./public/img/startmenu.png' usemap='#startmenu' height='29' width'1680'/>
           <map name='startmenu' id='startmenu'>
+            <area shape='rect' id='filtercontrol' coords='69,4,228,23'
             <area shape='rect' id='micrographstart' coords='232,4,389,23' />
             <area shape='rect' id='temuistart' coords='395,4,552,23' />
             <!--<area shape='rect' id='unused' coords='559,4,710,23' />-->
@@ -140,9 +157,9 @@
     </div>
     <div id='searchcontent'>
     </div>
-    <!--<div id='filtercontrol'>
+    <div id='filtercontroldiv'>
       <img src='./public/img/filtercontrol.png' />
-    </div>-->
+    </div>
 
     <div id='filemenu'>
       <img src='./public/img/filedialogue.png' usemap='#filemenu'/>

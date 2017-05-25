@@ -22,6 +22,10 @@ let hideBatch = function(){
   $('#tabsright').hide();
   $('#leftcoltune').hide();
   $('#leftcolstem').hide();
+  $('#leftcolfegregister').hide();
+  $('#leftcoleftem').hide();
+  $('#leftcoldarkfield').hide();
+  $('#filtercontroldiv').hide();
 };
 
 //from rcontroller roller
