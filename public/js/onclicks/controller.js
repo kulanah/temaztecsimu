@@ -1,6 +1,8 @@
 'use strict';
 
-let intensityValues = [400,]
+let zoomLevels = [0.25, 0.50, 1.0, 2.0, 4.0];
+let currentZoom = 2;
+
 
 let microscopeControllers = function(){
 
@@ -72,7 +74,6 @@ let microscopeControllers = function(){
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousemovetemplateLeft);
-
   });
 
   $('#buttonintensity').mousedown(function(event){
@@ -80,8 +81,24 @@ let microscopeControllers = function(){
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousedowntemplateintensity);
+  });
 
-
-  })
-
+  $('#buttonmagnification').on('click', function(event){
+    let mask = $('#mask');
+    let image = $('#testimage');
+    console.log(currentZoom);
+    if(currentZoom == 4){
+      currentZoom = 0;
+      mask.width(mask.width / 8);
+      mask.height(mask.height / 8);
+      image.height(image.height / 8);
+      image.width(image.width / 8);
+    } else {
+      currentZoom++;
+      mask.width(mask.width * 2);
+      mask.height(mask.height * 2);
+      image.height(image.height * 2);
+      image.width(image.width * 2);
+    }
+  });
 };
