@@ -26,3 +26,7 @@ add other tabs
 filter control draggable
 
 settingsync token: 07fca6cec42096bc4ad52b5cf32752e
+
+digital micrograph button broken
+new aws accoutn 
+distinct display box for base image 

@@ -150,7 +150,7 @@ body{
 }
 
 #leftcolumneftemfiller{
-  height: 3.5vh;
+  height: 4.1vh;
 }
 
 #leftcolumnalignments{
@@ -165,8 +165,16 @@ body{
   height: 76vh;
 }
 
+#leftcolumndarkfield{
+  height: 26.4vh;
+}
+
+#leftcolumnholography{
+  height: 26.4vh;
+}
+
 #leftcolumndarkfieldfiller{
-  height: 76vh;
+  height: 23.3vh;
 }
 
 #infopanel{
