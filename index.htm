@@ -158,7 +158,10 @@
     <div id='searchcontent'>
     </div>
     <div id='filtercontroldiv'>
-      <img src='./public/img/filtercontrol.png' />
+      <img src='./public/img/filtercontrol.png' usemap='#filtercontrolwindow'/>
+      <map name='filtercontrolwindow' id='filtercontrolwindow'>
+        <area shape='rect' id='filtercontrolclosebox' coords='234,6,250,19' />
+      </map>
     </div>
 
     <div id='filemenu'>
@@ -175,8 +178,8 @@
         <area shape='rect' id='imagefile' coords='106,77,242,96' />
       </map>  
     </div>
-    <!--<img src='./public/img/mask.svg' id='mask'/>-->
-    <!--<img src='./public/img/32.png' id='testimage' />-->
+    <img src='./public/img/mask.svg' id='mask'/>
+    <img src='./public/img/32.png' id='testimage' />
 
     <!--library imports-->
     <script src='./public/js/jquery-3.2.1.min.js'></script>

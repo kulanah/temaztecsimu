@@ -53,4 +53,7 @@ let mainScreen = function(){
     $('#microscopeimage').show();
   });
 
+  $('#filtercontrolclosebox').on('click', function(event){
+    $('#filtercontroldiv').hide();
+  });
 };

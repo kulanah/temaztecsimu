@@ -25,4 +25,13 @@ let startMenu = function(){
   $('#micrographstart').on('click', function(event){
     $('#mainimage').attr('src', './public/img/mainscreen.png');
   });
+
+  $('#filtercontrol').on('click', function(event){
+    let element = $('#filtercontroldiv');
+    if(isVisible('filtercontroldiv')){
+      element.hide();
+    } else {
+      element.show();
+    }
+  })
 };
