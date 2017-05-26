@@ -86,19 +86,45 @@ let microscopeControllers = function(){
   $('#buttonmagnification').on('click', function(event){
     let mask = $('#mask');
     let image = $('#testimage');
-    console.log(currentZoom);
-    if(currentZoom == 4){
+    zoom(mask);
+    zoom(image);
+
+    if (currentZoom == 4){
       currentZoom = 0;
-      mask.width(mask.width / 8);
-      mask.height(mask.height / 8);
-      image.height(image.height / 8);
-      image.width(image.width / 8);
     } else {
-      currentZoom++;
-      mask.width(mask.width * 2);
-      mask.height(mask.height * 2);
-      image.height(image.height * 2);
-      image.width(image.width * 2);
+      ++currentZoom;
     }
+
   });
+
+  let zoom = function(selector){
+    let height = selector.height();
+    let width = selector.width();
+    let topVal = selector.offset().top;
+    let leftVal = selector.offset().left;
+
+    if(currentZoom == 4){
+      selector.width(selector.width() / 8);
+      selector.height(selector.height() / 8);
+
+      topVal /= 8;
+      leftVal /= 8;
+
+      selector.offset({
+        top: topVal,
+        left: leftVal
+      });
+    } else {
+      selector.width(selector.width() * 2);
+      selector.height(selector.height() * 2);
+
+      topVal -= topval * .5;
+      leftVal -= leftcal * .5;
+
+      selector.offset({
+        top: topVal,
+        left: leftVal
+      })
+    }
+  };
 };
