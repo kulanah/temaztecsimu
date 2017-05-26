@@ -103,28 +103,46 @@ let microscopeControllers = function(){
     let topVal = selector.offset().top;
     let leftVal = selector.offset().left;
 
-    if(currentZoom == 4){
-      selector.width(selector.width() / 8);
-      selector.height(selector.height() / 8);
+    let centerX = width / 2 + leftVal;
+    let centerY = height / 2 + topVal;
 
-      topVal /= 8;
-      leftVal /= 8;
+    // console.log(currentZoom);
+    console.log('Starting vals:\nHeight: ' + height +'\nWidth: ' + width + '\ntopVal: ' + topVal + '\nleftVal: ' + leftVal);
+    console.log('center is horizontally ' + centerX + ' and vertically ' + centerY);
+    if(currentZoom == 4){
+      selector.width(selector.width() / 16);
+      selector.height(selector.height() / 16);
+
+      topVal += height / 2 - selector.height() / 2;
+      leftVal += width / 2 - selector.width() / 2;
 
       selector.offset({
         top: topVal,
         left: leftVal
       });
     } else {
+      let newHeight = selector.height() * 2;
+      // console.log(newHeight);
+      // console.log(selector.height());
+      // console.log(selector.height() * 2);
       selector.width(selector.width() * 2);
-      selector.height(selector.height() * 2);
+      selector.height(newHeight);
+      // console.log(selector.height());
 
-      topVal -= topval * .5;
-      leftVal -= leftcal * .5;
+      topVal -= height * .5;
+      leftVal -= width * .5;
 
       selector.offset({
         top: topVal,
         left: leftVal
       })
     }
+
+    height = selector.height();
+    width = selector.width();
+    console.log('Ending vals:\nHeight: ' + selector.height() + '\nWidth: ' + selector.width() + '\ntopVal: ' + topVal + '\nleftVal:' + leftVal);
+    centerX = width / 2 + leftVal;
+    centerY = height / 2 + topVal;
+    console.log('center is horizontally ' + centerX + ' and vertically ' + centerY);
   };
 };
