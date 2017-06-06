@@ -98,6 +98,9 @@ let microscopeControllers = function(){
   });
 
   let zoom = function(selector){
+
+    //TODO: force background image to keep centered in viewport
+
     let height = selector.height();
     let width = selector.width();
     let topVal = selector.offset().top;

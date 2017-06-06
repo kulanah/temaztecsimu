@@ -10,18 +10,24 @@
 - file -> open OR start view open microscope image
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 
+intensity moves center of mask - What is intended behavior here?  
 
-intensity button change radius of mask 
 size
 shape
 brightness at various 
 
 color mask
 
+focus button which should have very small changes (???) 
+
+Rotation should move 
+
+alignment should open help box with htmls in dirve -> TEM alignment
+
+
 controlls care what window is open
 
 settingsync token: 07fca6cec42096bc4ad52b5cf32752e
 
-digital micrograph button broken
 new aws accoutn 
 distinct display box for base image 

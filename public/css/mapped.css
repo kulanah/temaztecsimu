@@ -284,8 +284,10 @@ body{
 #testimage{
   position: absolute;
   z-index: -2;
-  top: 10vh;
-  left: 30vw;
+  height: 150vh;
+  width: 60vw;
+  top: 7vh;
+  left: 34vw;
 }
 
 
