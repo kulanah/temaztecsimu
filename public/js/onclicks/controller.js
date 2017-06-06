@@ -122,12 +122,8 @@ let microscopeControllers = function(){
       });
     } else {
       let newHeight = selector.height() * 2;
-      // console.log(newHeight);
-      // console.log(selector.height());
-      // console.log(selector.height() * 2);
       selector.width(selector.width() * 2);
       selector.height(newHeight);
-      // console.log(selector.height());
 
       topVal -= height * .5;
       leftVal -= width * .5;
@@ -135,7 +131,7 @@ let microscopeControllers = function(){
       selector.offset({
         top: topVal,
         left: leftVal
-      })
+      });
     }
 
     height = selector.height();
