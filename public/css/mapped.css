@@ -11,6 +11,7 @@
     border: 0;
     margin: 0;
     border-collapse: collapse;
+    background-color: grey;
 }
 
 body{
@@ -281,7 +282,7 @@ body{
   line-height: 1em;
 }
 
-#testimage{
+#temimage{
   position: absolute;
   z-index: -2;
   height: 150vh;
@@ -291,7 +292,7 @@ body{
 }
 
 
-#mask{
+#temmask{
   position: absolute;
   top: -155vh;
   left: -148vw;

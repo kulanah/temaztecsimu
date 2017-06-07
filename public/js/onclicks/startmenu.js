@@ -20,10 +20,14 @@ let startMenu = function(){
 
   $('#temuistart').on('click', function(event){
     $('#mainimage').attr('src', './public/img/tia.png');
+    $('#temmask').show();
+    $('#temimage').show();
   });
 
   $('#micrographstart').on('click', function(event){
     $('#mainimage').attr('src', './public/img/mainscreen.png');
+    $('#temmask').hide();
+    $('#temimage').hide();
   });
 
   $('#filtercontrol').on('click', function(event){

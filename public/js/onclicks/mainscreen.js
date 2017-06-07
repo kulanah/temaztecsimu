@@ -56,4 +56,8 @@ let mainScreen = function(){
   $('#filtercontrolclosebox').on('click', function(event){
     $('#filtercontroldiv').hide();
   });
+
+  $('#startview').on('click', function(event){
+    $('#openbox').show();
+  })
 };
