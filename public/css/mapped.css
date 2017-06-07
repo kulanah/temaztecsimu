@@ -11,7 +11,6 @@
     border: 0;
     margin: 0;
     border-collapse: collapse;
-    background-color: grey;
 }
 
 body{
@@ -70,6 +69,7 @@ body{
 #mainimage{
   height: 97vh;
   width: 85.67vw;
+  background-color: grey;
 }
 
 .tabs{
@@ -305,9 +305,5 @@ body{
   position: absolute;
   top: 10vh;
   left: 10vw;
-  /*width: 10vw;
-  height: 900vh;*/
-
-  /*max-height: 20vh;*/
   background-color: grey;
 }

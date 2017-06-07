@@ -59,5 +59,9 @@ let mainScreen = function(){
 
   $('#startview').on('click', function(event){
     $('#openbox').show();
-  })
+  });
+
+  $('#micrographxbox').on('click', function(event){
+    $('#openbox').hide();
+  });
 };

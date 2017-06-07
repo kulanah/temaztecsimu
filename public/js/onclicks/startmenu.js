@@ -22,12 +22,15 @@ let startMenu = function(){
     $('#mainimage').attr('src', './public/img/tia.png');
     $('#temmask').show();
     $('#temimage').show();
+    $('#mainimage').css('background-color', 'transparent');
+
   });
 
   $('#micrographstart').on('click', function(event){
     $('#mainimage').attr('src', './public/img/mainscreen.png');
     $('#temmask').hide();
     $('#temimage').hide();
+    $('#mainimage').css('background-color', 'grey');
   });
 
   $('#filtercontrol').on('click', function(event){

@@ -13,9 +13,9 @@ Backlog:
 
 TODO:
 - file -> open OR start view open microscope image
-- controlls care what window is open
+- controls care what window is open
 - distinct display box for base image 
-- alignment should open help box with htmls in dirve -> TEM alignment
+- alignment should open help box with htmls in drive -> TEM alignment
 - sort CSS into similar sections as onclicks
 
 Doing:
