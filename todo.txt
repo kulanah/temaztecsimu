@@ -1,32 +1,35 @@
-- better documentation
-  - sort CSS into similar sections as onclicks
-- digital micrograph should open TEM files root name
-- tem image + analysis should pen STEM files root
-- turbo button should have on/off and noise(???) on ativation
-- start view should open image same as file -> open or open file button 
-- qa, examples, hw boxes add -- assigned to minh
-- alignment box expands windows WHY???
-- operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
-- file -> open OR start view open microscope image
-- Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
-
-intensity moves center of mask - What is intended behavior here?  
-
 size
 shape
 brightness at various 
 
-color mask
+Backlog:
+- turbo button should have on/off and noise(???) on ativation
+- new aws accoutn 
+- BUG: on github hosting alignment box expands windows
+- Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
+- Rotation should move 
+- operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
+- color mask
 
-focus button which should have very small changes (???) 
+TODO:
+- file -> open OR start view open microscope image
+- controlls care what window is open
+- distinct display box for base image 
+- alignment should open help box with htmls in dirve -> TEM alignment
+- sort CSS into similar sections as onclicks
 
-Rotation should move 
+Doing:
+- qa, examples, hw boxes add -- assigned to minh
+- better documentation
 
-alignment should open help box with htmls in dirve -> TEM alignment
 
-controlls care what window is open
+Done:
 
-new aws accoutn 
-distinct display box for base image 
+Need Clarification:
+- focus button which should have very small changes (???) 
+- digital micrograph should open TEM files root name
+- tem image + analysis should pen STEM files root
+- start view should open image same as file -> open or open file button 
+- intensity moves center of mask - What is intended behavior here?  
 
 settingsync token: 07fca6cec42096bc4ad52b5cf32752e
