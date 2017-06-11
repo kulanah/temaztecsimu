@@ -12,6 +12,7 @@ Backlog:
 - color mask
 
 TODO:
+- create separate css classes for different states
 - file -> open OR start view open microscope image
 - controls care what window is open
 - distinct display box for base image 

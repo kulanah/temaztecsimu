@@ -84,8 +84,8 @@ let microscopeControllers = function(){
   });
 
   $('#buttonmagnification').on('click', function(event){
-    let mask = $('#mask');
-    let image = $('#testimage');
+    let mask = $('#temmask');
+    let image = $('#temimage');
     zoom(mask);
     zoom(image);
 

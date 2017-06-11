@@ -33,7 +33,7 @@ let hideBatch = function(){
 
 //from rcontroller roller
 let moveImage = function(deltax, deltay){
-  let element = $('#testimage');
+  let element = $('#temimage');
   let topVal = element.offset().top + deltax;
   let leftVal = element.offset().left + deltay;
 
@@ -42,7 +42,7 @@ let moveImage = function(deltax, deltay){
 
 //from lcontroller roller
 let moveMask = function(deltax, deltay){
-  let element = $('#mask');
+  let element = $('#temmask');
   let topVal = element.offset().top + deltax;
   let leftVal = element.offset().left + deltay;
 
@@ -53,7 +53,7 @@ let moveMask = function(deltax, deltay){
 //this is called when the intensity button on the control panel is pressed.
 //TODO: Add context awareness to allow it to control different elements
 let changeIntensity = function(delta){
-  let element = $('#mask');
+  let element = $('#temmask');
 
   let startW = element.width();
   let startH = element.height();
