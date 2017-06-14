@@ -3,26 +3,29 @@ shape
 brightness at various 
 
 Backlog:
-- BUG: on github hosting alignment box expands windows
 - turbo button should have on/off and noise(???) on ativation
 - new aws accoutn 
-- Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - Rotation should move 
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - color mask
 - expand alignment help box data to include all data
 
+Bugs: 
+- BUG: on github hosting alignment box expands windows
+- Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
+- fix onclick mouse capture that's breaking the scroll bars
+- fix rounding error in FEG Control mewA
+
 TODO:
 - create separate css classes for different states
-- file -> open OR start view open microscope image
 - controls care what window is open
 - distinct display box for base image 
 - sort CSS into similar sections as onclicks
 
 Doing:
+- file -> open OR start view open microscope image
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
-- fix onclick mouse capture that's breaking the scroll bars
 
 
 Done:

@@ -303,8 +303,11 @@ body{
 
 #openbox{
   position: absolute;
-  top: 10vh;
-  left: 10vw;
+  top: 11vh;
+  left: 28vw;
+  max-width: 28.7vw;
+  max-height: 65vh;
+  overflow: hidden;
   background-color: grey;
 }
 
