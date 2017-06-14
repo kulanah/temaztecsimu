@@ -29,6 +29,7 @@ let hideBatch = function(){
   $('#openbox').hide(); 
   $('#temmask').hide();
   $('#temimage').hide();
+  // $('#alignmenthelp').hide();
 };
 
 //from rcontroller roller
@@ -81,3 +82,17 @@ let isVisible = function(name){
   }
 };
 
+let updateBox = function(lesson, part, box){
+  let urlString = './public/docs/l' + lesson + 'p' + part + '.htm';
+  $(box).attr('data', urlString);
+};
+
+
+let handleMessage = function(message){
+  let box = message.data[0];
+  let lesson = message.data[1];
+  let part = message.data[2];
+  updateBox(lesson, part, box);
+}
+
+window.addEventListener('message', handleMessage, false);
