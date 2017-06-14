@@ -82,7 +82,7 @@ let isVisible = function(name){
 };
 
 let updateBox = function(lesson, part, box){
-  let urlString = './public/docs/l' + lesson + 'p' + part + '.htm';
+  let urlString = './public/docs/temlist/l' + lesson + 'p' + part + '.htm';
   $(box).attr('data', urlString);
 };
 
