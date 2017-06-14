@@ -2,15 +2,15 @@
 
 //current tab can be related to the following values:
 //status, search, tune, stem, FEGregister, eftem, dark field
-let currenttab = 0;
+let currentTab = 0;
 let tabsList = ['leftcolsetup', 'leftcolsearch', 'leftcoltune', 'leftcolstem', 'leftcolfegregister', 'leftcoleftem', 'leftcoldarkfield'];
 
 let tabs = function(){
 
   let setCurrentTab = function(next){
-    $('#' + tabsList[currenttab]).hide();
+    $('#' + tabsList[currentTab]).hide();
     $('#' + tabsList[next]).show();
-    currenttab = next;
+    currentTab = next;
   };
 
   $('.rightbutton').on('click', function(event){

@@ -16,12 +16,13 @@ TODO:
 - file -> open OR start view open microscope image
 - controls care what window is open
 - distinct display box for base image 
-- alignment should open help box with htmls in drive -> TEM alignment
 - sort CSS into similar sections as onclicks
 
 Doing:
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
+- alignment should open help box with htmls in drive -> TEM alignment
+- fix onclick mouse capture that's breaking the scroll bars
 
 
 Done:

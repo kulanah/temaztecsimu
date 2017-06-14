@@ -29,7 +29,6 @@ let hideBatch = function(){
   $('#openbox').hide(); 
   $('#temmask').hide();
   $('#temimage').hide();
-  // $('#alignmenthelp').hide();
 };
 
 //from rcontroller roller
