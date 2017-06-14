@@ -3,13 +3,14 @@ shape
 brightness at various 
 
 Backlog:
+- BUG: on github hosting alignment box expands windows
 - turbo button should have on/off and noise(???) on ativation
 - new aws accoutn 
-- BUG: on github hosting alignment box expands windows
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - Rotation should move 
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - color mask
+- expand alignment help box data to include all data
 
 TODO:
 - create separate css classes for different states
@@ -21,11 +22,11 @@ TODO:
 Doing:
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
-- alignment should open help box with htmls in drive -> TEM alignment
 - fix onclick mouse capture that's breaking the scroll bars
 
 
 Done:
+- alignment should open help box with htmls in drive -> TEM alignment
 
 Need Clarification:
 - focus button which should have very small changes (???) 
