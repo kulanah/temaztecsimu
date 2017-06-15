@@ -9,6 +9,7 @@ Backlog:
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - color mask
 - expand alignment help box data to include all data
+- make default hidden css class that allows the "on load hide all this stuff" funciton to be removed
 
 Bugs: 
 - on github hosting alignment box expands windows

@@ -51,7 +51,7 @@ let mainScreen = function(){
   $('#imagefile').on('click', function(event){
     $('#openfiledialogue').hide();
     $('#openbox').show();
-    $('#openbox').append('')
+    $('#openboximage').show();
   });
 
   $('#filtercontrolclosebox').on('click', function(event){
@@ -60,6 +60,7 @@ let mainScreen = function(){
 
   $('#startview').on('click', function(event){
     $('#openbox').show();
+    
   });
 
   $('#micrographxbox').on('click', function(event){
