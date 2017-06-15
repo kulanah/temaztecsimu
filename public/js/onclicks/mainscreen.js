@@ -50,7 +50,8 @@ let mainScreen = function(){
 
   $('#imagefile').on('click', function(event){
     $('#openfiledialogue').hide();
-    $('#microscopeimage').show();
+    $('#openbox').show();
+    $('#openbox').append('')
   });
 
   $('#filtercontrolclosebox').on('click', function(event){
