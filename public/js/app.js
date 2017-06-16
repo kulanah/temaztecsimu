@@ -36,7 +36,7 @@ let hideBatch = function(){
 let moveImage = function(deltax, deltay){
   let element;
   if (openWindow == 1){
-    element = $('#temmask');
+    element = $('#temimage');
   } else {
     element = $('#openboximage');
   }
