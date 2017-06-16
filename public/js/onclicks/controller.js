@@ -84,14 +84,17 @@ let microscopeControllers = function(){
   });
 
   $('#buttonmagnification').on('click', function(event){
+    let mask;
+    let image;
+    console.log(currentWindow);
     if (currentWindow == 1){
-      let mask = $('#temmask');
-      let image = $('#temimage');
-    } else {
-      let mask = $('#openboxmask');
-      let image = $('#openboximage');
-    }
+      mask = $('#temmask');
+      image = $('#temimage');
     zoom(mask);
+    } else {
+      mask = $('#openboxmask');
+      image = $('#openboximage');
+    }
     zoom(image);
 
     if (currentZoom == 4){
@@ -99,11 +102,9 @@ let microscopeControllers = function(){
     } else {
       ++currentZoom;
     }
-
   });
 
   let zoom = function(selector){
-
     //TODO: force background image to keep centered in viewport
 
     let height = selector.height();

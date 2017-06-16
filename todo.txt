@@ -9,7 +9,6 @@ Backlog:
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - color mask
 - expand alignment help box data to include all data
-- make default hidden css class that allows the "on load hide all this stuff" funciton to be removed
 
 Bugs: 
 - on github hosting alignment box expands windows
@@ -18,7 +17,7 @@ Bugs:
 - rounding error in FEG Control mewA
 
 TODO:
-- controls care what window is open
+- make default hidden css class that allows the "on load hide all this stuff" funciton to be removed
 - sort CSS into similar sections as onclicks
 
 Doing:
@@ -26,6 +25,7 @@ Doing:
 - better documentation
 
 Done:
+- controls care what window is open
 - distinct display box for base image 
 - file -> open OR start view open microscope image
 - alignment should open help box with htmls in drive -> TEM alignment
