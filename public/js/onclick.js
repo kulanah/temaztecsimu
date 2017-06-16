@@ -5,6 +5,8 @@
 'use strict';
 let startXRight, startYRight, startXLeft, startYLeft, startIntensity;
 
+let openWindow = 0;
+
 let clickFunctions = function(){
   microscopeControllers();
   mainScreen();

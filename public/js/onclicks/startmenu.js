@@ -19,6 +19,7 @@ let startMenu = function(){
   });
 
   $('#temuistart').on('click', function(event){
+    openWindow = 1;
     $('#mainimage').attr('src', './public/img/tia.png');
     $('#temmask').show();
     $('#temimage').show();
@@ -27,6 +28,7 @@ let startMenu = function(){
   });
 
   $('#micrographstart').on('click', function(event){
+    openWindow = 0;
     $('#mainimage').attr('src', './public/img/mainscreen.png');
     $('#temmask').hide();
     $('#temimage').hide();

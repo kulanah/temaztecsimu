@@ -2,7 +2,7 @@
 
 
 $("img[usemap]").rwdImageMaps();
-
+let currentWindow = 0;
 //when the html is all loaded it will call all the relevant javascript functions
 $(document).ready(function(e) {
   pageSetup();
@@ -34,7 +34,11 @@ let hideBatch = function(){
 
 //from rcontroller roller
 let moveImage = function(deltax, deltay){
-  let element = $('#temimage');
+  if (openWindow == 1){
+    let element = $('#temmask');
+  } else {
+    let element = $('#openboximage');
+  }
   let topVal = element.offset().top + deltax;
   let leftVal = element.offset().left + deltay;
 
@@ -43,7 +47,11 @@ let moveImage = function(deltax, deltay){
 
 //from lcontroller roller
 let moveMask = function(deltax, deltay){
-  let element = $('#temmask');
+  if (openWindow == 1){
+    let element = $('#temmask');
+  } else {
+    let element = $('#openboximage');
+  }
   let topVal = element.offset().top + deltax;
   let leftVal = element.offset().left + deltay;
 
@@ -54,7 +62,11 @@ let moveMask = function(deltax, deltay){
 //this is called when the intensity button on the control panel is pressed.
 //TODO: Add context awareness to allow it to control different elements
 let changeIntensity = function(delta){
-  let element = $('#temmask');
+  if (openWindow == 1){
+    let element = $('#temmask');
+  } else {
+    let element = $('#openboximage');
+  }
 
   let startW = element.width();
   let startH = element.height();

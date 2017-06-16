@@ -18,24 +18,22 @@ Bugs:
 - rounding error in FEG Control mewA
 
 TODO:
-- create separate css classes for different states
 - controls care what window is open
-- distinct display box for base image 
 - sort CSS into similar sections as onclicks
 
 Doing:
-- file -> open OR start view open microscope image
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
-
 Done:
+- distinct display box for base image 
+- file -> open OR start view open microscope image
 - alignment should open help box with htmls in drive -> TEM alignment
 
 Need Clarification:
 - focus button which should have very small changes (???) 
 - digital micrograph should open TEM files root name
-- tem image + analysis should pen STEM files root
+- tem image + analysis should open STEM files root
 - start view should open image same as file -> open or open file button 
 - intensity moves center of mask - What is intended behavior here?  
 
