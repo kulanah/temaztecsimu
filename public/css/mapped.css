@@ -305,7 +305,7 @@ body{
   position: absolute;
   top: 11vh;
   left: 28vw;
-  max-width: 27.1vw;
+  max-width: 28.8vw;
   max-height: 56vh;
   overflow: hidden;
   background-color: grey;
@@ -324,12 +324,12 @@ body{
 }
 
 #openboximage{
-  position: relative;
-  top: -53.5vh;
+  position: absolute;
+  top: 2.5vh;
   left: 0.3vw;
-  max-width: 26.5vw;
-  max-height: 53vh;
-  width: 26.5vw;
-  height: 53vh;
+  max-width: 28.2vw;
+  max-height: 51.5vh;
+  width: 28.2vw;
+  height: 51.5vh;
   
 }
