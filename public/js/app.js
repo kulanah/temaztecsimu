@@ -34,10 +34,11 @@ let hideBatch = function(){
 
 //from rcontroller roller
 let moveImage = function(deltax, deltay){
+  let element;
   if (openWindow == 1){
-    let element = $('#temmask');
+    element = $('#temmask');
   } else {
-    let element = $('#openboximage');
+    element = $('#openboximage');
   }
   let topVal = element.offset().top + deltax;
   let leftVal = element.offset().left + deltay;
