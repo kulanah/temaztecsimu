@@ -22,7 +22,7 @@
               <area shape='rect' class='rightbutton' coords='217,27,233,42' />
             </map>
           </div>
-          <div id='tabsright'>
+          <div id='tabsright' class='hidden'>
             <img src='./public/img/tabs2.png' class='tabs' id='tabs2' usemap='#tabs2' width='238' height='69'/>
             <map name='tabs2'>
               <area shape='rect' id='fegregister' coords='4,25,78,42' />
@@ -74,7 +74,7 @@
               <p class='wintext' id='fegvalue'>69</p>
             </div>
           </div>
-          <div id='leftcolsearch'>
+          <div id='leftcolsearch' class='hidden'>
             <img class='leftcol' id='leftcolumnstage' src='./public/img/stage.png' />
             <img class='leftcol' id='leftcolumnbeamsettings' src='./public/img/beamsettings.png' usemap='#leftcolbeamsettings'/>
             <map name='leftcolbeamsettings' id='leftcolbeamsettings'> 
@@ -85,30 +85,31 @@
             <input type='range' id='beamrange' name='beamrange' value='5' min='1' max='11'>
             <p id='beamvalue'>5</p>
           </div>
-          <div id='leftcoltune'>
+          <div id='leftcoltune' class='hidden'>
             <img class='leftcol' id='leftcolumnstigmator' src='./public/img/stigmator.png' />
             <img class='leftcol' id='leftcolumnalignments' src='./public/img/alignments.png' />
             <img class='leftcol' id='leftcolumntunefiller' src='./public/img/filler.png' />
             <object id='alignmenttext' data='./public/docs/alignmentbox.htm'></object>
             <object id='alignmenthelp'></object>
           </div>
-          <div id='leftcolstem'>
+          <div id='leftcolstem' class='hidden'>
             <img class='leftcol' id='leftcolumnimaging' src='./public/img/imaging.png' />
             <img class='leftcol' id='leftcolumndetector' src='./public/img/detector.png' />
             <img class='leftcol' id='leftcolumndirectalignments' src='./public/img/directalignments.png' />
             <img class='leftcol' id='leftcolumnstemfiller' src='./public/img/filler.png' />
           </div>
-          <div id='leftcolfegregister'>
+          <div id='leftcolfegregister' class='hidden'>
             <img class='leftcol' id='leftcolumnfegregisters' src='./public/img/fegregisters.png' />
             <img class='leftcol' id='leftcolumnfegregisteralignmnents' src='./public/img/fegregisteralignments.png' />
+            <img class='leftcol' id='leftcolumnregisterfiller' src='./public/img/filler.png' />
           </div>
-          <div id='leftcoleftem'>
+          <div id='leftcoleftem' class='hidden'>
             <img class='leftcol' id='leftcolumnfilter' src='./public/img/filter.png' />
             <img class='leftcol' id='leftcolumnpeels' src='./public/img/peels.png' />
             <img class='leftcol' id='leftcolumneftemstigmator' src='./public/img/eftemstigmator.png' />
             <img class='leftcol' id='leftcolumneftemfiller' src='./public/img/filler.png' />
           </div>
-          <div id='leftcoldarkfield'>
+          <div id='leftcoldarkfield' class='hidden'>
             <img class='leftcol' id='leftcolumndarkfield' src='./public/img/darkfield.png' />
             <img class='leftcol' id='leftcolumnholography' src='./public/img/holography.png' />
             <img class='leftcol' id='leftcolumndarkfieldfiller' src='./public/img/filler.png' />
@@ -134,7 +135,7 @@
         </td>
       </tr>
     </table>
-    <div id='microControls'>
+    <div id='microControls' class='hidden'>
       <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='#leftcontrol' />
       <map name='leftcontrol' id='leftcontrol'>
         <area shape='circle' id='buttonl3' coords='455,200,15' />
@@ -148,34 +149,32 @@
         <area shape='circle' id='buttonmagnification' coords='301,136,25' />
       </map>
     </div>
-    <div id='vacuumoverview'>
+    <div id='vacuumoverview' class='hidden'>
       <img id='vacuumimg' src='./public/img/vacuumopen.png'>
     </div>
-    <div id='microscopeGraph'>
+    <div id='microscopeGraph' class='hidden'>
       <img src='./public/img/graphplaceholder.png' />
     </div>
-    <div id='maindropdown'>
+    <div id='maindropdown' class='hidden'>
       <img src='./public/img/button52.png' usemap='#dropdownmap'>
       <map name='dropdownmap' id='dropdownmap'>
         <area shape='rect' id='vacuumbutton' coords='0,250,100,262' />
       </map>
     </div>
-    <div id='searchcontent'>
-    </div>
-    <div id='filtercontroldiv'>
+    <div id='filtercontroldiv' class='hidden'>
       <img src='./public/img/filtercontrol.png' usemap='#filtercontrolwindow'/>
       <map name='filtercontrolwindow' id='filtercontrolwindow'>
         <area shape='rect' id='filtercontrolclosebox' coords='234,6,250,19' />
       </map>
     </div>
 
-    <div id='filemenu'>
+    <div id='filemenu' class='hidden'>
       <img src='./public/img/filedialogue.png' usemap='#filemenu'/>
       <map name='filemenu'>
         <area shape='rect' id='fileopen' coords='1,19,170,35' />  
       </map>
     </div>
-    <div id='openfiledialogue'>
+    <div id='openfiledialogue' class='hidden'>
       <img src='./public/img/fileopendialogue.png' usemap='#openfile' />
       <map id='openfile' name='openfile'>
         <area shape='rect' id='xbox' coords='689,7,705,22' />
@@ -184,7 +183,7 @@
       </map>  
     </div>
 
-    <div id='openbox'>
+    <div id='openbox' class='hidden'>
       <img src='./public/img/openbox.png' usemap='#micrographbox' id='openboxborder'/>
       <img src='./public/img/23.png' id='openboximage'/>
       <map id='micrographbox' name='micrographbox'>

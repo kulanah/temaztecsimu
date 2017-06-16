@@ -151,7 +151,7 @@ body{
 }
 
 #leftcolumneftemfiller{
-  height: 4.1vh;
+  height: 3.8vh;
 }
 
 #leftcolumnalignments{
@@ -167,7 +167,7 @@ body{
 }
 
 #leftcolumnregisterfiller{
-  height: 2vh;
+  height: 4.2vh;
 }
 
 #leftcolumndarkfield{
@@ -333,4 +333,8 @@ body{
   max-height: 51.5vh;
   width: 28.2vw;
   height: 51.5vh;
+}
+
+.hidden{
+  display: none;
 }

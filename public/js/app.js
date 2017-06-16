@@ -4,33 +4,11 @@
 $("img[usemap]").rwdImageMaps();
 let currentWindow = 0;
 //when the html is all loaded it will call all the relevant javascript functions
-$(document).ready(function(e) {
+$(document).ready(function(event) {
   pageSetup();
   clickFunctions();
   startTime();
-  hideBatch();
 });
-
-let hideBatch = function(){
-  $('#microControls').hide();
-  $('#microscopeGraph').hide();
-  $('#maindropdown').hide();
-  $('#vacuumoverview').hide();
-  $('#filemenu').hide();
-  $('#openfiledialogue').hide();
-  $('#leftcolsearch').hide();
-  $('#tabsright').hide();
-  $('#leftcoltune').hide();
-  $('#leftcolstem').hide();
-  $('#leftcolfegregister').hide();
-  $('#leftcoleftem').hide();
-  $('#leftcoldarkfield').hide();
-  $('#filtercontroldiv').hide();
-  $('#openbox').hide(); 
-  $('#temmask').hide();
-  $('#temimage').hide();
-  $('#openboximage').hide();
-};
 
 //from rcontroller roller
 let moveImage = function(deltax, deltay){

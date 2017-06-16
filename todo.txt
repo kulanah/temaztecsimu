@@ -17,7 +17,6 @@ Bugs:
 - rounding error in FEG Control mewA
 
 TODO:
-- make default hidden css class that allows the "on load hide all this stuff" funciton to be removed
 - sort CSS into similar sections as onclicks
 
 Doing:
@@ -25,6 +24,7 @@ Doing:
 - better documentation
 
 Done:
+- make default hidden css class that allows the "on load hide all this stuff" funciton to be removed
 - controls care what window is open
 - distinct display box for base image 
 - file -> open OR start view open microscope image
