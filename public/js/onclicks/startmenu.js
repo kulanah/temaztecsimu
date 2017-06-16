@@ -23,6 +23,7 @@ let startMenu = function(){
     $('#mainimage').attr('src', './public/img/tia.png');
     $('#temmask').show();
     $('#temimage').show();
+    $('#openbox').hide();
     $('#mainimage').css('background-color', 'transparent');
 
   });
