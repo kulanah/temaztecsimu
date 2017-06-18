@@ -1,0 +1,53 @@
+
+#microscopeGraph{
+  position: absolute;
+  top: 16vh;
+  right: 20vw;
+}
+  
+#controlsLeft{
+  position: absolute;
+  top: 66.7vh;
+  left: 0;
+}
+
+#controlsRight{
+  position: absolute;
+  top: 66.7vh;
+  right: 0;
+}
+
+#maindropdown{
+  position: absolute;
+  top: 55.7vh;
+  right: 2.3vw;
+}
+
+#filtercontroldiv{
+  position: absolute;
+  top: 10vh;
+  left: 60vw;
+}
+
+#openbox{
+  position: absolute;
+  z-index: 0;
+  top: 11vh;
+  left: 28vw;
+  max-width: 28.7vw;
+  max-height: 54.3vh;
+  overflow: hidden;
+  background-color: grey;
+}
+
+#openfiledialogue{
+  position: absolute;
+  top: 22vh;
+  left: 35vw;
+}
+
+#filemenu{
+  position: absolute;
+  top: 9vh;
+  left: 15vw;
+}

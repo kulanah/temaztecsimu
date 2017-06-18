@@ -1,0 +1,75 @@
+*{
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Not implemented yet */
+    -o-user-select: none;
+    user-select: none;    
+
+    padding: 0;
+    border: 0;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+body{
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wintext{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+#mainimage{
+  height: 97vh;
+  width: 85.67vw;
+  background-color: grey;
+}
+
+#temimage{
+  position: absolute;
+  z-index: -2;
+  height: 150vh;
+  width: 60vw;
+  top: 7vh;
+  left: 34vw;
+}
+
+#temmask{
+  position: absolute;
+  top: -155vh;
+  left: -148vw;
+  z-index: -1;
+  width: 400%;
+  height: 400%;
+}
+
+#alignmenthelp{
+  position: absolute;
+  top: 55.5vh;
+  left: 0.8vw;
+  max-width: 12.4vw;
+  max-height: 11.8vh;
+  width: 12.4vw;
+  height: 11.8vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#openboximage{
+  position: absolute;
+  z-index: -1; 
+  top: 2.5vh;
+  left: 0.3vw;
+  max-width: 28.2vw;
+  max-height: 51.5vh;
+  width: 28.2vw;
+  height: 51.5vh;
+}
+
+.hidden{
+  display: none;
+}

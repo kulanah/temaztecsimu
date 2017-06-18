@@ -1,0 +1,170 @@
+#extractFinal{
+  position: absolute;
+  top: 58.8vh;
+  left: 11vw; 
+  text-align: right;
+}
+
+#fegvalue{
+  position: absolute;
+  top: 64vh;
+  left: 11.8vw;
+}
+
+#extractVal{
+  position: absolute;
+  top: 56.5vh;
+  left: 8.9vw;
+  text-align: right;
+}
+
+#gunLenseVal  {
+  position: absolute;
+  top: 54vh;
+  left: 10vw;
+}
+
+.leftcol{
+  width: 14.28vw;
+}
+
+#leftcolumnvacuum{
+  height: 21vh;
+}
+
+#leftcolumntension{
+  height: 21vh;
+}
+
+#leftcolumnfegcontrol{
+  height: 22vh;
+}
+
+#leftcolumnsetupfiller{
+  height: 12vh;
+}
+
+#leftcolumnstage{
+  height: 45vh;
+}
+
+#leftcolumnbeamsettings{
+  height: 23vh;
+}
+
+#leftcolumnsearchfiller{
+  height: 8vh;
+}
+
+#leftcolumnimaging{
+  height: 24vh;
+}
+
+#leftcolumndetector{
+  height: 24.5vh;
+}
+
+#leftcolumndirectalignments{
+  height: 24vh;
+}
+
+#leftcolumnstemfiller{
+  height: 3.3vh;
+}
+
+#leftcolumnstigmator{
+  height: 20vh;
+}
+
+#leftcolumnfilter{
+  height: 24vh;
+}
+
+#leftcolumnpeels{
+  height: 24vh;
+}
+
+#leftcolumneftemstigmator{
+  height: 24vh;
+}
+
+#leftcolumneftemfiller{
+  height: 3.8vh;
+}
+
+#leftcolumnalignments{
+  height: 50vh;
+}
+
+#leftcolumntunefiller{
+  height:  6vh;
+}
+
+#leftcolumnfegregisters{
+  height: 23.3vh;
+}
+
+#leftcolumnregisterfiller{
+  height: 4.2vh;
+}
+
+#leftcolumndarkfield{
+  height: 26.4vh;
+}
+
+#leftcolumnholography{
+  height: 26.4vh;
+}
+
+#leftcolumndarkfieldfiller{
+  height: 23.3vh;
+}
+
+#infopanel{
+  height: 14vh;
+  width: 14.28vw;
+}
+
+#vacuumoverview{
+  position: absolute;
+  top: 25.5vh;
+  right: 2vw;
+}
+
+#beamrange{
+  position: absolute;
+  width: 13vw;
+  top: 61vh;
+  left: .6vw;
+}
+
+#beamvalue{
+  position: absolute;
+  top: 56.8vh;
+  left: 3.7vw;
+}
+
+#kvval{
+  position: absolute;
+  top: 33vh;
+  right: 87vw;
+  font-size: 16px;
+}
+
+#alignmenttext{
+  position: absolute;
+  top: 31.6vh;
+  left: 1vw;
+  max-width: 12.3vw;
+  max-height: 17.8vh;
+  width: 12.3vw;
+  height: 17.8vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  line-height: 1em;
+}
+
+.tabs{
+  height: 7vh;
+  width: 14.28vw;
+}
