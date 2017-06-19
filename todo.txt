@@ -3,12 +3,9 @@ shape
 brightness at various 
 
 Backlog:
-- turbo button should have on/off and noise(???) on ativation
-- new aws accoutn 
 - Rotation should move 
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - color mask
-- expand alignment help box data to include all data
 
 Bugs: 
 - on github hosting alignment box expands windows
@@ -17,13 +14,15 @@ Bugs:
 - rounding error in FEG Control mewA
 
 TODO:
-- sort CSS into similar sections as onclicks
+- new aws accoutn 
 
 Doing:
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
 Done:
+- turbo button given on/off state
+- sort CSS into similar sections as onclicks
 - make default hidden css class that allows the "on load hide all this stuff" funciton to be removed
 - controls care what window is open
 - distinct display box for base image 
@@ -31,10 +30,11 @@ Done:
 - alignment should open help box with htmls in drive -> TEM alignment
 
 Need Clarification:
+- turbo button should noise(???) on ativation
+- expand alignment help box data to include all data (do we care?)
 - focus button which should have very small changes (???) 
 - digital micrograph should open TEM files root name
 - tem image + analysis should open STEM files root
-- start view should open image same as file -> open or open file button 
 - intensity moves center of mask - What is intended behavior here?  
 
 settingsync token: 07fca6cec42096bc4ad52b5cf32752e

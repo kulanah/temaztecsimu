@@ -7,6 +7,7 @@ let extractFinal = 4500;
 let fegVal = 63;
 let kvVal = 200;
 let colopen = true;
+let turboon = false;
 
 
 let setupTab = function(){
@@ -18,13 +19,41 @@ let setupTab = function(){
 let vacuumWindow = function(){
   $('#colvalves').on('click', function(event){
     if (colopen){
-      $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
-      $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
+      if (turboon){
+        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedturboon.png');
+        $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
+      } else {
+        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
+        $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
+      }
       colopen = false;
     } else {
-      $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopen.png');
-      $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
+      if (turboon){
+        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopenturboon.png');
+        $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
+      } else {
+        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopen.png');
+        $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
+      }
       colopen = true;
+    }
+  });
+
+  $('#turbo').on('click', function(event){
+    if (turboon){
+      if (colopen){
+        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopen.png');
+      } else {
+        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
+      }
+      turboon = false;
+    } else {
+      if (colopen){
+        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopenturboon.png');
+      } else {
+        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedturboon.png');
+      }
+      turboon = true;
     }
   });
 };
