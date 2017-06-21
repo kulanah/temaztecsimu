@@ -31,7 +31,6 @@ TODO:
 - focus functions 
 
 Doing:
-- r3 and l3 non responsinve 
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
@@ -45,6 +44,7 @@ Need Clarification:
 
 Done:
 - turbo button given on/off state
+- r3 and l3 non responsinve 
 - sections in alignments is double or triple spaced
 - added heihgt/width values to all img tags
 - onclicks on popups don't work unless you resize the window
