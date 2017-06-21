@@ -28,7 +28,6 @@ Bugs:
 
 TODO:
 - magnification moves center of mask 
-- create buttons for l 1,2 and r 1, 2 
 - add nanolabsim like window
 
 Doing:
@@ -45,6 +44,7 @@ Need Clarification:
 - tem image + analysis should open STEM files root
 
 Done:
+- create buttons for l 1,2 and r 1, 2 
 - turbo button given on/off state
 - r3 and l3 non responsinve 
 - sections in alignments is double or triple spaced
