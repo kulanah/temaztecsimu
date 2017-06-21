@@ -9,15 +9,19 @@ Backlog:
 revealjs
 videojs
 
-input pprt vidoe and timestamps with above
+input pprt vidoe and timestamps with above output video or presentation in the form of sample youtube video
+ALTERNATIVELY
+use vimeo annotations to do this.
+ALTERNATIVELY
+use js page with embeded youtube link with buttons that link to specific times in vid 
 
 Bugs: 
 - on github hosting alignment box expands windows
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
-- r3 and l3 non responsinve 
 - nanoprobe microprobe buttons don't change colors
 - feg register filler too short on laptop
+- rounding error in FEG Control mewA
 
 
 TODO:
@@ -27,8 +31,8 @@ TODO:
 - focus functions 
 
 Doing:
+- r3 and l3 non responsinve 
 - qa, examples, hw boxes add -- assigned to minh
-- rounding error in FEG Control mewA
 - better documentation
 
 Need Clarification:
@@ -41,6 +45,7 @@ Need Clarification:
 
 Done:
 - turbo button given on/off state
+- sections in alignments is double or triple spaced
 - added heihgt/width values to all img tags
 - onclicks on popups don't work unless you resize the window
 - sort CSS into similar sections as onclicks
