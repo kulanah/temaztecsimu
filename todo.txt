@@ -18,6 +18,7 @@ use js page with embeded youtube link with buttons that link to specific times i
 
 Bugs: 
 - on github hosting alignment box expands windows
+- openbox in window 1 size changes because it's currently set to VW/VH, switch this to static values
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
 - nanoprobe microprobe buttons don't change colors
