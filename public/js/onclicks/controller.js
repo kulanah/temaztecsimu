@@ -5,13 +5,22 @@ let currentZoom = 2;
 
 
 let microscopeControllers = function(){
-  let mousemovetemplateRight = function(event){
+
+  let handleDrag = function(event){
     let deltaX = event.clientX - startX;
     let deltaY = event.clientY - startY;
-    
+
+    return [deltaX, deltaY];
+    /*
+      function shoudl output the delta of the x and y to the calling function possibly with a json object (?)
+    */
+  };
+
+  let mousemovetemplateRight = function(event){
+    let deltas = handleDrag(event);
     setStartXY();
 
-    moveImage(2 * deltaY, 2 * deltaX);
+    moveImage(2 * deltas[0], 2 * deltas[1]);
   };
 
   let setStartXY = function(){
