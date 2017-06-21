@@ -6,7 +6,6 @@
 let startX, startY, startIntensity;
 
 let openWindow = 0;
-let currentWindow = 0;
 
 let clickFunctions = function(){
   microscopeControllers();

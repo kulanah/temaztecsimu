@@ -10,14 +10,28 @@ $(document).ready(function(event) {
   startTime();
 });
 
-//from rcontroller roller
-let moveImage = function(deltax, deltay){
-  let element;
-  if (openWindow == 1){
-    element = $('#temimage');
+let parseSelector = function(target){
+  let selector;
+  if (openWindow == 0){
+    if (target == 'buttonrollerr'){
+      selector = $('#openboximage');
+    } else {
+      selector = $('#openboxmask')
+    }
   } else {
-    element = $('#openboximage');
+    if (target == 'buttonrollerr'){
+      selector = $('#temimage');
+    } else {
+      selector = $('#temmask');
+    }
   }
+
+  return selector;
+};
+
+//from rcontroller roller
+let moveImage = function(deltax, deltay, target){
+  let element = parseSelector(target);
   let topVal = element.offset().top + deltax;
   let leftVal = element.offset().left + deltay;
 

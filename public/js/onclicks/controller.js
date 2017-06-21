@@ -2,6 +2,7 @@
 
 let zoomLevels = [0.25, 0.50, 1.0, 2.0, 4.0];
 let currentZoom = 2;
+let targetID;
 
 
 let microscopeControllers = function(){
@@ -16,11 +17,10 @@ let microscopeControllers = function(){
     */
   };
 
-  let mousemovetemplateRight = function(event){
+  let mousemovetemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
-
-    moveImage(2 * deltas[0], 2 * deltas[1]);
+    moveImage(2 * deltas[1], 2 * deltas[0], targetID);
   };
 
   let setStartXY = function(){
@@ -28,18 +28,8 @@ let microscopeControllers = function(){
     startY = event.clientY;
   }
 
-  let mousemovetemplateLeft = function(event){
-    let deltaX = event.clientX - startX;
-    let deltaY = event.clientY - startY;
-    
-    setStartXY();
-
-    moveMask(2 * deltaY, 2 * deltaX);
-  };
-
   let mouseuptemplate = function(event){
-    $('body')[0].removeEventListener('mousemove', mousemovetemplateLeft);
-    $('body')[0].removeEventListener('mousemove', mousemovetemplateRight);
+    $('body')[0].removeEventListener('mousemove', mousemovetemplate);
     $('body')[0].removeEventListener('mousemove', mousedowntemplateintensity);
   };
   
@@ -70,17 +60,19 @@ let microscopeControllers = function(){
   });
 
   $('#buttonrollerr').mousedown(function(event){
+    targetID = event.target.id;
     setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
-    $('body')[0].addEventListener('mousemove', mousemovetemplateRight);
+    $('body')[0].addEventListener('mousemove', mousemovetemplate);
   });
 
   $('#buttonrollerl').mousedown(function(event){
+    targetID = event.target.id;
     setStartXY();
     
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
-    $('body')[0].addEventListener('mousemove', mousemovetemplateLeft);
+    $('body')[0].addEventListener('mousemove', mousemovetemplate);
   });
 
   $('#buttonintensity').mousedown(function(event){
@@ -93,8 +85,7 @@ let microscopeControllers = function(){
   $('#buttonmagnification').on('click', function(event){
     let mask;
     let image;
-    console.log(currentWindow);
-    if (currentWindow == 1){
+    if (openWindow == 1){
       mask = $('#temmask');
       image = $('#temimage');
     zoom(mask);
