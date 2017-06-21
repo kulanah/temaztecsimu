@@ -5,33 +5,33 @@ let currentZoom = 2;
 
 
 let microscopeControllers = function(){
-
   let mousemovetemplateRight = function(event){
-    let deltaX = event.clientX - startXRight;
-    let deltaY = event.clientY - startYRight;
-
-    startXRight = event.clientX;
-    startYRight = event.clientY;
+    let deltaX = event.clientX - startX;
+    let deltaY = event.clientY - startY;
+    
+    setStartXY();
 
     moveImage(2 * deltaY, 2 * deltaX);
   };
 
-  let mousemovetemplateLeft = function(event){
-    let deltaX = event.clientX - startXLeft;
-    let deltaY = event.clientY - startYLeft;
+  let setStartXY = function(){
+    startX = event.clientX;
+    startY = event.clientY;
+  }
 
-    startXLeft = event.clientX;
-    startYLeft = event.clientY;
+  let mousemovetemplateLeft = function(event){
+    let deltaX = event.clientX - startX;
+    let deltaY = event.clientY - startY;
+    
+    setStartXY();
 
     moveMask(2 * deltaY, 2 * deltaX);
   };
 
   let mouseuptemplate = function(event){
-
     $('body')[0].removeEventListener('mousemove', mousemovetemplateLeft);
     $('body')[0].removeEventListener('mousemove', mousemovetemplateRight);
     $('body')[0].removeEventListener('mousemove', mousedowntemplateintensity);
-
   };
   
   let mousedowntemplateintensity = function(event){
@@ -61,17 +61,15 @@ let microscopeControllers = function(){
   });
 
   $('#buttonrollerr').mousedown(function(event){
-    startXRight = event.clientX;
-    startYRight = event.clientY;
+    setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousemovetemplateRight);
   });
 
   $('#buttonrollerl').mousedown(function(event){
-    startXLeft = event.clientX;
-    startYLeft = event.clientY;
-
+    setStartXY();
+    
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousemovetemplateLeft);
   });
@@ -151,3 +149,8 @@ let microscopeControllers = function(){
     console.log('center is horizontally ' + centerX + ' and vertically ' + centerY);
   };
 };
+
+
+
+
+//var removedText = self.val().replace(/[^0-9.,]+/, '');

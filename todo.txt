@@ -4,6 +4,7 @@ Backlog:
 - color mask
 - shrink text at small resolution
 - buttons for qa and hw
+- new aws accoutn 
 
 
 revealjs
@@ -25,13 +26,14 @@ Bugs:
 
 
 TODO:
+- magnification moves center of mask 
 - create buttons for l 1,2 and r 1, 2 
-- new aws accoutn 
 - add nanolabsim like window
-- focus functions 
 
 Doing:
+- create separate function for handling sliders for intensity and focus
 - qa, examples, hw boxes add -- assigned to minh
+- focus functions 
 - better documentation
 
 Need Clarification:
@@ -40,7 +42,6 @@ Need Clarification:
 - focus button which should have very small changes (???) 
 - digital micrograph should open TEM files root name
 - tem image + analysis should open STEM files root
-- intensity moves center of mask - What is intended behavior here?  
 
 Done:
 - turbo button given on/off state

@@ -3,7 +3,7 @@
 //Could potentially only run these when they're needed and remove the html elements when not in use.
 
 'use strict';
-let startXRight, startYRight, startXLeft, startYLeft, startIntensity;
+let startX, startY, startIntensity;
 
 let openWindow = 0;
 let currentWindow = 0;
