@@ -2,14 +2,29 @@ Backlog:
 - Rotation should move 
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - color mask
+- shrink text at small resolution
+- buttons for qa and hw
+
+
+revealjs
+videojs
+
+input pprt vidoe and timestamps with above
 
 Bugs: 
 - on github hosting alignment box expands windows
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
+- r3 and l3 non responsinve 
+- nanoprobe microprobe buttons don't change colors
+- feg register filler too short on laptop
+
 
 TODO:
+- create buttons for l 1,2 and r 1, 2 
 - new aws accoutn 
+- add nanolabsim like window
+- focus functions 
 
 Doing:
 - qa, examples, hw boxes add -- assigned to minh
