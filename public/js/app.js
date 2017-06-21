@@ -2,7 +2,7 @@
 
 
 $("img[usemap]").rwdImageMaps();
-let currentWindow = 0;
+
 //when the html is all loaded it will call all the relevant javascript functions
 $(document).ready(function(event) {
   pageSetup();

@@ -43,7 +43,7 @@ let microscopeControllers = function(){
   };
 
   $('#buttonl3').on('click', function(event){
-    if (currenttab == 1){
+    if (currentTab == 1){
       let value = beamslider.val();
       --value;
       beamslider.val(value);
@@ -52,7 +52,7 @@ let microscopeControllers = function(){
   });
 
   $('#buttonr3').on('click', function(event){
-    if (currenttab == 1){
+    if (currentTab == 1){
       let value = beamslider.val();
       ++value;
       beamslider.val(value);
