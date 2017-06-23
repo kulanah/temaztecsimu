@@ -12,9 +12,6 @@ let microscopeControllers = function(){
     let deltaY = event.clientY - startY;
 
     return [deltaX, deltaY];
-    /*
-      function shoudl output the delta of the x and y to the calling function possibly with a json object (?)
-    */
   };
 
   let mousemovetemplate = function(event){
@@ -22,6 +19,13 @@ let microscopeControllers = function(){
     setStartXY();
     moveImage(2 * deltas[1], 2 * deltas[0], targetID);
   };
+
+  let mousefocustemplate = function(event){
+    let deltas = handleDrag(event);
+
+    setStartXY();
+    shiftFocus(deltas[1], targetID);  
+  }
 
   let setStartXY = function(){
     startX = event.clientX;
@@ -31,6 +35,7 @@ let microscopeControllers = function(){
   let mouseuptemplate = function(event){
     $('body')[0].removeEventListener('mousemove', mousemovetemplate);
     $('body')[0].removeEventListener('mousemove', mousedowntemplateintensity);
+    $('body')[0].removeEventListener('mousemove', mousefocustemplate);
   };
   
   let mousedowntemplateintensity = function(event){
@@ -40,6 +45,14 @@ let microscopeControllers = function(){
 
     changeIntensity(deltaIntensity);
   };
+
+  $('#buttonfocus').mousedown(function(event){
+    targetID = event.target.id;
+    setStartXY();
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mousemove', mousefocustemplate);
+  });
 
   $('#buttonl3').on('click', function(event){
     if (currentTab == 1){

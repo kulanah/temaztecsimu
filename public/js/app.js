@@ -13,13 +13,13 @@ $(document).ready(function(event) {
 let parseSelector = function(target){
   let selector;
   if (openWindow == 0){
-    if (target == 'buttonrollerr'){
+    if (target == 'buttonrollerr' || target == 'buttonfocus'){
       selector = $('#openboximage');
-    } else {
+    } else if (target == 'buttonrollerl') {
       selector = $('#openboxmask')
-    }
+    }  
   } else {
-    if (target == 'buttonrollerr'){
+    if (target == 'buttonrollerr' || target == 'buttonfocus'){
       selector = $('#temimage');
     } else {
       selector = $('#temmask');
@@ -100,6 +100,19 @@ let handleMessage = function(message){
   let lesson = message.data[1];
   let part = message.data[2];
   updateBox(lesson, part, box);
+};
+
+let shiftFocus = function(delta, target){
+  let selector = parseSelector(target);
+  let prevVal = selector.css('filter');
+  prevVal = prevVal.replace(/[^0-9.]+/g, '');
+  prevVal = parseFloat(prevVal);
+  if (prevVal == 'none'){
+    selector.css('filter', 'blur(0.01px)');
+  }
+  let newVal = prevVal + delta;
+
+  selector.css('filter', 'blur(' + newVal + 'px)');
 }
 
 window.addEventListener('message', handleMessage, false);
