@@ -38,21 +38,6 @@ let moveImage = function(deltax, deltay, target){
   element.offset({top: topVal, left: leftVal});
 };
 
-//from lcontroller roller
-let moveMask = function(deltax, deltay){
-  let element;
-  if (openWindow == 1){
-    element = $('#temmask');
-  } else {
-    element = $('#openboximage');
-  }
-  let topVal = element.offset().top + deltax;
-  let leftVal = element.offset().left + deltay;
-
-  element.offset({top: topVal, left: leftVal});
-};
-
-
 //this is called when the intensity button on the control panel is pressed.
 //TODO: Add context awareness to allow it to control different elements
 let changeIntensity = function(delta){
