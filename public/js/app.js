@@ -91,10 +91,11 @@ let shiftFocus = function(delta, target){
   let selector = parseSelector(target);
   let prevVal = selector.css('filter');
   prevVal = prevVal.replace(/[^0-9.]+/g, '');
-  prevVal = parseFloat(prevVal);
-  if (prevVal == 'none'){
+  console.log(prevVal);
+  if (prevVal == ''){
     selector.css('filter', 'blur(0.01px)');
   }
+  prevVal = parseFloat(prevVal);
   let newVal = prevVal + delta;
 
   selector.css('filter', 'blur(' + newVal + 'px)');

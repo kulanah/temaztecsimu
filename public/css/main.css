@@ -36,7 +36,6 @@ body{
   width: 60vw;
   top: 7vh;
   left: 34vw;
-  filter: blur(0.1px);
 }
 
 #temmask{
@@ -58,17 +57,6 @@ body{
   height: 11.8vh;
   overflow-x: hidden;
   overflow-y: scroll;
-}
-
-#openboximage{
-  position: absolute;
-  z-index: -1; 
-  top: 2.5vh;
-  left: 0.3vw;
-  max-width: 28.2vw;
-  max-height: 51.5vh;
-  width: 28.2vw;
-  height: 51.5vh;
 }
 
 .hidden{

@@ -37,7 +37,7 @@
   max-width: 28.7vw;
   max-height: 54.3vh;
   overflow: hidden;
-  background-color: grey;
+  background-color: white;
 }
 
 #openfiledialogue{
@@ -50,4 +50,15 @@
   position: absolute;
   top: 9vh;
   left: 15vw;
+}
+
+#openboximage{
+  position: absolute;
+  z-index: -1; 
+  top: 2.5vh;
+  left: 0.3vw;
+  max-width: 28.2vw;
+  max-height: 51.5vh;
+  width: 28.2vw;
+  height: 51.5vh;
 }
