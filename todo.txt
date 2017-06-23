@@ -30,7 +30,6 @@ TODO:
 - add nanolabsim like window
 
 Doing:
-- nanoprobe microprobe buttons don't change colors
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
@@ -43,6 +42,7 @@ Need Clarification:
 
 Done:
 - focus functions 
+- nanoprobe microprobe buttons don't change colors
 - create separate function for handling sliders for intensity and focus
 - create buttons for l 1,2 and r 1, 2 
 - turbo button given on/off state
