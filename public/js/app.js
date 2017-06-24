@@ -93,19 +93,20 @@ let stripChars = function(string){
 
 let shiftFocus = function(delta, target){
   let selector = parseSelector(target);
-  let prevVal = selector.css('filter');
+  let imagePrevVal = selector.css('filter');
   let newVal = 0;
+  
+  let maskSelector = parseSelector('mask');
+  let maskPrevVal = selector.css('filter');
 
-  console.log(prevVal);
-  console.log(delta);
-
-  prevVal = stripChars(prevVal);
-  if (prevVal == ''){
+  imagePrevVal = stripChars(imagePrevVal);
+  maskPrevVal = stripChars(maskPrevVal);
+  if (imagePrevVal == ''){
     selector.css('filter', 'blur(0.0px)');
-  }
-
+    maskSelector.css('filter', 'blur(0.0px)');
+  } 
+  if (imagePrevVal == 0){
   //flips direction we're going
-  if (prevVal == 0){
     focusUp = !focusUp;
   }
 
@@ -114,10 +115,12 @@ let shiftFocus = function(delta, target){
   }
 
 
-  prevVal = parseFloat(prevVal);
-  if (prevVal + delta <= 280){
-    newVal = prevVal + (delta);
+  imagePrevVal = parseFloat(imagePrevVal);
+  maskPrevVal = parseFloat(maskPrevVal);
+  if (imagePrevVal + delta <= 280){
+    newVal = imagePrevVal + (delta/50);
     selector.css('filter', 'blur(' + newVal + 'px)');
+    maskSelector.css('filter', 'blur(' + newVal + 'px)');
   }
 }
 
