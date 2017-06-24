@@ -19,12 +19,12 @@ use js page with embeded youtube link with buttons that link to specific times i
 Bugs: 
 - on github hosting alignment box expands windows
 - when intesnsity hits 0 going up wont change anything
-- openbox in window 1 size changes because it's currently set to VW/VH, switch this to static values
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
 - feg register filler too short on laptop
 - rounding error in FEG Control mewA
 - magnification moves center of mask 
+- intensity is a hto mess on window 0
 
 
 TODO:
@@ -42,6 +42,7 @@ Need Clarification:
 - tem image + analysis should open STEM files root
 
 Done:
+- openbox in window 1 size changes because it's currently set to VW/VH, switch this to static values
 - focus doesn't affect mask as it should
 - when blur hits 0 going up wont change anything
 - focus hits critical point where it drags teh whole page to a crawl 
