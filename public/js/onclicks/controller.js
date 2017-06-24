@@ -3,6 +3,7 @@
 let zoomLevels = [0.25, 0.50, 1.0, 2.0, 4.0];
 let currentZoom = 2;
 let targetID;
+let focusUp = true;
 
 
 let microscopeControllers = function(){

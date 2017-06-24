@@ -87,18 +87,38 @@ let handleMessage = function(message){
   updateBox(lesson, part, box);
 };
 
+let stripChars = function(string){
+  return string.replace(/[^0-9.]+/g, '');
+}
+
 let shiftFocus = function(delta, target){
   let selector = parseSelector(target);
   let prevVal = selector.css('filter');
-  prevVal = prevVal.replace(/[^0-9.]+/g, '');
-  console.log(prevVal);
-  if (prevVal == ''){
-    selector.css('filter', 'blur(0.01px)');
-  }
-  prevVal = parseFloat(prevVal);
-  let newVal = prevVal + delta;
+  let newVal = 0;
 
-  selector.css('filter', 'blur(' + newVal + 'px)');
+  console.log(prevVal);
+  console.log(delta);
+
+  prevVal = stripChars(prevVal);
+  if (prevVal == ''){
+    selector.css('filter', 'blur(0.0px)');
+  }
+
+  //flips direction we're going
+  if (prevVal == 0){
+    focusUp = !focusUp;
+  }
+
+  if (focusUp){
+    delta = -delta;
+  }
+
+
+  prevVal = parseFloat(prevVal);
+  if (prevVal + delta <= 280){
+    newVal = prevVal + (delta);
+    selector.css('filter', 'blur(' + newVal + 'px)');
+  }
 }
 
 window.addEventListener('message', handleMessage, false);

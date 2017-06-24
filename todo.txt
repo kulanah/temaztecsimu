@@ -24,12 +24,14 @@ Bugs:
 - feg register filler too short on laptop
 - rounding error in FEG Control mewA
 - magnification moves center of mask 
+- when blur hits 0 going up wont change anything
 
 
 TODO:
 - add nanolabsim like window
 
 Doing:
+- focus hits critical point where it drags teh whole page to a crawl 
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
