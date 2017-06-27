@@ -62,3 +62,20 @@
   width: 28.2vw;
   height: 51.5vh;
 }
+
+#basesetup{
+  position: absolute;
+  z-index: 0;
+  top: 11vh;
+  left: 28vw;
+  max-width: 518px;
+  max-height: 537px;
+  background-color: white;
+}
+
+#setupcrosshair{
+  position: absolute; 
+  width: 518px;
+  height: 537px;
+  z-index: 1;
+}

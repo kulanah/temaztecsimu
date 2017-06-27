@@ -123,6 +123,8 @@ let microscopeControllers = function(){
     let width = selector.width();
     let topVal = selector.offset().top;
     let leftVal = selector.offset().left;
+    let deltaX;
+    let deltaY;
 
     let centerX = width / 2 + leftVal;
     let centerY = height / 2 + topVal;
@@ -142,12 +144,24 @@ let microscopeControllers = function(){
         left: leftVal
       });
     } else {
+
+      /*
+        take xy of screen
+        divide screenxy / 2
+        find where in the image that point is,
+        force that to be center after zooming
+        ???
+        profit
+      */
+      let newWidth = selector.width() * 2;
       let newHeight = selector.height() * 2;
-      selector.width(selector.width() * 2);
+      deltaX = width - newWidth / 2;
+      deltaY = height - newHeight / 2;
+      selector.width(newWidth);
       selector.height(newHeight);
 
-      topVal -= height * .5;
-      leftVal -= width * .5;
+      topVal -= deltaY;
+      leftVal -= deltaX;
 
       selector.offset({
         top: topVal,

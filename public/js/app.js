@@ -39,7 +39,6 @@ let moveImage = function(deltax, deltay, target){
 };
 
 //this is called when the intensity button on the control panel is pressed.
-//TODO: Add context awareness to allow it to control different elements
 let changeIntensity = function(delta){
   let element;
   if (openWindow == 1){

@@ -67,4 +67,8 @@ let mainScreen = function(){
     $('#openbox').hide();
     $('#openboximage').hide();
   });
+
+  $('#setupboxxbox').on('click', function(event){
+    $('#basesetup').hide();
+  });
 };
