@@ -29,17 +29,6 @@
   left: 60vw;
 }
 
-#openbox{
-  position: absolute;
-  z-index: 0;
-  top: 11vh;
-  left: 28vw;
-  max-width: 518px;
-  max-height: 537px;
-  overflow: hidden;
-  background-color: white;
-}
-
 #openfiledialogue{
   position: absolute;
   top: 22vh;
@@ -50,6 +39,17 @@
   position: absolute;
   top: 9vh;
   left: 15vw;
+}
+
+#openbox{
+  position: absolute;
+  z-index: 0;
+  top: 11vh;
+  left: 28vw;
+  max-width: 518px;
+  max-height: 537px;
+  overflow: hidden;
+  background-color: white;
 }
 
 #openboximage{
@@ -65,7 +65,6 @@
 
 #basesetup{
   position: absolute;
-  z-index: 0;
   top: 11vh;
   left: 28vw;
   max-width: 518px;
@@ -73,9 +72,15 @@
   background-color: white;
 }
 
+#basesetupbox{
+  z-index: 0;
+}
+
 #setupcrosshair{
   position: absolute; 
-  width: 518px;
-  height: 537px;
+  top: 22px;
+  left: 5px;
+  width: 506px;
+  height: 512px;
   z-index: 1;
 }
