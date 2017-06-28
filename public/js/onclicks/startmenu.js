@@ -43,5 +43,14 @@ let startMenu = function(){
     } else {
       element.show();
     }
-  })
+  });
+
+  $('#microsetup').on('click', function(event){
+    if (openWindow = 1){
+      $('#micrographstart').trigger('click');
+      $('#basesetup').show();
+    } else {
+      $('#basesetup').show();
+    }
+  });
 };

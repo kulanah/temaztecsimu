@@ -5,6 +5,8 @@ Backlog:
 - shrink text at small resolution
 - buttons for qa and hw
 - new aws accoutn 
+- add window switch function
+- make classes or some kind of parent organization for subsets of page
 
 
 revealjs

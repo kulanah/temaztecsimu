@@ -3,7 +3,7 @@
 
 'use strict';
 
-let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 'openbox'];
+let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 'openbox', 'basesetup'];
 
 let beamslider; 
 

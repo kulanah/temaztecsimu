@@ -78,6 +78,22 @@ let updateBox = function(lesson, part, box){
   $(box).attr('data', urlString);
 };
 
+/*let switchWindow = function(windowNum){
+  if (openWindow == windowNum){
+    console.log('siwtch target is current window');
+  } else {
+    //possibly give an open window object with array of background images and maps?  
+    // or just make a really ugly switch statement
+  }
+  $('#mainimage').attr('src', './public/img/tia.png');
+  $('#temmask').show();
+  $('#temimage').show();
+  $('#openbox').hide();
+  $('#mainimage').css('background-color', 'transparent');
+
+
+  openWindow = windowNum;
+};*/
 
 let handleMessage = function(message){
   let box = message.data[0];
