@@ -30,7 +30,6 @@ Bugs:
 
 
 TODO:
-- add nanolabsim like window
 
 Doing:
 - qa, examples, hw boxes add -- assigned to minh
@@ -44,6 +43,7 @@ Need Clarification:
 - tem image + analysis should open STEM files root
 
 Done:
+- add nanolabsim like window
 - openbox in window 1 size changes because it's currently set to VW/VH, switch this to static values
 - focus doesn't affect mask as it should
 - when blur hits 0 going up wont change anything
