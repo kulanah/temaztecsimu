@@ -36,13 +36,14 @@ Doing:
 - better documentation
 
 Need Clarification:
+- can't control different windows in first screen, we can either make a manual selector or let it be the last one interacted with, or only show one at a time.
 - turbo button should noise(???) on ativation
 - expand alignment help box data to include all data (do we care?)
-- focus button which should have very small changes (???) 
 - digital micrograph should open TEM files root name
 - tem image + analysis should open STEM files root
 
 Done:
+- focus button which should have very small changes (???) 
 - add nanolabsim like window
 - openbox in window 1 size changes because it's currently set to VW/VH, switch this to static values
 - focus doesn't affect mask as it should
