@@ -7,13 +7,13 @@
   
 #controlsLeft{
   position: absolute;
-  top: 66.7vh;
+  bottom: 3vh;
   left: 0;
 }
 
 #controlsRight{
   position: absolute;
-  top: 66.7vh;
+  bottom: 3vh;
   right: 0;
 }
 
