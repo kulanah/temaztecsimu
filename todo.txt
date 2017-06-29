@@ -27,6 +27,7 @@ Bugs:
 - rounding error in FEG Control mewA
 - magnification moves center of mask 
 - intensity is a hto mess on window 0
+- on aws downloads my object instead of displaying it
 
 
 TODO:
