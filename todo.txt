@@ -23,9 +23,7 @@ Bugs:
 - when intesnsity hits 0 going up wont change anything
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
-- feg register filler too short on laptop
 - rounding error in FEG Control mewA
-- magnification moves center of mask 
 - intensity is a hto mess on window 0
 - on aws downloads my object instead of displaying it
 
@@ -33,6 +31,7 @@ Bugs:
 TODO:
 
 Doing:
+- magnification moves center of mask 
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
@@ -44,6 +43,7 @@ Need Clarification:
 - tem image + analysis should open STEM files root
 
 Done:
+- feg register filler too short on laptop
 - focus button which should have very small changes (???) 
 - add nanolabsim like window
 - openbox in window 1 size changes because it's currently set to VW/VH, switch this to static values

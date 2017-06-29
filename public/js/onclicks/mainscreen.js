@@ -71,4 +71,11 @@ let mainScreen = function(){
   $('#setupboxxbox').on('click', function(event){
     $('#basesetup').hide();
   });
+
+  /*
+    beamshift ideas.
+    1)
+      create circle params (center, radius)
+      place center of beam at various points on radius
+  */
 };
