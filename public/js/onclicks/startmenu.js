@@ -25,7 +25,8 @@ let startMenu = function(){
     $('#temimage').show();
     $('#openbox').hide();
     $('#mainimage').css('background-color', 'transparent');
-
+    $('#microscopeimage').show();
+    $('#basesetup').hide();
   });
 
   $('#micrographstart').on('click', function(event){
@@ -34,6 +35,7 @@ let startMenu = function(){
     $('#temmask').hide();
     $('#temimage').hide();
     $('#mainimage').css('background-color', 'grey');
+    $('#microscopeimage').hide();
   });
 
   $('#filtercontrol').on('click', function(event){
