@@ -51,7 +51,7 @@ let mainScreen = function(){
   $('#imagefile').on('click', function(event){
     $('#openfiledialogue').hide();
     $('#openbox').show();
-    $('#openboximage').show();
+    drawCanvases();
   });
 
   $('#filtercontrolclosebox').on('click', function(event){

@@ -29,6 +29,8 @@ Bugs:
 - when intensity gets too low mask becomes too small, need to make it reverseable ALA focus 
 
 TODO:
+  CANVAS:
+    - make drawCanvases() general (take arguments, apply it to all canvases)
 
 Doing:
 - magnification moves center of mask 

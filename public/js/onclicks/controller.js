@@ -102,83 +102,25 @@ let microscopeControllers = function(){
     if (openWindow == 1){
       mask = $('#temmask');
       image = $('#temimage');
-    zoom(mask);
     } else {
       mask = $('#openboxmask');
       image = $('#openboximage');
     }
-    zoom(image);
 
     if (currentZoom == 4){
       currentZoom = 0;
     } else {
       ++currentZoom;
     }
+    zoom(mask);
+    zoom(image);
   });
 
   let zoom = function(selector){
-    //TODO: force background image to keep centered in viewport
-
-    let height = selector.height();
-    let width = selector.width();
-    let topVal = selector.offset().top;
-    let leftVal = selector.offset().left;
-    let deltaX;
-    let deltaY;
-
-    let centerX = width / 2 + leftVal;
-    let centerY = height / 2 + topVal;
-
-    // console.log(currentZoom);
-    console.log('Starting vals:\nHeight: ' + height +'\nWidth: ' + width + '\ntopVal: ' + topVal + '\nleftVal: ' + leftVal);
-    console.log('center is horizontally ' + centerX + ' and vertically ' + centerY);
-    if(currentZoom == 4){
-      selector.width(selector.width() / 16);
-      selector.height(selector.height() / 16);
-
-      topVal += height / 2 - selector.height() / 2;
-      leftVal += width / 2 - selector.width() / 2;
-
-      selector.offset({
-        top: topVal,
-        left: leftVal
-      });
-    } else {
-
-      /*
-        take xy of screen
-        divide screenxy / 2
-        find where in the image that point is,
-        force that to be center after zooming
-        ???
-        profit
-      */
-      let newWidth = selector.width() * 2;
-      let newHeight = selector.height() * 2;
-      deltaX = width - newWidth / 2;
-      deltaY = height - newHeight / 2;
-      selector.width(newWidth);
-      selector.height(newHeight);
-
-      topVal -= deltaY;
-      leftVal -= deltaX;
-
-      selector.offset({
-        top: topVal,
-        left: leftVal
-      });
-    }
-
-    height = selector.height();
-    width = selector.width();
-    console.log('Ending vals:\nHeight: ' + selector.height() + '\nWidth: ' + selector.width() + '\ntopVal: ' + topVal + '\nleftVal:' + leftVal);
-    centerX = width / 2 + leftVal;
-    centerY = height / 2 + topVal;
-    console.log('center is horizontally ' + centerX + ' and vertically ' + centerY);
+    // console.log(selector);
+    // selector.scaleCanvas({
+    //   scale: 3,
+    // });
   };
 };
 
-
-
-
-//var removedText = self.val().replace(/[^0-9.,]+/, '');
