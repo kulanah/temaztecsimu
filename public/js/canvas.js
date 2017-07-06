@@ -41,7 +41,7 @@ class Canvas {
 
     this.context.clearRect(0,0,900,900);
 
-    // this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
+    this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
 
     this.context.beginPath();
     this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
