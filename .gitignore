@@ -1,1 +1,3 @@
-./public/images/placeholders
+/public/images/placeholders/
+.vscode/
+/public/img/Thumbs.db
