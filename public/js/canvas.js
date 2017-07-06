@@ -53,7 +53,7 @@ class Canvas {
   };
 
   zoom(){
-    if (this.mag == 4){
+    if (this.mag == zooms.length){
       this.mag = 0;
     } else {
       ++this.mag;
