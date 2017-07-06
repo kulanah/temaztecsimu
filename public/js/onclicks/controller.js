@@ -97,23 +97,13 @@ let microscopeControllers = function(){
   });
 
   $('#buttonmagnification').on('click', function(event){
-    let mask;
-    let image;
+    let canvas;
     if (openWindow == 1){
-      mask = $('#temmask');
-      image = $('#temimage');
+      //TODO: Insert window 1 class anem here
     } else {
-      mask = $('#openboxmask');
-      image = $('#openboximage');
+      openbox.zoom();
     }
 
-    if (currentZoom == 4){
-      currentZoom = 0;
-    } else {
-      ++currentZoom;
-    }
-    zoom(mask);
-    zoom(image);
   });
 
   let zoom = function(selector){
