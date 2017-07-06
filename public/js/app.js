@@ -3,6 +3,9 @@
 
 $("img[usemap]").rwdImageMaps();
 
+
+// let openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas');
+
 //when the html is all loaded it will call all the relevant javascript functions
 $(document).ready(function(event) {
   pageSetup();
