@@ -5,10 +5,10 @@ let contextVar;
 
 class Canvas {
   constructor(source, cssID){
+    contextVar = this;
+
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
-
-    contextVar = this;
 
     this.img = new Image;
     this.img.src = source;
@@ -16,9 +16,10 @@ class Canvas {
     this.imgY = 0;
 
     this.img.onload = function(){
-      console.log(this);
       contextVar.setMaskXYR();
     };
+
+    this.focusUp = true;
 
     this.maskX = 0;
     this.maskY = 0;
@@ -62,4 +63,34 @@ class Canvas {
     this.drawCanvas();
   };
 
+  focus(delta){
+    let oldBlur = this.stripChars(this.selector.css('filter'));
+    if (oldBlur == ''){
+      this.selector.css('filter', 'blur(0.0px)');
+    }
+
+    oldBlur = parseFloat(oldBlur);
+
+    if (oldBlur == 0){
+      focusUp = !focusUp;
+    };
+
+    if (focusUp){
+      delta = -delta;
+    }
+
+    //stops the blur from getting too intense, this prevents slowdown
+    if (oldBlur + delta <= 40){
+      let newBlur = oldBlur + delta / 40;
+      console.log(newBlur);
+      this.selector.css('filter', 'blur( ' + newBlur + 'px)');
+    }
+
+    this.drawCanvas();
+  };
+
+  
+  stripChars(string){
+    return string.replace(/[^0-9.]+/g, '');
+  }
 };

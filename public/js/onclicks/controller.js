@@ -97,20 +97,12 @@ let microscopeControllers = function(){
   });
 
   $('#buttonmagnification').on('click', function(event){
-    let canvas;
     if (openWindow == 1){
       //TODO: Insert window 1 class anem here
     } else {
       openbox.zoom();
     }
-
   });
 
-  let zoom = function(selector){
-    // console.log(selector);
-    // selector.scaleCanvas({
-    //   scale: 3,
-    // });
-  };
 };
 

@@ -3,9 +3,11 @@
 
 $("img[usemap]").rwdImageMaps();
 
+let canvasClasses = [];
+
+const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas'); 
 
 // let openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas');
-
 //when the html is all loaded it will call all the relevant javascript functions
 $(document).ready(function(event) {
   pageSetup();
@@ -14,10 +16,10 @@ $(document).ready(function(event) {
 });
 
 let parseSelector = function(target){
-  let selector;
+  let currentClass; 
   if (openWindow == 0){
     if (target == 'buttonrollerr' || target == 'buttonfocus'){
-      selector = $('#openboximage');
+      // currentClass = 
     } else if (target == 'buttonrollerl') {
       selector = $('#openboxmask')
     }  
@@ -105,15 +107,21 @@ let handleMessage = function(message){
   updateBox(lesson, part, box);
 };
 
-let stripChars = function(string){
-  return string.replace(/[^0-9.]+/g, '');
-}
 
 let shiftFocus = function(delta, target){
+  if (openWindow == 0){
+    openbox.focus(delta);
+  } else {
+    //TODO: otherClass.setfocus();
+  }
+
+  /*
+  //TODO:  Fix this selector function
   let selector = parseSelector(target);
   let imagePrevVal = selector.css('filter');
   let newVal = 0;
   
+  //TODO:  Remove this and the associated vars
   let maskSelector = parseSelector('mask');
   let maskPrevVal = selector.css('filter');
 
@@ -140,6 +148,8 @@ let shiftFocus = function(delta, target){
     selector.css('filter', 'blur(' + newVal + 'px)');
     maskSelector.css('filter', 'blur(' + newVal + 'px)');
   }
+  */
+
 }
 
 window.addEventListener('message', handleMessage, false);
