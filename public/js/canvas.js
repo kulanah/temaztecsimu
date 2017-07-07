@@ -27,6 +27,8 @@ class Canvas {
 
     this.mag = 2;
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
+
+    this.startTarget;
   };
 
   setDimensions(){
@@ -108,7 +110,24 @@ class Canvas {
 
   changeIntensity(delta){
     this.maskR *= delta;
+
     this.drawCanvas();
   };
 
+  moveImage(deltaX, deltaY){
+    console.log(this.startTarget);
+    if (this.startTarget == 'buttonrollerl'){
+      this.maskX += deltaX;
+      this.maskY += deltaY;
+    } else {
+      this.imgX += deltaX;
+      this.imgY += deltaY;
+    }
+
+    this.drawCanvas();
+  };
+
+  setTarget(target){
+    this.startTarget = target;
+  }
 };

@@ -18,7 +18,7 @@ let microscopeControllers = function(){
   let mousemovetemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
-    moveImage(2 * deltas[1], 2 * deltas[0], targetID);
+    moveImage(2 * deltas[0], 2 * deltas[1], event.target);
   };
 
   let mousefocustemplate = function(event){
@@ -48,7 +48,6 @@ let microscopeControllers = function(){
   };
 
   $('#buttonfocus').mousedown(function(event){
-    targetID = event.target.id;
     setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
@@ -74,7 +73,11 @@ let microscopeControllers = function(){
   });
 
   $('#buttonrollerr').mousedown(function(event){
-    targetID = event.target.id;
+    if (openWindow == 0){
+    openbox.setTarget(event.target.id);
+    } else{
+      //TODO: set target as other class
+    }
     setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
@@ -82,7 +85,11 @@ let microscopeControllers = function(){
   });
 
   $('#buttonrollerl').mousedown(function(event){
-    targetID = event.target.id;
+    if (openWindow == 0){
+    openbox.setTarget(event.target.id);
+    } else{
+      //TODO: set target as other class
+    }
     setStartXY();
     
     $('body')[0].addEventListener('mouseup', mouseuptemplate);

@@ -16,11 +16,7 @@ $(document).ready(function(event) {
 });
 
 let moveImage = function(deltax, deltay, target){
-  let element = parseSelector(target);
-  let topVal = element.offset().top + deltax;
-  let leftVal = element.offset().left + deltay;
-
-  element.offset({top: topVal, left: leftVal});
+  openbox.moveImage(deltax, deltay);
 };
 
 //this is called when the intensity button on the control panel is pressed.
