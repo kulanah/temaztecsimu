@@ -71,7 +71,9 @@ class Canvas {
 
     oldBlur = parseFloat(oldBlur);
 
-    if (oldBlur == 0){
+    if (oldBlur < 0.25 && oldBlur > 0 ){
+      focusUp = !focusUp;
+    } else if(oldBlur > -0.25 && oldBlur < 0){
       focusUp = !focusUp;
     };
 
@@ -82,14 +84,12 @@ class Canvas {
     //stops the blur from getting too intense, this prevents slowdown
     if (oldBlur + delta <= 40){
       let newBlur = oldBlur + delta / 40;
-      console.log(newBlur);
       this.selector.css('filter', 'blur( ' + newBlur + 'px)');
     }
 
     this.drawCanvas();
   };
 
-  
   stripChars(string){
     return string.replace(/[^0-9.]+/g, '');
   }

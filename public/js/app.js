@@ -15,26 +15,6 @@ $(document).ready(function(event) {
   startTime();
 });
 
-let parseSelector = function(target){
-  let currentClass; 
-  if (openWindow == 0){
-    if (target == 'buttonrollerr' || target == 'buttonfocus'){
-      // currentClass = 
-    } else if (target == 'buttonrollerl') {
-      selector = $('#openboxmask')
-    }  
-  } else {
-    if (target == 'buttonrollerr' || target == 'buttonfocus'){
-      selector = $('#temimage');
-    } else {
-      selector = $('#temmask');
-    }
-  }
-
-  return selector;
-};
-
-//from rcontroller roller
 let moveImage = function(deltax, deltay, target){
   let element = parseSelector(target);
   let topVal = element.offset().top + deltax;
@@ -114,42 +94,6 @@ let shiftFocus = function(delta, target){
   } else {
     //TODO: otherClass.setfocus();
   }
-
-  /*
-  //TODO:  Fix this selector function
-  let selector = parseSelector(target);
-  let imagePrevVal = selector.css('filter');
-  let newVal = 0;
-  
-  //TODO:  Remove this and the associated vars
-  let maskSelector = parseSelector('mask');
-  let maskPrevVal = selector.css('filter');
-
-  imagePrevVal = stripChars(imagePrevVal);
-  maskPrevVal = stripChars(maskPrevVal);
-  if (imagePrevVal == ''){
-    selector.css('filter', 'blur(0.0px)');
-    maskSelector.css('filter', 'blur(0.0px)');
-  } 
-  if (imagePrevVal == 0){
-  //flips direction we're going
-    focusUp = !focusUp;
-  }
-
-  if (focusUp){
-    delta = -delta;
-  }
-
-
-  imagePrevVal = parseFloat(imagePrevVal);
-  maskPrevVal = parseFloat(maskPrevVal);
-  if (imagePrevVal + delta <= 280){
-    newVal = imagePrevVal + (delta/50);
-    selector.css('filter', 'blur(' + newVal + 'px)');
-    maskSelector.css('filter', 'blur(' + newVal + 'px)');
-  }
-  */
-
-}
+};
 
 window.addEventListener('message', handleMessage, false);
