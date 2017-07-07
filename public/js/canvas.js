@@ -16,7 +16,7 @@ class Canvas {
     this.imgY = 0;
 
     this.img.onload = function(){
-      contextVar.setMaskXYR();
+      contextVar.setDimensions();
     };
 
     this.focusUp = true;
@@ -29,8 +29,10 @@ class Canvas {
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
   };
 
-  setMaskXYR(){
-    this.maskX = this.img.width / 2;
+  setDimensions(){
+    this.imgW = this.img.width;
+    this.imgH = this.img.height;
+    this.maskX = this.img.width / 2
     this.maskY = this.img.height / 2;
     this.maskR = this.img.width / 8;
   };
@@ -48,17 +50,27 @@ class Canvas {
     this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
     this.context.clip();
 
-    this.context.drawImage(this.img,this.imgX,this.imgY);
+    //s = source d = destination
+    //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
+    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+                          this.imgX,this.imgY,this.imgW,this.imgH);
 
     this.context.restore();
   };
 
   zoom(){
+    let zoomFactor
+    //TODO: figure out why this bugs out on first two zoom values, probably because they're < 1 and shirnking the image out of the viewport
     if (this.mag == this.zooms.length - 1){
+      zoomFactor = this.zooms[0] / this.zooms[this.mag];
       this.mag = 0;
     } else {
+      zoomFactor = this.zooms[this.mag + 1] / this.zooms[this.mag];
       ++this.mag;
     }
+
+    this.imgW *= zoomFactor;
+    this.imgH *= zoomFactor;
 
     this.drawCanvas();
   };
