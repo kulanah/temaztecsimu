@@ -25,29 +25,7 @@ let moveImage = function(deltax, deltay, target){
 
 //this is called when the intensity button on the control panel is pressed.
 let changeIntensity = function(delta){
-  let element;
-  if (openWindow == 1){
-    element = $('#temmask');
-  } else {
-    element = $('#openboximage');
-  }
-
-  let startW = element.width();
-  let startH = element.height();
-
-  let xMove = (1 - delta) * startW /2;
-  let yMove = (1 - delta) * startH /2;
-
-  element.width(startW * delta);
-  element.height(startH * delta);
-
-  let topVal = element.offset().top + yMove;
-  let leftVal = element.offset().left + xMove;
-
-  element.offset({
-    top: topVal,
-    left: leftVal
-  });
+  openbox.changeIntensity(delta);
 };
 
 let isVisible = function(name){

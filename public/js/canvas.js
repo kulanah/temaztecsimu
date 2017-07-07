@@ -104,5 +104,11 @@ class Canvas {
 
   stripChars(string){
     return string.replace(/[^0-9.]+/g, '');
-  }
+  };
+
+  changeIntensity(delta){
+    this.maskR *= delta;
+    this.drawCanvas();
+  };
+
 };
