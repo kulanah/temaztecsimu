@@ -45,6 +45,10 @@
             <area shape='rect' id='closedrop' coords='1410,879,1425,895' />
             <area shape='rect' id='startview' coords='78,236,139,257' />
           </map>
+          <div id='microscopeimage' class='hidden'>
+            <canvas id='mainmicroscopecanvas' width='1000' height='1000'/>
+            </canvas>
+          </div>
         </td>
       </tr>
       <tr>  
@@ -183,6 +187,7 @@
         <area shape='rect' id='fileopen' coords='1,19,170,35' />  
       </map>
     </div>
+
     <div id='openfiledialogue' class='hidden'>
       <img src='./public/img/fileopendialogue.png' usemap='#openfile' width='712' height='563'/>
       <map id='openfile' name='openfile'>
@@ -209,10 +214,6 @@
       </map>
     </div>
 
-    <div id='microscopeimage' class='hidden'>
-      <img src='./public/img/mask.svg' id='temmask' width='2000' height='2000'/>
-      <img src='./public/img/32.png' id='temimage' width='733' height='744'/>
-    </div>
 
     <!--class declarations-->
     <script src='./public/js/canvas.js'></script>
