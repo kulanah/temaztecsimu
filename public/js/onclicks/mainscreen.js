@@ -51,7 +51,6 @@ let mainScreen = function(){
   $('#imagefile').on('click', function(event){
     $('#openfiledialogue').hide();
     $('#openbox').show();
-    // drawCanvases();
     openbox.drawCanvas();
   });
 

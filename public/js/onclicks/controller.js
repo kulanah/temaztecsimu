@@ -74,9 +74,9 @@ let microscopeControllers = function(){
 
   $('#buttonrollerr').mousedown(function(event){
     if (openWindow == 0){
-    openbox.setTarget(event.target.id);
-    } else{
-      //TODO: set target as other class
+      openbox.setTarget(event.target.id);
+    } else {
+      mainmicro.setTarget(event.target.id);
     }
     setStartXY();
 
@@ -86,9 +86,9 @@ let microscopeControllers = function(){
 
   $('#buttonrollerl').mousedown(function(event){
     if (openWindow == 0){
-    openbox.setTarget(event.target.id);
-    } else{
-      //TODO: set target as other class
+      openbox.setTarget(event.target.id);
+    } else {
+      mainmicro.setTarget(event.target.id);
     }
     setStartXY();
     
@@ -105,7 +105,7 @@ let microscopeControllers = function(){
 
   $('#buttonmagnification').on('click', function(event){
     if (openWindow == 1){
-      //TODO: Insert window 1 class anem here
+      mainmicro.zoom();
     } else {
       openbox.zoom();
     }

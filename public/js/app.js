@@ -6,6 +6,7 @@ $("img[usemap]").rwdImageMaps();
 let canvasClasses = [];
 
 const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas'); 
+const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas');
 
 // let openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas');
 //when the html is all loaded it will call all the relevant javascript functions
@@ -16,12 +17,21 @@ $(document).ready(function(event) {
 });
 
 let moveImage = function(deltax, deltay, target){
-  openbox.moveImage(deltax, deltay);
+  if (openWindow == 0){
+    openbox.moveImage(deltax, deltay);
+  } else {
+    mainmicro.moveImage(deltax, deltay);
+  }
+
 };
 
 //this is called when the intensity button on the control panel is pressed.
 let changeIntensity = function(delta){
-  openbox.changeIntensity(delta);
+  if (openWindow == 0){
+    openbox.changeIntensity(delta);
+  } else {
+    mainmicro.changeIntensity(delta);
+  }
 };
 
 let isVisible = function(name){
@@ -66,7 +76,7 @@ let shiftFocus = function(delta, target){
   if (openWindow == 0){
     openbox.focus(delta);
   } else {
-    //TODO: otherClass.setfocus();
+    mainmicro.focus(delta);
   }
 };
 

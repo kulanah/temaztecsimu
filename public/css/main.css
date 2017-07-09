@@ -29,24 +29,6 @@ body{
   background-color: grey;
 }
 
-#temimage{
-  position: absolute;
-  z-index: -2;
-  height: 150vh;
-  width: 60vw;
-  top: 7vh;
-  left: 34vw;
-}
-
-#temmask{
-  position: absolute;
-  top: -155vh;
-  left: -148vw;
-  z-index: -1;
-  width: 400%;
-  height: 400%;
-}
-
 #alignmenthelp{
   position: absolute;
   top: 55.5vh;
@@ -61,4 +43,11 @@ body{
 
 .hidden{
   display: none;
+}
+
+#mainmicroscopecanvas{
+  position: absolute;
+  top: 7vh;
+  left: 14.28vw;
+  z-index: -1;
 }

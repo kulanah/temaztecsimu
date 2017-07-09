@@ -27,6 +27,7 @@ let startMenu = function(){
     $('#mainimage').css('background-color', 'transparent');
     $('#microscopeimage').show();
     $('#basesetup').hide();
+    mainmicro.drawCanvas();
   });
 
   $('#micrographstart').on('click', function(event){
