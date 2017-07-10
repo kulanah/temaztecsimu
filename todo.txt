@@ -25,6 +25,7 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
+- controller class rewrite
 - add row below windows UI with buttons for non windows functions(controls, column, setup window)
 - when intesnsity hits 0 going up wont change anything
 - when intensity gets too low mask becomes too small, need to make it reverseable ALA focus 
