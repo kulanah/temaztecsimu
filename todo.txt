@@ -8,7 +8,6 @@ Backlog:
 - add window switch function
 - make classes or some kind of parent organization for subsets of page
 
-
 revealjs
 videojs
 
@@ -20,14 +19,15 @@ use js page with embeded youtube link with buttons that link to specific times i
 
 Bugs: 
 - on github hosting alignment box expands windows
-- when intesnsity hits 0 going up wont change anything
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
 - rounding error in FEG Control mewA
 - on aws downloads my object instead of displaying it
-- when intensity gets too low mask becomes too small, need to make it reverseable ALA focus 
 
 TODO:
+- add row below windows UI with buttons for non windows functions(controls, column, setup window)
+- when intesnsity hits 0 going up wont change anything
+- when intensity gets too low mask becomes too small, need to make it reverseable ALA focus 
 
 Doing:
 - magnification moves center of mask 

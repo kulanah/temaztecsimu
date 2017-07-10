@@ -1,8 +1,5 @@
 'use strict';
 
-//this allows me to call an external function upon image load,  this could definitely be done bettter but I'm not sure how
-let contextVar;
-
 class Canvas {
   constructor(source, cssID){
     contextVar = this;
@@ -11,15 +8,13 @@ class Canvas {
     this.context = this.selector[0].getContext('2d');
 
     this.img = new Image;
+    this.img.parentThis = this;
     this.img.src = source;
     this.imgX = 0;
     this.imgY = 0;
 
-    this.img.onload = function(){
-      contextVar.setDimensions();
-    };
-
     this.focusUp = true;
+    this.intUp = true;
 
     this.maskX = 0;
     this.maskY = 0;
@@ -29,6 +24,10 @@ class Canvas {
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
 
     this.startTarget;
+
+    this.img.onload = function(){
+      this.parentThis.setDimensions();
+    };
   };
 
   setDimensions(){
@@ -109,6 +108,16 @@ class Canvas {
   };
 
   changeIntensity(delta){
+    // if (this.maskR < 5 && this.maskR > 0 ){
+    //   intUp = !intUp;
+    // } else if(this.maskR > -5 && this.maskR < 0){
+    //   intUp = !intUp;
+    // };
+
+    // if (focusUp){
+    //   delta = -delta;
+    // }
+
     this.maskR *= delta;
 
     this.drawCanvas();
