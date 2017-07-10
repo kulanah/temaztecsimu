@@ -6,10 +6,12 @@ class Canvas {
     this.context = this.selector[0].getContext('2d');
 
     this.img = new Image;
-    this.img.parentThis = this;
     this.img.src = source;
     this.imgX = 0;
     this.imgY = 0;
+
+    //use this to give the onload function access to the setDimensions method
+    this.img.parentThis = this;
 
     this.focusUp = true;
     this.intUp = true;
@@ -106,17 +108,19 @@ class Canvas {
   };
 
   changeIntensity(delta){
-    // if (this.maskR < 5 && this.maskR > 0 ){
-    //   intUp = !intUp;
-    // } else if(this.maskR > -5 && this.maskR < 0){
-    //   intUp = !intUp;
-    // };
+    delta = delta - 1;
 
-    // if (focusUp){
-    //   delta = -delta;
-    // }
+    if (this.maskR < 5 && this.maskR > 0 ){
+      this.intUp = !this.intUp;
+    } else if(this.maskR > -5 && this.maskR < 0){
+      this.intUp = !this.intUp;
+    };
 
-    this.maskR *= delta;
+    if (this.intUp){
+      delta = -delta;
+    }
+
+    this.maskR = this.maskR + (this.maskR * delta);
 
     this.drawCanvas();
   };
