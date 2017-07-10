@@ -115,7 +115,6 @@ class Canvas {
   };
 
   moveImage(deltaX, deltaY){
-    console.log(this.startTarget);
     if (this.startTarget == 'buttonrollerl'){
       this.maskX += deltaX;
       this.maskY += deltaY;

@@ -24,7 +24,6 @@ Bugs:
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
 - rounding error in FEG Control mewA
-- intensity is a hto mess on window 0
 - on aws downloads my object instead of displaying it
 - when intensity gets too low mask becomes too small, need to make it reverseable ALA focus 
 
@@ -32,7 +31,6 @@ TODO:
 
 Doing:
 - magnification moves center of mask 
-  - siwthc to canvas
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
@@ -44,6 +42,8 @@ Need Clarification:
 - tem image + analysis should open STEM files root
 
 Done:
+- intensity is a hto mess on window 0
+- siwthc to canvas
 - feg register filler too short on laptop
 - focus button which should have very small changes (???) 
 - add nanolabsim like window
