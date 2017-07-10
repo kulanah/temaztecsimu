@@ -2,8 +2,6 @@
 
 class Canvas {
   constructor(source, cssID){
-    contextVar = this;
-
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
