@@ -2,7 +2,7 @@
 
 let startMenu = function(){
 
-  $('#controls').on('click', function(){
+  $('#controlbtn').on('click', function(){
     if (isVisible('microControls')){
       $('#microControls').hide();
     } else {
@@ -10,7 +10,7 @@ let startMenu = function(){
     }
   });
 
-  $('#graph').on('click', function(){
+  $('#columnbtn').on('click', function(){
     if(isVisible('microscopeGraph')){
       $('#microscopeGraph').hide();
     } else{
@@ -48,10 +48,15 @@ let startMenu = function(){
     }
   });
 
-  $('#microsetup').on('click', function(event){
+  $('#setupbtn').on('click', function(event){
     if (openWindow = 1){
-      $('#micrographstart').trigger('click');
-      $('#basesetup').show();
+      if (isVisible('basesetup')){
+        $('#micrographstart').trigger('click');
+        $('#basesetup').hide();
+      } else {
+        $('#micrographstart').trigger('click');
+        $('#basesetup').show();
+      }
     } else {
       $('#basesetup').show();
     }
