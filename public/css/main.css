@@ -42,7 +42,7 @@ body{
 
 #mainmicroscopecanvas{
   position: absolute;
-  top: 7vh;
+  top: 6vh;
   left: 14.28vw;
   z-index: -1;
 }

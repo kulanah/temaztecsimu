@@ -14,7 +14,7 @@ class Canvas {
     this.img.parentThis = this;
 
     this.focusUp = true;
-    this.intUp = true;
+    this.intUp = false;
 
     this.maskX = 0;
     this.maskY = 0;
@@ -110,9 +110,9 @@ class Canvas {
   changeIntensity(delta){
     delta = delta - 1;
 
-    if (this.maskR < 5 && this.maskR > 0 ){
+    if (this.maskR < 10 && this.maskR > 0 ){
       this.intUp = !this.intUp;
-    } else if(this.maskR > -5 && this.maskR < 0){
+    } else if(this.maskR > -10 && this.maskR < 0){
       this.intUp = !this.intUp;
     };
 

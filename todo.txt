@@ -28,7 +28,6 @@ use js page with embeded youtube link with buttons that link to specific times i
 Bugs: 
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
-- TEM UI canvas is poorly sized
 - rounding error in FEG Control mewA
 - on aws downloads my object instead of displaying it
 
@@ -37,18 +36,16 @@ TODO:
 - magnification moves center of mask 
 
 Doing:
-- add row below windows UI with buttons for non windows functions(controls, column, setup window)
+- recreate window for microscope setup
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
 Need Clarification:
 - can't control different windows in first screen, we can either make a manual selector or let it be the last one interacted with, or only show one at a time.
-- turbo button should noise(???) on ativation
-- expand alignment help box data to include all data (do we care?)
-- digital micrograph should open TEM files root name
-- tem image + analysis should open STEM files root
 
 Done:
+- TEM UI canvas is poorly sized
+- add row below windows UI with buttons for non windows functions(controls, column, setup window)
 - when intesnsity hits 0 going up wont change anything
 - when intensity gets too low mask becomes too small, need to make it reverseable ALA focus 
 - intensity is a hto mess on window 0
