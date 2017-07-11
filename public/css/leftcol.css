@@ -1,27 +1,58 @@
 #extractFinal{
   position: absolute;
-  top: 58.8vh;
+  top: 56.8vh;
   left: 11vw; 
   text-align: right;
 }
 
 #fegvalue{
   position: absolute;
-  top: 64vh;
+  top: 62.2vh;
   left: 11.8vw;
 }
 
 #extractVal{
   position: absolute;
-  top: 56.5vh;
-  left: 8.9vw;
+  top: 54.7vh;
+  left: 9vw;
   text-align: right;
 }
 
 #gunLenseVal  {
   position: absolute;
-  top: 54vh;
+  top: 52.3vh;
   left: 10vw;
+}
+
+#beamrange{
+  position: absolute;
+  width: 13vw;
+  top: 59vh;
+  left: .6vw;
+}
+
+#beamvalue{
+  position: absolute;
+  top: 55.2vh;
+  left: 3.7vw;
+}
+
+#kvval{
+  position: absolute;
+  top: 31.7vh;
+  right: 87vw;
+  font-size: 16px;
+}
+
+#alignmenttext{
+  position: absolute;
+  top: 30.8vh;
+  left: 0.8vw;
+  width: 12.5vw;
+  height: 17.1vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  line-height: 1em;
 }
 
 .leftcol{
@@ -127,45 +158,6 @@
 #infopanel{
   height: 13.58vh;
   width: 14.28vw;
-}
-
-#vacuumoverview{
-  position: absolute;
-  top: 25.5vh;
-  right: 2vw;
-}
-
-#beamrange{
-  position: absolute;
-  width: 13vw;
-  top: 61vh;
-  left: .6vw;
-}
-
-#beamvalue{
-  position: absolute;
-  top: 56.8vh;
-  left: 3.7vw;
-}
-
-#kvval{
-  position: absolute;
-  top: 33vh;
-  right: 87vw;
-  font-size: 16px;
-}
-
-#alignmenttext{
-  position: absolute;
-  top: 31.6vh;
-  left: 1vw;
-  max-width: 12.3vw;
-  max-height: 17.8vh;
-  width: 12.3vw;
-  height: 17.266vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  line-height: 1em;
 }
 
 .tabs{

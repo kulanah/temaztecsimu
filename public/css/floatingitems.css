@@ -7,20 +7,20 @@
   
 #controlsLeft{
   position: absolute;
-  bottom: 3vh;
+  bottom: 6vh;
   left: 0;
 }
 
 #controlsRight{
   position: absolute;
-  bottom: 3vh;
+  bottom: 6vh;
   right: 0;
 }
 
 #maindropdown{
   position: absolute;
-  top: 55.7vh;
-  right: 2.3vw;
+  top: 53.2vh;
+  right: 2vw;
 }
 
 #filtercontroldiv{
@@ -37,8 +37,8 @@
 
 #filemenu{
   position: absolute;
-  top: 9vh;
-  left: 15vw;
+  top: 8.2vh;
+  left: 14.5vw;
 }
 
 #openbox{
@@ -91,4 +91,10 @@
   left: 0;
   z-index: -2;
   background: grey;
+}
+
+#vacuumoverview{
+  position: absolute;
+  top: 5.5vh;
+  right: 2vw;
 }
