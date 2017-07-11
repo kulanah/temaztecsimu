@@ -1,3 +1,6 @@
+#button-div{
+  background-color: white;
+}
 .external-button{
   border-collapse: separate;
   background:linear-gradient(#48C6D4, #3EACBA); 
@@ -8,7 +11,7 @@
   font-weight: bold;  
   font-size: 0.8em;  
   /* display: inline-block;  */
-  margin: 0.3vh 1vw 0.5vh 1vw; 
+  margin: .8vh 4.7vw .8vh;
   padding: 0.4px 9px 0 9px;  
   box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);  
   outline: 0;   
@@ -19,7 +22,18 @@
 }
 
 .single-button{ 
+  background: white;
   /* width: 16vw;  */
   display: inline-block;
-  padding: 0 3.8vw 0 3.8vw;
+  padding: 0 4vw 0;
+  border-color: white;
+  margin: 0;
+}
+
+#first{
+  margin: 0 4vw 0 7.2vw;
+}
+
+#last{
+  margin: 0 0 0 4vw;
 }
