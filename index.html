@@ -4,10 +4,11 @@
     <meta charset='UTF8'>
     <title> TEM Training Software </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel='stylesheet' href='./public/css/main.css'>
+     <link rel='stylesheet' href='./public/css/main.css'> 
     <link rel='stylesheet' href='./public/css/leftcol.css'>
     <link rel='stylesheet' href='./public/css/floatingitems.css'>
     <link rel='stylesheet' href='./public/css/startmenu.css'>
+    <link rel='stylesheet' href='./public/css/external.css'>
   </head>
   <body>
     <table>
@@ -142,6 +143,18 @@
           </map>
         </td>
       </tr>
+      <tr>
+        <td colspan='2'>
+          <div id='button-div'>
+            <div class='single-button'><button type='button' class='external-button'>Microscope Column</button></div>
+            <div class='single-button'><button type='button' class='external-button'>Microscope Controls</button></div>
+            <div class='single-button'><button type='button' class='external-button'>Microscope Setup</button></div>
+            <div class='single-button'><button type='button' class='external-button'>Q&A</button></div>
+            <div class='single-button'><button type='button' class='external-button'>Lecture</button></div>
+            <div class='single-button'><button type='button' class='external-button'>Homework</button></div>
+          </div>
+        </td>
+      </tr>
     </table>
     <div id='microControls' class='hidden'>
       <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='#leftcontrol' width='500' height='325' /> 
@@ -231,6 +244,7 @@
     <script src='./public/js/onclicks/controller.js'></script>
     <script src='./public/js/onclicks/searchtab.js'></script>
     <script src='./public/js/onclicks/temlist.js'></script>
+    <script src='./public/js/onclicks/extbuttons.js'></script>
 
     <!--functionality imports -->
     <script src='./public/js/pagesetup.js'></script>
