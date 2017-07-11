@@ -29,99 +29,103 @@
 }
 
 #leftcolumnvacuum{
-  height: 21vh;
+  height: 20.37vh;
 }
 
 #leftcolumntension{
-  height: 21vh;
+  height: 20.37vh;
 }
 
 #leftcolumnfegcontrol{
-  height: 22vh;
+  height: 21.34vh;
 }
 
 #leftcolumnsetupfiller{
-  height: 12vh;
+  height: 11.64vh;
 }
 
 #leftcolumnstage{
-  height: 45vh;
+  height: 43.65vh;
 }
 
 #leftcolumnbeamsettings{
-  height: 23vh;
+  height: 22.31vh;
 }
 
 #leftcolumnsearchfiller{
-  height: 8vh;
+  height: 7.76vh;
 }
 
 #leftcolumnimaging{
-  height: 24vh;
+  height: 23.28vh;
 }
 
 #leftcolumndetector{
-  height: 24.5vh;
+  height: 23.765vh;
 }
 
 #leftcolumndirectalignments{
-  height: 24vh;
+  height: 23.28vh;
 }
 
 #leftcolumnstemfiller{
-  height: 3.3vh;
+  height: 3.2vh;
 }
 
 #leftcolumnstigmator{
-  height: 20vh;
+  height: 19.4vh;
 }
 
 #leftcolumnfilter{
-  height: 24vh;
+  height: 23.28vh;
 }
 
 #leftcolumnpeels{
-  height: 24vh;
+  height: 23.28vh;
 }
 
 #leftcolumneftemstigmator{
-  height: 24vh;
+  height: 23.28vh;
 }
 
 #leftcolumneftemfiller{
-  height: 3.8vh;
+  height: 3.69vh;
 }
 
 #leftcolumnalignments{
-  height: 50vh;
+  height: 48.5vh;
 }
 
 #leftcolumntunefiller{
-  height:  6vh;
+  height:  5.82vh;
 }
 
 #leftcolumnfegregisters{
-  height: 23.3vh;
+  height: 22.795vh;
+}
+
+#leftcolumnfegregisteralignments{
+  height: 42.9vh;  
 }
 
 #leftcolumnregisterfiller{
-  height: 8vh;
+  height: 7.76vh;
 }
 
 #leftcolumndarkfield{
-  height: 26.4vh;
+  height: 25.6vh;
 }
 
 #leftcolumnholography{
-  height: 26.4vh;
+  height: 25.6vh;
 }
 
 #leftcolumndarkfieldfiller{
-  height: 23.3vh;
+  height: 22.601vh;
 }
 
 #infopanel{
-  height: 14vh;
+  height: 13.58vh;
   width: 14.28vw;
 }
 
@@ -158,13 +162,13 @@
   max-width: 12.3vw;
   max-height: 17.8vh;
   width: 12.3vw;
-  height: 17.8vh;
+  height: 17.266vh;
   overflow-y: scroll;
   overflow-x: hidden;
   line-height: 1em;
 }
 
 .tabs{
-  height: 7vh;
+  height: 6.79vh;
   width: 14.28vw;
 }

@@ -1,16 +1,11 @@
 *{
-    -webkit-user-select: none; /* Chrome/Safari */        
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
+  /*stops highlighting*/
+  user-select: none;
 
-    /* Not implemented yet */
-    -o-user-select: none;
-    user-select: none;    
-
-    padding: 0;
-    border: 0;
-    margin: 0;
-    border-collapse: collapse;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  border-collapse: collapse;
 }
 
 body{
@@ -24,7 +19,7 @@ body{
 }
 
 #mainimage{
-  height: 97vh;
+  height: 94.09vh;
   width: 85.67vw;
   background-color: grey;
 }

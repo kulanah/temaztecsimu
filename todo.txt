@@ -1,3 +1,11 @@
+TASK TODO: 
+
+- reposition elements that need to be moved up
+- display buttons
+- link buttons to actiosn
+- remove old buttons
+- restyle windows to show that they're NOT WIDNOWS COMPONENTS
+
 Backlog:
 - Rotation should move 
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
@@ -26,10 +34,10 @@ Bugs:
 
 TODO:
 - controller class rewrite
-- add row below windows UI with buttons for non windows functions(controls, column, setup window)
 - magnification moves center of mask 
 
 Doing:
+- add row below windows UI with buttons for non windows functions(controls, column, setup window)
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
