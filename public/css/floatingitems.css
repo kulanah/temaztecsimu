@@ -73,16 +73,18 @@
 }
 
 #basesetupbox{
-  z-index: 0;
+  position: relative;
+  z-index: 2;
+  border: 2px solid black;
 }
 
 #setupcrosshair{
   position: absolute; 
-  top: 22px;
-  left: 5px;
-  width: 506px;
-  height: 512px;
-  z-index: 1;
+  top: 10vh;
+  left: 4vw;
+  width: 20vw;
+  height: 35vh;
+  z-index: 0;
 }
 
 #micrographboxcanvas{
