@@ -30,10 +30,10 @@
   margin: 0;
 }
 
-#first{
+.first{
   margin: 0 4vw 0 7.2vw;
 }
 
-#last{
+.last{
   margin: 0 0 0 4vw;
 }
