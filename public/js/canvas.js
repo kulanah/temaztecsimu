@@ -85,12 +85,12 @@ class Canvas {
     oldBlur = parseFloat(oldBlur);
 
     if (oldBlur < 0.25 && oldBlur > 0 ){
-      focusUp = !focusUp;
+      this.focusUp = !this.focusUp;
     } else if(oldBlur > -0.25 && oldBlur < 0){
-      focusUp = !focusUp;
+      this.focusUp = !this.focusUp;
     };
 
-    if (focusUp){
+    if (this.focusUp){
       delta = -delta;
     }
 

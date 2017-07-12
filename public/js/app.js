@@ -55,7 +55,7 @@ let handleMessage = function(message){
 };
 
 
-let shiftFocus = function(delta, target){
+let shiftFocus = function(delta){
   if (openWindow == 0){
     openbox.focus(delta);
   } else {

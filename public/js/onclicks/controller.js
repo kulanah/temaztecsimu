@@ -1,11 +1,5 @@
 'use strict';
 
-let zoomLevels = [0.25, 0.50, 1.0, 2.0, 4.0];
-let currentZoom = 2;
-let targetID;
-let focusUp = true;
-
-
 let microscopeControllers = function(){
 
   let handleDrag = function(event){
@@ -25,7 +19,7 @@ let microscopeControllers = function(){
     let deltas = handleDrag(event);
 
     setStartXY();
-    shiftFocus(deltas[1], targetID);  
+    shiftFocus(deltas[1]);  
   }
 
   let setStartXY = function(){
