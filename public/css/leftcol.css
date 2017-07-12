@@ -55,6 +55,16 @@
   line-height: 1em;
 }
 
+#alignmenthelp{
+  position: absolute;
+  top: 53.6vh;
+  left: 0.9vw;
+  width: 12.4vw;
+  height: 11.6vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .leftcol{
   width: 14.28vw;
 }

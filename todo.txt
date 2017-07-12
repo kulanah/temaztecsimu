@@ -25,10 +25,10 @@ Bugs:
 
 TODO:
 - create canvas for setup window (still needs distinction about how to be controlled)
-- controller class rewrite
 - magnification moves center of mask 
 
 Doing:
+- controller class rewrite
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
