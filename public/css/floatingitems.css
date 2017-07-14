@@ -67,23 +67,25 @@
   position: absolute;
   top: 11vh;
   left: 28vw;
-  max-width: 518px;
-  max-height: 537px;
+  width: 32vw;
+  height: 54vh;
   background-color: white;
 }
 
 #basesetupbox{
   position: relative;
+  width: 32vw;  
+  height: 54vh;
   z-index: 2;
   border: 2px solid black;
 }
 
 #setupcrosshair{
   position: absolute; 
-  top: 10vh;
-  left: 4vw;
-  width: 20vw;
-  height: 35vh;
+  top: 6vh;
+  left: 5vw;
+  width: 21vw;
+  height: 42vh;
   z-index: 0;
 }
 

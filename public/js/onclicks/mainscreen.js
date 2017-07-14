@@ -65,7 +65,6 @@ let mainScreen = function(){
 
   $('#micrographxbox').on('click', function(event){
     $('#openbox').hide();
-    $('#openboximage').hide();
   });
 
   $('#setupboxxbox').on('click', function(event){

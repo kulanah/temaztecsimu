@@ -8,15 +8,6 @@ Backlog:
 - add window switch function
 - make classes or some kind of parent organization for subsets of page
 
-revealjs
-videojs
-
-input pprt vidoe and timestamps with above output video or presentation in the form of sample youtube video
-ALTERNATIVELY
-use vimeo annotations to do this.
-ALTERNATIVELY
-use js page with embeded youtube link with buttons that link to specific times in vid 
-
 Bugs: 
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
@@ -30,14 +21,12 @@ TODO:
 - white spot in center when very small
 - top left of left control activates stigamator 
   - adds popup with 3 buttons (will get screenshot)
-
 - add other alignment box
 - diffraction button is right control second from right on top
 - create canvas for setup window (still needs distinction about how to be controlled)
+- setup and DM are either or
 - magnification moves center of mask 
 - mag needs to be drag up and down like focucs
-- setup and DM are either or
-- shrink window ruins setup 
 - z index on setup window
 
 Doing:
@@ -49,6 +38,7 @@ Need Clarification:
 - can't control different windows in first screen, we can either make a manual selector or let it be the last one interacted with, or only show one at a time.
 
 Done:
+- shrink window ruins setup 
 - recreate window for microscope setup
 - TEM UI canvas is poorly sized
 - add row below windows UI with buttons for non windows functions(controls, column, setup window)

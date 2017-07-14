@@ -210,13 +210,6 @@
       </map>  
     </div>
 
-    <div id='basesetup' class='hidden'>
-      <img src='./public/img/basesetupwindow.png' usemap='#setupbox' id='basesetupbox' width='518' height='537'/>
-      <map id='setupbox' name='setupbox'>
-        <area shape='circle' id='setupboxxbox' coords='506,10,15' />
-      </map>
-      <img src='./public/img/screen.png' id='setupcrosshair' width='1071' height='1071'/>
-    </div>
 
     <div id='openbox' class='hidden'>
       <img src='./public/img/openbox.png' usemap='#micrographbox' id='openboxborder' width='518' height='537'/>
@@ -226,16 +219,22 @@
         <area shape='rect' id='micrographxbox' coords='497,6,512,20' />
       </map>
     </div>
-
-
-    <!--class declarations-->
-    <script src='./public/js/canvas.js'></script>
+    <div id='basesetup' class='hidden'>
+      <img src='./public/img/basesetupwindow.png' usemap='#setupbox' id='basesetupbox' width='518' height='537'/>
+      <img src='./public/img/screen.png' id='setupcrosshair' width='1071' height='1071'/>
+      <map id='setupbox' name='setupbox'>
+        <area shape='circle' id='setupboxxbox' coords='506,10,15' />
+      </map>
+    </div>
 
     <!--library imports-->
     <script src='./public/js/jquery-3.2.1.min.js'></script>
     <script src='./public/js/jquery-ui.min.js'></script>
     <script src='./public/js/mapping.js'></script>
 
+    <!--class declarations-->
+    <script src='./public/js/canvas.js'></script>
+    
     <!--onclick sets-->
     <script src='./public/js/onclicks/setuptab.js'></script>
     <script src='./public/js/onclicks/tabs.js'></script>
@@ -251,8 +250,5 @@
     <script src='./public/js/clock.js'></script>
     <script src='./public/js/onclick.js'></script>
     <script src='./public/js/app.js'></script>
-
-    <script>
-    </script>
   </body>
 </html>
