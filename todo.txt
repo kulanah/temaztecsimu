@@ -21,16 +21,15 @@ TODO:
 - white spot in center when very small
 - top left of left control activates stigamator 
   - adds popup with 3 buttons (will get screenshot)
-- add other alignment box
 - diffraction button is right control second from right on top
 - create canvas for setup window (still needs distinction about how to be controlled)
 - setup and DM are either or
 - magnification moves center of mask 
 - mag needs to be drag up and down like focucs
 - z index on setup window
+- controller class rewrite
 
 Doing:
-- controller class rewrite
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
@@ -38,6 +37,7 @@ Need Clarification:
 - can't control different windows in first screen, we can either make a manual selector or let it be the last one interacted with, or only show one at a time.
 
 Done:
+- add other alignment box
 - shrink window ruins setup 
 - recreate window for microscope setup
 - TEM UI canvas is poorly sized

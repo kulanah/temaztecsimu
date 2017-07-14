@@ -44,7 +44,7 @@
   font-size: 16px;
 }
 
-#alignmenttext{
+#alignmenttexttune{
   position: absolute;
   top: 30.8vh;
   left: 0.8vw;
@@ -55,7 +55,7 @@
   line-height: 1em;
 }
 
-#alignmenthelp{
+#alignmenthelptune{
   position: absolute;
   top: 53.6vh;
   left: 0.9vw;
@@ -147,6 +147,27 @@
 
 #leftcolumnfegregisteralignments{
   height: 42.9vh;  
+}
+
+#alignmenttextfeg{
+  position: absolute;
+  top: 33.6vh;
+  left: 0.8vw;
+  width: 12.5vw;
+  height: 15.2vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  line-height: 1em;
+}
+
+#alignmenthelpfeg{
+  position: absolute;
+  top: 53.9vh;
+  left: 0.9vw;
+  width: 12.4vw;
+  height: 10.5vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #leftcolumnregisterfiller{
