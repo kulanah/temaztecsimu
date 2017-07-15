@@ -56,6 +56,8 @@ let startMenu = function(){
       } else {
         $('#micrographstart').trigger('click');
         $('#basesetup').show();
+        $('#openbox').hide();
+        
       }
     } else {
       $('#basesetup').show();
