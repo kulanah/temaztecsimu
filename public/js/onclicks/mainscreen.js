@@ -52,6 +52,7 @@ let mainScreen = function(){
     $('#openfiledialogue').hide();
     $('#openbox').show();
     openbox.drawCanvas();
+    $('#basesetup').hide();
   });
 
   $('#filtercontrolclosebox').on('click', function(event){
@@ -60,6 +61,8 @@ let mainScreen = function(){
 
   $('#startview').on('click', function(event){
     $('#openbox').show();
+    openbox.drawCanvas();
+    $('#basesetup').hide();
     
   });
 
