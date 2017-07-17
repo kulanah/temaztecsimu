@@ -13,10 +13,10 @@ Bugs:
 - onclick mouse capture is breaking the scroll bars
 - rounding error in FEG Control mewA
 - setup buttons hide if screen shrinks
+- text DOESNT shrinks if you resize window
 - on aws downloads my object instead of displaying it
 
 TODO:
-- add highlights to actie buttons
 - add haloing when smaller than outer circle from xhair
 - when intensity gets too large darken the image
 - white spot in center when very small
@@ -25,11 +25,12 @@ TODO:
 - diffraction button is right control second from right on top
 - create canvas for setup window (still needs distinction about how to be controlled)
 - magnification moves center of mask 
-- mag needs to be drag up and down like focucs
 - z index on setup window 
 - controller class rewrite
 
 Doing:
+- mag needs to be drag up and down like focucs
+- add highlights to actie buttons
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 

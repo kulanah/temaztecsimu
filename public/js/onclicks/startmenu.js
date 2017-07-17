@@ -62,5 +62,6 @@ let startMenu = function(){
     } else {
       $('#basesetup').show();
     }
+    setupbox.drawCanvas();
   });
 };

@@ -34,3 +34,7 @@ body{
   left: 14.28vw;
   z-index: -1;
 }
+
+#maincontent{
+  z-index: -5;
+}
