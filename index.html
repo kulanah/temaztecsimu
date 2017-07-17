@@ -4,14 +4,88 @@
     <meta charset='UTF8'>
     <title> TEM Training Software </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <link rel='stylesheet' href='./public/css/main.css'> 
+    <link rel='stylesheet' href='./public/css/main.css'> 
     <link rel='stylesheet' href='./public/css/leftcol.css'>
     <link rel='stylesheet' href='./public/css/floatingitems.css'>
     <link rel='stylesheet' href='./public/css/startmenu.css'>
     <link rel='stylesheet' href='./public/css/external.css'>
   </head>
   <body>
-    <table>
+    <div id='microControls' class='hidden'>
+      <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='#leftcontrol' width='500' height='325' /> 
+      <map name='leftcontrol' id='leftcontrol'>
+        <area shape='circle' id='buttonl1' coords='450,111,15' />
+        <area shape='circle' id='buttonl2' coords='460,153,15' />
+        <area shape='circle' id='buttonl3' coords='455,200,15' />
+        <area shape='circle' id='buttonrollerl' coords='379,60,30' />
+        <area shape='circle' id='buttonintensity' coords='261,129,25' />
+      </map>
+      <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='#rightcontrol' width='500' height='325' />
+      <map name='rightcontrol' id='rightcontrol'>
+        <area shape='circle' id='buttonr1' coords='49,111,15' />
+        <area shape='circle' id='buttonr2' coords='39,153,15' />
+        <area shape='circle' id='buttonr3' coords='45,200,15' />
+        <area shape='circle' id='buttonrollerr' coords='122,66,25' />
+        <area shape='circle' id='buttonfocus' coords='236,131,25' />
+        <area shape='circle' id='buttonmagnification' coords='301,136,25' />
+      </map>
+    </div>
+    <div id='vacuumoverview' class='hidden'>
+      <img id='vacuumimg' src='./public/img/vacuumopen.png' width='384' height='559'  />
+    </div>
+    <div id='microscopeGraph' class='hidden'>
+      <img src='./public/img/graphplaceholder.png' width='174' height='450'/>
+    </div>
+    <div id='maindropdown' class='hidden'>
+      <img src='./public/img/button52.png' usemap='#dropdownmap' width='120' height='274' >
+      <map name='dropdownmap' id='dropdownmap'>
+        <area shape='rect' id='vacuumbutton' coords='0,250,100,262' />
+      </map>
+    </div>
+    <div id='filtercontroldiv' class='hidden'>
+      <img src='./public/img/filtercontrol.png' usemap='#filtercontrolwindow' width='256' height='822'/>
+      <map name='filtercontrolwindow' id='filtercontrolwindow'>
+        <area shape='rect' id='filtercontrolclosebox' coords='234,6,250,19' />
+      </map>
+    </div>
+
+    <div id='filemenu' class='hidden'>
+      <img src='./public/img/filedialogue.png' usemap='#filemenu' width='174' height='408'/>
+      <map name='filemenu'>
+        <area shape='rect' id='fileopen' coords='1,19,170,35' />  
+      </map>
+    </div>
+
+    <div id='openfiledialogue' class='hidden'>
+      <img src='./public/img/fileopendialogue.png' usemap='#openfile' width='712' height='563'/>
+      <map id='openfile' name='openfile'>
+        <area shape='rect' id='xbox' coords='689,7,705,22' />
+        <area shape='rect' id='cancel' coords='627,504,700,528' />
+        <area shape='rect' id='imagefile' coords='106,77,242,96' />
+      </map>  
+    </div>
+
+
+    <!-- Canvas Divs -->
+    <div id='openbox' class='hidden'>
+      <img src='./public/img/openbox.png' usemap='#micrographbox' id='openboxborder' width='518' height='537'/>
+      <canvas id='micrographboxcanvas' width='518' height='537' >
+      </canvas>
+      <map id='micrographbox' name='micrographbox'>
+        <area shape='rect' id='micrographxbox' coords='497,6,512,20' />
+      </map>
+    </div>
+    <div id='basesetup' class='hidden'>
+      <img src='./public/img/basesetupwindow.png' usemap='#setupbox' id='basesetupbox' width='518' height='537'/>
+      <img src='./public/img/screen.png' id='setupcrosshair' width='1071' height='1071'/>
+      <canvas id='setupboxcanvas' width='518' height='537' >
+      </canvas>
+      <map id='setupbox' name='setupbox'>
+        <area shape='circle' id='setupboxxbox' coords='506,10,15' />
+      </map>
+    </div>
+
+    <table id='maincontent'>
       <tr>  
         <td>
           <div id='tabsleft'>
@@ -157,77 +231,6 @@
         </td>
       </tr>
     </table>
-    <div id='microControls' class='hidden'>
-      <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='#leftcontrol' width='500' height='325' /> 
-      <map name='leftcontrol' id='leftcontrol'>
-        <area shape='circle' id='buttonl1' coords='450,111,15' />
-        <area shape='circle' id='buttonl2' coords='460,153,15' />
-        <area shape='circle' id='buttonl3' coords='455,200,15' />
-        <area shape='circle' id='buttonrollerl' coords='379,60,30' />
-        <area shape='circle' id='buttonintensity' coords='261,129,25' />
-      </map>
-      <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='#rightcontrol' width='500' height='325' />
-      <map name='rightcontrol' id='rightcontrol'>
-        <area shape='circle' id='buttonr1' coords='49,111,15' />
-        <area shape='circle' id='buttonr2' coords='39,153,15' />
-        <area shape='circle' id='buttonr3' coords='45,200,15' />
-        <area shape='circle' id='buttonrollerr' coords='122,66,25' />
-        <area shape='circle' id='buttonfocus' coords='236,131,25' />
-        <area shape='circle' id='buttonmagnification' coords='301,136,25' />
-      </map>
-    </div>
-    <div id='vacuumoverview' class='hidden'>
-      <img id='vacuumimg' src='./public/img/vacuumopen.png' width='384' height='559'  />
-    </div>
-    <div id='microscopeGraph' class='hidden'>
-      <img src='./public/img/graphplaceholder.png' width='174' height='450'/>
-    </div>
-    <div id='maindropdown' class='hidden'>
-      <img src='./public/img/button52.png' usemap='#dropdownmap' width='120' height='274' >
-      <map name='dropdownmap' id='dropdownmap'>
-        <area shape='rect' id='vacuumbutton' coords='0,250,100,262' />
-      </map>
-    </div>
-    <div id='filtercontroldiv' class='hidden'>
-      <img src='./public/img/filtercontrol.png' usemap='#filtercontrolwindow' width='256' height='822'/>
-      <map name='filtercontrolwindow' id='filtercontrolwindow'>
-        <area shape='rect' id='filtercontrolclosebox' coords='234,6,250,19' />
-      </map>
-    </div>
-
-    <div id='filemenu' class='hidden'>
-      <img src='./public/img/filedialogue.png' usemap='#filemenu' width='174' height='408'/>
-      <map name='filemenu'>
-        <area shape='rect' id='fileopen' coords='1,19,170,35' />  
-      </map>
-    </div>
-
-    <div id='openfiledialogue' class='hidden'>
-      <img src='./public/img/fileopendialogue.png' usemap='#openfile' width='712' height='563'/>
-      <map id='openfile' name='openfile'>
-        <area shape='rect' id='xbox' coords='689,7,705,22' />
-        <area shape='rect' id='cancel' coords='627,504,700,528' />
-        <area shape='rect' id='imagefile' coords='106,77,242,96' />
-      </map>  
-    </div>
-
-
-    <div id='openbox' class='hidden'>
-      <img src='./public/img/openbox.png' usemap='#micrographbox' id='openboxborder' width='518' height='537'/>
-      <canvas id='micrographboxcanvas' width='518' height='537' >
-      </canvas>
-      <map id='micrographbox' name='micrographbox'>
-        <area shape='rect' id='micrographxbox' coords='497,6,512,20' />
-      </map>
-    </div>
-    <div id='basesetup' class='hidden'>
-      <img src='./public/img/basesetupwindow.png' usemap='#setupbox' id='basesetupbox' width='518' height='537'/>
-      <img src='./public/img/screen.png' id='setupcrosshair' width='1071' height='1071'/>
-      <map id='setupbox' name='setupbox'>
-        <area shape='circle' id='setupboxxbox' coords='506,10,15' />
-      </map>
-    </div>
-
     <!--library imports-->
     <script src='./public/js/jquery-3.2.1.min.js'></script>
     <script src='./public/js/jquery-ui.min.js'></script>
