@@ -17,6 +17,7 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
+- responsive design for everything
 - add haloing when smaller than outer circle from xhair
 - when intensity gets too large darken the image
 - white spot in center when very small

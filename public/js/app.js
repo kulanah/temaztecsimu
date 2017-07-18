@@ -18,7 +18,7 @@ $(document).ready(function(event) {
 });
 
 let moveImage = function(deltax, deltay, target){
-  if (openWindow == 0){
+  if (openScreen == 0){
     openbox.moveImage(deltax, deltay);
   } else {
     mainmicro.moveImage(deltax, deltay);
@@ -28,7 +28,7 @@ let moveImage = function(deltax, deltay, target){
 
 //this is called when the intensity button on the control panel is pressed.
 let changeIntensity = function(delta){
-  if (openWindow == 0){
+  if (openScreen == 0){
     openbox.changeIntensity(delta);
   } else {
     mainmicro.changeIntensity(delta);
@@ -57,7 +57,7 @@ let handleMessage = function(message){
 
 
 let shiftFocus = function(delta){
-  if (openWindow == 0){
+  if (openScreen == 0){
     openbox.focus(delta);
   } else {
     mainmicro.focus(delta);
