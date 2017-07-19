@@ -5,7 +5,7 @@ $("img[usemap]").rwdImageMaps();
 
 let canvasClasses = [];
 
-const setupbox = new Canvas('./public/img/47.png', 'setupboxcanvas')
+const setupbox = new Canvas('./public/img/setupbeam.png', 'setupboxcanvas');
 const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas'); 
 const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas');
 

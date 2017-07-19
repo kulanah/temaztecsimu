@@ -5,6 +5,11 @@ class Canvas {
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
+    this.colorR = 0;
+    this.colorG = 0;
+    this.colorB = 0;
+    this.colorO = 1;
+
     this.img = new Image;
     this.img.src = source;
     this.imgX = 0;
@@ -40,6 +45,10 @@ class Canvas {
 
   drawCanvas(){
     this.context.save();
+
+    let rgbaString = 'rgba(' + this.colorR + ', ' + this.colorG + ', ' + this.colorB + ', ' + this.colorO + ')';
+
+    this.context.fillStyle = rgbaString;
 
     let newRadius = this.maskR * this.zooms[this.mag];
 
@@ -139,5 +148,12 @@ class Canvas {
 
   setTarget(target){
     this.startTarget = target;
+  }
+
+  setColor(r, g, b, o){
+    this.colorR = r;
+    this.colorG = g;
+    this.colorB = b;
+    this.colorO = o;
   }
 };
