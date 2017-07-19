@@ -19,7 +19,7 @@ let startMenu = function(){
   });
 
   $('#temuistart').on('click', function(event){
-    openWindow = 1;
+    openScreen = 1;
     $('#mainimage').attr('src', './public/img/tia.png');
     $('#temmask').show();
     $('#temimage').show();
@@ -31,7 +31,7 @@ let startMenu = function(){
   });
 
   $('#micrographstart').on('click', function(event){
-    openWindow = 0;
+    openScreen = 0;
     $('#mainimage').attr('src', './public/img/mainscreen.png');
     $('#temmask').hide();
     $('#temimage').hide();
@@ -49,7 +49,7 @@ let startMenu = function(){
   });
 
   $('#setupbtn').on('click', function(event){
-    if (openWindow = 1){
+    if (openScreen = 1){
       if (isVisible('basesetup')){
         $('#micrographstart').trigger('click');
         $('#basesetup').hide();
@@ -62,6 +62,8 @@ let startMenu = function(){
     } else {
       $('#basesetup').show();
     }
+    openScreen = 0;
+    activeWindow = 1;
     setupbox.drawCanvas();
   });
 };

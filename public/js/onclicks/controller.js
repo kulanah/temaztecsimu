@@ -68,8 +68,12 @@ let microscopeControllers = function(){
 
   $('#buttonrollerr').mousedown(function(event){
     if (openScreen == 0){
-      if (activeWindow )
-      openbox.setTarget(event.target.id);
+      if (activeWindow == 0){
+        openbox.setTarget(event.target.id);
+      }
+      else {
+        setupbox.setTarget(event.target.id);
+      }
     } else {
       mainmicro.setTarget(event.target.id);
     }
@@ -81,7 +85,11 @@ let microscopeControllers = function(){
 
   $('#buttonrollerl').mousedown(function(event){
     if (openScreen == 0){
-      openbox.setTarget(event.target.id);
+      if (activeWindow == 0){
+        openbox.setTarget(event.target.id);
+      } else {
+        setupbox.setTarget(event.target.id);
+      }
     } else {
       mainmicro.setTarget(event.target.id);
     }
@@ -99,10 +107,14 @@ let microscopeControllers = function(){
   });
 
   $('#buttonmagnification').on('click', function(event){
-    if (openScreen == 1){
-      mainmicro.zoom();
+    if (openScreen == 0){
+      if (activeWindow == 0){
+        openbox.zoom();
+      } else{
+        setupbox.zoom();
+      }
     } else {
-      openbox.zoom();
+      mainmicro.zoom();
     }
   });
 

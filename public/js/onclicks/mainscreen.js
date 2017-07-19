@@ -53,6 +53,7 @@ let mainScreen = function(){
     $('#openbox').show();
     openbox.drawCanvas();
     $('#basesetup').hide();
+    activeWindow = 0;
   });
 
   $('#filtercontrolclosebox').on('click', function(event){
