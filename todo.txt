@@ -7,6 +7,7 @@ Backlog:
 - new aws accoutn 
 - add window switch function
 - make classes or some kind of parent organization for subsets of page
+- setup beam should be nonfull opacity
 
 Bugs: 
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
@@ -17,8 +18,7 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
-- responsive design for everything
-
+- responsive design for everything (specifically external buttons)
 - add haloing when smaller than outer circle from xhair
 - when intensity gets too large darken the image
 - white spot in center when very small
@@ -26,10 +26,8 @@ TODO:
   - adds popup with 3 buttons (will get screenshot)
 - diffraction button is right control second from right on top
 - magnification moves center of mask 
-- z index on setup window 
 - controller class rewrite
 - add highlights to actie buttons
-- create controls for setup canvas
 
 Doing:
 - mag needs to be drag up and down like focucs
@@ -37,9 +35,10 @@ Doing:
 - better documentation
 
 Need Clarification:
-- can't control different windows in first screen, we can either make a manual selector or let it be the last one interacted with, or only show one at a time.
 
 Done:
+- create controls for setup canvas
+- can't control different windows in first screen, we can either make a manual selector or let it be the last one interacted with, or only show one at a time.
 - create canvas for setup window (still needs distinction about how to be controlled)
 - setup and DM are either/or
 - add other alignment box

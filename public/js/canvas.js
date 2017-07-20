@@ -60,10 +60,9 @@ class Canvas {
     this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
     this.context.clip();
 
-    //s = source d = destination
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-                          this.imgX,this.imgY,this.imgW,this.imgH);
+                           this.imgX,this.imgY,this.imgW,this.imgH);
 
     this.context.restore();
   };
