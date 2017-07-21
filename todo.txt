@@ -19,6 +19,15 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
+MEETING 
+- keep aspect ratio by adding white bars to off side
+- add draggable to controlls
+- direct alignments in popup
+- slide one image (make done active)
+- next button on alignment pane (tune tab) and bottom buttons
+- paragraphs from alignment doc need to be parsed as json instead of .htm files
+  - will have various flags that will change the state of the app
+
 - responsive design for everything (specifically external buttons)
 - add haloing when smaller than outer circle from xhair
 - when intensity gets too large darken the image
