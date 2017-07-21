@@ -5,9 +5,9 @@ class Canvas {
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
-    this.colorR = 200;
-    this.colorG = 200;
-    this.colorB = 200;
+    this.colorR = 0;
+    this.colorG = 0;
+    this.colorB = 0;
     this.colorO = 1;
 
     this.img = new Image;
@@ -191,6 +191,14 @@ class Canvas {
     this.context.fillStyle = 'red';
     this.context.fill();
     this.context.closePath();
+  }
+
+  changePPWidth(delta){
+    this.elipW += delta;
+  }
+
+  changePPHeight(delta){
+    this.elipH += delta;
   }
   /*
 
