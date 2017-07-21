@@ -9,6 +9,8 @@ const setupbox = new Canvas('./public/img/setupbeam.png', 'setupboxcanvas');
 const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas'); 
 const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas');
 
+setupbox.pivotActive = true;
+
 setupbox.setColor(142, 142, 142, 1);
 
 // let openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas');

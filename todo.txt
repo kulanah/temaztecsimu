@@ -9,6 +9,7 @@ Backlog:
 - make classes or some kind of parent organization for subsets of page
 - setup beam should be nonfull opacity
 
+
 Bugs: 
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
