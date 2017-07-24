@@ -1,8 +1,12 @@
 #button-div{
+  width: 100%;
   background-color: white;
+  flex-direction: row;
+  display: inline-flex;
+  justify-content: space-around;
 }
 .external-button{
-  border-collapse: separate;
+  border-collapse: separate; 
   background:linear-gradient(#48C6D4, #3EACBA); 
   border-radius: 50px; 
   height: 2vh; 
@@ -10,7 +14,7 @@
   min-width: 6vw;  
   font-weight: bold;  
   font-size: 0.8em;  
-  margin: .4vh 4.7vw 0.59vh;
+  margin: .4vh 0 0.59vh; 
   padding: 0.4px 9px 0 9px;  
   box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);  
   outline: 0;   
@@ -26,12 +30,4 @@
   padding: 0 4vw 0;
   border-color: white;
   margin: 0;
-}
-
-.first{
-  margin: 0 4vw 0 7.2vw;
-}
-
-.last{
-  margin: 0 0 0 4vw;
 }
