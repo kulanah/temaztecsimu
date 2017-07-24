@@ -20,6 +20,7 @@ Bugs:
 
 TODO:
 MEETING 
+- add highlighting to active buttons 
 - keep aspect ratio by adding white bars to off side
 - add draggable to controlls
 - direct alignments in popup
@@ -27,6 +28,17 @@ MEETING
 - next button on alignment pane (tune tab) and bottom buttons
 - paragraphs from alignment doc need to be parsed as json instead of .htm files
   - will have various flags that will change the state of the app
+- spotsize should connect to display
+- beam size smaller in setupbox
+- beam size connects to mask size
+- make steps equidistant
+- don't allow L3/R3 changes when not in 
+- direct alignments from dropdwon should open setupbox and controls
+- alignmnet boxes should be exactly the same
+- gun tilt from alignments makes mx/my shift birghtness circle (to be added)
+- need to create system for error messages
+- for multi x is bottom left to top right y is bottom right to top left
+- 
 
 - responsive design for everything (specifically external buttons)
 - add haloing when smaller than outer circle from xhair
@@ -84,3 +96,8 @@ Done:
 - alignment should open help box with htmls in drive -> TEM alignment
 
 settingsync token: 07fca6cec42096bc4ad52b5cf32752e
+
+windows machine
+Labuser1
+
+give tony tuition in a year
