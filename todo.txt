@@ -19,10 +19,11 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
+- Green box in setup is too small, when zooming out it gets lost
 MEETING 
 - add highlighting to active buttons 
 - keep aspect ratio by adding white bars to off side
-- add draggable to controlls
+- add draggable to controls
 - direct alignments in popup
 - slide one image (make done active)
 - next button on alignment pane (tune tab) and bottom buttons
@@ -36,11 +37,11 @@ MEETING
 - direct alignments from dropdwon should open setupbox and controls
 - alignmnet boxes should be exactly the same
 - gun tilt from alignments makes mx/my shift birghtness circle (to be added)
-- need to create system for error messages
+- need to create system for error messages (popups when users do things that could be damaging to equipment)
 - for multi x is bottom left to top right y is bottom right to top left
 - 
 
-- responsive design for everything (specifically external buttons)
+- responsive design for everything 
 - add haloing when smaller than outer circle from xhair
 - when intensity gets too large darken the image
 - white spot in center when very small
@@ -59,6 +60,7 @@ Doing:
 Need Clarification:
 
 Done:
+- external buttons are now responsive
 - create controls for setup canvas
 - can't control different windows in first screen, we can either make a manual selector or let it be the last one interacted with, or only show one at a time.
 - create canvas for setup window (still needs distinction about how to be controlled)

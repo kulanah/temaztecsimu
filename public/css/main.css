@@ -36,5 +36,8 @@ body{
 }
 
 #maincontent{
+  position: absolute;
   z-index: -5;
+  width: 10vw;
+  max-height: 75vw;
 }

@@ -69,7 +69,7 @@
   top: 11vh;
   left: 28vw;
   max-width: 33vw;
-  max-height: 55vh;
+  max-height: 33vw;
   overflow: hidden;
   background: black;
   
@@ -77,8 +77,8 @@
 
 #basesetupbox{
   position: relative;
-  width: 32vw;  
-  height: 54vh;
+  width: 32.5vw;  
+  height: 32.5vw;
   z-index: 2;
   border: 2px solid black;
 }
@@ -94,10 +94,10 @@
 
 #setupcrosshair{
   position: absolute; 
-  top: 6vh;
-  left: 5vw;
+  top: 6vw;
+  left: 5.5vw;
   width: 21vw;
-  height: 42vh;
+  height: 21vw;
   z-index: 1;
 }
 
