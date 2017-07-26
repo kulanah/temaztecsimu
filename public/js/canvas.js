@@ -78,16 +78,26 @@ class Canvas {
     this.context.restore();
   };
 
-  zoom(){
-    let zoomFactor
-    //TODO: figure out why this bugs out on first two zoom values, probably because they're < 1 and shirnking the image out of the viewport
-    if (this.mag == this.zooms.length - 1){
-      zoomFactor = this.zooms[0] / this.zooms[this.mag];
-      this.mag = 0;
-    } else {
-      zoomFactor = this.zooms[this.mag + 1] / this.zooms[this.mag];
-      ++this.mag;
+  zoom(delta){
+    let zoomFactor = 1;
+
+    if(delta > 0){
+      // if (this.mag == this.zooms.length - 1){
+      //   zoomFactor = this.zooms[0] / this.zooms[this.mag];
+      //   this.mag = 0;
+      // } else {
+      if (this.mag < this.zooms.length - 1){
+        console.log('zooming from ' + this.zooms[this.mag] + ' to ' + this.zooms[this.mag+1]);
+        zoomFactor = this.zooms[this.mag + 1] / this.zooms[this.mag];
+        ++this.mag;
+      }
+    } else if (delta < 0){
+      if (this.mag >= 1){
+        zoomFactor = this.zooms[this.mag - 1] / this.zooms[this.mag];
+        --this.mag;
+      }
     }
+    //TODO: figure out why this bugs out on first two zoom values, probably because they're < 1 and shirnking the image out of the viewport
 
     this.imgW *= zoomFactor;
     this.imgH *= zoomFactor;

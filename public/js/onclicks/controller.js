@@ -32,6 +32,12 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mousemove', mousedowntemplateintensity);
     $('body')[0].removeEventListener('mousemove', mousefocustemplate);
   };
+
+  let mouseuptemplatezoom = function(event){
+    let delta = startY - event.clientY;
+    zoom(delta)
+    $('body')[0].removeEventListener('mouseup', mouseuptemplatezoom);
+  };
   
   let mousedowntemplateintensity = function(event){
     let deltaIntensity = event.clientY - startIntensity;
@@ -106,16 +112,19 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mousemove', mousedowntemplateintensity);
   });
 
-  $('#buttonmagnification').on('click', function(event){
-    if (openScreen == 0){
-      if (activeWindow == 0){
-        openbox.zoom();
-      } else{
-        setupbox.zoom();
-      }
-    } else {
-      mainmicro.zoom();
-    }
+  $('#buttonmagnification').on('mousedown', function(event){
+    setStartXY();
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplatezoom);
+    // if (openScreen == 0){
+    //   if (activeWindow == 0){
+    //     openbox.zoom();
+    //   } else{
+    //     setupbox.zoom();
+    //   }
+    // } else {
+    //   mainmicro.zoom();
+    // }
   });
 
 };

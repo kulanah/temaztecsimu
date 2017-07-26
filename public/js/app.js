@@ -82,4 +82,16 @@ let shiftFocus = function(delta){
   }
 };
 
+let zoom = function(delta){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.zoom(delta);
+    } else {
+      setupbox.zoom(delta);
+    }
+  } else {
+    mainmicro.zoom(delta);
+  }
+}
+
 window.addEventListener('message', handleMessage, false);
