@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='./public/css/jsontest.css'> 
+  </head>
+  <body>
+    <ul class='data'>
+    </ul>
+    <button id='prev'><--</button>
+    <button id='next'>--></button>
+    <textarea id='helptext' disabled='true'></textarea>
+    <script src='./public/js/jquery-3.2.1.min.js'></script>
+    <script src='./public/docs/temlist/doc.js'></script>
+    <script src='./public/js/alignmentBox.js'></script>
+    <script>
+      let test = new AlignmentBox(data, '.data', '#helptext');
+      test.drawInital();
+    </script>
+  </body>
+</html>
