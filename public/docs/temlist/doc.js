@@ -1,7 +1,7 @@
 let data = [
   {
     "name" : "1. Gun",
-    "lessons" : [
+    "topics" : [
       {
         "name" : "Gun Tilt",
         "steps" : [
@@ -42,7 +42,7 @@ let data = [
     ]
   }, {
     "name" : "2. Beam HM-TEM",
-    "lessons" : [
+    "topics" : [
       {
         "name" : "Preparation", 
         "steps" : [
