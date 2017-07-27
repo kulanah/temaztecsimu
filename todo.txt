@@ -23,7 +23,6 @@ TODO:
 MEETING 
 - add highlighting to active buttons 
 - keep aspect ratio by adding white bars to off side
-- add draggable to controls
 - direct alignments in popup
 - slide one image (make done active)
 - next button on alignment pane (tune tab) and bottom buttons
@@ -53,6 +52,7 @@ MEETING
 - add highlights to actie buttons
 
 Doing:
+- add draggable to controls
 - mag needs to be drag up and down like focucs
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
