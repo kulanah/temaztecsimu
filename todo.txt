@@ -19,6 +19,7 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
+
 - Green box in setup is too small, when zooming out it gets lost
 MEETING 
 - add highlighting to active buttons 

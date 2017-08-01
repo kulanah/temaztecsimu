@@ -41,4 +41,7 @@ let pageSetup = function(){
       addClasses: true 
     });
   }
+
+  let tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
+  tunealignmentbox.drawInital();
 };
