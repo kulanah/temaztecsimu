@@ -19,6 +19,9 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
+- modify php to pull old column to current
+- spot size should modify intensity by some finitie amount per step.
+
 
 - Green box in setup is too small, when zooming out it gets lost
 MEETING 
