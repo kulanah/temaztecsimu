@@ -95,7 +95,11 @@
           </div>
           <div id='leftcoltune' class='hidden'>
             <img class='leftcol' id='leftcolumnstigmator' src='./public/img/stigmator.png' width='243' height='225'/>
-            <img class='leftcol' id='leftcolumnalignments' src='./public/img/alignments.png' width='243' height'450'/>
+            <img class='leftcol' id='leftcolumnalignments' src='./public/img/alignments.png' usemap='#tunealign' width='243' height'450'/>
+            <map name='tunealign' id='tunealign'>
+              <area shape='rect' id='tunealignleft' coords='47,217,75,239' />
+              <area shape='rect' id='tunealignright' coords='81,217,109,239' />
+            </map>
             <img class='leftcol' id='leftcolumntunefiller' src='./public/img/filler.png' width='240' height='119' />
             <div id='alignmenttexttune'>
               <ul class='alignmenttextdata'>
@@ -111,7 +115,11 @@
           </div>
           <div id='leftcolfegregister' class='hidden'>
             <img class='leftcol' id='leftcolumnfegregisters' src='./public/img/fegregisters.png' width='243' height='226'/>
-            <img class='leftcol' id='leftcolumnfegregisteralignments' src='./public/img/fegregisteralignments.png' width='243' height='450'/>
+            <img class='leftcol' id='leftcolumnfegregisteralignments' src='./public/img/alignments.png' usemap='#fegregalign' width='243' height='450'/>
+            <map name='fegregalign' id='fegregalign'>
+              <area shape='rect' id='fegregalignleft' coords='47,217,75,239' />
+              <area shape='rect' id='fegredalignright' coords='81,217,109,239' />
+            </map>
             <object id='alignmenttextfeg' data='./public/docs/alignmentboxfeg.html'></object>
             <object id='alignmenthelpfeg'></object>
             <img class='leftcol' id='leftcolumnregisterfiller' src='./public/img/filler.png' width='240' height='119'/>
