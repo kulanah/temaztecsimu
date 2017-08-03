@@ -44,4 +44,7 @@ let pageSetup = function(){
 
   let tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
   tunealignmentbox.drawInital();
+  tunealignmentbox.addNextButton($('#tunealignright'));
+  tunealignmentbox.addPrevButton($('#tunealignleft'));
+
 };
