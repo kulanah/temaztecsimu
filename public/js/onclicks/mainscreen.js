@@ -17,6 +17,13 @@ let mainScreen = function(){
     }
   });
 
+  $('#directalignmentdrop').on('click', function(event){
+    $('#maindropdown').hide();
+    //open up the setup button with all the accompanying effects
+    $('#setupbtn').trigger('click');
+    $('#microControls').show();
+  })
+
   $('#closedrop').on('click', function(event){
     $('#vacuumoverview').hide();
     $('#maindropdown').hide();
