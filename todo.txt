@@ -26,12 +26,9 @@ TODO:
 - Green box in setup is too small, when zooming out it gets lost
 MEETING 
 - add highlighting to active buttons 
-- keep aspect ratio by adding white bars to off side
 - direct alignments in popup
 - slide one image (make done active)
 - next button on alignment pane (tune tab) and bottom buttons
-- paragraphs from alignment doc need to be parsed as json instead of .htm files
-  - will have various flags that will change the state of the app
 - spotsize should connect to display
 - beam size smaller in setupbox
 - beam size connects to mask size
@@ -53,17 +50,18 @@ MEETING
 - diffraction button is right control second from right on top
 - magnification moves center of mask 
 - controller class rewrite
-- add highlights to actie buttons
 
 Doing:
 - add draggable to controls
-- mag needs to be drag up and down like focucs
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
 Need Clarification:
 
 Done:
+- mag needs to be drag up and down like focucs
+- paragraphs from alignment doc need to be parsed as json instead of .htm files
+  - will have various flags that will change the state of the app
 - external buttons are now responsive
 - create controls for setup canvas
 - can't control different windows in first screen, we can either make a manual selector or let it be the last one interacted with, or only show one at a time.
