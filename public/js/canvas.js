@@ -35,6 +35,14 @@ class Canvas {
     this.elipCX = 200;
     this.elipCY = 200;
 
+    //filter string parts
+    this.hueRotateActive = false;
+    this.sepiaVal = 1;
+    this.hueRotateVal = 40;
+    this.blurVal = 0.0;
+    this.saturateVal = 400;
+
+
     this.startTarget;
 
     this.img.onload = function(){
@@ -53,6 +61,8 @@ class Canvas {
 
   drawCanvas(){
     this.context.save();
+
+    this.setFilterString();
 
     let rgbaString = 'rgba(' + this.colorR + ', ' + this.colorG + ', ' + this.colorB + ', ' + this.colorO + ')';
 
@@ -106,7 +116,7 @@ class Canvas {
   };
 
   focus(delta){
-    let oldBlur = this.stripChars(this.selector.css('filter'));
+    let oldBlur = this.blurVal;
     if (oldBlur == ''){
       this.selector.css('filter', 'blur(0.0px)');
     }
@@ -126,10 +136,32 @@ class Canvas {
     //stops the blur from getting too intense, this prevents slowdown
     if (oldBlur + delta <= 40){
       let newBlur = oldBlur + delta / 40;
-      this.selector.css('filter', 'blur( ' + newBlur + 'px)');
+      this.blurVal = newBlur;
+      this.setFilterString();
+      // this.selector.css('filter', 'blur( ' + newBlur + 'px)');
     }
 
     this.drawCanvas();
+  };
+
+  setFilterString(){
+    let stringVal = ''
+    if (this.hueRotateActive){
+      let sepiaString = 'sepia(' + this.sepiaVal + ') ';
+      let hueRotateString = 'hue-rotate(' + this.hueRotateVal + 'deg) ';
+      let saturateString = 'saturate(' + this.saturateVal + '%) ';
+      let blurString = 'blur(' + this.blurVal + 'px) ';
+      stringVal = sepiaString + hueRotateString + saturateString + blurString;
+    } else {
+      stringVal = 'blur(' + this.blurVal + 'px) ';
+    }
+
+    this.selector.css('filter', stringVal);
+
+  }
+
+  hueRotate(){
+    this.selector.css('filter', 'sepia(1) hue-rotate(40deg) saturate(400%)');
   };
 
   stripChars(string){
@@ -183,6 +215,7 @@ class Canvas {
     this.elipCX = this.imgW / 2;
     this.elipCY = this.imgH / 2;
   };
+
 
   drawPPPath(){
     this.context.beginPath();
