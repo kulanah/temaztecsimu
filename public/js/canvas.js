@@ -116,22 +116,20 @@ class Canvas {
   };
 
   focus(delta){
+    if (this.blurVal < 0){
+      this.blurVal = 0;
+    } 
+    // console.log(delta); 
     let oldBlur = this.blurVal;
-    if (oldBlur == ''){
-      this.selector.css('filter', 'blur(0.0px)');
-    }
 
-    oldBlur = parseFloat(oldBlur);
-
-    if (oldBlur < 0.25 && oldBlur > 0 ){
+    console.log(oldBlur);
+    if (oldBlur < 0.10){
       this.focusUp = !this.focusUp;
-    } else if(oldBlur > -0.25 && oldBlur < 0){
-      this.focusUp = !this.focusUp;
-    };
+    } 
 
     if (this.focusUp){
       delta = -delta;
-    }
+    } 
 
     //stops the blur from getting too intense, this prevents slowdown
     if (oldBlur + delta <= 40){
