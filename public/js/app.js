@@ -4,19 +4,17 @@
 $("img[usemap]").rwdImageMaps();
 
 
-  let canvasClasses = [];
+let canvasClasses = [];
+let stg = {};
 
-  const setupbox = new Canvas('./public/img/23.png', 'setupboxcanvas');
-  const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas'); 
-  const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas');
+drawColumn();
 
-  setupbox.hueRotateActive = true;
+const setupbox = new Canvas('./public/img/23.png', 'setupboxcanvas');
+const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas'); 
+const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas');
 
-  console.log('setup at end');
-  // setupbox.pivotActive = true;
+setupbox.hueRotateActive = true;
 
-  // setupbox.setColor(142, 142, 142, 1);
-// let openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas');
 //when the html is all loaded it will call all the relevant javascript functions
 $(document).ready(function(event) {
   pageSetup();

@@ -24,7 +24,7 @@ TODO:
 
 
 MEETING 
-- add highlighting to active buttons 
+- add highlighting to active buttons (make controllers canvases maybe?)
 - direct alignments in popup
 - slide one image (make done active)
 - next button on alignment pane (tune tab) and bottom buttons
