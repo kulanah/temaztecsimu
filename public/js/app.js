@@ -5,7 +5,6 @@ $("img[usemap]").rwdImageMaps();
 
 
 let canvasClasses = [];
-let stg = {};
 
 drawColumn();
 

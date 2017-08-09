@@ -11,10 +11,10 @@ let startMenu = function(){
   });
 
   $('#columnbtn').on('click', function(){
-    if(isVisible('microscopeGraph')){
-      $('#microscopeGraph').hide();
+    if(isVisible('columndiv')){
+      $('#columndiv').hide();
     } else{
-      $('#microscopeGraph').show();
+      $('#columndiv').show();
     }
   });
 
