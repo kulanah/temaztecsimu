@@ -60,10 +60,12 @@ for(i = 0; i < temLens.length; i++){
 	visualArray[i].style.height = 19 + 'px';
 	visualArray[i].innerHTML = visualArray[i].name;
 	visualArray[i].style.font = '14px Arial';
-	visualArray[i].style.textAlign = 'left';
+	visualArray[i].style.textAlign = 'center';
 }
 
 function drawColumn(){
+	//default height = 1160
+
 	//unsure if I want this here or not, this saves it if the user modifies
 	//screen size but it is also inefficicent if they don't 
 	let canvasHeight = $(window).height() * 0.9;
@@ -73,11 +75,13 @@ function drawColumn(){
 	$('#labelcanvas')[0].height = canvasHeight;
 	$('#labelcanvas')[0].width = canvasWidth;
 
-	let xScale = 0.8;
-	let yScale = 0.6;
+	let xScale = 1;
+	let yScale = canvasHeight / 1160;
+	console.log(yScale$)
 
 	beamLabels[0].getContext('2d').scale(xScale, yScale);
 	beamDiag[0].getContext('2d').scale(xScale, yScale);
+
 	var ctx = beamDiag[0].getContext('2d');
 	ctx.clearRect(-10000,-10000,20000,20000);
 	ctx.save();
@@ -157,15 +161,15 @@ function drawColumn(){
 		
 
 		if(temLens[i].kind=='screen'){
-			visualArray[i].style.left = offset + 100 + 'px';
+			visualArray[i].style.left = offset + 120 + 'px';
 			visualArray[i].style.top = temLens[i].y() - 4 * yScale + 'px';
 		
 		}else{
       if(temLens[i].kind=='source'){
-        visualArray[i].style.left = offset + 75 + 'px';
+        visualArray[i].style.left = offset + 95 + 'px';
         visualArray[i].style.top = temLens[i].y() - 4 + 'px';
       }else{
-        visualArray[i].style.left = offset + 75 + 'px';
+        visualArray[i].style.left = offset + 95 + 'px';
 				visualArray[i].style.top = (temLens[i].y() * yScale - 8 ) + 'px';
       }
     }
