@@ -1,0 +1,72 @@
+<html>
+<head>
+  <!-- <link rel='stylesheet' src='./public/css/main.css'> -->
+</head>
+<body>
+  <img src='./public/img/controlsLeft.png' id='controller' usemap='#left'>
+  <map name='left'>
+    <area id='cont1' href='#' shape='rect' coords='75,75,110,110'>
+    <area id='cont2' href='#' shape='rect' coords='123,65,150,100'>
+    <area id='cont3' href='#' shape='rect' coords='180,65,205,90'>
+    <area id='cont4' href='#' shape='rect' coords='248,65,270,85'>
+  </map>
+  <img id='map2' src="https://github.com/jamietre/ImageMapster/raw/master/examples/images/usa_map_720.png" usemap="#usa">
+  <map name="usa">
+    <area href="#" data-state="AA,AE" shape="rect" coords="512,29,586,44">
+    <area href="#" data-state="AD" shape="rect" coords="515,68,585,80">
+    <area href="#" data-state="AC" shape="rect" coords="650,149,711,161">
+    <area href="#" data-state="AB" shape="rect" coords="655,167,711,179">
+    <area href="#" data-state='AA' shape="rect" coords="543,49,586,62">
+  </map>
+</body>
+<script src='./public/js/jquery-3.2.1.min.js'></script> 
+<script type='text/javascript' src='./public/js/jquery.imagemapster.js'></script>
+<script>
+  $('img').mapster({
+    // staticState: true
+  });
+
+  $('#controller').mapster({
+    staticState: true
+  });
+
+  $('#map2').mapster({
+    isSelectable: false
+  });
+
+  $('#cont1').on('click', function(){
+    $('#map2').mapster({
+      staticState: false,
+      isSelectable: false
+
+    })
+  });
+
+  $('#cont2').on('click', function(){
+    let group = 'AA';
+    
+    $('#map2').mapster({
+      mapKey: 'data-state',
+      isSelectable: false,
+    }).mapster('set', true, group);
+  });
+
+  $('#cont3').on('click', function(){
+    let group = 'AB';
+
+    $('#map2').mapster({
+      mapKey: 'data-state',
+      isSelectable: false
+    }).mapster('set', true, group);
+  });
+</script>
+</html>
+
+
+<!-- 
+
+  1. highlight selected flags
+  2. remove binding WITRHOUT losing highlight
+
+
+-->
