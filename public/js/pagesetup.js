@@ -3,11 +3,16 @@
 
 'use strict';
 
-let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 'openbox', 'basesetup', 'columndiv'];
 
 let beamslider; 
 
 let pageSetup = function(){
+  //array of elements that we close when you click outside of the item
+  //we loop thorough this later on to set this behavior on all of them
+  let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox'];
+  
+  let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 'openbox', 'basesetup', 'columndiv'];
+  
   $(document).mouseup(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
       var $container = $('#' + closewhenoffclick[i]);
@@ -23,9 +28,6 @@ let pageSetup = function(){
       event.preventDefault(); 
   });
 
-  //array of elements that we close when you click outside of the item
-  //we loop thorough this later on to set this behavior on all of them
-  let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu'];
 
   beamslider = $('#beamrange').slider({
     values: [1, 11], 
