@@ -22,42 +22,59 @@
 <script src='./public/js/jquery-3.2.1.min.js'></script> 
 <script type='text/javascript' src='./public/js/jquery.imagemapster.js'></script>
 <script>
+
+  let img = $('#map2');
+  let clearMap = function(imgSelector){
+    imgSelector.mapster({
+      isSelectable: false
+    }).mapster({
+      isSelectable: false
+    });
+  };
+
   $('img').mapster({
-    // staticState: true
+    fillColor: '#3EACBA',
   });
 
+
+
   $('#controller').mapster({
-    staticState: true
+    staticState: true,
+    fillColor: '3EACBA',
+    fillOpacity: 0.7
   });
 
   $('#map2').mapster({
-    isSelectable: false
-  });
+    fillColor: '#3EACBA'
+  })
+  .mapster('unbind', true);
 
   $('#cont1').on('click', function(){
+    clearMap(img);
     $('#map2').mapster({
       staticState: false,
       isSelectable: false
-
-    })
+    });
   });
 
   $('#cont2').on('click', function(){
     let group = 'AA';
+    clearMap(img);
     
     $('#map2').mapster({
       mapKey: 'data-state',
       isSelectable: false,
-    }).mapster('set', true, group);
+    }).mapster('set', true, group).mapster('unbind', true);
   });
 
   $('#cont3').on('click', function(){
     let group = 'AB';
+    clearMap(img);
 
     $('#map2').mapster({
       mapKey: 'data-state',
       isSelectable: false
-    }).mapster('set', true, group);
+    }).mapster('set', true, group).mapster('unbind', true);
   });
 </script>
 </html>
