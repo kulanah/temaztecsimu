@@ -25,7 +25,6 @@ TODO:
 
 MEETING 
 - add highlighting to active buttons (make controllers canvases maybe?)
-- direct alignments in popup
 - slide one image (make done active)
 - next button on alignment pane (tune tab) and bottom buttons
 - spotsize should connect to display
@@ -56,6 +55,7 @@ Doing:
 Need Clarification:
 
 Done:
+- direct alignments in popup
 - direct alignments from dropdwon should open setupbox and controls
 - mag needs to be drag up and down like focucs
 - paragraphs from alignment doc need to be parsed as json instead of .htm files

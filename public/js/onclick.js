@@ -15,4 +15,5 @@ let clickFunctions = function(){
   setupTab();
   startMenu();
   tabs();
+  tuneTab();
 };

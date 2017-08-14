@@ -113,3 +113,9 @@
   top: 5.5vh;
   right: 2vw;
 }
+
+#deflectorbox{
+  position: absolute;
+  top: 6.79vh;
+  left: 14.28vw;
+}

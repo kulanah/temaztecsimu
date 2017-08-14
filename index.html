@@ -95,7 +95,9 @@
             <p id='beamvalue'>5</p>
           </div>
           <div id='leftcoltune' class='hidden'>
-            <img class='leftcol' id='leftcolumnstigmator' src='./public/img/stigmator.png' width='243' height='225'/>
+            <img class='leftcol' id='leftcolumnstigmator' src='./public/img/stigmator.png' usemap='#tunestig' width='243' height='225'/>
+            <map name='tunestig' id='tunestig'>
+              <area shape='rect' id='tuneexpand' coords='219,6,234,21' />
             <img class='leftcol' id='leftcolumnalignments' src='./public/img/alignments.png' usemap='#tunealign' width='243' height'450'/>
             <map name='tunealign' id='tunealign'>
               <area shape='rect' id='tunealignleft' coords='47,217,75,239' />
@@ -197,13 +199,17 @@
         <area shape='circle' id='multiy' coords='377,150,17' />
       </map>
     </div>
+
+    <!-- Floating box divs -->
     <div id='vacuumoverview' class='hidden'>
       <img id='vacuumimg' src='./public/img/vacuumopen.png' width='384' height='559'  />
     </div>
+
     <div id='columndiv' class='hidden'>
       <canvas id='columncanvas'></canvas>
       <canvas id='labelcanvas'></canvas>
     </div>
+
     <div id='maindropdown' class='hidden'>
       <img src='./public/img/button52.png' usemap='#dropdownmap' width='120' height='274' >
       <map name='dropdownmap' id='dropdownmap'>
@@ -211,6 +217,7 @@
         <area shape='rect' id='directalignmentdrop' coords='0,79,100,91' />
       </map>
     </div>
+
     <div id='filtercontroldiv' class='hidden'>
       <img src='./public/img/filtercontrol.png' usemap='#filtercontrolwindow' width='256' height='822'/>
       <map name='filtercontrolwindow' id='filtercontrolwindow'>
@@ -232,6 +239,10 @@
         <area shape='rect' id='cancel' coords='627,504,700,528' />
         <area shape='rect' id='imagefile' coords='106,77,242,96' />
       </map>  
+    </div>
+
+    <div id='deflectorbox' class='hidden'>
+      <img src='./public/img/Deflector.png' width='243' height='452' />
     </div>
 
 
@@ -274,6 +285,7 @@
     <script src='./public/js/onclicks/searchtab.js'></script>
     <script src='./public/js/onclicks/temlisttune.js'></script>
     <script src='./public/js/onclicks/temlistfeg.js'></script>
+    <script src='./public/js/onclicks/tunetab.js'></script>
 
     <!--functionality imports -->
     <script src='./public/js/pagesetup.js'></script>
