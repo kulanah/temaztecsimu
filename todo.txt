@@ -19,7 +19,6 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
-- modify php to pull old column to current
 - spot size should modify intensity by some finitie amount per step.
 
 
