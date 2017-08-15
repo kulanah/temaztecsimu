@@ -33,7 +33,6 @@ MEETING
 - don't allow L3/R3 changes when not in 
 - alignmnet boxes should be exactly the same
 - gun tilt from alignments makes mx/my shift birghtness circle (to be added)
-- need to create system for error messages (popups when users do things that could be damaging to equipment)
 - for multi x is bottom left to top right y is bottom right to top left
 
 - responsive design for everything 
@@ -52,8 +51,10 @@ Doing:
 - better documentation
 
 Need Clarification:
+- further additions to error message? Possibly explain whats wrong? (REQUIRES LOTS OF MANUAL CODE PATHS)
 
 Done:
+- need to create system for error messages (popups when users do things that could be damaging to equipment)
 - direct alignments in popup
 - direct alignments from dropdwon should open setupbox and controls
 - mag needs to be drag up and down like focucs

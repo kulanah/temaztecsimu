@@ -82,6 +82,14 @@ let mainScreen = function(){
     $('#basesetup').hide();
   });
 
+  $('#error').on('click', function(event){
+    // alert('sup');
+    $('#errordiv').show();
+  });
+
+  $('#errorokay').on('click', function(event){
+    $('#errordiv').hide();
+  });
   /*
     beamshift ideas.
     1)
