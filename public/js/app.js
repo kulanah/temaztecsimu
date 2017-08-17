@@ -3,8 +3,21 @@
 
 $("img[usemap]").rwdImageMaps();
 
+/*
+  idea:  seperate the onclick files into different groupings of classes, allowing each one to be set on its' own when the apropriate step is selected.
+
+  issues:  violates dry when the same button is used in multiple sections 
+  
+  code to turn off onclicks not related to current flags.  Potentially create new function so that I can also exclude the important helper onclicks (navigation etc)
+  $('area').not($('.wx')).prop('onclick', null).off('click');
+
+  
+*/
+
 
 let canvasClasses = [];
+
+
 
 drawColumn();
 

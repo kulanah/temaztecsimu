@@ -28,12 +28,13 @@
     imgSelector.mapster({
       isSelectable: false
     }).mapster({
-      isSelectable: false
-    });
+      isSelectable: false,
+      staticState: false
+    }).mapster('unbind', true);
   };
 
   $('img').mapster({
-    fillColor: '#3EACBA',
+    fillColor: '3EACBA',
   });
 
 
@@ -45,16 +46,12 @@
   });
 
   $('#map2').mapster({
-    fillColor: '#3EACBA'
+    fillColor: '3EACBA'
   })
   .mapster('unbind', true);
 
   $('#cont1').on('click', function(){
     clearMap(img);
-    $('#map2').mapster({
-      staticState: false,
-      isSelectable: false
-    });
   });
 
   $('#cont2').on('click', function(){
@@ -64,6 +61,7 @@
     $('#map2').mapster({
       mapKey: 'data-state',
       isSelectable: false,
+      fillColor: '3EACBA'
     }).mapster('set', true, group).mapster('unbind', true);
   });
 
@@ -73,8 +71,13 @@
 
     $('#map2').mapster({
       mapKey: 'data-state',
-      isSelectable: false
+      isSelectable: false,
+      fillColor: '3EACBA'
     }).mapster('set', true, group).mapster('unbind', true);
+  });
+
+  $('#cont4').on('click', function(){
+    clearMap(img);
   });
 </script>
 </html>

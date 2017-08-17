@@ -7,7 +7,7 @@ let data = [
         "steps" : [
           {
             "text" : "Advice: Select gun lens setting suitable for mode",
-            "flags" : ""
+            "flags" : "wx"
           }, {
             "text": "step two of lesson",
             "flags" : "wx"

@@ -105,6 +105,37 @@ class AlignmentBox{
     if (!this.done){
       this.drawLocation.text(this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].text);
     }
+    this.activateButtons(this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].flags);
   }
 
+  activateButtons(flags){
+    console.log(flags);
+
+
+    let buttonArray = [];
+    let reqSelector = $('.required');
+    let flagSelector = $('.' + flags);
+
+    $(reqSelector).each(function(index, element){
+      buttonArray.push(element);
+    });
+    $(flagSelector).each(function(index, element){
+      buttonArray.push(element);
+    });
+    console.log(buttonArray);
+    $('area').not(buttonArray).prop('onclick', null).off('click');
+    /* 
+      WHERE TO STORE??? 
+      run all onclick setters
+      create array for areas 
+      pushapply required stuff onto it       
+      pushapply flag stuff onto it 
+      select all areas not in that array and turn off their onclicks
+
+    */
+    // $('img').mapster({
+    //   mapKey: 'step-flag',
+    //   isSelectable: false
+    // }).mapster('set', true, flags).mapster('unbind', true);
+  }
 }

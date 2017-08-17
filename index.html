@@ -16,12 +16,12 @@
       <tr>  
         <td>
           <div id='tabsleft'>
-            <img src='./public/img/tabs1.png' class='tabs' id='tabs1' usemap='#tabs1' width='238' height='69'/>
+            <img src='./public/img/tabs1.png' class='tabs' id='tabs1img' usemap='#tabs1' width='238' height='69'/>
             <map name='tabs1'>
-              <area shape='rect' id='setup' coords='3,25,47,42' />
-              <area shape='rect' id='search' coords='48,25,91,42' />
-              <area shape='rect' id='tune' coords='93,25,133,42' />
-              <area shape='rect' id='stem' coords='134,25,175,42' />
+              <area shape='rect' class='required' id='setup' coords='3,25,47,42' />
+              <area shape='rect' class='required' id='search' coords='48,25,91,42' />
+              <area shape='rect' class='required' id='tune' coords='93,25,133,42' />
+              <area shape='rect' class='wx' id='stem' coords='134,25,175,42' />
               <area shape='rect' id='fegregtab1' coords='176,25,199,42' />
               <area shape='rect' class='leftbutton' coords='201,27,216,42' />
               <area shape='rect' class='rightbutton' coords='217,27,233,42' />
@@ -39,14 +39,14 @@
           </div>
         </td>
         <td rowspan='3'>
-          <img src='./public/img/mainscreen.png' class='mainwindow' id='mainimage' usemap='#mainscreen' width='1437' height='1019'/>
+          <img src='./public/img/mainscreen.png' class='mainwindow wx' id='mainimage' usemap='#mainscreen' width='1437' height='1019'/>
           <map name='mainscreen' id='mainscreen'>
             <area shape='rect' id='filebutton' coords='6,72,31,83' />
             <area shape='rect' id='openbutton' coords='13,91,34,105' />
-            <area shape='rect' id='error' coords='61,445,135,476' />
+            <area shape='rect' class='wx' id='error' coords='61,445,135,476' />
             <area shape='rect' id='mainscreendropdown' coords='1293,878,1409,895' />
             <area shape='rect' id='closedrop' coords='1410,879,1425,895' />
-            <area shape='rect' id='startview' coords='78,236,139,257' />
+            <area shape='rect' id='startview' coords='78,236,139,257' testprop='1,2,3,4' />
           </map>
           <div id='microscopeimage' class='hidden'>
             <canvas id='mainmicroscopecanvas' width='2000' height='1000'/>
@@ -278,6 +278,7 @@
     <script src='./public/js/jquery-3.2.1.min.js'></script>
     <script src='./public/js/jquery-ui.min.js'></script>
     <script src='./public/js/mapping.js'></script>
+    <script src='./public/js/jquery.imagemapster.js'></script>
 
     <!--class declarations-->
     <script src='./public/js/canvas.js'></script>
