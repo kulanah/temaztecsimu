@@ -1,4 +1,5 @@
 Backlog:
+- add highlighting to active buttons (make controllers canvases maybe?)
 - Rotation should move 
 - operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
 - color mask
@@ -11,6 +12,7 @@ Backlog:
 
 
 Bugs: 
+- intensity gets stuck too small
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
 - rounding error in FEG Control mewA
@@ -19,13 +21,14 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
+- intensity needs a lower bound
+- spotsize smaller = darkest @ 11 
+- spotsize larger = brighter @ 1
 - spot size should modify intensity by some finitie amount per step.
 - set classes for the flagged buttons to disable unused buttons
 
 
 MEETING 
-- add highlighting to active buttons (make controllers canvases maybe?)
-- slide one image (make done active)
 - next button on alignment pane (tune tab) and bottom buttons
 - spotsize should connect to display
 - beam size smaller in setupbox
