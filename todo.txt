@@ -12,7 +12,6 @@ Backlog:
 
 
 Bugs: 
-- intensity gets stuck too small
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
 - rounding error in FEG Control mewA
@@ -21,7 +20,6 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 TODO:
-- intensity needs a lower bound
 - spotsize smaller = darkest @ 11 
 - spotsize larger = brighter @ 1
 - spot size should modify intensity by some finitie amount per step.
@@ -57,6 +55,8 @@ Need Clarification:
 - further additions to error message? Possibly explain whats wrong? (REQUIRES LOTS OF MANUAL CODE PATHS)
 
 Done:
+- intensity needs a lower bound
+- intensity gets stuck too small
 - system for limiting what buttons are active at any given moment set up
 - need to create system for error messages (popups when users do things that could be damaging to equipment)
 - direct alignments in popup

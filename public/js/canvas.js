@@ -169,11 +169,9 @@ class Canvas {
   changeIntensity(delta){
     delta = delta - 1;
 
-    if (this.maskR < 10 && this.maskR > 0 ){
+    if (this.maskR < 3 && this.maskR > 0 ){
       this.intUp = !this.intUp;
-    } else if(this.maskR > -10 && this.maskR < 0){
-      this.intUp = !this.intUp;
-    };
+    } 
 
     if (this.intUp){
       delta = -delta;
@@ -181,6 +179,11 @@ class Canvas {
 
     this.maskR = this.maskR + (this.maskR * delta);
 
+    //this stops the mask radius from shrinking too small with a high delta value.  
+    //the two is arbitrarily far away from our min mask size and the 2.9 is arbitrarily close.
+    if (this.maskR < 2){
+      this.maskR = 2.9;
+    }
     this.drawCanvas();
   };
 
