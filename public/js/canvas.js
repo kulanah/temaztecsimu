@@ -29,11 +29,6 @@ class Canvas {
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
 
     this.pivotActive = false;
-    this.elipW = 200;
-    this.elipH = 100;
-
-    this.elipCX = 200;
-    this.elipCY = 200;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -51,7 +46,6 @@ class Canvas {
 
     this.img.onload = function(){
       this.parentThis.setDimensions();
-      this.parentThis.pivotPointSetup();
     };
   };
 
@@ -90,7 +84,6 @@ class Canvas {
                            this.imgX,this.imgY,this.imgW,this.imgH);
 
     
-    this.drawHalo();
     this.context.restore();
   };
 
@@ -216,52 +209,8 @@ class Canvas {
     this.colorO = o;
   };
 
-  pivotPointSetup(){
-    this.elipW = this.img.width / 4;
-    this.elipH = this.img.height / 4;
-    this.elipCX = this.imgW / 2;
-    this.elipCY = this.imgH / 2;
-  };
 
 
-  drawPPPath(){
-    this.context.beginPath();
-
-    this.context.moveTo(this.elipCX, this.elipCY - this.elipH/2);
-    this.context.bezierCurveTo(
-      this.elipCX + this.elipW/2, this.elipCY - this.elipH/2,
-      this.elipCX + this.elipW/2, this.elipCY + this.elipH/2,
-      this.elipCX, this.elipCY + this.elipH/2);
-    
-    this.context.bezierCurveTo(
-      this.elipCX - this.elipW/2, this.elipCY + this.elipH/2, 
-      this.elipCX - this.elipW/2, this.elipCY - this.elipH/2,
-      this.elipCX, this.elipCY - this.elipH/2);
-
-    this.context.fillStyle = 'red';
-    this.context.fill();
-    this.context.closePath();
-  }
-
-  changePPWidth(delta){
-    this.elipW += delta;
-  }
-
-  changePPHeight(delta){
-    this.elipH += delta;
-}
-
-  drawHalo(context){
-    context.beginPath();
-    context.arc(this.maskX, this.maskY, this.maskR - 20, 0, Math.PI * 2)
-    context.lineWidth = 2;
-    context.shadowBlur = 10;
-    // context.lineWidth = this.haloWidth;
-    // context.shadowBlur = this.haloBlur;
-    context.shadowColor = 'white';
-    context.stroke();
-    
-  }
   /*
 
   create circle based on ppxy
