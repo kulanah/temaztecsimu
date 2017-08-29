@@ -29,6 +29,9 @@ class Canvas {
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
 
     this.pivotActive = false;
+    this.pivotPointWidth = 50;
+    this.pivotPointHeight = 50;
+    this.pivotPointHeightAlpha = 0;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -210,7 +213,48 @@ class Canvas {
   };
 
 
+  drawPPPath(){
+    this.context.beginPath();
+    for (let angle = 0; angle < 2*Math.PI; angle += Math.PI / 32){
 
+    }
+  }
+
+  mapXYfromAngle(angle){
+    //for all vectors, notation is Acp {Vector A, coordinate system c, parameter p (usually x or y)}
+  
+    //sets up vector Va, the main vector modified by settings[stg['PPX X']].val & settings[stg['PPX Y']].val - 
+    // and as a fucntion of angle
+
+    //TODO: make this more functional, remove width and height
+    //because there are two forms fo this (ppx and ppy) this wont work once we add the other form
+    let mainVectorX =  Math.cos(angle) * this.pivotPointWidth;
+    let mainVectorY = Math.cos(angle) * this.pivotPointHeight;
+    
+    
+    //sets up vector secondaryVector, in the coordinate system b in which the alpha offset feature is computed - 
+    //as a function of angle and settings[stg['PPX ALPHA']].val
+
+    let secondaryVectorX = 0.3 * Math.sin(angle) * this.pivotPointHeightAlpha;
+    let secondaryVectorY = 0;
+    
+    //finds phi, angle of of vector v to the horizontal
+    let phi = Math.atan(this.pivotPointWidth / this.pivotPointHeight);
+    
+    //rotates vector Ob by -phi -> Oa
+    let Oax = Math.cos(-1 * phi) * secondaryVectorX;
+    let Oay = Math.sin(-1 * phi) * secondaryVectorX;
+    
+    //adds vector Oa to vector Va
+    mainVectorX += Oax;
+    mainVectorY += Oay;
+    
+    //rotates vector Va by -pi/4 -> Vs (this was det empirically by observing TEM)
+    let Vsx = Math.cos(-1 * rotPPY * Math.PI) * Vax - Math.sin(-1 * rotPPY * Math.PI) * mainVectorY;
+    let Vsy = Math.sin(-1 * rotPPY * Math.PI) * Vax + Math.cos(-1 * rotPPY * Math.PI) * mainVectorY;
+      
+    return [Vsx, Vsy];
+  }
   /*
 
   create circle based on ppxy
