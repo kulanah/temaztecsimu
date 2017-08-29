@@ -42,8 +42,12 @@ class Canvas {
     this.blurVal = 0.0;
     this.saturateVal = 400;
 
-
     this.startTarget;
+
+    this.glowSelector = $('#' + cssID + 'glow')
+    this.haloRadius;
+    this.haloBlur;
+    this.haloWidth;
 
     this.img.onload = function(){
       this.parentThis.setDimensions();
@@ -85,6 +89,8 @@ class Canvas {
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
                            this.imgX,this.imgY,this.imgW,this.imgH);
 
+    
+    this.drawHalo();
     this.context.restore();
   };
 
@@ -243,6 +249,18 @@ class Canvas {
 
   changePPHeight(delta){
     this.elipH += delta;
+}
+
+  drawHalo(context){
+    context.beginPath();
+    context.arc(this.maskX, this.maskY, this.maskR - 20, 0, Math.PI * 2)
+    context.lineWidth = 2;
+    context.shadowBlur = 10;
+    // context.lineWidth = this.haloWidth;
+    // context.shadowBlur = this.haloBlur;
+    context.shadowColor = 'white';
+    context.stroke();
+    
   }
   /*
 
