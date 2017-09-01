@@ -28,10 +28,12 @@ class Canvas {
     this.mag = 2;
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
 
-    this.pivotActive = false;
-    this.pivotPointWidth = 50;
-    this.pivotPointHeight = 50;
-    this.pivotPointHeightAlpha = 0;
+    this.pivotActive = true;
+    this.pivotPointWidth = 20;
+    this.pivotPointHeight = 100;
+    this.pivotPointHeightAlpha = 150;
+    this.pivotPointCenterX;
+    this.pivotPointCenterY;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -58,6 +60,9 @@ class Canvas {
     this.maskX = this.img.width / 2
     this.maskY = this.img.height / 2;
     this.maskR = this.img.width / 8;
+
+    this.pivotPointCenterX = this.maskX;
+    this.pivotPointCenterY = this.maskY;
   };
 
   drawCanvas(){
@@ -73,19 +78,19 @@ class Canvas {
 
     let newRadius = this.maskR * this.zooms[this.mag];
 
-
     if (this.pivotActive){
       this.drawPPPath();
     }
 
+    
     this.context.beginPath();
     this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
     this.context.clip();
-
+    
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-                           this.imgX,this.imgY,this.imgW,this.imgH);
-
+      this.imgX,this.imgY,this.imgW,this.imgH);
+      
     
     this.context.restore();
   };
@@ -121,7 +126,6 @@ class Canvas {
     if (this.blurVal < 0){
       this.blurVal = 0;
     } 
-    // console.log(delta); 
     let oldBlur = this.blurVal;
 
     console.log(oldBlur);
@@ -212,14 +216,6 @@ class Canvas {
     this.colorO = o;
   };
 
-
-  drawPPPath(){
-    this.context.beginPath();
-    for (let angle = 0; angle < 2*Math.PI; angle += Math.PI / 32){
-
-    }
-  }
-
   mapXYfromAngle(angle){
     //for all vectors, notation is Acp {Vector A, coordinate system c, parameter p (usually x or y)}
   
@@ -249,12 +245,55 @@ class Canvas {
     mainVectorX += Oax;
     mainVectorY += Oay;
     
+    //TODO: replace "replace this" with rotation value for PPY
     //rotates vector Va by -pi/4 -> Vs (this was det empirically by observing TEM)
-    let Vsx = Math.cos(-1 * rotPPY * Math.PI) * Vax - Math.sin(-1 * rotPPY * Math.PI) * mainVectorY;
-    let Vsy = Math.sin(-1 * rotPPY * Math.PI) * Vax + Math.cos(-1 * rotPPY * Math.PI) * mainVectorY;
-      
-    return [Vsx, Vsy];
+    let Vsx = Math.cos(-1 * -1 /*<-- REPLACE THIS */* Math.PI) * mainVectorX - Math.sin(-1 * -1 /*<-- REPLACE THIS */ * Math.PI) * mainVectorY;
+    let Vsy = Math.sin(-1 * -1 /*<-- REPLACE THIS */* Math.PI) * mainVectorX + Math.cos(-1 * -1 /*<-- REPLACE THIS*/ * Math.PI) * mainVectorY;
+    // console.log('vsx: ' + Vsx);
+    // console.log('vsy: ' + Vsy);
+
+    return [-Vsx, -Vsy];
   }
+
+  drawPPPath(){
+    this.context.strokeStyle='white';
+    this.context.beginPath();
+    this.context.moveTo(0,0);
+    for (let angle = 0; angle < 2*Math.PI; angle += Math.PI / 32){
+      let mappedArray = this.mapXYfromAngle(angle);
+      let mappedXCoord = mappedArray[0];
+      let mappedYCoord = mappedArray[1];
+      let finalX, finalY
+      finalX = mappedXCoord + this.pivotPointCenterX;
+      finalY = mappedYCoord + this.pivotPointCenterY;
+      
+      this.context.moveTo(finalX, finalY);
+      
+      //moves us along the angle of the circle by 5 degrees
+      mappedArray = this.mapXYfromAngle(angle + Math.PI / 16);
+      mappedXCoord = mappedArray[0];
+      mappedYCoord = mappedArray[1];
+      
+      finalX = mappedXCoord + this.pivotPointCenterX;
+      finalY = mappedYCoord + this.pivotPointCenterY;
+
+      this.context.lineTo(finalX, finalY);
+    }
+    this.context.stroke();
+  }
+
+  multiXDrag(deltaX){
+    //TODO: add a check to see if we're in PP mode
+    if (!isNaN(deltaX)){
+      console.log(deltaX);
+
+      this.pivotPointWidth += deltaX;
+      this.drawCanvas();
+    }
+  }
+
+
+
   /*
 
   create circle based on ppxy

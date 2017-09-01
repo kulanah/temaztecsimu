@@ -49,6 +49,10 @@ let moveImage = function(deltax, deltay, target){
 
 };
 
+//TODO: find some good way to abstract all these functions that solely exist to handle the current location of t he program
+//at the very least swap to switch statements
+
+
 //this is called when the intensity button on the control panel is pressed.
 let changeIntensity = function(delta){
   if (openScreen == 0){
@@ -107,4 +111,15 @@ let zoom = function(delta){
   }
 }
 
+let multiXDrag = function(deltaX){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.multiXDrag(deltaX);
+    } else {
+      setupbox.multiXDrag(deltaX);
+    }
+  } else {
+    mainmicro.multiXDrag(deltaX);
+  }
+}
 window.addEventListener('message', handleMessage, false);
