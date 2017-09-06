@@ -18,7 +18,6 @@ Bugs:
 - setup buttons hide if screen shrinks
 - text DOESNT shrinks if you resize window
 - on aws downloads my object instead of displaying it
-- setup window canvs is slightly larger than window causing slight issues with overflow
 
 TODO:
 - spotsize smaller = darkest @ 11 
@@ -56,6 +55,7 @@ Need Clarification:
 - further additions to error message? Possibly explain whats wrong? (REQUIRES LOTS OF MANUAL CODE PATHS)
 
 Done:
+- setup window canvs is slightly larger than window causing slight issues with overflow
 - intensity needs a lower bound
 - intensity gets stuck too small
 - system for limiting what buttons are active at any given moment set up

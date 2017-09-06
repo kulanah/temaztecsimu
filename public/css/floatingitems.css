@@ -76,8 +76,8 @@
 
 #basesetupbox{
   position: relative;
-  width: 32.5vw;  
-  height: 32.5vw;
+  width: 32.8vw;  
+  height: 32.8vw;
   z-index: 2;
   border: 2px solid black;
 }
