@@ -142,7 +142,6 @@ class Canvas {
       let newBlur = oldBlur + delta / 40;
       this.blurVal = newBlur;
       this.setFilterString();
-      // this.selector.css('filter', 'blur( ' + newBlur + 'px)');
     }
 
     this.drawCanvas();

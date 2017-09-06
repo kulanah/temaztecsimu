@@ -9,6 +9,7 @@ Backlog:
 - add window switch function
 - make classes or some kind of parent organization for subsets of page
 - setup beam should be nonfull opacity
+- add draggable to controls (causes issues with drag, can potentially remove draggable when the templates are hit)
 
 
 Bugs: 
@@ -47,7 +48,7 @@ MEETING
 - controller class rewrite
 
 Doing:
-- add draggable to controls
+- brightness/fade circle added to canvas classes
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
