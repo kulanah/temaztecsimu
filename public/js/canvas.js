@@ -34,6 +34,7 @@ class Canvas {
     this.pivotPointHeightAlpha = 150;
     this.pivotPointCenterX;
     this.pivotPointCenterY;
+    this.rotationOfPPX = -1;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -128,7 +129,6 @@ class Canvas {
     } 
     let oldBlur = this.blurVal;
 
-    console.log(oldBlur);
     if (oldBlur < 0.10){
       this.focusUp = !this.focusUp;
     } 
@@ -219,8 +219,7 @@ class Canvas {
   mapXYfromAngle(angle){
     //for all vectors, notation is Acp {Vector A, coordinate system c, parameter p (usually x or y)}
   
-    //sets up vector Va, the main vector modified by settings[stg['PPX X']].val & settings[stg['PPX Y']].val - 
-    // and as a fucntion of angle
+    //sets up the main vector modified by pivotpointheight and width and modified by the stored angle
 
     //TODO: make this more functional, remove width and height
     //because there are two forms fo this (ppx and ppy) this wont work once we add the other form
@@ -234,7 +233,7 @@ class Canvas {
     let secondaryVectorX = 0.3 * Math.sin(angle) * this.pivotPointHeightAlpha;
     let secondaryVectorY = 0;
     
-    //finds phi, angle of of vector v to the horizontal
+    //finds phi, angle of main vector to the horizontal
     let phi = Math.atan(this.pivotPointWidth / this.pivotPointHeight);
     
     //rotates secondayVector by -phi -> Oa
@@ -247,8 +246,8 @@ class Canvas {
     
     //TODO: replace "replace this" with rotation value for PPY
     //rotates vector Va by -pi/4 -> Vs (this was det empirically by observing TEM)
-    let resultantX = Math.cos(-1 * -1 /*<-- REPLACE THIS */* Math.PI) * mainVectorX - Math.sin(-1 * -1 /*<-- REPLACE THIS */ * Math.PI) * mainVectorY;
-    let resutlantY = Math.sin(-1 * -1 /*<-- REPLACE THIS */* Math.PI) * mainVectorX + Math.cos(-1 * -1 /*<-- REPLACE THIS*/ * Math.PI) * mainVectorY;
+    let resultantX = Math.cos(-1 * this.rotationOfPPX * Math.PI) * mainVectorX - Math.sin(-1 * -1 /*<-- REPLACE THIS */ * Math.PI) * mainVectorY;
+    let resultantY = Math.sin(-1 * this.rotationOfPPX * Math.PI) * mainVectorX + Math.cos(-1 * -1 /*<-- REPLACE THIS*/ * Math.PI) * mainVectorY;
     // console.log('vsx: ' + Vsx);
     // console.log('vsy: ' + Vsy);
 
@@ -285,7 +284,7 @@ class Canvas {
   multiXDrag(deltaX){
     //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaX)){
-      console.log(deltaX);
+      // console.log(deltaX);
 
       this.pivotPointWidth += deltaX;
       this.drawCanvas();
@@ -296,7 +295,7 @@ class Canvas {
     //TODO: remove thiss duplication of code
     //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaY)){
-      console.log(deltaX);
+      // console.log(deltaY);
 
       this.pivotPointHeight += deltaY;
       this.drawCanvas();

@@ -5,7 +5,7 @@ let microscopeControllers = function(){
   let handleDrag = function(event){
     let deltaX = event.clientX - startX;
     let deltaY = event.clientY - startY;
-
+    
     return [deltaX, deltaY];
   };
 
@@ -24,13 +24,14 @@ let microscopeControllers = function(){
   let mousemultiytemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
+
     multiYDrag(deltas[1]);
   }
 
   let mousefocustemplate = function(event){
     let deltas = handleDrag(event);
-
     setStartXY();
+
     shiftFocus(deltas[1]);  
   }
 
@@ -133,12 +134,14 @@ let microscopeControllers = function(){
   });
 
   $('#multix').on('mousedown', function(event){
+    setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousemultixtemplate);
   });
 
   $('#multiy').on('mousedown', function(event){
+    setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousemultiytemplate);
