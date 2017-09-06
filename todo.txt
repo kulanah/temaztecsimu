@@ -18,6 +18,7 @@ Bugs:
 - setup buttons hide if screen shrinks
 - text DOESNT shrinks if you resize window
 - on aws downloads my object instead of displaying it
+- setup window canvs is slightly larger than window causing slight issues with overflow
 
 TODO:
 - spotsize smaller = darkest @ 11 
