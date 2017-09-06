@@ -21,6 +21,12 @@ let microscopeControllers = function(){
     multiXDrag(deltas[1]);
   }
 
+  let mousemultiytemplate = function(event){
+    let deltas = handleDrag(event);
+    setStartXY();
+    multiYDrag(deltas[1]);
+  }
+
   let mousefocustemplate = function(event){
     let deltas = handleDrag(event);
 
@@ -38,6 +44,7 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mousemove', mousedowntemplateintensity);
     $('body')[0].removeEventListener('mousemove', mousefocustemplate);
     $('body')[0].removeEventListener('mousemove', mousemultixtemplate);
+    $('body')[0].removeEventListener('mousemove', mousemultiytemplate);
   };
 
   let mouseuptemplatezoom = function(event){
@@ -129,6 +136,12 @@ let microscopeControllers = function(){
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousemultixtemplate);
+  });
+
+  $('#multiy').on('mousedown', function(event){
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mousemove', mousemultiytemplate);
   });
 
 };

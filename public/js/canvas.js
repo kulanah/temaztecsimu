@@ -237,7 +237,7 @@ class Canvas {
     //finds phi, angle of of vector v to the horizontal
     let phi = Math.atan(this.pivotPointWidth / this.pivotPointHeight);
     
-    //rotates vector Ob by -phi -> Oa
+    //rotates secondayVector by -phi -> Oa
     let Oax = Math.cos(-1 * phi) * secondaryVectorX;
     let Oay = Math.sin(-1 * phi) * secondaryVectorX;
     
@@ -247,12 +247,12 @@ class Canvas {
     
     //TODO: replace "replace this" with rotation value for PPY
     //rotates vector Va by -pi/4 -> Vs (this was det empirically by observing TEM)
-    let Vsx = Math.cos(-1 * -1 /*<-- REPLACE THIS */* Math.PI) * mainVectorX - Math.sin(-1 * -1 /*<-- REPLACE THIS */ * Math.PI) * mainVectorY;
-    let Vsy = Math.sin(-1 * -1 /*<-- REPLACE THIS */* Math.PI) * mainVectorX + Math.cos(-1 * -1 /*<-- REPLACE THIS*/ * Math.PI) * mainVectorY;
+    let resultantX = Math.cos(-1 * -1 /*<-- REPLACE THIS */* Math.PI) * mainVectorX - Math.sin(-1 * -1 /*<-- REPLACE THIS */ * Math.PI) * mainVectorY;
+    let resutlantY = Math.sin(-1 * -1 /*<-- REPLACE THIS */* Math.PI) * mainVectorX + Math.cos(-1 * -1 /*<-- REPLACE THIS*/ * Math.PI) * mainVectorY;
     // console.log('vsx: ' + Vsx);
     // console.log('vsy: ' + Vsy);
 
-    return [-Vsx, -Vsy];
+    return [-resultantX, -resultantY];
   }
 
   drawPPPath(){
@@ -288,6 +288,17 @@ class Canvas {
       console.log(deltaX);
 
       this.pivotPointWidth += deltaX;
+      this.drawCanvas();
+    }
+  }
+
+  multiYDrag(deltaY){
+    //TODO: remove thiss duplication of code
+    //TODO: add a check to see if we're in PP mode
+    if (!isNaN(deltaY)){
+      console.log(deltaX);
+
+      this.pivotPointHeight += deltaY;
       this.drawCanvas();
     }
   }
