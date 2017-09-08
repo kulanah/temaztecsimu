@@ -46,9 +46,7 @@ class Canvas {
     this.startTarget;
 
     this.glowSelector = $('#' + cssID + 'glow')
-    this.haloRadius;
     this.haloBlur;
-    this.haloWidth;
 
     this.img.onload = function(){
       this.parentThis.setDimensions();
@@ -91,8 +89,9 @@ class Canvas {
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
       this.imgX,this.imgY,this.imgW,this.imgH);
-      
     
+    this.drawHalo();
+
     this.context.restore();
   };
 
@@ -301,15 +300,28 @@ class Canvas {
     }
   }
 
+  drawHalo(){
+    //TODO: figure out why this reintroduces the bug wherein the mask gets stuck at the too small point
+    let context = this.glowSelector[0].getContext('2d');
+    context.save();
+    context.clearRect(0,0,900,900);
+    context.filter = 'blur(10px)';
 
+    context.beginPath();
+    context.arc(this.maskX, this.maskY, this.maskR - 10, 0, Math.PI * 2);
+    context.strokeStyle = 'white';
+    context.lineWidth = 10;
+    context.stroke();
 
+    context.restore();
+  }
   /*
 
-  create circle based on ppxy
-  calculate radius
-  move image and mask that radius away
-
-
+    get radius and center of halo
+    calculate intensity of halo based on intensity/spot size
 
   */
+
+
+
 };
