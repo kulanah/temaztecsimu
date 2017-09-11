@@ -303,17 +303,28 @@ class Canvas {
   drawHalo(){
     //TODO: figure out why this reintroduces the bug wherein the mask gets stuck at the too small point
     let context = this.glowSelector[0].getContext('2d');
+    let haloR;
+
+    if (this.maskR < 5){
+      haloR = 1;
+    } else {
+      haloR = this.maskR - 5;
+    }
+
+    console.log
     context.save();
     context.clearRect(0,0,900,900);
     context.filter = 'blur(10px)';
 
     context.beginPath();
-    context.arc(this.maskX, this.maskY, this.maskR - 10, 0, Math.PI * 2);
+    context.arc(this.maskX, this.maskY, haloR, 0, Math.PI * 2);
     context.strokeStyle = 'white';
     context.lineWidth = 10;
     context.stroke();
 
     context.restore();
+
+    // console.log(this.maskR);
   }
   /*
 
