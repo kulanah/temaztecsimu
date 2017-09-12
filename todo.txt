@@ -24,11 +24,6 @@ TODO:
   * add haloing when smaller than outer circle from xhair
 - Button Highlighting
 - PivotPoint functionality
-- Spotsize connection to canvases (mask radius)
-  * make steps equidistant
-  * beam size smaller in setupbox
-  * spotsize (slider) smaller = darkest @ 11 
-  * spotsize larger = brighter @ 1
 - top left of left control activates stigamator 
   * adds popup with 3 buttons (will get screenshot)
 
@@ -44,6 +39,7 @@ Need Clarification:
 - further additions to error message? Possibly explain whats wrong? (REQUIRES LOTS OF MANUAL CODE PATHS)
 
 Done:
+- Spotsize connection to canvases (mask radius)
 - setup window canvs is slightly larger than window causing slight issues with overflow
 - intensity needs a lower bound
 - intensity gets stuck too small

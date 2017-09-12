@@ -315,7 +315,6 @@ class Canvas {
       haloR = maskRadius
     }
 
-    console.log
     context.save();
     context.clearRect(0,0,900,900);
     context.filter = 'blur(10px)';
@@ -326,9 +325,21 @@ class Canvas {
     context.lineWidth = 10;
     context.stroke();
 
+    this.drawShade(context);
+
     context.restore();
 
     // console.log(this.maskR);
+  }
+
+  drawShade(context){
+    let beamVal = this.beamslider.val() - 1;
+
+    context.globalAlpha = 0 + (0.06 * beamVal);
+    console.log(context.globalAlpha)
+    context.fillRect(0, 0, 900, 900);
+
+    context.globalAlpha = 1;
   }
   /*
 
