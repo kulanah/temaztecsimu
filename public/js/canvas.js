@@ -304,14 +304,15 @@ class Canvas {
   }
 
   drawHalo(){
-    //TODO: figure out why this reintroduces the bug wherein the mask gets stuck at the too small point
     let context = this.glowSelector[0].getContext('2d');
     let haloR;
 
-    if (this.maskR < 5){
+    let maskRadius = this.maskR + this.beamslider.val() * 4 - 10;
+
+    if (maskRadius < 1.5){
       haloR = 1;
     } else {
-      haloR = this.maskR - 5;
+      haloR = maskRadius
     }
 
     console.log
