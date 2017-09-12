@@ -70,21 +70,19 @@ let microscopeControllers = function(){
   });
 
   $('#buttonl3').on('click', function(event){
-    if (currentTab == 1){
-      let value = beamslider.val();
-      --value;
-      beamslider.val(value);
-      $('#beamvalue').text(beamslider.val());
-    };
+    let value = beamslider.val();
+    --value;
+    beamslider.val(value);
+    $('#beamvalue').text(beamslider.val());
+    updateCanvas();
   });
 
   $('#buttonr3').on('click', function(event){
-    if (currentTab == 1){
-      let value = beamslider.val();
-      ++value;
-      beamslider.val(value);
-      $('#beamvalue').text(beamslider.val());
-    };
+    let value = beamslider.val();
+    ++value;
+    beamslider.val(value);
+    $('#beamvalue').text(beamslider.val());
+    updateCanvas();
   });
 
   $('#buttonrollerr').mousedown(function(event){

@@ -24,6 +24,9 @@ class Canvas {
     this.maskX = 0;
     this.maskY = 0;
     this.maskR = 0;
+    //This is the selector for the spotsize beam selector slider on the search tab.  
+    //TODO: Change this from a constant to something more intelligent
+    this.beamslider = $('#beamrange');
 
     this.mag = 2;
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
@@ -75,7 +78,7 @@ class Canvas {
     this.context.clearRect(0,0,900,900);
     this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
 
-    let newRadius = this.maskR * this.zooms[this.mag];
+    let newRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4;
 
     if (this.pivotActive){
       this.drawPPPath();

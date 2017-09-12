@@ -7,6 +7,7 @@ let searchTab = function(){
     beamslider.val(3);
     $('#beamvalue').text(beamslider.val());
     micro = true;
+    updateCanvas();
   });
 
   $('#micro').on('click', function(event){
@@ -14,5 +15,6 @@ let searchTab = function(){
     beamslider.val(6);
     $('#beamvalue').text(beamslider.val());
     micro = false;
+    updateCanvas();
   });
 };

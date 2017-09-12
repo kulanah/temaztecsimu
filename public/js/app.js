@@ -109,7 +109,7 @@ let zoom = function(delta){
   } else {
     mainmicro.zoom(delta);
   }
-}
+};
 
 let multiXDrag = function(deltaX){
   if (openScreen == 0){
@@ -121,7 +121,7 @@ let multiXDrag = function(deltaX){
   } else {
     mainmicro.multiXDrag(deltaX);
   }
-}
+};
 
 let multiYDrag = function(deltaX){
   if (openScreen == 0){
@@ -133,5 +133,18 @@ let multiYDrag = function(deltaX){
   } else {
     mainmicro.multiXDrag(deltaX);
   }
-}
+};
+
+let updateCanvas = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.drawCanvas();
+    } else {
+      setupbox.drawCanvas();
+    }
+  } else {
+    mainmicro.drawCanvas();
+  }
+};
+
 window.addEventListener('message', handleMessage, false);
