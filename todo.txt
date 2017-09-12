@@ -1,17 +1,3 @@
-Backlog:
-- add highlighting to active buttons (make controllers canvases maybe?)
-- Rotation should move 
-- operate on/off - V value goes to 3000 FEG uA to 0 then back to 60
-- color mask
-- shrink text at small resolution
-- buttons for qa and hw
-- new aws accoutn 
-- add window switch function
-- make classes or some kind of parent organization for subsets of page
-- setup beam should be nonfull opacity
-- add draggable to controls (causes issues with drag, can potentially remove draggable when the templates are hit)
-
-
 Bugs: 
 - Safari compatibility (pretty sure there's a small syntax error somewhere that's breaking the whole thing)
 - onclick mouse capture is breaking the scroll bars
@@ -20,34 +6,36 @@ Bugs:
 - text DOESNT shrinks if you resize window
 - on aws downloads my object instead of displaying it
 
-TODO:
-- spotsize smaller = darkest @ 11 
-- spotsize larger = brighter @ 1
-- spot size should modify intensity by some finitie amount per step.
-- set classes for the flagged buttons to disable unused buttons
-
-
-MEETING 
-- next button on alignment pane (tune tab) and bottom buttons
-- spotsize should connect to display
-- beam size smaller in setupbox
-- beam size connects to mask size
-- make steps equidistant
-- alignmnet boxes should be exactly the same
-- gun tilt from alignments makes mx/my shift birghtness circle (to be added)
-- for multi x is bottom left to top right y is bottom right to top left
-
+Backlog:
 - responsive design for everything 
-- add haloing when smaller than outer circle from xhair
-- when intensity gets too large darken the image
-- white spot in center when very small
-- top left of left control activates stigamator 
-  - adds popup with 3 buttons (will get screenshot)
-- diffraction button is right control second from right on top
-- magnification moves center of mask 
+- shrink text at small resolution
+- gun tilt from alignments makes mx/my shift birghtness circle (to be added)
+- add window switch function
+- make classes or some kind of parent organization for subsets of page
+- add draggable to controls (causes issues with drag, can potentially remove draggable when the templates are hit)
+- alignmnet boxes should be exactly the same
+- aplly classes for the flagged buttons to disable unused buttons to all items
 - controller class rewrite
+- when intensity gets too large darken the image
+
+TODO:
+
+- Haloing at various sizes
+  * add haloing when smaller than outer circle from xhair
+- Button Highlighting
+- PivotPoint functionality
+- Spotsize connection to canvases (mask radius)
+  * make steps equidistant
+  * beam size smaller in setupbox
+  * spotsize (slider) smaller = darkest @ 11 
+  * spotsize larger = brighter @ 1
+- top left of left control activates stigamator 
+  * adds popup with 3 buttons (will get screenshot)
+
+- diffraction button is right control second from right on top
 
 Doing:
+- next button on alignment pane (tune tab) and bottom buttons
 - brightness/fade circle added to canvas classes
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
