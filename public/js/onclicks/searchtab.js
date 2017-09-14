@@ -7,14 +7,15 @@ let searchTab = function(){
     beamslider.val(3);
     $('#beamvalue').text(beamslider.val());
     micro = true;
-    updateCanvas();
   });
 
   $('#micro').on('click', function(event){
     $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsnano.png')
-    beamslider.val(6);
+    updateBeamSlider(6);
     $('#beamvalue').text(beamslider.val());
     micro = false;
-    updateCanvas();
   });
+
+  beamslider.on('change', updateBeamSlider);
+  beamslider.on('input', updateBeamSlider);
 };

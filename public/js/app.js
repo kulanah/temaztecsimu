@@ -147,4 +147,27 @@ let updateCanvas = function(){
   }
 };
 
+let handleBeamSlider = function(newVal){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.handleBeamSlider(newVal);
+    } else {
+      setupbox.handleBeamSlider(newVal);
+    }
+  } else {
+    mainmicro.handleBeamSlider(newVal);
+  }
+
+}
+
+let updateBeamSlider = function(newValue){
+  if (typeof(newValue) == 'number') {
+    beamslider.val(newValue);
+  } else {
+    newValue = beamslider.val();
+  }
+  $('#beamvalue').text(newValue);
+  updateCanvas();
+}
+
 window.addEventListener('message', handleMessage, false);

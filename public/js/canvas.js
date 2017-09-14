@@ -24,6 +24,8 @@ class Canvas {
     this.maskX = 0;
     this.maskY = 0;
     this.maskR = 0;
+    this.combinedRadius = 0;
+
     //This is the selector for the spotsize beam selector slider on the search tab.  
     //TODO: Change this from a constant to something more intelligent
     this.beamslider = $('#beamrange');
@@ -50,6 +52,8 @@ class Canvas {
 
     this.glowSelector = $('#' + cssID + 'glow')
     this.haloBlur;
+
+    const minBeamRadius = 4;
 
     this.img.onload = function(){
       this.parentThis.setDimensions();
@@ -303,11 +307,25 @@ class Canvas {
     }
   }
 
+  handleBeamSlider(newVal){
+    let iterateCount = newVal - this.oldSlider;
+    let delta;
+    if (iterateCount > 0){
+      delta = -4;
+    } else {
+      delta = 4
+    }
+    iterateCount = Math.abs(iterateCount);
+    for (let i = 0; i < iterateCount; ++i){
+      changeIntensity(delta);
+    }
+  }
+
   drawHalo(){
     let context = this.glowSelector[0].getContext('2d');
     let haloR;
 
-    let maskRadius = this.maskR + this.beamslider.val() * 4 - 10;
+    let maskRadius = this.calculateRadius;
 
     if (maskRadius < 1.5){
       haloR = 1;
@@ -332,6 +350,7 @@ class Canvas {
     // console.log(this.maskR);
   }
 
+  //this function is used darken the screen at large beam sizes.
   drawShade(context){
     let beamVal = this.beamslider.val() - 1;
 

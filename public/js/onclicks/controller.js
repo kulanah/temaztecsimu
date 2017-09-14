@@ -72,17 +72,13 @@ let microscopeControllers = function(){
   $('#buttonl3').on('click', function(event){
     let value = beamslider.val();
     --value;
-    beamslider.val(value);
-    $('#beamvalue').text(beamslider.val());
-    updateCanvas();
+    updateBeamSlider(value);
   });
 
   $('#buttonr3').on('click', function(event){
     let value = beamslider.val();
     ++value;
-    beamslider.val(value);
-    $('#beamvalue').text(beamslider.val());
-    updateCanvas();
+    updateBeamSlider(value);
   });
 
   $('#buttonrollerr').mousedown(function(event){
