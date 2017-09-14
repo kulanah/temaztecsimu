@@ -180,6 +180,8 @@ class Canvas {
   changeIntensity(delta){
     delta = delta - 1;
 
+    let effectiveRadius = this.calculateRadius();
+
     if (this.maskR < 3 && this.maskR > 0 ){
       this.intUp = !this.intUp;
     } 
@@ -321,11 +323,15 @@ class Canvas {
     }
   }
 
+  calculateRadius(){
+    return this.maskR + this.beamslider.val() * 4 - 10;
+  }
+
   drawHalo(){
     let context = this.glowSelector[0].getContext('2d');
     let haloR;
 
-    let maskRadius = this.calculateRadius;
+    let maskRadius = this.calculateRadius();
 
     if (maskRadius < 1.5){
       haloR = 1;
@@ -342,6 +348,13 @@ class Canvas {
     context.strokeStyle = 'white';
     context.lineWidth = 10;
     context.stroke();
+
+    context.beginPath();
+    context.arc(this.maskX, this.maskY, haloR / 4, 0, Math.PI * 2);
+    context.strokeStyle = 'white';
+    context.lineWidth = 10;
+    context.stroke();
+
 
     this.drawShade(context);
 
