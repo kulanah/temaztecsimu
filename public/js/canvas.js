@@ -178,25 +178,25 @@ class Canvas {
   };
 
   changeIntensity(delta){
+    let effectiveRadius = this.calculateRadius();
     delta = delta - 1;
 
-    let effectiveRadius = this.calculateRadius();
-
-    if (this.maskR < 3 && this.maskR > 0 ){
+    if (effectiveRadius < 11 && effectiveRadius > 0 ){
       this.intUp = !this.intUp;
     } 
 
     if (this.intUp){
       delta = -delta;
     }
-
-    this.maskR = this.maskR + (this.maskR * delta);
-
+    
+    this.maskR = this.maskR + (effectiveRadius * delta);
+    
     //this stops the mask radius from shrinking too small with a high delta value.  
     //the two is arbitrarily far away from our min mask size and the 2.9 is arbitrarily close.
-    if (this.maskR < 2){
-      this.maskR = 2.9;
+    if (effectiveRadius < 6){
+      this.maskR = 6 - beamslider.val() * 4;
     }
+    console.log(effectiveRadius);
     this.drawCanvas();
   };
 
@@ -324,14 +324,14 @@ class Canvas {
   }
 
   calculateRadius(){
-    return this.maskR + this.beamslider.val() * 4 - 10;
+    return this.maskR + this.beamslider.val() * 4;
   }
 
   drawHalo(){
     let context = this.glowSelector[0].getContext('2d');
     let haloR;
 
-    let maskRadius = this.calculateRadius();
+    let maskRadius = this.calculateRadius() - 10;
 
     if (maskRadius < 1.5){
       haloR = 1;
@@ -368,7 +368,6 @@ class Canvas {
     let beamVal = this.beamslider.val() - 1;
 
     context.globalAlpha = 0 + (0.06 * beamVal);
-    console.log(context.globalAlpha)
     context.fillRect(0, 0, 900, 900);
 
     context.globalAlpha = 1;
