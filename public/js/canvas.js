@@ -100,6 +100,7 @@ class Canvas {
     this.drawHalo();
 
     this.context.restore();
+
   };
 
   zoom(delta){
@@ -196,7 +197,6 @@ class Canvas {
     if (effectiveRadius < 11){
       this.maskR = 11 - beamslider.val() * 4;
     }
-    console.log(effectiveRadius);
     this.drawCanvas();
   };
 
@@ -365,9 +365,10 @@ class Canvas {
 
   //this function is used darken the screen at large beam sizes.
   drawShade(context){
-    let beamVal = this.beamslider.val() - 1;
+    let totalRadius = this.calculateRadius();
+    console.log(totalRadius);
 
-    context.globalAlpha = 0 + (0.06 * beamVal);
+    context.globalAlpha = 0 + (0.0023 * totalRadius);
     context.fillRect(0, 0, 900, 900);
 
     context.globalAlpha = 1;

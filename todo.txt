@@ -16,7 +16,6 @@ Backlog:
 - alignmnet boxes should be exactly the same
 - aplly classes for the flagged buttons to disable unused buttons to all items
 - controller class rewrite
-- when intensity gets too large darken the image
 
 TODO:
 
@@ -31,7 +30,6 @@ TODO:
 
 Doing:
 - next button on alignment pane (tune tab) and bottom buttons
-- brightness/fade circle added to canvas classes
 - qa, examples, hw boxes add -- assigned to minh
 - better documentation
 
@@ -39,6 +37,7 @@ Need Clarification:
 - further additions to error message? Possibly explain whats wrong? (REQUIRES LOTS OF MANUAL CODE PATHS)
 
 Done:
+- when intensity gets too large darken the image
 - Spotsize connection to canvases (mask radius)
 - setup window canvs is slightly larger than window causing slight issues with overflow
 - intensity needs a lower bound
