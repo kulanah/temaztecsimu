@@ -193,8 +193,8 @@ class Canvas {
     
     //this stops the mask radius from shrinking too small with a high delta value.  
     //the two is arbitrarily far away from our min mask size and the 2.9 is arbitrarily close.
-    if (effectiveRadius < 6){
-      this.maskR = 6 - beamslider.val() * 4;
+    if (effectiveRadius < 11){
+      this.maskR = 11 - beamslider.val() * 4;
     }
     console.log(effectiveRadius);
     this.drawCanvas();
