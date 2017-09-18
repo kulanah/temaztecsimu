@@ -260,12 +260,15 @@
     <!-- Canvas Divs -->
     <div id='openbox' class='hidden'>
       <img src='./public/img/openbox.png' usemap='#micrographbox' id='openboxborder' width='518' height='537'/>
-      <canvas id='micrographboxcanvas' width='518' height='537' >
+      <canvas class='micrographboxcanvas' id='micrographboxcanvas' width='518' height='537' >
+      </canvas>
+      <canvas class='micrographboxcanvas' id='micrographboxcanvasglow' width='518' height='537'>
       </canvas>
       <map id='micrographbox' name='micrographbox'>
         <area shape='rect' id='micrographxbox' coords='497,6,512,20' />
       </map>
     </div>
+
     <div id='basesetup' class='hidden'>
       <img src='./public/img/basesetupwindow.png' usemap='#setupbox' id='basesetupbox' width='520' height='539'/>
       <img src='./public/img/screen.png' id='setupcrosshair' width='1071' height='1071'/>

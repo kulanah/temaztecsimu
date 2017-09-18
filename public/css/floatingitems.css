@@ -109,11 +109,18 @@
 }
 
 #micrographboxcanvas{
+  z-index: -2;
+
+}
+
+#micrographboxcanvasglow{
+  z-index: -1;
+}
+
+.micrographboxcanvas{
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
-  background: grey;
 }
 
 #vacuumoverview{
