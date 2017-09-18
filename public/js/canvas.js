@@ -52,6 +52,7 @@ class Canvas {
 
     this.glowSelector = $('#' + cssID + 'glow')
     this.haloBlur;
+    this.radiusToDrawHaloUnder = 36;
 
     const minBeamRadius = 4;
 
@@ -341,18 +342,19 @@ class Canvas {
 
     context.save();
     context.clearRect(0,0,900,900);
-    context.filter = 'blur(10px)';
+    context.filter = 'blur(3px)';
 
     context.beginPath();
-    context.arc(this.maskX, this.maskY, haloR, 0, Math.PI * 2);
+    context.arc(this.maskX, this.maskY, haloR + 3, 0, Math.PI * 2);
     context.strokeStyle = 'white';
-    context.lineWidth = 10;
+    context.lineWidth = this.calculateHaloLineWidth(haloR);
     context.stroke();
 
     context.beginPath();
     context.arc(this.maskX, this.maskY, haloR / 4, 0, Math.PI * 2);
     context.strokeStyle = 'white';
-    context.lineWidth = 10;
+    context.lineWidth = this.calculateHaloLineWidth(haloR);
+    // console.log(context.lineWidth);
     context.stroke();
 
 
@@ -366,7 +368,6 @@ class Canvas {
   //this function is used darken the screen at large beam sizes.
   drawShade(context){
     let totalRadius = this.calculateRadius();
-    console.log(totalRadius);
 
     context.globalAlpha = 0 + (0.0037 * totalRadius);
     context.fillRect(0, 0, 900, 900);
@@ -379,6 +380,16 @@ class Canvas {
     calculate intensity of halo based on intensity/spot size
 
   */
+
+  calculateHaloLineWidth(maskRadius){
+    let lineWidth = 6 - (maskRadius / 12);  
+
+    if (lineWidth < 0){
+      return 0.1;
+    } else {
+      return lineWidth;
+    }
+  }
 
 
 

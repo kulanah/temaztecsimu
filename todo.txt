@@ -19,8 +19,6 @@ Backlog:
 
 TODO:
 
-- Haloing at various sizes
-  * add haloing when smaller than outer circle from xhair
 - Button Highlighting
 - PivotPoint functionality
 - top left of left control activates stigamator 
@@ -35,8 +33,10 @@ Doing:
 
 Need Clarification:
 - further additions to error message? Possibly explain whats wrong? (REQUIRES LOTS OF MANUAL CODE PATHS)
+- does pivotpoint move purely randomly?  Does it roughly progress through the elipse?
 
 Done:
+- Haloing at various sizes
 - when intensity gets too large darken the image
 - Spotsize connection to canvases (mask radius)
 - setup window canvs is slightly larger than window causing slight issues with overflow
