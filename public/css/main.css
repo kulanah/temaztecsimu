@@ -28,10 +28,16 @@ body{
   display: none;
 }
 
-#mainmicroscopecanvas{
+.mainmicroscopecanvas{
   position: absolute;
   top: 6vh;
   left: 14.28vw;
+}
+#mainmicroscopecanvas{
+  z-index: -2;
+}
+
+#mainmicroscopecanvasglow{
   z-index: -1;
 }
 
