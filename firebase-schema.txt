@@ -1,0 +1,134 @@
+Suggestions:
+Keep shallow
+repeating data is okay!
+
+Views of CERN Training Software:
+
+Home:  
+Login screen
+
+Profile: 
+User Info
+Class/Teacher Info
+
+Microscope: 
+Microscope Config
+Sample selection
+
+
+
+/users
+  uid
+  name
+  grade 
+  affiliation
+  email
+  hwId
+  courses
+    courseId
+    assignments/grades
+    progress
+
+/courses
+  courseId
+  teacher
+  lessonList
+  materials
+  diffraction
+
+
+
+
+//BELOW IS SAMPLE DATA
+Different Views: 
+
+Home: 
+All Ducks
+
+Profile: 
+User Info
+Users Ducks 
+
+Replies
+Specific Ducks
+Ducks Replies 
+
+this breaks when we try to grab all ducks
+
+/users 
+  uid
+    ducks
+      duckID
+        replies
+          replyID
+            uid
+            name
+            comment
+            etc
+        info
+          uid
+          avatar
+          text
+          numberOfLikes
+          etc
+    likes
+      duckId
+
+this works in all cases but is inefficient when we want a profile view of a specific user.  Lots of looping and grabbing all data
+
+/ducks
+  duckId
+    replies
+      replyID
+        name
+        comment
+        etc
+    indo
+      uid
+      avatar
+      text
+      etc
+    likes
+      uid
+
+this has severe duplication of data which is OKAY.  Real priorities are 1) does it work, 2) efficiency of processing
+
+/users
+  uid
+    name
+    uid
+    avatar
+
+/ducks 
+  duckID
+    avatar
+    duckID 
+    name 
+    text 
+    timestamp
+    uid 
+
+/likecount
+  duckID
+
+/usersducks
+  uid
+  duckID
+    avatar
+    duckID 
+    name 
+    text 
+    timestamp
+
+/replies
+  duckid 
+    replyid
+      name
+      comment
+      uid
+      timestamp
+      avatar
+
+/userslikes
+  uid
+    duckid
