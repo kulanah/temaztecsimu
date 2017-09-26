@@ -18,6 +18,21 @@ Backlog:
 - controller class rewrite
 
 TODO:
+- R3 and L3 are backwards
+- as you increase spotsize diameter of halo gets bigger and brighter
+- guntilt will move the halo center X and Y.  This comes from the guntilt in alignments
+- gunshift will make multix/y move beam on x and y
+- direct alignment will open new box with direct alignments list (but different than search direct alignment) tony will email picture
+- shrink controlls to 2/3rd
+- up and dwon above focus move focus a little bit
+- if you're in wobble these buttons should instead change width and speed
+- second from bottom on left controller will activate wobble 
+- buttoon to the right of arrows will reset focus to 0
+- RESEAERCH REDUX DB   OMMUNICATION PATH
+
+- Lookat minhs updated in google drive
+
+-nanolabsim.com
 
 - Button Highlighting
 - PivotPoint functionality
