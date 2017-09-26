@@ -1,0 +1,37 @@
+Suggestions:
+Keep shallow
+repeating data is okay!
+
+Views of CERN Training Software:
+
+Home:  
+Login screen
+
+Profile: 
+User Info
+Class/Teacher Info
+
+Microscope: 
+Microscope Config
+Sample selection
+
+
+
+/users
+  uid
+  name
+  grade 
+  affiliation
+  email
+  hwId
+  courses
+    courseId
+    assignments/grades
+    progress
+
+/courses
+  courseId
+  teacher
+  lessonList
+  materials
+  diffraction
