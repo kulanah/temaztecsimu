@@ -22,11 +22,13 @@ let mainScreen = function(){
     //open up the setup button with all the accompanying effects
     $('#setupbtn').trigger('click');
     $('#microControls').show();
+    $('#directalignmentspopout').show();
   })
 
   $('#closedrop').on('click', function(event){
     $('#vacuumoverview').hide();
     $('#maindropdown').hide();
+    $('#directalignmentspopout').hide();
   });
 
   $('#filebutton').on('click', function(event){

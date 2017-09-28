@@ -7,14 +7,10 @@ Bugs:
 - on aws downloads my object instead of displaying it
 
 Backlog:
-- responsive design for everything 
 - shrink text at small resolution
 - gun tilt from alignments makes mx/my shift birghtness circle (to be added)
-- add window switch function
-- make classes or some kind of parent organization for subsets of page
 - add draggable to controls (causes issues with drag, can potentially remove draggable when the templates are hit)
 - alignmnet boxes should be exactly the same
-- aplly classes for the flagged buttons to disable unused buttons to all items
 - controller class rewrite
 
 TODO:
@@ -90,5 +86,3 @@ settingsync token: 07fca6cec42096bc4ad52b5cf32752e
 
 windows machine
 Labuser1
-
-give tony tuition in a year
