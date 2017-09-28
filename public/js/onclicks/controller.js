@@ -70,14 +70,15 @@ let microscopeControllers = function(){
   });
 
   $('#buttonl3').on('click', function(event){
+
     let value = beamslider.val();
-    --value;
-    updateBeamSlider(value);
+    ++value;
+    updateBeamSlider(value);    
   });
 
   $('#buttonr3').on('click', function(event){
     let value = beamslider.val();
-    ++value;
+    --value;
     updateBeamSlider(value);
   });
 
