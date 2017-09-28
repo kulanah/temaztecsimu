@@ -17,6 +17,14 @@ Backlog:
 - aplly classes for the flagged buttons to disable unused buttons to all items
 - controller class rewrite
 
+swap diffraction apertture and intermediate lens
+
+new lens between objective and image deflection 1
+
+make column scrollable
+
+long term give pop outs of the each lens at ~3x zoom
+
 TODO:
 - R3 and L3 are backwards
 - as you increase spotsize diameter of halo gets bigger and brighter
