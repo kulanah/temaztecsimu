@@ -33,13 +33,19 @@ class Canvas {
     this.mag = 2;
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
 
-    this.pivotActive = true;
+    this.pivotActive = false;
     this.pivotPointWidth = 20;
     this.pivotPointHeight = 100;
     this.pivotPointHeightAlpha = 150;
     this.pivotPointCenterX;
     this.pivotPointCenterY;
     this.rotationOfPPX = -1;
+    this.pivotPointAngle = 0;
+
+    this.savedImageX;
+    this.savedImageY;
+    this.savedMaskX;
+    this.savedMaskY;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -354,15 +360,11 @@ class Canvas {
     context.arc(this.maskX, this.maskY, haloR / 4, 0, Math.PI * 2);
     context.strokeStyle = 'white';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
-    // console.log(context.lineWidth);
     context.stroke();
-
 
     this.drawShade(context);
 
     context.restore();
-
-    // console.log(this.maskR);
   }
 
   //this function is used darken the screen at large beam sizes.
@@ -374,12 +376,6 @@ class Canvas {
 
     context.globalAlpha = 1;
   }
-  /*
-
-    get radius and center of halo
-    calculate intensity of halo based on intensity/spot size
-
-  */
 
   calculateHaloLineWidth(maskRadius){
     let lineWidth = 6 - (maskRadius / 12);  
@@ -391,6 +387,43 @@ class Canvas {
     }
   }
 
+  activatePivotPoint(){
+    this.savedMaskX = this.maskX;
+    this.savedMaskY = this.maskY;
+    this.savedImageX = this.imgX;
+    this.savedImageY = this.imgY;
+    this.pivotActive = true;
+    setTimeout(this.setPPOffset(this), 250);
+  }
+
+  setPPOffset(thisIn){
+    if (this.pivotActive)
+    this.pivotPointAngle += 70;
+    if (this.pivotPointAngle >= 360){
+      this.pivotPointAngle -= 360;
+    }
+    let xy = thisIn.mapXYfromAngle(this.pivotPointAngle);
+    // let xy = this.mapXYfromAngle(this.pivotPointAngle);
+    this.maskX = xy[0] - this.imgW;
+    this.maskY = xy[1] - this.imgH;
+    this.imgX = xy[0];
+    this.imgY = xy[1];
+    this.drawCanvas();
 
 
+  }
+
+  /*
+
+  PP Active Button is clicked
+    1) save old values ON CLICK ONLY
+    (in draw func)
+    2) call function to set new xy based on random value.  
+      - this function needs to take old angle and set the new one based on an addition to the old one 
+    3) set timeout for new xy set
+
+
+
+
+  */
 };
