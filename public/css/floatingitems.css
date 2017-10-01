@@ -142,3 +142,9 @@
   top: 40vh;
   left: 40vw;
 }
+
+#directalignmentspopout{
+  position: absolute;
+  bottom: 45vh;
+  right: 8.3vw;
+}

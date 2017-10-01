@@ -33,13 +33,19 @@ class Canvas {
     this.mag = 2;
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
 
-    this.pivotActive = true;
+    this.pivotActive = false;
     this.pivotPointWidth = 20;
     this.pivotPointHeight = 100;
     this.pivotPointHeightAlpha = 150;
     this.pivotPointCenterX;
     this.pivotPointCenterY;
     this.rotationOfPPX = -1;
+    this.pivotPointAngle = 0;
+
+    this.savedImageX;
+    this.savedImageY;
+    this.savedMaskX;
+    this.savedMaskY;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -354,15 +360,11 @@ class Canvas {
     context.arc(this.maskX, this.maskY, haloR / 4, 0, Math.PI * 2);
     context.strokeStyle = 'white';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
-    // console.log(context.lineWidth);
     context.stroke();
-
 
     this.drawShade(context);
 
     context.restore();
-
-    // console.log(this.maskR);
   }
 
   //this function is used darken the screen at large beam sizes.
@@ -374,12 +376,6 @@ class Canvas {
 
     context.globalAlpha = 1;
   }
-  /*
-
-    get radius and center of halo
-    calculate intensity of halo based on intensity/spot size
-
-  */
 
   calculateHaloLineWidth(maskRadius){
     let lineWidth = 6 - (maskRadius / 12);  
@@ -390,7 +386,62 @@ class Canvas {
       return lineWidth;
     }
   }
+  
+  togglePivotPoint(){
+    if (this.pivotActive){
+      this.deactivatePivotPoint();
+    } else {
+      this.activatePivotPoint();
+    }
+  }
+
+  activatePivotPoint(){
+    this.savedMaskX = this.maskX;
+    this.savedMaskY = this.maskY;
+    this.savedImageX = this.imgX;
+    this.savedImageY = this.imgY;
+    this.pivotActive = true;
+    this.intervalVal = setInterval(this.setPPOffset, 80, this);
+  }
+
+  deactivatePivotPoint(){
+    this.pivotActive = false;
+    clearInterval(this.intervalVal);
+    this.imgX = this.savedImageX;
+    this.imgY = this.savedImageY;
+    this.maskX = this.savedMaskX;
+    this.maskY = this.savedMaskY;
+
+    this.drawCanvas();
+  }
+
+  setPPOffset(thisIn){
+    if (thisIn.pivotActive)
+      thisIn.pivotPointAngle += 52;
+    let xy = thisIn.mapXYfromAngle(thisIn.pivotPointAngle);
+    console.log('X: ' + xy[0]);
+    // console.log('Y: ' + xy[1]);
+    // console.log('angle: ' + thisIn.pivotPointAngle + '°');
+
+    xy[0] += thisIn.pivotPointCenterX;
+    xy[1] += thisIn.pivotPointCenterY;
+    thisIn.maskX = xy[0];
+    thisIn.maskY = xy[1];
+    thisIn.imgX = xy[0] - thisIn.imgW / 2;
+    thisIn.imgY = xy[1] - thisIn.imgH / 2;
+    thisIn.drawCanvas();
+    }
+  /*
+
+  PP Active Button is clicked
+    1) save old values ON CLICK ONLY
+    (in draw func)
+    2) call function to set new xy based on random value.  
+      - this function needs to take old angle and set the new one based on an addition to the old one 
+    3) set timeout for new xy set
 
 
 
+
+  */
 };

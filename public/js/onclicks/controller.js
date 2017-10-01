@@ -142,5 +142,10 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mousemove', mousemultiytemplate);
   });
 
+  $('#buttonl1').on('click', function(event){
+
+    activatePivotPoint();
+  });
+
 };
 

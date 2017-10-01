@@ -170,4 +170,17 @@ let updateBeamSlider = function(newValue){
   updateCanvas();
 }
 
+let activatePivotPoint = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.togglePivotPoint();
+    } else {
+      setupbox.togglePivotPoint();
+    }
+  } else {
+    mainmicro.togglePivotPoint();
+  }
+
+}
+
 window.addEventListener('message', handleMessage, false);
