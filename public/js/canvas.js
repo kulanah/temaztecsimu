@@ -386,6 +386,14 @@ class Canvas {
       return lineWidth;
     }
   }
+  
+  togglePivotPoint(){
+    if (this.pivotActive){
+      this.deactivatePivotPoint();
+    } else {
+      this.activatePivotPoint();
+    }
+  }
 
   activatePivotPoint(){
     this.savedMaskX = this.maskX;
@@ -393,26 +401,36 @@ class Canvas {
     this.savedImageX = this.imgX;
     this.savedImageY = this.imgY;
     this.pivotActive = true;
-    setTimeout(this.setPPOffset(this), 250);
+    this.intervalVal = setInterval(this.setPPOffset, 80, this);
+  }
+
+  deactivatePivotPoint(){
+    this.pivotActive = false;
+    clearInterval(this.intervalVal);
+    this.imgX = this.savedImageX;
+    this.imgY = this.savedImageY;
+    this.maskX = this.savedMaskX;
+    this.maskY = this.savedMaskY;
+
+    this.drawCanvas();
   }
 
   setPPOffset(thisIn){
-    if (this.pivotActive)
-    this.pivotPointAngle += 70;
-    if (this.pivotPointAngle >= 360){
-      this.pivotPointAngle -= 360;
+    if (thisIn.pivotActive)
+      thisIn.pivotPointAngle += 52;
+    let xy = thisIn.mapXYfromAngle(thisIn.pivotPointAngle);
+    console.log('X: ' + xy[0]);
+    // console.log('Y: ' + xy[1]);
+    // console.log('angle: ' + thisIn.pivotPointAngle + '°');
+
+    xy[0] += thisIn.pivotPointCenterX;
+    xy[1] += thisIn.pivotPointCenterY;
+    thisIn.maskX = xy[0];
+    thisIn.maskY = xy[1];
+    thisIn.imgX = xy[0] - thisIn.imgW / 2;
+    thisIn.imgY = xy[1] - thisIn.imgH / 2;
+    thisIn.drawCanvas();
     }
-    let xy = thisIn.mapXYfromAngle(this.pivotPointAngle);
-    // let xy = this.mapXYfromAngle(this.pivotPointAngle);
-    this.maskX = xy[0] - this.imgW;
-    this.maskY = xy[1] - this.imgH;
-    this.imgX = xy[0];
-    this.imgY = xy[1];
-    this.drawCanvas();
-
-
-  }
-
   /*
 
   PP Active Button is clicked

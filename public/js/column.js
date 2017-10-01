@@ -19,14 +19,14 @@ let beamLabels = $('#labelcanvas');
 beamLabels.css('position', 'absolute');
 beamLabels.css('top', '0');	
 
-//                  xCenter x  y      f       kind     name
-temLens[00] = new lens(0,0,20,8,'source','Electron Gun');
+//          xCenter x  y      f       kind     nam
+temLens[00] = new lens(0,0,20,5,'source','Electron Gun');
 temLens[01] = new lens(0,0,90,25,'lens','Gun lens');
 temLens[02] = new lens(0,0,130,140,'lens','Gun Deflection 1');
-temLens[03] = new lens(0,0,160,14,'lens','Gun Deflection 2');
+temLens[03] = new lens(0,20,160,5,'lens','Gun Deflection 2');
 temLens[04] = new lens(0,0,220,50,'lens','Condenser Lens 1');
 temLens[05] = new lens(0,0,260,6.1,'aperture','C1 Aperture');
-temLens[06] = new lens(0,0,320,10,'lens','Condenser Lens 2');
+temLens[06] = new lens(0,0,320,20,'lens','Condenser Lens 2');
 temLens[07] = new lens(0,0,350,25,'aperture','C2 Aperture');
 temLens[08] = new lens(0,0,400,100, 'lens','Beam Deflection 1');
 temLens[09] = new lens(0,0,440,15,'lens','Beam Deflection 2');
@@ -86,6 +86,7 @@ function drawColumn(){
 
 	var numOfLenses = temLens.length;
 	var offset = 120;
+
 	//draw CenterLine
 	ctx.beginPath();
 	ctx.moveTo(offset,temLens[0].y);
@@ -102,10 +103,11 @@ function drawColumn(){
 		var blocked=0;
 		for(var i=0;i<numOfLenses;i++){
 			if(i>0){
-				if(temLens[i-1].kind=='lens' || temLens[i-1].kind=='source' || temLens[i-1].kind=='sample'){
+				let prevType = temLens[i-1].kind;
+				if(prevType =='lens' || prevType =='source' || prevType =='sample'){
 					temLens[i].x = temLens[i-1].x-(temLens[i].y - temLens[i-1].y)*((temLens[i-1].x-temLens[i-1].xCenter)/temLens[i-1].f);
 				}	
-				if(temLens[i-1].kind == 'aperture'){
+				if(prevType == 'aperture'){
 					if(temLens[i-1].x < -temLens[i-1].f + temLens[i-1].xCenter || temLens[i-1].x>temLens[i-1].f +temLens[i-1].xCenter){
 						blocked = 1;	
 					}else{
