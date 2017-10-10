@@ -8,12 +8,16 @@
   position: absolute;
   bottom: 6vh;
   left: 0;
+  width: 450px;
+  height: 292px;
 }
 
 #controlsRight{
   position: absolute;
   bottom: 6vh;
   right: 0;
+  width: 450px;
+  height: 292px;
 }
 
 #maindropdown{
@@ -147,4 +151,25 @@
   position: absolute;
   bottom: 45vh;
   right: 8.3vw;
+}
+
+#directalignmentspopouttext{
+  position: absolute;
+  top: 41px;
+  left: 13px;
+  height: 128px;
+  width: 211px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-collapse: inital;
+  line-height: 15px;
+}
+
+.dalistitem:hover{
+  color: white;
+  background: #0A246A;
+  cursor: pointer; 
+  cursor: hand;
+
+
 }
