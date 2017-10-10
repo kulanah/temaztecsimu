@@ -13,12 +13,7 @@ Backlog:
 - alignmnet boxes should be exactly the same
 - controller class rewrite
 
-x should change width
-y should change height
-
 pp should be activateable via direct alignments -> beam tilt ppx/y
-
-add blured halo for pp path
 
 check center of current view and affix it to new center at new zoon
 
@@ -26,15 +21,8 @@ swap diffraction apertture and intermediate lens
 
 new lens between objective and image deflection 1
 
-make column scrollable
-
-long term give pop outs of the each lens at ~3x zoom
-
-
 TODO:
 - R3 and L3 are backwards
-- as you increase spotsize diameter of halo gets bigger and brighter
-- guntilt will move the halo center X and Y.  This comes from the guntilt in alignments
 - gunshift will make multix/y move beam on x and y
 - direct alignment will open new box with direct alignments list (but different than search direct alignment) tony will email picture
 - shrink controlls to 2/3rd
