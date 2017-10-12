@@ -58,11 +58,11 @@ let mainScreen = function(){
   });
 
   $('#imagefile').on('click', function(event){
+    activeWindow = 0;
     $('#openfiledialogue').hide();
     $('#openbox').show();
     openbox.drawCanvas();
     $('#basesetup').hide();
-    activeWindow = 0;
   });
 
   $('#filtercontrolclosebox').on('click', function(event){
@@ -70,10 +70,10 @@ let mainScreen = function(){
   });
 
   $('#startview').on('click', function(event){
+    activeWindow = 0;
     $('#openbox').show();
     openbox.drawCanvas();
     $('#basesetup').hide();
-    activeWindow = 0;
   });
 
   $('#micrographxbox').on('click', function(event){

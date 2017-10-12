@@ -79,6 +79,10 @@ class Canvas {
   };
 
   drawCanvas(){
+    if (diffractionMode && this == setupbox){
+      this.drawDiffraction();
+      return;
+    }
     this.context.save();
 
     this.setFilterString();
@@ -446,7 +450,8 @@ class Canvas {
   */
 
   drawDiffraction(){
-    console.log(this.width)
-    this.context.clearRect(0,0,900,900);    
+    clearCanvas(this.selector[0]);
+
+
   }
 };
