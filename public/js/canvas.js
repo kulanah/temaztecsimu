@@ -65,6 +65,9 @@ class Canvas {
     this.img.onload = function(){
       this.parentThis.setDimensions();
     };
+
+    this.diffractionX = 256;
+    this.diffractionY = 256;
   };
 
   setDimensions(){
@@ -306,8 +309,11 @@ class Canvas {
     //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaX)){
       // console.log(deltaX);
-
-      this.pivotPointWidth += deltaX;
+      if (diffractionMode && this == setupbox){
+        this.diffractionX += deltaX;
+      } else {
+        this.pivotPointWidth += deltaX;
+      }
       this.drawCanvas();
     }
   }
@@ -317,8 +323,11 @@ class Canvas {
     //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaY)){
       // console.log(deltaY);
-
-      this.pivotPointHeight += deltaY;
+      if (diffractionMode && this == setupbox){
+        this.diffractionY += deltaY;
+      } else {
+        this.pivotPointHeight += deltaY;
+      }
       this.drawCanvas();
     }
   }
@@ -455,7 +464,7 @@ class Canvas {
   drawDiffraction(){
     clearCanvas(this.selector[0]);
 
-    drawBackground(this.selector[0], 256, 256, 32, 32, 0)
+    drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0)
 
   }
 };
