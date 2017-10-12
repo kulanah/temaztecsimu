@@ -46,13 +46,13 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
         s31 = 0;
     }
     var h1, k1, l1, h2, k2, l2;
-    var min = 0;
-    var max = 2;
-    var max2 = document.getElementById("max").value;
+    var min1 = 0;
+    var max1 = 2;
+    var max2 = max;
     var min2 = -max2;
     var complete = false;
-    for (h = min; h <= max; h++) {
-        for (k = min; k <= max; k++) {
+    for (h = min1; h <= max1; h++) {
+        for (k = min1; k <= max1; k++) {
             for (l = min2; l <= max2; l++) {
                 if (h === 0 && k === 0 && l === 0) {
                     continue;
@@ -192,6 +192,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         ctx.filter = 'blur(' + Math.abs(blur) + 'px)';
         var dx = r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2
+        console.log(dx, dy);
         var rotationRadians = rotation / 180 * Math.PI;
         var maxDistance = Math.sqrt(Math.pow(canvas.height, 2) + Math.pow(canvas.width, 2)) / 2;
         for (var i = -layers; i <= layers; i++) {
@@ -199,6 +200,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                 ctx.beginPath();
                 var distance = Math.sqrt(Math.pow(r1 * i + dx * j, 2) + Math.pow(dy * j, 2));
                 var distanceRatio = distance / maxDistance;
+                console.log(distance, distanceRatio)
                 var brightness = 1 / (distanceRatio + 1) * intensity * .1;
                 if (brightness > 1) {
                     brightness = 1;

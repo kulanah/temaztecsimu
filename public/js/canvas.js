@@ -446,6 +446,7 @@ class Canvas {
   */
 
   drawDiffraction(){
+    console.log(this.width)
     this.context.clearRect(0,0,900,900);    
   }
 };
