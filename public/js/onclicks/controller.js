@@ -128,6 +128,10 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mouseup', mouseuptemplatezoom);
   });
 
+  $('#buttondiffraction').on('mousedown', function(event){
+    //if()
+  });
+
   $('#multix').on('mousedown', function(event){
     setStartXY();
 
