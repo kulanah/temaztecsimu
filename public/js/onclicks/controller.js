@@ -128,11 +128,11 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mouseup', mouseuptemplatezoom);
   });
 
-  $('#buttondiffraction').on('mousedown', function(event){
+  $('#buttondiffraction').on('click', function(event){
     if(openScreen == 0){
       if(activeWindow == 1){
         // Switch between image and diffraction views
-        
+
       }
     }
   });
