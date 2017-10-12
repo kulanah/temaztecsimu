@@ -454,6 +454,7 @@ class Canvas {
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
-    drawBackground(this.selector[0], this.selector[0].width, this.selector[0].height, 256, 256, 0)
+    drawBackground(this.selector[0], this.imgX, this.imgY, 32, 32, 0)
+
   }
 };
