@@ -80,9 +80,12 @@ class Canvas {
 
   drawCanvas(){
     if (diffractionMode && this == setupbox){
+      document.getElementById('setupcrosshair').style.visibility = 'hidden';      
       this.drawDiffraction();
       return;
     }
+    document.getElementById('setupcrosshair').style.visibility = 'visible';
+
     this.context.save();
 
     this.setFilterString();
@@ -451,7 +454,6 @@ class Canvas {
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
-
-
+    drawBackground(this.selector[0], this.selector[0].width, this.selector[0].height, 256, 256, 0)
   }
 };
