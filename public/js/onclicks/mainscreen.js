@@ -73,7 +73,7 @@ let mainScreen = function(){
     $('#openbox').show();
     openbox.drawCanvas();
     $('#basesetup').hide();
-    
+    activeWindow = 0;
   });
 
   $('#micrographxbox').on('click', function(event){
