@@ -131,10 +131,10 @@ let microscopeControllers = function(){
   $('#buttondiffraction').on('click', function(event){
     // Switch between image and diffraction views
     if (diffractionMode == 0){
-
+      setupbox.drawDiffraction();
       diffractionMode = 1;
     } else {
-      
+      setupbox.drawCanvas();
       diffractionMode = 0;
     }
   });
