@@ -126,12 +126,12 @@ let multiXDrag = function(deltaX){
 let multiYDrag = function(deltaX){
   if (openScreen == 0){
     if (activeWindow == 0){
-      openbox.multiXDrag(deltaX);
+      openbox.multiYDrag(deltaX);
     } else {
-      setupbox.multiXDrag(deltaX);
+      setupbox.multiYDrag(deltaX);
     }
   } else {
-    mainmicro.multiXDrag(deltaX);
+    mainmicro.multiYDrag(deltaX);
   }
 };
 
