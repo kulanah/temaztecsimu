@@ -129,7 +129,12 @@ let microscopeControllers = function(){
   });
 
   $('#buttondiffraction').on('mousedown', function(event){
-    //if()
+    if(openScreen == 0){
+      if(activeWindow == 1){
+        // Switch between image and diffraction views
+        
+      }
+    }
   });
 
   $('#multix').on('mousedown', function(event){
