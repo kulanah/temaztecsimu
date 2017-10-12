@@ -129,11 +129,13 @@ let microscopeControllers = function(){
   });
 
   $('#buttondiffraction').on('click', function(event){
-    if(openScreen == 0){
-      if(activeWindow == 1){
-        // Switch between image and diffraction views
+    // Switch between image and diffraction views
+    if (diffractionMode == 0){
 
-      }
+      diffractionMode = 1;
+    } else {
+      
+      diffractionMode = 0;
     }
   });
 

@@ -7,6 +7,7 @@ let startX, startY, startIntensity;
 
 let openScreen = 0;
 let activeWindow = 0;
+let diffractionMode = 0;
 
 let clickFunctions = function(){
   microscopeControllers();
