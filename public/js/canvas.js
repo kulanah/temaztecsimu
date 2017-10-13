@@ -491,8 +491,10 @@ class Canvas {
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
-
-    drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0)
-
+    drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
+    var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
+    for(i = 0; i < settings[0].length; i++) {      
+      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, 1, 1, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i]);
+    }
   }
 };
