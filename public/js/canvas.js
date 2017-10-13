@@ -68,6 +68,7 @@ class Canvas {
 
     this.diffractionX = 256;
     this.diffractionY = 256;
+    this.diffractionCameraLength = 265;
   };
 
   setDimensions(){
@@ -121,9 +122,36 @@ class Canvas {
   };
 
   zoom(delta){
+    if (diffractionMode && this == setupbox){
+      if (delta > 0) {
+        switch(this.diffractionCameraLength){
+          case 265:
+            this.diffractionCameraLength = 460;
+            break;
+          case 460:
+            this.diffractionCameraLength = 640;
+            break;
+          default:
+            this.diffractionCameraLength = 960;
+        }
+      } else if (delta < 0) {
+        switch(this.diffractionCameraLength){
+          case 960:
+            this.diffractionCameraLength = 640;
+            break;
+          case 640:
+            this.diffractionCameraLength = 460;
+            break;
+          default:
+            this.diffractionCameraLength = 265;
+        }
+      }
+      this.drawCanvas();
+      return;
+    }
     let zoomFactor = 1;
 
-    if(delta > 0){
+    if (delta > 0){
       // if (this.mag == this.zooms.length - 1){
       //   zoomFactor = this.zooms[0] / this.zooms[this.mag];
       //   this.mag = 0;
