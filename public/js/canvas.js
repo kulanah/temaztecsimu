@@ -322,6 +322,9 @@ class Canvas {
   }
 
   drawPPPath(){
+    let savedFilter = this.context.filter;
+    this.context.filter = 'blur(5px)';
+
     this.context.strokeStyle='white';
     this.context.beginPath();
     this.context.moveTo(0,0);
@@ -346,6 +349,7 @@ class Canvas {
       this.context.lineTo(finalX, finalY);
     }
     this.context.stroke();
+    this.context.filter = savedFilter;
   }
 
   multiXDrag(deltaX){
