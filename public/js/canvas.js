@@ -478,9 +478,6 @@ class Canvas {
     if (thisIn.pivotActive)
       thisIn.pivotPointAngle += 52;
     let xy = thisIn.mapXYfromAngle(thisIn.pivotPointAngle);
-    console.log('X: ' + xy[0]);
-    // console.log('Y: ' + xy[1]);
-    // console.log('angle: ' + thisIn.pivotPointAngle + '°');
 
     xy[0] += thisIn.pivotPointCenterX;
     xy[1] += thisIn.pivotPointCenterY;
@@ -490,19 +487,6 @@ class Canvas {
     thisIn.imgY = xy[1] - thisIn.imgH / 2;
     thisIn.drawCanvas();
     }
-  /*
-
-  PP Active Button is clicked
-    1) save old values ON CLICK ONLY
-    (in draw func)
-    2) call function to set new xy based on random value.  
-      - this function needs to take old angle and set the new one based on an addition to the old one 
-    3) set timeout for new xy set
-
-
-
-
-  */
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
