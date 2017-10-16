@@ -161,7 +161,7 @@ let microscopeControllers = function(){
 
   $('#buttonl1').on('click', function(event){
 
-    activatePivotPoint();
+ 
   });
 
 };

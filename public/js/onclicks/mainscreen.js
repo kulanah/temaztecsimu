@@ -85,12 +85,16 @@ let mainScreen = function(){
   });
 
   $('#error').on('click', function(event){
-    // alert('sup');
     $('#errordiv').show();
   });
 
   $('#errorokay').on('click', function(event){
     $('#errordiv').hide();
+  });
+
+
+  $('.pptoggle').on('click', function(event){
+    activatePivotPoint();
   });
   /*
     beamshift ideas.
