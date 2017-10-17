@@ -72,6 +72,10 @@ class Canvas {
     this.diffractionRadiusX = 1;
     this.diffractionRadiusY = 1;
     this.diffractionIntUp = false;
+
+    this.rotateActive = false;
+    this.rotateAlpha = 8;
+    this.rotateBeta = 8;
   };
 
   setDimensions(){
@@ -107,6 +111,10 @@ class Canvas {
 
     if (this.pivotActive){
       this.drawPPPath();
+    }
+
+    if (this.rotateActive){
+      this.drawRotatePath();
     }
 
     
@@ -352,12 +360,18 @@ class Canvas {
     this.context.filter = savedFilter;
   }
 
+  drawRotatePath(){
+
+  }
+
   multiXDrag(deltaX){
     //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaX)){
       // console.log(deltaX);
       if (diffractionMode && this == setupbox){
         this.diffractionX += deltaX;
+      } else if (this.rotateActive){
+        this.rotateAlpha += deltaX;
       } else {
         this.pivotPointWidth += deltaX;
       }
@@ -372,6 +386,8 @@ class Canvas {
       // console.log(deltaY);
       if (diffractionMode && this == setupbox){
         this.diffractionY += deltaY;
+      } else if (this.rotateActive){
+        this.rotateBeta += deltaY;
       } else {
         this.pivotPointHeight += deltaY;
       }
@@ -459,6 +475,9 @@ class Canvas {
   }
 
   activatePivotPoint(){
+    if (this.rotateActive) {
+      this.deactivateRotationCenter();
+    }
     this.savedMaskX = this.maskX;
     this.savedMaskY = this.maskY;
     this.savedImageX = this.imgX;
@@ -500,4 +519,45 @@ class Canvas {
       drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i]);
     }
   }
+
+  toggleRotationCenter(){
+    if (this.rotateActive){
+      this.deactivateRotationCenter();
+    } else {
+      this.activateRotationCenter();
+    }
+  }
+
+  activateRotationCenter(){
+    if (this.pivotActive){
+      this.deactivatePivotPoint();
+    }
+    this.savedMaskX = this.maskX;
+    this.savedMaskY = this.maskY;
+    this.savedImageX = this.imgX;
+    this.savedImageY = this.imgY;
+    this.rotateActive = true;
+    this.intervalVal = setInterval(this.setRotateOffset, 10, this);
+  }
+
+  deactivateRotationCenter(){
+    this.rotateActive = false;
+    clearInterval(this.intervalVal);
+    this.imgX = this.savedImageX;
+    this.imgY = this.savedImageY;
+    this.maskX = this.savedMaskX;
+    this.maskY = this.savedMaskY;
+
+    this.drawCanvas();
+  }
+
+  setRotateOffset(thisIn){
+    let time = new Date();
+    let speed = 1;
+    thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha + thisIn.imgW / 2);
+    thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta + thisIn.imgH / 2);
+    //thisIn.imgX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * ellipseRadius + thisIn.imgW / 2);
+    //thisIn.imgY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * 8 + thisIn.imgH / 2);
+    thisIn.drawCanvas();
+    }
 };
