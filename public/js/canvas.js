@@ -74,13 +74,8 @@ class Canvas {
     this.diffractionIntUp = false;
 
     this.rotateActive = false;
-    this.rotatePointWidth = 20;
-    this.rotatePointHeight = 100;
-    this.rotatePointHeightAlpha = 150;
-    this.rotatePointCenterX;
-    this.rotatePointCenterY;
-    this.rotationOfRX = -1;
-    this.rotatePointAngle = 0;
+    this.rotateAlpha = 8;
+    this.rotateBeta = 8;
   };
 
   setDimensions(){
@@ -553,13 +548,14 @@ class Canvas {
   }
 
   setRotateOffset(thisIn){
-    var time = new Date();
-    var speed = 1;
-    var amplitude = 8;
-    var ellipseRadius = 8;
+    let time = new Date();
+    let speed = 1;
+    let amplitude = thisIn.rotateAlpha;
+    let ellipseRadius = thisIn.rotateBeta;
     thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * ellipseRadius + thisIn.imgW / 2);
     thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * 8 + thisIn.imgH / 2);
-      
+    //thisIn.imgX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * ellipseRadius + thisIn.imgW / 2);
+    //thisIn.imgY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * 8 + thisIn.imgH / 2);
     thisIn.drawCanvas();
     }
 };
