@@ -195,4 +195,39 @@ let activateRotationCenter = function(){
   }
 }
 
+let focusUp = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.focusUp();
+    } else {
+      setupbox.focusUptest();
+    }
+  } else {
+    mainmicro.focusUp();
+  }
+}
+
+let focusDown = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.focusDown();
+    } else {
+      setupbox.focusDown();
+    }
+  } else {
+    mainmicro.focusDown();
+  }
+}
+
+let zeroFocus = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.zeroFocus();
+    } else {
+      setupbox.zeroFocus();
+    }
+  } else {
+    mainmicro.zeroFocus();
+  }
+}
 window.addEventListener('message', handleMessage, false);

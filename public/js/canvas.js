@@ -33,6 +33,8 @@ class Canvas {
     this.mag = 2;
     this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
 
+    this.specimenHeight = 0;
+
     this.pivotActive = false;
     this.pivotPointWidth = 20;
     this.pivotPointHeight = 100;
@@ -559,5 +561,22 @@ class Canvas {
     //thisIn.imgX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * ellipseRadius + thisIn.imgW / 2);
     //thisIn.imgY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * 8 + thisIn.imgH / 2);
     thisIn.drawCanvas();
-    }
+  }
+
+  focusUptest(){
+    this.focus(10);
+    ++this.specimenHeight;
+  }
+
+  focusDown(){
+    this.focus(-10);
+    --this.specimenHeight;
+  }
+
+  zeroFocus(){
+    this.blurVal = 0;
+    this.setFilterString();
+    this.drawCanvas();
+    this.specimenHeight = 0;
+  }
 };
