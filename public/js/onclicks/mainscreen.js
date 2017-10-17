@@ -102,4 +102,8 @@ let mainScreen = function(){
       create circle params (center, radius)
       place center of beam at various points on radius
   */
+
+  $('#rotationcenter').on('click', function(event){
+    activateRotationCenter();
+  })
 };

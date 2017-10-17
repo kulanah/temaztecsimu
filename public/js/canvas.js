@@ -72,6 +72,15 @@ class Canvas {
     this.diffractionRadiusX = 1;
     this.diffractionRadiusY = 1;
     this.diffractionIntUp = false;
+
+    this.rotateActive = false;
+    this.rotatePointWidth = 20;
+    this.rotatePointHeight = 100;
+    this.rotatePointHeightAlpha = 150;
+    this.rotatePointCenterX;
+    this.rotatePointCenterY;
+    this.rotationOfRX = -1;
+    this.rotatePointAngle = 0;
   };
 
   setDimensions(){
@@ -499,5 +508,33 @@ class Canvas {
     for(i = 0; i < settings[0].length; i++) {      
       drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i]);
     }
+  }
+
+  toggleRotationCenter(){
+    if (this.rotateActive){
+      this.deactivateRotationCenter();
+    } else {
+      this.activateRotationCenter();
+    }
+  }
+
+  activateRotationCenter(){
+    this.savedMaskX = this.maskX;
+    this.savedMaskY = this.maskY;
+    this.savedImageX = this.imgX;
+    this.savedImageY = this.imgY;
+    this.rotateActive = true;
+    this.intervalVal = setInterval(this.setPPOffset, 80, this);
+  }
+
+  deactivateRotationCenter(){
+    this.rotateActive = false;
+    clearInterval(this.intervalVal);
+    this.imgX = this.savedImageX;
+    this.imgY = this.savedImageY;
+    this.maskX = this.savedMaskX;
+    this.maskY = this.savedMaskY;
+
+    this.drawCanvas();
   }
 };

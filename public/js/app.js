@@ -183,4 +183,16 @@ let activatePivotPoint = function(){
 
 }
 
+let activateRotationCenter = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.toggleRotationCenter();
+    } else {
+      setupbox.toggleRotationCenter();
+    }
+  } else {
+    mainmicro.toggleRotationCenter();
+  }
+}
+
 window.addEventListener('message', handleMessage, false);
