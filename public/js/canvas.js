@@ -370,6 +370,8 @@ class Canvas {
       // console.log(deltaX);
       if (diffractionMode && this == setupbox){
         this.diffractionX += deltaX;
+      } else if (this.rotateActive){
+        this.rotateAlpha += deltaX;
       } else {
         this.pivotPointWidth += deltaX;
       }
@@ -384,6 +386,8 @@ class Canvas {
       // console.log(deltaY);
       if (diffractionMode && this == setupbox){
         this.diffractionY += deltaY;
+      } else if (this.rotateActive){
+        this.rotateBeta += deltaY;
       } else {
         this.pivotPointHeight += deltaY;
       }
@@ -550,10 +554,8 @@ class Canvas {
   setRotateOffset(thisIn){
     let time = new Date();
     let speed = 1;
-    let amplitude = thisIn.rotateAlpha;
-    let ellipseRadius = thisIn.rotateBeta;
-    thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * ellipseRadius + thisIn.imgW / 2);
-    thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * 8 + thisIn.imgH / 2);
+    thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha + thisIn.imgW / 2);
+    thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta + thisIn.imgH / 2);
     //thisIn.imgX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * ellipseRadius + thisIn.imgW / 2);
     //thisIn.imgY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * 8 + thisIn.imgH / 2);
     thisIn.drawCanvas();
