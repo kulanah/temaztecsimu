@@ -118,6 +118,10 @@ class Canvas {
       this.drawPPPath();
     }
 
+    if (this.rotateActive){
+      this.drawRotatePath();
+    }
+
     
     this.context.beginPath();
     this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -361,6 +365,37 @@ class Canvas {
     this.context.filter = savedFilter;
   }
 
+  drawRotatePath(){
+    let savedFilter = this.context.filter;
+    this.context.filter = 'blur(5px)';
+
+    this.context.strokeStyle='white';
+    this.context.beginPath();
+    this.context.moveTo(0,0);
+    for (let angle = 0; angle < 2*Math.PI; angle += Math.PI / 32){
+      let mappedArray = this.mapXYfromAngle(angle);
+      let mappedXCoord = mappedArray[0];
+      let mappedYCoord = mappedArray[1];
+      let finalX, finalY
+      finalX = mappedXCoord + this.rotatePointCenterX;
+      finalY = mappedYCoord + this.rotatePointCenterY;
+      
+      this.context.moveTo(finalX, finalY);
+      
+      //moves us along the angle of the circle by 5 degrees
+      mappedArray = this.mapXYfromAngle(angle + Math.PI / 16);
+      mappedXCoord = mappedArray[0];
+      mappedYCoord = mappedArray[1];
+      
+      finalX = mappedXCoord + this.rotatePointCenterX;
+      finalY = mappedYCoord + this.rotatePointCenterY;
+
+      this.context.lineTo(finalX, finalY);
+    }
+    this.context.stroke();
+    this.context.filter = savedFilter;
+  }
+
   multiXDrag(deltaX){
     //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaX)){
@@ -468,6 +503,9 @@ class Canvas {
   }
 
   activatePivotPoint(){
+    if (this.rotateActive) {
+      this.deactivateRotationCenter();
+    }
     this.savedMaskX = this.maskX;
     this.savedMaskY = this.maskY;
     this.savedImageX = this.imgX;
@@ -519,12 +557,15 @@ class Canvas {
   }
 
   activateRotationCenter(){
+    if (this.pivotActive){
+      this.deactivatePivotPoint();
+    }
     this.savedMaskX = this.maskX;
     this.savedMaskY = this.maskY;
     this.savedImageX = this.imgX;
     this.savedImageY = this.imgY;
     this.rotateActive = true;
-    this.intervalVal = setInterval(this.setPPOffset, 80, this);
+    this.intervalVal = setInterval(this.setRotateOffset, 80, this);
   }
 
   deactivateRotationCenter(){
@@ -537,4 +578,18 @@ class Canvas {
 
     this.drawCanvas();
   }
+
+  setRotateOffset(thisIn){
+    if (thisIn.rotateActive)
+      thisIn.rotatePointAngle += 52;
+    let xy = thisIn.mapXYfromAngle(thisIn.rotatePointAngle);
+
+    xy[0] += thisIn.rotatePointCenterX;
+    xy[1] += thisIn.rotatePointCenterY;
+    thisIn.maskX = xy[0];
+    thisIn.maskY = xy[1];
+    thisIn.imgX = xy[0] - thisIn.imgW / 2;
+    thisIn.imgY = xy[1] - thisIn.imgH / 2;
+    thisIn.drawCanvas();
+    }
 };
