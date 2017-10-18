@@ -107,7 +107,19 @@ let mainScreen = function(){
       place center of beam at various points on radius
   */
 
+  $('#guntilt').on('click', function(event){
+  })
+
+  $('#gunshift').on('click', function(event){
+  })
+
   $('#rotationcenter').on('click', function(event){
     activateRotationCenter();
+  })
+
+  $('#comafreealignmentx').on('click', function(event){
+  })
+
+  $('#comafreealignmenty').on('click', function(event){
   })
 };
