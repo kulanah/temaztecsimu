@@ -35,7 +35,6 @@ class Canvas {
 
     this.specimenHeight = 0;
 
-    this.pivotActive = false;
     this.pivotPointWidth = 20;
     this.pivotPointHeight = 100;
     this.pivotPointHeightAlpha = 150;
@@ -107,7 +106,7 @@ class Canvas {
 
     let newRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4;
 
-    if (this.pivotActive){
+    if (this.alignmentMode == 'pivotpoint'){
       this.drawPPPath();
     }
     
@@ -463,12 +462,12 @@ class Canvas {
   // - clicking active direct alignments should not stop the alignment
   // - beam should remain at new xy, not revert to old xy
   activatePivotPoint(){
-    this.pivotActive = true;
+    this.alignmentMode = 'pivotpoint';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
   }
 
   setPPOffset(thisIn){
-    if (thisIn.pivotActive)
+    if (thisIn.alignmentMode = 'pivotpoint')
       thisIn.pivotPointAngle += 52;
     let xy = thisIn.mapXYfromAngle(thisIn.pivotPointAngle);
 
@@ -528,7 +527,6 @@ class Canvas {
   }
 
   deactivateDirectAlignments(){
-    this.pivotActive = false;
     this.alignmentMode = 'none';
     clearInterval(this.intervalVal);
     this.drawCanvas();
