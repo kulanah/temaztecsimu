@@ -48,7 +48,6 @@ class Canvas {
     this.savedImageY;
     this.savedMaskX;
     this.savedMaskY;
-    this.savedMaskR;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -473,16 +472,15 @@ class Canvas {
   
   togglePivotPoint(){
     if (this.pivotActive){
-      this.deactivatePivotPoint();
+      // Specification from Tony - clicking active direct alignments should not stop the alignment
+      //this.deactivatePivotPoint(); 
     } else {
       this.activatePivotPoint();
     }
   }
 
+  // Specification from Tony - beam should remain at new xy, not revert to old xy
   activatePivotPoint(){
-    if (this.rotateActive) {
-      this.deactivateRotationCenter();
-    }
     this.savedMaskX = this.maskX;
     this.savedMaskY = this.maskY;
     this.savedImageX = this.imgX;
@@ -525,19 +523,7 @@ class Canvas {
     }
   }
 
-  toggleRotationCenter(){
-    if (this.rotateActive){
-      this.deactivateRotationCenter();
-    } else {
-      this.activateRotationCenter();
-    }
-  }
-
   activateRotationCenter(){
-    if (this.pivotActive){
-      this.deactivatePivotPoint();
-    }
-    this.savedMaskR = this.maskR;
     this.rotateActive = true;
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
   }
@@ -553,18 +539,8 @@ class Canvas {
   setRotateOffset(thisIn){
     let time = new Date();
     let speed = 2;
-    //thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha + thisIn.imgW / 2);
-    //thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta + thisIn.imgH / 2);
     thisIn.imgX += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha / 256;
     thisIn.imgY += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta / 256;
-    /*if (Math.abs(thisIn.xShift) >= 1) {
-      thisIn.imgX += Math.trunc(thisIn.xShift);
-      thisIn.xShift -= Math.trunc(thisIn.xShift);
-    }
-    if (Math.abs(thisIn.yShift) >= 1) {
-      thisIn.imgY += Math.trunc(thisIn.yShift);
-      thisIn.yShift -= Math.trunc(thisIn.yShift);
-    }*/
     thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()))) + 20;
     thisIn.drawCanvas();
   }
@@ -596,5 +572,6 @@ class Canvas {
     this.pivotActive = false;
     this.rotateActive = false;
     clearInterval(this.intervalVal);
+    this.drawCanvas();
   }
 };

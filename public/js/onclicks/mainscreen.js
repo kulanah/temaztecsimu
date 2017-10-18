@@ -93,6 +93,7 @@ let mainScreen = function(){
   });
 
   $('#daguntilt').on('click', function(event){
+    deactivateDirectAlignments();    
   })
 
   $('#dagunshift').on('click', function(event){
@@ -100,10 +101,12 @@ let mainScreen = function(){
   })
 
   $('.pptoggle').on('click', function(event){
+    deactivateDirectAlignments();    
     activatePivotPoint();
   });
 
   $('#dabeamshift').on('click', function(event){
+    deactivateDirectAlignments();    
     resetPosition();
   })
   /*
@@ -114,12 +117,15 @@ let mainScreen = function(){
   */
 
   $('#darotationcenter').on('click', function(event){
+    deactivateDirectAlignments();    
     activateRotationCenter();
   })
 
   $('#dacomafreealignmentx').on('click', function(event){
+    deactivateDirectAlignments();
   })
 
   $('#dacomafreealignmenty').on('click', function(event){
+    deactivateDirectAlignments();    
   })
 };
