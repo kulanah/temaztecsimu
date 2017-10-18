@@ -383,10 +383,10 @@ class Canvas {
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
         case 'rotationcenter':
-          this.rotateAlpha += deltaY;
+          this.rotateBeta += deltaY;
           break;
         case 'pivotpoint':
-          this.pivotPointWidth += deltaY;
+          this.pivotPointHeight += deltaY;
           break;
       }
       this.drawCanvas();
