@@ -93,7 +93,8 @@ let mainScreen = function(){
   });
 
   $('#daguntilt').on('click', function(event){
-    deactivateDirectAlignments();    
+    deactivateDirectAlignments();
+    activateGunTilt();
   })
 
   $('#dagunshift').on('click', function(event){
@@ -102,7 +103,7 @@ let mainScreen = function(){
   })
 
   $('.pptoggle').on('click', function(event){
-    deactivateDirectAlignments();    
+    deactivateDirectAlignments();
     activatePivotPoint();
   });
 
@@ -119,15 +120,17 @@ let mainScreen = function(){
   */
 
   $('#darotationcenter').on('click', function(event){
-    deactivateDirectAlignments();    
+    deactivateDirectAlignments();
     activateRotationCenter();
   })
 
   $('#dacomafreealignmentx').on('click', function(event){
     deactivateDirectAlignments();
+    activateComaFreeAlignmentX();
   })
 
   $('#dacomafreealignmenty').on('click', function(event){
-    deactivateDirectAlignments();    
+    deactivateDirectAlignments();
+    activateComaFreeAlignmentY();    
   })
 };

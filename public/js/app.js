@@ -170,6 +170,18 @@ let updateBeamSlider = function(newValue){
   updateCanvas();
 }
 
+let activateGunTilt = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateGunTilt();
+    } else {
+      setupbox.activateGunTilt();
+    }
+  } else {
+    mainmicro.activateGunTilt();
+  }
+}
+
 let activateGunShift = function(){
   if (openScreen == 0){
     if (activeWindow == 0){
@@ -215,6 +227,30 @@ let activateRotationCenter = function(){
     }
   } else {
     mainmicro.activateRotationCenter();
+  }
+}
+
+let activateComaFreeAlignmentX = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateComaFreeAlignmentX();
+    } else {
+      setupbox.activateComaFreeAlignmentX();
+    }
+  } else {
+    mainmicro.activateComaFreeAlignmentX();
+  }
+}
+
+let activateComaFreeAlignmentY = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateComaFreeAlignmentY();
+    } else {
+      setupbox.activateComaFreeAlignmentY();
+    }
+  } else {
+    mainmicro.activateComaFreeAlignmentY();
   }
 }
 

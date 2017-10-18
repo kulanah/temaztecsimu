@@ -473,6 +473,10 @@ class Canvas {
   // Specifications from Tony 
   // - clicking active direct alignments should not stop the alignment
   // - beam should remain at new xy, not revert to old xy
+  activateGunTilt(){
+    this.alignmentMode = 'guntilt'
+  }
+
   activateGunShift(){
     this.alignmentMode = 'gunshift'
   }
@@ -480,10 +484,6 @@ class Canvas {
   activatePivotPoint(){
     this.alignmentMode = 'pivotpoint';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
-  }
-
-  activateBeamShift(){
-    this.alignmentMode = 'beamshift'
   }
 
   setPPOffset(thisIn){
@@ -500,13 +500,8 @@ class Canvas {
     thisIn.drawCanvas();
   }
 
-  drawDiffraction(){
-    clearCanvas(this.selector[0]);
-    drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
-    var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
-    for(i = 0; i < settings[0].length; i++) {      
-      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i]);
-    }
+  activateBeamShift(){
+    this.alignmentMode = 'beamshift'
   }
 
   activateRotationCenter(){
@@ -521,6 +516,23 @@ class Canvas {
     thisIn.imgY += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta / 256;
     thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()))) + 20;
     thisIn.drawCanvas();
+  }
+
+  activateComaFreeAlignmentX(){
+    this.alignmentMode = 'comafreealignmentx';
+  }
+
+  activateComaFreeAlignmentY(){
+    this.alignmentMode = 'comafreealignmenty';
+  }
+
+  drawDiffraction(){
+    clearCanvas(this.selector[0]);
+    drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
+    var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
+    for(i = 0; i < settings[0].length; i++) {      
+      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i]);
+    }
   }
 
   focusUptest(){
