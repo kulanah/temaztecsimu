@@ -78,8 +78,6 @@ class Canvas {
     this.rotateActive = false;
     this.rotateAlpha = 8;
     this.rotateBeta = 8;
-    this.xShift = 0;
-    this.yShift = 0;
   };
 
   setDimensions(){
@@ -116,11 +114,6 @@ class Canvas {
     if (this.pivotActive){
       this.drawPPPath();
     }
-
-    if (this.rotateActive){
-      this.drawRotatePath();
-    }
-
     
     this.context.beginPath();
     this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -526,14 +519,6 @@ class Canvas {
   activateRotationCenter(){
     this.rotateActive = true;
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
-  }
-
-  deactivateRotationCenter(){
-    this.rotateActive = false;
-    clearInterval(this.intervalVal);
-    this.maskR = this.savedMaskR;
-
-    this.drawCanvas();
   }
 
   setRotateOffset(thisIn){
