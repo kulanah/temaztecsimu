@@ -408,9 +408,6 @@ class Canvas {
           if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(this.maskR, 2)){
             this.haloX = Math.sqrt(Math.pow(this.maskR, 2) - Math.pow(this.haloY, 2)) * Math.sign(this.haloX);
           }
-          /*while (Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2)) > this.maskR && Math.abs()){
-            this.haloX = this.haloX - Math.sign(this.haloX);
-          }*/
           break;
         case 'gunshift':
         case 'beamshift':        
