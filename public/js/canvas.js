@@ -46,6 +46,7 @@ class Canvas {
     this.savedImageY;
     this.savedMaskX;
     this.savedMaskY;
+    this.savedMaskR;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -76,6 +77,8 @@ class Canvas {
     this.rotateActive = false;
     this.rotateAlpha = 8;
     this.rotateBeta = 8;
+    this.xShift = 0;
+    this.yShift = 0;
   };
 
   setDimensions(){
@@ -509,7 +512,7 @@ class Canvas {
     thisIn.imgX = xy[0] - thisIn.imgW / 2;
     thisIn.imgY = xy[1] - thisIn.imgH / 2;
     thisIn.drawCanvas();
-    }
+  }
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
@@ -532,10 +535,7 @@ class Canvas {
     if (this.pivotActive){
       this.deactivatePivotPoint();
     }
-    this.savedMaskX = this.maskX;
-    this.savedMaskY = this.maskY;
-    this.savedImageX = this.imgX;
-    this.savedImageY = this.imgY;
+    this.savedMaskR = this.maskR;
     this.rotateActive = true;
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
   }
@@ -543,21 +543,28 @@ class Canvas {
   deactivateRotationCenter(){
     this.rotateActive = false;
     clearInterval(this.intervalVal);
-    this.imgX = this.savedImageX;
-    this.imgY = this.savedImageY;
-    this.maskX = this.savedMaskX;
-    this.maskY = this.savedMaskY;
+    this.maskR = this.savedMaskR;
 
     this.drawCanvas();
   }
 
   setRotateOffset(thisIn){
     let time = new Date();
-    let speed = 1;
-    thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha + thisIn.imgW / 2);
-    thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta + thisIn.imgH / 2);
-    //thisIn.imgX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * ellipseRadius + thisIn.imgW / 2);
-    //thisIn.imgY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * 8 + thisIn.imgH / 2);
-    thisIn.drawCanvas();
+    let speed = .2;
+    //thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha + thisIn.imgW / 2);
+    //thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta + thisIn.imgH / 2);
+    thisIn.imgX += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha / 256;
+    thisIn.imgY += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta / 256;
+    /*if (Math.abs(thisIn.xShift) >= 1) {
+      thisIn.imgX += Math.trunc(thisIn.xShift);
+      thisIn.xShift -= Math.trunc(thisIn.xShift);
     }
+    if (Math.abs(thisIn.yShift) >= 1) {
+      thisIn.imgY += Math.trunc(thisIn.yShift);
+      thisIn.yShift -= Math.trunc(thisIn.yShift);
+    }*/
+    thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha * thisIn.rotateBeta / 64)) + 20 + Math.abs(thisIn.rotateAlpha) + Math.abs(thisIn.rotateBeta);
+
+    thisIn.drawCanvas();
+  }
 };
