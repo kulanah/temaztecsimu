@@ -44,11 +44,6 @@ class Canvas {
     this.rotationOfPPX = -1;
     this.pivotPointAngle = 0;
 
-    this.savedImageX;
-    this.savedImageY;
-    this.savedMaskX;
-    this.savedMaskY;
-
     //filter string parts
     this.hueRotateActive = false;
     this.sepiaVal = 1;
@@ -463,34 +458,12 @@ class Canvas {
     }
   }
   
-  togglePivotPoint(){
-    if (this.pivotActive){
-      // Specification from Tony - clicking active direct alignments should not stop the alignment
-      //this.deactivatePivotPoint(); 
-    } else {
-      this.activatePivotPoint();
-    }
-  }
-
-  // Specification from Tony - beam should remain at new xy, not revert to old xy
+  // Specifications from Tony 
+  // - clicking active direct alignments should not stop the alignment
+  // - beam should remain at new xy, not revert to old xy
   activatePivotPoint(){
-    this.savedMaskX = this.maskX;
-    this.savedMaskY = this.maskY;
-    this.savedImageX = this.imgX;
-    this.savedImageY = this.imgY;
     this.pivotActive = true;
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
-  }
-
-  deactivatePivotPoint(){
-    this.pivotActive = false;
-    clearInterval(this.intervalVal);
-    this.imgX = this.savedImageX;
-    this.imgY = this.savedImageY;
-    this.maskX = this.savedMaskX;
-    this.maskY = this.savedMaskY;
-
-    this.drawCanvas();
   }
 
   setPPOffset(thisIn){

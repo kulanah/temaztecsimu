@@ -173,12 +173,12 @@ let updateBeamSlider = function(newValue){
 let activatePivotPoint = function(){
   if (openScreen == 0){
     if (activeWindow == 0){
-      openbox.togglePivotPoint();
+      openbox.activatePivotPoint();
     } else {
-      setupbox.togglePivotPoint();
+      setupbox.activatePivotPoint();
     }
   } else {
-    mainmicro.togglePivotPoint();
+    mainmicro.activatePivotPoint();
   }
 
 }
