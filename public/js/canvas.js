@@ -562,6 +562,13 @@ class Canvas {
 
   activateComaFreeAlignmentY(){
     this.alignmentMode = 'comafreealignmenty';
+    this.intervalVal = setInterval(this.jumpUpDown, 1000, this);
+  }
+
+  jumpUpDown(thisIn){
+    thisIn.maskY += thisIn.jump;
+    thisIn.jump = -thisIn.jump;
+    thisIn.drawCanvas();
   }
 
   drawDiffraction(){
