@@ -98,6 +98,7 @@ let mainScreen = function(){
 
   $('#dagunshift').on('click', function(event){
     deactivateDirectAlignments();
+    activateGunShift();
   })
 
   $('.pptoggle').on('click', function(event){

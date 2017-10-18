@@ -357,17 +357,19 @@ class Canvas {
   }
 
   multiXDrag(deltaX){
-    //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaX)){
       // console.log(deltaX);
       if (diffractionMode && this == setupbox){
         this.diffractionX += deltaX;
       } else switch (this.alignmentMode){
-        case 'rotationcenter':
-          this.rotateAlpha += deltaX;
+        case 'gunshift':
+          this.maskX += deltaX;
           break;
         case 'pivotpoint':
           this.pivotPointWidth += deltaX;
+          break;
+        case 'rotationcenter':
+          this.rotateAlpha += deltaX;
           break;
       }
       this.drawCanvas();
@@ -376,17 +378,19 @@ class Canvas {
 
   multiYDrag(deltaY){
     //TODO: remove thiss duplication of code
-    //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaY)){
       // console.log(deltaY);
       if (diffractionMode && this == setupbox){
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
-        case 'rotationcenter':
-          this.rotateBeta += deltaY;
+        case 'gunshift':
+          this.maskY += deltaY;
           break;
         case 'pivotpoint':
           this.pivotPointHeight += deltaY;
+          break;
+        case 'rotationcenter':
+          this.rotateBeta += deltaY;
           break;
       }
       this.drawCanvas();
@@ -467,6 +471,10 @@ class Canvas {
   // Specifications from Tony 
   // - clicking active direct alignments should not stop the alignment
   // - beam should remain at new xy, not revert to old xy
+  activateGunShift(){
+    this.alignmentMode = 'gunshift'
+  }
+
   activatePivotPoint(){
     this.alignmentMode = 'pivotpoint';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);

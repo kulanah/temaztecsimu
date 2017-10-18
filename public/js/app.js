@@ -170,6 +170,18 @@ let updateBeamSlider = function(newValue){
   updateCanvas();
 }
 
+let activateGunShift = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateGunShift();
+    } else {
+      setupbox.activateGunShift();
+    }
+  } else {
+    mainmicro.activateGunShift();
+  }
+}
+
 let activatePivotPoint = function(){
   if (openScreen == 0){
     if (activeWindow == 0){
