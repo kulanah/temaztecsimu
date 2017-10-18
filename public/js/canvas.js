@@ -26,6 +26,9 @@ class Canvas {
     this.maskR = 0;
     this.combinedRadius = 0;
 
+    this.haloX = 0;
+    this.haloY = 0;
+
     //This is the selector for the spotsize beam selector slider on the search tab.  
     //TODO: Change this from a constant to something more intelligent
     this.beamslider = $('#beamrange');
@@ -362,6 +365,17 @@ class Canvas {
       if (diffractionMode && this == setupbox){
         this.diffractionX += deltaX;
       } else switch (this.alignmentMode){
+        case 'guntilt':
+          this.haloX += deltaX;
+          if (this.haloX > this.maskR){
+            this.haloX = this.maskR;
+          } else if (this.haloX < -this.maskR){
+            this.haloX = -this.maskR;
+          }
+          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(this.maskR, 2)){
+            this.haloY = Math.sqrt(Math.pow(this.maskR, 2) - Math.pow(this.haloX, 2)) * Math.sign(this.haloY);
+          }
+          break;
         case 'gunshift':
         case 'beamshift':
           this.maskX += deltaX;
@@ -384,6 +398,20 @@ class Canvas {
       if (diffractionMode && this == setupbox){
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
+        case 'guntilt':
+          this.haloY += deltaY;
+          if (this.haloY > this.maskR){
+            this.haloY = this.maskR;
+          } else if (this.haloY < -this.maskR){
+            this.haloY = -this.maskR;
+          }
+          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(this.maskR, 2)){
+            this.haloX = Math.sqrt(Math.pow(this.maskR, 2) - Math.pow(this.haloY, 2)) * Math.sign(this.haloX);
+          }
+          /*while (Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2)) > this.maskR && Math.abs()){
+            this.haloX = this.haloX - Math.sign(this.haloX);
+          }*/
+          break;
         case 'gunshift':
         case 'beamshift':        
           this.maskY += deltaY;
@@ -433,14 +461,14 @@ class Canvas {
     context.clearRect(0,0,900,900);
     context.filter = 'blur(3px)';
 
-    context.beginPath();
+    /*context.beginPath();
     context.arc(this.maskX, this.maskY, haloR + 3, 0, Math.PI * 2);
     context.strokeStyle = 'white';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
-    context.stroke();
+    context.stroke();*/
 
     context.beginPath();
-    context.arc(this.maskX, this.maskY, haloR / 4, 0, Math.PI * 2);
+    context.arc(this.maskX + this.haloX, this.maskY + this.haloY, haloR / 4, 0, Math.PI * 2);
     context.strokeStyle = 'white';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
     context.stroke();
