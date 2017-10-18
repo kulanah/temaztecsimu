@@ -579,4 +579,10 @@ class Canvas {
     this.drawCanvas();
     this.specimenHeight = 0;
   }
+
+  resetPosition(){
+    this.maskX = this.img.width / 2
+    this.maskY = this.img.height / 2;
+    this.drawCanvas();
+  }
 };

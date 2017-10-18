@@ -230,4 +230,17 @@ let zeroFocus = function(){
     mainmicro.zeroFocus();
   }
 }
+
+let resetPosition = function(){ 
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.resetPosition();
+    } else {
+      setupbox.resetPosition();
+    }
+  } else {
+    mainmicro.resetPosition();
+  }
+}
+
 window.addEventListener('message', handleMessage, false);
