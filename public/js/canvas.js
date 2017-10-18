@@ -362,10 +362,13 @@ class Canvas {
       // console.log(deltaX);
       if (diffractionMode && this == setupbox){
         this.diffractionX += deltaX;
-      } else if (this.alignmentMode == 'rotationcenter'){
-        this.rotateAlpha += deltaX;
-      } else {
-        this.pivotPointWidth += deltaX;
+      } else switch (this.alignmentMode){
+        case 'rotationcenter':
+          this.rotateAlpha += deltaX;
+          break;
+        case 'pivotpoint':
+          this.pivotPointWidth += deltaX;
+          break;
       }
       this.drawCanvas();
     }
@@ -378,10 +381,13 @@ class Canvas {
       // console.log(deltaY);
       if (diffractionMode && this == setupbox){
         this.diffractionY += deltaY;
-      } else if (this.alignmentMode == 'rotationcenter'){
-        this.rotateBeta += deltaY;
-      } else {
-        this.pivotPointHeight += deltaY;
+      } else switch (this.alignmentMode){
+        case 'rotationcenter':
+          this.rotateAlpha += deltaY;
+          break;
+        case 'pivotpoint':
+          this.pivotPointWidth += deltaY;
+          break;
       }
       this.drawCanvas();
     }
