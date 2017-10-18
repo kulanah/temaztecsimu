@@ -20,12 +20,6 @@
   height: 292px;
 }
 
-#maindropdown{
-  position: absolute;
-  bottom: 19vh;
-  right: 2.4vw;
-}
-
 #filtercontroldiv{
   position: absolute;
   top: 10vh;
@@ -165,11 +159,38 @@
   line-height: 15px;
 }
 
-.dalistitem:hover{
+.highlightitem{
+  padding-left: 2px;
+}
+
+.highlightitem:hover{
   color: white;
   background: #0A246A;
   cursor: pointer; 
   cursor: hand;
+}
 
+#directalignmentspopout{
+  position: absolute;
+  bottom: 45vh;
+  right: 8.3vw;
+}
 
+#maindropdowntext{
+  height: 315px;
+  width: 125px;
+  font: Helvetica;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-collapse: inital;
+  line-height: 15px;
+  font-size: 11px;
+}
+
+#maindropdown{
+  position: absolute;
+  bottom: 19vh;
+  right: 0.8vw;
+  border: 1px black solid;
+  background: white;
 }

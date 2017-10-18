@@ -96,6 +96,10 @@ let mainScreen = function(){
   $('.pptoggle').on('click', function(event){
     activatePivotPoint();
   });
+
+  $('#dabeamshift').on('click', function(event){
+    resetPosition();
+  })
   /*
     beamshift ideas.
     1)

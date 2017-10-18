@@ -160,9 +160,18 @@ let microscopeControllers = function(){
   });
 
   $('#buttonl1').on('click', function(event){
-
- 
   });
 
+  $('#buttonupr').on('click', function(event){
+    focusUp();
+  });
+
+  $('#buttondownr').on('click', function(event){
+    focusDown();
+  });
+
+  $('#buttontop1r').on('click', function(event){
+    zeroFocus();
+  })
 };
 

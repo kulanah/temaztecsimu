@@ -195,6 +195,15 @@
       </map>
       <img class='controls' id='controlsRight' src='./public/img/controlsRight.png' usemap='#rightcontrol' width='500' height='325' />
       <map name='rightcontrol' id='rightcontrol'>
+        <area shape='poly' id='buttonpolyleftr' coords='75,26,102,20,105,33,85,58,75,59' />
+        <area shape='poly' id='buttonpolyrightr' coords='127,13,161,13,167,42,151,44,127,49' />
+        
+        <area shape='square' id='buttonupr' coords='201,63,232,76' />
+        <area shape='square' id='buttondownr' coords='201,78,232,89' />
+        <area shape='circle' id='buttontop1r' coords='263,73,20' />
+        <area shape='circle' id='buttontop2r' coords='307,75,20' />
+        <area shape='circle' id='buttondiffraction' coords='362,82,15'>
+        <area shape='circle' id='buttontop4r' coords='407,90,20' />
         <area shape='circle' id='buttonr1' coords='49,111,15' />
         <area shape='circle' id='buttonr2' coords='39,153,15' />
         <area shape='circle' id='buttonr3' coords='45,200,15' />
@@ -202,7 +211,6 @@
         <area shape='circle' id='buttonfocus' coords='236,131,25' />
         <area shape='circle' id='buttonmagnification' coords='301,136,25' />
         <area shape='circle' id='multiy' coords='377,150,17' />
-        <area shape='circle' id='buttondiffraction' coords='362,82,15'>
       </map>
     </div>
 
@@ -217,11 +225,31 @@
     </div>
 
     <div id='maindropdown' class='hidden'>
-      <img src='./public/img/button52.png' usemap='#dropdownmap' width='120' height='274' >
-      <map name='dropdownmap' id='dropdownmap'>
-        <area shape='rect' id='vacuumbutton' coords='0,250,100,262' />
-        <area shape='rect' id='directalignmentdrop' coords='0,79,100,91' />
-      </map>
+      <div id='maindropdowntext'>
+        <ul id='maindroplist'>
+          <li class='highlightitem'>- None -</li>
+          <li class='highlightitem'>Alignments</li>
+          <li class='highlightitem'>Application Preferences</li>
+          <li class='highlightitem'>Application Selection</li>
+          <li class='highlightitem'>Control Pads</li>
+          <li class='highlightitem'>Dark Field</li>
+          <li class='highlightitem' id='directalignmentdrop'>Direct Alignments</li>
+          <li class='highlightitem'>FEG Control (Expert)</li>
+          <li class='highlightitem'>FEG Registers</li>
+          <li class='highlightitem'>Filter</li>
+          <li class='highlightitem'>High Tension</li>
+          <li class='highlightitem'>Holography</li>
+          <li class='highlightitem'>Normalizations</li>
+          <li class='highlightitem'>Peels</li>
+          <li class='highlightitem'>STEM Detector (User)</li>
+          <li class='highlightitem'>STEM Detector (Expert)</li>
+          <li class='highlightitem'>Stigmator</li>
+          <li class='highlightitem'>System Status</li>
+          <li class='highlightitem' id='vacuumbutton'>Vacuum (User)</li>
+          <li class='highlightitem'>Vacuum Overview</li>
+          <li class='highlightitem'>Workspace Layout</li>
+        </ul>
+      </div>
     </div>
 
     <div id='filtercontroldiv' class='hidden'>
@@ -261,16 +289,16 @@
     <div id='directalignmentspopout' class='hidden'>
       <div id='directalignmentspopouttext'>
         <ul id='directalignmentslist'>
-          <li class='dalistitem'>Gun Tilt</li>
-          <li class='dalistitem'>Gun Shift</li>
-          <li class='dalistitem pptoggle'>Beam tilt pp X</li>
-          <li class='dalistitem pptoggle'>Beam tilt pp Y</li>
-          <li class='dalistitem'>Beam shift</li>
-          <li class='dalistitem' id='rotationcenter'>Rotation center</li>
-          <li class='dalistitem'>Coma-free Alignment X</li>
-          <li class='dalistitem'>Coma-free Alignment Y</li>
-          <li class='dalistitem'>Coma-free Pivot Point X</li>
-          <li class='dalistitem'>Coma-free Pivot Point Y</li>
+          <li class='highlightitem'>Gun Tilt</li>
+          <li class='highlightitem'>Gun Shift</li>
+          <li class='highlightitem pptoggle'>Beam tilt pp X</li>
+          <li class='highlightitem pptoggle'>Beam tilt pp Y</li>
+          <li class='highlightitem' id='dabeamshift'>Beam shift</li>
+          <li class='highlightitem' id='rotationcenter'>Rotation center</li>
+          <li class='highlightitem'>Coma-free Alignment X</li>
+          <li class='highlightitem'>Coma-free Alignment Y</li>
+          <li class='highlightitem pptoggle'>Coma-free Pivot Point X</li>
+          <li class='highlightitem pptoggle'>Coma-free Pivot Point Y</li>
         </ul>
       </div>
       <img src='./public/img/directalignmentspopout.png' usemap='' width='242' height='225' />
