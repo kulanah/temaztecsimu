@@ -363,6 +363,7 @@ class Canvas {
         this.diffractionX += deltaX;
       } else switch (this.alignmentMode){
         case 'gunshift':
+        case 'beamshift':
           this.maskX += deltaX;
           break;
         case 'pivotpoint':
@@ -384,6 +385,7 @@ class Canvas {
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
         case 'gunshift':
+        case 'beamshift':        
           this.maskY += deltaY;
           break;
         case 'pivotpoint':
@@ -478,6 +480,10 @@ class Canvas {
   activatePivotPoint(){
     this.alignmentMode = 'pivotpoint';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
+  }
+
+  activateBeamShift(){
+    this.alignmentMode = 'beamshift'
   }
 
   setPPOffset(thisIn){

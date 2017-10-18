@@ -192,7 +192,18 @@ let activatePivotPoint = function(){
   } else {
     mainmicro.activatePivotPoint();
   }
+}
 
+let activateBeamShift = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateBeamShift();
+    } else {
+      setupbox.activateBeamShift();
+    }
+  } else {
+    mainmicro.activateBeamShift();
+  }
 }
 
 let activateRotationCenter = function(){

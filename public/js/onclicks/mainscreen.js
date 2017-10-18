@@ -107,8 +107,9 @@ let mainScreen = function(){
   });
 
   $('#dabeamshift').on('click', function(event){
-    deactivateDirectAlignments();    
+    deactivateDirectAlignments();
     resetPosition();
+    activateBeamShift();
   })
   /*
     beamshift ideas.
