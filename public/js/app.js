@@ -195,6 +195,18 @@ let activateRotationCenter = function(){
   }
 }
 
+let deactivateDirectAlignments  = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.deactivateDirectAlignments();
+    } else {
+      setupbox.deactivateDirectAlignments();
+    }
+  } else {
+    mainmicro.deactivateDirectAlignments();
+  }
+}
+
 let focusUp = function(){
   if (openScreen == 0){
     if (activeWindow == 0){

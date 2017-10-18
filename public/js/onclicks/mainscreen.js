@@ -92,6 +92,12 @@ let mainScreen = function(){
     $('#errordiv').hide();
   });
 
+  $('#daguntilt').on('click', function(event){
+  })
+
+  $('#dagunshift').on('click', function(event){
+    deactivateDirectAlignments();
+  })
 
   $('.pptoggle').on('click', function(event){
     activatePivotPoint();
@@ -107,19 +113,13 @@ let mainScreen = function(){
       place center of beam at various points on radius
   */
 
-  $('#guntilt').on('click', function(event){
-  })
-
-  $('#gunshift').on('click', function(event){
-  })
-
-  $('#rotationcenter').on('click', function(event){
+  $('#darotationcenter').on('click', function(event){
     activateRotationCenter();
   })
 
-  $('#comafreealignmentx').on('click', function(event){
+  $('#dacomafreealignmentx').on('click', function(event){
   })
 
-  $('#comafreealignmenty').on('click', function(event){
+  $('#dacomafreealignmenty').on('click', function(event){
   })
 };

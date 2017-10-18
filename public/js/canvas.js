@@ -552,7 +552,7 @@ class Canvas {
 
   setRotateOffset(thisIn){
     let time = new Date();
-    let speed = .2;
+    let speed = 2;
     //thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha + thisIn.imgW / 2);
     //thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta + thisIn.imgH / 2);
     thisIn.imgX += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha / 256;
@@ -565,8 +565,7 @@ class Canvas {
       thisIn.imgY += Math.trunc(thisIn.yShift);
       thisIn.yShift -= Math.trunc(thisIn.yShift);
     }*/
-    thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha * thisIn.rotateBeta / 64)) + 20 + Math.abs(thisIn.rotateAlpha) + Math.abs(thisIn.rotateBeta);
-
+    thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()))) + 20;
     thisIn.drawCanvas();
   }
 
@@ -591,5 +590,11 @@ class Canvas {
     this.maskX = this.img.width / 2
     this.maskY = this.img.height / 2;
     this.drawCanvas();
+  }
+
+  deactivateDirectAlignments(){
+    this.pivotActive = false;
+    this.rotateActive = false;
+    clearInterval(this.intervalVal);
   }
 };
