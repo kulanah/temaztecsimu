@@ -76,6 +76,8 @@ class Canvas {
 
     this.rotateAlpha = 8;
     this.rotateBeta = 8;
+
+    this.jump = 64;
   };
 
   setDimensions(){
@@ -386,6 +388,10 @@ class Canvas {
         case 'rotationcenter':
           this.rotateAlpha += deltaX;
           break;
+        case 'comafreealignmentx':
+          break;
+        case 'comafreealignmenty':
+          break;
       }
       this.drawCanvas();
     }
@@ -545,6 +551,13 @@ class Canvas {
 
   activateComaFreeAlignmentX(){
     this.alignmentMode = 'comafreealignmentx';
+    this.intervalVal = setInterval(this.jumpLeftRight, 1000, this);
+  }
+
+  jumpLeftRight(thisIn){
+    thisIn.maskX += thisIn.jump;
+    thisIn.jump = -thisIn.jump;
+    thisIn.drawCanvas();
   }
 
   activateComaFreeAlignmentY(){
