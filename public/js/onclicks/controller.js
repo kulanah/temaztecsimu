@@ -136,13 +136,6 @@ let microscopeControllers = function(){
         setupbox.drawCanvas();
       }
     }        
-      /*clearCanvas(setupboxcanvas);
-      drawBackground(setupboxcanvas, setupboxcanvas.width / 2, setupboxcanvas.height / 2, setupboxcanvas.width / 2, setupboxcanvas.height / 2, 0);
-      var settings = calculateR1R2Angle(materialArray[0], 1, 1, 1, 100000, 265, 4);
-      console.log(settings);
-      for(i = 0; i < settings[0].length; i++) {
-        drawLattice(setupboxcanvas, setupboxcanvas.width / 2, setupboxcanvas.height / 2, 1, 1, 0, 1, 10, "single", 1, settings[0][i], settings[1][i], settings[2][i])
-      }*/
   });
 
   $('#multix').on('mousedown', function(event){
