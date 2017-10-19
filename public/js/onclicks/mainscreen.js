@@ -23,7 +23,6 @@ let mainScreen = function(){
     if (openScreen == 0){
       $('#basesetup').show();
     }
-    $('#setupbtn').trigger('click');
     $('#microControls').show();
     $('#directalignmentspopout').show();
   })

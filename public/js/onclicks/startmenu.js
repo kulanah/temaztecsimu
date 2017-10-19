@@ -49,7 +49,7 @@ let startMenu = function(){
   });
 
   $('#setupbtn').on('click', function(event){
-    if (openScreen == 1){
+    if (openScreen == 0){
       if (isVisible('basesetup')){
         $('#micrographstart').trigger('click');
         $('#basesetup').hide();
