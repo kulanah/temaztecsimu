@@ -157,10 +157,16 @@ let microscopeControllers = function(){
 
   $('#buttonupr').on('click', function(event){
     focusUp();
+
+    ++temLens[12].y;
+    drawColumn();
   });
 
   $('#buttondownr').on('click', function(event){
     focusDown();
+
+    --temLens[12].y;
+    drawColumn();
   });
 
   $('#buttontop1r').on('click', function(event){
