@@ -11,7 +11,7 @@ let pageSetup = function(){
   //we loop thorough this later on to set this behavior on all of them
   let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox'];
   
-  let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout'];
+  let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms'];
   
   $(document).mouseup(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
