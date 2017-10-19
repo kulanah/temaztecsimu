@@ -192,7 +192,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         ctx.filter = 'blur(' + Math.abs(blur) + 'px)';
         var dx = r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2
-        console.log(dx, dy);
+        //console.log(dx, dy);
         var rotationRadians = rotation / 180 * Math.PI;
         var maxDistance = Math.sqrt(Math.pow(canvas.height, 2) + Math.pow(canvas.width, 2)) / 2;
         for (var i = -layers; i <= layers; i++) {
@@ -200,13 +200,13 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                 ctx.beginPath();
                 var distance = Math.sqrt(Math.pow(r1 * i + dx * j, 2) + Math.pow(dy * j, 2));
                 var distanceRatio = distance / maxDistance;
-                console.log(distance, distanceRatio)
+                //console.log(distance, distanceRatio)
                 var brightness = 1 / (distanceRatio + 1) * intensity * .1;
                 if (brightness > 1) {
                     brightness = 1;
                 }
                 ctx.fillStyle = "rgba(255, 255, 255, " + brightness + ")";
-                console.log(brightness);
+                //console.log(brightness);
                 if(type === "poly") {
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 4, distance * radiusY / 4, rotationRadians, 0, 2 * Math.PI);
                     ctx.stroke();
