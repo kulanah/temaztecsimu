@@ -25,6 +25,7 @@ let mainScreen = function(){
     }
     $('#microControls').show();
     $('#directalignmentspopout').show();
+    setupbox.drawCanvas();
   })
 
   $('#closedrop').on('click', function(event){
