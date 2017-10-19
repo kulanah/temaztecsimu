@@ -133,4 +133,8 @@ let mainScreen = function(){
     deactivateDirectAlignments();
     activateComaFreeAlignmentY();    
   })
+
+  $('#dadone').on('click', function(event){
+    deactivateDirectAlignments();
+  })
 };
