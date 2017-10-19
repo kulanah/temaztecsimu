@@ -170,28 +170,99 @@ let updateBeamSlider = function(newValue){
   updateCanvas();
 }
 
+let activateGunTilt = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateGunTilt();
+    } else {
+      setupbox.activateGunTilt();
+    }
+  } else {
+    mainmicro.activateGunTilt();
+  }
+}
+
+let activateGunShift = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateGunShift();
+    } else {
+      setupbox.activateGunShift();
+    }
+  } else {
+    mainmicro.activateGunShift();
+  }
+}
+
 let activatePivotPoint = function(){
   if (openScreen == 0){
     if (activeWindow == 0){
-      openbox.togglePivotPoint();
+      openbox.activatePivotPoint();
     } else {
-      setupbox.togglePivotPoint();
+      setupbox.activatePivotPoint();
     }
   } else {
-    mainmicro.togglePivotPoint();
+    mainmicro.activatePivotPoint();
   }
+}
 
+let activateBeamShift = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateBeamShift();
+    } else {
+      setupbox.activateBeamShift();
+    }
+  } else {
+    mainmicro.activateBeamShift();
+  }
 }
 
 let activateRotationCenter = function(){
   if (openScreen == 0){
     if (activeWindow == 0){
-      openbox.toggleRotationCenter();
+      openbox.activateRotationCenter();
     } else {
-      setupbox.toggleRotationCenter();
+      setupbox.activateRotationCenter();
     }
   } else {
-    mainmicro.toggleRotationCenter();
+    mainmicro.activateRotationCenter();
+  }
+}
+
+let activateComaFreeAlignmentX = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateComaFreeAlignmentX();
+    } else {
+      setupbox.activateComaFreeAlignmentX();
+    }
+  } else {
+    mainmicro.activateComaFreeAlignmentX();
+  }
+}
+
+let activateComaFreeAlignmentY = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activateComaFreeAlignmentY();
+    } else {
+      setupbox.activateComaFreeAlignmentY();
+    }
+  } else {
+    mainmicro.activateComaFreeAlignmentY();
+  }
+}
+
+let deactivateDirectAlignments  = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.deactivateDirectAlignments();
+    } else {
+      setupbox.deactivateDirectAlignments();
+    }
+  } else {
+    mainmicro.deactivateDirectAlignments();
   }
 }
 

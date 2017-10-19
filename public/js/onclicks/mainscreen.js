@@ -95,13 +95,25 @@ let mainScreen = function(){
     $('#errordiv').hide();
   });
 
+  $('#daguntilt').on('click', function(event){
+    deactivateDirectAlignments();
+    activateGunTilt();
+  })
+
+  $('#dagunshift').on('click', function(event){
+    deactivateDirectAlignments();
+    activateGunShift();
+  })
 
   $('.pptoggle').on('click', function(event){
+    deactivateDirectAlignments();
     activatePivotPoint();
   });
 
   $('#dabeamshift').on('click', function(event){
+    deactivateDirectAlignments();
     resetPosition();
+    activateBeamShift();
   })
   /*
     beamshift ideas.
@@ -110,7 +122,22 @@ let mainScreen = function(){
       place center of beam at various points on radius
   */
 
-  $('#rotationcenter').on('click', function(event){
+  $('#darotationcenter').on('click', function(event){
+    deactivateDirectAlignments();
     activateRotationCenter();
+  })
+
+  $('#dacomafreealignmentx').on('click', function(event){
+    deactivateDirectAlignments();
+    activateComaFreeAlignmentX();
+  })
+
+  $('#dacomafreealignmenty').on('click', function(event){
+    deactivateDirectAlignments();
+    activateComaFreeAlignmentY();    
+  })
+
+  $('#dadone').on('click', function(event){
+    deactivateDirectAlignments();
   })
 };

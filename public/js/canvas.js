@@ -26,6 +26,9 @@ class Canvas {
     this.maskR = 0;
     this.combinedRadius = 0;
 
+    this.haloX = 0;
+    this.haloY = 0;
+
     //This is the selector for the spotsize beam selector slider on the search tab.  
     //TODO: Change this from a constant to something more intelligent
     this.beamslider = $('#beamrange');
@@ -35,7 +38,6 @@ class Canvas {
 
     this.specimenHeight = 0;
 
-    this.pivotActive = false;
     this.pivotPointWidth = 20;
     this.pivotPointHeight = 100;
     this.pivotPointHeightAlpha = 150;
@@ -43,11 +45,6 @@ class Canvas {
     this.pivotPointCenterY;
     this.rotationOfPPX = -1;
     this.pivotPointAngle = 0;
-
-    this.savedImageX;
-    this.savedImageY;
-    this.savedMaskX;
-    this.savedMaskY;
 
     //filter string parts
     this.hueRotateActive = false;
@@ -75,9 +72,12 @@ class Canvas {
     this.diffractionRadiusY = 1;
     this.diffractionIntUp = false;
 
-    this.rotateActive = false;
+    this.alignmentMode = 'none';    
+
     this.rotateAlpha = 8;
     this.rotateBeta = 8;
+
+    this.jump = 64;
   };
 
   setDimensions(){
@@ -111,14 +111,9 @@ class Canvas {
 
     let newRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4;
 
-    if (this.pivotActive){
+    if (this.alignmentMode == 'pivotpoint'){
       this.drawPPPath();
     }
-
-    if (this.rotateActive){
-      this.drawRotatePath();
-    }
-
     
     this.context.beginPath();
     this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -367,15 +362,36 @@ class Canvas {
   }
 
   multiXDrag(deltaX){
-    //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaX)){
       // console.log(deltaX);
       if (diffractionMode && this == setupbox){
         this.diffractionX += deltaX;
-      } else if (this.rotateActive){
-        this.rotateAlpha += deltaX;
-      } else {
-        this.pivotPointWidth += deltaX;
+      } else switch (this.alignmentMode){
+        case 'guntilt':
+          this.haloX += deltaX;
+          if (this.haloX > this.maskR){
+            this.haloX = this.maskR;
+          } else if (this.haloX < -this.maskR){
+            this.haloX = -this.maskR;
+          }
+          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(this.maskR, 2)){
+            this.haloY = Math.sqrt(Math.pow(this.maskR, 2) - Math.pow(this.haloX, 2)) * Math.sign(this.haloY);
+          }
+          break;
+        case 'gunshift':
+        case 'beamshift':
+          this.maskX += deltaX;
+          break;
+        case 'pivotpoint':
+          this.pivotPointWidth += deltaX;
+          break;
+        case 'rotationcenter':
+          this.rotateAlpha += deltaX;
+          break;
+        case 'comafreealignmentx':
+          break;
+        case 'comafreealignmenty':
+          break;
       }
       this.drawCanvas();
     }
@@ -383,15 +399,32 @@ class Canvas {
 
   multiYDrag(deltaY){
     //TODO: remove thiss duplication of code
-    //TODO: add a check to see if we're in PP mode
     if (!isNaN(deltaY)){
       // console.log(deltaY);
       if (diffractionMode && this == setupbox){
         this.diffractionY += deltaY;
-      } else if (this.rotateActive){
-        this.rotateBeta += deltaY;
-      } else {
-        this.pivotPointHeight += deltaY;
+      } else switch (this.alignmentMode){
+        case 'guntilt':
+          this.haloY += deltaY;
+          if (this.haloY > this.maskR){
+            this.haloY = this.maskR;
+          } else if (this.haloY < -this.maskR){
+            this.haloY = -this.maskR;
+          }
+          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(this.maskR, 2)){
+            this.haloX = Math.sqrt(Math.pow(this.maskR, 2) - Math.pow(this.haloY, 2)) * Math.sign(this.haloX);
+          }
+          break;
+        case 'gunshift':
+        case 'beamshift':        
+          this.maskY += deltaY;
+          break;
+        case 'pivotpoint':
+          this.pivotPointHeight += deltaY;
+          break;
+        case 'rotationcenter':
+          this.rotateBeta += deltaY;
+          break;
       }
       this.drawCanvas();
     }
@@ -431,14 +464,14 @@ class Canvas {
     context.clearRect(0,0,900,900);
     context.filter = 'blur(3px)';
 
-    context.beginPath();
+    /*context.beginPath();
     context.arc(this.maskX, this.maskY, haloR + 3, 0, Math.PI * 2);
     context.strokeStyle = 'white';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
-    context.stroke();
+    context.stroke();*/
 
     context.beginPath();
-    context.arc(this.maskX, this.maskY, haloR / 4, 0, Math.PI * 2);
+    context.arc(this.maskX + this.haloX, this.maskY + this.haloY, haloR / 4, 0, Math.PI * 2);
     context.strokeStyle = 'white';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
     context.stroke();
@@ -468,39 +501,24 @@ class Canvas {
     }
   }
   
-  togglePivotPoint(){
-    if (this.pivotActive){
-      this.deactivatePivotPoint();
-    } else {
-      this.activatePivotPoint();
-    }
+  // Specifications from Tony 
+  // - clicking active direct alignments should not stop the alignment
+  // - beam should remain at new xy, not revert to old xy
+  activateGunTilt(){
+    this.alignmentMode = 'guntilt'
+  }
+
+  activateGunShift(){
+    this.alignmentMode = 'gunshift'
   }
 
   activatePivotPoint(){
-    if (this.rotateActive) {
-      this.deactivateRotationCenter();
-    }
-    this.savedMaskX = this.maskX;
-    this.savedMaskY = this.maskY;
-    this.savedImageX = this.imgX;
-    this.savedImageY = this.imgY;
-    this.pivotActive = true;
+    this.alignmentMode = 'pivotpoint';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
   }
 
-  deactivatePivotPoint(){
-    this.pivotActive = false;
-    clearInterval(this.intervalVal);
-    this.imgX = this.savedImageX;
-    this.imgY = this.savedImageY;
-    this.maskX = this.savedMaskX;
-    this.maskY = this.savedMaskY;
-
-    this.drawCanvas();
-  }
-
   setPPOffset(thisIn){
-    if (thisIn.pivotActive)
+    if (thisIn.alignmentMode = 'pivotpoint')
       thisIn.pivotPointAngle += 52;
     let xy = thisIn.mapXYfromAngle(thisIn.pivotPointAngle);
 
@@ -511,7 +529,47 @@ class Canvas {
     thisIn.imgX = xy[0] - thisIn.imgW / 2;
     thisIn.imgY = xy[1] - thisIn.imgH / 2;
     thisIn.drawCanvas();
-    }
+  }
+
+  activateBeamShift(){
+    this.alignmentMode = 'beamshift'
+  }
+
+  activateRotationCenter(){
+    this.alignmentMode = 'rotationcenter';
+    this.intervalVal = setInterval(this.setRotateOffset, 10, this);
+  }
+
+  setRotateOffset(thisIn){
+    let time = new Date();
+    let speed = 2;
+    thisIn.imgX += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha / 256;
+    thisIn.imgY += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta / 256;
+    thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()))) + 20;
+    thisIn.drawCanvas();
+  }
+
+  activateComaFreeAlignmentX(){
+    this.alignmentMode = 'comafreealignmentx';
+    this.intervalVal = setInterval(this.jumpLeftRight, 1000, this);
+  }
+
+  jumpLeftRight(thisIn){
+    thisIn.maskX += thisIn.jump;
+    thisIn.jump = -thisIn.jump;
+    thisIn.drawCanvas();
+  }
+
+  activateComaFreeAlignmentY(){
+    this.alignmentMode = 'comafreealignmenty';
+    this.intervalVal = setInterval(this.jumpUpDown, 1000, this);
+  }
+
+  jumpUpDown(thisIn){
+    thisIn.maskY += thisIn.jump;
+    thisIn.jump = -thisIn.jump;
+    thisIn.drawCanvas();
+  }
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
@@ -520,47 +578,6 @@ class Canvas {
     for(i = 0; i < settings[0].length; i++) {      
       drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i]);
     }
-  }
-
-  toggleRotationCenter(){
-    if (this.rotateActive){
-      this.deactivateRotationCenter();
-    } else {
-      this.activateRotationCenter();
-    }
-  }
-
-  activateRotationCenter(){
-    if (this.pivotActive){
-      this.deactivatePivotPoint();
-    }
-    this.savedMaskX = this.maskX;
-    this.savedMaskY = this.maskY;
-    this.savedImageX = this.imgX;
-    this.savedImageY = this.imgY;
-    this.rotateActive = true;
-    this.intervalVal = setInterval(this.setRotateOffset, 10, this);
-  }
-
-  deactivateRotationCenter(){
-    this.rotateActive = false;
-    clearInterval(this.intervalVal);
-    this.imgX = this.savedImageX;
-    this.imgY = this.savedImageY;
-    this.maskX = this.savedMaskX;
-    this.maskY = this.savedMaskY;
-
-    this.drawCanvas();
-  }
-
-  setRotateOffset(thisIn){
-    let time = new Date();
-    let speed = 1;
-    thisIn.maskX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha + thisIn.imgW / 2);
-    thisIn.maskY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta + thisIn.imgH / 2);
-    //thisIn.imgX = Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * ellipseRadius + thisIn.imgW / 2);
-    //thisIn.imgY = Math.round(Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * amplitude * 8 + thisIn.imgH / 2);
-    thisIn.drawCanvas();
   }
 
   focusUptest(){
@@ -583,6 +600,12 @@ class Canvas {
   resetPosition(){
     this.maskX = this.img.width / 2
     this.maskY = this.img.height / 2;
+    this.drawCanvas();
+  }
+
+  deactivateDirectAlignments(){
+    this.alignmentMode = 'none';
+    clearInterval(this.intervalVal);
     this.drawCanvas();
   }
 };

@@ -289,19 +289,22 @@
     <div id='directalignmentspopout' class='hidden'>
       <div id='directalignmentspopouttext'>
         <ul id='directalignmentslist'>
-          <li class='highlightitem'>Gun Tilt</li>
-          <li class='highlightitem'>Gun Shift</li>
+          <li class='highlightitem' id='daguntilt'>Gun Tilt</li>
+          <li class='highlightitem' id='dagunshift'>Gun Shift</li>
           <li class='highlightitem pptoggle'>Beam tilt pp X</li>
           <li class='highlightitem pptoggle'>Beam tilt pp Y</li>
           <li class='highlightitem' id='dabeamshift'>Beam shift</li>
-          <li class='highlightitem' id='rotationcenter'>Rotation center</li>
-          <li class='highlightitem'>Coma-free Alignment X</li>
-          <li class='highlightitem'>Coma-free Alignment Y</li>
+          <li class='highlightitem' id='darotationcenter'>Rotation center</li>
+          <li class='highlightitem' id='dacomafreealignmentx'>Coma-free Alignment X</li>
+          <li class='highlightitem' id='dacomafreealignmenty'>Coma-free Alignment Y</li>
           <li class='highlightitem pptoggle'>Coma-free Pivot Point X</li>
           <li class='highlightitem pptoggle'>Coma-free Pivot Point Y</li>
         </ul>
       </div>
-      <img src='./public/img/directalignmentspopout.png' usemap='' width='242' height='225' />
+      <img src='./public/img/directalignmentspopout.png' usemap='#directalignmentbuttons' width='242' height='225' />
+      <map id='directalignmentbuttons' name='directalignmentbuttons'>
+        <area shape='rect' id='dadone' coords='11, 182, 76, 204' />
+      </map>
     </div>
 
 
