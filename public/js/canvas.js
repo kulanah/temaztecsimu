@@ -179,6 +179,8 @@ class Canvas {
 
     this.imgW *= zoomFactor;
     this.imgH *= zoomFactor;
+    this.imgX = (this.imgX - 256) * zoomFactor + 256;
+    this.imgY = (this.imgY - 256) * zoomFactor + 256;
 
     this.drawCanvas();
   };
