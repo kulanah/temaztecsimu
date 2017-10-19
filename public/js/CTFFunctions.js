@@ -60,14 +60,13 @@ function drawDiffractogram(canvas, Q, lambda, deltaF, R, phi, phi1, Cs) {
     for (i = 0; i < maxDistance; i++) {
         var q = i / maxDistance * 0.18;
         var ellipseIntensity = Math.abs(Gau(50, q) * CTF(Q, lambda, deltaF, R, phi, phi1, q, Cs));
-        drawEllipse(i, R, phi1, ellipseIntensity)
+        drawEllipse(canvas, i, R, phi1, ellipseIntensity)
     }
 }
 
-function drawEllipse(radius, R, rotation, intensity) {
+function drawEllipse(canvas, radius, R, rotation, intensity) {
     // Draws an ellipse
     var rotationRadians = rotation * Math.PI / 180;
-    var canvas = document.getElementById('image');
     var ctx = canvas.getContext('2d');
     ctx.filter = 'blur(2px)';
     ctx.strokeStyle = 'rgba(0, 0, 0, ' + intensity + ')';

@@ -554,6 +554,7 @@ class Canvas {
   activateComaFreeAlignmentX(){
     this.alignmentMode = 'comafreealignmentx';
     this.intervalVal = setInterval(this.jumpLeftRight, 1000, this);
+    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), 0, 1, 0, 0, 500000);
   }
 
   jumpLeftRight(thisIn){
