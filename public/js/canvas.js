@@ -78,6 +78,7 @@ class Canvas {
     this.rotateBeta = 8;
 
     this.jump = 64;
+    this.defocus = 0;
   };
 
   setDimensions(){
@@ -391,8 +392,10 @@ class Canvas {
           this.rotateAlpha += deltaX;
           break;
         case 'comafreealignmentx':
-          break;
         case 'comafreealignmenty':
+          this.defocus += deltaX * 100;
+          drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus, 1, 0, 0, 500000);
+          drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus, 1, 0, 0, 500000);
           break;
       }
       this.drawCanvas();
@@ -554,7 +557,8 @@ class Canvas {
   activateComaFreeAlignmentX(){
     this.alignmentMode = 'comafreealignmentx';
     this.intervalVal = setInterval(this.jumpLeftRight, 1000, this);
-    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), 0, 1, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus, 1, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus, 1, 0, 0, 500000);
   }
 
   jumpLeftRight(thisIn){
@@ -566,6 +570,8 @@ class Canvas {
   activateComaFreeAlignmentY(){
     this.alignmentMode = 'comafreealignmenty';
     this.intervalVal = setInterval(this.jumpUpDown, 1000, this);
+    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus, 1, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus, 1, 0, 0, 500000);
   }
 
   jumpUpDown(thisIn){

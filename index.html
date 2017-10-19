@@ -334,9 +334,13 @@
     </div>
 
     <div id='diffractograms' class='hidden'>
-      <img src='./public/img/noise.png' id='noise'><!--style="display:none"-->        
-      <canvas class='diffractogramcanvas' id='diffractogram1' width='512' height='512'></canvas>
-      <canvas class='diffractogramcanvas' id='diffractogram2' width='512' height='512'></canvas>
+      <img src='./public/img/noise.png' id='noise' style="display:none">      
+      <div class='stage'>
+        <canvas class='diffractogramcanvas' id='diffractogram1' width='256' height='256'></canvas>
+      </div>
+      <div class='stage'>          
+        <canvas class='diffractogramcanvas' id='diffractogram2' width='256' height='256'></canvas>
+      </div>
     </div>
 
     <!--library imports-->
