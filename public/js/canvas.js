@@ -296,7 +296,7 @@ class Canvas {
     //TODO: make this more functional, remove width and height
     //because there are two forms fo this (ppx and ppy) this wont work once we add the other form
     let mainVectorX =  Math.cos(angle) * this.pivotPointWidth;
-    let mainVectorY = Math.cos(angle) * this.pivotPointHeight;
+    let mainVectorY = Math.sin(angle) * this.pivotPointHeight;
     
     
     //sets up vector secondaryVector, in the coordinate system b in which the alpha offset feature is computed - 
