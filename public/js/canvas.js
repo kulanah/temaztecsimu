@@ -259,6 +259,7 @@ class Canvas {
       delta = -delta;
     }
     
+    let oldR = this.maskR;
     this.maskR = this.maskR + (effectiveRadius * delta);
     
     //this stops the mask radius from shrinking too small with a high delta value.  
@@ -266,6 +267,8 @@ class Canvas {
     if (effectiveRadius < 11){
       this.maskR = 11 - beamslider.val() * 4;
     }
+    this.haloX = this.haloX * this.maskR / oldR;
+    this.haloY = this.haloY * this.maskR / oldR;    
     this.drawCanvas();
   };
 
@@ -551,7 +554,10 @@ class Canvas {
     let speed = 2;
     thisIn.imgX += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha / 256;
     thisIn.imgY += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta / 256;
+    let oldR = thisIn.maskR;
     thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()))) + 20;
+    thisIn.haloX = thisIn.haloX * thisIn.maskR / oldR;
+    thisIn.haloY = thisIn.haloY * thisIn.maskR / oldR;
     thisIn.drawCanvas();
   }
 
