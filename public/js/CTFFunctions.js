@@ -1,12 +1,10 @@
-//document.getElementById("form").addEventListener("click", update);
-//document.getElementById("form").addEventListener("keyup", update);
-
 function update() {
     // Extracts information from webpage
     var formData = new FormData(document.getElementById("form"));
     var lambda = lambdaCalculation(formData.get("voltage")) * 10;
+    var canvas = document.getElementById('image');    
     drawCTFPlot(formData.get("Cs") * 1000000, formData.get("deltaF"), formData.get("R"), formData.get("phi1"), formData.get(phi), lambda, formData.get(intensity));
-    drawDiffractogram(formData.get("intensity"), lambda, formData.get("deltaF"), formData.get("R"), formData.get("phi"), formData.get("phi1"), formData.get("Cs") * 1000000);
+    drawDiffractogram(canvas, formData.get("intensity"), lambda, formData.get("deltaF"), formData.get("R"), formData.get("phi"), formData.get("phi1"), formData.get("Cs") * 1000000);
 }
 
 function A1Calculation(deltaF, R) {
@@ -34,15 +32,14 @@ function drawCTFPlot(Cs, deltaF, R, phi1, phi, lambda, intensity) {
             fn: function (scope) {
             // scope.x = Number
                 var x = scope.x
-                return Gau(50, x) * CTF(intensity, lambda, deltaF, R, phi, phi1, x, Cs)// + noise(x, 1, 1, 1, 1) % 1 - .5;
+                return Gau(50, x) * CTF(intensity, lambda, deltaF, R, phi, phi1, x, Cs);
             }
         }]
     })
 }
 
-function drawDiffractogram(Q, lambda, deltaF, R, phi, phi1, Cs) {
+function drawDiffractogram(canvas, Q, lambda, deltaF, R, phi, phi1, Cs) {
     // Draws a diffractogram
-    var canvas = document.getElementById('image');
     var ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.filter = 'blur(0px)';
@@ -50,7 +47,8 @@ function drawDiffractogram(Q, lambda, deltaF, R, phi, phi1, Cs) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     var maxDistance = Math.sqrt(Math.pow(canvas.width / 2, 2) + Math.pow(canvas.height / 2, 2))
     var rotationRadians = phi1 * Math.PI / 180;
-    /*for (x = 0; x < canvas.width; x=x+2) {
+    /* Alternative, pixel-by-pixel drawing approach
+    for (x = 0; x < canvas.width; x=x+2) {
         for (y = 0; y < canvas.height; y=y+2) {
             var distance = Math.sqrt(Math.pow((canvas.width / 2 - x) / Math.sqrt(R), 2) + Math.pow((canvas.height / 2 - y) * Math.sqrt(R), 2));
             var q = distance / maxDistance * 0.18;
@@ -72,9 +70,7 @@ function drawEllipse(radius, R, rotation, intensity) {
     var canvas = document.getElementById('image');
     var ctx = canvas.getContext('2d');
     ctx.filter = 'blur(2px)';
-    //var rgb = intensity * 255;
     ctx.strokeStyle = 'rgba(0, 0, 0, ' + intensity + ')';
-    //ctx.strokeStyle = 'rgba(' + rgb + ', ' + rgb + ', ' + rgb + ', 1)';
     ctx.beginPath();
     ctx.ellipse(canvas.width / 2, canvas.height / 2, radius * Math.sqrt(R), radius / Math.sqrt(R), rotationRadians, 0, 2 * Math.PI);
     ctx.stroke();
