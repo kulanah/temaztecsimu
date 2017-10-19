@@ -20,6 +20,9 @@ let mainScreen = function(){
   $('#directalignmentdrop').on('click', function(event){
     $('#maindropdown').hide();
     //open up the setup button with all the accompanying effects
+    if (openScreen == 0){
+      $('#basesetup').show();
+    }
     $('#setupbtn').trigger('click');
     $('#microControls').show();
     $('#directalignmentspopout').show();
