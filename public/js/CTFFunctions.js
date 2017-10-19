@@ -46,7 +46,6 @@ function drawDiffractogram(canvas, Q, lambda, deltaF, R, phi, phi1, Cs) {
     ctx.fillStyle = ctx.createPattern(document.getElementById("noise"), "no-repeat")
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     var maxDistance = Math.sqrt(Math.pow(canvas.width / 2, 2) + Math.pow(canvas.height / 2, 2))
-    var rotationRadians = phi1 * Math.PI / 180;
     /* Alternative, pixel-by-pixel drawing approach
     for (x = 0; x < canvas.width; x=x+2) {
         for (y = 0; y < canvas.height; y=y+2) {
@@ -64,12 +63,12 @@ function drawDiffractogram(canvas, Q, lambda, deltaF, R, phi, phi1, Cs) {
     }
 }
 
-function drawEllipse(canvas, radius, R, rotation, intensity) {
+function drawEllipse(canvas, radius, R, rotation, ellipseIntensity) {
     // Draws an ellipse
     var rotationRadians = rotation * Math.PI / 180;
     var ctx = canvas.getContext('2d');
     ctx.filter = 'blur(1px)';
-    ctx.strokeStyle = 'rgba(0, 0, 0, ' + intensity + ')';
+    ctx.strokeStyle = 'rgba(0, 0, 0, ' + ellipseIntensity + ')';
     ctx.beginPath();
     ctx.ellipse(canvas.width / 2, canvas.height / 2, radius * Math.sqrt(R), radius / Math.sqrt(R), rotationRadians, 0, 2 * Math.PI);
     ctx.stroke();
