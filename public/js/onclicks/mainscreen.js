@@ -114,12 +114,6 @@ let mainScreen = function(){
     resetPosition();
     activateBeamShift();
   })
-  /*
-    beamshift ideas.
-    1)
-      create circle params (center, radius)
-      place center of beam at various points on radius
-  */
 
   $('#darotationcenter').on('click', function(event){
     deactivateDirectAlignments();
