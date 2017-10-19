@@ -79,6 +79,7 @@ class Canvas {
 
     this.jump = 64;
     this.defocus = 0;
+    this.astigmatism = 1;
   };
 
   setDimensions(){
@@ -394,8 +395,8 @@ class Canvas {
         case 'comafreealignmentx':
         case 'comafreealignmenty':
           this.defocus += deltaX * 100;
-          drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus, 1, 0, 0, 500000);
-          drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus, 1, 0, 0, 500000);
+          this.astigmatism *= Math.pow(1.001, deltaX);
+          this.drawDiffractogramImages();
           break;
       }
       this.drawCanvas();
@@ -557,8 +558,7 @@ class Canvas {
   activateComaFreeAlignmentX(){
     this.alignmentMode = 'comafreealignmentx';
     this.intervalVal = setInterval(this.jumpLeftRight, 1000, this);
-    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus, 1, 0, 0, 500000);
-    drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus, 1, 0, 0, 500000);
+    this.drawDiffractogramImages();
   }
 
   jumpLeftRight(thisIn){
@@ -570,14 +570,18 @@ class Canvas {
   activateComaFreeAlignmentY(){
     this.alignmentMode = 'comafreealignmenty';
     this.intervalVal = setInterval(this.jumpUpDown, 1000, this);
-    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus, 1, 0, 0, 500000);
-    drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus, 1, 0, 0, 500000);
+    this.drawDiffractogramImages();
   }
 
   jumpUpDown(thisIn){
     thisIn.maskY += thisIn.jump;
     thisIn.jump = -thisIn.jump;
     thisIn.drawCanvas();
+  }
+
+  drawDiffractogramImages(){
+    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus, this.astigmatism, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus, 1 / this.astigmatism, 0, 0, 500000);
   }
 
   drawDiffraction(){
