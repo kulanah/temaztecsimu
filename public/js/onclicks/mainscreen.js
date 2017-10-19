@@ -132,7 +132,8 @@ let mainScreen = function(){
 
   $('#dacomafreealignmenty').on('click', function(event){
     deactivateDirectAlignments();
-    activateComaFreeAlignmentY();    
+    activateComaFreeAlignmentY();
+    $('#diffractograms').show();    
   })
 
   $('#dadone').on('click', function(event){
