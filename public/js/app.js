@@ -269,24 +269,24 @@ let deactivateDirectAlignments  = function(){
 let focusUp = function(){
   if (openScreen == 0){
     if (activeWindow == 0){
-      openbox.focusUp();
+      openbox.focusUpButton();
     } else {
-      setupbox.focusUptest();
+      setupbox.focusUpButton();
     }
   } else {
-    mainmicro.focusUp();
+    mainmicro.focusUpButton();
   }
 }
 
 let focusDown = function(){
   if (openScreen == 0){
     if (activeWindow == 0){
-      openbox.focusDown();
+      openbox.focusDownButton();
     } else {
-      setupbox.focusDown();
+      setupbox.focusDownButton();
     }
   } else {
-    mainmicro.focusDown();
+    mainmicro.focusDownButton();
   }
 }
 

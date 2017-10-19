@@ -580,12 +580,12 @@ class Canvas {
     }
   }
 
-  focusUptest(){
+  focusUpButton(){
     this.focus(10);
     ++this.specimenHeight;
   }
 
-  focusDown(){
+  focusDownButton(){
     this.focus(-10);
     --this.specimenHeight;
   }
