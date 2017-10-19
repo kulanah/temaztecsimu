@@ -563,7 +563,7 @@ class Canvas {
 
   activateComaFreeAlignmentX(){
     this.alignmentMode = 'comafreealignmentx';
-    this.intervalVal = setInterval(this.jumpLeftRight, 1000, this);
+    this.intervalVal = setInterval(this.jumpLeftRight, 500, this);
     this.drawDiffractogramImages();
   }
 
@@ -575,7 +575,7 @@ class Canvas {
 
   activateComaFreeAlignmentY(){
     this.alignmentMode = 'comafreealignmenty';
-    this.intervalVal = setInterval(this.jumpUpDown, 1000, this);
+    this.intervalVal = setInterval(this.jumpUpDown, 500, this);
     this.drawDiffractogramImages();
   }
 
@@ -586,8 +586,8 @@ class Canvas {
   }
 
   drawDiffractogramImages(){
-    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus, this.astigmatism, 0, 0, 500000);
-    drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus, 1 / this.astigmatism, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram1'), .5, lambdaCalculation(1000000), this.defocus - 1000, this.astigmatism, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram2'), .5, lambdaCalculation(1000000), -this.defocus - 1000, 1 / this.astigmatism, 0, 0, 500000);
   }
 
   drawDiffraction(){
