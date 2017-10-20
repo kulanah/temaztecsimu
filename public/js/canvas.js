@@ -183,6 +183,8 @@ class Canvas {
     this.imgH *= zoomFactor;
     this.imgX = (this.imgX - this.img.width / 2) * zoomFactor + this.img.width / 2;
     this.imgY = (this.imgY - this.img.height / 2) * zoomFactor + this.img.height / 2;
+    this.haloX *= zoomFactor;
+    this.haloY *= zoomFactor;
 
     this.drawCanvas();
   };
@@ -375,14 +377,15 @@ class Canvas {
         this.diffractionX += deltaX;
       } else switch (this.alignmentMode){
         case 'guntilt':
+          let maskRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
           this.haloX += deltaX;
-          if (this.haloX > this.maskR){
-            this.haloX = this.maskR;
-          } else if (this.haloX < -this.maskR){
-            this.haloX = -this.maskR;
+          if (this.haloX > maskRadius){
+            this.haloX = maskRadius;
+          } else if (this.haloX < -maskRadius){
+            this.haloX = -maskRadius;
           }
-          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(this.maskR, 2)){
-            this.haloY = Math.sqrt(Math.pow(this.maskR, 2) - Math.pow(this.haloX, 2)) * Math.sign(this.haloY);
+          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(maskRadius, 2)){
+            this.haloY = Math.sqrt(Math.pow(maskRadius, 2) - Math.pow(this.haloX, 2)) * Math.sign(this.haloY);
           }
           break;
         case 'gunshift':
@@ -414,14 +417,15 @@ class Canvas {
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
         case 'guntilt':
+          let maskRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
           this.haloY += deltaY;
-          if (this.haloY > this.maskR){
-            this.haloY = this.maskR;
-          } else if (this.haloY < -this.maskR){
-            this.haloY = -this.maskR;
+          if (this.haloY > maskRadius){
+            this.haloY = maskRadius;
+          } else if (this.haloY < -maskRadius){
+            this.haloY = -maskRadius;
           }
-          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(this.maskR, 2)){
-            this.haloX = Math.sqrt(Math.pow(this.maskR, 2) - Math.pow(this.haloY, 2)) * Math.sign(this.haloX);
+          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(maskRadius, 2)){
+            this.haloX = Math.sqrt(Math.pow(maskRadius, 2) - Math.pow(this.haloY, 2)) * Math.sign(this.haloX);
           }
           break;
         case 'gunshift':
