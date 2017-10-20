@@ -1,5 +1,8 @@
 'use strict';
 
+let multiStepSize = 1;
+let intensityStepSize = 1;
+
 let microscopeControllers = function(){
 
   let handleDrag = function(event){
@@ -18,14 +21,14 @@ let microscopeControllers = function(){
   let mousemultixtemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
-    multiXDrag(deltas[1]);
+    multiXDrag(deltas[1] * multiStepSize);
   }
 
   let mousemultiytemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
 
-    multiYDrag(deltas[1]);
+    multiYDrag(deltas[1] * multiStepSize);
   }
 
   let mousefocustemplate = function(event){
@@ -56,7 +59,7 @@ let microscopeControllers = function(){
   
   let mousedowntemplateintensity = function(event){
     let deltaIntensity = event.clientY - startIntensity;
-    deltaIntensity = deltaIntensity / -100 + 1;
+    deltaIntensity = deltaIntensity * intensityStepSize / -100 + 1;
     startIntensity = event.clientY;
 
     changeIntensity(deltaIntensity);
@@ -150,6 +153,22 @@ let microscopeControllers = function(){
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousemultiytemplate);
+  });
+
+  $('#multistepdown').on('click', function(event){
+    multiStepSize *= 0.5;
+  });
+
+  $('#multistepup').on('click', function(event){
+    multiStepSize *= 2;
+  });
+
+  $('#intensitystepdown').on('click', function(event){
+    intensityStepSize *= 0.5;
+  });
+
+  $('#intensitystepup').on('click', function(event){
+    intensityStepSize *= 2;
   });
 
   $('#buttonl1').on('click', function(event){
