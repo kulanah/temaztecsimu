@@ -122,6 +122,7 @@ let microscopeControllers = function(){
     startIntensity = event.clientY;
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
     $('body')[0].addEventListener('mousemove', mousedowntemplateintensity);
   });
 
@@ -145,6 +146,7 @@ let microscopeControllers = function(){
     setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);
     $('body')[0].addEventListener('mousemove', mousemultixtemplate);
   });
 
@@ -152,6 +154,7 @@ let microscopeControllers = function(){
     setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
     $('body')[0].addEventListener('mousemove', mousemultiytemplate);
   });
 
