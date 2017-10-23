@@ -66,24 +66,25 @@ class AlignmentBox{
 
   prevStep(){
     if(this.drawLocation.text() == ""){
-    } else if (!this.done){
-      if(this.currentStep == 0){
-        if(this.currentTopic == 0){
-          if(this.currentLesson == 0){
-            //do nothing because we're at the start
-          } else {
-            --this.currentLesson;
-            this.currentTopic = this.jsonObj[this.currentLesson].topics.length - 1;
-            this.currentStep = this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1;
-          }
+    } else if (this.done){
+      this.done = false;
+    }
+    if(this.currentStep == 0){
+      if(this.currentTopic == 0){
+        if(this.currentLesson == 0){
+          //do nothing because we're at the start
         } else {
-          --this.currentTopic;
+          --this.currentLesson;
+          this.currentTopic = this.jsonObj[this.currentLesson].topics.length - 1;
           this.currentStep = this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1;
-
         }
       } else {
-        --this.currentStep;
+        --this.currentTopic;
+        this.currentStep = this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1;
+
       }
+    } else {
+      --this.currentStep;
     }
     this.fillCurrent();
 
