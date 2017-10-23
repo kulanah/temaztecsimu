@@ -41,6 +41,7 @@ class AlignmentBox{
   };
 
   nextStep(){
+    console.log("Next step")
     if (this.drawLocation.text() == ""){
     } else if (!this.done){
       if (this.currentStep == this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1){

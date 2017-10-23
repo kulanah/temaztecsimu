@@ -170,18 +170,14 @@ function lectureClicked(){
     var hasVideoScreen = false;
     $("#lecturebtn").click(function(){
         if(hasVideoScreen === false){
-            //reloacation the video
+            $("#video").show();            
             $("#video").css({
                 "left":"160px",
-                "visibility":"visible"
             });
-            toggleVideo('show')
             hasVideoScreen = true;
         }else{
-            $("#video").css({
-                "visibility":"hidden"
-            });
-            toggleVideo('hide')
+            toggleVideo('hide');
+            $("#video").hide();
             hasVideoScreen = false;
         }
     });
