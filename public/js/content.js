@@ -64,7 +64,8 @@ function exampleClicked(){
 //add function to Homework buttno
 function homeworkClicked(){
     var homeworkPopped = false;
-    $("#hw").click(function(){
+    $("#homeworkbtn").click(function(){
+        console.log("Clicked HW");        
         if(homeworkPopped === false){
             $("#popContent").html('<object class="popped" type="text/html" data="homework.html" ></object>');
             $("object").last().css({
@@ -167,7 +168,7 @@ function controlClicked(){
 //toggle open and close video when clicking Lecture button
 function lectureClicked(){
     var hasVideoScreen = false;
-    $("#lectureB").click(function(){
+    $("#lecturebtn").click(function(){
         if(hasVideoScreen === false){
             $("#content").append('<video id="video" width="800px" height="550px" controls> \
                                         <source src="video/20160125-CEMN.mp4" type="video/mp4"> \

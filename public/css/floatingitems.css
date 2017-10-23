@@ -204,15 +204,7 @@
   max-height: 66vw;
   overflow: hidden;
   background: black;
-  
 }
-
-/*#noise{
-  position: relative;
-  width: 32.8vw;  
-  height: 32.8vw;
-  border: 2px solid black;
-}*/
 
 .diffractogramcanvas{
   position: absolute;
@@ -226,4 +218,8 @@
   height: 256px;
   position: relative;
   border: 2px solid black;
+}
+
+#popContent {
+  z-index: -3;
 }
