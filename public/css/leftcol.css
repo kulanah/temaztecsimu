@@ -64,6 +64,7 @@
   height: 11.6vh;
   overflow-x: hidden;
   overflow-y: scroll;
+  white-space: pre-wrap;
 }
 
 .leftcol{
