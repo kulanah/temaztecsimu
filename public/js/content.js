@@ -16,7 +16,7 @@ function main(){
     ucClicked();
 }
 
-//add function to Q/A buttno
+//add function to Q/A button
 function qaClicked(){
     var QApopped = false;
     $("#qabtn").click(function(){
@@ -39,7 +39,7 @@ function qaClicked(){
     });
 }
 
-//add function to Example and Application buttno
+//add function to Example and Application button
 function exampleClicked(){
     var examplePopped = false;
     $("#example").click(function(){
@@ -61,7 +61,7 @@ function exampleClicked(){
     });
 }
 
-//add function to Homework buttno
+//add function to Homework button
 function homeworkClicked(){
     var homeworkPopped = false;
     $("#homeworkbtn").click(function(){
@@ -84,7 +84,7 @@ function homeworkClicked(){
     });
 }
 
-//add function to User's Curriculum buttno
+//add function to User's Curriculum button
 function ucClicked(){
     var ucPopped = false;
     $("#uc").click(function(){
@@ -170,24 +170,32 @@ function lectureClicked(){
     var hasVideoScreen = false;
     $("#lecturebtn").click(function(){
         if(hasVideoScreen === false){
-            $("#content").append('<video id="video" width="800px" height="550px" controls> \
-                                        <source src="video/20160125-CEMN.mp4" type="video/mp4"> \
-                                        Your browser does not support the video tag. \
-                                  </video>');
             //reloacation the video
             $("#video").css({
-                "position":"absolute",
                 "left":"160px",
-                "top":"-10px",
-                "width":"700px"
-
+                "visibility":"visible"
             });
+            toggleVideo('show')
             hasVideoScreen = true;
         }else{
-            $("#video").remove();
+            $("#video").css({
+                "visibility":"hidden"
+            });
+            toggleVideo('hide')
             hasVideoScreen = false;
         }
     });
+}
+
+function toggleVideo(state) {
+    // function by Rob W found at https://stackoverflow.com/questions/8667882/how-to-pause-a-youtube-player-when-hiding-the-iframe
+    // modified to not autoplay video
+    // if state == 'hide', hide. Else: show video
+    var div = document.getElementById("video");
+    var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
+    div.style.display = state == 'hide' ? 'none' : '';
+    func = state == 'hide' ? 'pauseVideo' : '';
+    iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
 }
 
 //register event based on button clicked and lastStates of that moment

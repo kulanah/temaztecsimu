@@ -219,7 +219,3 @@
   position: relative;
   border: 2px solid black;
 }
-
-#popContent {
-  z-index: -3;
-}
