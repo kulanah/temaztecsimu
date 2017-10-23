@@ -41,7 +41,6 @@ class AlignmentBox{
   };
 
   nextStep(){
-    console.log("Next step")
     if (this.drawLocation.text() == ""){
     } else if (!this.done){
       if (this.currentStep == this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1){
@@ -124,7 +123,7 @@ class AlignmentBox{
       buttonArray.push(element);
     });
     console.log(buttonArray);
-    $('area').not(buttonArray).prop('onclick', null).off('click');
+    //$('area').not(buttonArray).prop('onclick', null).off('click');
     /* 
       WHERE TO STORE??? 
       run all onclick setters
