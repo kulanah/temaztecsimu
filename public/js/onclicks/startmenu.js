@@ -14,6 +14,9 @@ let startMenu = function(){
     if(isVisible('columndiv')){
       $('#columndiv').hide();
     } else{
+      toggleVideo('hide');
+      $("#video").hide();
+      hasVideoScreen = false;
       $('#columndiv').show();
     }
   });

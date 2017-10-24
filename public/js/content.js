@@ -4,6 +4,7 @@
 ****/
 
 var lastState = "";
+var hasVideoScreen = false;
 //register all the events to targets when docuemnts are all loaded
 function main(){
     clickedStart();
@@ -167,12 +168,13 @@ function controlClicked(){
 
 //toggle open and close video when clicking Lecture button
 function lectureClicked(){
-    var hasVideoScreen = false;
     $("#lecturebtn").click(function(){
         if(hasVideoScreen === false){
+            $('#columndiv').hide();            
             $("#video").show();            
             $("#video").css({
-                "left":"160px",
+                "top":"100px",
+                "left":"400px"
             });
             hasVideoScreen = true;
         }else{
