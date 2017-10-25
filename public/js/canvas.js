@@ -559,7 +559,8 @@ class Canvas {
     thisIn.imgX += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha / 256;
     thisIn.imgY += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta / 256;
     let oldR = thisIn.maskR;
-    thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()))) + 20;
+    speed *= 2;
+    thisIn.maskR *= Math.pow(1.0025, Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()));
     thisIn.haloX = thisIn.haloX * thisIn.maskR / oldR;
     thisIn.haloY = thisIn.haloY * thisIn.maskR / oldR;
     thisIn.drawCanvas();
