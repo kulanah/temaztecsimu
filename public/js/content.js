@@ -178,7 +178,7 @@ function lectureClicked(){
             });
             hasVideoScreen = true;
         }else{
-            toggleVideo('hide');
+            //toggleVideo('hide');
             $("#video").hide();
             hasVideoScreen = false;
         }
