@@ -10,6 +10,7 @@
     <link rel='stylesheet' href='./public/css/startmenu.css'>
     <link rel='stylesheet' href='./public/css/external.css'>
     <link rel='stylesheet' href='./public/css/highlighters.css'>
+    <link rel='stylesheet' href='./public/css/jquery-ui.min.css'>
   </head>
   <body>
     <table id='maincontent'>
@@ -388,11 +389,9 @@
     <script src='./public/js/content.js'></script>    
 
     <script>
-      $( function() {
-        $( "#alignmenttextdata" ).accordion({
-          collapsible: true
-        });
-      } );
+  $( function() {
+    $( ".selectable" ).selectable();
+  } );
     </script>
   </body>
 </html>
