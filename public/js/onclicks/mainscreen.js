@@ -108,9 +108,14 @@ let mainScreen = function(){
     activateGunShift();
   })
 
-  $('.pptoggle').on('click', function(event){
+  $('.ppxtoggle').on('click', function(event){
     deactivateDirectAlignments();
-    activatePivotPoint();
+    activatePivotPointX();
+  });
+
+  $('.ppytoggle').on('click', function(event){
+    deactivateDirectAlignments();
+    activatePivotPointY();
   });
 
   $('#dabeamshift').on('click', function(event){

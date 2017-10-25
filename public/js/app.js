@@ -194,15 +194,27 @@ let activateGunShift = function(){
   }
 }
 
-let activatePivotPoint = function(){
+let activatePivotPointX = function(){
   if (openScreen == 0){
     if (activeWindow == 0){
-      openbox.activatePivotPoint();
+      openbox.activatePivotPointX();
     } else {
-      setupbox.activatePivotPoint();
+      setupbox.activatePivotPointX();
     }
   } else {
-    mainmicro.activatePivotPoint();
+    mainmicro.activatePivotPointX();
+  }
+}
+
+let activatePivotPointY = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.activatePivotPointY();
+    } else {
+      setupbox.activatePivotPointY();
+    }
+  } else {
+    mainmicro.activatePivotPointY();
   }
 }
 
