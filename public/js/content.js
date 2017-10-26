@@ -27,10 +27,10 @@ function qaClicked(){
         if(QApopped === false){
             $("#popContent").html('<object class="popped" type="text/html" data="QandA.html" ></object>');
             $("object").last().css({
-                "position":"absolute",
-                "top":"100px",
+                //"position":"absolute",
+                //"top":"100px",
                 "background-color":"white",
-                "height":"500px",
+                "height":"50vh",
                 "border":"5px",
                 "border-style":"solid"
             });
@@ -49,14 +49,14 @@ function exampleClicked(){
     $("#example").click(function(){
         if(examplePopped === false){
             $("#popContent").html('<object class="popped" type="text/html" data="exampleAndApplication.html" ></object>');
-            $("object").last().css({
+            /*$("object").last().css({
                 "position":"absolute",
                 "top":"100px",
                 "background-color":"white",
                 "height":"500px",
                 "border":"5px",
                 "border-style":"solid"
-            });
+            });*/
             examplePopped = true;
         }else{
             $("object").last().remove();
@@ -72,10 +72,10 @@ function homeworkClicked(){
         if(homeworkPopped === false){
             $("#popContent").html('<object class="popped" type="text/html" data="homework.html" ></object>');
             $("object").last().css({
-                "position":"absolute",
-                "top":"100px",
+                //"position":"absolute",
+                //"top":"100px",
                 "background-color":"white",
-                "height":"500px",
+                "height":"50vh",
                 "border":"5px",
                 "border-style":"solid"
             });
