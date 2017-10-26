@@ -170,16 +170,10 @@ function controlClicked(){
 function lectureClicked(){
     $("#lecturebtn").click(function(){
         if(hasVideoScreen === false){
-            $('#columndiv').hide();            
-            $("#video").show();            
-            $("#video").css({
-                "top":"100px",
-                "left":"400px"
-            });
+            $("#lecturediv").show();
             hasVideoScreen = true;
         }else{
-            //toggleVideo('hide');
-            $("#video").hide();
+            $("#lecturediv").hide();
             hasVideoScreen = false;
         }
     });

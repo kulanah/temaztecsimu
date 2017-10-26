@@ -219,3 +219,10 @@
   position: relative;
   border: 2px solid black;
 }
+
+#lecturediv {
+  position: absolute;  
+  top: 11vh;
+  left: 62vw;
+  overflow: hidden;
+}
