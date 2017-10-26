@@ -30,7 +30,7 @@ function qaClicked(){
                 //"position":"absolute",
                 //"top":"100px",
                 "background-color":"white",
-                "height":"50vh",
+                "height":"45vh",
                 "border":"5px",
                 "border-style":"solid"
             });
@@ -75,7 +75,7 @@ function homeworkClicked(){
                 //"position":"absolute",
                 //"top":"100px",
                 "background-color":"white",
-                "height":"50vh",
+                "height":"45vh",
                 "border":"5px",
                 "border-style":"solid"
             });
