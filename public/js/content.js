@@ -5,6 +5,9 @@
 
 var lastState = "";
 var hasVideoScreen = false;
+var QApopped = false;
+var homeworkPopped = false;
+
 //register all the events to targets when docuemnts are all loaded
 function main(){
     clickedStart();
@@ -19,7 +22,6 @@ function main(){
 
 //add function to Q/A button
 function qaClicked(){
-    var QApopped = false;
     $("#qabtn").click(function(){
         console.log("Clicked QA");
         if(QApopped === false){
@@ -33,6 +35,7 @@ function qaClicked(){
                 "border-style":"solid"
             });
             QApopped = true;
+            homeworkPopped = false;            
         }else{
             $("object").last().remove();
             QApopped = false;
@@ -64,7 +67,6 @@ function exampleClicked(){
 
 //add function to Homework button
 function homeworkClicked(){
-    var homeworkPopped = false;
     $("#homeworkbtn").click(function(){
         console.log("Clicked HW");        
         if(homeworkPopped === false){
@@ -78,6 +80,7 @@ function homeworkClicked(){
                 "border-style":"solid"
             });
             homeworkPopped = true;
+            QApopped = false;            
         }else{
             $("object").last().remove();
             homeworkPopped = false;
