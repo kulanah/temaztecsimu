@@ -10,6 +10,7 @@
     <link rel='stylesheet' href='./public/css/startmenu.css'>
     <link rel='stylesheet' href='./public/css/external.css'>
     <link rel='stylesheet' href='./public/css/highlighters.css'>
+    <link rel='stylesheet' href='./public/css/jquery-ui.min.css'>
   </head>
   <body>
     <table id='maincontent'>
@@ -177,7 +178,10 @@
             <button type='button' id='setupbtn' class='external-button'>Microscope Setup</button>
             <button type='button' id='qabtn' class='external-button'>Q&A</button>
             <button type='button' id='lecturebtn' class='external-button'>Lecture</button>
-            <button type='button' id='homeworkbtn' class='external-button last'>Homework</button>
+            <button type='button' id='examplesbtn' class='external-button'>Examples and Applications</button>
+            <button type='button' id='homeworkbtn' class='external-button'>Homework</button>
+            <button type='button' id='curriculumbtn' class='external-button'>My Curriculum</button>
+            <button type='button' id='notepadbtn' class='external-button last'>Notepad</button>
           </div>
         </td>
       </tr>
@@ -300,14 +304,14 @@
         <ul id='directalignmentslist'>
           <li class='highlightitem' id='daguntilt'>Gun Tilt</li>
           <li class='highlightitem' id='dagunshift'>Gun Shift</li>
-          <li class='highlightitem pptoggle'>Beam tilt pp X</li>
-          <li class='highlightitem pptoggle'>Beam tilt pp Y</li>
+          <li class='highlightitem ppxtoggle'>Beam tilt pp X</li>
+          <li class='highlightitem ppytoggle'>Beam tilt pp Y</li>
           <li class='highlightitem' id='dabeamshift'>Beam shift</li>
           <li class='highlightitem' id='darotationcenter'>Rotation center</li>
           <li class='highlightitem' id='dacomafreealignmentx'>Coma-free Alignment X</li>
           <li class='highlightitem' id='dacomafreealignmenty'>Coma-free Alignment Y</li>
-          <li class='highlightitem pptoggle'>Coma-free Pivot Point X</li>
-          <li class='highlightitem pptoggle'>Coma-free Pivot Point Y</li>
+          <li class='highlightitem ppxtoggle'>Coma-free Pivot Point X</li>
+          <li class='highlightitem ppytoggle'>Coma-free Pivot Point Y</li>
         </ul>
       </div>
       <img src='./public/img/directalignmentspopout.png' usemap='#directalignmentbuttons' width='242' height='225' />
@@ -355,8 +359,12 @@
     <div id="popContent">
     </div>
 
-    <div id="video" style="position:relative;height:0;padding-bottom:56.21%" class="hidden">
-      <iframe id="temLecture1" src="https://www.youtube.com/embed/ejNB_4eFekI?enablejsapi=1" style="position:absolute;width:50%;height:50%;left:0" width="641" height="360" frameborder="0" allowfullscreen></iframe>
+    <!--div id="video" class="hidden">
+      <iframe id="temLecture1" src="https://www.youtube.com/embed/ejNB_4eFekI?enablejsapi=1" width="641" height="360"  allowfullscreen></iframe>
+    </div-->
+
+    <div id="lecturediv" class="hidden">
+      <iframe id="temLecture1" src="https://cemnpdx.github.io/Reveal/HTML%20Files/HTML%20Files/Chapter%202.html" width="582" height="360" allowfullscreen></iframe>
     </div>
 
     <!--library imports-->
@@ -391,5 +399,6 @@
     <script src='./public/js/diffractionFunctions.js'></script>
     <script src='./public/js/CTFFunctions.js'></script>
     <script src='./public/js/content.js'></script>    
+
   </body>
 </html>

@@ -113,7 +113,7 @@ class Canvas {
 
     let newRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4;
 
-    if (this.alignmentMode == 'pivotpoint'){
+    if (this.alignmentMode == 'pivotpointx' || this.alignmentMode == 'pivotpointy'){
       this.drawPPPath();
     }
     
@@ -397,8 +397,11 @@ class Canvas {
         case 'beamshift':
           this.maskX += deltaX;
           break;
-        case 'pivotpoint':
+        case 'pivotpointx':
           this.pivotPointWidth += deltaX;
+          break;
+        case 'pivotpointy':
+          this.pivotPointHeight += deltaX;
           break;
         case 'rotationcenter':
           this.rotateAlpha += deltaX;
@@ -437,8 +440,11 @@ class Canvas {
         case 'beamshift':        
           this.maskY += deltaY;
           break;
-        case 'pivotpoint':
+        case 'pivotpointx':
           this.pivotPointHeight += deltaY;
+          break;
+        case 'pivotpointy':
+          this.pivotPointWidth += deltaY;
           break;
         case 'rotationcenter':
           this.rotateBeta += deltaY;
@@ -530,13 +536,18 @@ class Canvas {
     this.alignmentMode = 'gunshift'
   }
 
-  activatePivotPoint(){
-    this.alignmentMode = 'pivotpoint';
+  activatePivotPointX(){
+    this.alignmentMode = 'pivotpointx';
+    this.intervalVal = setInterval(this.setPPOffset, 80, this);
+  }
+
+  activatePivotPointY(){
+    this.alignmentMode = 'pivotpointy';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
   }
 
   setPPOffset(thisIn){
-    if (thisIn.alignmentMode = 'pivotpoint')
+    //if (thisIn.alignmentMode == 'pivotpointx')
       thisIn.pivotPointAngle += 52;
     let xy = thisIn.mapXYfromAngle(thisIn.pivotPointAngle);
 
@@ -564,7 +575,8 @@ class Canvas {
     thisIn.imgX += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateAlpha / 256;
     thisIn.imgY += Math.sin(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()) * thisIn.rotateBeta / 256;
     let oldR = thisIn.maskR;
-    thisIn.maskR = Math.abs(Math.round(Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()))) + 20;
+    speed *= 2;
+    thisIn.maskR *= Math.pow(1.0025, Math.cos(((2 * Math.PI) * speed) * time.getSeconds() + ((2 * Math.PI) * speed / 1000) * time.getMilliseconds()));
     thisIn.haloX = thisIn.haloX * thisIn.maskR / oldR;
     thisIn.haloY = thisIn.haloY * thisIn.maskR / oldR;
     thisIn.drawCanvas();

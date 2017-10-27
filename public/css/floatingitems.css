@@ -73,7 +73,7 @@
   position: absolute;
   z-index: 0;
   top: 11vh;
-  left: 28vw;
+  left: 26vw;
   max-width: 33vw;
   max-height: 33vw;
   overflow: hidden;
@@ -227,4 +227,23 @@
   height: 256px;
   position: relative;
   border: 2px solid black;
+}
+
+#lecturediv {
+  position: absolute;  
+  top: 11vh;
+  left: 60vw;
+  overflow: hidden;
+}
+
+#temLecture1 {
+  width: 31vw;
+  height: 35vh;
+}
+
+#popContent {
+  position: absolute;  
+  top: 47vh;
+  left: 60vw;
+  overflow: hidden;
 }

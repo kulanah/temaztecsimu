@@ -15,20 +15,53 @@ class AlignmentBox{
   }
 
   drawInital(){
+    let str = "";
     for (let i = 0; i < this.jsonObj.length; ++i){
       let lessonNum = i + 1;
-      this.ul.append('<li>' + this.jsonObj[i].name + '</li>');
+      //this.ul.append('<li>' + this.jsonObj[i].name + '</li>');
+      str = str + '<details><summary>' + this.jsonObj[i].name + '</summary>';
+      //console.log(str);
       if (this.jsonObj[i].topics){
-        this.ul.append('<ul class=\'lesson' + lessonNum + '\'>');
+        //this.ul.append('<ul class=\'lesson' + lessonNum + '\'>');
+        str = str + '<ul class=\'lesson' + lessonNum + '\'>'
         for (let j = 0; j < this.jsonObj[i].topics.length; ++j){
           let stepNum = j + 1;
           let liData = '<li class=\'l' + lessonNum + 'p' + stepNum + '\'>'
-          $('.lesson' + lessonNum).append(liData + this.jsonObj[i].topics[j].name + '</li>');
+          /*$('.lesson' + lessonNum).append(liData + this.jsonObj[i].topics[j].name + '</li>');
           $('.l' + lessonNum + 'p' + stepNum).on('click', function(context){
             this.setOnClick(i, j);
-          }.bind(this));
+          }.bind(this));*/
+          str = str + liData + this.jsonObj[i].topics[j].name + '</li>';
         }
-        $('.data').append('</ul>');
+        //$('.data').append('</ul>');
+        str = str + '</ul>'
+      }
+      str = str + '</details>'
+    }
+    this.ul.append(str);
+    for (let i = 0; i < this.jsonObj.length; ++i){
+      let lessonNum = i + 1;
+      for (let j = 0; j < this.jsonObj[i].topics.length; ++j){
+        let stepNum = j + 1;        
+        $('.l' + lessonNum + 'p' + stepNum).on('click', function(context){
+          for (let i = 0; i < this.jsonObj.length; ++i){
+            let lessonNum = i + 1;
+            for (let j = 0; j < this.jsonObj[i].topics.length; ++j){
+              let stepNum = j + 1; 
+              $('.l' + lessonNum + 'p' + stepNum).css({
+                'background': '#FFF',
+                'color': 'black'
+              });
+            }
+          }
+          $('.l' + lessonNum + 'p' + stepNum).css({
+            'background': '#F39814',
+            'color': 'white'
+          });
+          console.log(lessonNum, stepNum);
+          console.log("fired")
+          this.setOnClick(i, j);
+        }.bind(this));
       }
     }
   };
@@ -41,13 +74,17 @@ class AlignmentBox{
   };
 
   nextStep(){
+    $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+      'background': '#FFF',
+      'color': 'black'
+    });
     if (this.drawLocation.text() == ""){
     } else if (!this.done){
       if (this.currentStep == this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1){
         if (this.currentTopic == this.jsonObj[this.currentLesson].topics.length - 1){
           if (this.currentLesson == this.jsonObj.length - 1){
             this.done = true;
-            this.drawLocation.text('you\'re done!');
+            this.drawLocation.text('You\'re done!');
           } else {
             ++this.currentLesson;
             this.currentStep = 0;
@@ -60,16 +97,25 @@ class AlignmentBox{
       } else {
         this.currentStep++;
       }
+      if (!this.done){
+        $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+          'background': '#F39814',
+          'color': 'white'
+        });
+      }
     }
     this.fillCurrent();
   }
 
   prevStep(){
+    $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+      'background': '#FFF',
+      'color': 'black'
+    });
     if(this.drawLocation.text() == ""){
     } else if (this.done){
       this.done = false;
-    }
-    if(this.currentStep == 0){
+    } else if(this.currentStep == 0){
       if(this.currentTopic == 0){
         if(this.currentLesson == 0){
           //do nothing because we're at the start
@@ -86,6 +132,10 @@ class AlignmentBox{
     } else {
       --this.currentStep;
     }
+    $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+      'background': '#F39814',
+      'color': 'white'
+    });
     this.fillCurrent();
 
   }
@@ -104,7 +154,7 @@ class AlignmentBox{
 
   fillCurrent(){
     if (!this.done){
-      this.drawLocation.text(this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].text);
+      this.drawLocation.text('Step ' + (this.currentStep + 1) + ':\n' + this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].text);
     }
     this.activateButtons(this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].flags);
   }

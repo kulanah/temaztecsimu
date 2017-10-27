@@ -4,6 +4,10 @@
 ****/
 
 var lastState = "";
+var hasVideoScreen = false;
+var QApopped = false;
+var homeworkPopped = false;
+
 //register all the events to targets when docuemnts are all loaded
 function main(){
     clickedStart();
@@ -18,20 +22,20 @@ function main(){
 
 //add function to Q/A button
 function qaClicked(){
-    var QApopped = false;
     $("#qabtn").click(function(){
         console.log("Clicked QA");
         if(QApopped === false){
             $("#popContent").html('<object class="popped" type="text/html" data="QandA.html" ></object>');
             $("object").last().css({
-                "position":"absolute",
-                "top":"100px",
+                //"position":"absolute",
+                //"top":"100px",
                 "background-color":"white",
-                "height":"500px",
+                "height":"45vh",
                 "border":"5px",
                 "border-style":"solid"
             });
             QApopped = true;
+            homeworkPopped = false;            
         }else{
             $("object").last().remove();
             QApopped = false;
@@ -45,14 +49,14 @@ function exampleClicked(){
     $("#example").click(function(){
         if(examplePopped === false){
             $("#popContent").html('<object class="popped" type="text/html" data="exampleAndApplication.html" ></object>');
-            $("object").last().css({
+            /*$("object").last().css({
                 "position":"absolute",
                 "top":"100px",
                 "background-color":"white",
                 "height":"500px",
                 "border":"5px",
                 "border-style":"solid"
-            });
+            });*/
             examplePopped = true;
         }else{
             $("object").last().remove();
@@ -63,20 +67,20 @@ function exampleClicked(){
 
 //add function to Homework button
 function homeworkClicked(){
-    var homeworkPopped = false;
     $("#homeworkbtn").click(function(){
         console.log("Clicked HW");        
         if(homeworkPopped === false){
             $("#popContent").html('<object class="popped" type="text/html" data="homework.html" ></object>');
             $("object").last().css({
-                "position":"absolute",
-                "top":"100px",
+                //"position":"absolute",
+                //"top":"100px",
                 "background-color":"white",
-                "height":"500px",
+                "height":"45vh",
                 "border":"5px",
                 "border-style":"solid"
             });
             homeworkPopped = true;
+            QApopped = false;            
         }else{
             $("object").last().remove();
             homeworkPopped = false;
@@ -167,17 +171,12 @@ function controlClicked(){
 
 //toggle open and close video when clicking Lecture button
 function lectureClicked(){
-    var hasVideoScreen = false;
     $("#lecturebtn").click(function(){
         if(hasVideoScreen === false){
-            $("#video").show();            
-            $("#video").css({
-                "left":"160px",
-            });
+            $("#lecturediv").show();
             hasVideoScreen = true;
         }else{
-            toggleVideo('hide');
-            $("#video").hide();
+            $("#lecturediv").hide();
             hasVideoScreen = false;
         }
     });
