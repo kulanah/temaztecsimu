@@ -84,22 +84,21 @@ function homeworkClicked(){
 
 //add function to User's Curriculum button
 function ucClicked(){
-    var ucPopped = false;
-    $("#uc").click(function(){
-        if(ucPopped === false){
-            $("#popContent").html('<object class="popped" type="text/html" data="uc.html" ></object>');
+    $("#curriculumbtn").click(function(){
+        if(popped != 'curriculum'){
+            $("#popContent").html('<object class="popped" type="text/html" data="syllabus.html" ></object>');
             $("object").last().css({
-                "position":"absolute",
-                "top":"100px",
+                //"position":"absolute",
+                //"top":"100px",
                 "background-color":"white",
-                "height":"500px",
+                "height":"45vh",
                 "border":"5px",
                 "border-style":"solid"
             });
-            ucPopped = true;
+            popped = 'curriculum';
         }else{
             $("object").last().remove();
-            ucPopped = false;
+            popped = 'none';
         }
     });
 }
