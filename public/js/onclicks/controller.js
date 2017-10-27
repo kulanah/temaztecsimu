@@ -193,6 +193,8 @@ let microscopeControllers = function(){
 
   $('#buttontop1r').on('click', function(event){
     zeroFocus();
+    temLens[12].y = 570;
+    drawColumn();
   })
 };
 

@@ -4,6 +4,15 @@
   background: black;
   border: 2px white solid;
 }
+
+#columndivzoom{
+  height: 30vh;
+  width: 30vh;
+  background: black;
+  border: 2px white solid;
+  overflow: hidden;
+}
+
 #controlsLeft{
   position: absolute;
   bottom: 6vh;

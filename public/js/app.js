@@ -41,7 +41,10 @@ let moveImage = function(deltax, deltay, target){
     if (activeWindow == 0){
       openbox.moveImage(deltax, deltay);
     } else {
-      setupbox.moveImage(deltax, deltay);
+      if (setupbox.moveImage(deltax, deltay)){
+        temLens[20].xCenter += deltax / 10;
+        drawColumn();
+      }
     }
   } else {
     mainmicro.moveImage(deltax, deltay);
@@ -59,7 +62,9 @@ let changeIntensity = function(delta){
     if (activeWindow == 0){
       openbox.changeIntensity(delta);
     } else {
-      setupbox.changeIntensity(delta);
+      let change = setupbox.changeIntensity(delta);
+      temLens[6].f += change / 30;
+      drawColumn();
     }
   } else {
     mainmicro.changeIntensity(delta);
@@ -93,6 +98,8 @@ let shiftFocus = function(delta){
       openbox.focus(delta);
     } else {
       setupbox.focus(delta);
+      temLens[11].f += delta / 10;
+      drawColumn();
     }
   } else {
     mainmicro.focus(delta);
@@ -148,6 +155,7 @@ let updateCanvas = function(){
 };
 
 let handleBeamSlider = function(newVal){
+  console.log(newVal);
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.handleBeamSlider(newVal);
