@@ -5,8 +5,7 @@
 
 var lastState = "";
 var hasVideoScreen = false;
-var QApopped = false;
-var homeworkPopped = false;
+var popped = 'none';
 
 //register all the events to targets when docuemnts are all loaded
 function main(){
@@ -23,8 +22,7 @@ function main(){
 //add function to Q/A button
 function qaClicked(){
     $("#qabtn").click(function(){
-        console.log("Clicked QA");
-        if(QApopped === false){
+        if(popped != 'QA'){
             $("#popContent").html('<object class="popped" type="text/html" data="QandA.html" ></object>');
             $("object").last().css({
                 //"position":"absolute",
@@ -34,33 +32,31 @@ function qaClicked(){
                 "border":"5px",
                 "border-style":"solid"
             });
-            QApopped = true;
-            homeworkPopped = false;            
+            popped = 'QA';          
         }else{
             $("object").last().remove();
-            QApopped = false;
+            popped = 'none';
         }
     });
 }
 
 //add function to Example and Application button
 function exampleClicked(){
-    var examplePopped = false;
-    $("#example").click(function(){
-        if(examplePopped === false){
+    $("#examplebtn").click(function(){
+        if(popped != 'example'){
             $("#popContent").html('<object class="popped" type="text/html" data="exampleAndApplication.html" ></object>');
-            /*$("object").last().css({
-                "position":"absolute",
-                "top":"100px",
+            $("object").last().css({
+                //"position":"absolute",
+                //"top":"100px",
                 "background-color":"white",
-                "height":"500px",
+                "height":"45vh",
                 "border":"5px",
                 "border-style":"solid"
-            });*/
-            examplePopped = true;
+            });
+            popped = 'example'
         }else{
             $("object").last().remove();
-            examplePopped = false;
+            popped = 'none';
         }
     });
 }
@@ -68,8 +64,7 @@ function exampleClicked(){
 //add function to Homework button
 function homeworkClicked(){
     $("#homeworkbtn").click(function(){
-        console.log("Clicked HW");        
-        if(homeworkPopped === false){
+        if(popped != 'homework'){
             $("#popContent").html('<object class="popped" type="text/html" data="homework.html" ></object>');
             $("object").last().css({
                 //"position":"absolute",
@@ -79,11 +74,10 @@ function homeworkClicked(){
                 "border":"5px",
                 "border-style":"solid"
             });
-            homeworkPopped = true;
-            QApopped = false;            
+            popped = 'homework';
         }else{
             $("object").last().remove();
-            homeworkPopped = false;
+            popped = 'none';
         }
     });
 }
