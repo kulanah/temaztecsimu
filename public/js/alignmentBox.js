@@ -97,12 +97,12 @@ class AlignmentBox{
       } else {
         this.currentStep++;
       }
-      if (!this.done){
-        $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
-          'background': '#F39814',
-          'color': 'white'
-        });
-      }
+    }
+    if (!this.done){
+      $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+        'background': '#F39814',
+        'color': 'white'
+      });
     }
     this.fillCurrent();
   }
