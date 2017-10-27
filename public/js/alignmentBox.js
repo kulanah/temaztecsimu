@@ -44,6 +44,22 @@ class AlignmentBox{
       for (let j = 0; j < this.jsonObj[i].topics.length; ++j){
         let stepNum = j + 1;        
         $('.l' + lessonNum + 'p' + stepNum).on('click', function(context){
+          for (let i = 0; i < this.jsonObj.length; ++i){
+            let lessonNum = i + 1;
+            for (let j = 0; j < this.jsonObj[i].topics.length; ++j){
+              let stepNum = j + 1; 
+              $('.l' + lessonNum + 'p' + stepNum).css({
+                'background': '#FFF',
+                'color': 'black'
+              });
+            }
+          }
+          $('.l' + lessonNum + 'p' + stepNum).css({
+            'background': '#F39814',
+            'color': 'white'
+          });
+          console.log(lessonNum, stepNum);
+          console.log("fired")
           this.setOnClick(i, j);
         }.bind(this));
       }
@@ -58,6 +74,10 @@ class AlignmentBox{
   };
 
   nextStep(){
+    $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+      'background': '#FFF',
+      'color': 'black'
+    });
     if (this.drawLocation.text() == ""){
     } else if (!this.done){
       if (this.currentStep == this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1){
@@ -77,16 +97,25 @@ class AlignmentBox{
       } else {
         this.currentStep++;
       }
+      if (!this.done){
+        $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+          'background': '#F39814',
+          'color': 'white'
+        });
+      }
     }
     this.fillCurrent();
   }
 
   prevStep(){
+    $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+      'background': '#FFF',
+      'color': 'black'
+    });
     if(this.drawLocation.text() == ""){
     } else if (this.done){
       this.done = false;
-    }
-    if(this.currentStep == 0){
+    } else if(this.currentStep == 0){
       if(this.currentTopic == 0){
         if(this.currentLesson == 0){
           //do nothing because we're at the start
@@ -103,6 +132,10 @@ class AlignmentBox{
     } else {
       --this.currentStep;
     }
+    $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
+      'background': '#F39814',
+      'color': 'white'
+    });
     this.fillCurrent();
 
   }

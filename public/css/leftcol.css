@@ -197,6 +197,3 @@
   height: 6.79vh;
   width: 14.28vw;
 }
-
-#selectable .ui-selecting { background: #FECA40; }
-#selectable .ui-selected { background: #F39814; color: white; }
