@@ -272,18 +272,23 @@ class Canvas {
     this.haloX = this.haloX * this.maskR / oldR;
     this.haloY = this.haloY * this.maskR / oldR;    
     this.drawCanvas();
+    return (this.maskR - oldR);
   };
 
   moveImage(deltaX, deltaY){
+    let flag;
     if (this.startTarget == 'buttonrollerl'){
       this.maskX += deltaX;
       this.maskY += deltaY;
+      flag = 1;
     } else {
       this.imgX += deltaX;
       this.imgY += deltaY;
+      flag = 0;
     }
 
     this.drawCanvas();
+    return flag;
   };
 
   setTarget(target){
