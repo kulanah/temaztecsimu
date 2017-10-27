@@ -84,7 +84,7 @@ class AlignmentBox{
         if (this.currentTopic == this.jsonObj[this.currentLesson].topics.length - 1){
           if (this.currentLesson == this.jsonObj.length - 1){
             this.done = true;
-            this.drawLocation.text('you\'re done!');
+            this.drawLocation.text('You\'re done!');
           } else {
             ++this.currentLesson;
             this.currentStep = 0;
@@ -154,7 +154,7 @@ class AlignmentBox{
 
   fillCurrent(){
     if (!this.done){
-      this.drawLocation.text(this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].text);
+      this.drawLocation.text('Step ' + (this.currentStep + 1) + ':\n' + this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].text);
     }
     this.activateButtons(this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].flags);
   }
