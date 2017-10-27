@@ -42,36 +42,51 @@ temLens[21] = new lens(0,0,1090,400,'screen','Viewing Screen');
 
 
 //creates the labels for the lenses
-visualArray = new Array;
+zoomedOutLabels = new Array;
 for(i = 0; i < temLens.length; i++){
-	visualArray[i] = document.createElement('div');
-	visualArray[i].name = temLens[i].name;
-	visualArray[i].class = temLens[i].kind;
-	visualArray[i].style.position = 'absolute';
-	visualArray[i].style.border= 'white solid 2px';
-	visualArray[i].style.padding = '0px 0px 0px 0px';
-	visualArray[i].style.background = '#000';
-	visualArray[i].style.color = '#fff';
-	visualArray[i].style.width = visualArray[i].name.length * 7 + 9 + 'px';
-	visualArray[i].style.height = 19 + 'px';
-	visualArray[i].innerHTML = visualArray[i].name;
-	visualArray[i].style.font = '14px Arial';
-	visualArray[i].style.textAlign = 'center';
+	zoomedOutLabels[i] = document.createElement('div');
+	zoomedOutLabels[i].name = temLens[i].name;
+	zoomedOutLabels[i].class = temLens[i].kind;
+	zoomedOutLabels[i].style.position = 'absolute';
+	zoomedOutLabels[i].style.border= 'white solid 2px';
+	zoomedOutLabels[i].style.padding = '0px 0px 0px 0px';
+	zoomedOutLabels[i].style.background = '#000';
+	zoomedOutLabels[i].style.color = '#fff';
+	zoomedOutLabels[i].style.width = zoomedOutLabels[i].name.length * 7 + 9 + 'px';
+	zoomedOutLabels[i].style.height = 19 + 'px';
+	zoomedOutLabels[i].innerHTML = zoomedOutLabels[i].name;
+	zoomedOutLabels[i].style.font = '14px Arial';
+	zoomedOutLabels[i].style.textAlign = 'center';
+}
 
+zoomedInLabels= new Array;
+for(i = 0; i < temLens.length; i++){
+	zoomedInLabels[i] = document.createElement('div');
+	zoomedInLabels[i].name = temLens[i].name;
+	zoomedInLabels[i].class = temLens[i].kind;
+	zoomedInLabels[i].style.position = 'absolute';
+	zoomedInLabels[i].style.border= 'white solid 2px';
+	zoomedInLabels[i].style.padding = '0px 0px 0px 0px';
+	zoomedInLabels[i].style.background = '#000';
+	zoomedInLabels[i].style.color = '#fff';
+	zoomedInLabels[i].style.width = zoomedOutLabels[i].name.length * 7 + 9 + 'px';
+	zoomedInLabels[i].style.height = 19 + 'px';
+	zoomedInLabels[i].innerHTML = zoomedOutLabels[i].name;
+	zoomedInLabels[i].style.font = '14px Arial';
+	zoomedInLabels[i].style.textAlign = 'center';
 }
 
 function drawColumn(){
-	console.log(zoomed);
-	
+	console.log(lensFocus);
 	if (zoomed){
-		let yOff = temLens[lensFocus].y;
-		drawColumnParam(6, yOff, true);
+		// let yOff = temLens[lensFocus].y;
+		drawColumnParam(6, -1400, true, 0.4);
 	}
 	drawColumnParam();
 
 }
 
-function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false){
+function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.4){
 	//default height = 1160
 	let columnDiv;
 	let beamDiag;
@@ -89,11 +104,13 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false){
 
 	beamLabels.css('position', 'absolute');
 	beamLabels.css('top', yOffset);	
+	beamDiag.css('position', 'absolute');
+	beamDiag.css('top', yOffset);
 
 	//unsure if I want this here or not, this saves it if the user modifies
 	//screen size but it is also inefficicent if they don't 
 	let canvasHeight = $(window).height() * heightMult;
-	let canvasWidth = $(window).height() * 0.4;
+	let canvasWidth = $(window).height() * widthMult;
 	beamDiag[0].height = canvasHeight;
 	beamDiag[0].width = canvasWidth;
 	beamLabels[0].height = canvasHeight;
@@ -124,7 +141,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false){
 	for(var ray=0; ray<numOfRays+1; ray++){
 		temLens[0].x=  ray*widthOfSource/numOfRays - widthOfSource/2;
 		ctx.beginPath();
-		ctx.moveTo(temLens[0].x+offset,temLens[0].y);
+		ctx.moveTo(temLens[0].x+offset,temLens[0].y + yOffset);
 		var blocked=0;
 		for(var i=0;i<numOfLenses;i++){
 			if(i>0){
@@ -141,9 +158,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false){
 				}	
 			}
 			if(blocked==0){
-				
 				ctx.lineTo(temLens[i].x+offset,temLens[i].y);  
-				
 			}
 		}		
 		//color in rgb as function of starting position
@@ -159,7 +174,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false){
 	ctx = beamDiag[0].getContext('2d');
 	for(var i=0;i<numOfLenses;i++){
 		if (!zoomVer){
-			visualArray[i].id = temLens[i].name.replace(/\s+/g, '');
+			zoomedOutLabels[i].id = temLens[i].name.replace(/\s+/g, '');
 		}
 		if (i == 0){
 			totalHeight = temLens[i].y;
@@ -188,21 +203,41 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false){
 		ctx = beamLabels[0].getContext('2d');
 		
 
-		if(temLens[i].kind=='screen'){
-			visualArray[i].style.left = offset + 120 + 'px';
-			visualArray[i].style.top = temLens[i].y - 4 * yScale + 'px';
-		
-		}else{
-      if(temLens[i].kind=='source'){
-        visualArray[i].style.left = offset + 95 + 'px';
-        visualArray[i].style.top = temLens[i].y + 20 + 'px';
-      }else{
-        visualArray[i].style.left = offset + 95 + 'px';
-				visualArray[i].style.top = (temLens[i].y * yScale - 8 ) + 'px';
-      }
-		}
+		if (zoomVer){
+			console.log(yScale);
+			yScale = 10;
+			if(temLens[i].kind=='screen'){
+				zoomedInLabels[i].style.left = offset + 120 + 'px';
+				zoomedInLabels[i].style.top = temLens[i].y + heightMult - 4 * yScale + 'px';
+			
+			}else{
+				if(temLens[i].kind=='source'){
+					zoomedInLabels[i].style.left = offset + 95 + 'px';
+					zoomedInLabels[i].style.top = temLens[i].y + heightMult + 20 + 'px';
+				}else{
+					zoomedInLabels[i].style.left = offset + 95 + 'px';
+					zoomedInLabels[i].style.top = (temLens[i].y + heightMult * yScale - 8 ) + 'px';
+				}
+			}
 
-		columnDiv[0].append(visualArray[i]);
+			columnDiv[0].append(zoomedInLabels[i]);
+		} else {
+			if(temLens[i].kind=='screen'){
+				zoomedOutLabels[i].style.left = offset + 120 + 'px';
+				zoomedOutLabels[i].style.top = temLens[i].y - 4 * yScale + 'px';
+			
+			}else{
+				if(temLens[i].kind=='source'){
+					zoomedOutLabels[i].style.left = offset + 95 + 'px';
+					zoomedOutLabels[i].style.top = temLens[i].y + 20 + 'px';
+				}else{
+					zoomedOutLabels[i].style.left = offset + 95 + 'px';
+					zoomedOutLabels[i].style.top = (temLens[i].y * yScale - 8 ) + 'px';
+				}
+			}
+
+			columnDiv[0].append(zoomedOutLabels[i]);
+		}
 	}
 	ctx.restore();	
 

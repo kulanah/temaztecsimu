@@ -10,6 +10,7 @@ let activeWindow = 0;
 let diffractionMode = false;
 
 let clickFunctions = function(){
+  column();
   microscopeControllers();
   mainScreen();
   searchTab();

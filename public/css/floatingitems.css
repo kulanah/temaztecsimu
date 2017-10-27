@@ -7,10 +7,13 @@
 
 #columndivzoom{
   height: 30vh;
-  width: 30vh;
+  width: 50vh;
   background: black;
   border: 2px white solid;
   overflow: hidden;
+  position: absolute;
+  top: 0vh;
+  left: 20vw;
 }
 
 #controlsLeft{
