@@ -3,7 +3,6 @@
 * in order to simulate app's user interface
 ****/
 
-var hasVideoScreen = false;
 var popped = 'none';
 
 //register all the events to targets when docuemnts are all loaded
@@ -13,6 +12,7 @@ function main(){
     exampleClicked();
     homeworkClicked();
     ucClicked();
+    notepadClicked();
 }
 
 //add function to Q/A button
@@ -24,7 +24,7 @@ function qaClicked(){
                 //"position":"absolute",
                 //"top":"100px",
                 "background-color":"white",
-                "height":"45vh",
+                "height":"46vh",
                 "border":"5px",
                 "border-style":"solid"
             });
@@ -45,7 +45,7 @@ function exampleClicked(){
                 //"position":"absolute",
                 //"top":"100px",
                 "background-color":"white",
-                "height":"45vh",
+                "height":"46vh",
                 "border":"5px",
                 "border-style":"solid"
             });
@@ -66,7 +66,7 @@ function homeworkClicked(){
                 //"position":"absolute",
                 //"top":"100px",
                 "background-color":"white",
-                "height":"45vh",
+                "height":"46vh",
                 "border":"5px",
                 "border-style":"solid"
             });
@@ -87,7 +87,7 @@ function ucClicked(){
                 //"position":"absolute",
                 //"top":"100px",
                 "background-color":"white",
-                "height":"45vh",
+                "height":"46vh",
                 "border":"5px",
                 "border-style":"solid"
             });
@@ -102,12 +102,21 @@ function ucClicked(){
 //toggle open and close video when clicking Lecture button
 function lectureClicked(){
     $("#lecturebtn").click(function(){
-        if(hasVideoScreen === false){
+        if(isVisible("lecturediv") === false){
             $("#lecturediv").show();
-            hasVideoScreen = true;
         }else{
             $("#lecturediv").hide();
-            hasVideoScreen = false;
+        }
+    });
+}
+
+//toggle open and close notepad feature when clicking Notepad button
+function notepadClicked(){
+    $("#notepadbtn").click(function(){
+        if(isVisible("notepad") === false){
+            $("#notepad").show();
+        }else{
+            $("#notepad").hide();
         }
     });
 }

@@ -247,3 +247,17 @@
   left: 60vw;
   overflow: hidden;
 }
+
+#notepad {
+  position: absolute;
+  top: 77vh;
+  left: 26vw;
+  overflow: hidden;
+  border: 5px solid black;
+}
+
+#notes {
+  width: 32.6vw;
+  height: 16vh;
+  font-size: 18px;
+}
