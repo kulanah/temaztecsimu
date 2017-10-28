@@ -232,14 +232,14 @@
 
 #lecturediv {
   position: absolute;  
-  top: 11vh;
+  top: 0vh;
   left: 60vw;
   overflow: hidden;
 }
 
 #temLecture1 {
-  width: 31vw;
-  height: 35vh;
+  width: 40vw;
+  height: 46vh;
 }
 
 #popContent {
