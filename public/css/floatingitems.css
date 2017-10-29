@@ -1,4 +1,5 @@
 #columndiv{
+  position: absolute;
   height: 90vh;
   width: 40vh;
   background: black;
@@ -242,14 +243,14 @@
 
 #lecturediv {
   position: absolute;  
-  top: 11vh;
+  top: 0vh;
   left: 60vw;
   overflow: hidden;
 }
 
 #temLecture1 {
-  width: 31vw;
-  height: 35vh;
+  width: 40vw;
+  height: 46vh;
 }
 
 #popContent {
@@ -257,4 +258,18 @@
   top: 47vh;
   left: 60vw;
   overflow: hidden;
+}
+
+#notepad {
+  position: absolute;
+  top: 77vh;
+  left: 26vw;
+  overflow: hidden;
+  border: 5px solid black;
+}
+
+#notes {
+  width: 32.6vw;
+  height: 16vh;
+  font-size: large;
 }
