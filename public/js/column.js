@@ -78,9 +78,9 @@ for(i = 0; i < temLens.length; i++){
 	zoomedInLabels[i].style.textAlign = 'center';
 }
 
-function drawColumn(yOffset = 0){
+function drawColumn(){
 	if (zoomed){
-		drawColumnParam(5.4, yOffset, true, 0.4);
+		drawColumnParam(5.4, zoomedOffsetStatic, true, 0.4);
 	}
 	
 	drawColumnParam();
@@ -205,7 +205,6 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 		
 
 		if (zoomVer){
-			heightMult = 6;
 			if(temLens[i].kind=='screen'){
 				zoomedInLabels[i].style.left = offset + 120 + 'px';
 				zoomedInLabels[i].style.top = temLens[i].y * heightMult + yOffset + 'px';
@@ -213,7 +212,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 			}else{
 				if(temLens[i].kind=='source'){
 					zoomedInLabels[i].style.left = offset + 95 + 'px';
-					zoomedInLabels[i].style.top = temLens[i].y * heightMult + 60 + yOffset + 'px';
+					zoomedInLabels[i].style.top = temLens[i].y * yScale + 60 + yOffset + 'px';
 				}else{
 					zoomedInLabels[i].style.left = offset + 95 + 'px';
 					zoomedInLabels[i].style.top = temLens[i].y * yScale + yOffset - 8 + 'px';
