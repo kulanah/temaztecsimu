@@ -28,14 +28,14 @@ temLens[07] = new lens(0,0,350,25,'aperture','C2 Aperture');
 temLens[08] = new lens(0,0,400,25, 'lens','Beam Deflection 1');
 temLens[09] = new lens(0,0,440,15,'lens','Beam Deflection 2');
 temLens[10] = new lens(0,0,480,24,'lens','Minicondenser Lens');
-temLens[11] = new lens(0,0,520,70,'lens','Objective Lens');
+temLens[11] = new lens(0,0,520,70,'lens','Objective UpperPolepiece');
 temLens[12] = new lens(0,0,570,10,'sample','Specimen');
-temLens[13] = new lens(0,0,600,40,'lens','Objective Imaging Lens');
+temLens[13] = new lens(0,0,600,40,'lens','Objective LowerPolepiece');
 temLens[14] = new lens(0,0,650,8,'aperture','Objective Aperture');
 temLens[15] = new lens(0,0,700,100,'lens','Image Deflection 1');
 temLens[16] = new lens(0,0,750,30,'lens','Image Deflection 2');
 temLens[17] = new lens(0,0,800,58,'lens','Intermediate Lens');
-temLens[18] = new lens(0,0,840,24,'aperture','Diffraction Aperture');
+temLens[18] = new lens(0,0,840,24,'aperture','SAED Aperture');
 temLens[19] = new lens(0,0,880,10,'lens','Projection lens 1');
 temLens[20] = new lens(0,0,990,100,'lens','Projection Lens 2');
 temLens[21] = new lens(0,0,1090,400,'screen','Viewing Screen');
@@ -46,7 +46,9 @@ zoomedOutLabels = new Array;
 for(i = 0; i < temLens.length; i++){
 	zoomedOutLabels[i] = document.createElement('div');
 	zoomedOutLabels[i].name = temLens[i].name;
-	zoomedOutLabels[i].class = temLens[i].kind;
+	zoomedOutLabels[i].number = i;
+	zoomedOutLabels[i].classList.add(temLens[i].kind);
+	zoomedOutLabels[i].classList.add('columnZoomButton');
 	zoomedOutLabels[i].style.position = 'absolute';
 	zoomedOutLabels[i].style.border= 'white solid 2px';
 	zoomedOutLabels[i].style.padding = '0px 0px 0px 0px';
@@ -76,12 +78,11 @@ for(i = 0; i < temLens.length; i++){
 	zoomedInLabels[i].style.textAlign = 'center';
 }
 
-function drawColumn(){
-	console.log(lensFocus);
+function drawColumn(yOffset = 0){
 	if (zoomed){
-		// let yOff = temLens[lensFocus].y;
-		drawColumnParam(6, -1400, true, 0.4);
+		drawColumnParam(5.4, yOffset, true, 0.4);
 	}
+	
 	drawColumnParam();
 
 }
@@ -204,20 +205,23 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 		
 
 		if (zoomVer){
-			console.log(yScale);
-			yScale = 10;
+			heightMult = 6;
 			if(temLens[i].kind=='screen'){
 				zoomedInLabels[i].style.left = offset + 120 + 'px';
-				zoomedInLabels[i].style.top = temLens[i].y + heightMult - 4 * yScale + 'px';
+				zoomedInLabels[i].style.top = temLens[i].y * heightMult + yOffset + 'px';
 			
 			}else{
 				if(temLens[i].kind=='source'){
 					zoomedInLabels[i].style.left = offset + 95 + 'px';
-					zoomedInLabels[i].style.top = temLens[i].y + heightMult + 20 + 'px';
+					zoomedInLabels[i].style.top = temLens[i].y * heightMult + 60 + yOffset + 'px';
 				}else{
 					zoomedInLabels[i].style.left = offset + 95 + 'px';
-					zoomedInLabels[i].style.top = (temLens[i].y + heightMult * yScale - 8 ) + 'px';
+					zoomedInLabels[i].style.top = temLens[i].y * yScale + yOffset - 8 + 'px';
 				}
+			// console.log("Out: ");
+			// console.log(temLens[i].name + ": " + zoomedOutLabels[i].style.top);
+			// console.log("In: ");
+			// console.log(temLens[i].name + ": " + zoomedOutLabels[i].style.top); 
 			}
 
 			columnDiv[0].append(zoomedInLabels[i]);
