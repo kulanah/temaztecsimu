@@ -177,7 +177,6 @@ class Canvas {
         --this.mag;
       }
     }
-    //TODO: figure out why this bugs out on first two zoom values, probably because they're < 1 and shirnking the image out of the viewport
 
     this.imgW *= zoomFactor;
     this.imgH *= zoomFactor;
