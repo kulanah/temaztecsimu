@@ -9,4 +9,10 @@ let column = function() {
     drawColumn();
   });
 
+
+  $('#zoomexit').on('click', function(){
+    $('#columndivzoom').hide();
+
+  });
+
 }
