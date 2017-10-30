@@ -13,9 +13,6 @@
     <link rel='stylesheet' href='./public/css/jquery-ui.min.css'>
   </head>
   <body>
-      <div id='magnificationdisplay'>
-          <span id='magnificationvalue'></span>
-      </div>
     <table id='maincontent'>
       <tr>  
         <td>
@@ -44,6 +41,9 @@
         </td>
         <td rowspan='3'>
           <img src='./public/img/mainscreen.png' class='mainwindow wx' id='mainimage' usemap='#mainscreen' width='1437' height='1019'/>
+          <div id='magnificationdisplay'>
+              <span id='magnificationvalue'></span>
+          </div>
           <map name='mainscreen' id='mainscreen'>
             <area shape='rect' id='filebutton' coords='6,72,31,83' />
             <area shape='rect' id='openbutton' coords='13,91,34,105' />
