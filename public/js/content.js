@@ -13,6 +13,7 @@ function main(){
     homeworkClicked();
     ucClicked();
     notepadClicked();
+    modeAdjustment();
 }
 
 //add function to Q/A button
@@ -133,4 +134,40 @@ function toggleVideo(state) {
     iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
 }
 
-$(document).ready(main);
+function learningModePopup(){
+    if(popped != 'learningmode'){
+        $("#popContent").html('<object class="popped" type="text/html" data="learningmode.html" ></object>');
+        $("object").last().css({
+            "background-color":"white",
+            "height":"46vh",
+            "border":"5px",
+            "border-style":"solid"
+        });
+        popped = 'learningmode';
+    } else {
+        $("object").last().remove();
+        popped = 'none';
+    };
+}
+
+function disableButton(button){
+    button.css('background','gray');
+    button.off('click');
+    button.click(function(){
+        learningModePopup();
+    });
+}
+
+function modeAdjustment(){
+    if(location.search.includes('introduction')){
+        disableButton($('#controlbtn'));
+        disableButton($('#homeworkbtn'));
+        console.log('Introduction Mode')
+    } else if (location.search.includes('assessment')){
+        disableButton($('#lecturebtn'));
+        disableButton($('#examplebtn'));
+        disableButton($('#qabtn'));
+        disableButton($('#columnbtn'));
+        console.log('Self-Assessment Mode')    
+    }
+}
