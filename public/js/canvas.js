@@ -33,8 +33,8 @@ class Canvas {
     //TODO: Change this from a constant to something more intelligent
     this.beamslider = $('#beamrange');
 
-    this.mag = 2;
-    this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
+    this.mag = 3;
+    this.zooms = [2250, 3500, 4000, 4400, 6200, 8700, 9900, 13000, 15000, 26000, 34000, 38000, 43000, 63000, 86000, 125000, 175000, 250000, 350000, 400000];
 
     this.specimenHeight = 0;
 
@@ -111,7 +111,7 @@ class Canvas {
     this.context.clearRect(0,0,900,900);
     this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
 
-    let newRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4;
+    let newRadius = this.maskR * this.zooms[this.mag] / 10000 + (this.beamslider.val() - 1) * 4;
 
     if (this.alignmentMode == 'pivotpointx' || this.alignmentMode == 'pivotpointy'){
       this.drawPPPath();
@@ -381,7 +381,7 @@ class Canvas {
         this.diffractionX += deltaX;
       } else switch (this.alignmentMode){
         case 'guntilt':
-          let maskRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
+          let maskRadius = this.maskR * this.zooms[this.mag] / 10000 + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
           this.haloX += deltaX;
           if (this.haloX > maskRadius){
             this.haloX = maskRadius;
@@ -424,7 +424,7 @@ class Canvas {
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
         case 'guntilt':
-          let maskRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
+          let maskRadius = this.maskR * this.zooms[this.mag] / 10000 + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
           this.haloY += deltaY;
           if (this.haloY > maskRadius){
             this.haloY = maskRadius;
