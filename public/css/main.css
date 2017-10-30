@@ -55,6 +55,7 @@ body{
 }
 
 #magnificationvalue{
-  background-color: white;
+  background-color: #fffbf0;
   font-size: xx-large;
+  font-family: sans-serif;
 }
