@@ -548,8 +548,7 @@ class Canvas {
   }
 
   setPPOffset(thisIn){
-    //if (thisIn.alignmentMode == 'pivotpointx')
-      thisIn.pivotPointAngle += 52;
+    thisIn.pivotPointAngle += 52;
     let xy = thisIn.mapXYfromAngle(thisIn.pivotPointAngle);
 
     xy[0] += thisIn.pivotPointCenterX;
