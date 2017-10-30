@@ -6,7 +6,7 @@
 var popped = 'none';
 
 //register all the events to targets when docuemnts are all loaded
-function main(){
+function prepareContent(){
     lectureClicked();
     qaClicked();
     exampleClicked();
@@ -168,6 +168,8 @@ function modeAdjustment(){
         disableButton($('#examplebtn'));
         disableButton($('#qabtn'));
         disableButton($('#columnbtn'));
-        console.log('Self-Assessment Mode')    
+        console.log('Self-Assessment Mode')
+    } else {
+        console.log('Learning Mode');
     }
 }

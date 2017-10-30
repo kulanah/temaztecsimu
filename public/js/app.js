@@ -32,7 +32,7 @@ $(document).ready(function(event) {
   pageSetup();
   clickFunctions();
   startTime();
-  main();
+  prepareContent();
 });
 
 
