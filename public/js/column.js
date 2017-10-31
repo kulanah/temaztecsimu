@@ -29,16 +29,16 @@ temLens[08] = new lens(0,0,400,25, 'lens','Beam Deflection 1');
 temLens[09] = new lens(0,0,440,15,'lens','Beam Deflection 2');
 temLens[10] = new lens(0,0,480,24,'lens','Minicondenser Lens');
 temLens[11] = new lens(0,0,520,70,'lens','Objective UpperPolepiece');
-temLens[12] = new lens(0,0,570,10,'sample','Specimen');
+temLens[12] = new lens(0,0,570,-10,'sample','Specimen');
 temLens[13] = new lens(0,0,600,40,'lens','Objective LowerPolepiece');
-temLens[14] = new lens(0,0,650,8,'aperture','Objective Aperture');
+temLens[14] = new lens(0,0,650,16,'aperture','Objective Aperture');
 temLens[15] = new lens(0,0,700,100,'lens','Image Deflection 1');
 temLens[16] = new lens(0,0,750,30,'lens','Image Deflection 2');
 temLens[17] = new lens(0,0,800,58,'lens','Intermediate Lens');
 temLens[18] = new lens(0,0,840,24,'aperture','SAED Aperture');
-temLens[19] = new lens(0,0,880,10,'lens','Projection lens 1');
-temLens[20] = new lens(0,0,990,100,'lens','Projection Lens 2');
-temLens[21] = new lens(0,0,1090,400,'screen','Viewing Screen');
+temLens[19] = new lens(0,0,880,80,'lens','Projection lens 1');
+temLens[20] = new lens(0,0,990,3,'lens','Projection Lens 2');
+temLens[21] = new lens(0,0,1090,0,'screen','Viewing Screen');
 
 
 //creates the labels for the lenses
