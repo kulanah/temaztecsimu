@@ -85,8 +85,8 @@ class Canvas {
   };
 
   setDimensions(){
-    this.imgW = this.img.width * this.imgScale / this.zooms[this.mag];
-    this.imgH = this.img.height * this.imgScale / this.zooms[this.mag];
+    this.imgW = this.img.width;
+    this.imgH = this.img.height;
     this.maskX = this.img.width / 2
     this.maskY = this.img.height / 2;
     this.maskR = this.img.width / 8;
