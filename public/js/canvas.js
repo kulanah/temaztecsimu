@@ -1,7 +1,7 @@
 'use strict';
 
 class Canvas {
-  constructor(source, cssID){
+  constructor(source, cssID, pxToNmRatio){
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
@@ -14,8 +14,7 @@ class Canvas {
     this.img.src = source;
     this.imgX = 0;
     this.imgY = 0;
-    this.imgPixelToNMRatio = 1;
-    this.imgScale = 276725.786489 * this.imgPixelToNMRatio;
+    this.imgScale = 276725.786489 * pxToNmRatio;
 
     //use this to give the onload function access to the setDimensions method
     this.img.parentThis = this;
@@ -35,8 +34,14 @@ class Canvas {
     //TODO: Change this from a constant to something more intelligent
     this.beamslider = $('#beamrange');
 
-    this.mag = 17;
+    this.mag = 19;
     this.zooms = [2250, 3500, 4000, 4400, 6200, 8700, 9900, 13000, 15000, 26000, 34000, 38000, 43000, 63000, 86000, 125000, 175000, 250000, 350000, 400000];
+    for(i = 0; i < this.zooms.length; i++){
+      if(this.zooms[i] >= this.imgScale){
+        this.mag = i;
+        break;
+      }
+    }
 
     this.specimenHeight = 0;
 
@@ -85,10 +90,10 @@ class Canvas {
   };
 
   setDimensions(){
-    this.imgW = this.img.width;
-    this.imgH = this.img.height;
-    this.maskX = this.img.width / 2
-    this.maskY = this.img.height / 2;
+    this.imgW = this.img.width / this.imgScale * this.zooms[this.mag];
+    this.imgH = this.img.height / this.imgScale * this.zooms[this.mag];
+    this.maskX = this.img.height / 2
+    this.maskY = this.img.width / 2;
     this.maskR = this.img.width / 8;
 
     this.pivotPointCenterX = this.maskX;

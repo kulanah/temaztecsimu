@@ -21,9 +21,9 @@ let canvasClasses = [];
 
 drawColumn();
 
-const setupbox = new Canvas('./public/img/23.png', 'setupboxcanvas');
-const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas'); 
-const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas');
+const setupbox = new Canvas('./public/img/23.png', 'setupboxcanvas', 1);
+const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas', 1); 
+const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas', 128/500);
 
 setupbox.hueRotateActive = true;
 
