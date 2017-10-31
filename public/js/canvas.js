@@ -14,6 +14,8 @@ class Canvas {
     this.img.src = source;
     this.imgX = 0;
     this.imgY = 0;
+    this.imgPixelToNMRatio = 1;
+    this.imgScale = 276725.786489 * this.imgPixelToNMRatio;
 
     //use this to give the onload function access to the setDimensions method
     this.img.parentThis = this;
@@ -33,7 +35,7 @@ class Canvas {
     //TODO: Change this from a constant to something more intelligent
     this.beamslider = $('#beamrange');
 
-    this.mag = 3;
+    this.mag = 17;
     this.zooms = [2250, 3500, 4000, 4400, 6200, 8700, 9900, 13000, 15000, 26000, 34000, 38000, 43000, 63000, 86000, 125000, 175000, 250000, 350000, 400000];
 
     this.specimenHeight = 0;
@@ -83,8 +85,8 @@ class Canvas {
   };
 
   setDimensions(){
-    this.imgW = this.img.width;
-    this.imgH = this.img.height;
+    this.imgW = this.img.width * this.imgScale / this.zooms[this.mag];
+    this.imgH = this.img.height * this.imgScale / this.zooms[this.mag];
     this.maskX = this.img.width / 2
     this.maskY = this.img.height / 2;
     this.maskR = this.img.width / 8;
@@ -113,7 +115,7 @@ class Canvas {
     this.context.clearRect(0,0,900,900);
     this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
 
-    let newRadius = this.maskR * this.zooms[this.mag] / 10000 + (this.beamslider.val() - 1) * 4;
+    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4;
 
     if (this.alignmentMode == 'pivotpointx' || this.alignmentMode == 'pivotpointy'){
       this.drawPPPath();
@@ -383,7 +385,7 @@ class Canvas {
         this.diffractionX += deltaX;
       } else switch (this.alignmentMode){
         case 'guntilt':
-          let maskRadius = this.maskR * this.zooms[this.mag] / 10000 + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
+          let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
           this.haloX += deltaX;
           if (this.haloX > maskRadius){
             this.haloX = maskRadius;
@@ -426,7 +428,7 @@ class Canvas {
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
         case 'guntilt':
-          let maskRadius = this.maskR * this.zooms[this.mag] / 10000 + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
+          let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
           this.haloY += deltaY;
           if (this.haloY > maskRadius){
             this.haloY = maskRadius;
