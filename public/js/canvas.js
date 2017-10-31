@@ -14,6 +14,8 @@ class Canvas {
     this.img.src = source;
     this.imgX = 0;
     this.imgY = 0;
+
+    // imgScale constant approximates number of nanometers in a pixel on the user's monitor, assuming a 24-inch, 1920 x 1080 resolution monitor
     this.imgScale = 276725.786489 * pxToNmRatio;
 
     //use this to give the onload function access to the setDimensions method
@@ -92,7 +94,7 @@ class Canvas {
   setDimensions(){
     this.imgW = this.img.width / this.imgScale * this.zooms[this.mag];
     this.imgH = this.img.height / this.imgScale * this.zooms[this.mag];
-    this.maskX = this.img.width / 2
+    this.maskX = this.img.width / 2;
     this.maskY = this.img.height / 2;
     this.maskR = this.img.width / 8;
 
@@ -103,12 +105,12 @@ class Canvas {
   drawCanvas(){
     if (diffractionMode && this == setupbox){
       document.getElementById('setupcrosshair').style.visibility = 'hidden';
-      $('#magnificationvalue').html(this.diffractionCameraLength + ' mm')
+      $('#magnificationvalue').html(this.diffractionCameraLength + ' mm');
       this.drawDiffraction();
       return;
     }
     document.getElementById('setupcrosshair').style.visibility = 'visible';
-    $('#magnificationvalue').html(this.zooms[this.mag] + ' x')
+    $('#magnificationvalue').html(this.zooms[this.mag] + ' x');
 
     this.context.save();
 
