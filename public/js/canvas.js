@@ -1,7 +1,7 @@
 'use strict';
 
 class Canvas {
-  constructor(source, cssID){
+  constructor(source, cssID, pxToNmRatio){
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
@@ -14,6 +14,9 @@ class Canvas {
     this.img.src = source;
     this.imgX = 0;
     this.imgY = 0;
+
+    // imgScale constant approximates number of nanometers in a pixel on the user's monitor, assuming a 24-inch, 1920 x 1080 resolution monitor
+    this.imgScale = 276725.786489 * pxToNmRatio;
 
     //use this to give the onload function access to the setDimensions method
     this.img.parentThis = this;
@@ -33,8 +36,14 @@ class Canvas {
     //TODO: Change this from a constant to something more intelligent
     this.beamslider = $('#beamrange');
 
-    this.mag = 2;
-    this.zooms = [0.25, 0.5, 1.0, 2.0, 4.0];
+    this.mag = 19;
+    this.zooms = [2250, 3500, 4000, 4400, 6200, 8700, 9900, 13000, 15000, 26000, 34000, 38000, 43000, 63000, 86000, 125000, 175000, 250000, 350000, 400000];
+    for(i = 0; i < this.zooms.length; i++){
+      if(this.zooms[i] >= this.imgScale){
+        this.mag = i;
+        break;
+      }
+    }
 
     this.specimenHeight = 0;
 
@@ -83,9 +92,9 @@ class Canvas {
   };
 
   setDimensions(){
-    this.imgW = this.img.width;
-    this.imgH = this.img.height;
-    this.maskX = this.img.width / 2
+    this.imgW = this.img.width / this.imgScale * this.zooms[this.mag];
+    this.imgH = this.img.height / this.imgScale * this.zooms[this.mag];
+    this.maskX = this.img.width / 2;
     this.maskY = this.img.height / 2;
     this.maskR = this.img.width / 8;
 
@@ -95,11 +104,13 @@ class Canvas {
 
   drawCanvas(){
     if (diffractionMode && this == setupbox){
-      document.getElementById('setupcrosshair').style.visibility = 'hidden';      
+      document.getElementById('setupcrosshair').style.visibility = 'hidden';
+      $('#magnificationvalue').html(this.diffractionCameraLength + ' mm');
       this.drawDiffraction();
       return;
     }
     document.getElementById('setupcrosshair').style.visibility = 'visible';
+    $('#magnificationvalue').html(this.zooms[this.mag] + ' x');
 
     this.context.save();
 
@@ -111,7 +122,7 @@ class Canvas {
     this.context.clearRect(0,0,900,900);
     this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
 
-    let newRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4;
+    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4;
 
     if (this.alignmentMode == 'pivotpointx' || this.alignmentMode == 'pivotpointy'){
       this.drawPPPath();
@@ -381,7 +392,7 @@ class Canvas {
         this.diffractionX += deltaX;
       } else switch (this.alignmentMode){
         case 'guntilt':
-          let maskRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
+          let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
           this.haloX += deltaX;
           if (this.haloX > maskRadius){
             this.haloX = maskRadius;
@@ -424,7 +435,7 @@ class Canvas {
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
         case 'guntilt':
-          let maskRadius = this.maskR * this.zooms[this.mag] + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
+          let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
           this.haloY += deltaY;
           if (this.haloY > maskRadius){
             this.haloY = maskRadius;
@@ -546,8 +557,7 @@ class Canvas {
   }
 
   setPPOffset(thisIn){
-    //if (thisIn.alignmentMode == 'pivotpointx')
-      thisIn.pivotPointAngle += 52;
+    thisIn.pivotPointAngle += 52;
     let xy = thisIn.mapXYfromAngle(thisIn.pivotPointAngle);
 
     xy[0] += thisIn.pivotPointCenterX;

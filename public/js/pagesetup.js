@@ -53,4 +53,6 @@ let pageSetup = function(){
   tunealignmentbox.addPrevButton($('#tunealignleft'));
 
   //setup for the canvas classes
+
+  $('#magnificationvalue').html(setupbox.zooms[setupbox.mag] + ' x')
 };

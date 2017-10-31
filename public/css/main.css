@@ -47,3 +47,15 @@ body{
   width: 10vw;
   max-height: 75vw;
 }
+
+#magnificationdisplay{
+  position: absolute;
+  top: 88.5vh;
+  left: 27.5vw;
+}
+
+#magnificationvalue{
+  background-color: #fffbf0;
+  font-size: xx-large;
+  font-family: sans-serif;
+}
