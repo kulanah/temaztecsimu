@@ -15,8 +15,8 @@ class Canvas {
     this.imgX = 0;
     this.imgY = 0;
 
-    // imgScale constant approximates number of nanometers in a pixel on the user's monitor, assuming a 24-inch, 1920 x 1080 resolution monitor
-    this.imgScale = 276725.786489 * pxToNmRatio;
+    // imgScale constant approximates number of nanometers in a pixel on the user's monitor, assuming 96 DPI
+    this.imgScale = (1 / 0.39370) * 10000000 / 96 * pxToNmRatio;
 
     //use this to give the onload function access to the setDimensions method
     this.img.parentThis = this;
