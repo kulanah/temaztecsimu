@@ -197,3 +197,9 @@
   height: 6.79vh;
   width: 14.28vw;
 }
+
+#tunealignmentstepdisplay{
+  position: absolute;
+  top: 51vh;
+  left: 6.7vw;
+}

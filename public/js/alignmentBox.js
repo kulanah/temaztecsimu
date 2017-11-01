@@ -154,7 +154,10 @@ class AlignmentBox{
 
   fillCurrent(){
     if (!this.done){
-      this.drawLocation.text('Step ' + (this.currentStep + 1) + ':\n' + this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].text);
+      this.drawLocation.text(this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].text);
+      $('#tunealignmentstepvalue').html(this.currentStep + 1 + ' of ' + this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length);
+    } else {
+      $('#tunealignmentstepvalue').html('');
     }
     this.activateButtons(this.jsonObj[this.currentLesson].topics[this.currentTopic].steps[this.currentStep].flags);
   }
