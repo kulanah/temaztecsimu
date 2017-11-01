@@ -76,13 +76,17 @@ let microscopeControllers = function(){
 
     let value = beamslider.val();
     ++value;
+    temLens[20].f -= .1;
     updateBeamSlider(value);    
+    drawColumn();
   });
 
   $('#buttonr3').on('click', function(event){
     let value = beamslider.val();
     --value;
+    temLens[20].f += .1;
     updateBeamSlider(value);
+    drawColumn();
   });
 
   $('#buttonrollerr').mousedown(function(event){
