@@ -11,8 +11,6 @@ let column = function() {
     drawColumn(zoomedOffsetStatic);
   });
 
-  //TODO:  Fix issue with modifying column resetting zoompoint
-
   $('#zoomexit').on('click', function(){
     $('#columndivzoom').hide();
   });

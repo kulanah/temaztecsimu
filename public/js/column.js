@@ -37,8 +37,8 @@ temLens[16] = new lens(0,0,750,30,'lens','Image Deflection 2');
 temLens[17] = new lens(0,0,800,58,'lens','Intermediate Lens');
 temLens[18] = new lens(0,0,840,24,'aperture','SAED Aperture');
 temLens[19] = new lens(0,0,880,80,'lens','Projection lens 1');
-temLens[20] = new lens(0,0,990,3,'lens','Projection Lens 2');
-temLens[21] = new lens(0,0,1090,0,'screen','Viewing Screen');
+temLens[20] = new lens(0,0,990,2,'lens','Projection Lens 2');
+temLens[21] = new lens(0,0,1090,5,'screen','Viewing Screen');
 
 
 //creates the labels for the lenses

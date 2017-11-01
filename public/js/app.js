@@ -64,8 +64,9 @@ let changeIntensity = function(delta){
       openbox.changeIntensity(delta);
     } else {
       let change = setupbox.changeIntensity(delta);
-      temLens[6].f += change / 30;
-      temLens[21].f += change;
+      temLens[6].f -= change / 30;
+      temLens[20].f -= change / 70;
+      console.log(temLens[20].f);
 
       drawColumn();
     }
