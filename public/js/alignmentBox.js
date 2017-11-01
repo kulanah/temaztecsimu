@@ -55,7 +55,7 @@ class AlignmentBox{
             }
           }
           $('.l' + lessonNum + 'p' + stepNum).css({
-            'background': '#F39814',
+            'background': '#0A246A',
             'color': 'white'
           });
           console.log(lessonNum, stepNum);
@@ -100,7 +100,7 @@ class AlignmentBox{
     }
     if (!this.done){
       $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
-        'background': '#F39814',
+        'background': '#0A246A',
         'color': 'white'
       });
     }
@@ -133,7 +133,7 @@ class AlignmentBox{
       --this.currentStep;
     }
     $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
-      'background': '#F39814',
+      'background': '#0A246A',
       'color': 'white'
     });
     this.fillCurrent();
