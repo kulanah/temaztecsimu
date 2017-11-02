@@ -13,7 +13,7 @@ let pageSetup = function(){
   
   let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'popContent', 
-  'columndivzoom', 'notepad'];
+  'columndivzoom', 'notepad', 'leftControllerDiv', 'rightControllerDiv'];
   
   $(document).mouseup(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
