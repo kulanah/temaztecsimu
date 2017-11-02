@@ -42,10 +42,11 @@ let pageSetup = function(){
 
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
-      addClasses: true 
+      addClasses: true,
+      cancel: "map"
     });
   }
-
+  
   //Setup for the alignment box, currently only sets the tune tab one.
   let tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
   tunealignmentbox.drawInital();
