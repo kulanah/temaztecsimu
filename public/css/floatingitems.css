@@ -27,14 +27,14 @@
 
 #leftControllerDiv{
   position: absolute;
-  bottom: 6vh;
+  top: 64.1vh;
   left: 0;
 }
 
 #rightControllerDiv{
   position: absolute;
-  bottom: 6vh;
-  right: 0;
+  top: 64.1vh;
+  left: 76.55vw;
 }
 
 #controlsLeft{
