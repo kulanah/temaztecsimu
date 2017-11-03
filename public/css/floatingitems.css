@@ -266,10 +266,11 @@
   left: 26vw;
   overflow: hidden;
   border: 5px solid black;
+  background: black;
 }
 
 #notes {
-  width: 32.6vw;
+  width: 30.7vw;
   height: 16vh;
   font-size: large;
 }

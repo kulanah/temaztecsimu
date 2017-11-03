@@ -14,6 +14,7 @@ function prepareContent(){
     ucClicked();
     notepadClicked();
     modeAdjustment();
+    copyNotes();
 }
 
 //add function to Q/A button
@@ -172,4 +173,11 @@ function modeAdjustment(){
     } else {
         console.log('Learning Mode');
     }
+}
+
+function copyNotes(){
+    $('#downloadnotes').click(function(){
+        $('#notes').select();
+        document.execCommand('copy');
+    });
 }
