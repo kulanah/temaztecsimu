@@ -59,6 +59,7 @@ class AlignmentBox{
   };
 
   setOnClick(lesson, topic){
+    this.done = false;
     this.currentLesson = lesson;
     this.currentTopic = topic;
     this.currentStep = 0;
