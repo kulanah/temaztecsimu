@@ -170,8 +170,8 @@
 
 #directalignmentspopout{
   position: absolute;
-  bottom: 45vh;
-  right: 8.3vw;
+  top: 31.9vh;
+  left: 79.1vw;
 }
 
 #directalignmentspopouttext{
@@ -195,12 +195,6 @@
   background: #0A246A;
   cursor: pointer; 
   cursor: hand;
-}
-
-#directalignmentspopout{
-  position: absolute;
-  bottom: 45vh;
-  right: 8.3vw;
 }
 
 #maindropdowntext{
