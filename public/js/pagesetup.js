@@ -47,6 +47,7 @@ let pageSetup = function(){
     });
   }
 
+  // Make notepad draggable separately because cancelling map on notepad causes the textarea to become unclickable
   $('#notepad').draggable({
     addClasses: true
   });
