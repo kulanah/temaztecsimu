@@ -15,6 +15,7 @@ function prepareContent(){
     notepadClicked();
     modeAdjustment();
     copyNotes();
+    saveNotes();
 }
 
 //add function to Q/A button
@@ -176,8 +177,33 @@ function modeAdjustment(){
 }
 
 function copyNotes(){
-    $('#downloadnotes').click(function(){
+    $('#copynotes').click(function(){
         $('#notes').select();
         document.execCommand('copy');
     });
+}
+
+function saveNotes(){
+    $('#downloadnotes').click(function(){
+        // Function based on saveTextAsFile() function from https://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
+        var textToSave = document.getElementById("notes").value;
+        var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs = "notes";
+     
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+     
+        downloadLink.click();
+    });
+}
+
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
 }
