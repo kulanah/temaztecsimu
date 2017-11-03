@@ -14,6 +14,7 @@ function prepareContent(){
     ucClicked();
     notepadClicked();
     modeAdjustment();
+    closeNotes();
     copyNotes();
     saveNotes();
 }
@@ -176,6 +177,12 @@ function modeAdjustment(){
     }
 }
 
+function closeNotes(){
+    $('#closenotes').click(function(){
+        $("#notepad").hide();        
+    });
+}
+
 function copyNotes(){
     $('#copynotes').click(function(){
         $('#notes').select();
@@ -189,7 +196,8 @@ function saveNotes(){
         var textToSave = document.getElementById("notes").value;
         var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
         var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-        var fileNameToSaveAs = "notes";
+        var date = new Date();
+        var fileNameToSaveAs = "TEMnotes" + (date.getMonth() + 1) + "-" + date.getDate();
      
         var downloadLink = document.createElement("a");
         downloadLink.download = fileNameToSaveAs;
