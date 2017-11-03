@@ -379,8 +379,15 @@
     </div>
 
     <div id='notepad' class='hidden'>
-      <textarea id='notes'></textarea>
-      <button id='downloadnotes'><img src=https://upload.wikimedia.org/wikipedia/commons/d/d9/Icon_download_96x96.png alt='Download Notes' width=30vw height=30vw></button>
+      <table style='display:inline'>
+        <tr>
+          <td rowspan="2"><textarea id='notes'></textarea></td>
+          <td><button id='copynotes'><img src=https://upload.wikimedia.org/wikipedia/commons/a/a2/Edit-copy.svg alt='Copy Notes' width=30vw height=30vw></button></td>
+        </tr>
+        <tr>
+          <td><button id='downloadnotes'><img src=https://upload.wikimedia.org/wikipedia/commons/d/d9/Icon_download_96x96.png alt='Download Notes' width=30vw height=30vw></button></td>
+        </tr>
+      </table>
     </div>
 
     <!--library imports-->
