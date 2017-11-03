@@ -19,7 +19,7 @@ class AlignmentBox{
     for (let i = 0; i < this.jsonObj.length; ++i){
       let lessonNum = i + 1;
       //this.ul.append('<li>' + this.jsonObj[i].name + '</li>');
-      str = str + '<details><summary>' + this.jsonObj[i].name + '</summary>';
+      str = str + '<details id=\'l' + lessonNum + '\'><summary>' + this.jsonObj[i].name + '</summary>';
       //console.log(str);
       if (this.jsonObj[i].topics){
         //this.ul.append('<ul class=\'lesson' + lessonNum + '\'>');
@@ -103,6 +103,7 @@ class AlignmentBox{
         'background': '#0A246A',
         'color': 'white'
       });
+      document.getElementById('l' + (this.currentLesson + 1)).open = true;
     }
     this.fillCurrent();
   }
@@ -136,6 +137,7 @@ class AlignmentBox{
       'background': '#0A246A',
       'color': 'white'
     });
+    document.getElementById('l' + (this.currentLesson + 1)).open = true;    
     this.fillCurrent();
 
   }
