@@ -13,7 +13,7 @@ let pageSetup = function(){
   
   let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'popContent', 
-  'columndivzoom', 'notepad', 'leftControllerDiv', 'rightControllerDiv'];
+  'columndivzoom', 'leftControllerDiv', 'rightControllerDiv'];
   
   $(document).mouseup(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
@@ -43,9 +43,13 @@ let pageSetup = function(){
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
-      cancel: "map"
+      cancel: 'map',
     });
   }
+
+  $('#notepad').draggable({
+    addClasses: true
+  });
   
   //Setup for the alignment box, currently only sets the tune tab one.
   let tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
