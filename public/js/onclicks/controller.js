@@ -74,19 +74,24 @@ let microscopeControllers = function(){
 
   $('#buttonl3').on('click', function(event){
 
-    let value = beamslider.val();
-    ++value;
-    temLens[20].f -= .1;
-    updateBeamSlider(value);    
-    drawColumn();
+
+    if (beamslider[0].value < 11){
+      let value = beamslider.val();
+      ++value;
+      temLens[20].f -= .1;
+      updateBeamSlider(value);    
+      drawColumn();
+    }
   });
 
   $('#buttonr3').on('click', function(event){
-    let value = beamslider.val();
-    --value;
-    temLens[20].f += .1;
-    updateBeamSlider(value);
-    drawColumn();
+    if (beamslider[0].value > 0){
+      let value = beamslider.val();
+      --value;
+      temLens[20].f += .1;
+      updateBeamSlider(value);
+      drawColumn();
+    }
   });
 
   $('#buttonrollerr').mousedown(function(event){
