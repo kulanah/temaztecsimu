@@ -19,26 +19,28 @@ class lens {
 //          xCenter x  y      f       kind     nam
 temLens[00] = new lens(0,0,-10,5,'source','Electron Gun');
 temLens[01] = new lens(0,0,90,25,'lens','Gun lens');
-temLens[02] = new lens(0,0,130,40,'lens','Gun Deflection 1');
-temLens[03] = new lens(0,20,160,5,'lens','Gun Deflection 2');
+temLens[02] = new lens(0,0,130,90,'lens','Gun Deflection 1');
+temLens[03] = new lens(0,20,160,20,'lens','Gun Deflection 2');
 temLens[04] = new lens(0,0,220,40,'lens','Condenser Lens 1');
 temLens[05] = new lens(0,0,260,6.1,'aperture','C1 Aperture');
 temLens[06] = new lens(0,0,320,50,'lens','Condenser Lens 2');
 temLens[07] = new lens(0,0,350,25,'aperture','C2 Aperture');
-temLens[08] = new lens(0,0,400,25, 'lens','Beam Deflection 1');
-temLens[09] = new lens(0,0,440,15,'lens','Beam Deflection 2');
-temLens[10] = new lens(0,0,480,24,'lens','Minicondenser Lens');
-temLens[11] = new lens(0,0,520,70,'lens','Objective UpperPolepiece');
-temLens[12] = new lens(0,0,570,-10,'sample','Specimen');
-temLens[13] = new lens(0,0,600,40,'lens','Objective LowerPolepiece');
-temLens[14] = new lens(0,0,650,16,'aperture','Objective Aperture');
-temLens[15] = new lens(0,0,700,100,'lens','Image Deflection 1');
-temLens[16] = new lens(0,0,750,30,'lens','Image Deflection 2');
-temLens[17] = new lens(0,0,800,24,'aperture','SAED Aperture');
-temLens[18] = new lens(0,0,840,58,'lens','Intermediate Lens');
-temLens[19] = new lens(0,0,880,80,'lens','Projection lens 1');
-temLens[20] = new lens(0,0,990,2,'lens','Projection Lens 2');
-temLens[21] = new lens(0,0,1090,5,'screen','Viewing Screen');
+temLens[08] = new lens(0,0,370,25, 'label', 'Condenser Label');
+temLens[09] = new lens(0,0,400,55, 'lens','Beam Deflection 1');
+temLens[10] = new lens(0,0,440,9,'lens','Beam Deflection 2');
+temLens[11] = new lens(0,0,480,24,'lens','Minicondenser Lens');
+temLens[12] = new lens(0,0,520,70,'lens','Objective UpperPolepiece');
+temLens[13] = new lens(0,0,570,-10,'sample','Specimen');
+temLens[14] = new lens(0,0,600,40,'lens','Objective LowerPolepiece');
+temLens[15] = new lens(0,0,675,16,'label','Condensor Stigmator');
+temLens[16] = new lens(0,0,650,16,'aperture','Objective Aperture');
+temLens[17] = new lens(0,0,700,100,'lens','Image Deflection 1');
+temLens[18] = new lens(0,0,750,30,'lens','Image Deflection 2');
+temLens[19] = new lens(0,0,800,24,'aperture','SAED Aperture');
+temLens[20] = new lens(0,0,840,58,'lens','Intermediate Lens');
+temLens[21] = new lens(0,0,880,80,'lens','Projection lens 1');
+temLens[22] = new lens(0,0,990,2,'lens','Projection Lens 2');
+temLens[23] = new lens(0,0,1090,5,'screen','Viewing Screen');
 
 
 //creates the labels for the lenses
@@ -54,10 +56,10 @@ for(i = 0; i < temLens.length; i++){
 	zoomedOutLabels[i].style.padding = '0px 0px 0px 0px';
 	zoomedOutLabels[i].style.background = '#000';
 	zoomedOutLabels[i].style.color = '#fff';
-	zoomedOutLabels[i].style.width = zoomedOutLabels[i].name.length * 7 + 9 + 'px';
-	zoomedOutLabels[i].style.height = 19 + 'px';
+	zoomedOutLabels[i].style.width = zoomedOutLabels[i].name.length * 5 + 7 + 'px';
+	zoomedOutLabels[i].style.height = 11 + 'px';
 	zoomedOutLabels[i].innerHTML = zoomedOutLabels[i].name;
-	zoomedOutLabels[i].style.font = '14px Arial';
+	zoomedOutLabels[i].style.font = '10px Arial';
 	zoomedOutLabels[i].style.textAlign = 'center';
 }
 
@@ -139,6 +141,12 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 	
 	var numOfRays = 10;
 	var widthOfSource = 2;
+	ctx.fillStyle = "#9b9b9b";
+	for (i = 0; i < numOfLenses; ++i){
+		if (temLens[i].kind == 'lens' && !temLens[i].name.includes("Gun")){
+			ctx.fillRect(offset-20, temLens[i].y-5, 40, 10);
+		}
+	}
 	for(var ray=0; ray<numOfRays+1; ray++){
 		temLens[0].x=  ray*widthOfSource/numOfRays - widthOfSource/2;
 		ctx.beginPath();
@@ -147,6 +155,11 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 		for(var i=0;i<numOfLenses;i++){
 			if(i>0){
 				let prevType = temLens[i-1].kind;
+				let prevIndex = i - 1;
+				if (prevType == 'label'){
+					prevType = temLens[i-2].kind;
+					preIndex = i - 2;
+				}
 				if(prevType =='lens' || prevType =='source' || prevType =='sample'){
 					temLens[i].x = temLens[i-1].x-(temLens[i].y - temLens[i-1].y)*((temLens[i-1].x-temLens[i-1].xCenter)/temLens[i-1].f);
 				}	
@@ -161,7 +174,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 			if(blocked==0){
 				ctx.lineTo(temLens[i].x+offset,temLens[i].y);  
 			}
-		}		
+		}	
 		//color in rgb as function of starting position
 		var r = Math.floor(255*ray/numOfRays);
 		var g = Math.floor(255*(numOfRays-ray)/numOfRays);		
@@ -186,7 +199,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 			ctx.fillStyle = '#fff';
 			ctx.fillRect(offset-60,temLens[i].y,180,6);
 		}
-		if(temLens[i].kind=='lens'){
+		if(temLens[i].kind=='lens' || temLens[i].kind == 'label'){
 			ctx.fillStyle = '#fff';
 			ctx.fillRect(offset-114,temLens[i].y-12,14,24);
 			ctx.fillRect(offset+100,temLens[i].y-12,14,24);
