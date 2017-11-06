@@ -7,6 +7,12 @@
   border: 2px white solid;
 }
 
+#microscopebg{
+  position: absolute;
+  height: 90vh;
+  width: 40vh;
+}
+
 #columndivzoom{
   height: 40vh;
   width: 50vh;
