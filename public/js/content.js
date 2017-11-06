@@ -155,8 +155,8 @@ function learningModePopup(){
 
 function disableButton(button){
     button.css({
-        'background':'gray',
-        'box-shadow':'0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 rgb(148, 148, 148), 0 4px 2px rgba(0, 0, 0, .5)'
+        'background':'linear-gradient(rgb(161, 161, 161), rgb(140, 140, 140))',
+        'box-shadow':'0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 rgb(112, 112, 112), 0 4px 2px rgba(0, 0, 0, .5)'
     });
     button.off('click');
     button.click(function(){
