@@ -12,6 +12,7 @@ let turboStart = new Audio('./public/audio/Turbo_On.wav');
 let turboLoop = new Audio('./public/audio/TurboLoop.wav');
 turboLoop.loop = true;
 let turboStop = new Audio('./public/audio/Turbo_off.wav');
+let firstTurbo = true;
 
 
 let setupTab = function(){
@@ -53,7 +54,8 @@ let vacuumWindow = function(){
       turboon = false;
       turboLoop.pause();
       turboStart.pause();
-      turboStop.currentTime = turboStop.duration * (1 - turboStart.currentTime / turboStart.duration);
+      turboStop.currentTime = Math.min(turboStart.duration, turboStop.duration) - turboStart.currentTime;
+      console.log(turboStop.currentTime)
       turboStop.play();
     } else {
       if (colopen){
@@ -64,7 +66,11 @@ let vacuumWindow = function(){
       turboon = true;
       turboLoop.pause();
       turboStop.pause();
-      turboStart.currentTime = turboStart.duration * (1 - turboStop.currentTime / turboStop.duration);
+      if(firstTurbo){
+        firstTurbo = false;
+      } else {
+        turboStart.currentTime = Math.min(turboStart.duration, turboStop.duration) - turboStop.currentTime;
+      }
       turboStart.play();
     }
   });
