@@ -152,6 +152,11 @@ class Canvas {
           case 460:
             this.diffractionCameraLength = 640;
             break;
+          case 960:
+            $('#magnificationvalue').css('background','#ff8888');
+            $('#magnificationvalue').animate({
+              backgroundColor: '#fffbf0'
+            }, 1000);
           default:
             this.diffractionCameraLength = 960;
         }
@@ -163,6 +168,11 @@ class Canvas {
           case 640:
             this.diffractionCameraLength = 460;
             break;
+          case 265:
+            $('#magnificationvalue').css('background','#ff8888');
+            $('#magnificationvalue').animate({
+              backgroundColor: '#fffbf0'
+            }, 1000);
           default:
             this.diffractionCameraLength = 265;
         }
@@ -182,7 +192,7 @@ class Canvas {
         zoomFactor = this.zooms[this.mag + 1] / this.zooms[this.mag];
         ++this.mag;
       } else {
-        $('#magnificationvalue').css('background','red');
+        $('#magnificationvalue').css('background','#ff8888');
         $('#magnificationvalue').animate({
           backgroundColor: '#fffbf0'
         }, 1000);
@@ -192,7 +202,7 @@ class Canvas {
         zoomFactor = this.zooms[this.mag - 1] / this.zooms[this.mag];
         --this.mag;
       } else {
-        $('#magnificationvalue').css('background','red');
+        $('#magnificationvalue').css('background','#ff8888');
         $('#magnificationvalue').animate({
           backgroundColor: '#fffbf0'
         }, 1000);
