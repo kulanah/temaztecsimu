@@ -53,7 +53,7 @@ let vacuumWindow = function(){
       turboon = false;
       turboLoop.pause();
       turboStart.pause();
-      turboStop.currentTime = 0;
+      turboStop.currentTime = turboStop.duration * (1 - turboStart.currentTime / turboStart.duration);
       turboStop.play();
     } else {
       if (colopen){
@@ -64,7 +64,7 @@ let vacuumWindow = function(){
       turboon = true;
       turboLoop.pause();
       turboStop.pause();
-      turboStart.currentTime = 0;
+      turboStart.currentTime = turboStart.duration * (1 - turboStop.currentTime / turboStop.duration);
       turboStart.play();
     }
   });
@@ -75,6 +75,13 @@ turboStart.onended = function(){
 }
 
 // Approach for avoiding gaps in audio loops found at https://stackoverflow.com/questions/7330023/gapless-looping-audio-html5
+turboStart.addEventListener('timeupdate', function(){
+  var buffer = 5;
+  if(this.currentTime > this.duration - buffer){
+      this.pause();
+      turboLoop.play()
+  }}, false);
+
 turboLoop.addEventListener('timeupdate', function(){
   var buffer = .44
   if(this.currentTime > this.duration - buffer){
