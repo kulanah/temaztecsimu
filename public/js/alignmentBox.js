@@ -18,22 +18,14 @@ class AlignmentBox{
     let str = "";
     for (let i = 0; i < this.jsonObj.length; ++i){
       let lessonNum = i + 1;
-      //this.ul.append('<li>' + this.jsonObj[i].name + '</li>');
       str = str + '<details id=\'l' + lessonNum + '\'><summary>' + this.jsonObj[i].name + '</summary>';
-      //console.log(str);
       if (this.jsonObj[i].topics){
-        //this.ul.append('<ul class=\'lesson' + lessonNum + '\'>');
         str = str + '<ul class=\'lesson' + lessonNum + '\'>'
         for (let j = 0; j < this.jsonObj[i].topics.length; ++j){
           let stepNum = j + 1;
           let liData = '<li class=\'l' + lessonNum + 'p' + stepNum + ' tunealignmenttopic\'>'
-          /*$('.lesson' + lessonNum).append(liData + this.jsonObj[i].topics[j].name + '</li>');
-          $('.l' + lessonNum + 'p' + stepNum).on('click', function(context){
-            this.setOnClick(i, j);
-          }.bind(this));*/
           str = str + liData + this.jsonObj[i].topics[j].name + '</li>';
         }
-        //$('.data').append('</ul>');
         str = str + '</ul>'
       }
       str = str + '</details>'
