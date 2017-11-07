@@ -181,11 +181,21 @@ class Canvas {
         console.log('zooming from ' + this.zooms[this.mag] + ' to ' + this.zooms[this.mag+1]);
         zoomFactor = this.zooms[this.mag + 1] / this.zooms[this.mag];
         ++this.mag;
+      } else {
+        $('#magnificationvalue').css('background','red');
+        $('#magnificationvalue').animate({
+          backgroundColor: '#fffbf0'
+        }, 1000);
       }
     } else if (delta < 0){
       if (this.mag >= 1){
         zoomFactor = this.zooms[this.mag - 1] / this.zooms[this.mag];
         --this.mag;
+      } else {
+        $('#magnificationvalue').css('background','red');
+        $('#magnificationvalue').animate({
+          backgroundColor: '#fffbf0'
+        }, 1000);
       }
     }
 
