@@ -19,19 +19,21 @@ function prepareContent(){
     saveNotes();
 }
 
+function setPopContentCSS(){
+    $("object").last().css({
+        "background-color":"white",
+        "height":"46vh",
+        "border":"5px",
+        "border-style":"solid"
+    });
+}
+
 //add function to Q/A button
 function qaClicked(){
     $("#qabtn").click(function(){
         if(popped != 'QA'){
             $("#popContent").html('<object class="popped" type="text/html" data="QandA.html" ></object>');
-            $("object").last().css({
-                //"position":"absolute",
-                //"top":"100px",
-                "background-color":"white",
-                "height":"46vh",
-                "border":"5px",
-                "border-style":"solid"
-            });
+            setPopContentCSS();
             popped = 'QA';          
         }else{
             $("object").last().remove();
@@ -45,14 +47,7 @@ function exampleClicked(){
     $("#examplebtn").click(function(){
         if(popped != 'example'){
             $("#popContent").html('<object class="popped" type="text/html" data="exampleAndApplication.html" ></object>');
-            $("object").last().css({
-                //"position":"absolute",
-                //"top":"100px",
-                "background-color":"white",
-                "height":"46vh",
-                "border":"5px",
-                "border-style":"solid"
-            });
+            setPopContentCSS();            
             popped = 'example'
         }else{
             $("object").last().remove();
@@ -66,14 +61,7 @@ function homeworkClicked(){
     $("#homeworkbtn").click(function(){
         if(popped != 'homework'){
             $("#popContent").html('<object class="popped" type="text/html" data="homework.html" ></object>');
-            $("object").last().css({
-                //"position":"absolute",
-                //"top":"100px",
-                "background-color":"white",
-                "height":"46vh",
-                "border":"5px",
-                "border-style":"solid"
-            });
+            setPopContentCSS();            
             popped = 'homework';
         }else{
             $("object").last().remove();
@@ -87,14 +75,7 @@ function ucClicked(){
     $("#curriculumbtn").click(function(){
         if(popped != 'curriculum'){
             $("#popContent").html('<object class="popped" type="text/html" data="syllabus.html" ></object>');
-            $("object").last().css({
-                //"position":"absolute",
-                //"top":"100px",
-                "background-color":"white",
-                "height":"46vh",
-                "border":"5px",
-                "border-style":"solid"
-            });
+            setPopContentCSS();            
             popped = 'curriculum';
         }else{
             $("object").last().remove();
@@ -125,7 +106,7 @@ function notepadClicked(){
     });
 }
 
-function toggleVideo(state) {
+/*function toggleVideo(state) {
     // function by Rob W found at https://stackoverflow.com/questions/8667882/how-to-pause-a-youtube-player-when-hiding-the-iframe
     // modified to not autoplay video
     // currently unused, included in case we decide to embed videos
@@ -135,17 +116,12 @@ function toggleVideo(state) {
     div.style.display = state == 'hide' ? 'none' : '';
     func = state == 'hide' ? 'pauseVideo' : '';
     iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
-}
+}*/
 
 function learningModePopup(){
     if(popped != 'learningmode'){
         $("#popContent").html('<object class="popped" type="text/html" data="learningmode.html" ></object>');
-        $("object").last().css({
-            "background-color":"white",
-            "height":"46vh",
-            "border":"5px",
-            "border-style":"solid"
-        });
+        setPopContentCSS();        
         popped = 'learningmode';
     } else {
         $("object").last().remove();
