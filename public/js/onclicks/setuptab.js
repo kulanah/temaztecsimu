@@ -8,6 +8,10 @@ let fegVal = 63;
 let kvVal = 200;
 let colopen = true;
 let turboon = false;
+let turboStart = new Audio('./public/audio/Turbo_On.wav');
+let turboLoop = new Audio('./public/audio/TurboLoop.wav');
+turboLoop.loop = true;
+let turboStop = new Audio('./public/audio/Turbo_off.wav');
 
 
 let setupTab = function(){
@@ -47,6 +51,10 @@ let vacuumWindow = function(){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
       }
       turboon = false;
+      turboLoop.pause();
+      turboStart.pause();
+      turboStop.currentTime = 0;
+      turboStop.play();
     } else {
       if (colopen){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopenturboon.png');
@@ -54,9 +62,25 @@ let vacuumWindow = function(){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedturboon.png');
       }
       turboon = true;
+      turboLoop.pause();
+      turboStop.pause();
+      turboStart.currentTime = 0;
+      turboStart.play();
     }
   });
 };
+
+turboStart.onended = function(){
+  turboLoop.play();
+}
+
+// Approach for avoiding gaps in audio loops found at https://stackoverflow.com/questions/7330023/gapless-looping-audio-html5
+turboLoop.addEventListener('timeupdate', function(){
+  var buffer = .44
+  if(this.currentTime > this.duration - buffer){
+      this.currentTime = 0
+      this.play()
+  }}, false);
 
 let highTensionWindow = function(){
   let kvSlide = function(){
