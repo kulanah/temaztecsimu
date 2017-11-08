@@ -230,10 +230,6 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 					zoomedInLabels[i].style.left = offset + 95 + 'px';
 					zoomedInLabels[i].style.top = temLens[i].y * yScale + yOffset - 8 + 'px';
 				}
-			// console.log("Out: ");
-			// console.log(temLens[i].name + ": " + zoomedOutLabels[i].style.top);
-			// console.log("In: ");
-			// console.log(temLens[i].name + ": " + zoomedOutLabels[i].style.top); 
 			}
 
 			columnDiv[0].append(zoomedInLabels[i]);
