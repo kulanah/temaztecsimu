@@ -142,8 +142,17 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 	var widthOfSource = 2;
 	ctx.fillStyle = "#9b9b9b";
 	for (i = 0; i < numOfLenses; ++i){
+		if (zoomVer){
+			lenswidth = 80;
+			lensoffset = offset - 40;
+			lensheight = 5;
+		} else {
+			lenswidth = 40;
+			lensoffset = offset - 20;
+			lensheight = 10;
+		}
 		if (temLens[i].kind == 'lens' && !temLens[i].name.includes("Gun")){
-			ctx.fillRect(offset-20, temLens[i].y-5, 40, 10);
+			ctx.fillRect(lensoffset, temLens[i].y-5, lenswidth, lensheight);
 		}
 	}
 	for(var ray=0; ray<numOfRays+1; ray++){
