@@ -13,26 +13,47 @@
   width: 40vh;
 }
 
-#zoomexit{
-  z-index: 5;
-}
-
 #columndivzoom{
   height: 40vh;
-  width: 50vh;
+  width: 40vh;
   background: black;
   border: 2px white solid;
   overflow: hidden;
   position: absolute;
   top: 0vh;
   left: 20vw;
+  
 }
+
+#zoomwrapperdiv{
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: center;
+}
+
+#columncanvaszoom{
+  width: 40vh;
+  display: block;
+  margin: auto;
+  padding: 0;
+}
+
+#labelcanvaszoom{
+  width: 40vh;
+  margin: auto;
+  padding: 0;
+  display: block;
+  /* width: 30vh; */
+}
+
 
 #zoomexit{
   position: absolute;
   top: 0;
   right: 0;
   cursor: pointer;
+  z-index: 5;
 }
 
 #leftControllerDiv{

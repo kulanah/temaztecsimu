@@ -89,8 +89,7 @@ function drawColumn(){
 
 }
 
-function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.4){
-	//default height = 1160
+function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.3){
 	let columnDiv;
 	let beamDiag;
 	let beamLabels;
@@ -130,7 +129,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 	ctx.save();
 
 	var numOfLenses = temLens.length;
-	var offset = 120;
+	var offset = canvasWidth / 2;
 
 	//draw CenterLine
 	ctx.beginPath();
@@ -224,10 +223,10 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 			
 			}else{
 				if(temLens[i].kind=='source'){
-					zoomedInLabels[i].style.left = offset + 95 + 'px';
+					zoomedInLabels[i].style.left = "2px";
 					zoomedInLabels[i].style.top = temLens[i].y * yScale + 60 + yOffset + 'px';
 				}else{
-					zoomedInLabels[i].style.left = offset + 95 + 'px';
+					zoomedInLabels[i].style.left = "2px";
 					zoomedInLabels[i].style.top = temLens[i].y * yScale + yOffset - 8 + 'px';
 				}
 			}
