@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src='../js/jquery-3.2.1.min.js'></script>
+        <script>
+            $(document).ready(function(event) {
+                if(location.search.includes('?')){
+                    console.log('You answered some questions');
+                }
+            });
+        </script>
     </head>
     <body>
         The following questions may have more than one correct answer, or may have no correct answers. Choose all correct answers that apply.<br>
