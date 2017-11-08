@@ -60,7 +60,7 @@ function exampleClicked(){
 function homeworkClicked(){
     $("#homeworkbtn").click(function(){
         if(popped != 'homework'){
-            $("#popContent").html('<object class="popped" type="text/html" data="homework.html" ></object>');
+            $("#popContent").html('<object class="popped" type="text/html" data="public/html/hw2.html" ></object>');
             setPopContentCSS();            
             popped = 'homework';
         }else{
