@@ -27,6 +27,7 @@ let startMenu = function(){
     $('#mainimage').css('background-color', 'transparent');
     $('#microscopeimage').show();
     $('#basesetup').hide();
+    $('#controlsinstruction').hide();
     mainmicro.drawCanvas();
   });
 
@@ -37,6 +38,7 @@ let startMenu = function(){
     $('#temimage').hide();
     $('#mainimage').css('background-color', 'grey');
     $('#microscopeimage').hide();
+    $('#controlsinstruction').show();
   });
 
   $('#filtercontrol').on('click', function(event){

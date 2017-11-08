@@ -208,12 +208,4 @@ let microscopeControllers = function(){
     temLens[11].f = 70;
     drawColumn();
   })
-
-  /*let dragMessage = function(button){
-    $(button).on('click', function(event){
-      alert('Drag the cursor to use this control');
-    })
-  }
-
-  dragMessage('#buttonmagnification');*/
 };

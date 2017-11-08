@@ -193,6 +193,9 @@
       </tr>
     </table>
     <div id='microControls' class='hidden'>
+      <div id='controlsinstruction'>
+        <span id='controlsinstructiontext'>Click and drag to use dials and trackballs.</span>
+      </div>
       <div id='leftControllerDiv'>
         <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='#leftcontrol' width='500' height='325' /> 
         <map name='leftcontrol' id='leftcontrol'>
@@ -382,13 +385,10 @@
     <div id='notepad' class='hidden'>
       <table style='display:inline'>
         <tr>
-          <td rowspan="4"><textarea id='notes'></textarea></td>
+          <td rowspan="3"><textarea id='notes'></textarea></td>
           <!--Close button image found at https://commons.wikimedia.org/wiki/File:Close_window_X.png-->
           <td><button id='closenotes'><img src='https://upload.wikimedia.org/wikipedia/commons/6/65/Close_window_X.png' alt='Close Notes' width=30vw height=30vw></button></td>
         </tr>
-        <!--tr>
-            <td width=30vw height=30vw></td>
-        </tr-->
         <tr>
           <td><button id='copynotes'><img src=https://upload.wikimedia.org/wikipedia/commons/a/a2/Edit-copy.svg alt='Copy Notes' width=30vw height=30vw></button></td>
         </tr>
@@ -428,7 +428,7 @@
     <script src='./public/js/app.js'></script>
     <script src='./public/js/diffractionFunctions.js'></script>
     <script src='./public/js/CTFFunctions.js'></script>
-    <script src='./public/js/content.js'></script>    
+    <script src='./public/js/content.js'></script>
 
   </body>
 </html>
