@@ -207,10 +207,31 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 			ctx.fillStyle = '#fff';
 			ctx.fillRect(offset-60,temLens[i].y,180,6);
 		}
-		if(temLens[i].kind=='lens' || temLens[i].kind == 'label'){
+		if(temLens[i].kind=='lens'){
 			ctx.fillStyle = '#fff';
 			ctx.fillRect(offset-114,temLens[i].y-12,14,24);
 			ctx.fillRect(offset+100,temLens[i].y-12,14,24);
+		}
+		if (temLens[i].kind == 'label'){
+			ctx.fillStyle = '#fff';
+			//draws the empty squares for the label boxes
+			ctx.strokeRect(offset-114,temLens[i].y-12,14,24);
+			ctx.strokeRect(offset+100,temLens[i].y-12,14,24);
+			//draws the x's in the label boxes
+			ctx.beginPath();
+			ctx.moveTo(offset - 112, temLens[i].y-10);
+			ctx.lineTo(offset - 102, temLens[i].y + 10);
+
+			ctx.moveTo(offset - 102, temLens[i].y - 10);
+			ctx.lineTo(offset - 112, temLens[i].y + 10);
+
+			ctx.moveTo(offset + 102, temLens[i].y + 10);
+			ctx.lineTo(offset + 112, temLens[i].y - 10);
+
+			ctx.moveTo(offset + 102, temLens[i].y - 10);
+			ctx.lineTo(offset + 112, temLens[i].y + 10);
+
+			ctx.stroke();
 		}
 		if(temLens[i].kind=='aperture'){
 			ctx.beginPath();
