@@ -5,7 +5,8 @@
         <script>
             $(document).ready(function(event) {
                 if(location.search.includes('?')){
-                    console.log('You answered some questions');
+                    let str = location.search.split('&').length;
+                    console.log('You checked ' + str + ' box(es)');
                 }
             });
         </script>
