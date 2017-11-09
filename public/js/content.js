@@ -19,68 +19,42 @@ function prepareContent(){
     saveNotes();
 }
 
-function setPopContentCSS(){
-    $("object").last().css({
-        "background-color":"white",
-        "height":"46vh",
-        "border":"5px",
-        "border-style":"solid"
-    });
+function popContentDisplay(id){
+    if($(id).css('display') == 'none'){
+        $('#popcontainer').show()
+        $(".popcontent").hide();
+        $(id).show();          
+    }else{
+        $(id).hide();
+        $('#popcontainer').hide();
+    }
 }
 
 //add function to Q/A button
 function qaClicked(){
     $("#qabtn").click(function(){
-        if(popped != 'QA'){
-            $("#popContent").html('<object class="popped" type="text/html" data="QandA.html" ></object>');
-            setPopContentCSS();
-            popped = 'QA';          
-        }else{
-            $("object").last().remove();
-            popped = 'none';
-        }
+        popContentDisplay('#qanda');
     });
 }
 
 //add function to Example and Application button
 function exampleClicked(){
     $("#examplebtn").click(function(){
-        if(popped != 'example'){
-            $("#popContent").html('<object class="popped" type="text/html" data="exampleAndApplication.html" ></object>');
-            setPopContentCSS();            
-            popped = 'example'
-        }else{
-            $("object").last().remove();
-            popped = 'none';
-        }
+        popContentDisplay('#examples');
     });
 }
 
 //add function to Homework button
 function homeworkClicked(){
     $("#homeworkbtn").click(function(){
-        if(popped != 'homework'){
-            $("#popContent").html('<object class="popped" type="text/html" data="public/html/hw2.html" ></object>');
-            setPopContentCSS();            
-            popped = 'homework';
-        }else{
-            $("object").last().remove();
-            popped = 'none';
-        }
+        popContentDisplay('#homework');
     });
 }
 
 //add function to User's Curriculum button
 function ucClicked(){
     $("#curriculumbtn").click(function(){
-        if(popped != 'curriculum'){
-            $("#popContent").html('<object class="popped" type="text/html" data="syllabus.html" ></object>');
-            setPopContentCSS();            
-            popped = 'curriculum';
-        }else{
-            $("object").last().remove();
-            popped = 'none';
-        }
+        popContentDisplay('#curriculum');
     });
 }
 
@@ -119,14 +93,7 @@ function notepadClicked(){
 }*/
 
 function learningModePopup(){
-    if(popped != 'learningmode'){
-        $("#popContent").html('<object class="popped" type="text/html" data="learningmode.html" ></object>');
-        setPopContentCSS();        
-        popped = 'learningmode';
-    } else {
-        $("object").last().remove();
-        popped = 'none';
-    };
+    popContentDisplay('#learningmode');
 }
 
 function disableButton(button){

@@ -12,7 +12,7 @@ let pageSetup = function(){
   let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox'];
   
   let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 
-  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'popContent', 
+  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'popcontainer', 
   'columndivzoom', 'leftControllerDiv', 'rightControllerDiv'];
   
   $(document).mouseup(function(e) {

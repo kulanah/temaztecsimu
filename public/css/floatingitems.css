@@ -259,11 +259,18 @@
   height: 46vh;
 }
 
-#popContent {
+#popcontainer {
   position: absolute;  
   top: 47vh;
   left: 60vw;
   overflow: hidden;
+  border: 5px solid black;  
+}
+
+.popcontent {
+  display: none;
+  background-color: white;
+  height: 46vh;
 }
 
 #notepad {
