@@ -44,6 +44,13 @@ let pageSetup = function(){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
       cancel: 'map',
+      // Fix for smoothly dragging iframes found at https://stackoverflow.com/questions/5632295/jquery-draggable-iframefix/24597136#24597136
+      start: function() {
+        $('.frameOverlay').show();
+      },
+      stop: function() {
+          $('.frameOverlay').hide();
+      }
     });
   }
 

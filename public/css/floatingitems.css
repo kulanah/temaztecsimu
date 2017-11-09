@@ -288,3 +288,10 @@
   font-size: large;
   border: 2px solid gray;
 }
+
+.frameOverlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: none;
+}
