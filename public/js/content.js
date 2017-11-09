@@ -3,7 +3,7 @@
 * in order to simulate app's user interface
 ****/
 
-var popped = 'none';
+var popped = '#popplaceholder';
 
 //register all the events to targets when docuemnts are all loaded
 function prepareContent(){
@@ -19,14 +19,22 @@ function prepareContent(){
     saveNotes();
 }
 
+function swapPosition(id1, id2){
+    let temptop = $(id1).css('top');
+    let templeft = $(id1).css('left');
+    $(id1).css('top', $(id2).css('top'));
+    $(id1).css('left', $(id2).css('left'));
+    $(id2).css('top', temptop);
+    $(id2).css('left', templeft);
+}
+
 function popContentDisplay(id){
-    if($(id).css('display') == 'none'){
-        $('#popcontainer').show()
-        $(".popcontent").hide();
-        $(id).show();          
+    if(popped != id){
+        swapPosition(id, popped);
+        popped = id; 
     }else{
-        $(id).hide();
-        $('#popcontainer').hide();
+        swapPosition(id, '#popplaceholder')
+        popped = '#popplaceholder';
     }
 }
 
