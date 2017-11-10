@@ -32,8 +32,8 @@ temLens[11] = new lens(0,0,480,24,'lens','Minicondenser Lens');
 temLens[12] = new lens(0,0,520,70,'lens','Objective UpperPolepiece');
 temLens[13] = new lens(0,0,570,-10,'sample','Specimen');
 temLens[14] = new lens(0,0,600,40,'lens','Objective LowerPolepiece');
-temLens[15] = new lens(0,0,675,16,'label','Objective Stigmator');
-temLens[16] = new lens(0,0,650,16,'aperture','Objective Aperture');
+temLens[15] = new lens(0,0,650,16,'aperture','Objective Aperture');
+temLens[16] = new lens(0,0,675,16,'label','Objective Stigmator');
 temLens[17] = new lens(0,0,700,100,'lens','Image Deflection 1');
 temLens[18] = new lens(0,0,750,30,'lens','Image Deflection 2');
 temLens[19] = new lens(0,0,800,24,'aperture','SAED Aperture');
@@ -129,12 +129,12 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 	ctx.save();
 
 	var numOfLenses = temLens.length;
-	var offset = canvasWidth / 2;
+	var xCenter = canvasWidth / 2;
 
 	//draw CenterLine
 	ctx.beginPath();
-	ctx.moveTo(offset,temLens[0].y + yOffset);
-	ctx.lineTo(offset,temLens[temLens.length-1].y);  
+	ctx.moveTo(xCenter,temLens[0].y + yOffset);
+	ctx.lineTo(xCenter,temLens[temLens.length-1].y);  
 	ctx.strokeStyle = 'blue';
 	ctx.stroke();
 	
@@ -144,56 +144,69 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 	for (i = 0; i < numOfLenses; ++i){
 		if (zoomVer){
 			lenswidth = 80;
-			lensoffset = offset - 40;
+			lensxCenter = xCenter - 40;
 			lensheight = 5;
 		} else {
 			lenswidth = 40;
-			lensoffset = offset - 20;
+			lensxCenter = xCenter - 20;
 			lensheight = 10;
 		}
-		if (temLens[i].kind == 'lens' && !temLens[i].name.includes("Gun")){
-			ctx.fillRect(lensoffset, temLens[i].y-5, lenswidth, lensheight);
+		if (temLens[i].kind == 'lens'){
+			ctx.fillRect(lensxCenter, temLens[i].y-5, lenswidth, lensheight);
 		}
 	}
+	//Ray drawing function
 	for(var ray=0; ray<numOfRays+1; ray++){
-		temLens[0].x=  ray*widthOfSource/numOfRays - widthOfSource/2;
+		temLens[0].x =  ray * widthOfSource / numOfRays - widthOfSource / 2;
 		ctx.beginPath();
-		ctx.moveTo(temLens[0].x+offset,temLens[0].y + yOffset);
+		ctx.moveTo(temLens[0].x + xCenter,temLens[0].y + yOffset);
 		var blocked=0;
 		for(var i=0;i<numOfLenses;i++){
 			if(i>0){
+				index = i
 				let prevType = temLens[i-1].kind;
 				let prevIndex = i - 1;
 				if (prevType == 'label'){
 					prevType = temLens[i-2].kind;
 					preIndex = i - 2;
 				}
-				if(prevType =='lens' || prevType =='source' || prevType =='sample'){
-					temLens[i].x = temLens[i-1].x-(temLens[i].y - temLens[i-1].y)*((temLens[i-1].x-temLens[i-1].xCenter)/temLens[i-1].f);
-				}	
-				if(prevType == 'aperture'){
-					if(temLens[i-1].x < -temLens[i-1].f + temLens[i-1].xCenter || temLens[i-1].x>temLens[i-1].f +temLens[i-1].xCenter){
-						blocked = 1;	
-					}else{
-						temLens[i].x = temLens[i-2].x-(temLens[i].y-temLens[i-2].y)*((temLens[i-2].x-temLens[i-2].xCenter)/temLens[i-2].f);
-					}
-				}	
+				let prevX = temLens[prevIndex].x;
+				if (!(temLens[i].type == 'label')){
+					if(prevType =='lens' || prevType =='source' || prevType =='sample'){
+						temLens[i].x = prevX-(temLens[i].y - temLens[prevIndex].y)
+						* ((prevX-temLens[prevIndex].xCenter) / temLens[prevIndex].f);
+					}	
+					if(prevType == 'aperture'){
+							if(prevX < -temLens[prevIndex].f + temLens[prevIndex].xCenter 
+							|| temLens[prevIndex].x>temLens[prevIndex].f +temLens[prevIndex].xCenter){
+							blocked = 1;	
+						}else{
+							temLens[i].x = temLens[prevIndex - 1].x-(temLens[i].y-temLens[prevIndex - 1].y) 
+							* ((temLens[prevIndex - 1].x-temLens[prevIndex - 1].xCenter) / temLens[prevIndex - 1].f);
+						}
+					}	
+				}
+			} else {
+				index = 0;
+				
 			}
-			if(blocked==0){
-				ctx.lineTo(temLens[i].x+offset,temLens[i].y);  
+			if(blocked==0 && temLens[index].type != 'label'){
+				ctx.lineTo(temLens[i].x + xCenter, temLens[i].y);  		
 			}
 		}	
 		//color in rgb as function of starting position
-		var r = Math.floor(255*ray/numOfRays);
-		var g = Math.floor(255*(numOfRays-ray)/numOfRays);		
+		var r = Math.floor(255 * ray / numOfRays);
+		var g = Math.floor(255 * (numOfRays - ray) / numOfRays);		
 		var b = 255;
-		ctx.strokeStyle = 'rgb('+ r + ','+g+','+b+')'; 
+		ctx.strokeStyle = 'rgb(' + r + ',' + g + ',' + b + ')'; 
 		ctx.stroke();	
 	}
 	ctx = beamLabels[0].getContext('2d');
 	ctx.clearRect(-10000,-10000,20000,20000);
 	ctx.save();
 	ctx = beamDiag[0].getContext('2d');
+
+	//drawing squares to point at different lenses
 	for(var i=0;i<numOfLenses;i++){
 		if (!zoomVer){
 			zoomedOutLabels[i].id = temLens[i].name.replace(/\s+/g, '');
@@ -205,40 +218,41 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 		}
 		if(temLens[i].kind=='sample'){
 			ctx.fillStyle = '#fff';
-			ctx.fillRect(offset-60,temLens[i].y,180,6);
+			ctx.fillRect(xCenter-60,temLens[i].y,180,6);
 		}
 		if(temLens[i].kind=='lens'){
 			ctx.fillStyle = '#fff';
-			ctx.fillRect(offset-114,temLens[i].y-12,14,24);
-			ctx.fillRect(offset+100,temLens[i].y-12,14,24);
+			ctx.fillRect(xCenter-114,temLens[i].y-12,14,24);
+			ctx.fillRect(xCenter+100,temLens[i].y-12,14,24);
 		}
 		if (temLens[i].kind == 'label'){
 			ctx.fillStyle = '#fff';
 			//draws the empty squares for the label boxes
-			ctx.strokeRect(offset-114,temLens[i].y-12,14,24);
-			ctx.strokeRect(offset+100,temLens[i].y-12,14,24);
+			ctx.strokeRect(xCenter-114,temLens[i].y-12,14,24);
+			ctx.strokeRect(xCenter+100,temLens[i].y-12,14,24);
+
 			//draws the x's in the label boxes
 			ctx.beginPath();
-			ctx.moveTo(offset - 112, temLens[i].y-10);
-			ctx.lineTo(offset - 102, temLens[i].y + 10);
+			ctx.moveTo(xCenter - 112, temLens[i].y-10);
+			ctx.lineTo(xCenter - 102, temLens[i].y + 10);
 
-			ctx.moveTo(offset - 102, temLens[i].y - 10);
-			ctx.lineTo(offset - 112, temLens[i].y + 10);
+			ctx.moveTo(xCenter - 102, temLens[i].y - 10);
+			ctx.lineTo(xCenter - 112, temLens[i].y + 10);
 
-			ctx.moveTo(offset + 102, temLens[i].y + 10);
-			ctx.lineTo(offset + 112, temLens[i].y - 10);
+			ctx.moveTo(xCenter + 102, temLens[i].y + 10);
+			ctx.lineTo(xCenter + 112, temLens[i].y - 10);
 
-			ctx.moveTo(offset + 102, temLens[i].y - 10);
-			ctx.lineTo(offset + 112, temLens[i].y + 10);
+			ctx.moveTo(xCenter + 102, temLens[i].y - 10);
+			ctx.lineTo(xCenter + 112, temLens[i].y + 10);
 
 			ctx.stroke();
 		}
 		if(temLens[i].kind=='aperture'){
 			ctx.beginPath();
-			ctx.moveTo(offset+temLens[i].f+temLens[i].xCenter,temLens[i].y);
-			ctx.lineTo(offset+114,temLens[i].y); 
-			ctx.moveTo(offset-temLens[i].f+temLens[i].xCenter,temLens[i].y);
-			ctx.lineTo(offset-114,temLens[i].y); 
+			ctx.moveTo(xCenter+temLens[i].f+temLens[i].xCenter,temLens[i].y);
+			ctx.lineTo(xCenter+114,temLens[i].y); 
+			ctx.moveTo(xCenter-temLens[i].f+temLens[i].xCenter,temLens[i].y);
+			ctx.lineTo(xCenter-114,temLens[i].y); 
 			ctx.strokeStyle = '#fff';
 			ctx.stroke();
 		}
@@ -248,7 +262,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 
 		if (zoomVer){
 			if(temLens[i].kind=='screen'){
-				zoomedInLabels[i].style.left = offset + 120 + 'px';
+				zoomedInLabels[i].style.left = xCenter + 120 + 'px';
 				zoomedInLabels[i].style.top = temLens[i].y * heightMult + yOffset + 'px';
 			
 			}else{
@@ -264,15 +278,15 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 			columnDiv[0].append(zoomedInLabels[i]);
 		} else {
 			if(temLens[i].kind=='screen'){
-				zoomedOutLabels[i].style.left = offset + 120 + 'px';
+				zoomedOutLabels[i].style.left = xCenter + 120 + 'px';
 				zoomedOutLabels[i].style.top = temLens[i].y - 4 * yScale + 'px';
 			
 			}else{
 				if(temLens[i].kind=='source'){
-					zoomedOutLabels[i].style.left = offset + 95 + 'px';
+					zoomedOutLabels[i].style.left = xCenter + 95 + 'px';
 					zoomedOutLabels[i].style.top = temLens[i].y + 20 + 'px';
 				}else{
-					zoomedOutLabels[i].style.left = offset + 95 + 'px';
+					zoomedOutLabels[i].style.left = xCenter + 95 + 'px';
 					zoomedOutLabels[i].style.top = (temLens[i].y * yScale - 8 ) + 'px';
 				}
 			}
