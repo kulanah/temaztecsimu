@@ -18,28 +18,28 @@ class lens {
 
 //          xCenter x  y      f       kind     nam
 temLens[00] = new lens(0,0,-10,5,'source','Electron Gun');
-temLens[01] = new lens(0,0,90,25,'lens','Gun lens');
-temLens[02] = new lens(0,0,130,90,'lens','Gun Deflection 1');
-temLens[03] = new lens(0,20,160,20,'lens','Gun Deflection 2');
-temLens[04] = new lens(0,0,220,40,'lens','Condenser Lens 1');
+temLens[01] = new lens(0,0,90,55,'lens','Gun lens');
+temLens[02] = new lens(0,0,130,90,'label','Gun Deflection 1');
+temLens[03] = new lens(0,20,160,0,'label','Gun Deflection 2');
+temLens[04] = new lens(0,0,220,60,'lens','Condenser Lens 1');
 temLens[05] = new lens(0,0,260,6.1,'aperture','C1 Aperture');
-temLens[06] = new lens(0,0,320,50,'lens','Condenser Lens 2');
+temLens[06] = new lens(0,0,320,75,'lens','Condenser Lens 2');
 temLens[07] = new lens(0,0,350,25,'aperture','C2 Aperture');
-temLens[08] = new lens(0,0,370,25, 'label', 'Condenser Stigmator');
-temLens[09] = new lens(0,0,400,55, 'lens','Beam Deflection X');
-temLens[10] = new lens(0,0,440,9,'lens','Beam Deflection Y');
-temLens[11] = new lens(0,0,480,24,'lens','Minicondenser Lens');
-temLens[12] = new lens(0,0,520,70,'lens','Objective UpperPolepiece');
-temLens[13] = new lens(0,0,570,-10,'sample','Specimen');
-temLens[14] = new lens(0,0,600,40,'lens','Objective LowerPolepiece');
-temLens[15] = new lens(0,0,650,16,'aperture','Objective Aperture');
-temLens[16] = new lens(0,0,675,16,'label','Objective Stigmator');
-temLens[17] = new lens(0,0,700,100,'lens','Image Deflection 1');
-temLens[18] = new lens(0,0,750,30,'lens','Image Deflection 2');
+temLens[08] = new lens(0,0,370,05, 'label', 'Condenser Stigmator');
+temLens[09] = new lens(0,0,400,55, 'label','Beam Deflection X');
+temLens[10] = new lens(0,0,440,9, 'label','Beam Deflection Y');
+temLens[11] = new lens(0,0,480,24, 'lens','Minicondenser Lens');
+temLens[12] = new lens(0,0,520,70, 'lens','Objective UpperPolepiece');
+temLens[13] = new lens(0,0,570,-10, 'sample','Specimen');
+temLens[14] = new lens(0,0,600,60, 'lens','Objective LowerPolepiece');
+temLens[15] = new lens(0,0,650,16, 'aperture','Objective Aperture');
+temLens[16] = new lens(0,0,675,16, 'label','Objective Stigmator');
+temLens[17] = new lens(0,0,700,100,'label','Image Deflection 1');
+temLens[18] = new lens(0,0,750,30,'label','Image Deflection 2');
 temLens[19] = new lens(0,0,800,24,'aperture','SAED Aperture');
 temLens[20] = new lens(0,0,840,58,'lens','Intermediate/Diffraction Lens');
 temLens[21] = new lens(0,0,880,80,'lens','Projection lens 1');
-temLens[22] = new lens(0,0,990,2,'lens','Projection Lens 2');
+temLens[22] = new lens(0,0,990,20,'lens','Projection Lens 2');
 temLens[23] = new lens(0,0,1090,5,'screen','Viewing Screen');
 
 
@@ -166,9 +166,9 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 				index = i
 				let prevType = temLens[i-1].kind;
 				let prevIndex = i - 1;
-				if (prevType == 'label'){
-					prevType = temLens[i-2].kind;
-					preIndex = i - 2;
+				while (prevType == 'label'){
+					prevIndex = prevIndex - 1;
+					prevType = temLens[prevIndex].kind;
 				}
 				let prevX = temLens[prevIndex].x;
 				if (!(temLens[i].type == 'label')){
