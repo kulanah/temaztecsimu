@@ -108,6 +108,7 @@ let microscopeControllers = function(){
     setStartXY();
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
     $('body')[0].addEventListener('mousemove', mousemovetemplate);
   });
 
@@ -124,6 +125,7 @@ let microscopeControllers = function(){
     setStartXY();
     
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
     $('body')[0].addEventListener('mousemove', mousemovetemplate);
   });
 
@@ -207,4 +209,3 @@ let microscopeControllers = function(){
     drawColumn();
   })
 };
-

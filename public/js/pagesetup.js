@@ -12,8 +12,9 @@ let pageSetup = function(){
   let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox'];
   
   let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 
-  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'popContent', 
-  'columndivzoom', 'leftControllerDiv', 'rightControllerDiv'];
+  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms',
+  'columndivzoom', 'leftControllerDiv', 'rightControllerDiv', 'qanda', 'examples', 'homework', 
+  'curriculum', 'learningmode'];
   
   $(document).mouseup(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
@@ -44,6 +45,13 @@ let pageSetup = function(){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
       cancel: 'map',
+      // Fix for smoothly dragging iframes found at https://stackoverflow.com/questions/5632295/jquery-draggable-iframefix/24597136#24597136
+      start: function() {
+        $('.frameOverlay').show();
+      },
+      stop: function() {
+          $('.frameOverlay').hide();
+      }
     });
   }
 

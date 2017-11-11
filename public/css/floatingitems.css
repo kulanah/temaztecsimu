@@ -284,11 +284,18 @@
   height: 46vh;
 }
 
-#popContent {
+#popplaceholder {
   position: absolute;  
   top: 47vh;
   left: 60vw;
-  overflow: hidden;
+}
+
+.popcontent {
+  position: absolute;
+  background-color: white;
+  height: 46vh;
+  left: -999vw;
+  border: 5px solid black;  
 }
 
 #notepad {
@@ -305,4 +312,11 @@
   height: 16vh;
   font-size: large;
   border: 2px solid gray;
+}
+
+.frameOverlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: none;
 }
