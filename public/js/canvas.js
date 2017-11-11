@@ -443,9 +443,8 @@ class Canvas {
   }
 
   multiYDrag(deltaY){
-    //TODO: remove thiss duplication of code
+    //TODO: remove this duplication of code
     if (!isNaN(deltaY)){
-      // console.log(deltaY);
       if (diffractionMode && this == setupbox){
         this.diffractionY += deltaY;
       } else switch (this.alignmentMode){
