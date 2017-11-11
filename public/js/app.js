@@ -102,7 +102,7 @@ let shiftFocus = function(delta){
       openbox.focus(delta);
     } else {
       setupbox.focus(delta);
-      temLens[11].f += delta / 10;
+      temLens[12].f += delta / 10;
       drawColumn();
     }
   } else {

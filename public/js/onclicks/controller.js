@@ -191,21 +191,21 @@ let microscopeControllers = function(){
   $('#buttonupr').on('click', function(event){
     focusUp();
 
-    ++temLens[12].y;
+    ++temLens[13].y;
     drawColumn();
   });
 
   $('#buttondownr').on('click', function(event){
     focusDown();
 
-    --temLens[12].y;
+    --temLens[13].y;
     drawColumn();
   });
 
   $('#buttontop1r').on('click', function(event){
     zeroFocus();
-    temLens[12].y = 570;
-    temLens[11].f = 70;
+    temLens[13].y = 570;
+    temLens[12].f = 70;
     drawColumn();
   })
 };
