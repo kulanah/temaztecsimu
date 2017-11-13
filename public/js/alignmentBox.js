@@ -67,18 +67,12 @@ class AlignmentBox{
     } else if (!this.done){
       if (this.currentStep == this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1){
         if (this.currentTopic == this.jsonObj[this.currentLesson].topics.length - 1){
-          if (this.currentLesson == this.jsonObj.length - 1){
-            this.done = true;
-            this.drawLocation.text('You\'re done!');
-          } else {
-            ++this.currentLesson;
-            this.currentStep = 0;
-            this.currentTopic = 0;
-          }
+          this.done = true;
+          this.drawLocation.text('You\'re done!');
         } else {
           this.currentTopic++;
+          this.currentStep = 0;          
         }
-        this.currentStep = 0;
       } else {
         this.currentStep++;
       }
@@ -103,17 +97,10 @@ class AlignmentBox{
       this.done = false;
     } else if(this.currentStep == 0){
       if(this.currentTopic == 0){
-        if(this.currentLesson == 0){
           //do nothing because we're at the start
-        } else {
-          --this.currentLesson;
-          this.currentTopic = this.jsonObj[this.currentLesson].topics.length - 1;
-          this.currentStep = this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1;
-        }
       } else {
         --this.currentTopic;
         this.currentStep = this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1;
-
       }
     } else {
       --this.currentStep;
@@ -124,7 +111,6 @@ class AlignmentBox{
     });
     document.getElementById('l' + (this.currentLesson + 1)).open = true;    
     this.fillCurrent();
-
   }
 
   addPrevButton(selector){
