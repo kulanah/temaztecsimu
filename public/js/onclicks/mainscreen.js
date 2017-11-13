@@ -10,7 +10,7 @@ let mainScreen = function(){
     }
   });
 
-  $('#vacuumbutton').on('click', function(event){
+  $('.vacuumbutton').on('click', function(event){
     if(isVisible('maindropdown')){
       $('#vacuumoverview').show();
       $('#maindropdown').hide();
