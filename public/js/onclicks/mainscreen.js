@@ -22,14 +22,12 @@ let mainScreen = function(){
     //open up the setup button with all the accompanying effects
     if (openScreen == 0){
       $('#basesetup').show();
+      activeWindow = 1;
     }
     $('#microControls').show();
     $('#directalignmentspopout').show();
     setupbox.drawCanvas();
-    openScreen = 0;
-    activeWindow = 1;
-
-  })
+  });
 
   $('#closedrop').on('click', function(event){
     $('#vacuumoverview').hide();
