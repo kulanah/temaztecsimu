@@ -37,11 +37,6 @@ let pageSetup = function(){
     value: 7,
   });
 
-  $('#beamrange').on("change", function(event, ui){
-    $('#beamvalue').text(beamslider.val());
-    $('#spotsizevalue').text(beamslider.val());
-  });
-
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
