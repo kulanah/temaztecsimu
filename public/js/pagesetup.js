@@ -39,6 +39,7 @@ let pageSetup = function(){
 
   $('#beamrange').on("change", function(event, ui){
     $('#beamvalue').text(beamslider.val());
+    $('#spotsizevalue').text(beamslider.val());
   });
 
   for (let i = 0; i < listOfDraggables.length; ++i){
@@ -68,6 +69,6 @@ let pageSetup = function(){
 
   //setup for the canvas classes
 
-  $('#magnificationvalue').html(setupbox.zooms[setupbox.mag] + ' x')
-  $('#spotsizevalue').html($('#beamrange').val());
+  $('#magnificationvalue').text(setupbox.zooms[setupbox.mag] + ' x')
+  $('#spotsizevalue').text($('#beamrange').val());
 };

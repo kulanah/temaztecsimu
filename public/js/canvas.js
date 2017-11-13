@@ -103,14 +103,15 @@ class Canvas {
   };
 
   drawCanvas(){
+    //$('#spotsizevalue').text($(''))
     if (diffractionMode && this == setupbox){
       document.getElementById('setupcrosshair').style.visibility = 'hidden';
-      $('#magnificationvalue').html(this.diffractionCameraLength + ' mm');
+      $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
       this.drawDiffraction();
       return;
     }
     document.getElementById('setupcrosshair').style.visibility = 'visible';
-    $('#magnificationvalue').html(this.zooms[this.mag] + ' x');
+    $('#magnificationvalue').text(this.zooms[this.mag] + ' x');
 
     this.context.save();
 

@@ -6,6 +6,7 @@ let searchTab = function(){
     $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsmicro.png');
     beamslider.val(3);
     $('#beamvalue').text(beamslider.val());
+    $('#spotsizevalue').text(beamslider.val());    
     micro = true;
   });
 
@@ -13,6 +14,7 @@ let searchTab = function(){
     $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsnano.png')
     updateBeamSlider(6);
     $('#beamvalue').text(beamslider.val());
+    $('#spotsizevalue').text(beamslider.val());    
     micro = false;
   });
 
