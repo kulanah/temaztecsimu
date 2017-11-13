@@ -68,7 +68,7 @@ class AlignmentBox{
       if (this.currentStep == this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1){
         if (this.currentTopic == this.jsonObj[this.currentLesson].topics.length - 1){
           this.done = true;
-          this.drawLocation.text('You\'re done!');
+          this.drawLocation.text('You have completed the ' + this.jsonObj[this.currentLesson].name + ' alignments.');
         } else {
           this.currentTopic++;
           this.currentStep = 0;          
