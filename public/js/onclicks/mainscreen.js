@@ -19,6 +19,7 @@ let mainScreen = function(){
 
   $('#directalignmentdrop').on('click', function(event){
     $('#maindropdown').hide();
+    $('#openbox').hide();    
     //open up the setup button with all the accompanying effects
     if (openScreen == 0){
       $('#basesetup').show();
@@ -26,6 +27,18 @@ let mainScreen = function(){
     }
     $('#microControls').show();
     $('#directalignmentspopout').show();
+    setupbox.drawCanvas();
+  });
+
+  $('#alignmentdrop').on('click', function(event){
+    $('#maindropdown').hide();
+    $('#openbox').hide();    
+    if (openScreen == 0){
+      $('#basesetup').show();
+      activeWindow = 1;
+    }
+    $('#microControls').show();
+    $('#tune').trigger('click');
     setupbox.drawCanvas();
   });
 
