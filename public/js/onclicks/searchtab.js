@@ -4,7 +4,7 @@ let micro = true;
 let searchTab = function(){
   $('#nano').on('click', function(event){
     $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsmicro.png');
-    beamslider.val(3);
+    updateBeamSlider(3);
     $('#beamvalue').text(beamslider.val());
     $('#spotsizevalue').text(beamslider.val());    
     micro = true;
