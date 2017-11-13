@@ -101,7 +101,7 @@ let microscopeControllers = function(){
   });
 
   $('#buttonr3').on('click', function(event){
-    if (beamslider[0].value > 0){
+    if (beamslider[0].value > 1){
       let value = beamslider.val();
       --value;
       temLens[20].f += .1;
