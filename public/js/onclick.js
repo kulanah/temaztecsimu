@@ -19,4 +19,5 @@ let clickFunctions = function(){
   startMenu();
   tabs();
   tuneTab();
+  floatStig();
 };
