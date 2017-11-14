@@ -14,7 +14,7 @@ let pageSetup = function(){
   let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms',
   'columndivzoom', 'leftControllerDiv', 'rightControllerDiv', 'qanda', 'examples', 'homework', 
-  'curriculum', 'learningmode'];
+  'curriculum', 'learningmode', 'floatingstigmatordiv'];
   
   $(document).mouseup(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
