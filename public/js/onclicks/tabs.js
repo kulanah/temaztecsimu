@@ -38,6 +38,7 @@ let tabs = function(){
 
   $('#tune').on('click', function(event){
     setCurrentTab(2);
+    $('#floatingstigmatordiv').hide();    
   });
 
   $('#stem').on('click', function(event){

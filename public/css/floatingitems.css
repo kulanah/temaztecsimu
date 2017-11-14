@@ -320,3 +320,12 @@
   position: absolute;
   display: none;
 }
+
+#floatingstigmatordiv {
+  position: absolute;
+  top: 6.8vh;
+}
+
+#floatingstigmator{
+  height: 19.4vh;
+}

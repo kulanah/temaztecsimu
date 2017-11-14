@@ -16,7 +16,7 @@ let mainScreen = function(){
   });
 
   $('#stigmatordrop').on('click', function(event){      
-    $('#tune').trigger('click');
+    $('#floatingstigmatordiv').show();
     $('#maindropdown').hide();
   });
 
@@ -49,6 +49,7 @@ let mainScreen = function(){
     $('#vacuumoverview').hide();
     $('#maindropdown').hide();
     $('#directalignmentspopout').hide();
+    $('#floatingstigmatordiv').hide();    
   });
 
   $('#filebutton').on('click', function(event){
