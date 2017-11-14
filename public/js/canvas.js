@@ -274,7 +274,7 @@ class Canvas {
         this.diffractionRadiusY--;
       }
       this.drawCanvas();
-      return;
+      return 0;
     }
     let effectiveRadius = this.calculateRadius();
     delta = delta - 1;
@@ -296,7 +296,7 @@ class Canvas {
       this.maskR = 11 - beamslider.val() * 4;
     }
     this.haloX = this.haloX * this.maskR / oldR;
-    this.haloY = this.haloY * this.maskR / oldR;    
+    this.haloY = this.haloY * this.maskR / oldR;
     this.drawCanvas();
     return (this.maskR - oldR);
   };
