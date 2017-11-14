@@ -9,6 +9,6 @@ let tuneTab = function(){
 
 let floatStig = function(){
   $('#floatexpand').on('click', function(){
-    $('#deflectorbox').show();
+    $('#floatingdeflectorbox').show();
   });
 };

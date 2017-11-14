@@ -9,7 +9,7 @@ let beamslider;
 let pageSetup = function(){
   //array of elements that we close when you click outside of the item
   //we loop thorough this later on to set this behavior on all of them
-  let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox'];
+  let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox', 'floatingdeflectorbox'];
   
   let listOfDraggables = ['openfiledialogue', 'microscopeGraph', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms',
