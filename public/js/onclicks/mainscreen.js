@@ -11,10 +11,13 @@ let mainScreen = function(){
   });
 
   $('.vacuumbutton').on('click', function(event){
-    if(isVisible('maindropdown')){
-      $('#vacuumoverview').show();
-      $('#maindropdown').hide();
-    }
+    $('#vacuumoverview').show();
+    $('#maindropdown').hide();
+  });
+
+  $('#stigmatordrop').on('click', function(event){      
+    $('#tune').trigger('click');
+    $('#maindropdown').hide();
   });
 
   $('#directalignmentdrop').on('click', function(event){
