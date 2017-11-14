@@ -324,8 +324,5 @@
 #floatingstigmatordiv {
   position: absolute;
   top: 6.8vh;
-}
-
-#floatingstigmator{
-  height: 19.4vh;
+  left: 79.1vw;  
 }
