@@ -55,6 +55,31 @@ let pageSetup = function(){
   $('#notepad').draggable({
     addClasses: true
   });
+
+  new ResizeSensor($('#qanda'), function(){ 
+    $('.popcontent').width($('#qanda').width());
+    $('.popcontent').height($('#qanda').height());
+  });
+
+  new ResizeSensor($('#examples'), function(){ 
+    $('.popcontent').width($('#examples').width());
+    $('.popcontent').height($('#examples').height());
+  });
+
+  new ResizeSensor($('#homework'), function(){ 
+    $('.popcontent').width($('#homework').width());
+    $('.popcontent').height($('#homework').height());
+  });
+
+  new ResizeSensor($('#curriculum'), function(){ 
+    $('.popcontent').width($('#curriculum').width());
+    $('.popcontent').height($('#curriculum').height());
+  });
+
+  new ResizeSensor($('#learningmode'), function(){ 
+    $('.popcontent').width($('#learningmode').width());
+    $('.popcontent').height($('#learningmode').height()); 
+  });
   
   //Setup for the alignment box, currently only sets the tune tab one.
   let tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
