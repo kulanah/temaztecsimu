@@ -116,13 +116,8 @@ let zoom = function(delta){
       openbox.zoom(delta);
     } else {
       setupbox.zoom(delta);
-      if(delta > 0){
-        temLens[21].f -= 20;
-        drawColumn();
-      } else {
-        temLens[21].f += 20;
-        drawColumn();
-      }
+      temLens[21].f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
+      drawColumn();
     }
   } else {
     mainmicro.zoom(delta);
