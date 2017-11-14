@@ -15,9 +15,11 @@ let mainScreen = function(){
     $('#maindropdown').hide();
   });
 
-  $('#stigmatordrop').on('click', function(event){      
-    $('#floatingstigmatordiv').show();
-    $('#maindropdown').hide();
+  $('#stigmatordrop').on('click', function(event){
+    if(!isVisible('leftcoltune')){
+      $('#floatingstigmatordiv').show();
+    }
+      $('#maindropdown').hide();
   });
 
   $('#directalignmentdrop').on('click', function(event){
