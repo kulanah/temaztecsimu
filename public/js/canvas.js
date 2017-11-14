@@ -510,7 +510,7 @@ class Canvas {
     }
 
     context.save();
-    context.clearRect(0,0,900,900);
+    context.clearRect(0,0,2000,1000);
     context.filter = 'blur(3px)';
 
     /*context.beginPath();
