@@ -275,27 +275,35 @@
 #lecturediv {
   position: absolute;  
   top: 0vh;
-  left: 60vw;
+  left: 59.5vw;
   overflow: hidden;
+  border: 5px solid black;
 }
 
-#temLecture1 {
+#temlecture {
   width: 40vw;
   height: 46vh;
 }
 
 #popplaceholder {
   position: absolute;  
-  top: 47vh;
-  left: 60vw;
+  top: 48vh;
+  left: 59.5vw;
+}
+
+.popcontainer {
+  position: absolute;
+  left: -999vw;
+  border: 5px solid black;
 }
 
 .popcontent {
-  position: absolute;
   background-color: white;
-  height: 46vh;
-  left: -999vw;
-  border: 5px solid black;  
+  height: 47.7vh;
+}
+
+iframe {
+  resize: both;  
 }
 
 #notepad {
