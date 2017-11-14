@@ -4,13 +4,13 @@ let micro = true;
 let searchTab = function(){
   $('#nano').on('click', function(event){
     $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsmicro.png');
-    updateBeamSlider(3);  
+    updateBeamSlider(3);
     micro = true;
   });
 
   $('#micro').on('click', function(event){
-    $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsnano.png')
-    updateBeamSlider(6); 
+    $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsnano.png');
+    updateBeamSlider(6);
     micro = false;
   });
 
