@@ -147,8 +147,8 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 			lensxCenter = xCenter - 40;
 			lensheight = 5;
 		} else {
-			lenswidth = 40;
-			lensxCenter = xCenter - 20;
+			lenswidth = 80;
+			lensxCenter = xCenter - 40;
 			lensheight = 10;
 		}
 		if (temLens[i].kind == 'lens'){
