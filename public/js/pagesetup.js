@@ -43,6 +43,7 @@ let pageSetup = function(){
     $(function() {
       var target = document.querySelector('#' + id);
       var observer = new MutationObserver(function(mutations) {
+        // Disconnect the observer to avoid an infinite loop, change the z-index, then reconnect
         observer.disconnect();
         $('#' + id).css('z-index', zcounter);
         zcounter++;
