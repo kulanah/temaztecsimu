@@ -74,17 +74,7 @@ let microscopeControllers = function(){
 
 
   $('#buttonl2').on('click', function(event){
-    wobbleMode = !wobbleMode;
-    //temLens[22].xCenter is our wobble value
-
-    /*
-      determine focus level
-      set wobble max based on focus level
-      
-      set timeout to redo the abve
-
-    */
-    
+    toggleWobble();
 
   });
 

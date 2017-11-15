@@ -89,6 +89,13 @@ class Canvas {
     this.jump = 64;
     this.defocus = 0;
     this.astigmatism = 1;
+
+    this.wobbleMode = false;
+    this.wobbleMax = 0;
+    this.wobbleRight = true;
+    this.wobbleSpeed = 20;
+    this.wobbleInterval;
+    this.wobbleSavedX;
   };
 
   setDimensions(){
@@ -672,5 +679,42 @@ class Canvas {
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();    
     this.drawCanvas();
+  }
+
+  //
+  toggleWobble(){
+    if (this.wobbleMode){
+      clearInterval(this.wobbleInterval);
+      this.imgX = this.wobbleSavedX;
+      this.drawCanvas();
+    } else {
+      this.wobbleSavedX = this.imgX;
+      this.wobbleMax = this.blurVal * 10;
+      this.wobbleInterval = setInterval(this.wobbleTimeout.bind(this), 10);
+    }
+
+    this.wobbleMode = !this.wobbleMode;
+  }
+
+  wobbleTimeout(){
+    //reset maximum slide distance
+    this.wobbleMax = this.blurVal * 10;
+    if (this.wobbleRight){
+      //moving to the right
+      if (this.imgX < this.wobbleMax){
+        this.imgX += this.wobbleMax / this.wobbleSpeed;
+      } else {
+        this.wobbleRight = false;
+      }
+    } else {
+      //moving to the left 
+      if (this.imgX > -this.wobbleMax){
+        this.imgX -= this.wobbleMax / this.wobbleSpeed;
+      } else {
+        this.wobbleRight = true;
+      }
+
+    }
+  this.drawCanvas();
   }
 };

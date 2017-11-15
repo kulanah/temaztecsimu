@@ -341,4 +341,17 @@ let resetPosition = function(){
   }
 }
 
+//function that handles the updates for the wobble
+let toggleWobble = function(){
+  if (openScreen == 0){
+    if (activeWindow == 0){
+      openbox.toggleWobble();
+    } else {
+      setupbox.toggleWobble();
+    }
+  } else {
+    mainmicro.toggleWobble();
+  }
+}
+
 window.addEventListener('message', handleMessage, false);
