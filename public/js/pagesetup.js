@@ -4,7 +4,8 @@
 'use strict';
 
 
-let beamslider; 
+let beamslider;
+let zcounter = 6;
 
 let pageSetup = function(){
   //array of elements that we close when you click outside of the item
@@ -43,6 +44,10 @@ let pageSetup = function(){
       cancel: 'map, iframe',
       iframeFix: true
     });
+    $('#' + listOfDraggables[i]).mousedown(function(){
+      $('#' + listOfDraggables[i]).css('z-index', zcounter);
+      zcounter++;
+    });
   }
 
   // Make notepad draggable separately because cancelling map on notepad causes the textarea to become unclickable
@@ -50,8 +55,10 @@ let pageSetup = function(){
     addClasses: true,
     iframeFix: true
   });
-
-  $( ".ui-draggable" ).draggable( "option", "stack", ".ui-draggable" );
+  $('#notepad').mousedown(function(){
+    $('#notepad').css('z-index', zcounter);
+    zcounter++;
+  });
 
   new ResizeSensor($('#qanda'), function(){ 
     $('.popcontent').width($('#qanda').width());
