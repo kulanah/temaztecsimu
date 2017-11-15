@@ -226,7 +226,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 			ctx.fillRect(xCenter+100,temLens[i].y-12,14,24);
 		}
 		if (temLens[i].kind == 'label'){
-			ctx.fillStyle = '#fff';
+			ctx.strokeStyle= '#fff';
 			//draws the empty squares for the label boxes
 			ctx.strokeRect(xCenter-114,temLens[i].y-12,14,24);
 			ctx.strokeRect(xCenter+100,temLens[i].y-12,14,24);
