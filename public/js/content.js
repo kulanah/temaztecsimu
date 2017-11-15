@@ -84,6 +84,7 @@ function notepadClicked(){
     $("#notepadbtn").click(function(){
         if(isVisible("notepad") === false){
             $("#notepad").show();
+            $("#notes").focus();
         }else{
             $("#notepad").hide();
         }
