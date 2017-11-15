@@ -143,16 +143,19 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 	ctx.fillStyle = "#9b9b9b";
 	for (i = 0; i < numOfLenses; ++i){
 		if (zoomVer){
-			lenswidth = 80;
-			lensxCenter = xCenter - 40;
-			lensheight = 5;
+			lenswidth = 45;
+			lensxCenter = xCenter;
+			lensheight = 2;
 		} else {
-			lenswidth = 80;
-			lensxCenter = xCenter - 40;
-			lensheight = 10;
+			lenswidth = 40;
+			lensxCenter = xCenter;
+			lensheight = 5;
 		}
 		if (temLens[i].kind == 'lens'){
-			ctx.fillRect(lensxCenter, temLens[i].y-5, lenswidth, lensheight);
+			ctx.beginPath();
+			ctx.ellipse(lensxCenter, temLens[i].y, lenswidth, lensheight, 0, 0, 2 * Math.PI);
+			ctx.fillStyle = "white";
+			ctx.fill();
 		}
 	}
 	//Ray drawing function
