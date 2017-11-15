@@ -41,20 +41,17 @@ let pageSetup = function(){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
       cancel: 'map, iframe',
-      // Fix for smoothly dragging iframes found at https://stackoverflow.com/questions/5632295/jquery-draggable-iframefix/24597136#24597136
-      start: function() {
-        $('.frameOverlay').show();
-      },
-      stop: function() {
-          $('.frameOverlay').hide();
-      }
+      iframeFix: true
     });
   }
 
   // Make notepad draggable separately because cancelling map on notepad causes the textarea to become unclickable
   $('#notepad').draggable({
-    addClasses: true
+    addClasses: true,
+    iframeFix: true
   });
+
+  $( ".ui-draggable" ).draggable( "option", "stack", ".ui-draggable" );
 
   new ResizeSensor($('#qanda'), function(){ 
     $('.popcontent').width($('#qanda').width());
