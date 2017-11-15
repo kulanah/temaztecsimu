@@ -38,6 +38,24 @@ let pageSetup = function(){
     value: 7,
   });
 
+  function bringToFront(id) {
+    // Whenever an element appears, move it to the front
+    $(function() {
+      var target = document.querySelector('#' + id);
+      var observer = new MutationObserver(function(mutations) {
+        observer.disconnect();
+        $('#' + id).css('z-index', zcounter);
+        zcounter++;
+        observer.observe(target, {
+          attributeFilter: ['style']
+        });        
+      });
+      observer.observe(target, {
+        attributeFilter: ['style']
+      });
+    });
+  };
+
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
@@ -48,6 +66,7 @@ let pageSetup = function(){
       $('#' + listOfDraggables[i]).css('z-index', zcounter);
       zcounter++;
     });
+    bringToFront(listOfDraggables[i]);
   }
 
   // Make notepad draggable separately because cancelling map on notepad causes the textarea to become unclickable
@@ -59,7 +78,8 @@ let pageSetup = function(){
     $('#notepad').css('z-index', zcounter);
     zcounter++;
   });
-  
+  bringToFront('notepad');
+
   //Setup for the alignment box, currently only sets the tune tab one.
   let tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
   tunealignmentbox.drawInital();
