@@ -6,7 +6,9 @@ let mainScreen = function(){
       $('#maindropdown').hide();
       maindrop = false;
     } else {
-      $('#maindropdown').show();
+      $('#maindropdown').show(0, function(){
+        $('#maindropdown').css('z-index', zcounter);
+      });
     }
   });
 
