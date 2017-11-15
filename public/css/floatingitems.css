@@ -322,13 +322,6 @@ iframe {
   border: 2px solid gray;
 }
 
-.frameOverlay {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  display: none;
-}
-
 #floatingstigmatordiv {
   position: absolute;
   top: 6.8vh;
