@@ -81,6 +81,25 @@ let pageSetup = function(){
   });
   bringToFront('notepad');
 
+  // Special case for microscope controls since the container div is shown/hidden,
+  // but the individual controllers are moved to the front
+  $(function() {
+    var target = document.querySelector('#microControls');
+    var observer = new MutationObserver(function(mutations) {
+      // Disconnect the observer to avoid an infinite loop, change the z-index, then reconnect
+      observer.disconnect();
+      $('#leftControllerDiv').css('z-index', zcounter);
+      $('#rightControllerDiv').css('z-index', zcounter);
+      zcounter++;
+      observer.observe(target, {
+        attributeFilter: ['style']
+      });        
+    });
+    observer.observe(target, {
+      attributeFilter: ['style']
+    });
+  });
+
   //Setup for the alignment box, currently only sets the tune tab one.
   let tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
   tunealignmentbox.drawInital();
