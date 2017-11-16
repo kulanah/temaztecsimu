@@ -17,27 +17,6 @@ let pageSetup = function(){
   'columndivzoom', 'leftControllerDiv', 'rightControllerDiv', 'qanda', 'examples', 'homework', 
   'curriculum', 'learningmode', 'floatingstigmatordiv', 'lecturediv'];
   
-  $(document).mouseup(function(e) {
-    for (let i = 0; i < closewhenoffclick.length; ++i){
-      var $container = $('#' + closewhenoffclick[i]);
-
-      // if the target of the click isn't the container nor a descendant of the container
-      if (!$container.is(e.target) && $container.has(e.target).length === 0) {
-        $container.hide();
-      }
-    }
-  });
-
-  $('img').on('dragstart', function(event){ 
-      event.preventDefault(); 
-  });
-
-
-  beamslider = $('#beamrange').slider({
-    values: [1, 11], 
-    value: 7,
-  });
-
   function bringToFront(id) {
     // Whenever an element appears, move it to the front
     $(function() {
@@ -56,6 +35,34 @@ let pageSetup = function(){
       });
     });
   };
+
+  $(document).mouseup(function(e) {
+    for (let i = 0; i < closewhenoffclick.length; ++i){
+      var $container = $('#' + closewhenoffclick[i]);
+
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!$container.is(e.target) && $container.has(e.target).length === 0) {
+        $container.hide();
+      }
+    }
+  });
+
+  // openfiledialog causes page to freeze if brought to front and appears at front without
+  // use of this function; floatingdeflectorbox will already be at front due to being the 
+  // child element of a draggable
+  bringToFront('maindropdown');  
+  bringToFront('filemenu');
+  bringToFront('deflectorbox');
+
+  $('img').on('dragstart', function(event){ 
+      event.preventDefault(); 
+  });
+
+
+  beamslider = $('#beamrange').slider({
+    values: [1, 11], 
+    value: 7,
+  });
 
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
