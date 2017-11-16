@@ -116,5 +116,5 @@ let pageSetup = function(){
   //setup for the canvas classes
 
   $('#magnificationvalue').text(setupbox.zooms[setupbox.mag] + ' x')
-  $('#spotsizevalue').text($('#beamrange').val());
+  $('#spotsizevalue').text(' ' + $('#beamrange').val());
 };
