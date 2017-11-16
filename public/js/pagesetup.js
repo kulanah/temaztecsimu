@@ -47,9 +47,8 @@ let pageSetup = function(){
     }
   });
 
-  // openfiledialog causes page to freeze if brought to front and appears at front without
-  // use of this function; floatingdeflectorbox will already be at front due to being the 
-  // child element of a draggable
+  // openfiledialog gets bringToFront called on it as a draggable, below
+  // floatingdeflectorbox will already be at front due to being the child element of a draggable
   bringToFront('maindropdown');  
   bringToFront('filemenu');
   bringToFront('deflectorbox');
