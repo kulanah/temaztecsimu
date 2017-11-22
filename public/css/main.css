@@ -64,7 +64,7 @@ body{
 #spotsizedisplay{
   position: absolute;
   top: 91.6vh;
-  right: 42.75vw;
+  right: 42.734vw;
 }
 
 #spotsizevalue{
@@ -72,6 +72,7 @@ body{
   font-size: x-large;
   font-size: 1.4vw;
   font-family: sans-serif;
+  white-space: pre;
 }
 
 #controlsinstruction{

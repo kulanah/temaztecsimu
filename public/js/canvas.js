@@ -110,7 +110,6 @@ class Canvas {
   };
 
   drawCanvas(){
-    //$('#spotsizevalue').text($(''))
     if (diffractionMode && this == setupbox){
       document.getElementById('setupcrosshair').style.visibility = 'hidden';
       $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
