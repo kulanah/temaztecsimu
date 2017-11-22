@@ -38,7 +38,7 @@ temLens[17] = new lens(0,0,700,100,'label','Image Deflection 1');
 temLens[18] = new lens(0,0,750,30,'label','Image Deflection 2');
 temLens[19] = new lens(0,0,800,24,'aperture','SAED Aperture');
 temLens[20] = new lens(0,0,840,58,'lens','Intermediate/Diffraction Lens');
-temLens[21] = new lens(0,0,880,55,'lens','Projection lens 1');
+temLens[21] = new lens(0,0,880,85,'lens','Projection lens 1');
 temLens[22] = new lens(0,0,990,10,'lens','Projection Lens 2');
 temLens[23] = new lens(0,0,1090,5,'screen','Viewing Screen');
 
