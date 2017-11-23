@@ -14,5 +14,8 @@ let column = function() {
 
   $('#zoomexit').on('click', function(){
     $('#columndivzoom').hide();
+    zoomed = false;
+    $('#labelcanvas')[0].getContext('2d').clearRect(0,0,3000,3000);
+    drawColumn();
   });
 }

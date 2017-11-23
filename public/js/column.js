@@ -304,6 +304,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 	ctx.restore();	
 
 	if (zoomed && !zoomVer){
+		console.log(ctx);
 		ctx.beginPath();
 		ctx.lineWidth = 5;
 		ctx.strokeRect(10, temLens[lensFocus].y-50, canvasWidth- 15, 100);
