@@ -83,7 +83,9 @@ for(i = 0; i < temLens.length; i++){
 function drawColumn(){
 	if (zoomed){
 		drawColumnParam(5.4, zoomedOffsetStatic, true, 0.4);
+		
 	}
+
 	
 	drawColumnParam();
 
@@ -103,6 +105,8 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 		beamDiag = $('#columncanvaszoom');
 		beamLabels = $('#labelcanvaszoom');
 	}
+
+
 
 	beamLabels.css('position', 'absolute');
 	beamLabels.css('top', yOffset);	
@@ -298,5 +302,13 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 		}
 	}
 	ctx.restore();	
+
+	if (zoomed && !zoomVer){
+		ctx.beginPath();
+		ctx.lineWidth = 5;
+		ctx.strokeRect(10, temLens[lensFocus].y-50, canvasWidth- 15, 100);
+		ctx.restore();
+
+	}
 
 }

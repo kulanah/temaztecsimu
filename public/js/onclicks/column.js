@@ -7,6 +7,7 @@ let column = function() {
     lensFocus = this.number;
     $('#columndivzoom').show();
     zoomedOffsetStatic = $(window).height() * -5.4 / 1160 * temLens[lensFocus].y + 180;
+    
 
     drawColumn(zoomedOffsetStatic);
   });
