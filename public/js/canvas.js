@@ -139,18 +139,9 @@ class Canvas {
     
     this.context.beginPath();
     this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
-    if(this.haloX == 0){
-      var haloAngle = Math.PI / 2 * Math.sign(this.haloY) * -1;
-    } else {
-      var haloAngle = Math.atan(this.haloY * -1 / this.haloX);
-    }
-    if(this.haloX < 0) {
-      this.context.moveTo(this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle))
-      this.context.quadraticCurveTo(this.maskX + this.haloX * 2.25, this.maskY + this.haloY * 2.25, this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle));
-    } else {
-      this.context.moveTo(this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle))
-      this.context.quadraticCurveTo(this.maskX + this.haloX * 2.25, this.maskY + this.haloY * 2.25, this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle));
-    }
+    let haloAngle = Math.atan2(this.haloY * -1, this.haloX)
+    this.context.moveTo(this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle))
+    this.context.quadraticCurveTo(this.maskX + this.haloX * 2.25, this.maskY + this.haloY * 2.25, this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle));
     this.context.clip();
     
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
