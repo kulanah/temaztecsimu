@@ -146,10 +146,10 @@ class Canvas {
     }
     if(this.haloX < 0) {
       this.context.moveTo(this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle))
-      this.context.quadraticCurveTo(this.maskX + this.haloX * 2, this.maskY + this.haloY * 2, this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle));
+      this.context.quadraticCurveTo(this.maskX + this.haloX * 2.25, this.maskY + this.haloY * 2.25, this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle));
     } else {
       this.context.moveTo(this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle))
-      this.context.quadraticCurveTo(this.maskX + this.haloX * 2, this.maskY + this.haloY * 2, this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle));
+      this.context.quadraticCurveTo(this.maskX + this.haloX * 2.25, this.maskY + this.haloY * 2.25, this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle));
     }
     this.context.clip();
     
