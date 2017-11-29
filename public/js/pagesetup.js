@@ -74,6 +74,9 @@ let pageSetup = function(){
       zcounter++;
     });
     bringToFront(listOfDraggables[i]);
+    $('#' + listOfDraggables[i]).css({
+      'cursor':'move'
+    });
   }
 
   // Make notepad draggable separately because cancelling map on notepad causes the textarea to become unclickable

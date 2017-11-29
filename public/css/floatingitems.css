@@ -306,6 +306,10 @@ iframe {
   resize: both;  
 }
 
+iframe:hover {
+  cursor: nwse-resize;
+}
+
 #notepad {
   position: absolute;
   top: 77vh;
@@ -313,6 +317,10 @@ iframe {
   overflow: hidden;
   border: 5px solid #422000;
   background: #422000;
+}
+
+#notepad:hover {
+  cursor: move;
 }
 
 #notes {
