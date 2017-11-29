@@ -75,15 +75,14 @@ let microscopeControllers = function(){
 
   $('#buttonl2').on('click', function(event){
     toggleWobble();
+    if 
 
   });
 
   $('#buttonl3').on('click', function(event){
-
-
-    if (beamslider[0].value < 11){
+    if (beamslider[0].value > 1){
       let value = beamslider.val();
-      ++value;
+      --value;
       temLens[20].f -= .1;
       updateBeamSlider(value);    
       drawColumn();
@@ -91,9 +90,9 @@ let microscopeControllers = function(){
   });
 
   $('#buttonr3').on('click', function(event){
-    if (beamslider[0].value > 1){
+    if (beamslider[0].value < 11){
       let value = beamslider.val();
-      --value;
+      ++value;
       temLens[20].f += .1;
       updateBeamSlider(value);
       drawColumn();
