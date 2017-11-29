@@ -86,3 +86,7 @@ body{
   top: 75vh;
   left: 23vw;
 }
+
+button{
+  cursor: pointer;
+}
