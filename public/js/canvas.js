@@ -138,7 +138,21 @@ class Canvas {
     }
     
     this.context.beginPath();
-    this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
+
+    // Ellipse approach - extends out in both directions
+    let haloAngle = Math.atan2(this.haloY, this.haloX);
+    let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
+    this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance),Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance),haloAngle,0,Math.PI * 2);
+
+    // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
+    /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
+    if(Math.pow(newRadius, 2) < (Math.pow(this.haloX * 1.25, 2) + Math.pow(this.haloY * 1.25, 2))){
+      // Conditional avoids unnecessary manipulations when halo is within beam, mitigating odd shadow lines
+      let haloAngle = Math.atan2(this.haloY * -1, this.haloX);
+      this.context.moveTo(this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle));
+      this.context.quadraticCurveTo(this.maskX + this.haloX * 2.25, this.maskY + this.haloY * 2.25, this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle));
+    }*/
+
     this.context.clip();
     
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
@@ -418,14 +432,14 @@ class Canvas {
         case 'guntilt':
           let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
           this.haloX += deltaX;
-          if (this.haloX > maskRadius){
+          /*if (this.haloX > maskRadius){
             this.haloX = maskRadius;
           } else if (this.haloX < -maskRadius){
             this.haloX = -maskRadius;
           }
           if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(maskRadius, 2)){
             this.haloY = Math.sqrt(Math.pow(maskRadius, 2) - Math.pow(this.haloX, 2)) * Math.sign(this.haloY);
-          }
+          }*/
           break;
         case 'gunshift':
         case 'beamshift':
@@ -460,14 +474,14 @@ class Canvas {
         case 'guntilt':
           let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
           this.haloY += deltaY;
-          if (this.haloY > maskRadius){
+          /*if (this.haloY > maskRadius){
             this.haloY = maskRadius;
           } else if (this.haloY < -maskRadius){
             this.haloY = -maskRadius;
           }
           if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(maskRadius, 2)){
             this.haloX = Math.sqrt(Math.pow(maskRadius, 2) - Math.pow(this.haloY, 2)) * Math.sign(this.haloX);
-          }
+          }*/
           break;
         case 'gunshift':
         case 'beamshift':        

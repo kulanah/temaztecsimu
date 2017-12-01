@@ -307,11 +307,8 @@
 }
 
 iframe {
-  resize: both;  
-}
-
-iframe:hover {
-  cursor: nwse-resize;
+  resize: both;
+  cursor: nwse-resize;  
 }
 
 #notepad {
@@ -321,10 +318,7 @@ iframe:hover {
   overflow: hidden;
   border: 5px solid #422000;
   background: #422000;
-}
-
-#notepad:hover {
-  cursor: move;
+  cursor: move;  
 }
 
 #notes {

@@ -207,3 +207,7 @@
 #tunealignmentstepvalue{
   font-size: .85vw;
 }
+
+details{
+  cursor: pointer;
+}
