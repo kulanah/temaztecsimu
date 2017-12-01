@@ -75,7 +75,11 @@ let microscopeControllers = function(){
 
   $('#buttonl2').on('click', function(event){
     toggleWobble();
-    if 
+    wobbleMode = !wobbleMode;
+    if (pivotPoint){
+      deactivateDirectAlignments();
+      pivotPoint = !pivotPoint;
+    }
 
   });
 

@@ -116,49 +116,49 @@ let mainScreen = function(){
   });
 
   $('#daguntilt').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
     activateGunTilt();
   })
 
   $('#dagunshift').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
     activateGunShift();
   })
 
   $('.ppxtoggle').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
     activatePivotPointX();
   });
 
   $('.ppytoggle').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
     activatePivotPointY();
   });
 
   $('#dabeamshift').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
     resetPosition();
     activateBeamShift();
   })
 
   $('#darotationcenter').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
     activateRotationCenter();
   })
 
   $('#dacomafreealignmentx').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
     activateComaFreeAlignmentX();
     $('#diffractograms').show();
   })
 
   $('#dacomafreealignmenty').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
     activateComaFreeAlignmentY();
     $('#diffractograms').show();    
   })
 
   $('#dadone').on('click', function(event){
-    deactivateDirectAlignments();
+    deactivateDA();
   })
 };

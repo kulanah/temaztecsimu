@@ -9,6 +9,7 @@ let openScreen = 0;
 let activeWindow = 0;
 let diffractionMode = false;
 let wobbleMode = false;
+let pivotPoint = false;
 
 let clickFunctions = function(){
   column();

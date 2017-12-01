@@ -210,6 +210,7 @@ let activateGunShift = function(){
 }
 
 let activatePivotPointX = function(){
+  pivotPoint = !pivotPoint;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activatePivotPointX();
@@ -222,6 +223,7 @@ let activatePivotPointX = function(){
 }
 
 let activatePivotPointY = function(){
+  pivotPoint = !pivotPoint;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activatePivotPointY();
@@ -352,6 +354,13 @@ let toggleWobble = function(){
   } else {
     mainmicro.toggleWobble();
   }
+}
+
+let deactivateDA = function(){
+  if (wobbleMode){
+    toggleWobble();
+  }
+  deactivateDirectAlignments();
 }
 
 window.addEventListener('message', handleMessage, false);
