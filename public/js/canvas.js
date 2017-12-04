@@ -286,16 +286,6 @@ class Canvas {
   };
 
   changeIntensity(delta){
-    /*if (this == setupbox){
-      let shift = (delta - 1) * 100
-      if (shift > 0){
-        this.diffractionRadiusX++;
-        this.diffractionRadiusY++;
-      } else if (shift < 0) {
-        this.diffractionRadiusX--;
-        this.diffractionRadiusY--;
-      }
-    }*/
     let effectiveRadius = this.calculateRadius();
     delta = delta - 1;
 
