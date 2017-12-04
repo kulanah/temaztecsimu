@@ -113,9 +113,9 @@ class Canvas {
     if (diffractionMode && this == setupbox){
       document.getElementById('setupcrosshair').style.visibility = 'hidden';
       $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
-      this.drawDiffraction();
       let context = this.glowSelector[0].getContext('2d');
-      context.clearRect(0,0,2000,1000);      
+      context.clearRect(0,0,2000,1000);
+      this.drawDiffraction();
       return;
     }
     document.getElementById('setupcrosshair').style.visibility = 'visible';
