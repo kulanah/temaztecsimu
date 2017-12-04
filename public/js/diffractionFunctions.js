@@ -221,8 +221,27 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 }
+                drawKikuchiLine(canvas, xOffset, yOffset, radiusY, r1, dx, dy, angle, 0, i, j)
             }
         }
+    }
+}
+
+function drawKikuchiLine(canvas, xOffset, yOffset, radiusY, r1, dx, dy, angle, thickness, i, j){
+    // Draw Kikuchi lines
+    if (thickness == 0){
+        return;
+    }
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        ctx.fillRect(0, -radiusY + yOffset + dy * j, canvas.width, radiusY * 2);
+        ctx.beginPath();
+        ctx.moveTo(xOffset - 1 * dx - radiusY + i * r1 + j * dx, yOffset + 1 * dy - radiusY + j * dy);
+        ctx.lineTo(xOffset + 1 * dx - radiusY + i * r1 + j * dx, yOffset - 1 * dy - radiusY + j * dy);
+        ctx.lineTo(xOffset + 1 * dx + radiusY + i * r1 + j * dx, yOffset - 1 * dy + radiusY + j * dy);
+        ctx.lineTo(xOffset - 1 * dx + radiusY + i * r1 + j * dx, yOffset + 1 * dy + radiusY + j * dy);
+        ctx.lineTo(xOffset - 1 * dx - radiusY + i * r1 + j * dx, yOffset + 1 * dy - radiusY + j * dy);
+        ctx.fill();
     }
 }
 
