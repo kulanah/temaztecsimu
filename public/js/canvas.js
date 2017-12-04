@@ -286,7 +286,7 @@ class Canvas {
   };
 
   changeIntensity(delta){
-    if (diffractionMode && this == setupbox){
+    /*if (this == setupbox){
       let shift = (delta - 1) * 100
       if (shift > 0){
         this.diffractionRadiusX++;
@@ -295,9 +295,7 @@ class Canvas {
         this.diffractionRadiusX--;
         this.diffractionRadiusY--;
       }
-      this.drawCanvas();
-      return 0;
-    }
+    }*/
     let effectiveRadius = this.calculateRadius();
     delta = delta - 1;
 
@@ -319,6 +317,7 @@ class Canvas {
     }
     this.haloX = this.haloX * this.maskR / oldR;
     this.haloY = this.haloY * this.maskR / oldR;
+
     this.drawCanvas();
     return (this.maskR - oldR);
   };
@@ -660,6 +659,8 @@ class Canvas {
   drawDiffraction(){
     clearCanvas(this.selector[0]);
     drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
+    this.diffractionRadiusX = 64 / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    this.diffractionRadiusY = 64 / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
     var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
     for(i = 0; i < settings[0].length; i++) {      
       drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i]);
