@@ -240,17 +240,17 @@ function drawKikuchiLine(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx,
         let r2LineWidthY = radiusY * r2 / Math.min(r1, r2) * Math.tan(angle);
         ctx.fillRect(0, -radiusY + yOffset + dy * j, canvas.width, r1LineWidth);
         ctx.beginPath();
-        ctx.moveTo(xOffset - scalar * dx - radiusY + i * r1 + j * dx, yOffset + scalar * dy - radiusY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx - radiusY + i * r1 + j * dx, yOffset - scalar * dy - radiusY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx + radiusY + i * r1 + j * dx, yOffset - scalar * dy + radiusY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx + radiusY + i * r1 + j * dx, yOffset + scalar * dy + radiusY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx - radiusY + i * r1 + j * dx, yOffset + scalar * dy - radiusY + j * dy);
+        ctx.moveTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
         ctx.fill();
-        ctx.moveTo(xOffset - scalar * dx + radiusY + i * r1 + j * dx, yOffset - scalar * dy - radiusY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx + radiusY + i * r1 + j * dx, yOffset + scalar * dy - radiusY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx - radiusY + i * r1 + j * dx, yOffset + scalar * dy + radiusY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx - radiusY + i * r1 + j * dx, yOffset - scalar * dy + radiusY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx + radiusY + i * r1 + j * dx, yOffset - scalar * dy - radiusY + j * dy);
+        ctx.moveTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
         ctx.fill();        
     }
 }
