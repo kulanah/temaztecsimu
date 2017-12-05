@@ -163,5 +163,8 @@ let mainScreen = function(){
   })
 
   // To do: condensor stigmator makes beam ellipse
+
+
   // To do: diffraction stigmator makes dots ellipses
+  
 };
