@@ -77,8 +77,8 @@ class Canvas {
     this.diffractionX = 256;
     this.diffractionY = 256;
     this.diffractionCameraLength = 265;
-    this.diffractionRadiusX = 1;
-    this.diffractionRadiusY = 1;
+    this.diffractionRadiusX = 64;
+    this.diffractionRadiusY = 64;
     this.specimenThickness = 100;
 
     this.alignmentMode = 'none';    
@@ -417,22 +417,20 @@ class Canvas {
 
   multiXDrag(deltaX){
     if (!isNaN(deltaX)){
-      // console.log(deltaX);
       if (diffractionMode && this == setupbox){
-        //this.diffractionX += deltaX;
-        this.specimenThickness += deltaX;
+        if(diffractionStigmation){
+          this.diffractionRadiusX += deltaX;
+          if(this.diffractionRadiusX < 0){
+            this.diffractionRadiusX = 0;
+          }
+        } else {
+          //this.diffractionX += deltaX;
+          this.specimenThickness += deltaX;
+        }
       } else switch (this.alignmentMode){
         case 'guntilt':
           let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
           this.haloX += deltaX;
-          /*if (this.haloX > maskRadius){
-            this.haloX = maskRadius;
-          } else if (this.haloX < -maskRadius){
-            this.haloX = -maskRadius;
-          }
-          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(maskRadius, 2)){
-            this.haloY = Math.sqrt(Math.pow(maskRadius, 2) - Math.pow(this.haloX, 2)) * Math.sign(this.haloY);
-          }*/
           break;
         case 'gunshift':
         case 'beamshift':
@@ -459,22 +457,20 @@ class Canvas {
   }
 
   multiYDrag(deltaY){
-    //TODO: remove this duplication of code
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
-        this.diffractionY += deltaY;
+        if(diffractionStigmation){
+          this.diffractionRadiusY += deltaY;
+          if(this.diffractionRadiusY < 0){
+            this.diffractionRadiusY = 0;
+          }
+        } else {
+          this.diffractionY += deltaY;
+        }
       } else switch (this.alignmentMode){
         case 'guntilt':
           let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
           this.haloY += deltaY;
-          /*if (this.haloY > maskRadius){
-            this.haloY = maskRadius;
-          } else if (this.haloY < -maskRadius){
-            this.haloY = -maskRadius;
-          }
-          if (Math.pow(this.haloX, 2) + Math.pow(this.haloY, 2) > Math.pow(maskRadius, 2)){
-            this.haloX = Math.sqrt(Math.pow(maskRadius, 2) - Math.pow(this.haloY, 2)) * Math.sign(this.haloX);
-          }*/
           break;
         case 'gunshift':
         case 'beamshift':        
@@ -653,11 +649,11 @@ class Canvas {
   drawDiffraction(){
     clearCanvas(this.selector[0]);
     drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
-    this.diffractionRadiusX = 64 / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
-    this.diffractionRadiusY = 64 / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    let radiusX = this.diffractionRadiusX / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    let radiusY = this.diffractionRadiusY / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
     var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
     for(i = 0; i < settings[0].length; i++) {
-      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness);
+      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness);
     }
   }
 

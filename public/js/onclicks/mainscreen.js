@@ -166,5 +166,11 @@ let mainScreen = function(){
 
 
   // To do: diffraction stigmator makes dots ellipses
-  
+  $('#floatdiffraction').on('click', function(event){
+    diffractionStigmation = true;
+  })
+
+  $('#floatnone').on('click', function(event){
+    diffractionStigmation = false;
+  })
 };
