@@ -221,27 +221,37 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 }
-                drawKikuchiLine(canvas, xOffset, yOffset, radiusY, r1, dx, dy, angle, 0, i, j)
+                drawKikuchiLine(canvas, xOffset, yOffset, radiusY, r1, r2, dx, dy, angle, 1, i, j)
             }
         }
     }
 }
 
-function drawKikuchiLine(canvas, xOffset, yOffset, radiusY, r1, dx, dy, angle, thickness, i, j){
+function drawKikuchiLine(canvas, xOffset, yOffset, radiusY, r1, r2, dx, dy, angle, specimenThickness, i, j){
     // Draw Kikuchi lines
-    if (thickness == 0){
+    if (specimenThickness == 0){
         return;
     }
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
-        ctx.fillRect(0, -radiusY + yOffset + dy * j, canvas.width, radiusY * 2);
+        const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
+        let r1LineWidth = radiusY * 2 * r1 / Math.min(r1, r2);
+        let r2LineWidthX = radiusX * r2 / Math.min(r1, r2) / Math.tan(angle);
+        let r2LineWidthY = radiusY * r2 / Math.min(r1, r2) * Math.tan(angle);
+        ctx.fillRect(0, -radiusY + yOffset + dy * j, canvas.width, r1LineWidth);
         ctx.beginPath();
-        ctx.moveTo(xOffset - 1 * dx - radiusY + i * r1 + j * dx, yOffset + 1 * dy - radiusY + j * dy);
-        ctx.lineTo(xOffset + 1 * dx - radiusY + i * r1 + j * dx, yOffset - 1 * dy - radiusY + j * dy);
-        ctx.lineTo(xOffset + 1 * dx + radiusY + i * r1 + j * dx, yOffset - 1 * dy + radiusY + j * dy);
-        ctx.lineTo(xOffset - 1 * dx + radiusY + i * r1 + j * dx, yOffset + 1 * dy + radiusY + j * dy);
-        ctx.lineTo(xOffset - 1 * dx - radiusY + i * r1 + j * dx, yOffset + 1 * dy - radiusY + j * dy);
+        ctx.moveTo(xOffset - scalar * dx - radiusY + i * r1 + j * dx, yOffset + scalar * dy - radiusY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx - radiusY + i * r1 + j * dx, yOffset - scalar * dy - radiusY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx + radiusY + i * r1 + j * dx, yOffset - scalar * dy + radiusY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx + radiusY + i * r1 + j * dx, yOffset + scalar * dy + radiusY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx - radiusY + i * r1 + j * dx, yOffset + scalar * dy - radiusY + j * dy);
         ctx.fill();
+        ctx.moveTo(xOffset - scalar * dx + radiusY + i * r1 + j * dx, yOffset - scalar * dy - radiusY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx + radiusY + i * r1 + j * dx, yOffset + scalar * dy - radiusY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx - radiusY + i * r1 + j * dx, yOffset + scalar * dy + radiusY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx - radiusY + i * r1 + j * dx, yOffset - scalar * dy + radiusY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx + radiusY + i * r1 + j * dx, yOffset - scalar * dy - radiusY + j * dy);
+        ctx.fill();        
     }
 }
 
