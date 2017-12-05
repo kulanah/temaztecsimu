@@ -27,6 +27,8 @@ class Canvas {
     this.maskX = 0;
     this.maskY = 0;
     this.maskR = 0;
+    this.maskRadiusXMultiplier = 1;
+    this.maskRadiusYMultiplier = 1;
     this.combinedRadius = 0;
 
     this.haloX = 0;
@@ -142,7 +144,8 @@ class Canvas {
     // Ellipse approach - extends out in both directions
     let haloAngle = Math.atan2(this.haloY, this.haloX);
     let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
-    this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance),Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance),haloAngle,0,Math.PI * 2);
+    this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance) * this.maskRadiusXMultiplier,
+      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * this.maskRadiusYMultiplier, haloAngle,0,Math.PI * 2);
 
     // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
     /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -454,6 +457,9 @@ class Canvas {
           this.astigmatism *= Math.pow(1.001, deltaX);
           this.drawDiffractogramImages();
           break;
+        case 'condensor':
+          this.maskRadiusXMultiplier += deltaX * .01;
+          break;
       }
       this.drawCanvas();
     }
@@ -487,6 +493,9 @@ class Canvas {
           break;
         case 'rotationcenter':
           this.rotateBeta += deltaY;
+          break;
+        case 'condensor':
+          this.maskRadiusYMultiplier += deltaY * .01;
           break;
       }
       this.drawCanvas();
@@ -642,6 +651,10 @@ class Canvas {
     thisIn.maskY += thisIn.jump;
     thisIn.jump = -thisIn.jump;
     thisIn.drawCanvas();
+  }
+
+  activateCondensor(){
+    this.alignmentMode = 'condensor';
   }
 
   drawDiffractogramImages(){

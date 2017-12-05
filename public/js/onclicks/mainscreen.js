@@ -162,15 +162,19 @@ let mainScreen = function(){
     deactivateDA();
   })
 
-  // To do: condensor stigmator makes beam ellipse
+  // Condensor stigmator makes beam ellipse
+  $('#floatcondensor').on('click', function(event){
+    deactivateDA();
+    activateCondensor();
+  })
 
-
-  // To do: diffraction stigmator makes dots ellipses
+  // Diffraction stigmator makes dots ellipses
   $('#floatdiffraction').on('click', function(event){
     diffractionStigmation = true;
   })
 
   $('#floatnone').on('click', function(event){
+    deactivateDA();
     diffractionStigmation = false;
   })
 };
