@@ -240,6 +240,8 @@ function drawKikuchiLine(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx,
         let r2LineWidthX = radiusX / 2 * r2 / Math.min(r1, r2);
         let r2LineWidthY = radiusY / 2 * r2 / Math.min(r1, r2);
         let r2LineTransparency = 1 / r2;
+        // Applying the blur filter significantly worsens performance, so it is not currently used
+        //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
         ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
         ctx.fillRect(0, -radiusY + yOffset + dy * j, canvas.width, r1LineWidth);
         ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
@@ -255,7 +257,7 @@ function drawKikuchiLine(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx,
         ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
         ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
         ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
-        ctx.fill();        
+        ctx.fill();
     }
 }
 
