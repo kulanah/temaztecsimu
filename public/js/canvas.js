@@ -36,8 +36,8 @@ class Canvas {
     //TODO: Change this from a constant to something more intelligent
     this.beamslider = $('#beamrange');
 
-    this.mag = 19;
     this.zooms = [2250, 3500, 4000, 4400, 6200, 8700, 9900, 13000, 15000, 26000, 34000, 38000, 43000, 63000, 86000, 125000, 175000, 250000, 350000, 400000];
+    this.mag = this.zooms.length - 1;
     for(i = 0; i < this.zooms.length; i++){
       if(this.zooms[i] >= this.imgScale){
         this.mag = i;
