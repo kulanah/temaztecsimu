@@ -426,6 +426,9 @@ class Canvas {
         } else {
           //this.diffractionX += deltaX;
           this.specimenThickness += deltaX;
+          if(this.specimenThickness < 0){
+            this.specimenThickness = 0;
+          }
         }
       } else switch (this.alignmentMode){
         case 'guntilt':
