@@ -185,7 +185,7 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
     }
 }
 
-function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur, intensity, type, layers, r1, r2, angle) {
+function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur, intensity, type, layers, r1, r2, angle, specimenThickness) {
     // Draw the lattice diffraction pattern
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
@@ -221,25 +221,25 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 }
-                drawKikuchiLine(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, 1, i, j)
+                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, i, j)
             }
         }
     }
 }
 
-function drawKikuchiLine(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, i, j){
+function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, i, j){
     // Draw Kikuchi lines
-    if (specimenThickness == 0){
+    if (specimenThickness <= 0){
         return;
     }
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
         const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
         let r1LineWidth = radiusY * 2 * r1 / Math.min(r1, r2);
-        let r1LineTransparency = 1 / r1;
+        let r1LineTransparency = Math.min(specimenThickness / r1, 1);
         let r2LineWidthX = radiusX / 2 * r2 / Math.min(r1, r2);
         let r2LineWidthY = radiusY / 2 * r2 / Math.min(r1, r2);
-        let r2LineTransparency = 1 / r2;
+        let r2LineTransparency = Math.min(specimenThickness / r2, 1);
         // Applying the blur filter significantly worsens performance, so it is not currently used
         //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
         ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
