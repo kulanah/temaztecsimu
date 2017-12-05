@@ -161,4 +161,7 @@ let mainScreen = function(){
   $('#dadone').on('click', function(event){
     deactivateDA();
   })
+
+  // To do: condensor stigmator makes beam ellipse
+  // To do: diffraction stigmator makes dots ellipses
 };

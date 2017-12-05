@@ -155,6 +155,8 @@ class Canvas {
 
     this.context.clip();
     
+    // To do: changing focus modifies contrast
+
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
       this.imgX,this.imgY,this.imgW,this.imgH);
