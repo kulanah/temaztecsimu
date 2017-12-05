@@ -236,9 +236,13 @@ function drawKikuchiLine(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx,
         var ctx = canvas.getContext('2d');
         const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
         let r1LineWidth = radiusY * 2 * r1 / Math.min(r1, r2);
-        let r2LineWidthX = radiusX * r2 / Math.min(r1, r2) / Math.tan(angle);
-        let r2LineWidthY = radiusY * r2 / Math.min(r1, r2) * Math.tan(angle);
+        let r1LineTransparency = 1 / r1;
+        let r2LineWidthX = radiusX / 2 * r2 / Math.min(r1, r2);
+        let r2LineWidthY = radiusY / 2 * r2 / Math.min(r1, r2);
+        let r2LineTransparency = 1 / r2;
+        ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
         ctx.fillRect(0, -radiusY + yOffset + dy * j, canvas.width, r1LineWidth);
+        ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
         ctx.beginPath();
         ctx.moveTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
         ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
