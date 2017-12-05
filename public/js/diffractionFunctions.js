@@ -221,13 +221,13 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 }
-                drawKikuchiLine(canvas, xOffset, yOffset, radiusY, r1, r2, dx, dy, angle, 1, i, j)
+                drawKikuchiLine(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, 1, i, j)
             }
         }
     }
 }
 
-function drawKikuchiLine(canvas, xOffset, yOffset, radiusY, r1, r2, dx, dy, angle, specimenThickness, i, j){
+function drawKikuchiLine(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, i, j){
     // Draw Kikuchi lines
     if (specimenThickness == 0){
         return;
