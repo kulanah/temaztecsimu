@@ -79,6 +79,7 @@ class Canvas {
     this.diffractionCameraLength = 265;
     this.diffractionRadiusX = 1;
     this.diffractionRadiusY = 1;
+    this.specimenThickness = 100;
 
     this.alignmentMode = 'none';    
 
@@ -417,7 +418,8 @@ class Canvas {
     if (!isNaN(deltaX)){
       // console.log(deltaX);
       if (diffractionMode && this == setupbox){
-        this.diffractionX += deltaX;
+        //this.diffractionX += deltaX;
+        this.specimenThickness += deltaX;
       } else switch (this.alignmentMode){
         case 'guntilt':
           let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
@@ -654,7 +656,7 @@ class Canvas {
     this.diffractionRadiusY = 64 / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
     var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
     for(i = 0; i < settings[0].length; i++) {
-      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], 1);
+      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, this.diffractionRadiusX, this.diffractionRadiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness);
     }
   }
 

@@ -236,10 +236,10 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         var ctx = canvas.getContext('2d');
         const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
         let r1LineWidth = radiusY * 2 * r1 / Math.min(r1, r2);
-        let r1LineTransparency = Math.min(specimenThickness / r1, 1);
+        let r1LineTransparency = Math.min(specimenThickness / 100 / r1, 1);
         let r2LineWidthX = radiusX / 2 * r2 / Math.min(r1, r2);
         let r2LineWidthY = radiusY / 2 * r2 / Math.min(r1, r2);
-        let r2LineTransparency = Math.min(specimenThickness / r2, 1);
+        let r2LineTransparency = Math.min(specimenThickness / 100 / r2, 1);
         // Applying the blur filter significantly worsens performance, so it is not currently used
         //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
         ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
