@@ -13,6 +13,10 @@ body{
   line-height: 0;
 }
 
+.mouseDown{
+  cursor: -webkit-grabbing;
+}
+
 .wintext{
   font-family: 'MS Sans Serif', Tahoma, Arial, Helvetica, sans-serif;
   font-size: 12px;
