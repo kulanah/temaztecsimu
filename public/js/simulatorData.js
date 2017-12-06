@@ -1,3 +1,6 @@
+// Establishes material class, contains specimen data
+// Currently hard-coded data, but will eventually be read in from database
+
 class Material {
   constructor(name, crystalStructure, a, b, c, alpha, beta, gamma) {
     this.name=name;

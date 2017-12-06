@@ -1,6 +1,6 @@
 /****
-*This file added buttons to the DOM and handles button events
-* in order to simulate app's user interface
+*This file handles button events
+* for the six bottom buttons on the right
 ****/
 
 var popped = '#popplaceholder';

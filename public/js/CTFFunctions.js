@@ -1,3 +1,5 @@
+// Produces diffractogram images and plots based on contrast transfer function
+
 function update() {
     // Extracts information from webpage
     var formData = new FormData(document.getElementById("form"));

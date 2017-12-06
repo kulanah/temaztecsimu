@@ -1,3 +1,5 @@
+// Handles calculations and display for diffraction mode
+
 function update() {
     // Extracts information from webpage
     var material = document.getElementById("material").value;
