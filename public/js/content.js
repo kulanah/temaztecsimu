@@ -19,6 +19,7 @@ function prepareContent(){
     saveNotes();
 }
 
+// Keep the popup position and dimensions consistent across content
 function swapPosition(id1, id2){
     let temptop = $(id1).css('top');
     let templeft = $(id1).css('left');
@@ -114,6 +115,7 @@ function notepadClicked(){
     iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
 }*/
 
+// Disable features in certain modes, direct users seeking those features to learning mode
 function learningModePopup(){
     popContentDisplay('#learningmode');
 }
@@ -145,6 +147,7 @@ function modeAdjustment(){
     }
 }
 
+// Add functionality to notepad buttons
 function closeNotes(){
     $('#closenotes').click(function(){
         $("#notepad").hide();        
