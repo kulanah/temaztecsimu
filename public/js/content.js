@@ -80,7 +80,7 @@ function ucClicked(){
 //toggle open and close video when clicking Lecture button
 function lectureClicked(){
     $("#lecturebtn").click(function(){
-        if(isVisible("lecturediv") === false){
+        if(!isVisible("lecturediv")){
             $("#lecturediv").show();
             $('#lectureinstruction').show();
         }else{
@@ -93,7 +93,7 @@ function lectureClicked(){
 //toggle open and close notepad feature when clicking Notepad button
 function notepadClicked(){
     $("#notepadbtn").click(function(){
-        if(isVisible("notepad") === false){
+        if(!isVisible("notepad")){
             $("#notepad").show();
             $("#notes").focus();
         }else{
