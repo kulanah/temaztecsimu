@@ -143,8 +143,8 @@ class Canvas {
     // Ellipse approach - extends out in both directions
     let haloAngle = Math.atan2(this.haloY, this.haloX);
     let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
-    this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance) * Math.sqrt(this.beamAstigmatism),
-      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) / Math.sqrt(this.beamAstigmatism), haloAngle,0,Math.PI * 2);
+    this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance) * this.beamAstigmatism,
+      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) / this.beamAstigmatism, haloAngle,0,Math.PI * 2);
 
     // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
     /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -421,7 +421,7 @@ class Canvas {
     if (!isNaN(deltaX)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.01, deltaX); // the dots are small, so the change is more pronounced (relative to other stigmators) to get a visible effect
+          this.diffractionAstigmatism *= Math.pow(1.005, deltaX); // the dots are small, so the change is more pronounced (relative to other stigmators) to get a visible effect
         } else {
           //this.diffractionX += deltaX;
           this.specimenThickness += deltaX;
@@ -454,7 +454,7 @@ class Canvas {
           this.drawDiffractogramImages();
           break;
         case 'condensor':
-          this.beamAstigmatism *= Math.pow(1.001, deltaX);
+          this.beamAstigmatism *= Math.pow(1.0005, deltaX);
           break;
       }
       this.drawCanvas();
@@ -465,7 +465,7 @@ class Canvas {
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.01, -deltaY);          
+          this.diffractionAstigmatism *= Math.pow(1.005, -deltaY);          
         } else {
           this.diffractionY += deltaY;
         }
@@ -488,7 +488,7 @@ class Canvas {
           this.rotateBeta += deltaY;
           break;
         case 'condensor':
-          this.beamAstigmatism *= Math.pow(1.001, -deltaY);
+          this.beamAstigmatism *= Math.pow(1.0005, -deltaY);
           break;
       }
       this.drawCanvas();
@@ -658,8 +658,8 @@ class Canvas {
   drawDiffraction(){
     clearCanvas(this.selector[0]);
     drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
-    let radiusX = this.diffractionRadius * Math.sqrt(this.diffractionAstigmatism) / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
-    let radiusY = this.diffractionRadius / Math.sqrt(this.diffractionAstigmatism) / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    let radiusX = this.diffractionRadius * this.diffractionAstigmatism / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    let radiusY = this.diffractionRadius / this.diffractionAstigmatism / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
     var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
     for(i = 0; i < settings[0].length; i++) {
       drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness);
