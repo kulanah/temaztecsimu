@@ -15,9 +15,9 @@ let pageSetup = function(){
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms',
   'columndivzoom', 'leftControllerDiv', 'rightControllerDiv', 'qanda', 'examples', 'homework', 
-  'curriculum', 'learningmode', 'lecturediv'];
+  'curriculum', 'learningmode', 'floatingstigmatordiv', 'lecturediv'];
 
-  let draggablesWithTextInputs = ['floatingstigmatordiv', 'notepad']
+  let draggablesWithTextInputs = ['notepad']
   
   function bringToFront(id) {
     // Whenever an element appears, move it to the front
