@@ -27,8 +27,8 @@ class Canvas {
     this.maskX = 0;
     this.maskY = 0;
     this.maskR = 0;
-    this.maskRadiusXMultiplier = 1;
-    this.maskRadiusYMultiplier = 1;
+    this.maskRadiusXMultiplier = 100;
+    this.maskRadiusYMultiplier = 100;
     this.combinedRadius = 0;
 
     this.haloX = 0;
@@ -144,8 +144,8 @@ class Canvas {
     // Ellipse approach - extends out in both directions
     let haloAngle = Math.atan2(this.haloY, this.haloX);
     let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
-    this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance) * this.maskRadiusXMultiplier,
-      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * this.maskRadiusYMultiplier, haloAngle,0,Math.PI * 2);
+    this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance) * this.maskRadiusXMultiplier / 100,
+      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * this.maskRadiusYMultiplier / 100, haloAngle,0,Math.PI * 2);
 
     // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
     /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -426,6 +426,7 @@ class Canvas {
           if(this.diffractionRadiusX < 0){
             this.diffractionRadiusX = 0;
           }
+          $('#floatdiffractionx').val(this.diffractionRadiusX);
         } else {
           //this.diffractionX += deltaX;
           this.specimenThickness += deltaX;
@@ -458,7 +459,11 @@ class Canvas {
           this.drawDiffractogramImages();
           break;
         case 'condensor':
-          this.maskRadiusXMultiplier += deltaX * .01;
+          this.maskRadiusXMultiplier += deltaX;
+          if(this.maskRadiusXMultiplier < 0){
+            this.maskRadiusXMultiplier = 0;
+          }
+          $('#floatcondensorx').val(this.maskRadiusXMultiplier);          
           break;
       }
       this.drawCanvas();
@@ -473,6 +478,7 @@ class Canvas {
           if(this.diffractionRadiusY < 0){
             this.diffractionRadiusY = 0;
           }
+          $('#floatdiffractiony').val(this.diffractionRadiusY);          
         } else {
           this.diffractionY += deltaY;
         }
@@ -495,7 +501,11 @@ class Canvas {
           this.rotateBeta += deltaY;
           break;
         case 'condensor':
-          this.maskRadiusYMultiplier += deltaY * .01;
+          this.maskRadiusYMultiplier += deltaY;
+          if(this.maskRadiusYMultiplier < 0){
+            this.maskRadiusYMultiplier = 0;
+          }
+          $('#floatcondensory').val(this.maskRadiusYMultiplier);
           break;
       }
       this.drawCanvas();
