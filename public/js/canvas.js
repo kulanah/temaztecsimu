@@ -27,8 +27,6 @@ class Canvas {
     this.maskX = 0;
     this.maskY = 0;
     this.maskR = 0;
-    this.maskRadiusXMultiplier = 100;
-    this.maskRadiusYMultiplier = 100;
     this.beamAstigmatism = 1;
     this.combinedRadius = 0;
 
@@ -80,8 +78,7 @@ class Canvas {
     this.diffractionX = 256;
     this.diffractionY = 256;
     this.diffractionCameraLength = 265;
-    this.diffractionRadiusX = 64;
-    this.diffractionRadiusY = 64;
+    this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
     this.specimenThickness = 100;
 
@@ -661,8 +658,8 @@ class Canvas {
   drawDiffraction(){
     clearCanvas(this.selector[0]);
     drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
-    let radiusX = 64 * Math.sqrt(this.diffractionAstigmatism) / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
-    let radiusY = 64 / Math.sqrt(this.diffractionAstigmatism) / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    let radiusX = this.diffractionRadius * Math.sqrt(this.diffractionAstigmatism) / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    let radiusY = this.diffractionRadius / Math.sqrt(this.diffractionAstigmatism) / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
     var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
     for(i = 0; i < settings[0].length; i++) {
       drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness);
