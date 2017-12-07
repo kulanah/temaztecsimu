@@ -83,10 +83,8 @@ function lectureClicked(){
     $("#lecturebtn").click(function(){
         if(!isVisible("lecturediv")){
             $("#lecturediv").show();
-            $('#lectureinstruction').show();
         }else{
             $("#lecturediv").hide();
-            $('#lectureinstruction').hide();
         }
     });
 }

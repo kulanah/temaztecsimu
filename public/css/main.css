@@ -85,12 +85,6 @@ body{
   left: 23vw;
 }
 
-#lectureinstruction {
-  position: absolute;
-  top: 75vh;
-  left: 23vw;
-}
-
 button{
   cursor: pointer;
 }
