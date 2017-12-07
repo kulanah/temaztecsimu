@@ -15,7 +15,9 @@ let pageSetup = function(){
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms',
   'columndivzoom', 'leftControllerDiv', 'rightControllerDiv', 'qanda', 'examples', 'homework', 
-  'curriculum', 'learningmode', 'floatingstigmatordiv', 'lecturediv'];
+  'curriculum', 'learningmode', 'lecturediv'];
+
+  let draggablesWithTextInputs = ['floatingstigmatordiv', 'notepad']
   
   function bringToFront(id) {
     // Whenever an element appears, move it to the front
@@ -79,16 +81,21 @@ let pageSetup = function(){
     });
   }
 
-  // Make notepad draggable separately because cancelling map on notepad causes the textarea to become unclickable
-  $('#notepad').draggable({
-    addClasses: true,
-    iframeFix: true
-  });
-  $('#notepad').mousedown(function(){
-    $('#notepad').css('z-index', zcounter);
-    zcounter++;
-  });
-  bringToFront('notepad');
+  // Make draggablesWithTextInputs draggable separately because cancelling map on notepad causes the textarea to become unclickable
+  for (let i = 0; i < draggablesWithTextInputs.length; ++i){    
+    $('#' + draggablesWithTextInputs[i]).draggable({
+      addClasses: true,
+      iframeFix: true
+    });
+    $('#' + draggablesWithTextInputs[i]).mousedown(function(){
+      $(draggablesWithTextInputs[i]).css('z-index', zcounter);
+      zcounter++;
+    });
+    bringToFront(draggablesWithTextInputs[i]);
+    $('#' + draggablesWithTextInputs[i]).css({
+      'cursor':'move'
+    });
+  }
 
   // Special case for microscope controls since the container div is shown/hidden,
   // but the individual controllers are moved to the front
