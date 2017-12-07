@@ -424,11 +424,7 @@ class Canvas {
     if (!isNaN(deltaX)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionRadiusX += deltaX;
-          if(this.diffractionRadiusX < 0){
-            this.diffractionRadiusX = 0;
-          }
-          $('#floatdiffractionx').val(this.diffractionRadiusX / Math.pow(10, 4));
+          this.diffractionAstigmatism *= Math.pow(1.01, deltaX); // the dots are small, so the change is more pronounced (relative to other stigmators) to get a visible effect
         } else {
           //this.diffractionX += deltaX;
           this.specimenThickness += deltaX;
@@ -472,11 +468,7 @@ class Canvas {
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionRadiusY += deltaY;
-          if(this.diffractionRadiusY < 0){
-            this.diffractionRadiusY = 0;
-          }
-          $('#floatdiffractiony').val(this.diffractionRadiusY / Math.pow(10, 4));          
+          this.diffractionAstigmatism *= Math.pow(1.01, -deltaY);          
         } else {
           this.diffractionY += deltaY;
         }
@@ -669,8 +661,8 @@ class Canvas {
   drawDiffraction(){
     clearCanvas(this.selector[0]);
     drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
-    let radiusX = this.diffractionRadiusX / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
-    let radiusY = this.diffractionRadiusY / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    let radiusX = 64 * Math.sqrt(this.diffractionAstigmatism) / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
+    let radiusY = 64 / Math.sqrt(this.diffractionAstigmatism) / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
     var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
     for(i = 0; i < settings[0].length; i++) {
       drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness);
