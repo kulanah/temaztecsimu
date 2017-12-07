@@ -426,7 +426,7 @@ class Canvas {
           if(this.diffractionRadiusX < 0){
             this.diffractionRadiusX = 0;
           }
-          $('#floatdiffractionx').val(this.diffractionRadiusX);
+          $('#floatdiffractionx').val(this.diffractionRadiusX / Math.pow(10, 4));
         } else {
           //this.diffractionX += deltaX;
           this.specimenThickness += deltaX;
@@ -463,7 +463,7 @@ class Canvas {
           if(this.maskRadiusXMultiplier < 0){
             this.maskRadiusXMultiplier = 0;
           }
-          $('#floatcondensorx').val(this.maskRadiusXMultiplier);          
+          $('#floatcondensorx').val(this.maskRadiusXMultiplier / Math.pow(10, 4));          
           break;
       }
       this.drawCanvas();
@@ -478,7 +478,7 @@ class Canvas {
           if(this.diffractionRadiusY < 0){
             this.diffractionRadiusY = 0;
           }
-          $('#floatdiffractiony').val(this.diffractionRadiusY);          
+          $('#floatdiffractiony').val(this.diffractionRadiusY / Math.pow(10, 4));          
         } else {
           this.diffractionY += deltaY;
         }
@@ -505,7 +505,7 @@ class Canvas {
           if(this.maskRadiusYMultiplier < 0){
             this.maskRadiusYMultiplier = 0;
           }
-          $('#floatcondensory').val(this.maskRadiusYMultiplier);
+          $('#floatcondensory').val(this.maskRadiusYMultiplier / Math.pow(10, 4));
           break;
       }
       this.drawCanvas();
