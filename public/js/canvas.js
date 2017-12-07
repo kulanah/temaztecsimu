@@ -29,6 +29,7 @@ class Canvas {
     this.maskR = 0;
     this.maskRadiusXMultiplier = 100;
     this.maskRadiusYMultiplier = 100;
+    this.beamAstigmatism = 1;
     this.combinedRadius = 0;
 
     this.haloX = 0;
@@ -81,6 +82,7 @@ class Canvas {
     this.diffractionCameraLength = 265;
     this.diffractionRadiusX = 64;
     this.diffractionRadiusY = 64;
+    this.diffractionAstigmatism = 1;
     this.specimenThickness = 100;
 
     this.alignmentMode = 'none';    
@@ -90,7 +92,7 @@ class Canvas {
 
     this.jump = 64;
     this.defocus = 0;
-    this.astigmatism = 1;
+    this.diffractogramAstigmatism = 1;
 
     this.wobbleMode = false;
     this.wobbleMax = 0;
@@ -455,7 +457,7 @@ class Canvas {
         case 'comafreealignmentx':
         case 'comafreealignmenty':
           this.defocus += deltaX * 100;
-          this.astigmatism *= Math.pow(1.001, deltaX);
+          this.diffractogramAstigmatism *= Math.pow(1.001, deltaX);
           this.drawDiffractogramImages();
           break;
         case 'condensor':
@@ -668,8 +670,8 @@ class Canvas {
   }
 
   drawDiffractogramImages(){
-    drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.astigmatism, 0, 0, 500000);
-    drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.astigmatism, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, 0, 500000);
   }
 
   drawDiffraction(){
