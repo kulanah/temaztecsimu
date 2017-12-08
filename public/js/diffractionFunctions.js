@@ -193,11 +193,6 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         return;
     }
     if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
-        var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
-        gradient.addColorStop(1, 'white');
-        gradient.addColorStop(0, 'rgba(255,255,255,0)');
-        ctx.fillStyle = gradient;
         const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
         let r1LineWidth = radiusY * 3 / 4 * r1 / Math.min(r1, r2);
         let r1LineTransparency = Math.min(specimenThickness / 100 / r1, 1);
@@ -206,10 +201,20 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let r2LineTransparency = Math.min(specimenThickness / 100 / r2, 1);
         // Applying the blur filter significantly worsens performance, so it is not currently used
         //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
-        // Scaling transparency by thickness conflicts with scaling 
-        //ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
-        ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
-        //ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
+        // Scaling transparency by thickness conflicts with scaling by proximity to center
+        const scaleTransparencyWith = 'proximityToCenter' // change to set transparency scaling
+        if(scaleTransparencyWith == 'proximityToCenter'){
+            var ctx = canvas.getContext('2d');
+            var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
+            gradient.addColorStop(1, 'rgba(255,255,255,' + r1LineTransparency + ')');
+            gradient.addColorStop(0, 'rgba(255,255,255,0)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
+        } else {
+            ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
+            ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
+            ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
+        }
         ctx.beginPath();
         ctx.moveTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
         ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
