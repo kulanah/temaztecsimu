@@ -65,6 +65,14 @@ let pageSetup = function(){
     value: 7,
   });
 
+  $('body').mouseup(function(){
+    $('body *').removeClass('moving');
+  });
+
+  $('body').mouseleave(function(){
+    $('body *').removeClass('moving');
+  });
+
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
@@ -74,11 +82,9 @@ let pageSetup = function(){
     $('#' + listOfDraggables[i]).mousedown(function(){
       $('#' + listOfDraggables[i]).css('z-index', zcounter);
       zcounter++;
+      $('body *').addClass('moving');
     });
     bringToFront(listOfDraggables[i]);
-    $('#' + listOfDraggables[i]).css({
-      'cursor':'move'
-    });
   }
 
   // Make draggablesWithTextInputs draggable separately because cancelling map on notepad causes the textarea to become unclickable
@@ -88,13 +94,11 @@ let pageSetup = function(){
       iframeFix: true
     });
     $('#' + draggablesWithTextInputs[i]).mousedown(function(){
-      $(draggablesWithTextInputs[i]).css('z-index', zcounter);
+      $('#' + draggablesWithTextInputs[i]).css('z-index', zcounter);
       zcounter++;
+      $('body *').addClass('moving');
     });
     bringToFront(draggablesWithTextInputs[i]);
-    $('#' + draggablesWithTextInputs[i]).css({
-      'cursor':'move'
-    });
   }
 
   // Special case for microscope controls since the container div is shown/hidden,
