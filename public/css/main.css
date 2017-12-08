@@ -13,7 +13,11 @@ body{
   line-height: 0;
 }
 
-.mouseDown{
+.moving{
+  cursor: move;
+}
+
+.grabbing{
   cursor: -webkit-grabbing;
 }
 
