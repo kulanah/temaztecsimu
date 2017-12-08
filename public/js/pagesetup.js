@@ -80,7 +80,7 @@ let pageSetup = function(){
       iframeFix: true
     });
     $('#' + listOfDraggables[i]).mousedown(function(){
-      $('#' + listOfDraggables[i]).css('z-index', zcounter);
+      $('#' + listOfDraggables[i]).css('z-index', zcounter); // moves element to the front on mousedown
       zcounter++;
       $('body *').addClass('moving');
     });
