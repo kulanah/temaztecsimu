@@ -222,14 +222,18 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
 
         // Scaling transparency by thickness and scaling by proximity to center
-        ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
+        var gradient = ctx.createLinearGradient(0, 0, 0, yOffset + dy * j);
+        gradient.addColorStop(0, 'rgba(255,255,255,0)');        
+        gradient.addColorStop(0.5, 'rgba(255,255,255,' + r1LineTransparency + ')');
+        gradient.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = gradient;
         ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
         ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY);
 
-        var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
+        gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
+        gradient.addColorStop(0, 'rgba(255,255,255,0)');        
         gradient.addColorStop(1, 'rgba(255,255,255,' + Math.min(specimenThickness / 10000, 1) + ')');
-        gradient.addColorStop(0, 'rgba(255,255,255,0)');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY);
