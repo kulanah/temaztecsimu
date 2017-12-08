@@ -80,7 +80,7 @@ class Canvas {
     this.diffractionCameraLength = 265;
     this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
-    this.specimenThickness = 100;
+    this.specimenThickness = 300;
 
     this.alignmentMode = 'none';    
 
