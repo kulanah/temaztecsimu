@@ -196,8 +196,8 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
         let r1LineWidth = radiusY * 3 / 4 * r1 / Math.min(r1, r2);
         let r1LineTransparency = Math.min(specimenThickness / 100 / r1, 1);
-        let r2LineWidthX = radiusX * 3 / 16 * r2 / Math.min(r1, r2);
-        let r2LineWidthY = radiusY * 3 / 16 * r2 / Math.min(r1, r2);
+        let r2LineWidthX = radiusX * 3 / 8 * r2 / Math.min(r1, r2);
+        let r2LineWidthY = radiusY * 3 / 8 * r2 / Math.min(r1, r2);
         let r2LineTransparency = Math.min(specimenThickness / 100 / r2, 1);
         // Applying the blur filter significantly worsens performance, so it is not currently used
         //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
@@ -216,17 +216,17 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
             ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
         }
         ctx.beginPath();
-        ctx.moveTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
+        ctx.moveTo(xOffset - scalar * dx - r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY / 2 + j * dy);
+        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY / 2 + j * dy);
+        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY / 2 + j * dy);
+        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY / 2 + j * dy);
+        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY / 2 + j * dy);
         ctx.fill();
-        ctx.moveTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
+        ctx.moveTo(xOffset - scalar * dx + r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY / 2 + j * dy);
+        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY / 2 + j * dy);
+        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY / 2 + j * dy);
+        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY / 2 + j * dy);
+        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY / 2 + j * dy);
         ctx.fill();
     }
 }
