@@ -187,25 +187,6 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
     }
 }
 
-function drawBrightnessGradient(canvas, beamRadius){
-    if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
-        var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
-        gradient.addColorStop(0, 'rgba(0,0,0,.1)');
-        gradient.addColorStop(1, 'rgba(255,255,255,.1)');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        /*var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
-        gradient.addColorStop(0, 'black');
-        gradient.addColorStop(1, 'white');
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(canvas.width / 2, canvas.height / 2, beamRadius, 0, Math.Pi * 2);
-        ctx.fill();
-        console.log("Drew brightness gradient")*/
-    }
-}
-
 function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j){
     // Draw Kikuchi lines - lines for points that are closer together are narrower and less transparent
     if (specimenThickness <= 0){
@@ -223,17 +204,12 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let r2LineWidthX = radiusX * 3 / 16 * r2 / Math.min(r1, r2);
         let r2LineWidthY = radiusY * 3 / 16 * r2 / Math.min(r1, r2);
         let r2LineTransparency = Math.min(specimenThickness / 100 / r2, 1);
-        /*let r1Gradient = ctx.createLinearGradient(0,0,0,canvas.height);
-        r1Gradient.addColorStop(0,"#380");
-        r1Gradient.addColorStop(.5,"white");
-        r1Gradient.addColorStop(1,"#380");
-        ctx.fillStyle = r1Gradient;*/
         // Applying the blur filter significantly worsens performance, so it is not currently used
         //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
         // Scaling transparency by thickness conflicts with scaling 
         //ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
         ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
-        ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
+        //ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
         ctx.beginPath();
         ctx.moveTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
         ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
@@ -289,6 +265,5 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                 drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j)
             }
         }
-        //drawBrightnessGradient(canvas, beamRadius)
     }
 }
