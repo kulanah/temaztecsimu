@@ -193,6 +193,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         return;
     }
     if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
         const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
         let r1LineWidth = radiusY * 3 / 4 * r1 / Math.min(r1, r2);
         let r1LineTransparency = Math.min(specimenThickness / 100 / r1, 1);
@@ -204,7 +205,6 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         // Scaling transparency by thickness conflicts with scaling by proximity to center
         const scaleTransparencyWith = 'proximityToCenter' // change to set transparency scaling
         if(scaleTransparencyWith == 'proximityToCenter'){
-            var ctx = canvas.getContext('2d');
             var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
             gradient.addColorStop(1, 'rgba(255,255,255,' + r1LineTransparency + ')');
             gradient.addColorStop(0, 'rgba(255,255,255,0)');
