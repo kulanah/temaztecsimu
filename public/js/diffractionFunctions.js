@@ -187,7 +187,70 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
     }
 }
 
-function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur, intensity, type, layers, r1, r2, angle, specimenThickness) {
+function drawBrightnessGradient(canvas, beamRadius){
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
+        gradient.addColorStop(0, 'rgba(0,0,0,.1)');
+        gradient.addColorStop(1, 'rgba(255,255,255,.1)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        /*var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
+        gradient.addColorStop(0, 'black');
+        gradient.addColorStop(1, 'white');
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2, canvas.height / 2, beamRadius, 0, Math.Pi * 2);
+        ctx.fill();
+        console.log("Drew brightness gradient")*/
+    }
+}
+
+function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j){
+    // Draw Kikuchi lines - lines for points that are closer together are narrower and less transparent
+    if (specimenThickness <= 0){
+        return;
+    }
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        var gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
+        gradient.addColorStop(1, 'white');
+        gradient.addColorStop(0, 'rgba(255,255,255,0)');
+        ctx.fillStyle = gradient;
+        const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
+        let r1LineWidth = radiusY * 3 / 4 * r1 / Math.min(r1, r2);
+        let r1LineTransparency = Math.min(specimenThickness / 100 / r1, 1);
+        let r2LineWidthX = radiusX * 3 / 16 * r2 / Math.min(r1, r2);
+        let r2LineWidthY = radiusY * 3 / 16 * r2 / Math.min(r1, r2);
+        let r2LineTransparency = Math.min(specimenThickness / 100 / r2, 1);
+        /*let r1Gradient = ctx.createLinearGradient(0,0,0,canvas.height);
+        r1Gradient.addColorStop(0,"#380");
+        r1Gradient.addColorStop(.5,"white");
+        r1Gradient.addColorStop(1,"#380");
+        ctx.fillStyle = r1Gradient;*/
+        // Applying the blur filter significantly worsens performance, so it is not currently used
+        //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
+        // Scaling transparency by thickness conflicts with scaling 
+        //ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
+        ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
+        ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
+        ctx.beginPath();
+        ctx.moveTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
+        ctx.fill();
+        ctx.moveTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
+        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
+        ctx.fill();
+    }
+}
+
+function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur, intensity, type, layers, r1, r2, angle, specimenThickness, beamRadius) {
     // Draw the lattice diffraction pattern
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
@@ -223,43 +286,9 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 }
-                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, i, j)
+                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j)
             }
         }
+        //drawBrightnessGradient(canvas, beamRadius)
     }
 }
-
-function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, i, j){
-    // Draw Kikuchi lines - lines for points that are closer together are narrower and less transparent
-    if (specimenThickness <= 0){
-        return;
-    }
-    if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
-        const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view
-        let r1LineWidth = radiusY * 3 / 4 * r1 / Math.min(r1, r2);
-        let r1LineTransparency = Math.min(specimenThickness / 100 / r1, 1);
-        let r2LineWidthX = radiusX * 3 / 16 * r2 / Math.min(r1, r2);
-        let r2LineWidthY = radiusY * 3 / 16 * r2 / Math.min(r1, r2);
-        let r2LineTransparency = Math.min(specimenThickness / 100 / r2, 1);
-        // Applying the blur filter significantly worsens performance, so it is not currently used
-        //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
-        ctx.fillStyle = 'rgba(255, 255, 255,' + r1LineTransparency + ')';
-        ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
-        ctx.fillStyle = 'rgba(255, 255, 255,' + r2LineTransparency + ')';
-        ctx.beginPath();
-        ctx.moveTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
-        ctx.fill();
-        ctx.moveTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy - r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset + scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset + scalar * dy + r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx - r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy + r2LineWidthY + j * dy);
-        ctx.lineTo(xOffset - scalar * dx + r2LineWidthX + i * r1 + j * dx, yOffset - scalar * dy - r2LineWidthY + j * dy);
-        ctx.fill();
-    }
-}
-
