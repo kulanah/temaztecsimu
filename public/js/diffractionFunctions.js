@@ -111,7 +111,12 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
                                          s23 * (k1 * l2 + l1 * k2)) / (functionA(h1, k1, l1) * functionA(h2, k2, l2));
                                     }
                                     var angle = Math.acos(calculateAngle()) * 180 / Math.PI;
-                                    angles.push(angle);
+                                    console.log(functionA(h1, k1, l1), functionA(h2, k2, l2), calculateAngle(), angle)
+                                    if(!isNaN(angle)){
+                                        angles.push(angle);
+                                    } else {
+                                        angles.push(0);
+                                    }
                                     complete = true;
                                 }
                             }
@@ -222,6 +227,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
 
         // Scaling transparency by thickness and scaling by proximity to center
+        console.log(yOffset, dy, j)
         var gradient = ctx.createLinearGradient(0, 0, 0, yOffset + dy * j);
         gradient.addColorStop(0, 'rgba(255,255,255,0)');        
         gradient.addColorStop(0.5, 'rgba(255,255,255,' + r1LineTransparency + ')');
@@ -247,7 +253,8 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         ctx.filter = 'blur(' + Math.abs(blur) + 'px)';
         var dx = r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2
-        //console.log(dx, dy);
+        console.log(r2, angle)
+        console.log(dx, dy);
         var rotationRadians = rotation / 180 * Math.PI;
         var maxDistance = Math.sqrt(Math.pow(canvas.height, 2) + Math.pow(canvas.width, 2)) / 2;
         for (var i = -layers; i <= layers; i++) {
