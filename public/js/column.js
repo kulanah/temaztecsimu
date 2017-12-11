@@ -43,6 +43,12 @@ temLens[22] = new lens(0,0,990,10,'lens','Projection Lens 2');
 temLens[23] = new lens(0,0,1090,5,'screen','Viewing Screen');
 
 
+//These are static references for the above.  This allows us to use these as references 
+//so that if the above are reordered we don't need to track down every reference
+
+const temLensSpecimen = temLens[13];
+
+
 //creates the labels for the lenses
 zoomedOutLabels = new Array;
 for(i = 0; i < temLens.length; i++){
@@ -92,6 +98,7 @@ function drawColumn(){
 }
 
 function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.3){
+	console.log(temLens[13].y);
 	let columnDiv;
 	let beamDiag;
 	let beamLabels;
