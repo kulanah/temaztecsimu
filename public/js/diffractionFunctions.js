@@ -185,7 +185,7 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
         ctx.fillStyle = ('#000');
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         var rotationRadians = rotation / 180 * Math.PI;
-        ctx.fillStyle = '#060'; 
+        ctx.fillStyle = '#222'; 
         ctx.beginPath();
         ctx.ellipse(x, y, radiusX, radiusY, rotationRadians, 0, Math.PI * 2);
         ctx.fill();
