@@ -204,17 +204,19 @@ let microscopeControllers = function(){
   });
 
   $('#buttonupr').on('click', function(event){
-    focusUp();
-
-    ++temLens[13].y;
-    drawColumn();
+    if (temLensSpecimen.y < 584){
+      focusUp();
+      ++temLens[13].y;
+      drawColumn();
+    }
   });
 
   $('#buttondownr').on('click', function(event){
-    focusDown();
-
-    --temLens[13].y;
-    drawColumn();
+    if (temLensSpecimen.y > 529){
+      focusDown();
+      --temLens[13].y;
+      drawColumn();
+    }
   });
 
   $('#buttontop1r').on('click', function(event){
