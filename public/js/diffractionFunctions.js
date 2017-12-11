@@ -182,7 +182,7 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
     // Draw a white rectangle and a green circle
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
-        ctx.fillStyle = ('#FFF');
+        ctx.fillStyle = ('#000');
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         var rotationRadians = rotation / 180 * Math.PI;
         ctx.fillStyle = '#060'; 
