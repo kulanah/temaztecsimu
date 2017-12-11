@@ -458,6 +458,10 @@ class Canvas {
         case 'condensor':
           this.beamAstigmatism *= Math.pow(1.0005, deltaX / (1 + this.maskR / 25));
           break;
+        case 'objective':
+          this.imgW *= Math.pow(1.0005, deltaX);
+          this.imgH *= Math.pow(1.0005, -deltaX);
+          break;
       }
       this.drawCanvas();
     }
@@ -491,6 +495,10 @@ class Canvas {
           break;
         case 'condensor':
           this.beamAstigmatism *= Math.pow(1.0005, -deltaY / (1 + this.maskR / 25));
+          break;
+        case 'objective':
+          this.imgW *= Math.pow(1.0005, -deltaY);
+          this.imgH *= Math.pow(1.0005, deltaY);
           break;
       }
       this.drawCanvas();
@@ -650,6 +658,10 @@ class Canvas {
 
   activateCondensor(){
     this.alignmentMode = 'condensor';
+  }
+
+  activateObjective(){
+    this.alignmentMode = 'objective';
   }
 
   drawDiffractogramImages(){

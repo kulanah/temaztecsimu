@@ -12,6 +12,12 @@ let tuneTab = function(){
     activateCondensor();
   })
 
+  // Objective stigmator stretches image
+  $('#tuneobjective').on('click', function(event){
+    deactivateDA();
+    activateObjective();
+  })
+
   // Diffraction stigmator makes dots ellipses
   $('#tunediffraction').on('click', function(event){
     diffractionStigmation = true;
@@ -32,6 +38,12 @@ let floatStig = function(){
   $('#floatcondensor').on('click', function(event){
     deactivateDA();
     activateCondensor();
+  })
+
+  // Objective stigmator stretches image
+  $('#floatobjective').on('click', function(event){
+    deactivateDA();
+    activateObjective();
   })
 
   // Diffraction stigmator makes dots ellipses

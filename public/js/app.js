@@ -292,6 +292,15 @@ let activateCondensor = function(){
   }
 }
 
+let activateObjective = function(){
+  if (openScreen == 0){
+    openbox.activateObjective();
+    setupbox.activateObjective();
+  } else {
+    mainmicro.activateObjective();
+  }
+}
+
 let deactivateDirectAlignments  = function(){
   if (openScreen == 0){
     openbox.deactivateDirectAlignments();
