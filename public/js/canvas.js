@@ -75,8 +75,8 @@ class Canvas {
       this.parentThis.setDimensions();
     };
 
-    this.diffractionX = 256;
-    this.diffractionY = 256;
+    this.diffractionX = 259;
+    this.diffractionY = 279;
     this.diffractionCameraLength = 265;
     this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
