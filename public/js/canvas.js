@@ -461,6 +461,7 @@ class Canvas {
         case 'objective':
           this.imgW *= Math.pow(1.0005, deltaX);
           this.imgH *= Math.pow(1.0005, -deltaX);
+          this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)          
           break;
       }
       this.drawCanvas();
@@ -499,6 +500,7 @@ class Canvas {
         case 'objective':
           this.imgW *= Math.pow(1.0005, -deltaY);
           this.imgH *= Math.pow(1.0005, deltaY);
+          this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
           break;
       }
       this.drawCanvas();

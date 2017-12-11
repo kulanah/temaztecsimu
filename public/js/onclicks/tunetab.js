@@ -12,7 +12,7 @@ let tuneTab = function(){
     activateCondensor();
   })
 
-  // Objective stigmator stretches image
+  // Objective stigmator stretches image and diffractogram
   $('#tuneobjective').on('click', function(event){
     deactivateDA();
     activateObjective();
@@ -40,7 +40,7 @@ let floatStig = function(){
     activateCondensor();
   })
 
-  // Objective stigmator stretches image
+  // Objective stigmator stretches image and diffractogram
   $('#floatobjective').on('click', function(event){
     deactivateDA();
     activateObjective();
