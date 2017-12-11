@@ -79,7 +79,6 @@ let microscopeControllers = function(){
 
   $('#buttonl2').on('click', function(event){
     toggleWobble();
-    wobbleMode = !wobbleMode;
     if (pivotPoint){
       deactivateDirectAlignments();
       pivotPoint = !pivotPoint;

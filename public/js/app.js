@@ -351,6 +351,7 @@ let resetPosition = function(){
 
 //function that handles the updates for the wobble
 let toggleWobble = function(){
+  wobbleMode = !wobbleMode;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.toggleWobble();

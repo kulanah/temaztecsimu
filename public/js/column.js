@@ -98,7 +98,6 @@ function drawColumn(){
 }
 
 function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.3){
-	console.log(temLens[13].y);
 	let columnDiv;
 	let beamDiag;
 	let beamLabels;
