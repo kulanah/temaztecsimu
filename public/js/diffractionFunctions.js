@@ -185,7 +185,7 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
         ctx.fillStyle = ('#FFF');
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         var rotationRadians = rotation / 180 * Math.PI;
-        ctx.fillStyle = '#380'; 
+        ctx.fillStyle = '#060'; 
         ctx.beginPath();
         ctx.ellipse(x, y, radiusX, radiusY, rotationRadians, 0, Math.PI * 2);
         ctx.fill();
@@ -231,10 +231,10 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
     }
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
-        let r1LineWidth = radiusY * 3 / 4 * r1 / Math.min(r1, r2);
+        let r1LineWidth = 2 * r1
         let r1LineTransparency = Math.min(specimenThickness / 300 / r1, 1);
-        let r2LineWidthX = radiusX * 3 / 8 * r2 / Math.min(r1, r2);
-        let r2LineWidthY = radiusY * 3 / 8 * r2 / Math.min(r1, r2);
+        let r2LineWidthX = r2
+        let r2LineWidthY = r2
         let r2LineTransparency = Math.min(specimenThickness / 300 / r2, 1);
         
         // Applying the blur filter significantly worsens performance, so it is not currently used
@@ -247,7 +247,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         gradient.addColorStop(0.5, 'rgba(255,255,255,' + r1LineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,0)');
         ctx.fillStyle = gradient;        
-        ctx.fillRect(0, -r1LineWidth / 2 + yOffset + dy * j, canvas.width, r1LineWidth);
+        ctx.fillRect(-r1LineWidth / 2 + yOffset + dy * j, 0, r1LineWidth, canvas.width);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, true);
 
         gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
@@ -296,8 +296,8 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 }
-                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j)
             }
         }
+        drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, 0, 0)        
     }
 }
