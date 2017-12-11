@@ -243,9 +243,9 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         // Scaling transparency by thickness and scaling by proximity to center
         console.log(yOffset, dy, j)
         var gradient = ctx.createLinearGradient(xOffset - r1LineWidth, 0, xOffset + r1LineWidth, 0);
-        gradient.addColorStop(0.1, 'rgba(0,0,0,' + r1LineTransparency + ')');        
+        gradient.addColorStop(0.25, 'rgba(0,0,0,' + r1LineTransparency + ')');        
         gradient.addColorStop(0.5, 'rgba(255,255,255,' + r1LineTransparency + ')');
-        gradient.addColorStop(0.9, 'rgba(0,0,0,' + r1LineTransparency + ')');
+        gradient.addColorStop(0.75, 'rgba(0,0,0,' + r1LineTransparency + ')');
         ctx.fillStyle = gradient;        
         ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
 
