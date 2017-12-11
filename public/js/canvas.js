@@ -132,7 +132,7 @@ class Canvas {
     this.context.clearRect(0,0,900,900);
     this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
 
-    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4;
+    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
 
     if (this.alignmentMode == 'pivotpointx' || this.alignmentMode == 'pivotpointy'){
       this.drawPPPath();
