@@ -232,13 +232,13 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
         let r1LineWidth = 2 * r1;
-        let r1LineTransparency = Math.min(specimenThickness / 100 / r1, 1);
+        let r1LineTransparency = Math.min(specimenThickness / 100 / r1 * radiusX * radiusY / beamRadius, 1);
         let r2LineWidthX = 2 * dy;
         let r2LineWidthY = 2 * dx;
-        let r2LineTransparency = Math.min(specimenThickness / 100 / r2, 1);
+        let r2LineTransparency = Math.min(specimenThickness / 100 / r2 * radiusX * radiusY / beamRadius, 1);
         
-        // Applying the blur filter significantly worsens performance, so it is not currently used
-        //ctx.filter = 'blur(' + Math.abs(specimenThickness) + 'px)';
+        // Applying the blur filter significantly worsens performance, so it is avoided when possible
+        ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
 
         // Scaling transparency by thickness and scaling by proximity to center
         console.log(yOffset, dy, j)
@@ -246,13 +246,13 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         gradient.addColorStop(0.25, 'rgba(0,0,0,' + r1LineTransparency + ')');        
         gradient.addColorStop(0.5, 'rgba(255,255,255,' + r1LineTransparency + ')');
         gradient.addColorStop(0.75, 'rgba(0,0,0,' + r1LineTransparency + ')');
-        ctx.fillStyle = gradient;        
+        ctx.fillStyle = gradient;
         ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, true);
 
-        gradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, beamRadius, canvas.width / 2, canvas.height / 2, 0);
+        gradient = ctx.createRadialGradient(xOffset, yOffset, beamRadius, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(255,255,255,0)');        
-        gradient.addColorStop(1, 'rgba(255,255,255,' + Math.min(specimenThickness / 10000, 1) + ')');
+        gradient.addColorStop(1, 'rgba(255,255,255,' + Math.min(specimenThickness / 10000 * radiusX * radiusY / beamRadius, 1) + ')');
         ctx.fillStyle = gradient;
         ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, false);
@@ -263,7 +263,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
     // Draw the lattice diffraction pattern
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
-        ctx.filter = 'blur(' + Math.abs(blur) + 'px)';
+        ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 300)) + 'px)';
         var dx = r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2
         console.log(r2, angle)
