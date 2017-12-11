@@ -180,13 +180,13 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 				index = i
 				let prevType = temLens[i-1].kind;
 				let prevIndex = i - 1;
-				while (prevType == 'label'){
+				while (prevType == 'label' || prevType == 'sample'){
 					prevIndex = prevIndex - 1;
 					prevType = temLens[prevIndex].kind;
 				}
 				let prevX = temLens[prevIndex].x;
 				if (!(temLens[i].type == 'label')){
-					if(prevType =='lens' || prevType =='source' || prevType =='sample'){
+					if(prevType =='lens' || prevType =='source'){
 						temLens[i].x = prevX-(temLens[i].y - temLens[prevIndex].y)
 						* ((prevX-temLens[prevIndex].xCenter) / temLens[prevIndex].f);
 					}	
@@ -204,7 +204,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 				index = 0;
 				
 			}
-			if(blocked==0 && temLens[index].type != 'label'){
+			if(blocked==0 && temLens[index].type != 'sample' && temLens[index].type != 'label'){
 				ctx.lineTo(temLens[i].x + xCenter, temLens[i].y);  		
 			}
 		}	
