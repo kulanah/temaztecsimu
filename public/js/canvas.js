@@ -273,7 +273,9 @@ class Canvas {
       let hueRotateString = 'hue-rotate(' + this.hueRotateVal + 'deg) ';
       let saturateString = 'saturate(' + this.saturateVal + '%) ';
       let blurString = 'blur(' + this.blurVal + 'px) ';
-      stringVal = sepiaString + hueRotateString + saturateString + blurString;
+      let contrastVal = 100 + this.blurVal * 5;
+      let contrastString = 'contrast(' + contrastVal + '%)';
+      stringVal = sepiaString + hueRotateString + saturateString + blurString + contrastString;
     } else {
       stringVal = 'blur(' + this.blurVal + 'px) ';
     }
