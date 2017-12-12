@@ -82,7 +82,7 @@ let pageSetup = function(){
     $('#' + listOfDraggables[i]).mousedown(function(){
       $('#' + listOfDraggables[i]).css('z-index', zcounter); // moves element to the front on mousedown
       zcounter++;
-      $('body *').addClass('moving');
+      $('#' + listOfDraggables[i]).addClass('moving');
     });
     bringToFront(listOfDraggables[i]);
   }
@@ -96,7 +96,7 @@ let pageSetup = function(){
     $('#' + draggablesWithTextInputs[i]).mousedown(function(){
       $('#' + draggablesWithTextInputs[i]).css('z-index', zcounter);
       zcounter++;
-      $('body *').addClass('moving');
+      $('#' + draggablesWithTextInputs[i]).addClass('moving');
     });
     bringToFront(draggablesWithTextInputs[i]);
   }
