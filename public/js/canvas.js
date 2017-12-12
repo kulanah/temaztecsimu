@@ -151,7 +151,7 @@ class Canvas {
     let haloAngle = Math.atan2(this.haloY, this.haloX);
     let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
     this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance) * this.beamAstigmatism,
-      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) / this.beamAstigmatism, haloAngle,0,Math.PI * 2);
+      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) / this.beamAstigmatism, this.beamAngle + haloAngle,0,Math.PI * 2);
 
     // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
     /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -459,7 +459,7 @@ class Canvas {
           this.drawDiffractogramImages();
           break;
         case 'condensor':
-          this.beamAstigmatism *= Math.pow(1.0005, deltaX / (1 + this.maskR / 25));
+          this.beamAngle += deltaX / 100;
           break;
         case 'objective':
           this.imgW *= Math.pow(1.0005, deltaX);
