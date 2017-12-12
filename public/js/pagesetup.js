@@ -65,24 +65,16 @@ let pageSetup = function(){
     value: 7,
   });
 
-  $('body').mouseup(function(){
-    $('body *').removeClass('moving');
-  });
-
-  $('body').mouseleave(function(){
-    $('body *').removeClass('moving');
-  });
-
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
       cancel: 'map, iframe',
-      iframeFix: true
+      iframeFix: true,
+      cursor: 'move'
     });
     $('#' + listOfDraggables[i]).mousedown(function(){
       $('#' + listOfDraggables[i]).css('z-index', zcounter); // moves element to the front on mousedown
       zcounter++;
-      $('#' + listOfDraggables[i]).addClass('moving');
     });
     bringToFront(listOfDraggables[i]);
   }
@@ -91,12 +83,12 @@ let pageSetup = function(){
   for (let i = 0; i < draggablesWithTextInputs.length; ++i){    
     $('#' + draggablesWithTextInputs[i]).draggable({
       addClasses: true,
-      iframeFix: true
+      iframeFix: true,
+      cursor: 'move'
     });
     $('#' + draggablesWithTextInputs[i]).mousedown(function(){
       $('#' + draggablesWithTextInputs[i]).css('z-index', zcounter);
       zcounter++;
-      $('#' + draggablesWithTextInputs[i]).addClass('moving');
     });
     bringToFront(draggablesWithTextInputs[i]);
   }

@@ -13,10 +13,6 @@ body{
   line-height: 0;
 }
 
-.moving{
-  cursor: move;
-}
-
 .grabbing{
   cursor: -webkit-grabbing;
 }
