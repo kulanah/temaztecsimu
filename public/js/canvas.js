@@ -93,6 +93,7 @@ class Canvas {
     this.jump = 64;
     this.defocus = 0;
     this.diffractogramAstigmatism = 1;
+    this.diffractogramAngle = 0;
 
     this.wobbleMode = false;
     this.wobbleMax = 0;
@@ -164,6 +165,8 @@ class Canvas {
 
     this.context.clip();
     
+    this.context.rotate(this.imgAngle);
+
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
       this.imgX,this.imgY,this.imgW,this.imgH);
@@ -462,9 +465,8 @@ class Canvas {
           this.beamAngle += deltaX / 180;
           break;
         case 'objective':
-          this.imgW *= Math.pow(1.0005, deltaX);
-          this.imgH *= Math.pow(1.0005, -deltaX);
-          this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)          
+          this.imgAngle += deltaX / 180;
+          this.diffractogramAngle += deltaX / Math.PI;
           break;
       }
       this.drawCanvas();
@@ -670,8 +672,8 @@ class Canvas {
   }
 
   drawDiffractogramImages(){
-    drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, 0, 500000);
-    drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+    drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
   }
 
   drawDiffraction(){
