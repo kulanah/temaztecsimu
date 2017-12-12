@@ -111,13 +111,19 @@ class Canvas {
   };
 
   drawCanvas(){
-    if (diffractionMode && this == setupbox){
-      document.getElementById('setupcrosshair').style.visibility = 'hidden';
-      $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
-      let context = this.glowSelector[0].getContext('2d');
-      context.clearRect(0,0,2000,1000);
-      this.drawDiffraction();
-      return;
+    if (this == setupbox){
+      if(diffractionMode){
+        this.hueRotateActive = false;
+        document.getElementById('setupcrosshair').style.visibility = 'hidden';
+        $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
+        let context = this.glowSelector[0].getContext('2d');
+        context.clearRect(0,0,2000,1000);
+        this.setFilterString();
+        this.drawDiffraction();
+        return;
+      } else {
+        this.hueRotateActive = true;
+      }
     }
     document.getElementById('setupcrosshair').style.visibility = 'visible';
     $('#magnificationvalue').text(this.zooms[this.mag] + ' x');
@@ -258,10 +264,7 @@ class Canvas {
       let newBlur = oldBlur + delta / 40;
       this.blurVal = newBlur;
       this.setFilterString();
-    }
-
-    //To do: changing focus modifies contrast
-    
+    }    
 
     this.drawCanvas();
   };
