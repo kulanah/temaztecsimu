@@ -114,7 +114,7 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
                                         r1s.push(r1);
                                         r2s.push(r2);                                        
                                         angles.push(angle);
-                                    } 
+                                    }
                                     complete = true;
                                 }
                             }
@@ -183,7 +183,7 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
         ctx.fillStyle = ('#000');
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         var rotationRadians = rotation / 180 * Math.PI;
-        ctx.fillStyle = '#373' //'#6E7'; //true value 
+        ctx.fillStyle = '#010'; //'#373' //'#6E7'; //true value 
         ctx.beginPath();
         ctx.ellipse(x, y, radiusX, radiusY, rotationRadians, 0, Math.PI * 2);
         ctx.fill();
@@ -201,13 +201,12 @@ function drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, d
         ctx.fillStyle = gradient;
     }*/
     ctx.beginPath();
-    ctx.moveTo(xOffset - scalar * dy - r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dx - r2LineWidthY / 2 + j * dy);
-    ctx.lineTo(xOffset + scalar * dy - r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dx - r2LineWidthY / 2 + j * dy);
+    ctx.moveTo(xOffset - scalar * dy - r2LineWidthX / 2, yOffset + scalar * dx - r2LineWidthY / 2);
+    ctx.lineTo(xOffset + scalar * dy - r2LineWidthX / 2, yOffset - scalar * dx - r2LineWidthY / 2);
     ctx.lineTo(xOffset + scalar * dy + r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dx + r2LineWidthY / 2 + j * dy);
     ctx.lineTo(xOffset - scalar * dy + r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dx + r2LineWidthY / 2 + j * dy);
     ctx.lineTo(xOffset - scalar * dy - r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dx - r2LineWidthY / 2 + j * dy);
     ctx.fill();
-    //ctx.stroke();
     /*if(individualGradient){
         gradient = ctx.createLinearGradient(xOffset - dx + i * r1 + j * dx, yOffset + dy + j * dy, xOffset + dx + i * r1 + j * dx, yOffset - dy + j * dy);   
         gradient.addColorStop(0.25, 'rgba(0,0,0,' + r2LineTransparency + ')');
@@ -220,8 +219,7 @@ function drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, d
     ctx.lineTo(xOffset + scalar * dy - r2LineWidthX / 2 + i * r1 + j * dx, yOffset + scalar * dx + r2LineWidthY / 2 + j * dy);
     ctx.lineTo(xOffset - scalar * dy - r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dx + r2LineWidthY / 2 + j * dy);
     ctx.lineTo(xOffset - scalar * dy + r2LineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dx - r2LineWidthY / 2 + j * dy);
-    ctx.fill();
-    ctx.stroke();    
+    ctx.fill();    
 }
 
 function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j){
@@ -249,14 +247,11 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.fillStyle = gradient;
         ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, true);*/
-
         let gradient = ctx.createRadialGradient(xOffset, yOffset, beamRadius, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(255,255,255,0)');        
         gradient.addColorStop(1, 'rgba(255,255,255,' + Math.min(specimenThickness / 50000 * radiusX * radiusY, 1) + ')');
         ctx.fillStyle = gradient;
         ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
-        ctx.strokeStyle = '#000';
-        ctx.strokeRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, false);
     }
 }

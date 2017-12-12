@@ -161,8 +161,8 @@
 
 #setupcrosshair{
   position: absolute; 
-  top: 6vw;
-  left: 5.5vw;
+  top: 6.6vw;
+  left: 6vw;
   width: 21vw;
   height: 21vw;
   z-index: 1;
