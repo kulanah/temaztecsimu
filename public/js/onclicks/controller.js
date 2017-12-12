@@ -220,7 +220,21 @@ let microscopeControllers = function(){
 
   $('#buttontop1r').on('click', function(event){
     zeroFocus();
-    temLens[13].y = 570;
+    let diff = 570 - temLensSpecimen.y;
+    if (diff < 0){
+      for (i = 0; i > diff; --i){ 
+        console.log('iterated');
+        focusUp();
+      }
+    } else {
+      for (i = 0; i < diff; ++i){ 
+        focusDown();
+        console.log('iterated');
+      }
+      
+    }
+
+    // temLens[13].y = 570;
     temLens[12].f = 70;
     drawColumn();
   })
