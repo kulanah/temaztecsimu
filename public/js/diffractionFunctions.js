@@ -248,8 +248,8 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, true);*/
         let gradient = ctx.createRadialGradient(xOffset, yOffset, beamRadius, xOffset, yOffset, 0);
-        gradient.addColorStop(0, 'rgba(255,255,255,0)');        
-        gradient.addColorStop(1, 'rgba(255,255,255,' + Math.min(specimenThickness / 50000 * radiusX * radiusY, 1) + ')');
+        gradient.addColorStop(0, 'rgba(0,14,0,0)');
+        gradient.addColorStop(1, 'rgba(128,255,154,' + Math.min(specimenThickness / 10000 * radiusX * radiusY, 1) + ')');
         ctx.fillStyle = gradient;
         ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, false);
@@ -273,12 +273,17 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                 var distance = Math.sqrt(Math.pow(r1 * i + dx * j, 2) + Math.pow(dy * j, 2));
                 var distanceRatio = distance / maxDistance;
                 //console.log(distance, distanceRatio)
-                var brightness = 1 / (distanceRatio + 1) * intensity * .1;
+                var brightness = 1 / (10 * distanceRatio + 1) * intensity * .1;
                 if (brightness > 1) {
                     brightness = 1;
                 }
-                ctx.fillStyle = "rgba(255, 255, 255, " + brightness + ")";
-                //console.log(brightness);
+                let red = Math.floor(255 * brightness);
+                let green = 255;
+                let blue = Math.min(Math.floor(255 * brightness * 1.2), 255);
+                ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${brightness})`;
+                console.log(brightness);
+                console.log(ctx.fillStyle)
+                console.log("rgba(" + red + "," + green + "," + blue + "," + brightness + ")")
                 if(type === "poly") {
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 4, distance * radiusY / 4, rotationRadians, 0, 2 * Math.PI);
                     ctx.stroke();
