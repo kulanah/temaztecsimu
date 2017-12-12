@@ -284,12 +284,38 @@ let activateComaFreeAlignmentY = function(){
 }
 
 let activateCondensor = function(){
+  $('#leftcolumnstigmator').attr('src', './public/img/stigmatorcondensor.png');
+  $('#floatingstigmator').attr('src', './public/img/stigmatorcondensor.png');
   if (openScreen == 0){
     openbox.activateCondensor();
     setupbox.activateCondensor();
   } else {
     mainmicro.activateCondensor();
   }
+}
+
+let activateObjective = function(){
+  $('#leftcolumnstigmator').attr('src', './public/img/stigmatorobjective.png');
+  $('#floatingstigmator').attr('src', './public/img/stigmatorobjective.png');  
+  if (openScreen == 0){
+    openbox.activateObjective();
+    setupbox.activateObjective();
+  } else {
+    mainmicro.activateObjective();
+  }
+}
+
+let activateDiffractionStigmator = function(){
+  diffractionStigmation = true;
+  $('#leftcolumnstigmator').attr('src', './public/img/stigmatordiffraction.png');
+  $('#floatingstigmator').attr('src', './public/img/stigmatordiffraction.png');  
+}
+
+let deactivateStigmator = function(){
+  deactivateDA();
+  diffractionStigmation = false;
+  $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
+  $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
 }
 
 let deactivateDirectAlignments  = function(){

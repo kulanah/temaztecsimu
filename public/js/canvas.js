@@ -75,12 +75,12 @@ class Canvas {
       this.parentThis.setDimensions();
     };
 
-    this.diffractionX = 256;
-    this.diffractionY = 256;
+    this.diffractionX = 259;
+    this.diffractionY = 279;
     this.diffractionCameraLength = 265;
     this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
-    this.specimenThickness = 300;
+    this.specimenThickness = 100;
 
     this.alignmentMode = 'none';    
 
@@ -273,7 +273,9 @@ class Canvas {
       let hueRotateString = 'hue-rotate(' + this.hueRotateVal + 'deg) ';
       let saturateString = 'saturate(' + this.saturateVal + '%) ';
       let blurString = 'blur(' + this.blurVal + 'px) ';
-      stringVal = sepiaString + hueRotateString + saturateString + blurString;
+      let contrastVal = 100 + this.blurVal * 5;
+      let contrastString = 'contrast(' + contrastVal + '%)';
+      stringVal = sepiaString + hueRotateString + saturateString + blurString + contrastString;
     } else {
       stringVal = 'blur(' + this.blurVal + 'px) ';
     }
@@ -421,7 +423,7 @@ class Canvas {
     if (!isNaN(deltaX)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.005, deltaX); // the dots are small, so the change is more pronounced (relative to other stigmators) to get a visible effect
+          this.diffractionAstigmatism *= Math.pow(1.0005, deltaX); // the dots are small, so the change is less pronounced (relative to other stigmators)
         } else {
           //this.diffractionX += deltaX;
           this.specimenThickness += deltaX;
@@ -454,7 +456,12 @@ class Canvas {
           this.drawDiffractogramImages();
           break;
         case 'condensor':
-          this.beamAstigmatism *= Math.pow(1.0005, deltaX);
+          this.beamAstigmatism *= Math.pow(1.0005, deltaX / (1 + this.maskR / 25));
+          break;
+        case 'objective':
+          this.imgW *= Math.pow(1.0005, deltaX);
+          this.imgH *= Math.pow(1.0005, -deltaX);
+          this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)          
           break;
       }
       this.drawCanvas();
@@ -465,7 +472,7 @@ class Canvas {
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.005, -deltaY);          
+          this.diffractionAstigmatism *= Math.pow(1.0005, -deltaY);          
         } else {
           this.diffractionY += deltaY;
         }
@@ -488,7 +495,12 @@ class Canvas {
           this.rotateBeta += deltaY;
           break;
         case 'condensor':
-          this.beamAstigmatism *= Math.pow(1.0005, -deltaY);
+          this.beamAstigmatism *= Math.pow(1.0005, -deltaY / (1 + this.maskR / 25));
+          break;
+        case 'objective':
+          this.imgW *= Math.pow(1.0005, -deltaY);
+          this.imgH *= Math.pow(1.0005, deltaY);
+          this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
           break;
       }
       this.drawCanvas();
@@ -648,6 +660,10 @@ class Canvas {
 
   activateCondensor(){
     this.alignmentMode = 'condensor';
+  }
+
+  activateObjective(){
+    this.alignmentMode = 'objective';
   }
 
   drawDiffractogramImages(){

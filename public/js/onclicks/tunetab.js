@@ -12,14 +12,19 @@ let tuneTab = function(){
     activateCondensor();
   })
 
+  // Objective stigmator stretches image and diffractogram
+  $('#tuneobjective').on('click', function(event){
+    deactivateDA();
+    activateObjective();
+  })
+
   // Diffraction stigmator makes dots ellipses
   $('#tunediffraction').on('click', function(event){
-    diffractionStigmation = true;
+    activateDiffractionStigmator();
   })
 
   $('#tunenone').on('click', function(event){
-    deactivateDA();
-    diffractionStigmation = false;
+    deactivateStigmator();    
   })
 };
 
@@ -34,13 +39,18 @@ let floatStig = function(){
     activateCondensor();
   })
 
+  // Objective stigmator stretches image and diffractogram
+  $('#floatobjective').on('click', function(event){
+    deactivateDA();
+    activateObjective();
+  })
+
   // Diffraction stigmator makes dots ellipses
   $('#floatdiffraction').on('click', function(event){
-    diffractionStigmation = true;
+    activateDiffractionStigmator();    
   })
 
   $('#floatnone').on('click', function(event){
-    deactivateDA();
-    diffractionStigmation = false;
+    deactivateStigmator();
   })
 };
