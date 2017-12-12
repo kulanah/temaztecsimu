@@ -20,12 +20,11 @@ let tuneTab = function(){
 
   // Diffraction stigmator makes dots ellipses
   $('#tunediffraction').on('click', function(event){
-    diffractionStigmation = true;
+    activateDiffractionStigmator();
   })
 
   $('#tunenone').on('click', function(event){
-    deactivateDA();
-    diffractionStigmation = false;
+    deactivateStigmator();    
   })
 };
 
@@ -48,11 +47,10 @@ let floatStig = function(){
 
   // Diffraction stigmator makes dots ellipses
   $('#floatdiffraction').on('click', function(event){
-    diffractionStigmation = true;
+    activateDiffractionStigmator();    
   })
 
   $('#floatnone').on('click', function(event){
-    deactivateDA();
-    diffractionStigmation = false;
+    deactivateStigmator();
   })
 };
