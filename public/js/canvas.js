@@ -426,7 +426,7 @@ class Canvas {
     if (!isNaN(deltaX)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.0005, deltaX); // the dots are small, so the change is less pronounced (relative to other stigmators)
+          this.diffractionAngle += deltaX;
         } else {
           //this.diffractionX += deltaX;
           this.specimenThickness += deltaX;
@@ -459,7 +459,7 @@ class Canvas {
           this.drawDiffractogramImages();
           break;
         case 'condensor':
-          this.beamAngle += deltaX / 100;
+          this.beamAngle += deltaX / 180;
           break;
         case 'objective':
           this.imgW *= Math.pow(1.0005, deltaX);
@@ -475,7 +475,7 @@ class Canvas {
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.0005, -deltaY);          
+          this.diffractionAstigmatism *= Math.pow(1.0005, -deltaY); // the dots are small, so the change is less pronounced (relative to other stigmators)
         } else {
           this.diffractionY += deltaY;
         }
@@ -681,7 +681,7 @@ class Canvas {
     let radiusY = this.diffractionRadius / this.diffractionAstigmatism / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
     var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
     for(i = 0; i < settings[0].length; i++) {
-      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
+      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
     }
   }
 
