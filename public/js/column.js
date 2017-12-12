@@ -43,6 +43,12 @@ temLens[22] = new lens(0,0,990,10,'lens','Projection Lens 2');
 temLens[23] = new lens(0,0,1090,5,'screen','Viewing Screen');
 
 
+//These are static references for the above.  This allows us to use these as references 
+//so that if the above are reordered we don't need to track down every reference
+
+const temLensSpecimen = temLens[13];
+
+
 //creates the labels for the lenses
 zoomedOutLabels = new Array;
 for(i = 0; i < temLens.length; i++){
@@ -173,13 +179,13 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 				index = i
 				let prevType = temLens[i-1].kind;
 				let prevIndex = i - 1;
-				while (prevType == 'label'){
+				while (prevType == 'label' || prevType == 'sample'){
 					prevIndex = prevIndex - 1;
 					prevType = temLens[prevIndex].kind;
 				}
 				let prevX = temLens[prevIndex].x;
 				if (!(temLens[i].type == 'label')){
-					if(prevType =='lens' || prevType =='source' || prevType =='sample'){
+					if(prevType =='lens' || prevType =='source'){
 						temLens[i].x = prevX-(temLens[i].y - temLens[prevIndex].y)
 						* ((prevX-temLens[prevIndex].xCenter) / temLens[prevIndex].f);
 					}	
@@ -197,7 +203,7 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 				index = 0;
 				
 			}
-			if(blocked==0 && temLens[index].type != 'label'){
+			if(blocked==0 && temLens[index].type != 'sample' && temLens[index].type != 'label'){
 				ctx.lineTo(temLens[i].x + xCenter, temLens[i].y);  		
 			}
 		}	

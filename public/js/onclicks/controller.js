@@ -79,7 +79,6 @@ let microscopeControllers = function(){
 
   $('#buttonl2').on('click', function(event){
     toggleWobble();
-    wobbleMode = !wobbleMode;
     if (pivotPoint){
       deactivateDirectAlignments();
       pivotPoint = !pivotPoint;
@@ -204,22 +203,38 @@ let microscopeControllers = function(){
   });
 
   $('#buttonupr').on('click', function(event){
-    focusUp();
-
-    ++temLens[13].y;
-    drawColumn();
+    if (temLensSpecimen.y < 584){
+      focusUp();
+      ++temLens[13].y;
+      drawColumn();
+    }
   });
 
   $('#buttondownr').on('click', function(event){
-    focusDown();
-
-    --temLens[13].y;
-    drawColumn();
+    if (temLensSpecimen.y > 529){
+      focusDown();
+      --temLens[13].y;
+      drawColumn();
+    }
   });
 
   $('#buttontop1r').on('click', function(event){
     zeroFocus();
-    temLens[13].y = 570;
+    let diff = 570 - temLensSpecimen.y;
+    if (diff < 0){
+      for (i = 0; i > diff; --i){ 
+        console.log('iterated');
+        focusUp();
+      }
+    } else {
+      for (i = 0; i < diff; ++i){ 
+        focusDown();
+        console.log('iterated');
+      }
+      
+    }
+
+    // temLens[13].y = 570;
     temLens[12].f = 70;
     drawColumn();
   })
