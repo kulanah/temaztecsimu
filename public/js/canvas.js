@@ -14,6 +14,7 @@ class Canvas {
     this.img.src = source;
     this.imgX = 0;
     this.imgY = 0;
+    this.imgAngle = 0;
 
     // imgScale constant approximates number of nanometers in a pixel on the user's monitor, assuming 96 DPI
     this.imgScale = (1 / 0.39370) * 10000000 / 96 * pxToNmRatio;
@@ -28,6 +29,7 @@ class Canvas {
     this.maskY = 0;
     this.maskR = 0;
     this.beamAstigmatism = 1;
+    this.beamAngle = 0;
     this.combinedRadius = 0;
 
     this.haloX = 0;
@@ -80,6 +82,7 @@ class Canvas {
     this.diffractionCameraLength = 265;
     this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
+    this.diffractionAngle = 0;
     this.specimenThickness = 300;
 
     this.alignmentMode = 'none';    
