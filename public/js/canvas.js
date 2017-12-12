@@ -505,7 +505,9 @@ class Canvas {
           break;
         case 'objective':
           this.imgW *= Math.pow(1.0005, -deltaY);
+          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;;
           this.imgH *= Math.pow(1.0005, deltaY);
+          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
           this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
           break;
       }
