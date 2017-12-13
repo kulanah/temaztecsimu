@@ -338,8 +338,8 @@ class Canvas {
       this.maskY += deltaY;
       flag = 1;
     } else {
-      this.imgX += deltaX;
-      this.imgY += deltaY;
+      this.imgX += deltaX * Math.cos(this.imgAngle) + deltaY * Math.sin(this.imgAngle);
+      this.imgY += deltaY * Math.cos(this.imgAngle) - deltaX * Math.sin(this.imgAngle);
       flag = 0;
     }
 
