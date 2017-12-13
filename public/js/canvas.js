@@ -382,11 +382,9 @@ class Canvas {
     // mainVectorY += Oay;
     
     //TODO: replace "replace this" with rotation value for PPY
-    //rotates vector Va by -pi/4 -> Vs (this was det empirically by observing TEM)
+    //rotates vector mainvector by -pi/4 -> Vs (this was det empirically by observing TEM)
     let resultantX = Math.cos(-1 * this.rotationOfPPX * Math.PI) * mainVectorX - Math.sin(-1 * -1 /*<-- REPLACE THIS */ * Math.PI) * mainVectorY;
     let resultantY = Math.sin(-1 * this.rotationOfPPX * Math.PI) * mainVectorX + Math.cos(-1 * -1 /*<-- REPLACE THIS*/ * Math.PI) * mainVectorY;
-    // console.log('vsx: ' + Vsx);
-    // console.log('vsy: ' + Vsy);
 
     return [-mainVectorX, -mainVectorY];
   }
