@@ -30,7 +30,6 @@ class Canvas {
     this.maskR = 0;
     this.beamAstigmatism = 1;
     this.beamAngle = 0;
-    this.combinedRadius = 0;
 
     this.haloX = 0;
     this.haloY = 0;
