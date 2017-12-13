@@ -471,14 +471,8 @@ class Canvas {
           this.beamAngle += deltaX / 180;
           break;
         case 'objective':
-          let imgRotation = deltaX / 180;
-          this.imgAngle += imgRotation;
-          /*imgRotation = Math.abs(imgRotation)
-          console.log('rotate',imgRotation)
-          this.imgX = (this.imgX - this.selector[0].width) * Math.cos(imgRotation) + (this.imgY - this.selector[0].height) * Math.sin(imgRotation) + this.selector[0].width * Math.cos(imgRotation) + this.selector[0].height * Math.sin(imgRotation);
-          imgRotation = -imgRotation
-          this.imgY = (this.imgY - this.selector[0].height) * Math.cos(imgRotation) - (this.imgX - this.selector[0].width ) * Math.sin(imgRotation) + this.selector[0].height * Math.cos(imgRotation) - this.selector[0].width * Math.sin(imgRotation);          
-          */this.diffractogramAngle += deltaX / Math.PI;
+          this.imgAngle += deltaX / 180;
+          this.diffractogramAngle += deltaX / Math.PI;
           break;
       }
       this.drawCanvas();
