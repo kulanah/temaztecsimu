@@ -312,10 +312,8 @@ let activateDiffractionStigmator = function(){
 }
 
 let deactivateStigmator = function(){
+  diffractionStigmation = false;  
   deactivateDA();
-  diffractionStigmation = false;
-  $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
-  $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
 }
 
 let deactivateDirectAlignments  = function(){
@@ -392,6 +390,10 @@ let toggleWobble = function(){
 let deactivateDA = function(){
   if (wobbleMode){
     toggleWobble();
+  }
+  if(!diffractionStigmation){
+    $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
+    $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
   }
   deactivateDirectAlignments();
 }

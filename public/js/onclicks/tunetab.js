@@ -8,18 +8,19 @@ let tuneTab = function(){
 
   // Condensor stigmator makes beam ellipse
   $('#tunecondensor').on('click', function(event){
-    deactivateDA();
+    deactivateStigmator();
     activateCondensor();
   })
 
   // Objective stigmator stretches image and diffractogram
   $('#tuneobjective').on('click', function(event){
-    deactivateDA();
+    deactivateStigmator();
     activateObjective();
   })
 
   // Diffraction stigmator makes dots ellipses
   $('#tunediffraction').on('click', function(event){
+    deactivateStigmator();
     activateDiffractionStigmator();
   })
 
@@ -35,18 +36,19 @@ let floatStig = function(){
 
   // Condensor stigmator makes beam ellipse
   $('#floatcondensor').on('click', function(event){
-    deactivateDA();
+    deactivateStigmator();
     activateCondensor();
   })
 
   // Objective stigmator stretches image and diffractogram
   $('#floatobjective').on('click', function(event){
-    deactivateDA();
+    deactivateStigmator();
     activateObjective();
   })
 
   // Diffraction stigmator makes dots ellipses
   $('#floatdiffraction').on('click', function(event){
+    deactivateStigmator();
     activateDiffractionStigmator();    
   })
 
