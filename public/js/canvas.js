@@ -165,7 +165,6 @@ class Canvas {
 
     this.context.clip();
     
-    this.context.save();
     this.context.translate(this.img.width / 2, this.img.height / 2)
     this.context.rotate(this.imgAngle);
     this.context.translate(-this.img.width / 2, -this.img.height / 2);
@@ -173,9 +172,7 @@ class Canvas {
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
       this.imgX,this.imgY,this.imgW,this.imgH);
-    
-    this.context.restore();
-    
+        
     this.drawHalo();
 
     this.context.restore();
