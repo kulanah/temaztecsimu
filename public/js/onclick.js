@@ -10,7 +10,6 @@ let activeWindow = 0;
 let diffractionMode = false;
 let diffractionStigmation = false;
 let wobbleMode = false;
-let pivotPoint = false;
 
 let clickFunctions = function(){
   column();
