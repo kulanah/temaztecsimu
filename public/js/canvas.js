@@ -166,11 +166,16 @@ class Canvas {
 
     this.context.clip();
     
+    this.context.save();
+    this.context.translate(this.img.width / 2 + this.imgX, this.img.height / 2 + this.imgY)
     this.context.rotate(this.imgAngle);
+    this.context.translate(-this.imgX - this.img.width / 2, -this.imgY - this.img.height / 2);
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
       this.imgX,this.imgY,this.imgW,this.imgH);
+    
+    this.context.restore();
     
     this.drawHalo();
 
@@ -466,8 +471,14 @@ class Canvas {
           this.beamAngle += deltaX / 180;
           break;
         case 'objective':
-          this.imgAngle += deltaX / 180;
-          this.diffractogramAngle += deltaX / Math.PI;
+          let imgRotation = deltaX / 180;
+          this.imgAngle += imgRotation;
+          /*imgRotation = Math.abs(imgRotation)
+          console.log('rotate',imgRotation)
+          this.imgX = (this.imgX - this.selector[0].width) * Math.cos(imgRotation) + (this.imgY - this.selector[0].height) * Math.sin(imgRotation) + this.selector[0].width * Math.cos(imgRotation) + this.selector[0].height * Math.sin(imgRotation);
+          imgRotation = -imgRotation
+          this.imgY = (this.imgY - this.selector[0].height) * Math.cos(imgRotation) - (this.imgX - this.selector[0].width ) * Math.sin(imgRotation) + this.selector[0].height * Math.cos(imgRotation) - this.selector[0].width * Math.sin(imgRotation);          
+          */this.diffractogramAngle += deltaX / Math.PI;
           break;
       }
       this.drawCanvas();
@@ -505,7 +516,7 @@ class Canvas {
           break;
         case 'objective':
           this.imgW *= Math.pow(1.0005, -deltaY);
-          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;;
+          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
           this.imgH *= Math.pow(1.0005, deltaY);
           this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
           this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)

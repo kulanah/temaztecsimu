@@ -224,6 +224,7 @@ function drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, d
 
 function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j){
     // Draw Kikuchi lines - lines for points that are closer together are narrower and less transparent
+    // Note to self - consider using ctx.rotate
     if (specimenThickness <= 0){
         return;
     }
