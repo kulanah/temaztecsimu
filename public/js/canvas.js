@@ -449,10 +449,10 @@ class Canvas {
           this.maskX += deltaX;
           break;
         case 'pivotpointx':
-          this.pivotPointWidth += deltaX;
+          this.pivotPointWidth += deltaX / 3;
           break;
         case 'pivotpointy':
-          this.pivotPointHeight += deltaX;
+          this.pivotPointHeight += deltaX / 3;
           break;
         case 'rotationcenter':
           this.rotateAlpha += deltaX;
