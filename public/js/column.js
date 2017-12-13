@@ -89,12 +89,8 @@ for(i = 0; i < temLens.length; i++){
 function drawColumn(){
 	if (zoomed){
 		drawColumnParam(5.4, zoomedOffsetStatic, true, 0.4);
-		
 	}
-
-	
 	drawColumnParam();
-
 }
 
 function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.3){
