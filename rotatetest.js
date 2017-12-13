@@ -1,3 +1,5 @@
+// Basic example of rotation based on code from http://www.williammalone.com/briefs/how-to-rotate-html5-canvas-around-center/
+
 function rotate() {
 
     var canvas = document.getElementById('rotatearea')
