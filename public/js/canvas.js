@@ -167,9 +167,9 @@ class Canvas {
     this.context.clip();
     
     this.context.save();
-    this.context.translate(this.img.width / 2 + this.imgX, this.img.height / 2 + this.imgY)
+    this.context.translate(this.img.width / 2, this.img.height / 2)
     this.context.rotate(this.imgAngle);
-    this.context.translate(-this.imgX - this.img.width / 2, -this.imgY - this.img.height / 2);
+    this.context.translate(-this.img.width / 2, -this.img.height / 2);
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
