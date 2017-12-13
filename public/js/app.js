@@ -389,7 +389,7 @@ let deactivateDA = function(){
   if (wobbleMode){
     toggleWobble();
   }
-  if(!diffractionStigmation){
+  if(!diffractionStigmation && updateStigmatorVisual){
     $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
     $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
   }
