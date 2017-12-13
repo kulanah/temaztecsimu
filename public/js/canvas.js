@@ -353,26 +353,33 @@ class Canvas {
 
     //TODO: make this more functional, remove width and height
     //because there are two forms fo this (ppx and ppy) this wont work once we add the other form
-    let mainVectorX =  Math.cos(angle) * this.pivotPointWidth;
-    let mainVectorY = Math.sin(angle) * this.pivotPointHeight;
-    
-    
+    let mainVectorX, mainVectorY
+    if (this.pivotPointWidth < 5 && this.pivotPointWidth > -5){
+      mainVectorX = 0;
+    } else {
+      mainVectorX =  Math.cos(angle) * this.pivotPointWidth;
+    }
+    if (this.pivotPointHeight < 5 && this.pivotPointHeight > -5){
+      mainVectorY = 0;
+    } else {
+      mainVectorY = Math.sin(angle) * this.pivotPointHeight;
+    }
+
     //sets up vector secondaryVector, in the coordinate system b in which the alpha offset feature is computed - 
     //as a function of angle and settings[stg['PPX ALPHA']].val
-
     let secondaryVectorX = 0.3 * Math.sin(angle) * this.pivotPointHeightAlpha;
     let secondaryVectorY = 0;
     
     //finds phi, angle of main vector to the horizontal
     let phi = Math.atan(this.pivotPointWidth / this.pivotPointHeight);
     
-    //rotates secondayVector by -phi -> Oa
+    //rotates secondayVector by -phi and stores into Oa
     let Oax = Math.cos(-1 * phi) * secondaryVectorX;
     let Oay = Math.sin(-1 * phi) * secondaryVectorX;
     
-    //adds vector Oa to vector Va
-    mainVectorX += Oax;
-    mainVectorY += Oay;
+    //adds vector Oa to mainVector
+    // mainVectorX += Oax;
+    // mainVectorY += Oay;
     
     //TODO: replace "replace this" with rotation value for PPY
     //rotates vector Va by -pi/4 -> Vs (this was det empirically by observing TEM)
@@ -381,10 +388,13 @@ class Canvas {
     // console.log('vsx: ' + Vsx);
     // console.log('vsy: ' + Vsy);
 
-    return [-resultantX, -resultantY];
+    return [-mainVectorX, -mainVectorY];
   }
 
   drawPPPath(){
+    console.log("h: " + this.pivotPointHeight);
+    console.log("w: " + this.pivotPointWidth);
+
     let savedFilter = this.context.filter;
     this.context.filter = 'blur(5px)';
 
