@@ -122,4 +122,26 @@ let pageSetup = function(){
 
   $('#magnificationvalue').text(setupbox.zooms[setupbox.mag] + ' x')
   $('#spotsizevalue').text(' ' + $('#beamrange').val());
+
+  // Solution to have cursor adjust only in appropriate area for resizeable elements found at
+  // https://stackoverflow.com/questions/9932569/css-to-change-the-cursor-style-of-the-resize-button-on-a-textarea
+  $(function() {
+    $(document).on('mousemove', 'textarea', function(e) {
+        var a = $(this).offset().top + $(this).outerHeight() - 16,  //  top border of bottom-right-corner-box area
+            b = $(this).offset().left + $(this).outerWidth() - 16;  //  left border of bottom-right-corner-box area
+        $(this).css({
+            cursor: e.pageY > a && e.pageX > b ? 'nw-resize' : ''
+        });
+    })
+  });
+
+  $(function() {
+    $(document).on('mousemove', 'iframe', function(e) {
+        var a = $(this).offset().top + $(this).outerHeight() - 16,  //  top border of bottom-right-corner-box area
+            b = $(this).offset().left + $(this).outerWidth() - 16;  //  left border of bottom-right-corner-box area
+        $(this).css({
+            cursor: e.pageY > a && e.pageX > b ? 'nw-resize' : ''
+        });
+    })
+  });
 };
