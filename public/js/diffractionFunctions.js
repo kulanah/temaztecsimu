@@ -209,7 +209,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         // Scaling transparency by thickness and scaling by proximity to center
         let gradient = ctx.createRadialGradient(xOffset, yOffset, beamRadius, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(0,0,0,0)');
-        gradient.addColorStop(1, 'rgba(128,255,154,' + Math.min(specimenThickness / 10000 * radiusX * radiusY, 1) + ')');
+        gradient.addColorStop(1, 'rgba(128,255,154,' + lineTransparency + ')');
         ctx.fillStyle = gradient;
         ctx.translate(xOffset, yOffset);
         ctx.rotate(lineAngle);
