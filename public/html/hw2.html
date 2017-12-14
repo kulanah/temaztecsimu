@@ -7,7 +7,7 @@
                 if(location.search.includes('?')){
                     $('#evaluation').show();
                     let str = location.search.split('&').length;
-                    console.log('You checked ' + str + ' box(es)');
+                    console.log('You checked ' + (str - 2) + ' box(es)');
                 }
             });
         </script>
@@ -88,7 +88,7 @@
             <label for='8c'>c)	Decreases beam tip lifetime</label><br>
             <input type='checkbox' id='8d' name='8d'></input>
             <label for='8d'>d)	Improves image resolution</label><br>
-            <br>9)	Increasing the extraction voltage causes the following:
+            <br>9)	<b>Increasing</b> the extraction voltage causes the following:
             <br><input type='checkbox' id='9a' name='9a'></input>
             <label for='9a'>a)	Increases beam size</label><br>
             <input type='checkbox' id='9b' name='9b'></input>
@@ -97,7 +97,7 @@
             <label for='9c'>c)	Increases beam current</label><br>
             <input type='checkbox' id='9d' name='9d'></input>
             <label for='9d'>d)	Increases tip life</label><br>
-            <br>10)	Decreasing the gun lens setting causes the following
+            <br>10)	<b>Decreasing</b> the gun lens setting causes the following
             <br><input type='checkbox' id='10a' name='10a'></input>
             <label for='10a'>a)	Increases beam size</label><br>
             <input type='checkbox' id='10b' name='10b'></input>
