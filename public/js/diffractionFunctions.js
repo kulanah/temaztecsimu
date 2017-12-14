@@ -239,6 +239,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let lineWidthY = Math.abs(2 * dx * j + 2 * r1 * i);
         let lineWidth = Math.sqrt(Math.pow(lineWidthX, 2) + Math.pow(lineWidthY, 2))
         let lineTransparency = Math.min(specimenThickness / 500 / lineWidth * radiusX * radiusY, 1);
+        let lineAngle = Math.atan2(dy * j, dx * j + r1 * i);
         
         // Applying the blur filter significantly worsens performance, so it is avoided when possible
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
@@ -253,19 +254,27 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, true);*/
         let gradient = ctx.createRadialGradient(xOffset, yOffset, beamRadius, xOffset, yOffset, 0);
-        gradient.addColorStop(0, 'rgba(0,14,0,0)');
+        gradient.addColorStop(0, 'rgba(0,0,0,0)');
         gradient.addColorStop(1, 'rgba(128,255,154,' + Math.min(specimenThickness / 10000 * radiusX * radiusY, 1) + ')');
         ctx.fillStyle = gradient;
         //ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         //drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, false);
-        const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view        
-        ctx.beginPath();
-        ctx.moveTo(xOffset - scalar * dy - lineWidthX / 2 - i * r1 - j * dx, yOffset + scalar * dx - lineWidthY / 2 + j * dy);
+        //const scalar = 500; // set this value high enough that the ends of the lines will be outside the microscope view        
+        //ctx.beginPath();
+        ctx.translate(xOffset, yOffset);
+        ctx.rotate(lineAngle);
+        ctx.translate(-xOffset, -yOffset);        
+        ctx.fillRect(xOffset - lineWidth / 2, 0, lineWidth, beamRadius * 2);
+        ctx.translate(xOffset, yOffset);
+        ctx.rotate(-lineAngle);
+        ctx.translate(-xOffset, -yOffset);        
+        
+        /*ctx.moveTo(xOffset - scalar * dy - lineWidthX / 2 - i * r1 - j * dx, yOffset + scalar * dx - lineWidthY / 2 + j * dy);
         ctx.lineTo(xOffset + scalar * dy - lineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dx - lineWidthY / 2 - j * dy);
         ctx.lineTo(xOffset + scalar * dy + lineWidthX / 2 + i * r1 + j * dx, yOffset - scalar * dx + lineWidthY / 2 - j * dy);
         ctx.lineTo(xOffset - scalar * dy + lineWidthX / 2 - i * r1 - j * dx, yOffset + scalar * dx + lineWidthY / 2 + j * dy);
         ctx.lineTo(xOffset - scalar * dy - lineWidthX / 2 - i * r1 - j * dx, yOffset + scalar * dx - lineWidthY / 2 + j * dy);
-        ctx.fill();
+        ctx.fill();*/
         //ctx.fillRect(-r1LineWidth / 2 + xOffset, 0, r1LineWidth, canvas.height);
         //drawDiagonalAndVerticalKikuchiLines(canvas, xOffset, yOffset, r1, dx, dy, i, j, r2LineWidthX, r2LineWidthY, r2LineTransparency, false);
     }
@@ -313,8 +322,8 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 }
+                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j);                
             }
         }
-        drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j)        
     }
 }
