@@ -13,8 +13,11 @@ body{
   line-height: 0;
 }
 
-.grabbing{
+#grabbing{
   cursor: -webkit-grabbing;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 }
 
 .wintext{
