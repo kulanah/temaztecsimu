@@ -172,7 +172,7 @@ class Canvas {
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
       this.imgX,this.imgY,this.imgW,this.imgH);
-        
+
     this.drawHalo();
 
     this.context.restore();
@@ -685,9 +685,13 @@ class Canvas {
     drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
     let radiusX = this.c2 * this.diffractionRadius * this.diffractionAstigmatism / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
     let radiusY = this.c2 * this.diffractionRadius / this.diffractionAstigmatism / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
-    var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
-    for(i = 0; i < settings[0].length; i++) {
-      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
+    if(onSpecimen){
+      var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
+      for(i = 0; i < settings[0].length; i++) {
+        drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
+      }
+    } else {
+      drawBeam(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, this.diffractionAngle, radiusX + radiusY);
     }
   }
 

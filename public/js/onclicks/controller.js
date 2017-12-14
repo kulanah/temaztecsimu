@@ -155,7 +155,24 @@ let microscopeControllers = function(){
 
   $('#buttondiffraction').on('click', function(event){
     // Switch between image and diffraction views
-    diffractionMode = !diffractionMode;    
+    diffractionMode = !diffractionMode;
+    // Pixel color detection code based on answer from https://stackoverflow.com/questions/6735470/get-pixel-color-from-canvas-on-mouseover
+    function rgbToHex(r, g, b) {
+      if (r > 255 || g > 255 || b > 255)
+        throw "Invalid color component";
+      return ((r << 16) | (g << 8) | b).toString(16);
+    }
+    // getImageData will only function on a server - it will fail if run locally.
+    // To do local testing, create a web server with Python.
+    // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
+    var p = setupbox.context.getImageData(this.selector[0].width / 2, this.selector[0].height / 2, 1, 1).data;
+    var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+    console.log(hex);
+    if(hex != '#000000'){ //if on specimen
+      onSpecimen = true;
+    } else {
+      onSpecimen = false;
+    }
     if (openScreen == 0){
       if (activeWindow == 1){
         setupbox.drawCanvas();
