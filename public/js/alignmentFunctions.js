@@ -92,7 +92,7 @@ function drawGreenCircle(canvas, x, y, radiusX, radiusY, rotation) {
     if (canvas.getContext) {
         var rotationRadians = rotation / 180 * Math.PI;
         var ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#380'; 
+        ctx.fillStyle = '#373'; 
         ctx.beginPath();
         ctx.ellipse(x, y, radiusX, radiusY, rotationRadians, 0, Math.PI * 2);
         ctx.fill();
@@ -104,7 +104,7 @@ function drawThreeArcs(canvas, x, y, radiusX, radiusY, rotation, lineWidth) {
     if (canvas.getContext) {
         var rotationRadians = rotation / 180 * Math.PI;
         var ctx = canvas.getContext('2d');
-        ctx.strokeStyle = '#58C80F';
+        ctx.strokeStyle = '#6E7';
         ctx.lineWidth = lineWidth;
         console.log(x, y, radiusX, radiusY, rotation, lineWidth)
         ctx.beginPath();
