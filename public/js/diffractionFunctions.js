@@ -210,14 +210,18 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let gradient = ctx.createRadialGradient(xOffset, yOffset, beamRadius, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(0,0,0,0)');
         gradient.addColorStop(1, 'rgba(128,255,154,' + lineTransparency + ')');
+        // Alternative gradient that produces a white center, but also creates odd rainbow patterns
+        /*gradient.addColorStop(0, 'rgba(0,0,0,0)');        
+        gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');        
+        gradient.addColorStop(1, 'rgba(251,255,255,' + lineTransparency + ')');*/
         ctx.fillStyle = gradient;
         ctx.translate(xOffset, yOffset);
         ctx.rotate(lineAngle);
-        ctx.translate(-xOffset, -yOffset);        
+        ctx.translate(-xOffset, -yOffset);
         ctx.fillRect(xOffset - lineWidth / 2, 0, lineWidth, beamRadius * 2);
         ctx.translate(xOffset, yOffset);
         ctx.rotate(-lineAngle);
-        ctx.translate(-xOffset, -yOffset);        
+        ctx.translate(-xOffset, -yOffset);
     }
 }
 
