@@ -170,9 +170,13 @@ class Canvas {
     this.context.translate(-this.img.width / 2, -this.img.height / 2);
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
+    
+    this.context.globalAlpha = .5;    
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX,this.imgY,this.imgW,this.imgH);
-
+      this.imgX - this.defocus,this.imgY,this.imgW,this.imgH);
+    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+      this.imgX + this.defocus,this.imgY,this.imgW,this.imgH);
+      
     this.drawHalo();
 
     this.context.restore();
@@ -252,7 +256,7 @@ class Canvas {
   };
 
   focus(delta){
-    if (this.blurVal < 0){
+    /*if (this.blurVal < 0){
       this.blurVal = 0;
     } 
     let oldBlur = this.blurVal;
@@ -270,7 +274,8 @@ class Canvas {
       let newBlur = oldBlur + delta / 40;
       this.blurVal = newBlur;
       this.setFilterString();
-    }    
+    }    */
+    this.defocus += delta;
 
     this.drawCanvas();
   };
