@@ -190,7 +190,7 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
     }
 }
 
-function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j){
+function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, i, j){
     // Draw Kikuchi lines - lines for points that are closer together are narrower and less transparent
     if (specimenThickness <= 0){
         return;
@@ -207,7 +207,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
 
         // Scaling transparency by thickness and scaling by proximity to center
-        let gradient = ctx.createRadialGradient(xOffset, yOffset, beamRadius, xOffset, yOffset, 0);
+        let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(0,0,0,0)');
         gradient.addColorStop(1, 'rgba(128,255,154,' + lineTransparency + ')');
         // Alternative gradient that produces a white center, but also creates odd rainbow patterns
@@ -218,14 +218,14 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.translate(xOffset, yOffset);
         ctx.rotate(lineAngle);
         ctx.translate(-xOffset, -yOffset);
-        ctx.fillRect(xOffset - lineWidth / 2, 0, lineWidth, beamRadius * 2);
+        ctx.fillRect(xOffset - lineWidth / 2, 0, lineWidth, platformRadius * 2);
         ctx.translate(xOffset, yOffset);
         ctx.rotate(-lineAngle);
         ctx.translate(-xOffset, -yOffset);
     }
 }
 
-function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur, intensity, type, layers, r1, r2, angle, specimenThickness, beamRadius) {
+function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur, intensity, type, layers, r1, r2, angle, specimenThickness, platformRadius) {
     // Draw the lattice diffraction pattern
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
@@ -267,7 +267,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 }
-                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, beamRadius, i, j);                
+                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, i, j);                
             }
         }
     }
