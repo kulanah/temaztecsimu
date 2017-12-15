@@ -442,8 +442,11 @@ class Canvas {
           break;
         case 'comafreealignmentx':
         case 'comafreealignmenty':
-          this.defocus += deltaX * 100;
-          this.diffractogramAstigmatism *= Math.pow(1.001, deltaX);
+          this.imgW *= Math.pow(1.0005, deltaX);
+          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, deltaX) + this.img.width / 2;
+          this.imgH *= Math.pow(1.0005, -deltaX);
+          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, -deltaX) + this.img.height / 2;
+          this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)
           this.drawDiffractogramImages();
           break;
         case 'condensor':
@@ -483,6 +486,15 @@ class Canvas {
           break;
         case 'rotationcenter':
           this.rotateBeta += deltaY;
+          break;
+        case 'comafreealignmentx':
+        case 'comafreealignmenty':
+          this.imgW *= Math.pow(1.0005, -deltaY);
+          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
+          this.imgH *= Math.pow(1.0005, deltaY);
+          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
+          this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
+          this.drawDiffractogramImages();
           break;
         case 'condensor':
           this.beamAstigmatism *= Math.pow(1.0005, -deltaY / (1 + this.maskR / 25));
