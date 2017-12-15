@@ -196,7 +196,7 @@ class Canvas {
             this.diffractionCameraLength = 640;
             break;
           case 960:
-            this.magLimitFlash();
+            this.limitFlash('#magnificationvalue');
           default:
             this.diffractionCameraLength = 960;
         }
@@ -209,7 +209,7 @@ class Canvas {
             this.diffractionCameraLength = 460;
             break;
           case 265:
-            this.magLimitFlash();
+            this.limitFlash('#magnificationvalue');
           default:
             this.diffractionCameraLength = 265;
         }
@@ -229,14 +229,14 @@ class Canvas {
         zoomFactor = this.zooms[this.mag + 1] / this.zooms[this.mag];
         ++this.mag;
       } else {
-        this.magLimitFlash();
+        this.limitFlash('#magnificationvalue');
       }
     } else if (delta < 0){
       if (this.mag >= 1){
         zoomFactor = this.zooms[this.mag - 1] / this.zooms[this.mag];
         --this.mag;
       } else {
-        this.magLimitFlash();
+        this.limitFlash('#magnificationvalue');
       }
     }
 
@@ -250,9 +250,9 @@ class Canvas {
     this.drawCanvas();
   };
 
-  magLimitFlash(){
-    $('#magnificationvalue').css('background','#ff8888');
-    $('#magnificationvalue').animate({
+  limitFlash(element){
+    $(element).css('background','#ff8888');
+    $(element).animate({
       backgroundColor: '#fffbf0'
     }, 1000);
   };
@@ -270,8 +270,10 @@ class Canvas {
     }
     if(this.focusStep < 1){
       this.focusStep = 1;
+      this.limitFlash('#focusstepvalue');
     } else if(this.focusStep > 9){
       this.focusStep = 9;
+      this.limitFlash('#focusstepvalue');      
     }
     this.drawCanvas();
   }
