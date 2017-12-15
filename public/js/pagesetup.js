@@ -54,7 +54,7 @@ let pageSetup = function(){
   bringToFront('maindropdown');  
   bringToFront('filemenu');
   bringToFront('deflectorbox');
-  bringToFront('grabbing');
+  bringToFront('grabbingdiv');  
 
   $('img').on('dragstart', function(event){ 
       event.preventDefault(); 

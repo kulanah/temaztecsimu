@@ -41,7 +41,8 @@ let microscopeControllers = function(){
   let setStartXY = function(){
     startX = event.clientX;
     startY = event.clientY;
-    $('#grabbing').show();
+    $('#grabbingdiv').show();
+    $('body *').addClass('grabbing');
   }
 
   let mouseuptemplate = function(event){
@@ -50,7 +51,8 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mousemove', mousefocustemplate);
     $('body')[0].removeEventListener('mousemove', mousemultixtemplate);
     $('body')[0].removeEventListener('mousemove', mousemultiytemplate);
-    $('#grabbing').hide();    
+    $('#grabbingdiv').hide();
+    $('body *').removeClass('grabbing');    
   };
 
   let mouseuptemplatezoom = function(event){
@@ -58,7 +60,8 @@ let microscopeControllers = function(){
     zoom(delta)
     $('body')[0].removeEventListener('mouseup', mouseuptemplatezoom);
     $('body')[0].removeEventListener('mouseleave', mouseuptemplatezoom);    
-    $('#grabbing').hide();    
+    $('#grabbingdiv').hide();
+    $('body *').removeClass('grabbing');    
   };
   
   let mousedowntemplateintensity = function(event){
@@ -140,7 +143,8 @@ let microscopeControllers = function(){
 
   $('#buttonintensity').mousedown(function(event){
     startIntensity = event.clientY;
-    $('#grabbing').show();    
+    $('#grabbingdiv').show();
+    $('body *').addClass('grabbing');    
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mouseleave', mouseuptemplate);    

@@ -15,6 +15,7 @@ class Canvas {
     this.imgX = 0;
     this.imgY = 0;
     this.imgAngle = 0;
+    this.defocus = 0;    
 
     // imgScale constant approximates number of nanometers in a pixel on the user's monitor, assuming 96 DPI
     this.imgScale = (1 / 0.39370) * 10000000 / 96 * pxToNmRatio;
@@ -45,6 +46,8 @@ class Canvas {
         break;
       }
     }
+
+    this.focusStep = 3;
 
     this.specimenHeight = 0;
 
@@ -90,7 +93,6 @@ class Canvas {
     this.rotateBeta = 8;
 
     this.jump = 64;
-    this.defocus = 0;
     this.diffractogramAstigmatism = 1;
     this.diffractogramAngle = 0;
 
@@ -172,9 +174,9 @@ class Canvas {
     
     this.context.globalAlpha = .5;
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX - this.defocus,this.imgY,this.imgW,this.imgH);
+      this.imgX - this.defocus / 10,this.imgY,this.imgW,this.imgH);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.defocus,this.imgY,this.imgW,this.imgH);
+      this.imgX + this.defocus / 10,this.imgY,this.imgW,this.imgH);
       
     this.drawHalo();
 
@@ -255,7 +257,7 @@ class Canvas {
   };
 
   focus(delta){
-    this.defocus += delta;
+    this.defocus += delta * this.focusStep;
     this.drawCanvas();
   };
 

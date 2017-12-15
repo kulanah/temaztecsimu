@@ -13,8 +13,11 @@ body{
   line-height: 0;
 }
 
-#grabbing{
-  cursor: -webkit-grabbing;
+.grabbing{
+  cursor: -webkit-grabbing;  
+}
+
+#grabbingdiv{
   position: fixed;
   width: 100vw;
   height: 100vh;
