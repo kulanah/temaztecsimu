@@ -38,13 +38,6 @@ let microscopeControllers = function(){
     shiftFocus(deltas[1]);  
   }
 
-  let mousefocussteptemplate = function(event){
-    let deltas = handleDrag(event);
-    setStartXY();
-
-    shiftFocusStep(deltas[1]);  
-  }
-
   let setStartXY = function(){
     startX = event.clientX;
     startY = event.clientY;
@@ -70,6 +63,15 @@ let microscopeControllers = function(){
     $('#grabbingdiv').hide();
     $('body *').removeClass('grabbing');
   };
+
+  let mouseuptemplatefocusstep = function(event){
+    let delta = startY - event.clientY;
+    shiftFocusStep(delta)
+    $('body')[0].removeEventListener('mouseup', mouseuptemplatefocusstep);
+    $('body')[0].removeEventListener('mouseleave', mouseuptemplatefocusstep);    
+    $('#grabbingdiv').hide();
+    $('body *').removeClass('grabbing');
+  };
   
   let mousedowntemplateintensity = function(event){
     let deltaIntensity = event.clientY - startIntensity;
@@ -92,9 +94,8 @@ let microscopeControllers = function(){
     setStartXY();
     console.log('Adjusting focus step')
 
-    $('body')[0].addEventListener('mouseup', mouseuptemplate);
-    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
-    $('body')[0].addEventListener('mousemove', mousefocussteptemplate);
+    $('body')[0].addEventListener('mouseup', mouseuptemplatefocusstep);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplatefocusstep);    
   });  
 
 

@@ -116,6 +116,7 @@ class Canvas {
   };
 
   drawCanvas(){
+    $('#focusstepvalue').text(this.focusStep);
     if (this == setupbox){
       if(diffractionMode){
         this.hueRotateActive = false;
@@ -262,12 +263,17 @@ class Canvas {
   };
 
   shiftFocusStep(delta){
-    this.focusStep += delta;
+    if(delta > 0){
+      this.focusStep++;
+    } else if (delta < 0) {
+      this.focusStep--;
+    }
     if(this.focusStep < 1){
       this.focusStep = 1;
     } else if(this.focusStep > 9){
       this.focusStep = 9;
     }
+    this.drawCanvas();
   }
 
   setFilterString(){
