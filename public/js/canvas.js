@@ -22,7 +22,6 @@ class Canvas {
     //use this to give the onload function access to the setDimensions method
     this.img.parentThis = this;
 
-    this.focusUp = true;
     this.intUp = false;
 
     this.maskX = 0;
@@ -256,27 +255,7 @@ class Canvas {
   };
 
   focus(delta){
-    /*if (this.blurVal < 0){
-      this.blurVal = 0;
-    } 
-    let oldBlur = this.blurVal;
-
-    if (oldBlur < 0.10){
-      this.focusUp = !this.focusUp;
-    } 
-
-    if (this.focusUp){
-      delta = -delta;
-    } 
-
-    //stops the blur from getting too intense, this prevents slowdown
-    if (oldBlur + delta <= 40){
-      let newBlur = oldBlur + delta / 40;
-      this.blurVal = newBlur;
-      this.setFilterString();
-    }    */
     this.defocus += delta;
-
     this.drawCanvas();
   };
 
