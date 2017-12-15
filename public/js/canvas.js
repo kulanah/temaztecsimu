@@ -261,6 +261,15 @@ class Canvas {
     this.drawCanvas();
   };
 
+  shiftFocusStep(delta){
+    this.focusStep += delta;
+    if(this.focusStep < 1){
+      this.focusStep = 1;
+    } else if(this.focusStep > 9){
+      this.focusStep = 9;
+    }
+  }
+
   setFilterString(){
     let stringVal = ''
     if (this.hueRotateActive){

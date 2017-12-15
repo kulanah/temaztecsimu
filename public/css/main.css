@@ -71,6 +71,20 @@ body{
   font-family: sans-serif;
 }
 
+#focusstepdisplay{
+  position: absolute;
+  top: 88.6vh;
+  right: 42.75vw;
+}
+
+#focusstepvalue{
+  background-color: #fffbf0;
+  font-size: x-large;
+  font-size: 1.4vw;
+  font-family: sans-serif;
+  white-space: pre;
+}
+
 #spotsizedisplay{
   position: absolute;
   top: 91.6vh;

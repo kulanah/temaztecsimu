@@ -38,6 +38,13 @@ let microscopeControllers = function(){
     shiftFocus(deltas[1]);  
   }
 
+  let mousefocussteptemplate = function(event){
+    let deltas = handleDrag(event);
+    setStartXY();
+
+    shiftFocusStep(deltas[1]);  
+  }
+
   let setStartXY = function(){
     startX = event.clientX;
     startY = event.clientY;
@@ -52,7 +59,7 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mousemove', mousemultixtemplate);
     $('body')[0].removeEventListener('mousemove', mousemultiytemplate);
     $('#grabbingdiv').hide();
-    $('body *').removeClass('grabbing');    
+    $('body *').removeClass('grabbing');
   };
 
   let mouseuptemplatezoom = function(event){
@@ -61,7 +68,7 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mouseup', mouseuptemplatezoom);
     $('body')[0].removeEventListener('mouseleave', mouseuptemplatezoom);    
     $('#grabbingdiv').hide();
-    $('body *').removeClass('grabbing');    
+    $('body *').removeClass('grabbing');
   };
   
   let mousedowntemplateintensity = function(event){
@@ -74,11 +81,21 @@ let microscopeControllers = function(){
 
   $('#buttonfocus').mousedown(function(event){
     setStartXY();
+    console.log('Adjusting focus')
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
     $('body')[0].addEventListener('mousemove', mousefocustemplate);
   });
+
+  $('#buttonfocusstep').mousedown(function(event){
+    setStartXY();
+    console.log('Adjusting focus step')
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
+    $('body')[0].addEventListener('mousemove', mousefocussteptemplate);
+  });  
 
 
   $('#buttonl2').on('click', function(event){

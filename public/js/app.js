@@ -110,6 +110,15 @@ let shiftFocus = function(delta){
   }
 };
 
+let shiftFocusStep = function(delta){
+  if (openScreen == 0){
+    openbox.shiftFocusStep(delta);
+    setupbox.shiftFocusStep(delta);
+  } else {
+    mainmicro.shiftFocusStep(delta);
+  }
+};
+
 let zoom = function(delta){
   if (openScreen == 0){
     if (activeWindow == 0){
