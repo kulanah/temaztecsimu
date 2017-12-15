@@ -170,7 +170,7 @@ class Canvas {
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
     
-    this.context.globalAlpha = .5;    
+    this.context.globalAlpha = .5;
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
       this.imgX - this.defocus,this.imgY,this.imgW,this.imgH);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
