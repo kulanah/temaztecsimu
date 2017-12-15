@@ -354,45 +354,65 @@ class Canvas {
     //TODO: make this more functional, remove width and height
     //because there are two forms fo this (ppx and ppy) this wont work once we add the other form
     let mainVectorX, mainVectorY
-    if (this.pivotPointWidth < 5 && this.pivotPointWidth > -5){
+    let width, height;
+    let phi = -1
+    if (this.pivotPointWidth < 10 && this.pivotPointWidth > -10){
       mainVectorX = 0;
+      width = 0;
     } else {
       mainVectorX =  Math.cos(angle) * this.pivotPointWidth;
+      width = this.pivotPointWidth;
     }
-    if (this.pivotPointHeight < 5 && this.pivotPointHeight > -5){
+    if (this.pivotPointHeight < 25 && this.pivotPointHeight > -25){
       mainVectorY = 0;
+      height = 0;
     } else {
       mainVectorY = Math.sin(angle) * this.pivotPointHeight;
+      height = this.pivotPointHeight;
     }
 
+    if (height === 0 && width === 0){
+      phi = 0;
+    } else {
+      //finds phi, angle of main vector to the horizontal
+      phi = Math.atan(width / height);
+    }
     //sets up vector secondaryVector, in the coordinate system b in which the alpha offset feature is computed - 
     //as a function of angle and settings[stg['PPX ALPHA']].val
     let secondaryVectorX = 0.3 * Math.sin(angle) * this.pivotPointHeightAlpha;
     let secondaryVectorY = 0;
     
-    //finds phi, angle of main vector to the horizontal
-    let phi = Math.atan(this.pivotPointWidth / this.pivotPointHeight);
-    
+
+
+    let Oax, Oay;
     //rotates secondayVector by -phi and stores into Oa
-    let Oax = Math.cos(-1 * phi) * secondaryVectorX;
-    let Oay = Math.sin(-1 * phi) * secondaryVectorX;
+    if (height === 0){
+      Oay = 0;
+    } else {
+      Oay = Math.sin(-1 * phi) * secondaryVectorX;
+    }
+    if(width === 0){
+      Oax = 0;
+    } else {
+      Oax = Math.cos(-1 * phi) * secondaryVectorX;
+    }
+    console.log(height);
+
+    
     
     //adds vector Oa to mainVector
-    // mainVectorX += Oax;
-    // mainVectorY += Oay;
+    mainVectorX += Oax;
+    mainVectorY += Oay;
     
     //TODO: replace "replace this" with rotation value for PPY
     //rotates vector mainvector by -pi/4 -> Vs (this was det empirically by observing TEM)
     let resultantX = Math.cos(-1 * this.rotationOfPPX * Math.PI) * mainVectorX - Math.sin(-1 * -1 /*<-- REPLACE THIS */ * Math.PI) * mainVectorY;
     let resultantY = Math.sin(-1 * this.rotationOfPPX * Math.PI) * mainVectorX + Math.cos(-1 * -1 /*<-- REPLACE THIS*/ * Math.PI) * mainVectorY;
 
-    return [-mainVectorX, -mainVectorY];
+    return [-resultantX, -resultantY];
   }
 
   drawPPPath(){
-    console.log("h: " + this.pivotPointHeight);
-    console.log("w: " + this.pivotPointWidth);
-
     let savedFilter = this.context.filter;
     this.context.filter = 'blur(5px)';
 
