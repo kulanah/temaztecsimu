@@ -692,6 +692,7 @@ class Canvas {
   zeroFocus(){
     this.blurVal = 0;
     this.setFilterString();
+    this.defocus = 0;
     this.drawCanvas();
     this.specimenHeight = 0;
   }
