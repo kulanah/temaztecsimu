@@ -31,7 +31,7 @@ function swapPosition(id1, id2){
     $(id1).css('left', $(id2).css('left'));
     $(id1).css('z-index', $(id2).css('z-index'));
     $(id1).children().css('width', $(id2).children().css('width'));
-    $(id1).children().css('height', $(id2).children().css('height'));    
+    $(id1).children().css('height', $(id2).children().css('height'));
 
     $(id2).css('top', temptop);
     $(id2).css('left', templeft);
