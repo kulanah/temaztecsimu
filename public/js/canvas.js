@@ -696,10 +696,10 @@ class Canvas {
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
-    drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
+    drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, 256, 256, 0);
     let beamRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4
-    let radiusX = this.c2 * this.diffractionRadius * this.diffractionAstigmatism / beamRadius;
-    let radiusY = this.c2 * this.diffractionRadius / this.diffractionAstigmatism / beamRadius;
+    let radiusX = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius * this.diffractionAstigmatism / beamRadius;
+    let radiusY = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius / this.diffractionAstigmatism / beamRadius;
     if(onSpecimen){
       var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
       for(i = 0; i < settings[0].length; i++) {
