@@ -78,8 +78,8 @@ class Canvas {
       this.parentThis.setDimensions();
     };
 
-    this.diffractionX = 259;
-    this.diffractionY = 279;
+    this.diffractionX = 0;
+    this.diffractionY = 0;
     this.diffractionCameraLength = 265;
     this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
@@ -703,10 +703,10 @@ class Canvas {
     if(onSpecimen){
       var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
       for(i = 0; i < settings[0].length; i++) {
-        drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
+        drawLattice(this.selector[0], 259 + this.diffractionX * this.diffractionCameraLength / 300, 279 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
       }
     } else {
-      drawBeam(this.selector[0], this.diffractionX, this.diffractionY, beamRadius, beamRadius, this.diffractionAngle, radiusX + radiusY);
+      drawBeam(this.selector[0], 259 + this.diffractionX * this.diffractionCameraLength / 300, 279 + this.diffractionY * this.diffractionCameraLength / 300, beamRadius, beamRadius, this.diffractionAngle, radiusX + radiusY);
     }
   }
 
@@ -738,6 +738,12 @@ class Canvas {
     this.alignmentMode = 'none';
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();    
+    this.drawCanvas();
+  }
+
+  sampleTilt(x, y){
+    this.diffractionX += x;
+    this.diffractionY += y;
     this.drawCanvas();
   }
 

@@ -405,4 +405,13 @@ let deactivateDA = function(){
   deactivateDirectAlignments();
 }
 
+let sampleTilt = function(x, y){
+  if (openScreen == 0){
+    openbox.sampleTilt(x, y);
+    setupbox.sampleTilt(x, y);
+  } else {
+    mainmicro.sampleTilt(x, y);
+  }
+}
+
 window.addEventListener('message', handleMessage, false);

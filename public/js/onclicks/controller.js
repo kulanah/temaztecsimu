@@ -276,4 +276,20 @@ let microscopeControllers = function(){
     temLens[12].f = 70;
     drawColumn();
   })
+
+  $('#alphatiltl').on('click', function(event){
+    sampleTilt(0, -1);
+  });
+
+  $('#alphatiltr').on('click', function(event){
+    sampleTilt(0, 1);
+  });
+
+  $('#betatiltl').on('click', function(event){
+    sampleTilt(1, 0);
+  });
+
+  $('#betatiltr').on('click', function(event){
+    sampleTilt(-1, 0);
+  });
 };
