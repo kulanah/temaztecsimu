@@ -14,4 +14,7 @@ class Material {
   }
 }
 var silicon = new Material('silicon', 'diamond cube', .5431, .5431, .5431, 90, 90, 90);
-var materialArray = [silicon];
+var copper = new Material('copper', 'fcc', .361, .361, .361, 90, 90, 90);
+var silver = new Material('silver', 'fcc', .409, .409, .409, 90, 90, 90);
+
+var materialArray = [silicon, copper, silver];
