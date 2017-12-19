@@ -237,7 +237,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
             for (var j = -layers; j <= layers; j++) {
                 let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
                 gradient.addColorStop(0, 'rgba(0,0,0,0)');
-                gradient.addColorStop(.8, 'rgba(128,255,154,.5)');        
+                gradient.addColorStop(.8, 'rgba(128,255,154,.5)');
                 gradient.addColorStop(1, 'rgba(255,255,255,1)');
                 ctx.fillStyle = gradient;
                 ctx.beginPath();
