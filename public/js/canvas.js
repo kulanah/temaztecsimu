@@ -697,16 +697,16 @@ class Canvas {
   drawDiffraction(){
     clearCanvas(this.selector[0]);
     drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, 256, 256, 0);
-    let beamRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4
+    let beamRadius = this.diffractionCameraLength / 10;
     let radiusX = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius * this.diffractionAstigmatism / beamRadius;
     let radiusY = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius / this.diffractionAstigmatism / beamRadius;
     if(onSpecimen){
       var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
       for(i = 0; i < settings[0].length; i++) {
-        drawLattice(this.selector[0], 259 + this.diffractionX * this.diffractionCameraLength / 300, 279 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
+        drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
       }
     } else {
-      drawBeam(this.selector[0], 259 + this.diffractionX * this.diffractionCameraLength / 300, 279 + this.diffractionY * this.diffractionCameraLength / 300, beamRadius, beamRadius, this.diffractionAngle, radiusX + radiusY);
+      drawBeam(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, beamRadius, beamRadius, this.diffractionAngle, radiusX + radiusY);
     }
   }
 
