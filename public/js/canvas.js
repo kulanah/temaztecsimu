@@ -586,7 +586,7 @@ class Canvas {
     let totalRadius = this.calculateRadius();
 
     context.globalAlpha = 0 + (0.0037 * totalRadius);
-    context.fillRect(0, 0, 900, 900);
+    context.fillRect(0, 0, 2000, 1000);
 
     context.globalAlpha = 1;
   }
