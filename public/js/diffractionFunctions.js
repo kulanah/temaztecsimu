@@ -206,14 +206,11 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         // Applying the blur filter significantly worsens performance, so it is avoided when possible
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
 
-        // Scaling transparency by thickness and scaling by proximity to center
+        // Scaling transparency by thickness and scaling color by proximity to center
         let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
-        gradient.addColorStop(0, 'rgba(0,0,0,0)');
-        gradient.addColorStop(1, 'rgba(128,255,154,' + lineTransparency + ')');
-        // Alternative gradient that produces a white center, but also creates odd rainbow patterns
-        /*gradient.addColorStop(0, 'rgba(0,0,0,0)');        
+        gradient.addColorStop(0, 'rgba(0,0,0,0)');        
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');        
-        gradient.addColorStop(1, 'rgba(251,255,255,' + lineTransparency + ')');*/
+        gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
         ctx.fillStyle = gradient;
         ctx.translate(xOffset, yOffset);
         ctx.rotate(lineAngle);
@@ -238,21 +235,14 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         var maxDistance = Math.sqrt(Math.pow(canvas.height, 2) + Math.pow(canvas.width, 2)) / 2;
         for (var i = -layers; i <= layers; i++) {
             for (var j = -layers; j <= layers; j++) {
+                let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
+                gradient.addColorStop(0, 'rgba(0,0,0,0)');
+                gradient.addColorStop(.8, 'rgba(128,255,154,.5)');        
+                gradient.addColorStop(1, 'rgba(255,255,255,1)');
+                ctx.fillStyle = gradient;
                 ctx.beginPath();
                 var distance = Math.sqrt(Math.pow(r1 * i + dx * j, 2) + Math.pow(dy * j, 2));
                 var distanceRatio = distance / maxDistance;
-                //console.log(distance, distanceRatio)
-                var brightness = 1 / (10 * distanceRatio + 1) * intensity * .1;
-                if (brightness > 1) {
-                    brightness = 1;
-                }
-                let red = Math.floor(255 * brightness);
-                let green = 255;
-                let blue = Math.min(Math.floor(255 * brightness * 1.2), 255);
-                ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${brightness})`;
-                console.log(brightness);
-                console.log(ctx.fillStyle)
-                console.log("rgba(" + red + "," + green + "," + blue + "," + brightness + ")")
                 if(type === "poly") {
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 4, distance * radiusY / 4, rotationRadians, 0, 2 * Math.PI);
                     ctx.stroke();
