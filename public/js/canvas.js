@@ -122,7 +122,7 @@ class Canvas {
         this.hueRotateActive = false;
         $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
         let context = this.glowSelector[0].getContext('2d');
-        context.clearRect(0,0,2000,1000);
+        context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
         this.setFilterString();
         this.drawDiffraction();
         return;
@@ -139,7 +139,7 @@ class Canvas {
     let rgbaString = 'rgba(' + this.colorR + ', ' + this.colorG + ', ' + this.colorB + ', ' + this.colorO + ')';
 
     this.context.fillStyle = rgbaString;
-    this.context.clearRect(0,0,900,900);
+    this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
     this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
 
     let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
@@ -561,7 +561,7 @@ class Canvas {
     }
 
     context.save();
-    context.clearRect(0,0,2000,1000);
+    context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
     context.filter = 'blur(3px)';
 
     /*context.beginPath();
@@ -586,7 +586,7 @@ class Canvas {
     let totalRadius = this.calculateRadius();
 
     context.globalAlpha = 0 + (0.0037 * totalRadius);
-    context.fillRect(0, 0, 2000, 1000);
+    context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
     context.globalAlpha = 1;
   }
