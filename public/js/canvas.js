@@ -755,7 +755,7 @@ class Canvas {
       this.drawCanvas();
     } else {
       this.wobbleSavedX = this.imgX;
-      this.wobbleMax = this.blurVal * 10;
+      this.wobbleMax = this.defocus / 10;
       this.wobbleInterval = setInterval(this.wobbleTimeout.bind(this), 10);
     }
 
@@ -764,7 +764,7 @@ class Canvas {
 
   wobbleTimeout(){
     //reset maximum slide distance
-    this.wobbleMax = this.blurVal * 10;
+    this.wobbleMax = this.defocus / 10;
     if (this.wobbleRight){
       //moving to the right
       if (this.imgX < this.wobbleMax){
