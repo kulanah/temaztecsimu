@@ -95,7 +95,7 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
                                     }
                                     var lambda = 12.27 / Math.sqrt(voltage * (1 + 0.000000978 * voltage));
                                     function calculateR(d) {
-                                        return lambda * cameraLength * 1000 / d / 10000;
+                                        return lambda * cameraLength / d / 5;
                                     }
                                     var r1 = calculateR(d1);
                                     var r2 = calculateR(d2);
