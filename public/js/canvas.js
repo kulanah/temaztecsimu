@@ -124,7 +124,11 @@ class Canvas {
     if (this == setupbox){
       if(diffractionMode){
         this.hueRotateActive = false;
-        $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
+        if(this.diffractionCameraLength >= 1000){
+          $('#magnificationvalue').text(this.diffractionCameraLength / 1000 + ' m');
+        } else {
+          $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
+        }
         let context = this.glowSelector[0].getContext('2d');
         context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
         this.drawShade(context);
