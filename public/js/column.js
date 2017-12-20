@@ -16,7 +16,7 @@ class lens {
 
 
 
-//          xCenter x  y      f       kind     nam
+//              xCenter  WIDTH  y      f       kind     nam
 temLens[00] = new lens(0,0,-10,5,'source','Electron Gun');
 temLens[01] = new lens(0,0,90,55,'lens','Gun lens');
 temLens[02] = new lens(0,0,130,90,'label','Gun Deflection 1');
@@ -89,12 +89,8 @@ for(i = 0; i < temLens.length; i++){
 function drawColumn(){
 	if (zoomed){
 		drawColumnParam(5.4, zoomedOffsetStatic, true, 0.4);
-		
 	}
-
-	
 	drawColumnParam();
-
 }
 
 function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.3){
@@ -179,19 +175,28 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 				index = i
 				let prevType = temLens[i-1].kind;
 				let prevIndex = i - 1;
+
+				//ignore the previous item and go back to the one before it, IF it's a label or a sample
+				//while loop so we can go back if there are two labels or samples in a row
 				while (prevType == 'label' || prevType == 'sample'){
 					prevIndex = prevIndex - 1;
 					prevType = temLens[prevIndex].kind;
 				}
+
 				let prevX = temLens[prevIndex].x;
+
+				//if the current type isn't a label, because if it's a label we don't want to modify the ray path at all.
 				if (!(temLens[i].type == 'label')){
+					//check the previous item because if it's a aperture we need to compute if the ray is blocked or not
 					if(prevType =='lens' || prevType =='source'){
-						temLens[i].x = prevX-(temLens[i].y - temLens[prevIndex].y)
-						* ((prevX-temLens[prevIndex].xCenter) / temLens[prevIndex].f);
+						//previous rays width - (current y - previous y) * (width of current ray / previous F val)
+						temLens[i].x = prevX - 
+						(temLens[i].y - temLens[prevIndex].y) * ((prevX-temLens[prevIndex].xCenter) / temLens[prevIndex].f);
 					}	
+
 					if(prevType == 'aperture'){
-							if(prevX < -temLens[prevIndex].f + temLens[prevIndex].xCenter 
-							|| temLens[prevIndex].x>temLens[prevIndex].f +temLens[prevIndex].xCenter){
+						if(prevX < -temLens[prevIndex].f + temLens[prevIndex].xCenter 
+						|| temLens[prevIndex].x>temLens[prevIndex].f +temLens[prevIndex].xCenter){
 							blocked = 1;	
 						}else{
 							temLens[i].x = temLens[prevIndex - 1].x-(temLens[i].y-temLens[prevIndex - 1].y) 
@@ -310,12 +315,9 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 	ctx.restore();	
 
 	if (zoomed && !zoomVer){
-		console.log(ctx);
 		ctx.beginPath();
 		ctx.lineWidth = 5;
 		ctx.strokeRect(10, temLens[lensFocus].y-50, canvasWidth- 15, 100);
 		ctx.restore();
-
 	}
-
 }
