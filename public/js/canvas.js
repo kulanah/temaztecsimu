@@ -181,12 +181,12 @@ class Canvas {
     this.context.translate(-this.img.width / 2, -this.img.height / 2);
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
-    
+
     this.context.globalAlpha = .5;
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.alphaTilt * this.specimenHeight - this.defocus * Math.cos(this.imgAngle) / 10,this.imgY + this.betaTilt + this.defocus * Math.sin(this.imgAngle) / 10,this.imgW,this.imgH);
+      this.imgX + this.alphaTilt * this.specimenHeight - this.defocus / 10 * Math.cos(this.imgAngle), this.imgY + this.betaTilt + this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.alphaTilt * this.specimenHeight + this.defocus * Math.cos(this.imgAngle) / 10,this.imgY + this.betaTilt - this.defocus * Math.sin(this.imgAngle) / 10,this.imgW,this.imgH);
+      this.imgX + this.alphaTilt * this.specimenHeight + this.defocus / 10 * Math.cos(this.imgAngle), this.imgY + this.betaTilt - this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
       
     this.drawHalo();
 
