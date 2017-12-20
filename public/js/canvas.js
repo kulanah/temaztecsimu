@@ -86,7 +86,7 @@ class Canvas {
     this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
     this.diffractionAngle = 0;
-    this.specimenThickness = 300;
+    this.specimenThickness = 50;
     this.c2 = 1; // variable Tony requested, affects diffraction dot size, no current way to manipulate it
     this.alphaTilt = 0;
     this.betaTilt = 0;

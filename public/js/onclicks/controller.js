@@ -194,6 +194,7 @@ let microscopeControllers = function(){
       console.log(hex);
       if(hex != '#000000'){ //if on specimen
         onSpecimen = true;
+        setupbox.specimenThickness = (255 - p[1]) / 255 * 100;
       } else {
         onSpecimen = false;
       }
