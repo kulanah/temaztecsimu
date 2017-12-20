@@ -80,6 +80,8 @@ class Canvas {
 
     this.diffractionX = 0;
     this.diffractionY = 0;
+    this.diffractionZooms = [26.5, 35, 44, 62, 71, 89, 135, 175, 265, 430, 600, 860, 1650, 2650, 3500, 4100];
+    this.diffractionMag = 8;
     this.diffractionCameraLength = 265;
     this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
@@ -191,32 +193,19 @@ class Canvas {
   zoom(delta){
     if (diffractionMode && this == setupbox){
       if (delta > 0) {
-        switch(this.diffractionCameraLength){
-          case 265:
-            this.diffractionCameraLength = 460;
-            break;
-          case 460:
-            this.diffractionCameraLength = 640;
-            break;
-          case 960:
-            this.limitFlash('#magnificationvalue');
-          default:
-            this.diffractionCameraLength = 960;
+        if (this.diffractionMag < this.diffractionZooms.length - 1){
+          this.diffractionMag++;
+        } else {
+          this.limitFlash('#magnificationvalue');
         }
       } else if (delta < 0) {
-        switch(this.diffractionCameraLength){
-          case 960:
-            this.diffractionCameraLength = 640;
-            break;
-          case 640:
-            this.diffractionCameraLength = 460;
-            break;
-          case 265:
-            this.limitFlash('#magnificationvalue');
-          default:
-            this.diffractionCameraLength = 265;
+        if (this.diffractionMag > 0){
+          this.diffractionMag--;
+        } else {
+          this.limitFlash('#magnificationvalue');
         }
       }
+      this.diffractionCameraLength = this.diffractionZooms[this.diffractionMag];
       this.drawCanvas();
       return;
     }
