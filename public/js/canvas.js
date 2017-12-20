@@ -375,7 +375,7 @@ class Canvas {
       phi = 0;
     } else {
       //finds phi, angle of main vector to the horizontal
-      phi = Math.atan(width / height);
+      phi = Math.atan2(height, width);
     }
     //sets up vector secondaryVector, in the coordinate system b in which the alpha offset feature is computed - 
     //as a function of angle and settings[stg['PPX ALPHA']].val
