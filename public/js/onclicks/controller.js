@@ -41,6 +41,7 @@ let microscopeControllers = function(){
   let setStartXY = function(){
     startX = event.clientX;
     startY = event.clientY;
+    $('#grabbingdiv').show();
     $('body *').addClass('grabbing');
   }
 
@@ -50,7 +51,8 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mousemove', mousefocustemplate);
     $('body')[0].removeEventListener('mousemove', mousemultixtemplate);
     $('body')[0].removeEventListener('mousemove', mousemultiytemplate);
-    $('body *').removeClass('grabbing');    
+    $('#grabbingdiv').hide();
+    $('body *').removeClass('grabbing');
   };
 
   let mouseuptemplatezoom = function(event){
@@ -58,7 +60,17 @@ let microscopeControllers = function(){
     zoom(delta)
     $('body')[0].removeEventListener('mouseup', mouseuptemplatezoom);
     $('body')[0].removeEventListener('mouseleave', mouseuptemplatezoom);    
-    $('body *').removeClass('grabbing');    
+    $('#grabbingdiv').hide();
+    $('body *').removeClass('grabbing');
+  };
+
+  let mouseuptemplatefocusstep = function(event){
+    let delta = startY - event.clientY;
+    shiftFocusStep(delta)
+    $('body')[0].removeEventListener('mouseup', mouseuptemplatefocusstep);
+    $('body')[0].removeEventListener('mouseleave', mouseuptemplatefocusstep);    
+    $('#grabbingdiv').hide();
+    $('body *').removeClass('grabbing');
   };
   
   let mousedowntemplateintensity = function(event){
@@ -71,19 +83,25 @@ let microscopeControllers = function(){
 
   $('#buttonfocus').mousedown(function(event){
     setStartXY();
+    console.log('Adjusting focus')
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
     $('body')[0].addEventListener('mousemove', mousefocustemplate);
   });
+
+  $('#buttonfocusstep').mousedown(function(event){
+    setStartXY();
+    console.log('Adjusting focus step')
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplatefocusstep);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplatefocusstep);    
+  });  
 
 
   $('#buttonl2').on('click', function(event){
     toggleWobble();
-    if (pivotPoint){
-      deactivateDirectAlignments();
-      pivotPoint = !pivotPoint;
-    }
-
+    deactivateDirectAlignments();
   });
 
   $('#buttonl3').on('click', function(event){
@@ -143,6 +161,7 @@ let microscopeControllers = function(){
 
   $('#buttonintensity').mousedown(function(event){
     startIntensity = event.clientY;
+    $('#grabbingdiv').show();
     $('body *').addClass('grabbing');    
 
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
@@ -159,7 +178,26 @@ let microscopeControllers = function(){
 
   $('#buttondiffraction').on('click', function(event){
     // Switch between image and diffraction views
-    diffractionMode = !diffractionMode;    
+    diffractionMode = !diffractionMode;
+    // Pixel color detection code based on answer from https://stackoverflow.com/questions/6735470/get-pixel-color-from-canvas-on-mouseover
+    function rgbToHex(r, g, b) {
+      if (r > 255 || g > 255 || b > 255)
+        throw "Invalid color component";
+      return ((r << 16) | (g << 8) | b).toString(16);
+    }
+    // getImageData will only function on a server - it will fail if run locally.
+    // To do local testing, create a web server with Python.
+    // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
+    if(window.location.protocol != 'file:'){
+      var p = setupbox.context.getImageData(setupbox.maskX, setupbox.maskY, 1, 1).data;
+      var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+      console.log(hex);
+      if(hex != '#000000'){ //if on specimen
+        onSpecimen = true;
+      } else {
+        onSpecimen = false;
+      }
+    }
     if (openScreen == 0){
       if (activeWindow == 1){
         setupbox.drawCanvas();
@@ -238,4 +276,20 @@ let microscopeControllers = function(){
     temLens[12].f = 70;
     drawColumn();
   })
+
+  $('#alphatiltl').on('click', function(event){
+    sampleTilt(0, -1);
+  });
+
+  $('#alphatiltr').on('click', function(event){
+    sampleTilt(0, 1);
+  });
+
+  $('#betatiltl').on('click', function(event){
+    sampleTilt(1, 0);
+  });
+
+  $('#betatiltr').on('click', function(event){
+    sampleTilt(-1, 0);
+  });
 };

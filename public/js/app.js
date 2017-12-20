@@ -109,6 +109,15 @@ let shiftFocus = function(delta){
   }
 };
 
+let shiftFocusStep = function(delta){
+  if (openScreen == 0){
+    openbox.shiftFocusStep(delta);
+    setupbox.shiftFocusStep(delta);
+  } else {
+    mainmicro.shiftFocusStep(delta);
+  }
+};
+
 let zoom = function(delta){
   if (openScreen == 0){
     if (activeWindow == 0){
@@ -209,7 +218,6 @@ let activateGunShift = function(){
 }
 
 let activatePivotPointX = function(){
-  pivotPoint = !pivotPoint;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activatePivotPointX();
@@ -222,7 +230,6 @@ let activatePivotPointX = function(){
 }
 
 let activatePivotPointY = function(){
-  pivotPoint = !pivotPoint;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activatePivotPointY();
@@ -311,10 +318,8 @@ let activateDiffractionStigmator = function(){
 }
 
 let deactivateStigmator = function(){
+  diffractionStigmation = false;  
   deactivateDA();
-  diffractionStigmation = false;
-  $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
-  $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
 }
 
 let deactivateDirectAlignments  = function(){
@@ -392,7 +397,20 @@ let deactivateDA = function(){
   if (wobbleMode){
     toggleWobble();
   }
+  if(!diffractionStigmation && updateStigmatorVisual){
+    $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
+    $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
+  }
   deactivateDirectAlignments();
+}
+
+let sampleTilt = function(x, y){
+  if (openScreen == 0){
+    openbox.sampleTilt(x, y);
+    setupbox.sampleTilt(x, y);
+  } else {
+    mainmicro.sampleTilt(x, y);
+  }
 }
 
 window.addEventListener('message', handleMessage, false);

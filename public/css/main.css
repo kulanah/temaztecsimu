@@ -13,12 +13,14 @@ body{
   line-height: 0;
 }
 
-.moving{
-  cursor: move;
+.grabbing{
+  cursor: -webkit-grabbing;  
 }
 
-.grabbing{
-  cursor: -webkit-grabbing;
+#grabbingdiv{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 }
 
 .wintext{
@@ -67,6 +69,20 @@ body{
   font-size: xx-large;
   font-size: 1.8vw;
   font-family: sans-serif;
+}
+
+#focusstepdisplay{
+  position: absolute;
+  top: 88.6vh;
+  right: 42.75vw;
+}
+
+#focusstepvalue{
+  background-color: #fffbf0;
+  font-size: x-large;
+  font-size: 1.4vw;
+  font-family: sans-serif;
+  white-space: pre;
 }
 
 #spotsizedisplay{

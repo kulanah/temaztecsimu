@@ -44,6 +44,9 @@
           <div id='magnificationdisplay'>
               <span id='magnificationvalue'>350000 x</span>
           </div>
+          <div id='focusstepdisplay'>
+            <span id='focusstepvalue'>3</span>
+          </div>
           <div id='spotsizedisplay'>
             <span id='spotsizevalue'>5</span>
           </div>
@@ -208,6 +211,10 @@
         <img class='controls' id='controlsLeft' src='./public/img/controlsLeft.png' usemap='#leftcontrol' width='500' height='325' /> 
         <map name='leftcontrol' id='leftcontrol'>
           <area shape='circle' id='buttontoprow1' coords='91,91,15' />
+          <area shape='circle' id='alphatiltl' coords='193,77,11' />
+          <area shape='circle' id='alphatiltr' coords='217,75,11' />
+          <area shape='circle' id='betatiltl' coords='260,75,11' />
+          <area shape='circle' id='betatiltr' coords='284,75,11' />
           <area shape='circle' id='buttonl1' coords='450,111,15' />
           <area shape='circle' id='buttonl2' coords='460,153,15' />
           <area shape='circle' id='buttonl3' coords='455,200,15' />
@@ -236,7 +243,8 @@
           <area shape='circle' id='buttonr2' coords='39,153,15' />
           <area shape='circle' id='buttonr3' coords='45,200,15' />
           <area shape='circle' id='buttonrollerr' coords='122,66,25' />
-          <area shape='circle' id='buttonfocus' coords='236,131,25' />
+          <area shape='circle' id='buttonfocus' coords='236,131,16' />          
+          <area shape='circle' id='buttonfocusstep' coords='239,137,22' />       
           <area shape='circle' id='buttonmagnification' coords='301,136,25' />
           <area shape='circle' id='multiy' coords='377,150,17' />
         </map>
@@ -400,6 +408,7 @@
     </div>
 
     <div id='popplaceholder' class='hidden'>
+      <iframe class='popcontent'></iframe>
     </div>
     <div id='qanda' class='popcontainer'>
       <iframe class='popcontent' src='public/html/QandA.html'></iframe>
@@ -441,6 +450,8 @@
       </table>
     </div>
 
+    <div id='grabbingdiv' class='hidden'></div>
+
     <!--library imports-->
     <script src='./public/js/jquery-3.2.1.min.js'></script>
     <script src='./public/js/jquery-ui.min.js'></script>
@@ -472,6 +483,7 @@
     <script src='./public/js/diffractionFunctions.js'></script>
     <script src='./public/js/CTFFunctions.js'></script>
     <script src='./public/js/content.js'></script>
+    <script src='./public/js/alignmentFunctions.js'></script>
 
   </body>
 </html>

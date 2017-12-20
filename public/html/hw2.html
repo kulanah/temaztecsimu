@@ -5,16 +5,39 @@
         <script>
             $(document).ready(function(event) {
                 if(location.search.includes('?')){
+                    let str = '&' + location.search.slice(1);
+                    //console.log(str);
+                    let answerKey = ['Chapter 2 Answer Key', 'abd', 'ab', 'abd', 'c', 'b', 'b', 'abcd', 'd', 'bc', 'ac']; // temporarily exposed, will ultimately be stored privately on server
+                    let potentialAnswers = ['a', 'b', 'c', 'd', 'e']
+                    function evaluateQuestion(questionNumber){
+                        for(let j = 0; j < potentialAnswers.length; j++){
+                            if(answerKey[questionNumber].includes(potentialAnswers[j]) != str.includes('&' + questionNumber + potentialAnswers[j])){
+                                return 0;
+                            }
+                        }
+                        //console.log('Question ' + questionNumber + ' correct!')
+                        return 1;
+                    }
+                    let score = 0;
+                    for (let i = 1; i <= 10; i++){
+                        score += evaluateQuestion(i);
+                    }
+                    //console.log('You checked ' + (str.split('&').length - 3) + ' box(es).');
+                    //console.log('You correctly answered ' + score + ' question(s).')
+                    let maxScore = answerKey.length - 1;
+                    if (score == maxScore) {
+                        $('#message').text('You correctly answered all ' + maxScore + ' multiple-choice questions. Well done!')
+                    } else {
+                        $('#message').text('You correctly answered ' + score + ' out of ' + maxScore + ' multiple-choice questions.')
+                    }
                     $('#evaluation').show();
-                    let str = location.search.split('&').length;
-                    console.log('You checked ' + str + ' box(es)');
                 }
             });
         </script>
     </head>
     <body>
         <div id='evaluation' style='display:none'>
-            <fieldset>
+            <fieldset id='message'>
                 Thank you for answering the review questions. Our system for evaluating your answers is currently under construction.<br>
             </fieldset><br>
         </div>
@@ -88,7 +111,7 @@
             <label for='8c'>c)	Decreases beam tip lifetime</label><br>
             <input type='checkbox' id='8d' name='8d'></input>
             <label for='8d'>d)	Improves image resolution</label><br>
-            <br>9)	Increasing the extraction voltage causes the following:
+            <br>9)	<b>Increasing</b> the extraction voltage causes the following:
             <br><input type='checkbox' id='9a' name='9a'></input>
             <label for='9a'>a)	Increases beam size</label><br>
             <input type='checkbox' id='9b' name='9b'></input>
@@ -97,7 +120,7 @@
             <label for='9c'>c)	Increases beam current</label><br>
             <input type='checkbox' id='9d' name='9d'></input>
             <label for='9d'>d)	Increases tip life</label><br>
-            <br>10)	Decreasing the gun lens setting causes the following
+            <br>10)	<b>Decreasing</b> the gun lens setting causes the following
             <br><input type='checkbox' id='10a' name='10a'></input>
             <label for='10a'>a)	Increases beam size</label><br>
             <input type='checkbox' id='10b' name='10b'></input>

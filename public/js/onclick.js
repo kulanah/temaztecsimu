@@ -10,7 +10,7 @@ let activeWindow = 0;
 let diffractionMode = false;
 let diffractionStigmation = false;
 let wobbleMode = false;
-let pivotPoint = false;
+let onSpecimen = true;
 
 let clickFunctions = function(){
   column();

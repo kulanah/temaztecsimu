@@ -54,6 +54,7 @@ let pageSetup = function(){
   bringToFront('maindropdown');  
   bringToFront('filemenu');
   bringToFront('deflectorbox');
+  bringToFront('grabbingdiv');  
 
   $('img').on('dragstart', function(event){ 
       event.preventDefault(); 
@@ -65,24 +66,16 @@ let pageSetup = function(){
     value: 7,
   });
 
-  $('body').mouseup(function(){
-    $('body *').removeClass('moving');
-  });
-
-  $('body').mouseleave(function(){
-    $('body *').removeClass('moving');
-  });
-
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
       cancel: 'map, iframe',
-      iframeFix: true
+      iframeFix: true,
+      cursor: 'move'
     });
     $('#' + listOfDraggables[i]).mousedown(function(){
       $('#' + listOfDraggables[i]).css('z-index', zcounter); // moves element to the front on mousedown
       zcounter++;
-      $('body *').addClass('moving');
     });
     bringToFront(listOfDraggables[i]);
   }
@@ -91,12 +84,12 @@ let pageSetup = function(){
   for (let i = 0; i < draggablesWithTextInputs.length; ++i){    
     $('#' + draggablesWithTextInputs[i]).draggable({
       addClasses: true,
-      iframeFix: true
+      iframeFix: true,
+      cursor: 'move'
     });
     $('#' + draggablesWithTextInputs[i]).mousedown(function(){
       $('#' + draggablesWithTextInputs[i]).css('z-index', zcounter);
       zcounter++;
-      $('body *').addClass('moving');
     });
     bringToFront(draggablesWithTextInputs[i]);
   }
@@ -130,4 +123,26 @@ let pageSetup = function(){
 
   $('#magnificationvalue').text(setupbox.zooms[setupbox.mag] + ' x')
   $('#spotsizevalue').text(' ' + $('#beamrange').val());
+
+  // Solution to have cursor adjust only in appropriate area for resizeable elements found at
+  // https://stackoverflow.com/questions/9932569/css-to-change-the-cursor-style-of-the-resize-button-on-a-textarea
+  $(function() {
+    $(document).on('mousemove', 'textarea', function(e) {
+        var a = $(this).offset().top + $(this).outerHeight() - 16,  //  top border of bottom-right-corner-box area
+            b = $(this).offset().left + $(this).outerWidth() - 16;  //  left border of bottom-right-corner-box area
+        $(this).css({
+            cursor: e.pageY > a && e.pageX > b ? 'nw-resize' : ''
+        });
+    })
+  });
+
+  $(function() {
+    $(document).on('mousemove', 'iframe', function(e) {
+        var a = $(this).offset().top + $(this).outerHeight() - 16,  //  top border of bottom-right-corner-box area
+            b = $(this).offset().left + $(this).outerWidth() - 16;  //  left border of bottom-right-corner-box area
+        $(this).css({
+            cursor: e.pageY > a && e.pageX > b ? 'nw-resize' : ''
+        });
+    })
+  });
 };

@@ -11,19 +11,19 @@ let mainScreen = function(){
   });
 
   $('.vacuumbutton').on('click', function(event){
+    closeFloatingItems();    
     $('#vacuumoverview').show();
-    $('#maindropdown').hide();
   });
 
   $('#stigmatordrop').on('click', function(event){
+    closeFloatingItems();    
     if(!isVisible('leftcoltune')){
       $('#floatingstigmatordiv').show();
     }
-      $('#maindropdown').hide();
   });
 
   $('#directalignmentdrop').on('click', function(event){
-    $('#maindropdown').hide();
+    closeFloatingItems();
     $('#openbox').hide();    
     //open up the setup button with all the accompanying effects
     if (openScreen == 0){
@@ -48,11 +48,15 @@ let mainScreen = function(){
   });
 
   $('#closedrop').on('click', function(event){
+    closeFloatingItems();
+  });
+
+  function closeFloatingItems(){
     $('#vacuumoverview').hide();
     $('#maindropdown').hide();
     $('#directalignmentspopout').hide();
-    $('#floatingstigmatordiv').hide();    
-  });
+    $('#floatingstigmatordiv').hide();  
+  }
 
   $('#filebutton').on('click', function(event){
     if($('#filemenu').css('display') == 'none'){

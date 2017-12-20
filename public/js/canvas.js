@@ -14,6 +14,8 @@ class Canvas {
     this.img.src = source;
     this.imgX = 0;
     this.imgY = 0;
+    this.imgAngle = 0;
+    this.defocus = 0;    
 
     // imgScale constant approximates number of nanometers in a pixel on the user's monitor, assuming 96 DPI
     this.imgScale = (1 / 0.39370) * 10000000 / 96 * pxToNmRatio;
@@ -21,14 +23,13 @@ class Canvas {
     //use this to give the onload function access to the setDimensions method
     this.img.parentThis = this;
 
-    this.focusUp = true;
     this.intUp = false;
 
     this.maskX = 0;
     this.maskY = 0;
     this.maskR = 0;
     this.beamAstigmatism = 1;
-    this.combinedRadius = 0;
+    this.beamAngle = 0;
 
     this.haloX = 0;
     this.haloY = 0;
@@ -45,6 +46,8 @@ class Canvas {
         break;
       }
     }
+
+    this.focusStep = 3;
 
     this.specimenHeight = 0;
 
@@ -75,12 +78,16 @@ class Canvas {
       this.parentThis.setDimensions();
     };
 
-    this.diffractionX = 259;
-    this.diffractionY = 279;
+    this.diffractionX = 0;
+    this.diffractionY = 0;
     this.diffractionCameraLength = 265;
     this.diffractionRadius = 64;
     this.diffractionAstigmatism = 1;
-    this.specimenThickness = 100;
+    this.diffractionAngle = 0;
+    this.specimenThickness = 300;
+    this.c2 = 1; // variable Tony requested, affects diffraction dot size, no current way to manipulate it
+    this.alphaTilt = 0;
+    this.betaTilt = 0;
 
     this.alignmentMode = 'none';    
 
@@ -88,8 +95,8 @@ class Canvas {
     this.rotateBeta = 8;
 
     this.jump = 64;
-    this.defocus = 0;
     this.diffractogramAstigmatism = 1;
+    this.diffractogramAngle = 0;
 
     this.wobbleMode = false;
     this.wobbleMax = 0;
@@ -111,15 +118,21 @@ class Canvas {
   };
 
   drawCanvas(){
-    if (diffractionMode && this == setupbox){
-      document.getElementById('setupcrosshair').style.visibility = 'hidden';
-      $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
-      let context = this.glowSelector[0].getContext('2d');
-      context.clearRect(0,0,2000,1000);
-      this.drawDiffraction();
-      return;
+    $('#focusstepvalue').text(this.focusStep);
+    if (this == setupbox){
+      if(diffractionMode){
+        this.hueRotateActive = false;
+        $('#magnificationvalue').text(this.diffractionCameraLength + ' mm');
+        let context = this.glowSelector[0].getContext('2d');
+        context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
+        this.drawShade(context);
+        this.setFilterString();
+        this.drawDiffraction();
+        return;
+      } else {
+        this.hueRotateActive = true;
+      }
     }
-    document.getElementById('setupcrosshair').style.visibility = 'visible';
     $('#magnificationvalue').text(this.zooms[this.mag] + ' x');
 
     this.context.save();
@@ -129,7 +142,7 @@ class Canvas {
     let rgbaString = 'rgba(' + this.colorR + ', ' + this.colorG + ', ' + this.colorB + ', ' + this.colorO + ')';
 
     this.context.fillStyle = rgbaString;
-    this.context.clearRect(0,0,900,900);
+    this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
     this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
 
     let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
@@ -144,7 +157,7 @@ class Canvas {
     let haloAngle = Math.atan2(this.haloY, this.haloX);
     let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
     this.context.ellipse(this.maskX,this.maskY,Math.max(newRadius, haloDistance) * this.beamAstigmatism,
-      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) / this.beamAstigmatism, haloAngle,0,Math.PI * 2);
+      Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) / this.beamAstigmatism, this.beamAngle + haloAngle,0,Math.PI * 2);
 
     // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
     /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -157,10 +170,18 @@ class Canvas {
 
     this.context.clip();
     
+    this.context.translate(this.img.width / 2, this.img.height / 2)
+    this.context.rotate(this.imgAngle);
+    this.context.translate(-this.img.width / 2, -this.img.height / 2);
+
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
-    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX,this.imgY,this.imgW,this.imgH);
     
+    this.context.globalAlpha = .5;
+    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+      this.imgX - this.defocus * Math.cos(this.imgAngle) / 10,this.imgY + this.defocus * Math.sin(this.imgAngle) / 10,this.imgW,this.imgH);
+    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+      this.imgX + this.defocus * Math.cos(this.imgAngle) / 10,this.imgY - this.defocus * Math.sin(this.imgAngle) / 10,this.imgW,this.imgH);
+      
     this.drawHalo();
 
     this.context.restore();
@@ -178,7 +199,7 @@ class Canvas {
             this.diffractionCameraLength = 640;
             break;
           case 960:
-            this.magLimitFlash();
+            this.limitFlash('#magnificationvalue');
           default:
             this.diffractionCameraLength = 960;
         }
@@ -191,7 +212,7 @@ class Canvas {
             this.diffractionCameraLength = 460;
             break;
           case 265:
-            this.magLimitFlash();
+            this.limitFlash('#magnificationvalue');
           default:
             this.diffractionCameraLength = 265;
         }
@@ -211,14 +232,14 @@ class Canvas {
         zoomFactor = this.zooms[this.mag + 1] / this.zooms[this.mag];
         ++this.mag;
       } else {
-        this.magLimitFlash();
+        this.limitFlash('#magnificationvalue');
       }
     } else if (delta < 0){
       if (this.mag >= 1){
         zoomFactor = this.zooms[this.mag - 1] / this.zooms[this.mag];
         --this.mag;
       } else {
-        this.magLimitFlash();
+        this.limitFlash('#magnificationvalue');
       }
     }
 
@@ -232,39 +253,33 @@ class Canvas {
     this.drawCanvas();
   };
 
-  magLimitFlash(){
-    $('#magnificationvalue').css('background','#ff8888');
-    $('#magnificationvalue').animate({
+  limitFlash(element){
+    $(element).css('background','#ff8888');
+    $(element).animate({
       backgroundColor: '#fffbf0'
     }, 1000);
   };
 
   focus(delta){
-    if (this.blurVal < 0){
-      this.blurVal = 0;
-    } 
-    let oldBlur = this.blurVal;
-
-    if (oldBlur < 0.10){
-      this.focusUp = !this.focusUp;
-    } 
-
-    if (this.focusUp){
-      delta = -delta;
-    } 
-
-    //stops the blur from getting too intense, this prevents slowdown
-    if (oldBlur + delta <= 40){
-      let newBlur = oldBlur + delta / 40;
-      this.blurVal = newBlur;
-      this.setFilterString();
-    }
-
-    //To do: changing focus modifies contrast
-    
-
+    this.defocus += delta * this.focusStep;
     this.drawCanvas();
   };
+
+  shiftFocusStep(delta){
+    if(delta > 0){
+      this.focusStep++;
+    } else if (delta < 0) {
+      this.focusStep--;
+    }
+    if(this.focusStep < 1){
+      this.focusStep = 1;
+      this.limitFlash('#focusstepvalue');
+    } else if(this.focusStep > 9){
+      this.focusStep = 9;
+      this.limitFlash('#focusstepvalue');      
+    }
+    this.drawCanvas();
+  }
 
   setFilterString(){
     let stringVal = ''
@@ -273,9 +288,7 @@ class Canvas {
       let hueRotateString = 'hue-rotate(' + this.hueRotateVal + 'deg) ';
       let saturateString = 'saturate(' + this.saturateVal + '%) ';
       let blurString = 'blur(' + this.blurVal + 'px) ';
-      let contrastVal = 100 + this.blurVal * 5;
-      let contrastString = 'contrast(' + contrastVal + '%)';
-      stringVal = sepiaString + hueRotateString + saturateString + blurString + contrastString;
+      stringVal = sepiaString + hueRotateString + saturateString + blurString;
     } else {
       stringVal = 'blur(' + this.blurVal + 'px) ';
     }
@@ -326,8 +339,8 @@ class Canvas {
       this.maskY += deltaY;
       flag = 1;
     } else {
-      this.imgX += deltaX;
-      this.imgY += deltaY;
+      this.imgX += deltaX * Math.cos(this.imgAngle) + deltaY * Math.sin(this.imgAngle);
+      this.imgY += deltaY * Math.cos(this.imgAngle) - deltaX * Math.sin(this.imgAngle);
       flag = 0;
     }
 
@@ -451,7 +464,7 @@ class Canvas {
     if (!isNaN(deltaX)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.0005, deltaX); // the dots are small, so the change is less pronounced (relative to other stigmators)
+          this.diffractionAngle += deltaX;
         } else {
           //this.diffractionX += deltaX;
           this.specimenThickness += deltaX;
@@ -479,17 +492,19 @@ class Canvas {
           break;
         case 'comafreealignmentx':
         case 'comafreealignmenty':
-          this.defocus += deltaX * 100;
-          this.diffractogramAstigmatism *= Math.pow(1.001, deltaX);
+          this.imgW *= Math.pow(1.0005, deltaX);
+          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, deltaX) + this.img.width / 2;
+          this.imgH *= Math.pow(1.0005, -deltaX);
+          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, -deltaX) + this.img.height / 2;
+          this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)
           this.drawDiffractogramImages();
           break;
         case 'condensor':
-          this.beamAstigmatism *= Math.pow(1.0005, deltaX / (1 + this.maskR / 25));
+          this.beamAngle += deltaX / 180;
           break;
         case 'objective':
-          this.imgW *= Math.pow(1.0005, deltaX);
-          this.imgH *= Math.pow(1.0005, -deltaX);
-          this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)          
+          this.imgAngle += deltaX / 180;
+          this.diffractogramAngle += deltaX / Math.PI;
           break;
       }
       this.drawCanvas();
@@ -500,7 +515,7 @@ class Canvas {
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.0005, -deltaY);          
+          this.diffractionAstigmatism *= Math.pow(1.0005, -deltaY); // the dots are small, so the change is less pronounced (relative to other stigmators)
         } else {
           this.diffractionY += deltaY;
         }
@@ -522,12 +537,23 @@ class Canvas {
         case 'rotationcenter':
           this.rotateBeta += deltaY;
           break;
+        case 'comafreealignmentx':
+        case 'comafreealignmenty':
+          this.imgW *= Math.pow(1.0005, -deltaY);
+          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
+          this.imgH *= Math.pow(1.0005, deltaY);
+          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
+          this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
+          this.drawDiffractogramImages();
+          break;
         case 'condensor':
           this.beamAstigmatism *= Math.pow(1.0005, -deltaY / (1 + this.maskR / 25));
           break;
         case 'objective':
           this.imgW *= Math.pow(1.0005, -deltaY);
+          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
           this.imgH *= Math.pow(1.0005, deltaY);
+          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
           this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
           break;
       }
@@ -566,7 +592,7 @@ class Canvas {
     }
 
     context.save();
-    context.clearRect(0,0,2000,1000);
+    context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
     context.filter = 'blur(3px)';
 
     /*context.beginPath();
@@ -591,7 +617,7 @@ class Canvas {
     let totalRadius = this.calculateRadius();
 
     context.globalAlpha = 0 + (0.0037 * totalRadius);
-    context.fillRect(0, 0, 900, 900);
+    context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
     context.globalAlpha = 1;
   }
@@ -695,18 +721,25 @@ class Canvas {
   }
 
   drawDiffractogramImages(){
-    drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, 0, 500000);
-    drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, 0, 500000);
+    drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+    drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
   }
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
-    drawBackground(this.selector[0], this.diffractionX, this.diffractionY, 256, 256, 0);
-    let radiusX = this.diffractionRadius * this.diffractionAstigmatism / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
-    let radiusY = this.diffractionRadius / this.diffractionAstigmatism / (this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val()) * 4);
-    var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
-    for(i = 0; i < settings[0].length; i++) {
-      drawLattice(this.selector[0], this.diffractionX, this.diffractionY, radiusX, radiusY, 0, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
+    drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, 256, 256, 0);
+    let beamRadius = this.diffractionCameraLength / 500 * this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
+    let radiusX = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius * this.diffractionAstigmatism / beamRadius;
+    let radiusY = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius / this.diffractionAstigmatism / beamRadius;
+    if(onSpecimen){
+      var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
+      for(i = 0; i < settings[0].length; i++) {
+        drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
+          this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, 
+          settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256, this.alphaTilt, this.betaTilt);
+      }
+    } else {
+      drawBeam(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, beamRadius, beamRadius, this.diffractionAngle, radiusX + radiusY);
     }
   }
 
@@ -723,6 +756,7 @@ class Canvas {
   zeroFocus(){
     this.blurVal = 0;
     this.setFilterString();
+    this.defocus = 0;
     this.drawCanvas();
     this.specimenHeight = 0;
   }
@@ -740,6 +774,12 @@ class Canvas {
     this.drawCanvas();
   }
 
+  sampleTilt(x, y){
+    this.betaTilt += 10 * x;
+    this.alphaTilt += 10 * y;
+    this.drawCanvas();
+  }
+
   //
   toggleWobble(){
     if (this.wobbleMode){
@@ -748,7 +788,7 @@ class Canvas {
       this.drawCanvas();
     } else {
       this.wobbleSavedX = this.imgX;
-      this.wobbleMax = this.blurVal * 10;
+      this.wobbleMax = Math.abs(this.defocus) / 10;
       this.wobbleInterval = setInterval(this.wobbleTimeout.bind(this), 10);
     }
 
@@ -757,7 +797,7 @@ class Canvas {
 
   wobbleTimeout(){
     //reset maximum slide distance
-    this.wobbleMax = this.blurVal * 10;
+    this.wobbleMax = Math.abs(this.defocus) / 10;
     if (this.wobbleRight){
       //moving to the right
       if (this.imgX < this.wobbleMax){
