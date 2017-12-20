@@ -85,7 +85,9 @@ class Canvas {
     this.diffractionAstigmatism = 1;
     this.diffractionAngle = 0;
     this.specimenThickness = 300;
-    this.c2 = 1; // variable Tony requested, affects diffraction dot size, no current way to manipulate it    
+    this.c2 = 1; // variable Tony requested, affects diffraction dot size, no current way to manipulate it
+    this.alphaTilt = 0;
+    this.betaTilt = 0;
 
     this.alignmentMode = 'none';    
 
@@ -704,7 +706,9 @@ class Canvas {
     if(onSpecimen){
       var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
       for(i = 0; i < settings[0].length; i++) {
-        drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256);
+        drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
+          this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 1, 
+          settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, 256, this.alphaTilt, this.betaTilt);
       }
     } else {
       drawBeam(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, beamRadius, beamRadius, this.diffractionAngle, radiusX + radiusY);
@@ -743,8 +747,8 @@ class Canvas {
   }
 
   sampleTilt(x, y){
-    this.diffractionX += x;
-    this.diffractionY += y;
+    this.betaTilt += 10 * x;
+    this.alphaTilt += 10 * y;
     this.drawCanvas();
   }
 

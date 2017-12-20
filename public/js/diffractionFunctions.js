@@ -222,7 +222,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
     }
 }
 
-function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur, intensity, type, layers, r1, r2, angle, specimenThickness, platformRadius) {
+function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur, intensity, type, layers, r1, r2, angle, specimenThickness, platformRadius, alphaTilt, betaTilt) {
     // Draw the lattice diffraction pattern
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
@@ -235,7 +235,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         var maxDistance = Math.sqrt(Math.pow(canvas.height, 2) + Math.pow(canvas.width, 2)) / 2;
         for (var i = -layers; i <= layers; i++) {
             for (var j = -layers; j <= layers; j++) {
-                let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
+                let gradient = ctx.createRadialGradient(xOffset + betaTilt, yOffset + alphaTilt, platformRadius, xOffset + betaTilt, yOffset + alphaTilt, 0);
                 gradient.addColorStop(0, 'rgba(0,0,0,0)');
                 gradient.addColorStop(.8, 'rgba(128,255,154,.5)');
                 gradient.addColorStop(1, 'rgba(255,255,255,1)');
