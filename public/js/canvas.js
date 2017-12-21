@@ -120,14 +120,21 @@ class Canvas {
     this.pivotPointCenterY = this.maskY;
   };
 
-  drawCanvas(){
+  drawMainScreenValues(){
     $('#focusstepvalue').text(this.focusStep);
-    let defocusString = Math.round(this.defocus * this.imgScale / this.zooms[this.mag] * 100) / 100 + ' nm'
+    let defocusString = Math.round(this.defocus * this.imgScale / this.zooms[this.mag] * 100) / 100 + ' nm' // converts from pixels to nanometers
     while(defocusString.length < 11){
       defocusString = ' ' + defocusString;
     }
     defocusString = 'Defoc.:' + defocusString;
     $('#defocusvalue').text(defocusString);
+    $('#xvalue').text((((this.imgX - this.img.width / 2) * this.imgScale / this.zooms[this.mag] + this.img.width / 2) / 1000).toFixed(2)); // converts from pixels to micrometers
+    $('#yvalue').text(' ' + (((this.imgY - this.img.height / 2) * this.imgScale / this.zooms[this.mag] + this.img.height / 2) / 1000).toFixed(2)); // leading space covers minus sign from original image
+    $('#zvalue').text((this.specimenHeight * 200 / 57).toFixed(2)); // maps the current range of 528 to 585 onto a 200 micrometer scale
+  }
+
+  drawCanvas(){
+    this.drawMainScreenValues()
     if (this == setupbox){
       if(diffractionMode){
         this.hueRotateActive = false;
