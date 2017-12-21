@@ -190,11 +190,17 @@ class Canvas {
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
 
+    let betaTiltImpact;
+    if (this.specimenHeight == 0){
+      betaTiltImpact = this.betaTilt;
+    } else {
+      betaTiltImpact = this.betaTilt * this.specimenHeight;
+    }
     this.context.globalAlpha = .5;
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.alphaTilt * this.specimenHeight - this.defocus / 10 * Math.cos(this.imgAngle), this.imgY + this.betaTilt + this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
+      this.imgX + this.alphaTilt * this.specimenHeight - this.defocus / 10 * Math.cos(this.imgAngle), this.imgY + betaTiltImpact + this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.alphaTilt * this.specimenHeight + this.defocus / 10 * Math.cos(this.imgAngle), this.imgY + this.betaTilt - this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
+      this.imgX + this.alphaTilt * this.specimenHeight + this.defocus / 10 * Math.cos(this.imgAngle), this.imgY + betaTiltImpact - this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
       
     this.drawHalo();
 
@@ -745,13 +751,13 @@ class Canvas {
   }
 
   focusUpButton(){
-    this.focus(10);
     ++this.specimenHeight;
+    this.focus(10);
   }
 
   focusDownButton(){
-    this.focus(-10);
     --this.specimenHeight;
+    this.focus(-10);
   }
 
   zeroFocus(){
