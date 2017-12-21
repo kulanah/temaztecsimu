@@ -780,7 +780,8 @@ class Canvas {
   deactivateDirectAlignments(){
     this.alignmentMode = 'none';
     clearInterval(this.intervalVal);
-    $('#diffractograms').hide();    
+    $('#diffractograms').hide();
+    diffractionMode = false;
     this.drawCanvas();
   }
 
