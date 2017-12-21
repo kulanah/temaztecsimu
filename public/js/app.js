@@ -314,7 +314,10 @@ let activateObjective = function(){
 let activateDiffractionStigmator = function(){
   diffractionStigmation = true;
   $('#leftcolumnstigmator').attr('src', './public/img/stigmatordiffraction.png');
-  $('#floatingstigmator').attr('src', './public/img/stigmatordiffraction.png');  
+  $('#floatingstigmator').attr('src', './public/img/stigmatordiffraction.png');
+  if(!diffractionMode){
+    $('#buttondiffraction').trigger('click');
+  }
 }
 
 let deactivateStigmator = function(){

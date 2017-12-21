@@ -62,7 +62,7 @@ let floatStig = function(){
     updateStigmatorVisual = false;
     deactivateStigmator();
     updateStigmatorVisual = true;
-    activateDiffractionStigmator();    
+    activateDiffractionStigmator();
   })
 
   $('#floatnone').on('click', function(event){
