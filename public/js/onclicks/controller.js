@@ -278,19 +278,19 @@ let microscopeControllers = function(){
     drawColumn();
   })
 
-  $('#alphatiltl').on('click', function(event){
+  $('#alphatiltleft').on('click', function(event){
     sampleTilt(0, -1);
   });
 
-  $('#alphatiltr').on('click', function(event){
+  $('#alphatiltright').on('click', function(event){
     sampleTilt(0, 1);
   });
 
-  $('#betatiltl').on('click', function(event){
+  $('#betatiltleft').on('click', function(event){
     sampleTilt(1, 0);
   });
 
-  $('#betatiltr').on('click', function(event){
+  $('#betatiltright').on('click', function(event){
     sampleTilt(-1, 0);
   });
 };
