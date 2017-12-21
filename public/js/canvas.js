@@ -122,6 +122,12 @@ class Canvas {
 
   drawCanvas(){
     $('#focusstepvalue').text(this.focusStep);
+    let defocusString = Math.round(this.defocus * this.imgScale / this.zooms[this.mag] * 100) / 100 + ' nm'
+    while(defocusString.length < 11){
+      defocusString = ' ' + defocusString;
+    }
+    defocusString = 'Defoc.:' + defocusString;
+    $('#defocusvalue').text(defocusString);
     if (this == setupbox){
       if(diffractionMode){
         this.hueRotateActive = false;
@@ -198,9 +204,9 @@ class Canvas {
     }
     this.context.globalAlpha = .5;
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.alphaTilt * this.specimenHeight - this.defocus / 10 * Math.cos(this.imgAngle), this.imgY + betaTiltImpact + this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
+      this.imgX + this.alphaTilt * this.specimenHeight - this.defocus * Math.cos(this.imgAngle), this.imgY + betaTiltImpact + this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
     this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.alphaTilt * this.specimenHeight + this.defocus / 10 * Math.cos(this.imgAngle), this.imgY + betaTiltImpact - this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
+      this.imgX + this.alphaTilt * this.specimenHeight + this.defocus * Math.cos(this.imgAngle), this.imgY + betaTiltImpact - this.defocus / 10 * Math.sin(this.imgAngle),this.imgW,this.imgH);
       
     this.drawHalo();
 
@@ -268,7 +274,7 @@ class Canvas {
   };
 
   focus(delta){
-    this.defocus += delta * this.focusStep;
+    this.defocus += delta * this.focusStep * .1;
     this.drawCanvas();
   };
 
@@ -752,12 +758,14 @@ class Canvas {
 
   focusUpButton(){
     ++this.specimenHeight;
-    this.focus(10);
+    this.defocus += 1;
+    this.drawCanvas();
   }
 
   focusDownButton(){
     --this.specimenHeight;
-    this.focus(-10);
+    this.defocus -= 1;
+    this.drawCanvas();
   }
 
   zeroFocus(){
@@ -795,7 +803,7 @@ class Canvas {
       this.drawCanvas();
     } else {
       this.wobbleSavedX = this.imgX;
-      this.wobbleMax = Math.abs(this.defocus) / 10;
+      this.wobbleMax = Math.abs(this.defocus);
       this.wobbleInterval = setInterval(this.wobbleTimeout.bind(this), 10);
     }
 
@@ -804,7 +812,7 @@ class Canvas {
 
   wobbleTimeout(){
     //reset maximum slide distance
-    this.wobbleMax = Math.abs(this.defocus) / 10;
+    this.wobbleMax = Math.abs(this.defocus);
     if (this.wobbleRight){
       //moving to the right
       if (this.imgX < this.wobbleMax){
