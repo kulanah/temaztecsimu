@@ -251,17 +251,17 @@ let microscopeControllers = function(){
   });
 
   $('#buttonupr').on('click', function(event){
-    if (temLensSpecimen.y < 584){
+    if (temLensSpecimen.y < 585 - stageStepSize){
       focusUp();
-      ++temLens[13].y;
+      temLens[13].y += stageStepSize;
       drawColumn();
     }
   });
 
   $('#buttondownr').on('click', function(event){
-    if (temLensSpecimen.y > 529){
+    if (temLensSpecimen.y > 528 + stageStepSize){
       focusDown();
-      --temLens[13].y;
+      temLens[13].y -= stageStepSize;
       drawColumn();
     }
   });
