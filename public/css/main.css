@@ -73,7 +73,7 @@ body{
 
 #focusstepdisplay{
   position: absolute;
-  top: 88.6vh;
+  top: 88.8vh;
   right: 42.75vw;
 }
 
@@ -95,6 +95,24 @@ body{
   position: absolute;
   top: 86vh;
   right: 28.5vw;
+}
+
+#xdisplay{
+  position: absolute;
+  top: 86vh;
+  right: 17vw;
+}
+
+#ydisplay{
+  position: absolute;
+  top: 88.8vh;
+  right: 17vw;
+}
+
+#zdisplay{
+  position: absolute;
+  top: 91.6vh;
+  right: 17vw;
 }
 
 #controlsinstruction{
