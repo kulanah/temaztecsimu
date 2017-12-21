@@ -1,7 +1,7 @@
 'use strict';
 
 class Canvas {
-  constructor(source, cssID, pxToNmRatio){
+  constructor(source, cssID, scale){
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
@@ -17,8 +17,11 @@ class Canvas {
     this.imgAngle = 0;
     this.defocus = 0;    
 
-    // imgScale constant approximates number of nanometers in a pixel on the user's monitor, assuming 96 DPI
-    this.imgScale = (1 / 0.39370) * 10000000 / 96 * pxToNmRatio;
+    this.imgScale = scale;
+
+    // Backup method for calculating the image's scale based on the pixel to nanometer ratio
+    // The constant approximates number of nanometers in a pixel on the user's monitor, assuming 96 DPI
+    //this.imgScale = (1 / 0.39370) * 10000000 / 96 * pxToNmRatio;
 
     //use this to give the onload function access to the setDimensions method
     this.img.parentThis = this;
