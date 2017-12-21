@@ -740,7 +740,7 @@ class Canvas {
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
-    drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, 256, 256, 0);
+    drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, this.diffractionCameraLength, this.diffractionCameraLength, 0);
     let beamRadius = this.diffractionCameraLength / 500 * this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
     let radiusX = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius * this.diffractionAstigmatism / beamRadius;
     let radiusY = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius / this.diffractionAstigmatism / beamRadius;
