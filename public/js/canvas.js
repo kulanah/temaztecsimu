@@ -757,12 +757,12 @@ class Canvas {
   }
 
   focusUpButton(){
-    ++this.specimenHeight;
+    this.specimenHeight += stageStepSize;
     this.drawCanvas();
   }
 
   focusDownButton(){
-    --this.specimenHeight;
+    this.specimenHeight -= stageStepSize;
     this.drawCanvas();
   }
 

@@ -2,6 +2,7 @@
 
 let multiStepSize = 1;
 let intensityStepSize = 1;
+let stageStepSize = 1;
 
 let microscopeControllers = function(){
 
@@ -236,6 +237,14 @@ let microscopeControllers = function(){
 
   $('#intensitystepup').on('click', function(event){
     intensityStepSize *= 2;
+  });
+
+  $('#buttonpolyleftr').on('click', function(event){
+    stageStepSize *= .5;
+  });
+
+  $('#buttonpolyrightr').on('click', function(event){
+    stageStepSize *= 2;
   });
 
   $('#buttonl1').on('click', function(event){
