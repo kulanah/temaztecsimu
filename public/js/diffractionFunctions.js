@@ -200,7 +200,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let lineWidthX = Math.abs(2 * dy * j);
         let lineWidthY = Math.abs(2 * dx * j + 2 * r1 * i);
         let lineWidth = Math.sqrt(Math.pow(lineWidthX, 2) + Math.pow(lineWidthY, 2))
-        let lineTransparency = Math.min(specimenThickness / Math.pow(lineWidth, 2) * radiusX * radiusY, 1);
+        let lineTransparency = Math.min(specimenThickness / 10 / Math.pow(lineWidth, 2) * radiusX * radiusY, 1);
         let lineAngle = Math.atan2(dy * j, dx * j + r1 * i);
         
         // Applying the blur filter significantly worsens performance, so it is avoided when possible
@@ -209,7 +209,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         // Scaling transparency by thickness and scaling color by proximity to center
         let tiltMultiplier = 10;
         let gradient = ctx.createRadialGradient(xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier, platformRadius, xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier, 0);
-        gradient.addColorStop(0, 'rgba(0,0,0,0)');
+        gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
         ctx.fillStyle = gradient;
@@ -237,7 +237,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         for (var i = -layers; i <= layers; i++) {
             for (var j = -layers; j <= layers; j++) {
                 let gradient = ctx.createRadialGradient(xOffset + betaTilt * 10, yOffset + alphaTilt * 10, platformRadius, xOffset + betaTilt * 10, yOffset + alphaTilt * 10, 0);
-                gradient.addColorStop(0, 'rgba(0,0,0,0)');
+                gradient.addColorStop(.7, 'rgba(128,255,154,0)');
                 gradient.addColorStop(.8, 'rgba(128,255,154,.5)');
                 gradient.addColorStop(1, 'rgba(255,255,255,1)');
                 ctx.fillStyle = gradient;
