@@ -161,13 +161,17 @@ class Canvas {
     this.context.beginPath();
 
     // Ellipse approach - extends out in both directions
-    let haloAngle = Math.atan2(this.haloY, this.haloX);
+    this.beamAngle = Math.atan2(this.beamAstigmatismY, this.beamAstigmatismX);
+    let haloAngle = Math.atan2(this.haloY * Math.cos(this.beamAngle) - this.haloX * Math.sin(this.beamAngle), this.haloX * Math.cos(this.beamAngle) + this.haloY * Math.sin(this.beamAngle));
     let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
     let longRadius = Math.max(newRadius, haloDistance) * Math.max(Math.pow(1.0005, this.beamAstigmatismX / (1 + this.maskR / 25)) / Math.pow(1.0005, this.beamAstigmatismY / (1 + this.maskR / 25)), Math.pow(1.0005, this.beamAstigmatismY / (1 + this.maskR / 25)) / Math.pow(1.0005, this.beamAstigmatismX / (1 + this.maskR / 25)));
     let shortRadius = Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * Math.min(Math.pow(1.0005, this.beamAstigmatismX / (1 + this.maskR / 25)) / Math.pow(1.0005, this.beamAstigmatismY / (1 + this.maskR / 25)), Math.pow(1.0005, this.beamAstigmatismY / (1 + this.maskR / 25)) / Math.pow(1.0005, this.beamAstigmatismX / (1 + this.maskR / 25)));
-    this.beamAngle = Math.atan2(this.beamAstigmatismY, this.beamAstigmatismX);
     console.log(this.beamAngle, haloAngle)
-    this.context.ellipse(this.maskX,this.maskY,longRadius,shortRadius,this.beamAngle + haloAngle,0,Math.PI * 2);
+    if(haloDistance > 0){
+      this.context.ellipse(this.maskX,this.maskY,longRadius,shortRadius,haloAngle,0,Math.PI * 2);
+    } else {
+      this.context.ellipse(this.maskX,this.maskY,longRadius,shortRadius,this.beamAngle,0,Math.PI * 2);
+    }
 
     // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
     /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
@@ -599,7 +603,7 @@ class Canvas {
     context.stroke();*/
 
     context.beginPath();
-    context.arc(this.maskX + this.haloX, this.maskY + this.haloY, haloR / 4, 0, Math.PI * 2);
+    context.arc(this.maskX + this.haloX * Math.cos(this.beamAngle) + this.haloY * Math.sin(this.beamAngle), this.maskY + this.haloY * Math.cos(this.beamAngle) - this.haloX * Math.sin(this.beamAngle), haloR / 4, 0, Math.PI * 2);
     context.strokeStyle = 'white';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
     context.stroke();
