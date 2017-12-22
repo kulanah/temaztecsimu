@@ -232,7 +232,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2
         console.log(r2, angle)
         console.log(dx, dy);
-        var rotationRadians = rotation / 180 * Math.PI;
+        var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
         var maxDistance = Math.sqrt(Math.pow(canvas.height, 2) + Math.pow(canvas.width, 2)) / 2;
         for (var i = -layers; i <= layers; i++) {
             for (var j = -layers; j <= layers; j++) {

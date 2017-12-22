@@ -88,7 +88,8 @@ class Canvas {
     this.diffractionMag = 8;
     this.diffractionCameraLength = 265;
     this.diffractionRadius = 64;
-    this.diffractionAstigmatism = 1;
+    this.diffractionAstigmatismX = 0;
+    this.diffractionAstigmatismY = 0;
     this.diffractionAngle = 0;
     this.specimenThickness = 50;
     this.c2 = 1; // variable Tony requested, affects diffraction dot size, no current way to manipulate it
@@ -489,7 +490,7 @@ class Canvas {
     if (!isNaN(deltaX)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAngle += deltaX;
+          this.diffractionAstigmatismX += deltaX;
         } else {
           this.diffractionX += deltaX;
         }
@@ -536,7 +537,7 @@ class Canvas {
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
         if(diffractionStigmation){
-          this.diffractionAstigmatism *= Math.pow(1.0005, -deltaY); // the dots are small, so the change is less pronounced (relative to other stigmators)
+          this.diffractionAstigmatismY += deltaY; // the dots are small, so the change is less pronounced (relative to other stigmators)
         } else {
           this.diffractionY += deltaY;
         }
@@ -750,9 +751,10 @@ class Canvas {
     clearCanvas(this.selector[0]);
     drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, this.diffractionCameraLength, this.diffractionCameraLength, 0);
     let beamRadius = this.diffractionCameraLength / 500 * this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
-    let radiusX = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius * this.diffractionAstigmatism / beamRadius;
-    let radiusY = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius / this.diffractionAstigmatism / beamRadius;
+    let radiusX = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
+    let radiusY = this.diffractionCameraLength / 300 * this.c2 * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
     if(onSpecimen){
+      this.diffractionAngle = Math.atan2(this.diffractionAstigmatismY, this.diffractionAstigmatismX);
       var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
       for(i = 0; i < settings[0].length; i++) {
         drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
