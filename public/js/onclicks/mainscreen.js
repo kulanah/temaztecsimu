@@ -97,10 +97,14 @@ let mainScreen = function(){
   });
 
   $('#startview').on('click', function(event){
-    activeWindow = 0;
-    $('#openbox').show();
-    openbox.drawCanvas();
-    $('#basesetup').hide();
+    if(diffractionMode){
+      $('#errordiv').show();
+    } else {
+      activeWindow = 0;
+      $('#openbox').show();
+      openbox.drawCanvas();
+      $('#basesetup').hide();
+    }
   });
 
   $('#micrographxbox').on('click', function(event){
