@@ -316,4 +316,15 @@ let microscopeControllers = function(){
   $('#betatiltright').on('click', function(event){
     sampleTilt(-1, 0);
   });
+
+  $('#buttonstigmator').on('click', function(event){
+    if(isVisible('floatingstigmatordiv')){
+      closeFloatingItems();
+    } else {
+      closeFloatingItems();
+      if(!isVisible('leftcoltune')){
+        $('#floatingstigmatordiv').show();
+      }
+    }
+  });
 };

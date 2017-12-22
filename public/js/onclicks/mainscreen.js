@@ -1,5 +1,12 @@
 'use strict';
 
+function closeFloatingItems(){
+  $('#vacuumoverview').hide();
+  $('#maindropdown').hide();
+  $('#directalignmentspopout').hide();
+  $('#floatingstigmatordiv').hide();  
+}
+
 let mainScreen = function(){
   $('#mainscreendropdown').on('click', function(event){
     if(isVisible('maindropdown')){
@@ -50,13 +57,6 @@ let mainScreen = function(){
   $('#closedrop').on('click', function(event){
     closeFloatingItems();
   });
-
-  function closeFloatingItems(){
-    $('#vacuumoverview').hide();
-    $('#maindropdown').hide();
-    $('#directalignmentspopout').hide();
-    $('#floatingstigmatordiv').hide();  
-  }
 
   $('#filebutton').on('click', function(event){
     if($('#filemenu').css('display') == 'none'){
