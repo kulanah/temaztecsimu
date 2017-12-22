@@ -261,7 +261,7 @@ let microscopeControllers = function(){
   $('#beamstepup').on('click', function(event){
     if(beamStepSize < 8){
       beamStepSize *= 2;
-    }    
+    }
   });
 
   $('#buttonpolyleftr').on('click', function(event){
