@@ -115,6 +115,18 @@ body{
   right: 17vw;
 }
 
+#alphadisplay{
+  position: absolute;
+  top: 86vh;
+  right: 3.7vw;
+}
+
+#betadisplay{
+  position: absolute;
+  top: 88.8vh;
+  right: 3.7vw;
+}
+
 #controlsinstruction{
   position: absolute;
   top: 77vh;

@@ -134,6 +134,8 @@ class Canvas {
     $('#xvalue').text((((this.imgX - this.img.width / 2) * this.imgScale / this.zooms[this.mag] + this.img.width / 2) / 1000).toFixed(2)); // converts from pixels to micrometers
     $('#yvalue').text(' ' + (((this.imgY - this.img.height / 2) * this.imgScale / this.zooms[this.mag] + this.img.height / 2) / 1000).toFixed(2)); // leading space covers minus sign from original image
     $('#zvalue').text((this.specimenHeight * 200 / 57).toFixed(2)); // maps the current range of 528 to 585 onto a 200 micrometer scale
+    $('#alphavalue').text(' ' + this.alphaTilt.toFixed(2));
+    $('#betavalue').text(' ' + this.betaTilt.toFixed(2));
   }
 
   drawCanvas(){
