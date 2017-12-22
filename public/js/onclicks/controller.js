@@ -229,35 +229,51 @@ let microscopeControllers = function(){
   });
 
   $('#multistepdown').on('click', function(event){
-    multiStepSize *= 0.5;
+    if(multiStepSize > 1/8){
+      multiStepSize *= 0.5;
+    }
   });
 
   $('#multistepup').on('click', function(event){
-    multiStepSize *= 2;
+    if(multiStepSize < 8){
+      multiStepSize *= 2;
+    }
   });
 
   $('#intensitystepdown').on('click', function(event){
-    intensityStepSize *= 0.5;
+    if(intensityStepSize > 1/8){
+      intensityStepSize *= 0.5;
+    }
   });
 
   $('#intensitystepup').on('click', function(event){
-    intensityStepSize *= 2;
+    if(intensityStepSize < 8){
+      intensityStepSize *= 2;
+    }
   });
 
   $('#beamstepdown').on('click', function(event){
-    beamStepSize *= .5;
+    if(beamStepSize > 1/8){
+      beamStepSize *= 0.5;
+    }
   });
 
   $('#beamstepup').on('click', function(event){
-    beamStepSize *= 2;
+    if(beamStepSize < 8){
+      beamStepSize *= 2;
+    }    
   });
 
   $('#buttonpolyleftr').on('click', function(event){
-    stageStepSize *= .5;
+    if(stageStepSize > 1/8){
+      stageStepSize *= 0.5;
+    }
   });
 
   $('#buttonpolyrightr').on('click', function(event){
-    stageStepSize *= 2;
+    if(stageStepSize < 8){
+      stageStepSize *= 2;
+    }
   });
 
   $('#buttonl1').on('click', function(event){
