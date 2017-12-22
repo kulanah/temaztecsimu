@@ -112,6 +112,8 @@ let microscopeControllers = function(){
       temLens[20].f -= .1;
       updateBeamSlider(value);    
       drawColumn();
+    } else {
+      setupbox.limitFlash('#spotsizevalue');
     }
   });
 
@@ -122,6 +124,8 @@ let microscopeControllers = function(){
       temLens[20].f += .1;
       updateBeamSlider(value);
       drawColumn();
+    } else {
+      setupbox.limitFlash('#spotsizevalue');
     }
   });
 

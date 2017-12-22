@@ -189,7 +189,7 @@ let updateBeamSlider = function(newValue){
     newValue = beamslider.val();
   }
   $('#beamvalue').text(newValue);
-  $('#spotsizevalue').text(' ' + newValue);  
+  $('#spotsizevalue').text(newValue);
   updateCanvas();
 }
 
