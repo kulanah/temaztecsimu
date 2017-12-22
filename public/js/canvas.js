@@ -796,8 +796,8 @@ class Canvas {
   }
 
   sampleTilt(x, y){
-    this.betaTilt += x;
-    this.alphaTilt += y;
+    this.betaTilt += x * stageStepSize / this.zooms[this.mag] * this.imgScale;
+    this.alphaTilt += y * stageStepSize / this.zooms[this.mag] * this.imgScale;
     this.drawCanvas();
   }
 
