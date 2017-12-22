@@ -183,8 +183,8 @@ class Canvas {
     this.beamAngle = Math.atan2(this.beamAstigmatismY, this.beamAstigmatismX);
     let haloAngle = Math.atan2(this.haloY * Math.cos(this.beamAngle) - this.haloX * Math.sin(this.beamAngle), this.haloX * Math.cos(this.beamAngle) + this.haloY * Math.sin(this.beamAngle));
     let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
-    let longRadius = Math.max(newRadius, haloDistance) * Math.max(Math.pow(1.0005, this.beamAstigmatismX / (1 + this.maskR / 25)) / Math.pow(1.0005, this.beamAstigmatismY / (1 + this.maskR / 25)), Math.pow(1.0005, this.beamAstigmatismY / (1 + this.maskR / 25)) / Math.pow(1.0005, this.beamAstigmatismX / (1 + this.maskR / 25)));
-    let shortRadius = Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * Math.min(Math.pow(1.0005, this.beamAstigmatismX / (1 + this.maskR / 25)) / Math.pow(1.0005, this.beamAstigmatismY / (1 + this.maskR / 25)), Math.pow(1.0005, this.beamAstigmatismY / (1 + this.maskR / 25)) / Math.pow(1.0005, this.beamAstigmatismX / (1 + this.maskR / 25)));
+    let longRadius = Math.max(newRadius, haloDistance) * Math.max(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
+    let shortRadius = Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * Math.min(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
     console.log(this.beamAngle, haloAngle)
     if(haloDistance > 0){
       this.context.ellipse(this.maskX,this.maskY,longRadius,shortRadius,haloAngle,0,Math.PI * 2);
