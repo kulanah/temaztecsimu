@@ -244,6 +244,14 @@ class Canvas {
       }
       this.diffractionCameraLength = this.diffractionZooms[this.diffractionMag];
       this.drawCanvas();
+      $('#setupcrosshair').css({
+        'width': 21 * this.diffractionCameraLength / 265 + 'vw',
+        'height': 21 * this.diffractionCameraLength / 265 + 'vw',
+        'top': 16.5 - 10.5 * this.diffractionCameraLength / 265 + 'vw',
+        'left': 16.5 - 10.5 * this.diffractionCameraLength / 265 + 'vw'
+      })
+      //$('#setupcrosshair').width(21 + this.diffractionCameraLength / 265 + 'vw');
+      //$('#setupcrosshair').height(21 + this.diffractionCameraLength / 265 + 'vw');
       return;
     }
     let zoomFactor = 1;
