@@ -361,8 +361,8 @@ class Canvas {
   moveImage(deltaX, deltaY){
     let flag;
     if (this.startTarget == 'buttonrollerl'){
-      this.maskX += deltaX;
-      this.maskY += deltaY;
+      this.maskX += deltaX * beamStepSize;
+      this.maskY += deltaY * beamStepSize;
       flag = 1;
     } else {
       this.imgX += (deltaX * Math.cos(this.imgAngle) + deltaY * Math.sin(this.imgAngle)) * stageStepSize;
