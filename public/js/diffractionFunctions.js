@@ -228,22 +228,27 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 300)) + 'px)';
-        var dx = r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
+        var dx = r1 / 2 //r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2
         console.log(r2, angle)
         console.log(dx, dy);
         var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
-        var maxDistance = Math.sqrt(Math.pow(canvas.height, 2) + Math.pow(canvas.width, 2)) / 2;
-        for (var i = -layers; i <= layers; i++) {
-            for (var j = -layers; j <= layers; j++) {
-                let gradient = ctx.createRadialGradient(xOffset + betaTilt * 10, yOffset + alphaTilt * 10, platformRadius, xOffset + betaTilt * 10, yOffset + alphaTilt * 10, 0);
-                gradient.addColorStop(.7, 'rgba(128,255,154,0)');
-                gradient.addColorStop(.8, 'rgba(128,255,154,.5)');
-                gradient.addColorStop(1, 'rgba(255,255,255,1)');
+        var maxDistance = platformRadius;
+        let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
+        gradient.addColorStop(0, 'rgba(128,255,154,.3)');
+        gradient.addColorStop(.8, 'rgba(128,255,154,.5)');
+        gradient.addColorStop(1, 'rgba(255,255,255,1)');
+        for (var i = -Math.ceil((platformRadius ) / r1); i <= Math.ceil((platformRadius ) / r1); i++) {
+            for (var j = -Math.ceil((platformRadius) / dy); j <= Math.ceil((platformRadius) / dy); j++) {
                 ctx.fillStyle = gradient;
                 ctx.beginPath();
                 var distance = Math.sqrt(Math.pow(r1 * i + dx * j, 2) + Math.pow(dy * j, 2));
                 var distanceRatio = distance / maxDistance;
+                let localDistance = Math.sqrt(Math.pow(r1 * i + dx * j - betaTilt * 10, 2) + Math.pow(dy * j - alphaTilt * 10, 2));
+                let localDistanceRatio = localDistance / platformRadius / .3;
+                if (distanceRatio > 1 || localDistanceRatio > 1){
+                    continue;
+                }
                 if(type === "poly") {
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 4, distance * radiusY / 4, rotationRadians, 0, 2 * Math.PI);
                     ctx.stroke();
@@ -257,6 +262,10 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     var ry = radiusY / (distanceRatio + 1);
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
+                    /*x = r1 * i - dx * j + xOffset;
+                    ctx.beginPath();
+                    ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
+                    ctx.fill();*/
                 }
                 drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j);                
             }
