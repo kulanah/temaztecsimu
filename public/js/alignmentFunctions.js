@@ -72,10 +72,10 @@ function drawBeam(canvas, x, y, radiusX, radiusY, rotation, lineWidth) {
     // Draws the beam
     drawGreenCircle(canvas, x, y, radiusX, radiusY, rotation);
     drawThreeArcs(canvas, x, y, radiusX, radiusY, rotation, lineWidth);
-    drawDot(canvas, x, y, radiusX, radiusY, rotation);
+    drawWhiteDot(canvas, x, y, radiusX, radiusY, rotation);
 }
 
-function drawDot(canvas, x, y, radiusX, radiusY, rotation) {
+function drawWhiteDot(canvas, x, y, radiusX, radiusY, rotation) {
     // Draws the white dot at the center of the beam
     if (canvas.getContext) {
         var rotationRadians = rotation / 180 * Math.PI;

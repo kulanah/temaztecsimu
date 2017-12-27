@@ -758,7 +758,7 @@ class Canvas {
       var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
       for(i = 1; i < 2; i++) {
         drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
-          this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 15, 
+          this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 0, 10, 'single', 3, 
           settings[0][i], settings[1][i], settings[2][i], this.specimenThickness, this.selector[0].height / 2, this.alphaTilt, this.betaTilt);
       }
     } else {

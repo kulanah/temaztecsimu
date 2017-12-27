@@ -190,6 +190,12 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
     }
 }
 
+function drawDot(ctx, x, y, rx, ry, rotationRadians){
+    ctx.beginPath();
+    ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
+    ctx.fill();
+}
+
 function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j){
     // Draw Kikuchi lines - lines for points that are closer together are narrower and less transparent
     if (specimenThickness <= 0){
@@ -238,18 +244,18 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         gradient.addColorStop(0, 'rgba(128,255,154,.3)');
         gradient.addColorStop(.8, 'rgba(128,255,154,.5)');
         gradient.addColorStop(1, 'rgba(255,255,255,1)');
-        for (var i = -Math.ceil((platformRadius ) / r1); i <= Math.ceil((platformRadius ) / r1); i++) {
-            for (var j = -Math.ceil((platformRadius) / dy); j <= Math.ceil((platformRadius) / dy); j++) {
+        for (var i = 0; i <= layers; i++) {
+            for (var j = 0; j <= layers; j++) {
                 ctx.fillStyle = gradient;
-                ctx.beginPath();
                 var distance = Math.sqrt(Math.pow(r1 * i + dx * j, 2) + Math.pow(dy * j, 2));
                 var distanceRatio = distance / maxDistance;
                 let localDistance = Math.sqrt(Math.pow(r1 * i + dx * j - betaTilt * 10, 2) + Math.pow(dy * j - alphaTilt * 10, 2));
                 let localDistanceRatio = localDistance / platformRadius / .3;
-                if (distanceRatio > 1 || localDistanceRatio > 1){
+                if (distanceRatio > 1){
                     continue;
                 }
                 if(type === "poly") {
+                    ctx.beginPath();
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 4, distance * radiusY / 4, rotationRadians, 0, 2 * Math.PI);
                     ctx.stroke();
                     ctx.beginPath();
@@ -260,9 +266,27 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     var y = dy * j + yOffset;
                     var rx = radiusX / (distanceRatio + 1);
                     var ry = radiusY / (distanceRatio + 1);
+                    //drawDot(ctx, x, y, rx, ry, rotationRadians);
+                    x = r1 * i - dx * j + xOffset;
+                    drawDot(ctx, x, y, rx, ry, rotationRadians);
+                    x = -r1 * i + dx * j + xOffset;
+                    drawDot(ctx, x, y, rx, ry, rotationRadians);
+                    x = -r1 * i - dx * j + xOffset;
+                    //drawDot(ctx, x, y, rx, ry, rotationRadians);
+                    y = -dy * j + yOffset;
+                    //drawDot(ctx, x, y, rx, ry, rotationRadians);
+                    x = -r1 * i + dx * j + xOffset;
+                    drawDot(ctx, x, y, rx, ry, rotationRadians);
+                    x = r1 * i - dx * j + xOffset;
+                    drawDot(ctx, x, y, rx, ry, rotationRadians);
+                    x = r1 * i + dx * j + xOffset;
+                    //drawDot(ctx, x, y, rx, ry, rotationRadians);
+
+
+
+                    /*ctx.beginPath();
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
-                    /*x = r1 * i - dx * j + xOffset;
                     ctx.beginPath();
                     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();*/
