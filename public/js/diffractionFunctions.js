@@ -205,10 +205,10 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
         let lineWidthX = Math.abs(2 * dy * j);
-        let lineWidthY = Math.abs(2 * dx * j + 2 * r1 * i);
-        let lineWidth = Math.sqrt(Math.pow(lineWidthX, 2) + Math.pow(lineWidthY, 2))
+        let lineWidthY = Math.abs(2 * dx * j - 2 * r1 * i);
+        let lineWidth = Math.sqrt(Math.pow(lineWidthX, 2) + Math.pow(lineWidthY, 2));
         let lineTransparency = Math.min(specimenThickness / 10 / Math.pow(lineWidth, 2) * radiusX * radiusY, 1);
-        let lineAngle = Math.atan2(dy * j, dx * j + r1 * i);
+        let lineAngle = Math.atan2(dy * j, dx * j - r1 * i);
         
         // Applying the blur filter significantly worsens performance, so it is avoided when possible
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
@@ -225,7 +225,11 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.translate(-xOffset - betaTilt * tiltMultiplier, -yOffset - alphaTilt * tiltMultiplier);
         ctx.fillRect(xOffset + betaTilt * tiltMultiplier - lineWidth / 2, alphaTilt * tiltMultiplier, lineWidth, platformRadius * 2);
         ctx.translate(xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier);
-        ctx.rotate(-lineAngle);
+        ctx.rotate(-lineAngle * 2);
+        ctx.translate(-xOffset - betaTilt * tiltMultiplier, -yOffset - alphaTilt * tiltMultiplier);
+        ctx.fillRect(xOffset + betaTilt * tiltMultiplier - lineWidth / 2, alphaTilt * tiltMultiplier, lineWidth, platformRadius * 2);
+        ctx.translate(xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier);
+        ctx.rotate(lineAngle);
         ctx.translate(-xOffset - betaTilt * tiltMultiplier, -yOffset - alphaTilt * tiltMultiplier);
     }
 }
