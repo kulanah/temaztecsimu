@@ -176,14 +176,15 @@ function determineValidHKL(crystalStructure, h, k, l) {
     } 
 }
 
-function drawBackground(canvas, x, y, radiusX, radiusY, rotation) {
-    // Draw a white rectangle and a green circle
+function drawBackground(canvas, x, y, radiusX, radiusY, rotation, intensity) {
+    // Draw a black rectangle and a green circle
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
         ctx.fillStyle = ('#000');
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         var rotationRadians = rotation / 180 * Math.PI;
-        ctx.fillStyle = '#010'; //'#373' //'#6E7'; //true value 
+        let brightness = Math.min(1, intensity);
+        ctx.fillStyle = 'rgba(0,17,0,' + brightness + ')'; //'#373' //'#6E7'; //true value 
         ctx.beginPath();
         ctx.ellipse(x, y, radiusX, radiusY, rotationRadians, 0, Math.PI * 2);
         ctx.fill();
@@ -240,10 +241,11 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         console.log(dx, dy);
         var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
         var maxDistance = platformRadius;
+        let brightness = Math.min(intensity, 1);
         let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
-        gradient.addColorStop(0, 'rgba(128,255,154,.3)');
-        gradient.addColorStop(.8, 'rgba(128,255,154,.5)');
-        gradient.addColorStop(1, 'rgba(255,255,255,1)');
+        gradient.addColorStop(0, 'rgba(128,255,154,' + .3 * brightness + ')');
+        gradient.addColorStop(.8, 'rgba(128,255,154,' + .5 * brightness + ')');
+        gradient.addColorStop(1, 'rgba(255,255,255,' + brightness + ')');
         for (var i = 0; i <= layers; i++) {
             for (var j = 0; j <= layers; j++) {
                 ctx.fillStyle = gradient;
