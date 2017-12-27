@@ -262,34 +262,17 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 32, distance * radiusY / 32, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 } else {
-                    var x = r1 * i + dx * j + xOffset;
+                    var x = r1 * i - dx * j + xOffset;
                     var y = dy * j + yOffset;
                     var rx = radiusX / (distanceRatio + 1);
                     var ry = radiusY / (distanceRatio + 1);
-                    //drawDot(ctx, x, y, rx, ry, rotationRadians);
-                    x = r1 * i - dx * j + xOffset;
                     drawDot(ctx, x, y, rx, ry, rotationRadians);
                     x = -r1 * i + dx * j + xOffset;
                     drawDot(ctx, x, y, rx, ry, rotationRadians);
-                    x = -r1 * i - dx * j + xOffset;
-                    //drawDot(ctx, x, y, rx, ry, rotationRadians);
                     y = -dy * j + yOffset;
-                    //drawDot(ctx, x, y, rx, ry, rotationRadians);
-                    x = -r1 * i + dx * j + xOffset;
                     drawDot(ctx, x, y, rx, ry, rotationRadians);
                     x = r1 * i - dx * j + xOffset;
                     drawDot(ctx, x, y, rx, ry, rotationRadians);
-                    x = r1 * i + dx * j + xOffset;
-                    //drawDot(ctx, x, y, rx, ry, rotationRadians);
-
-
-
-                    /*ctx.beginPath();
-                    ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
-                    ctx.fill();*/
                 }
                 drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j);                
             }
