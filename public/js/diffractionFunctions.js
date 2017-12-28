@@ -206,7 +206,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         var ctx = canvas.getContext('2d');
         let lineWidthX = Math.abs(2 * dy * j);
         let lineWidthY = Math.abs(2 * dx * j - 2 * r1 * i);
-        let lineWidth = Math.sqrt(Math.pow(lineWidthX, 2) + Math.pow(lineWidthY, 2));
+        let lineWidth = Math.sqrt(Math.pow(lineWidthX, 2) + Math.pow(lineWidthY, 2)) / 2;
         let lineTransparency = Math.min(specimenThickness / 10 / Math.pow(lineWidth, 2) * radiusX * radiusY, 1);
         let lineAngle = Math.atan2(dy * j, dx * j - r1 * i);
         
