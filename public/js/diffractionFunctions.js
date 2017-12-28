@@ -193,7 +193,7 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation, intensity) {
 
 function drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt){
     ctx.beginPath();
-    ctx.ellipse(x + betaTilt * 10, y + alphaTilt * 10, rx, ry, rotationRadians, 0, 2 * Math.PI);
+    ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
     ctx.fill();
 }
 
@@ -245,8 +245,11 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         console.log(dx, dy);
         var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
         var maxDistance = platformRadius;
+        let coords = findClosestDot(dx, dy, alphaTilt, betaTilt);
+        let xCenter = xOffset + coords[0];
+        let yCenter = yOffset + coords[1];
         let brightness = Math.min(intensity, 1);
-        let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
+        let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius, xCenter, yCenter, 0);
         gradient.addColorStop(0, 'rgba(128,255,154,' + .3 * brightness + ')');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + .5 * brightness + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + brightness + ')');
@@ -263,20 +266,40 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 32, distance * radiusY / 32, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 } else {
-                    var x = r1 * i - dx * j + xOffset;
-                    var y = dy * j + yOffset;
+                    var x = r1 * i - dx * j + xCenter;
+                    var y = dy * j + yCenter;
                     var rx = radiusX / (distanceRatio + 1);
                     var ry = radiusY / (distanceRatio + 1);
                     drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
-                    x = -r1 * i + dx * j + xOffset;
+                    x = -r1 * i + dx * j + xCenter;
                     drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
-                    y = -dy * j + yOffset;
+                    y = -dy * j + yCenter;
                     drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
-                    x = r1 * i - dx * j + xOffset;
+                    x = r1 * i - dx * j + xCenter;
                     drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
                 }
-                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j);                
+                drawKikuchiLines(canvas, xCenter, yCenter, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j);                
             }
         }
     }
+}
+
+function findClosestDot(dx, dy, alphaTilt, betaTilt){
+    // Returns the x and y coordinates of the closet dot to the tilt position
+    let topRow = Math.floor(alphaTilt * 10 / dy)
+    let top = topRow * dy
+    let left = Math.floor(betaTilt * 10 / (dx * 2)) * dx * 2 - (topRow % 2) * dx
+    let right = left + dx * 2
+    let bottom = top + dy;
+    let array = [[left, top], [left + dx, bottom], [right, top], [right + dx, bottom]];
+    let minDistance = Infinity;
+    let closestPoint;
+    for (let i = 0; i < 4; i++){
+        let distance = Math.sqrt(Math.pow((array[i][0] - betaTilt * 10), 2) + Math.pow((array[i][1] - alphaTilt * 10), 2));
+        if(distance < minDistance){
+            minDistance = distance;
+            closestPoint = array[i];
+        }
+    }
+    return closestPoint;
 }
