@@ -109,7 +109,7 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
                                          s23 * (k1 * l2 + l1 * k2)) / (functionA(h1, k1, l1) * functionA(h2, k2, l2));
                                     }
                                     var angle = Math.acos(calculateAngle()) * 180 / Math.PI;
-                                    console.log(functionA(h1, k1, l1), functionA(h2, k2, l2), calculateAngle(), angle)
+                                    //console.log(functionA(h1, k1, l1), functionA(h2, k2, l2), calculateAngle(), angle)
                                     if(!isNaN(angle)){
                                         r1s.push(r1);
                                         r2s.push(r2);                                        
@@ -214,8 +214,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
 
         // Scaling transparency by thickness and scaling color by proximity to center
-        let tiltMultiplier = 10;
-        let gradient = ctx.createRadialGradient(xOffset + betaTilt * 10, yOffset + alphaTilt * 10, platformRadius, xOffset + betaTilt * 10, yOffset + alphaTilt * 10, 0);
+        let gradient = ctx.createRadialGradient(xOffset + betaTilt, yOffset + alphaTilt, platformRadius, xOffset + betaTilt, yOffset + alphaTilt, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
@@ -241,15 +240,15 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 300)) + 'px)';
         var dx = r1 / 2 //r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2
-        console.log(r2, angle)
-        console.log(dx, dy);
+        //console.log(r2, angle)
+        //console.log(dx, dy);
         var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
         var maxDistance = platformRadius;
         let coords = findClosestDot(dx, dy, alphaTilt, betaTilt);
         let xCenter = xOffset + coords[0];
         let yCenter = yOffset + coords[1];
         let brightness = Math.min(intensity, 1);
-        let gradient = ctx.createRadialGradient(xOffset + betaTilt * 10, yOffset + alphaTilt * 10, platformRadius, xOffset + betaTilt * 10, yOffset + alphaTilt * 10, 0);
+        let gradient = ctx.createRadialGradient(xOffset + betaTilt, yOffset + alphaTilt, platformRadius, xOffset + betaTilt, yOffset + alphaTilt, 0);
         gradient.addColorStop(0, 'rgba(128,255,154,' + .3 * brightness + ')');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + .5 * brightness + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + brightness + ')');
@@ -292,20 +291,22 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
 
 function findClosestDot(dx, dy, alphaTilt, betaTilt){
     // Returns the x and y coordinates of the closet dot to the tilt position
-    let topRow = Math.floor(alphaTilt * 10 / dy)
+    let topRow = Math.ceil(alphaTilt / dy)
     let top = topRow * dy
-    let left = Math.floor(betaTilt * 10 / (dx * 2)) * dx * 2 - (topRow % 2) * dx
+    let left = Math.floor(betaTilt / (dx * 2)) * dx * 2 - (topRow % 2) * dx
     let right = left + dx * 2
-    let bottom = top + dy;
+    let bottom = top - dy;
     let array = [[left, top], [left + dx, bottom], [right, top], [right + dx, bottom]];
     let minDistance = Infinity;
     let closestPoint;
+    //console.log(topRow, top, left, right, bottom);
     for (let i = 0; i < 4; i++){
-        let distance = Math.sqrt(Math.pow((array[i][0] - betaTilt * 10), 2) + Math.pow((array[i][1] - alphaTilt * 10), 2));
+        let distance = Math.sqrt(Math.pow((array[i][0] - betaTilt), 2) + Math.pow((array[i][1] - alphaTilt), 2));
         if(distance < minDistance){
             minDistance = distance;
             closestPoint = array[i];
         }
     }
+    //console.log(closestPoint);
     return closestPoint;
 }
