@@ -215,22 +215,22 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
 
         // Scaling transparency by thickness and scaling color by proximity to center
         let tiltMultiplier = 10;
-        let gradient = ctx.createRadialGradient(xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier, platformRadius, xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier, 0);
+        let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
         ctx.fillStyle = gradient;
-        ctx.translate(xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier);
+        ctx.translate(xOffset, yOffset);
         ctx.rotate(lineAngle);
-        ctx.translate(-xOffset - betaTilt * tiltMultiplier, -yOffset - alphaTilt * tiltMultiplier);
-        ctx.fillRect(xOffset + betaTilt * tiltMultiplier - lineWidth / 2, alphaTilt * tiltMultiplier, lineWidth, platformRadius * 2);
-        ctx.translate(xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier);
+        ctx.translate(-xOffset, -yOffset);
+        ctx.fillRect(xOffset - lineWidth / 2, 0, lineWidth, platformRadius * 2);
+        ctx.translate(xOffset, yOffset);
         ctx.rotate(-lineAngle * 2);
-        ctx.translate(-xOffset - betaTilt * tiltMultiplier, -yOffset - alphaTilt * tiltMultiplier);
-        ctx.fillRect(xOffset + betaTilt * tiltMultiplier - lineWidth / 2, alphaTilt * tiltMultiplier, lineWidth, platformRadius * 2);
-        ctx.translate(xOffset + betaTilt * tiltMultiplier, yOffset + alphaTilt * tiltMultiplier);
+        ctx.translate(-xOffset, -yOffset);
+        ctx.fillRect(xOffset - lineWidth / 2, 0, lineWidth, platformRadius * 2);
+        ctx.translate(xOffset, yOffset);
         ctx.rotate(lineAngle);
-        ctx.translate(-xOffset - betaTilt * tiltMultiplier, -yOffset - alphaTilt * tiltMultiplier);
+        ctx.translate(-xOffset, -yOffset);
     }
 }
 
