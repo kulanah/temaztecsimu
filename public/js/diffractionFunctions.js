@@ -253,13 +253,8 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         for (var i = 0; i <= layers; i++) {
             for (var j = 0; j <= layers; j++) {
                 ctx.fillStyle = gradient;
-                var distance = Math.sqrt(Math.pow(r1 * i + dx * j, 2) + Math.pow(dy * j, 2));
+                var distance = Math.sqrt(Math.pow(r1 * i - dx * j, 2) + Math.pow(dy * j, 2));
                 var distanceRatio = distance / maxDistance;
-                let localDistance = Math.sqrt(Math.pow(r1 * i + dx * j - betaTilt * 10, 2) + Math.pow(dy * j - alphaTilt * 10, 2));
-                let localDistanceRatio = localDistance / platformRadius / .3;
-                if (distanceRatio > 1){
-                    continue;
-                }
                 if(type === "poly") {
                     ctx.beginPath();
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 4, distance * radiusY / 4, rotationRadians, 0, 2 * Math.PI);

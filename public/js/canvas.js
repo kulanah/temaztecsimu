@@ -141,6 +141,8 @@ class Canvas {
 
   drawCanvas(){
     this.drawMainScreenValues()
+    this.context.save();
+
     if (this == setupbox){
       if(diffractionMode){
         this.hueRotateActive = false;
@@ -152,7 +154,11 @@ class Canvas {
         let context = this.glowSelector[0].getContext('2d');
         context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
         this.setFilterString();
+
         this.drawDiffraction();
+
+        this.context.restore();
+
         return;
       } else {
         this.hueRotateActive = true;
@@ -160,7 +166,6 @@ class Canvas {
     }
     $('#magnificationvalue').text(this.zooms[this.mag] + ' x');
 
-    this.context.save();
 
     this.setFilterString();
 
@@ -752,6 +757,9 @@ class Canvas {
     drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, this.selector[0].height / 2 / beamRadius);
     let radiusX = this.c2 * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
     let radiusY = this.c2 * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
+    this.context.beginPath();
+    this.context.arc(this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, 2 * Math.PI);
+    this.context.clip();
     if(onSpecimen){
       this.diffractionAngle = Math.atan2(this.diffractionAstigmatismY, this.diffractionAstigmatismX);
       var settings = calculateR1R2Angle(silicon, 1, 1, 1, 100000, this.diffractionCameraLength, 4);
