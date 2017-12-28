@@ -191,7 +191,7 @@ function drawBackground(canvas, x, y, radiusX, radiusY, rotation, intensity) {
     }
 }
 
-function drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt){
+function drawDot(ctx, x, y, rx, ry, rotationRadians){
     ctx.beginPath();
     ctx.ellipse(x, y, rx, ry, rotationRadians, 0, 2 * Math.PI);
     ctx.fill();
@@ -270,17 +270,23 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     var y = dy * j + yCenter;
                     var rx = radiusX / (distanceRatio + 1);
                     var ry = radiusY / (distanceRatio + 1);
-                    drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
+                    drawDot(ctx, x, y, rx, ry, rotationRadians);
                     x = -r1 * i + dx * j + xCenter;
-                    drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
+                    drawDot(ctx, x, y, rx, ry, rotationRadians);
                     y = -dy * j + yCenter;
-                    drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
+                    drawDot(ctx, x, y, rx, ry, rotationRadians);
                     x = r1 * i - dx * j + xCenter;
-                    drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
+                    drawDot(ctx, x, y, rx, ry, rotationRadians);
                 }
                 drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j, xCenter, yCenter);                
             }
         }
+        gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
+        gradient.addColorStop(0, 'rgba(128,255,154,' + .3 * brightness + ')');
+        gradient.addColorStop(.8, 'rgba(128,255,154,' + .5 * brightness + ')');
+        gradient.addColorStop(1, 'rgba(255,255,255,' + brightness + ')');
+        ctx.fillStyle = gradient;
+        drawDot(ctx, xOffset, yOffset, radiusX, radiusY, rotation);
     }
 }
 
