@@ -197,7 +197,7 @@ function drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt){
     ctx.fill();
 }
 
-function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j){
+function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j, xCenter, yCenter){
     // Draw Kikuchi lines - lines for points that are closer together are narrower and less transparent
     if (specimenThickness <= 0){
         return;
@@ -215,22 +215,22 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
 
         // Scaling transparency by thickness and scaling color by proximity to center
         let tiltMultiplier = 10;
-        let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius, xOffset, yOffset, 0);
+        let gradient = ctx.createRadialGradient(xOffset + betaTilt * 10, yOffset + alphaTilt * 10, platformRadius, xOffset + betaTilt * 10, yOffset + alphaTilt * 10, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
         ctx.fillStyle = gradient;
-        ctx.translate(xOffset, yOffset);
+        ctx.translate(xCenter, yCenter);
         ctx.rotate(lineAngle);
-        ctx.translate(-xOffset, -yOffset);
-        ctx.fillRect(xOffset - lineWidth / 2, 0, lineWidth, platformRadius * 2);
-        ctx.translate(xOffset, yOffset);
+        ctx.translate(-xCenter, -yCenter);
+        ctx.fillRect(xCenter - lineWidth / 2, 0, lineWidth, platformRadius * 2);
+        ctx.translate(xCenter, yCenter);
         ctx.rotate(-lineAngle * 2);
-        ctx.translate(-xOffset, -yOffset);
-        ctx.fillRect(xOffset - lineWidth / 2, 0, lineWidth, platformRadius * 2);
-        ctx.translate(xOffset, yOffset);
+        ctx.translate(-xCenter, -yCenter);
+        ctx.fillRect(xCenter - lineWidth / 2, 0, lineWidth, platformRadius * 2);
+        ctx.translate(xCenter, yCenter);
         ctx.rotate(lineAngle);
-        ctx.translate(-xOffset, -yOffset);
+        ctx.translate(-xCenter, -yCenter);
     }
 }
 
@@ -249,7 +249,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         let xCenter = xOffset + coords[0];
         let yCenter = yOffset + coords[1];
         let brightness = Math.min(intensity, 1);
-        let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius, xCenter, yCenter, 0);
+        let gradient = ctx.createRadialGradient(xOffset + betaTilt * 10, yOffset + alphaTilt * 10, platformRadius, xOffset + betaTilt * 10, yOffset + alphaTilt * 10, 0);
         gradient.addColorStop(0, 'rgba(128,255,154,' + .3 * brightness + ')');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + .5 * brightness + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + brightness + ')');
@@ -278,7 +278,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     x = r1 * i - dx * j + xCenter;
                     drawDot(ctx, x, y, rx, ry, rotationRadians, alphaTilt, betaTilt);
                 }
-                drawKikuchiLines(canvas, xCenter, yCenter, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j);                
+                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j, xCenter, yCenter);                
             }
         }
     }
