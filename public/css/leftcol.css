@@ -193,6 +193,26 @@
   width: 14.28vw;
 }
 
+.infopanelvalue{
+  background-color: #fffbf0;
+  /*font-size: xx-large;
+  font-size: 1.8vw;*/
+  font-family: sans-serif;
+  white-space: pre;
+}
+
+#mfxdisplay{
+  position: absolute;
+  top: 82vh;
+  right: 87vw;
+}
+
+#mfydisplay{
+  position: absolute;
+  top: 87.9vh;
+  right: 87vw;
+}
+
 .tabs{
   height: 6.79vh;
   width: 14.28vw;

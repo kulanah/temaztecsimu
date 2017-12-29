@@ -111,6 +111,8 @@ class Canvas {
     this.wobbleSpeed = 20;
     this.wobbleInterval;
     this.wobbleSavedX;
+
+    this.tuneAlignmentStep = 0;
   };
 
   setDimensions(){
@@ -122,6 +124,11 @@ class Canvas {
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
+  };
+
+  drawInfoPanelValues(){
+    $('#mfxvalue').text(this.alignmentMode);
+    $('#mfyvalue').text(this.alignmentMode);
   };
 
   drawMainScreenValues(){
@@ -137,11 +144,15 @@ class Canvas {
     $('#zvalue').text((this.specimenHeight * 200 / 57).toFixed(2)); // maps the current range of 528 to 585 onto a 200 micrometer scale
     $('#alphavalue').text(' ' + this.alphaTilt.toFixed(2));
     $('#betavalue').text(' ' + this.betaTilt.toFixed(2));
-  }
+  };
 
   drawCanvas(){
-    this.drawMainScreenValues()
+    this.drawMainScreenValues();
     this.context.save();
+    switch(this.tuneAlignmentStep){
+      case 1:
+        return;
+    }
 
     if (this == setupbox){
       if(diffractionMode){
@@ -662,21 +673,25 @@ class Canvas {
   // - clicking active direct alignments should not stop the alignment
   // - beam should remain at new xy, not revert to old xy
   activateGunTilt(){
-    this.alignmentMode = 'guntilt'
+    this.alignmentMode = 'guntilt';
+    this.drawInfoPanelValues();
   }
 
   activateGunShift(){
-    this.alignmentMode = 'gunshift'
+    this.alignmentMode = 'gunshift';
+    this.drawInfoPanelValues();
   }
 
   activatePivotPointX(){
     this.alignmentMode = 'pivotpointx';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
+    this.drawInfoPanelValues();
   }
 
   activatePivotPointY(){
     this.alignmentMode = 'pivotpointy';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
+    this.drawInfoPanelValues();
   }
 
   setPPOffset(thisIn){
@@ -693,12 +708,14 @@ class Canvas {
   }
 
   activateBeamShift(){
-    this.alignmentMode = 'beamshift'
+    this.alignmentMode = 'beamshift';
+    this.drawInfoPanelValues();
   }
 
   activateRotationCenter(){
     this.alignmentMode = 'rotationcenter';
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
+    this.drawInfoPanelValues();
   }
 
   setRotateOffset(thisIn){
@@ -718,6 +735,7 @@ class Canvas {
     this.alignmentMode = 'comafreealignmentx';
     this.intervalVal = setInterval(this.jumpLeftRight, 500, this);
     this.drawDiffractogramImages();
+    this.drawInfoPanelValues();
   }
 
   jumpLeftRight(thisIn){
@@ -730,6 +748,7 @@ class Canvas {
     this.alignmentMode = 'comafreealignmenty';
     this.intervalVal = setInterval(this.jumpUpDown, 500, this);
     this.drawDiffractogramImages();
+    this.drawInfoPanelValues();
   }
 
   jumpUpDown(thisIn){
@@ -740,10 +759,12 @@ class Canvas {
 
   activateCondensor(){
     this.alignmentMode = 'condensor';
+    this.drawInfoPanelValues();
   }
 
   activateObjective(){
     this.alignmentMode = 'objective';
+    this.drawInfoPanelValues();
   }
 
   drawDiffractogramImages(){
@@ -796,10 +817,11 @@ class Canvas {
   }
 
   deactivateDirectAlignments(){
-    this.alignmentMode = 'none';
+    this.alignmentMode = '          ';
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
     diffractionMode = false;
+    this.drawInfoPanelValues();
     this.drawCanvas();
   }
 
