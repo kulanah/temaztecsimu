@@ -96,10 +96,6 @@ class Canvas {
     this.alphaTilt = 0;
     this.betaTilt = 0;
 
-    this.alignmentMode = '          ';
-    this.stigmationMode = '          ';
-    this.stigmatorActive = false;
-
     this.rotateAlpha = 8;
     this.rotateBeta = 8;
 
@@ -129,8 +125,8 @@ class Canvas {
   };
 
   drawInfoPanelValues(){
-    $('#mfxvalue').text(this.alignmentMode);
-    $('#mfyvalue').text(this.alignmentMode);
+    $('#mfxvalue').text(alignmentMode);
+    $('#mfyvalue').text(alignmentMode);
   };
 
   drawMainScreenValues(){
@@ -190,7 +186,7 @@ class Canvas {
 
     let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
 
-    if (this.alignmentMode == 'pivotpointx' || this.alignmentMode == 'pivotpointy'){
+    if (alignmentMode == 'pivotpointx' || alignmentMode == 'pivotpointy'){
       this.drawPPPath();
     }
     
@@ -511,7 +507,7 @@ class Canvas {
         } else {
           this.diffractionX += deltaX;
         }
-      } else switch (this.alignmentMode){
+      } else switch (alignmentMode){
         case 'guntilt':
           let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
           this.haloX += deltaX;
@@ -558,7 +554,7 @@ class Canvas {
         } else {
           this.diffractionY += deltaY;
         }
-      } else switch (this.alignmentMode){
+      } else switch (alignmentMode){
         case 'guntilt':
           let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
           this.haloY += deltaY;
@@ -675,23 +671,23 @@ class Canvas {
   // - clicking active direct alignments should not stop the alignment
   // - beam should remain at new xy, not revert to old xy
   activateGunTilt(){
-    this.alignmentMode = 'guntilt';
+    alignmentMode = 'guntilt';
     this.drawInfoPanelValues();
   }
 
   activateGunShift(){
-    this.alignmentMode = 'gunshift';
+    alignmentMode = 'gunshift';
     this.drawInfoPanelValues();
   }
 
   activatePivotPointX(){
-    this.alignmentMode = 'pivotpointx';
+    alignmentMode = 'pivotpointx';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
     this.drawInfoPanelValues();
   }
 
   activatePivotPointY(){
-    this.alignmentMode = 'pivotpointy';
+    alignmentMode = 'pivotpointy';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
     this.drawInfoPanelValues();
   }
@@ -710,12 +706,12 @@ class Canvas {
   }
 
   activateBeamShift(){
-    this.alignmentMode = 'beamshift';
+    alignmentMode = 'beamshift';
     this.drawInfoPanelValues();
   }
 
   activateRotationCenter(){
-    this.alignmentMode = 'rotationcenter';
+    alignmentMode = 'rotationcenter';
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
     this.drawInfoPanelValues();
   }
@@ -734,7 +730,7 @@ class Canvas {
   }
 
   activateComaFreeAlignmentX(){
-    this.alignmentMode = 'comafreealignmentx';
+    alignmentMode = 'comafreealignmentx';
     this.intervalVal = setInterval(this.jumpLeftRight, 500, this);
     this.drawDiffractogramImages();
     this.drawInfoPanelValues();
@@ -747,7 +743,7 @@ class Canvas {
   }
 
   activateComaFreeAlignmentY(){
-    this.alignmentMode = 'comafreealignmenty';
+    alignmentMode = 'comafreealignmenty';
     this.intervalVal = setInterval(this.jumpUpDown, 500, this);
     this.drawDiffractogramImages();
     this.drawInfoPanelValues();
@@ -760,12 +756,12 @@ class Canvas {
   }
 
   activateCondensor(){
-    this.alignmentMode = 'condensor';
+    alignmentMode = 'condensor';
     this.drawInfoPanelValues();
   }
 
   activateObjective(){
-    this.alignmentMode = 'objective';
+    alignmentMode = 'objective';
     this.drawInfoPanelValues();
   }
 
@@ -819,7 +815,7 @@ class Canvas {
   }
 
   deactivateDirectAlignments(){
-    this.alignmentMode = '          ';
+    alignmentMode = '          ';
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
     diffractionMode = false;

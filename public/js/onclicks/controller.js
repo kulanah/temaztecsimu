@@ -187,12 +187,12 @@ let microscopeControllers = function(){
     diffractionMode = !diffractionMode;
     if(diffractionMode){
       if(diffractionStigmation){
-        setupbox.alignmentMode = 'Diffraction Stig';
+        alignmentMode = 'Diffraction Stig';
       } else {
-        setupbox.alignmentMode = 'Diffraction';
+        alignmentMode = 'Diffraction';
       }
     } else {
-      setupbox.alignmentMode = '          ';
+      alignmentMode = '          ';
     }
     setupbox.drawInfoPanelValues();
     // Pixel color detection code based on answer from https://stackoverflow.com/questions/6735470/get-pixel-color-from-canvas-on-mouseover

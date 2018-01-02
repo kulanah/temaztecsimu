@@ -11,6 +11,9 @@ let diffractionMode = false;
 let diffractionStigmation = false;
 let wobbleMode = false;
 let onSpecimen = true;
+let alignmentMode = '          ';
+let stigmationMode = '          ';
+let stigmatorActive = false;
 
 let clickFunctions = function(){
   column();
