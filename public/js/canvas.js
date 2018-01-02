@@ -497,7 +497,7 @@ class Canvas {
   multiXDrag(deltaX){
     if (!isNaN(deltaX)){
       if (diffractionMode && this == setupbox){
-        if(diffractionStigmation){
+        if(stigmationMode == 'Diffraction'){
           this.diffractionAstigmatismX += deltaX;
         } else {
           this.diffractionX += deltaX;
@@ -549,7 +549,7 @@ class Canvas {
   multiYDrag(deltaY){
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
-        if(diffractionStigmation){
+        if(stigmationMode == 'Diffraction'){
           this.diffractionAstigmatismY += deltaY; // the dots are small, so the change is less pronounced (relative to other stigmators)
         } else {
           this.diffractionY += deltaY;

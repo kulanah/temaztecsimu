@@ -8,7 +8,6 @@ let startX, startY, startIntensity;
 let openScreen = 0;
 let activeWindow = 0;
 let diffractionMode = false;
-let diffractionStigmation = false;
 let wobbleMode = false;
 let onSpecimen = true;
 let alignmentMode = '          ';

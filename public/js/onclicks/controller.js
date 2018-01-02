@@ -186,11 +186,7 @@ let microscopeControllers = function(){
     // Switch between image and diffraction views
     diffractionMode = !diffractionMode;
     if(diffractionMode){
-      if(diffractionStigmation){
-        alignmentMode = 'Diffraction Stig';
-      } else {
-        alignmentMode = 'Diffraction';
-      }
+      alignmentMode = 'Diffraction';
     } else {
       alignmentMode = '          ';
     }
