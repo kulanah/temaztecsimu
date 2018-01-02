@@ -12,7 +12,7 @@ let diffractionStigmation = false;
 let wobbleMode = false;
 let onSpecimen = true;
 let alignmentMode = '          ';
-let stigmationMode = '          ';
+let stigmationMode = 'None';
 let stigmatorActive = false;
 
 let clickFunctions = function(){

@@ -36,9 +36,12 @@ $(document).ready(function(event) {
 });
 
 function drawInfoPanelValues(){
+  if(stigmationMode == 'None'){
+    stigmatorActive = false;
+  }
   if(stigmatorActive){
-    $('#mfxvalue').text(stigmationMode);
-    $('#mfyvalue').text(stigmationMode);
+    $('#mfxvalue').text(stigmationMode + ' Stig');
+    $('#mfyvalue').text(stigmationMode + ' Stig');
   } else {
     $('#mfxvalue').text(alignmentMode);
     $('#mfyvalue').text(alignmentMode);
@@ -310,7 +313,7 @@ let activateCondensor = function(){
   $('#leftcolumnstigmator').attr('src', './public/img/stigmatorcondensor.png');
   $('#floatingstigmator').attr('src', './public/img/stigmatorcondensor.png');
   stigmatorActive = true;
-  stigmationMode = 'condensor';
+  stigmationMode = 'Condensor';
   drawInfoPanelValues();
 }
 
@@ -318,7 +321,7 @@ let activateObjective = function(){
   $('#leftcolumnstigmator').attr('src', './public/img/stigmatorobjective.png');
   $('#floatingstigmator').attr('src', './public/img/stigmatorobjective.png');  
   stigmatorActive = true;
-  stigmationMode = 'objective';
+  stigmationMode = 'Objective';
   drawInfoPanelValues();
 }
 
@@ -327,7 +330,7 @@ let activateDiffractionStigmator = function(){
   $('#leftcolumnstigmator').attr('src', './public/img/stigmatordiffraction.png');
   $('#floatingstigmator').attr('src', './public/img/stigmatordiffraction.png');
   stigmatorActive = true;
-  stigmationMode = 'Diffraction Stig';
+  stigmationMode = 'Diffraction';
   drawInfoPanelValues();
   if(!diffractionMode){
     $('#buttondiffraction').trigger('click');
@@ -337,7 +340,7 @@ let activateDiffractionStigmator = function(){
 let deactivateStigmator = function(){
   diffractionStigmation = false;
   stigmatorActive = false;
-  stigmationMode = '          ';
+  stigmationMode = 'None';
   if(updateStigmatorVisual){
     $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
     $('#floatingstigmator').attr('src', './public/img/stigmator.png');  

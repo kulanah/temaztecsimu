@@ -504,22 +504,22 @@ class Canvas {
         }
       } else if (stigmatorActive) {
         switch (stigmationMode) {
-          case 'condensor':
+          case 'Condensor':
             this.beamAstigmatismX += deltaX;
             break;
-          case 'objective':
+          case 'Objective':
             this.imgAngle += deltaX / 180;
             this.diffractogramAngle += deltaX / Math.PI;
             break;
         }
       } else {
         switch (alignmentMode){
-          case 'guntilt':
+          case 'Gun Tilt':
             let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
             this.haloX += deltaX;
             break;
-          case 'gunshift':
-          case 'beamshift':
+          case 'Gun Shift':
+          case 'Beam Shift':
             this.maskX += deltaX;
             break;
           case 'pivotpointx':
@@ -528,7 +528,7 @@ class Canvas {
           case 'pivotpointy':
             this.pivotPointHeight += deltaX / 3;
             break;
-          case 'rotationcenter':
+          case 'Rotation Center':
             this.rotateAlpha += deltaX;
             break;
           case 'comafreealignmentx':
@@ -556,10 +556,10 @@ class Canvas {
         }
       } else if (stigmatorActive){
         switch (stigmationMode){
-          case 'condensor':
+          case 'Condensor':
             this.beamAstigmatismY += deltaY;
             break;
-          case 'objective':
+          case 'Objective':
             this.imgW *= Math.pow(1.0005, -deltaY);
             this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
             this.imgH *= Math.pow(1.0005, deltaY);
@@ -569,12 +569,12 @@ class Canvas {
           }
       } else {
         switch (alignmentMode){
-          case 'guntilt':
+          case 'Gun Tilt':
             let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
             this.haloY += deltaY;
             break;
-          case 'gunshift':
-          case 'beamshift':        
+          case 'Gun Shift':
+          case 'Beam Shift':        
             this.maskY += deltaY;
             break;
           case 'pivotpointx':
@@ -583,7 +583,7 @@ class Canvas {
           case 'pivotpointy':
             this.pivotPointWidth += deltaY;
             break;
-          case 'rotationcenter':
+          case 'Rotation Center':
             this.rotateBeta += deltaY;
             break;
           case 'comafreealignmentx':
@@ -677,12 +677,12 @@ class Canvas {
   // - clicking active direct alignments should not stop the alignment
   // - beam should remain at new xy, not revert to old xy
   activateGunTilt(){
-    alignmentMode = 'guntilt';
+    alignmentMode = 'Gun Tilt';
     drawInfoPanelValues();
   }
 
   activateGunShift(){
-    alignmentMode = 'gunshift';
+    alignmentMode = 'Gun Shift';
     drawInfoPanelValues();
   }
 
@@ -712,12 +712,12 @@ class Canvas {
   }
 
   activateBeamShift(){
-    alignmentMode = 'beamshift';
+    alignmentMode = 'Beam Shift';
     drawInfoPanelValues();
   }
 
   activateRotationCenter(){
-    alignmentMode = 'rotationcenter';
+    alignmentMode = 'Rotation Center';
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
     drawInfoPanelValues();
   }
