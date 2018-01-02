@@ -96,7 +96,9 @@ class Canvas {
     this.alphaTilt = 0;
     this.betaTilt = 0;
 
-    this.alignmentMode = 'none';    
+    this.alignmentMode = '          ';
+    this.stigmationMode = '          ';
+    this.stigmatorActive = false;
 
     this.rotateAlpha = 8;
     this.rotateBeta = 8;
