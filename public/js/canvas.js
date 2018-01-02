@@ -796,7 +796,6 @@ class Canvas {
   }
 
   deactivateDirectAlignments(){
-    alignmentMode = '          ';
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
     diffractionMode = false;

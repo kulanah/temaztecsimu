@@ -168,6 +168,7 @@ let mainScreen = function(){
 
   $('#dadone').on('click', function(event){
     stigmatorActive = true;
+    alignmentMode = '          ';
     deactivateDA();
   })
 };

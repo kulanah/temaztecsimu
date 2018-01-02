@@ -318,11 +318,9 @@ let activateDiffractionStigmator = function(){
 let deactivateStigmator = function(){
   stigmatorActive = false;
   stigmationMode = 'None';
-  if(updateStigmatorVisual){
-    $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
-    $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
-  }
-  deactivateDA();
+  $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
+  $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
+  resumeDA();
 }
 
 let deactivateDirectAlignments  = function(){
@@ -409,6 +407,26 @@ let sampleTilt = function(x, y){
     setupbox.sampleTilt(x, y);
   } else {
     mainmicro.sampleTilt(x, y);
+  }
+}
+
+let resumeDA = function(){
+  switch(alignmentMode){
+    case 'pivotpointx':
+      activatePivotPointX();
+      break;
+    case 'pivotpointy':
+      activatePivotPointY();
+      break;
+    case 'Rotation Center':
+      activateRotationCenter();
+      break;
+    case 'comafreealignmentx':
+      activateComaFreeAlignmentX();
+      break;
+    case 'comafreealignmenty':
+      activateComaFreeAlignmentY();
+      break;
   }
 }
 
