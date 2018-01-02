@@ -207,28 +207,14 @@ let updateBeamSlider = function(newValue){
 
 let activateGunTilt = function(){
   stigmatorActive = false;
-  if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.activateGunTilt();
-    } else {
-      setupbox.activateGunTilt();
-    }
-  } else {
-    mainmicro.activateGunTilt();
-  }
+  alignmentMode = 'Gun Tilt';
+  drawInfoPanelValues();
 }
 
 let activateGunShift = function(){
   stigmatorActive = false;
-  if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.activateGunShift();
-    } else {
-      setupbox.activateGunShift();
-    }
-  } else {
-    mainmicro.activateGunShift();
-  }
+  alignmentMode = 'Gun Shift';
+  drawInfoPanelValues();
 }
 
 let activatePivotPointX = function(){
@@ -259,15 +245,8 @@ let activatePivotPointY = function(){
 
 let activateBeamShift = function(){
   stigmatorActive = false;
-  if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.activateBeamShift();
-    } else {
-      setupbox.activateBeamShift();
-    }
-  } else {
-    mainmicro.activateBeamShift();
-  }
+  alignmentMode = 'Beam Shift';
+  drawInfoPanelValues();
 }
 
 let activateRotationCenter = function(){

@@ -676,16 +676,6 @@ class Canvas {
   // Specifications from Tony 
   // - clicking active direct alignments should not stop the alignment
   // - beam should remain at new xy, not revert to old xy
-  activateGunTilt(){
-    alignmentMode = 'Gun Tilt';
-    drawInfoPanelValues();
-  }
-
-  activateGunShift(){
-    alignmentMode = 'Gun Shift';
-    drawInfoPanelValues();
-  }
-
   activatePivotPointX(){
     alignmentMode = 'pivotpointx';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
@@ -709,11 +699,6 @@ class Canvas {
     thisIn.imgX = xy[0] - thisIn.imgW / 2;
     thisIn.imgY = xy[1] - thisIn.imgH / 2;
     thisIn.drawCanvas();
-  }
-
-  activateBeamShift(){
-    alignmentMode = 'Beam Shift';
-    drawInfoPanelValues();
   }
 
   activateRotationCenter(){
