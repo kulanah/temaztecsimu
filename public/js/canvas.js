@@ -124,11 +124,6 @@ class Canvas {
     this.pivotPointCenterY = this.maskY;
   };
 
-  drawInfoPanelValues(){
-    $('#mfxvalue').text(alignmentMode);
-    $('#mfyvalue').text(alignmentMode);
-  };
-
   drawMainScreenValues(){
     $('#focusstepvalue').text(this.focusStep);
     let defocusString = Math.round(this.defocus * this.imgScale / this.zooms[this.mag] * 100) / 100 + ' nm' // converts from pixels to nanometers
@@ -507,40 +502,45 @@ class Canvas {
         } else {
           this.diffractionX += deltaX;
         }
-      } else switch (alignmentMode){
-        case 'guntilt':
-          let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
-          this.haloX += deltaX;
-          break;
-        case 'gunshift':
-        case 'beamshift':
-          this.maskX += deltaX;
-          break;
-        case 'pivotpointx':
-          this.pivotPointWidth += deltaX / 3;
-          break;
-        case 'pivotpointy':
-          this.pivotPointHeight += deltaX / 3;
-          break;
-        case 'rotationcenter':
-          this.rotateAlpha += deltaX;
-          break;
-        case 'comafreealignmentx':
-        case 'comafreealignmenty':
-          this.imgW *= Math.pow(1.0005, deltaX);
-          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, deltaX) + this.img.width / 2;
-          this.imgH *= Math.pow(1.0005, -deltaX);
-          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, -deltaX) + this.img.height / 2;
-          this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)
-          this.drawDiffractogramImages();
-          break;
-        case 'condensor':
-          this.beamAstigmatismX += deltaX;
-          break;
-        case 'objective':
-          this.imgAngle += deltaX / 180;
-          this.diffractogramAngle += deltaX / Math.PI;
-          break;
+      } else if (stigmatorActive) {
+        switch (stigmationMode) {
+          case 'condensor':
+            this.beamAstigmatismX += deltaX;
+            break;
+          case 'objective':
+            this.imgAngle += deltaX / 180;
+            this.diffractogramAngle += deltaX / Math.PI;
+            break;
+        }
+      } else {
+        switch (alignmentMode){
+          case 'guntilt':
+            let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
+            this.haloX += deltaX;
+            break;
+          case 'gunshift':
+          case 'beamshift':
+            this.maskX += deltaX;
+            break;
+          case 'pivotpointx':
+            this.pivotPointWidth += deltaX / 3;
+            break;
+          case 'pivotpointy':
+            this.pivotPointHeight += deltaX / 3;
+            break;
+          case 'rotationcenter':
+            this.rotateAlpha += deltaX;
+            break;
+          case 'comafreealignmentx':
+          case 'comafreealignmenty':
+            this.imgW *= Math.pow(1.0005, deltaX);
+            this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, deltaX) + this.img.width / 2;
+            this.imgH *= Math.pow(1.0005, -deltaX);
+            this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, -deltaX) + this.img.height / 2;
+            this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)
+            this.drawDiffractogramImages();
+            break;
+        }
       }
       this.drawCanvas();
     }
@@ -554,43 +554,49 @@ class Canvas {
         } else {
           this.diffractionY += deltaY;
         }
-      } else switch (alignmentMode){
-        case 'guntilt':
-          let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
-          this.haloY += deltaY;
-          break;
-        case 'gunshift':
-        case 'beamshift':        
-          this.maskY += deltaY;
-          break;
-        case 'pivotpointx':
-          this.pivotPointHeight += deltaY;
-          break;
-        case 'pivotpointy':
-          this.pivotPointWidth += deltaY;
-          break;
-        case 'rotationcenter':
-          this.rotateBeta += deltaY;
-          break;
-        case 'comafreealignmentx':
-        case 'comafreealignmenty':
-          this.imgW *= Math.pow(1.0005, -deltaY);
-          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
-          this.imgH *= Math.pow(1.0005, deltaY);
-          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
-          this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
-          this.drawDiffractogramImages();
-          break;
-        case 'condensor':
-          this.beamAstigmatismY += deltaY;
-          break;
-        case 'objective':
-          this.imgW *= Math.pow(1.0005, -deltaY);
-          this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
-          this.imgH *= Math.pow(1.0005, deltaY);
-          this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
-          this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
-          break;
+      } else if (stigmatorActive){
+        switch (stigmationMode){
+          case 'condensor':
+            this.beamAstigmatismY += deltaY;
+            break;
+          case 'objective':
+            this.imgW *= Math.pow(1.0005, -deltaY);
+            this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
+            this.imgH *= Math.pow(1.0005, deltaY);
+            this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
+            this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
+            break;
+          }
+      } else {
+        switch (alignmentMode){
+          case 'guntilt':
+            let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
+            this.haloY += deltaY;
+            break;
+          case 'gunshift':
+          case 'beamshift':        
+            this.maskY += deltaY;
+            break;
+          case 'pivotpointx':
+            this.pivotPointHeight += deltaY;
+            break;
+          case 'pivotpointy':
+            this.pivotPointWidth += deltaY;
+            break;
+          case 'rotationcenter':
+            this.rotateBeta += deltaY;
+            break;
+          case 'comafreealignmentx':
+          case 'comafreealignmenty':
+            this.imgW *= Math.pow(1.0005, -deltaY);
+            this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
+            this.imgH *= Math.pow(1.0005, deltaY);
+            this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
+            this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
+            this.drawDiffractogramImages();
+            break;
+
+        }
       }
       this.drawCanvas();
     }
@@ -672,24 +678,24 @@ class Canvas {
   // - beam should remain at new xy, not revert to old xy
   activateGunTilt(){
     alignmentMode = 'guntilt';
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
   }
 
   activateGunShift(){
     alignmentMode = 'gunshift';
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
   }
 
   activatePivotPointX(){
     alignmentMode = 'pivotpointx';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
   }
 
   activatePivotPointY(){
     alignmentMode = 'pivotpointy';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
   }
 
   setPPOffset(thisIn){
@@ -707,13 +713,13 @@ class Canvas {
 
   activateBeamShift(){
     alignmentMode = 'beamshift';
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
   }
 
   activateRotationCenter(){
     alignmentMode = 'rotationcenter';
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
   }
 
   setRotateOffset(thisIn){
@@ -733,7 +739,7 @@ class Canvas {
     alignmentMode = 'comafreealignmentx';
     this.intervalVal = setInterval(this.jumpLeftRight, 500, this);
     this.drawDiffractogramImages();
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
   }
 
   jumpLeftRight(thisIn){
@@ -746,23 +752,13 @@ class Canvas {
     alignmentMode = 'comafreealignmenty';
     this.intervalVal = setInterval(this.jumpUpDown, 500, this);
     this.drawDiffractogramImages();
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
   }
 
   jumpUpDown(thisIn){
     thisIn.maskY += thisIn.jump;
     thisIn.jump = -thisIn.jump;
     thisIn.drawCanvas();
-  }
-
-  activateCondensor(){
-    alignmentMode = 'condensor';
-    this.drawInfoPanelValues();
-  }
-
-  activateObjective(){
-    alignmentMode = 'objective';
-    this.drawInfoPanelValues();
   }
 
   drawDiffractogramImages(){
@@ -819,7 +815,7 @@ class Canvas {
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
     diffractionMode = false;
-    this.drawInfoPanelValues();
+    drawInfoPanelValues();
     this.drawCanvas();
   }
 

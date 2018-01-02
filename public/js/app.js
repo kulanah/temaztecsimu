@@ -35,6 +35,15 @@ $(document).ready(function(event) {
   prepareContent();
 });
 
+function drawInfoPanelValues(){
+  if(stigmatorActive){
+    $('#mfxvalue').text(stigmationMode);
+    $('#mfyvalue').text(stigmationMode);
+  } else {
+    $('#mfxvalue').text(alignmentMode);
+    $('#mfyvalue').text(alignmentMode);
+  }
+};
 
 //TODO remove this target
 let moveImage = function(deltax, deltay, target){
@@ -194,6 +203,7 @@ let updateBeamSlider = function(newValue){
 }
 
 let activateGunTilt = function(){
+  stigmatorActive = false;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activateGunTilt();
@@ -206,6 +216,7 @@ let activateGunTilt = function(){
 }
 
 let activateGunShift = function(){
+  stigmatorActive = false;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activateGunShift();
@@ -218,6 +229,7 @@ let activateGunShift = function(){
 }
 
 let activatePivotPointX = function(){
+  stigmatorActive = false;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activatePivotPointX();
@@ -230,6 +242,7 @@ let activatePivotPointX = function(){
 }
 
 let activatePivotPointY = function(){
+  stigmatorActive = false;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activatePivotPointY();
@@ -242,6 +255,7 @@ let activatePivotPointY = function(){
 }
 
 let activateBeamShift = function(){
+  stigmatorActive = false;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activateBeamShift();
@@ -254,6 +268,7 @@ let activateBeamShift = function(){
 }
 
 let activateRotationCenter = function(){
+  stigmatorActive = false;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activateRotationCenter();
@@ -266,6 +281,7 @@ let activateRotationCenter = function(){
 }
 
 let activateComaFreeAlignmentX = function(){
+  stigmatorActive = false;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activateComaFreeAlignmentX();
@@ -278,6 +294,7 @@ let activateComaFreeAlignmentX = function(){
 }
 
 let activateComaFreeAlignmentY = function(){
+  stigmatorActive = false;
   if (openScreen == 0){
     if (activeWindow == 0){
       openbox.activateComaFreeAlignmentY();
@@ -292,36 +309,39 @@ let activateComaFreeAlignmentY = function(){
 let activateCondensor = function(){
   $('#leftcolumnstigmator').attr('src', './public/img/stigmatorcondensor.png');
   $('#floatingstigmator').attr('src', './public/img/stigmatorcondensor.png');
-  if (openScreen == 0){
-    openbox.activateCondensor();
-    setupbox.activateCondensor();
-  } else {
-    mainmicro.activateCondensor();
-  }
+  stigmatorActive = true;
+  stigmationMode = 'condensor';
+  drawInfoPanelValues();
 }
 
 let activateObjective = function(){
   $('#leftcolumnstigmator').attr('src', './public/img/stigmatorobjective.png');
   $('#floatingstigmator').attr('src', './public/img/stigmatorobjective.png');  
-  if (openScreen == 0){
-    openbox.activateObjective();
-    setupbox.activateObjective();
-  } else {
-    mainmicro.activateObjective();
-  }
+  stigmatorActive = true;
+  stigmationMode = 'objective';
+  drawInfoPanelValues();
 }
 
 let activateDiffractionStigmator = function(){
   diffractionStigmation = true;
   $('#leftcolumnstigmator').attr('src', './public/img/stigmatordiffraction.png');
   $('#floatingstigmator').attr('src', './public/img/stigmatordiffraction.png');
+  stigmatorActive = true;
+  stigmationMode = 'Diffraction Stig';
+  drawInfoPanelValues();
   if(!diffractionMode){
     $('#buttondiffraction').trigger('click');
   }
 }
 
 let deactivateStigmator = function(){
-  diffractionStigmation = false;  
+  diffractionStigmation = false;
+  stigmatorActive = false;
+  stigmationMode = '          ';
+  if(updateStigmatorVisual){
+    $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
+    $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
+  }
   deactivateDA();
 }
 
@@ -399,10 +419,6 @@ let toggleWobble = function(){
 let deactivateDA = function(){
   if (wobbleMode){
     toggleWobble();
-  }
-  if(!diffractionStigmation && updateStigmatorVisual){
-    $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
-    $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
   }
   deactivateDirectAlignments();
 }

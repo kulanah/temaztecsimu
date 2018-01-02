@@ -194,7 +194,7 @@ let microscopeControllers = function(){
     } else {
       alignmentMode = '          ';
     }
-    setupbox.drawInfoPanelValues();
+    drawInfoPanelValues();
     // Pixel color detection code based on answer from https://stackoverflow.com/questions/6735470/get-pixel-color-from-canvas-on-mouseover
     function rgbToHex(r, g, b) {
       if (r > 255 || g > 255 || b > 255)
