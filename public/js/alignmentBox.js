@@ -63,20 +63,29 @@ class AlignmentBox{
         switch(topic){
           case 0:
             $('#tunehelpcontent').attr('src', './public/html/e05a0075.htm');
-            $('#magnificationvalue').text('LM 200 x')
+            $('#magnificationvalue').text('LM 200 x');
             setupbox.tuneAlignmentStep = 1;
             setupbox.drawCanvas();
             break;
           case 1:
             $('#tunehelpcontent').attr('src', './public/html/e05a0089.htm');
+            $('#magnificationvalue').text('LM 200 x');
+            setupbox.tuneAlignmentStep = 1;
+            setupbox.drawCanvas();
             break;
           case 2:
             $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
+            $('#magnificationvalue').text('LM 1850 x');
+            setupbox.tuneAlignmentStep = 1;
+            setupbox.drawCanvas();
             break;
         }
         break;
       default:
         $('#tunehelppopup').hide();
+        setupbox.tuneAlignmentStep = 0;
+        setupbox.drawCanvas();
+        break;
     }
   };
 
