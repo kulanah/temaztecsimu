@@ -197,18 +197,20 @@
   background-color: #fffbf0;
   font-family: sans-serif;
   white-space: pre;
+  font-size: small;
+  font-size: 1.4vh;
 }
 
 #mfxdisplay{
   position: absolute;
-  top: 82vh;
-  right: 87vw;
+  top: 81.9vh;
+  right: 87.2vw;
 }
 
 #mfydisplay{
   position: absolute;
-  top: 87.9vh;
-  right: 87vw;
+  top: 87.8vh;
+  right: 87.2vw;
 }
 
 .tabs{
