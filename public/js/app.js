@@ -386,7 +386,7 @@ let toggleWobble = function(){
   wobbleMode = !wobbleMode;
   if(wobbleMode){
     stigmatorActive = false;
-    alignmentMode = '          ';
+    alignmentMode = '            ';
   } else {
     stigmatorActive = true;
   }
