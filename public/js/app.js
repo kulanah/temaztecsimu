@@ -321,6 +321,7 @@ let deactivateStigmator = function(){
   $('#leftcolumnstigmator').attr('src', './public/img/stigmator.png');
   $('#floatingstigmator').attr('src', './public/img/stigmator.png');  
   resumeDA();
+  drawInfoPanelValues();
 }
 
 let deactivateDirectAlignments  = function(){

@@ -799,6 +799,9 @@ class Canvas {
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
     diffractionMode = false;
+    if(alignmentMode = 'Diffraction'){
+      alignmentMode = '          ';
+    }
     drawInfoPanelValues();
     this.drawCanvas();
   }
