@@ -142,10 +142,6 @@ class Canvas {
   drawCanvas(){
     this.drawMainScreenValues();
     this.context.save();
-    switch(this.tuneAlignmentStep){
-      case 1:
-        return;
-    }
 
     if (this == setupbox){
       if(diffractionMode){
@@ -168,8 +164,6 @@ class Canvas {
         this.hueRotateActive = true;
       }
     }
-    $('#magnificationvalue').text(this.zooms[this.mag] + ' x');
-
 
     this.setFilterString();
 
@@ -224,11 +218,20 @@ class Canvas {
       betaTiltImpact = this.betaTilt * this.specimenHeight;
     }
     this.context.globalAlpha = .5;
-    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.alphaTilt * this.specimenHeight - this.defocus * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + this.defocus * Math.sin(this.imgAngle),this.imgW,this.imgH);
-    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + this.alphaTilt * this.specimenHeight + this.defocus * Math.cos(this.imgAngle) + this.specimenHeight, this.imgY + betaTiltImpact - this.defocus * Math.sin(this.imgAngle),this.imgW,this.imgH);
-      
+    // Block the specimen during tune alignments
+    switch(this.tuneAlignmentStep){
+      case 1:
+        this.context.fillStyle = 'white';
+        this.context.fillRect(0, 0, 2000, 1000);
+        break;
+      default:
+        $('#magnificationvalue').text(this.zooms[this.mag] + ' x');
+        this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+          this.imgX + this.alphaTilt * this.specimenHeight - this.defocus * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + this.defocus * Math.sin(this.imgAngle),this.imgW,this.imgH);
+        this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+          this.imgX + this.alphaTilt * this.specimenHeight + this.defocus * Math.cos(this.imgAngle) + this.specimenHeight, this.imgY + betaTiltImpact - this.defocus * Math.sin(this.imgAngle),this.imgW,this.imgH);  
+    }
+
     this.drawHalo();
 
     this.context.restore();

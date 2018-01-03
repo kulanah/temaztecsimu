@@ -63,6 +63,9 @@ class AlignmentBox{
         switch(topic){
           case 0:
             $('#tunehelpcontent').attr('src', './public/html/e05a0075.htm');
+            $('#magnificationvalue').text('LM 200 x')
+            setupbox.tuneAlignmentStep = 1;
+            setupbox.drawCanvas();
             break;
           case 1:
             $('#tunehelpcontent').attr('src', './public/html/e05a0089.htm');
