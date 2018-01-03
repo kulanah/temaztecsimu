@@ -56,6 +56,7 @@ class AlignmentBox{
     this.currentTopic = topic;
     this.currentStep = 0;
     this.fillCurrent();
+    // Show help window for the current topic
     $('#tunehelppopup').show();
     switch(lesson){
       case 0:
