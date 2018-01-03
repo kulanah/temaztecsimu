@@ -56,6 +56,9 @@ class AlignmentBox{
     this.currentTopic = topic;
     this.currentStep = 0;
     this.fillCurrent();
+    deactivateDA();
+    stigmatorActive = false;
+    setupbox.tuneAlignmentStep = 1;
     // Show help window for the current topic
     $('#tunehelppopup').show();
     switch(lesson){
@@ -64,29 +67,25 @@ class AlignmentBox{
           case 0:
             $('#tunehelpcontent').attr('src', './public/html/e05a0075.htm');
             $('#magnificationvalue').text('LM 200 x');
-            setupbox.tuneAlignmentStep = 1;
-            setupbox.drawCanvas();
+            alignmentMode = 'Screen Intensity';
             break;
           case 1:
             $('#tunehelpcontent').attr('src', './public/html/e05a0089.htm');
             $('#magnificationvalue').text('LM 200 x');
-            setupbox.tuneAlignmentStep = 1;
-            setupbox.drawCanvas();
             break;
           case 2:
             $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
             $('#magnificationvalue').text('LM 1850 x');
-            setupbox.tuneAlignmentStep = 1;
-            setupbox.drawCanvas();
             break;
         }
         break;
       default:
         $('#tunehelppopup').hide();
         setupbox.tuneAlignmentStep = 0;
-        setupbox.drawCanvas();
         break;
     }
+    drawInfoPanelValues();
+    setupbox.drawCanvas();
   };
 
   nextStep(){
