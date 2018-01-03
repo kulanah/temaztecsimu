@@ -56,6 +56,7 @@ class AlignmentBox{
     this.currentTopic = topic;
     this.currentStep = 0;
     this.fillCurrent();
+    $('#tunehelppopup').show();
   };
 
   nextStep(){
