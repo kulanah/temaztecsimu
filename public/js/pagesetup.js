@@ -121,7 +121,7 @@ let pageSetup = function(){
 
   //setup for the canvas classes
 
-  $('#magnificationvalue').text(setupbox.zooms[setupbox.mag] + ' x')
+  $('#magnificationvalue').text('M ' + setupbox.zooms[setupbox.mag] + ' x')
   $('#spotsizevalue').text(' ' + $('#beamrange').val());
 
   // Solution to have cursor adjust only in appropriate area for resizeable elements found at

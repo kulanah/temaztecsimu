@@ -61,14 +61,14 @@ body{
 #magnificationdisplay{
   position: absolute;
   top: 88.5vh;
-  left: 27.5vw;
+  left: 25.2vw;
 }
 
 #magnificationvalue{
   background-color: #fffbf0;
   font-size: xx-large;
   font-size: 1.8vw;
-  font-family: sans-serif;
+  font-family: monospace;
 }
 
 #focusstepdisplay{
