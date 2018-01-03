@@ -69,6 +69,8 @@ class Canvas {
     this.hueRotateVal = 40;
     this.blurVal = 0.0;
     this.saturateVal = 400;
+    this.brightnessVal = 100;
+    this.brightnessOffset = 0;
 
     this.startTarget;
 
@@ -325,7 +327,8 @@ class Canvas {
       let hueRotateString = 'hue-rotate(' + this.hueRotateVal + 'deg) ';
       let saturateString = 'saturate(' + this.saturateVal + '%) ';
       let blurString = 'blur(' + this.blurVal + 'px) ';
-      stringVal = sepiaString + hueRotateString + saturateString + blurString;
+      let brightnessString = 'brightness(' + this.brightnessVal + '%) ';
+      stringVal = sepiaString + hueRotateString + saturateString + blurString + brightnessString;
     } else {
       stringVal = 'blur(' + this.blurVal + 'px) ';
     }
@@ -542,6 +545,11 @@ class Canvas {
             this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, -deltaX) + this.img.height / 2;
             this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)
             this.drawDiffractogramImages();
+            break;
+          case 'Screen Intensity':
+            this.brightnessOffset += deltaX * .1;
+            this.brightnessVal = 100 - Math.abs(this.brightnessOffset);
+            this.maskX += deltaX * .1;
             break;
         }
       }
