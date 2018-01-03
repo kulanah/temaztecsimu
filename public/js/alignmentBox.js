@@ -57,6 +57,23 @@ class AlignmentBox{
     this.currentStep = 0;
     this.fillCurrent();
     $('#tunehelppopup').show();
+    switch(lesson){
+      case 0:
+        switch(topic){
+          case 0:
+            $('#tunehelpcontent').attr('src', './public/html/e05a0075.htm');
+            break;
+          case 1:
+            $('#tunehelpcontent').attr('src', './public/html/e05a0089.htm');
+            break;
+          case 2:
+            $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
+            break;
+        }
+        break;
+      default:
+        $('#tunehelppopup').hide();
+    }
   };
 
   nextStep(){
