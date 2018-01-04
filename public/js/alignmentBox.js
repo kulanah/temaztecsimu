@@ -101,7 +101,11 @@ class AlignmentBox{
           this.drawLocation.text('You have completed the ' + this.jsonObj[this.currentLesson].name + ' alignments.');
         } else {
           this.currentTopic++;
-          this.currentStep = 0;          
+          this.currentStep = 0;
+          if(this.currentLesson == 0 && this.currentTopic == 1){
+            // Skip gun tilt pivot point when clicking next step
+            this.currentTopic++;
+          }
         }
       } else {
         this.currentStep++;
