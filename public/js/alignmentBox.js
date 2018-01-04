@@ -103,7 +103,21 @@ class AlignmentBox{
               $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
             }
             $('#magnificationvalue').text('LM 1850 x');
-            activateGunShift();
+            switch(this.currentStep){
+              case 0:
+                updateBeamSlider(6);
+                availableAlignments = ['Beam Shift', 'Condensor Stig'];
+                setActiveAlignment();
+                break;
+              case 1:
+                updateBeamSlider(2);
+                availableAlignments = ['Gun Shift', 'Condensor Stig', 'Gun Tilt'];
+                setActiveAlignment();
+                break;
+              default:
+                activateGunShift();
+                break;
+            }
             break;
         }
         break;
