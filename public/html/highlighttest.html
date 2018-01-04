@@ -1,0 +1,42 @@
+<!--Example based on code from https://codeforgeek.com/2014/12/highlight-search-result-angular-filter/-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+    angular.module('Demo', [])
+  .controller('Demo', function($scope) {
+    $scope.data = [
+      { text: "The rain in Spain falls mainly on the plain" }
+    ]
+  })
+  .filter('highlight', function($sce) {
+    return function(text, phrase) {
+      if (phrase) text = text.replace(new RegExp('('+phrase+')', 'gi'),
+        '<span class="highlighted">$1</span>')
+
+      return $sce.trustAsHtml(text)
+    }
+  })
+    </script>
+    <style>
+      .highlighted { background: yellow }
+    </style>
+  </head>
+
+  <body ng-app="Demo">
+    <h1>Highlight text using AngularJS.</h1>
+
+    <div class="container" ng-controller="Demo">
+      <input type="text" placeholder="Search" ng-model="search.text">
+
+      <ul>
+        <!-- filter code -->
+        <div ng-repeat="item in data | filter:search.text"
+           ng-bind-html="item.text | highlight:search.text">
+        </div>
+      </ul>
+    </div>
+  </body>
+</html>
