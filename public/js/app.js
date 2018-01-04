@@ -48,6 +48,14 @@ function drawInfoPanelValues(){
   }
 };
 
+function setActiveAlignment(){
+  if(activeAlignment >= availableAlignments.length){
+    // Prevent out-of-bounds indexing for availableAlignments
+    activeAlignment = 0;
+  }
+  alignmentMode = availableAlignments[activeAlignment];
+}
+
 //TODO remove this target
 let moveImage = function(deltax, deltay, target){
   if (openScreen == 0){
