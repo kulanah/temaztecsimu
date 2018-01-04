@@ -40,11 +40,17 @@ function drawInfoPanelValues(){
     stigmatorActive = false;
   }
   if(stigmatorActive){
-    $('#mfxvalue').text(stigmationMode + ' Stig');
-    $('#mfyvalue').text(stigmationMode + ' Stig');
+    $('#mfxvalue').text(stigmationMode + ' Stig X');
+    $('#mfyvalue').text(stigmationMode + ' Stig Y');
+    $('#r2value').text('                      ');
   } else {
-    $('#mfxvalue').text(alignmentMode);
-    $('#mfyvalue').text(alignmentMode);
+    $('#mfxvalue').text(alignmentMode + ' X');
+    $('#mfyvalue').text(alignmentMode + ' Y');
+    if(availableAlignments.length > 1){
+      $('#r2value').text('Align MF Toggle');
+    } else {
+      $('#r2value').text('                      ');
+    }
   }
 };
 

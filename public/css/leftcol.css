@@ -204,13 +204,19 @@
 #mfxdisplay{
   position: absolute;
   top: 81.9vh;
-  right: 87.1vw;
+  right: 86.5vw;
 }
 
 #mfydisplay{
   position: absolute;
   top: 87.8vh;
-  right: 87.1vw;
+  right: 86.5vw;
+}
+
+#r2display{
+  position: absolute;
+  top: 90vh;
+  right: 86.5vw;
 }
 
 .tabs{
