@@ -149,9 +149,9 @@ class Canvas {
       if(diffractionMode){
         this.hueRotateActive = false;
         if(this.diffractionCameraLength >= 1000){
-          $('#magnificationvalue').text('M ' + this.diffractionCameraLength / 1000 + ' m');
+          $('#magnificationvalue').text('  ' + this.diffractionCameraLength / 1000 + ' m ');
         } else {
-          $('#magnificationvalue').text('M ' + this.diffractionCameraLength + ' mm');
+          $('#magnificationvalue').text('  ' + this.diffractionCameraLength + ' mm ');
         }
         let context = this.glowSelector[0].getContext('2d');
         context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
@@ -227,7 +227,7 @@ class Canvas {
         this.context.fillRect(0, 0, 2000, 1000);
         break;
       default:
-        $('#magnificationvalue').text('M ' + this.zooms[this.mag] + ' x');
+        $('#magnificationvalue').text('  ' + this.zooms[this.mag] + ' x');
         this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
           this.imgX + this.alphaTilt * this.specimenHeight - this.defocus * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + this.defocus * Math.sin(this.imgAngle),this.imgW,this.imgH);
         this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
