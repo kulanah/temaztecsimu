@@ -94,6 +94,7 @@ class AlignmentBox{
               default:
                 availableAlignments = ['Screen Intensity', 'Gun Tilt'];
                 if(activeAlignment >= availableAlignments.length){
+                  // Prevent out-of-bounds indexing for availableAlignments
                   activeAlignment = 0;
                 }
                 alignmentMode = availableAlignments[activeAlignment];
