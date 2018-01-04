@@ -80,12 +80,14 @@ class AlignmentBox{
               $('#tunehelpcontent').attr('src', './public/html/e05a0089.htm');
             }
             $('#magnificationvalue').text('LM 200 x');
+            alignmentMode = 'Piv pt gun tilt'
             break;
           case 2:
             if($('#tunehelpcontent').attr('src')!='./public/html/e05a0093.htm'){
               $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
             }
             $('#magnificationvalue').text('LM 1850 x');
+            alignmentMode = 'Gun Shift'
             break;
         }
         break;
