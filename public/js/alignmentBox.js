@@ -56,6 +56,10 @@ class AlignmentBox{
     this.currentTopic = topic;
     this.currentStep = 0;
     this.fillCurrent();
+    this.activateTuneAlignment(lesson, topic)
+  };
+
+  activateTuneAlignment(lesson, topic){
     deactivateDA();
     stigmatorActive = false;
     setupbox.tuneAlignmentStep = 1;
@@ -86,7 +90,7 @@ class AlignmentBox{
     }
     drawInfoPanelValues();
     setupbox.drawCanvas();
-  };
+  }
 
   nextStep(){
     $('.l' + (this.currentLesson + 1) + 'p' + (this.currentTopic + 1)).css({
