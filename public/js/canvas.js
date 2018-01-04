@@ -813,6 +813,7 @@ class Canvas {
     if(alignmentMode = 'Diffraction'){
       alignmentMode = '            ';
     }
+    availableAlignments = [];
     drawInfoPanelValues();
     this.drawCanvas();
   }
