@@ -56,29 +56,35 @@ class AlignmentBox{
     this.currentTopic = topic;
     this.currentStep = 0;
     this.fillCurrent();
-    this.activateTuneAlignment(lesson, topic)
+    this.activateTuneAlignment()
   };
 
-  activateTuneAlignment(lesson, topic){
+  activateTuneAlignment(){
     deactivateDA();
     stigmatorActive = false;
     setupbox.tuneAlignmentStep = 1;
     // Show help window for the current topic
     $('#tunehelppopup').show();
-    switch(lesson){
+    switch(this.currentLesson){
       case 0:
-        switch(topic){
+        switch(this.currentTopic){
           case 0:
-            $('#tunehelpcontent').attr('src', './public/html/e05a0075.htm');
+            if($('#tunehelpcontent').attr('src')!='./public/html/e05a0075.htm'){
+              $('#tunehelpcontent').attr('src', './public/html/e05a0075.htm');
+            }
             $('#magnificationvalue').text('LM 200 x');
             alignmentMode = 'Screen Intensity';
             break;
           case 1:
-            $('#tunehelpcontent').attr('src', './public/html/e05a0089.htm');
+            if($('#tunehelpcontent').attr('src')!='./public/html/e05a0089.htm'){
+              $('#tunehelpcontent').attr('src', './public/html/e05a0089.htm');
+            }
             $('#magnificationvalue').text('LM 200 x');
             break;
           case 2:
-            $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
+            if($('#tunehelpcontent').attr('src')!='./public/html/e05a0093.htm'){
+              $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
+            }
             $('#magnificationvalue').text('LM 1850 x');
             break;
         }
@@ -123,6 +129,7 @@ class AlignmentBox{
       document.getElementById('l' + (this.currentLesson + 1)).open = true;
     }
     this.fillCurrent();
+    this.activateTuneAlignment();
   }
 
   prevStep(){
@@ -149,6 +156,7 @@ class AlignmentBox{
     });
     document.getElementById('l' + (this.currentLesson + 1)).open = true;    
     this.fillCurrent();
+    this.activateTuneAlignment();
   }
 
   addPrevButton(selector){
