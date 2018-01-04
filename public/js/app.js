@@ -419,19 +419,19 @@ let sampleTilt = function(x, y){
 
 let resumeDA = function(){
   switch(alignmentMode){
-    case 'pivotpointx':
+    case 'Pivot Point X':
       activatePivotPointX();
       break;
-    case 'pivotpointy':
+    case 'Pivot Point Y':
       activatePivotPointY();
       break;
     case 'Rotation Center':
       activateRotationCenter();
       break;
-    case 'comafreealignmentx':
+    case 'Coma-free Alignment X':
       activateComaFreeAlignmentX();
       break;
-    case 'comafreealignmenty':
+    case 'Coma-free Alignment Y':
       activateComaFreeAlignmentY();
       break;
   }

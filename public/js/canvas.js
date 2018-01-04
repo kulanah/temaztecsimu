@@ -177,7 +177,7 @@ class Canvas {
 
     let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
 
-    if (alignmentMode == 'pivotpointx' || alignmentMode == 'pivotpointy'){
+    if (alignmentMode == 'Pivot Point X' || alignmentMode == 'Pivot Point Y'){
       this.drawPPPath();
     }
     
@@ -528,17 +528,17 @@ class Canvas {
           case 'Beam Shift':
             this.maskX += deltaX;
             break;
-          case 'pivotpointx':
+          case 'Pivot Point X':
             this.pivotPointWidth += deltaX / 3;
             break;
-          case 'pivotpointy':
+          case 'Pivot Point Y':
             this.pivotPointHeight += deltaX / 3;
             break;
           case 'Rotation Center':
             this.rotateAlpha += deltaX;
             break;
-          case 'comafreealignmentx':
-          case 'comafreealignmenty':
+          case 'Coma-free Alignment X':
+          case 'Coma-free Alignment Y':
             this.imgW *= Math.pow(1.0005, deltaX);
             this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, deltaX) + this.img.width / 2;
             this.imgH *= Math.pow(1.0005, -deltaX);
@@ -588,17 +588,17 @@ class Canvas {
           case 'Beam Shift':        
             this.maskY += deltaY;
             break;
-          case 'pivotpointx':
+          case 'Pivot Point X':
             this.pivotPointHeight += deltaY;
             break;
-          case 'pivotpointy':
+          case 'Pivot Point Y':
             this.pivotPointWidth += deltaY;
             break;
           case 'Rotation Center':
             this.rotateBeta += deltaY;
             break;
-          case 'comafreealignmentx':
-          case 'comafreealignmenty':
+          case 'Coma-free Alignment X':
+          case 'Coma-free Alignment Y':
             this.imgW *= Math.pow(1.0005, -deltaY);
             this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
             this.imgH *= Math.pow(1.0005, deltaY);
@@ -688,13 +688,13 @@ class Canvas {
   // - clicking active direct alignments should not stop the alignment
   // - beam should remain at new xy, not revert to old xy
   activatePivotPointX(){
-    alignmentMode = 'pivotpointx';
+    alignmentMode = 'Pivot Point X';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
     drawInfoPanelValues();
   }
 
   activatePivotPointY(){
-    alignmentMode = 'pivotpointy';
+    alignmentMode = 'Pivot Point Y';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
     drawInfoPanelValues();
   }
@@ -732,7 +732,7 @@ class Canvas {
   }
 
   activateComaFreeAlignmentX(){
-    alignmentMode = 'comafreealignmentx';
+    alignmentMode = 'Coma-free Alignment X';
     this.intervalVal = setInterval(this.jumpLeftRight, 500, this);
     this.drawDiffractogramImages();
     drawInfoPanelValues();
@@ -745,7 +745,7 @@ class Canvas {
   }
 
   activateComaFreeAlignmentY(){
-    alignmentMode = 'comafreealignmenty';
+    alignmentMode = 'Coma-free Alignment Y';
     this.intervalVal = setInterval(this.jumpUpDown, 500, this);
     this.drawDiffractogramImages();
     drawInfoPanelValues();
