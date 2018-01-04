@@ -80,7 +80,21 @@ class AlignmentBox{
               $('#tunehelpcontent').attr('src', './public/html/e05a0089.htm');
             }
             $('#magnificationvalue').text('LM 200 x');
-            alignmentMode = 'Piv pt gun tilt'
+            switch(this.currentStep){
+              case 0:
+                activateBeamShift();
+                break;
+              case 1:
+                activatePivotPointX();
+                break;
+              case 2:
+                activatePivotPointY();
+                break;
+              default:
+                alignmentMode = 'Screen Intensity';
+                break;
+            }
+            //alignmentMode = 'Piv pt gun tilt'
             break;
           case 2:
             if($('#tunehelpcontent').attr('src')!='./public/html/e05a0093.htm'){
