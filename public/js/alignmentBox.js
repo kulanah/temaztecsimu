@@ -92,8 +92,10 @@ class AlignmentBox{
                 activatePivotPointY();
                 break;
               default:
-                availableAlignments = [];
-                availableAlignments.push('Screen Intensity', 'Gun Tilt')
+                availableAlignments = ['Screen Intensity', 'Gun Tilt'];
+                if(activeAlignment >= availableAlignments.length){
+                  activeAlignment = 0;
+                }
                 alignmentMode = availableAlignments[activeAlignment];
                 break;
             }
