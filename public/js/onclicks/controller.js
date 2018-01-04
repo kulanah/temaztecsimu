@@ -4,6 +4,8 @@ let multiStepSize = 1;
 let intensityStepSize = 1;
 let beamStepSize = 1;
 let stageStepSize = 1;
+let availableAlignments = [];
+let activeAlignment = 0;
 
 let microscopeControllers = function(){
 
@@ -104,6 +106,14 @@ let microscopeControllers = function(){
   $('#buttonl2').on('click', function(event){
     toggleWobble();
     deactivateDirectAlignments();
+  });
+
+  $('#buttonr2').on('click', function(event){
+    if(availableAlignments.length > 1){
+      activeAlignment = (activeAlignment + 1) % availableAlignments.length;
+      alignmentMode = availableAlignments[activeAlignment];
+      drawInfoPanelValues();
+    }
   });
 
   $('#buttonl3').on('click', function(event){

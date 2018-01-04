@@ -55,6 +55,7 @@ class AlignmentBox{
     this.currentLesson = lesson;
     this.currentTopic = topic;
     this.currentStep = 0;
+    activeAlignment = 0;
     this.fillCurrent();
     this.activateTuneAlignment()
   };
@@ -91,7 +92,9 @@ class AlignmentBox{
                 activatePivotPointY();
                 break;
               default:
-                alignmentMode = 'Screen Intensity';
+                availableAlignments = [];
+                availableAlignments.push('Screen Intensity', 'Gun Tilt')
+                alignmentMode = availableAlignments[activeAlignment];
                 break;
             }
             //alignmentMode = 'Piv pt gun tilt'
@@ -101,7 +104,7 @@ class AlignmentBox{
               $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
             }
             $('#magnificationvalue').text('LM 1850 x');
-            alignmentMode = 'Gun Shift'
+            activateGunShift();
             break;
         }
         break;
@@ -128,6 +131,7 @@ class AlignmentBox{
         } else {
           this.currentTopic++;
           this.currentStep = 0;
+          activeAlignment = 0;
           if(this.currentLesson == 0 && this.currentTopic == 1){
             // Skip gun tilt pivot point when clicking next step
             this.currentTopic++;
@@ -162,6 +166,7 @@ class AlignmentBox{
       } else {
         --this.currentTopic;
         this.currentStep = this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1;
+        activeAlignment = 0;
       }
     } else {
       --this.currentStep;
