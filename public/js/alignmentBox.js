@@ -147,7 +147,7 @@ class AlignmentBox{
         break;
     }
     drawInfoPanelValues();
-    setupbox.drawCanvas();
+    updateCanvas();
   }
 
   nextStep(){
