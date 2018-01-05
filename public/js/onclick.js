@@ -10,7 +10,7 @@ let activeWindow = 0;
 let diffractionMode = false;
 let wobbleMode = false;
 let onSpecimen = true;
-let alignmentMode = '            ';
+let alignmentMode = 'None';
 let stigmationMode = 'None';
 let stigmatorActive = false;
 

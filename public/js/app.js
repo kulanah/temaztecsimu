@@ -43,8 +43,13 @@ function drawInfoPanelValues(){
     $('#mfxvalue').text(stigmationMode + ' Stig X');
     $('#mfyvalue').text(stigmationMode + ' Stig Y');
   } else {
-    $('#mfxvalue').text(alignmentMode + ' X');
-    $('#mfyvalue').text(alignmentMode + ' Y');
+    if(alignmentMode == 'None'){
+      $('#mfxvalue').text('              ');
+      $('#mfyvalue').text('              ');
+    } else {
+      $('#mfxvalue').text(alignmentMode + ' X');
+      $('#mfyvalue').text(alignmentMode + ' Y');
+    }
   }
   if(availableAlignments.length > 1){
     $('#r2value').text('Align MF Toggle');
@@ -407,7 +412,7 @@ let toggleWobble = function(){
   wobbleMode = !wobbleMode;
   if(wobbleMode){
     stigmatorActive = false;
-    alignmentMode = '            ';
+    alignmentMode = 'None';
   } else {
     stigmatorActive = true;
   }

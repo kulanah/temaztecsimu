@@ -815,7 +815,7 @@ class Canvas {
     $('#diffractograms').hide();
     diffractionMode = false;
     if(alignmentMode = 'Diffraction'){
-      alignmentMode = '            ';
+      alignmentMode = 'None';
     }
     availableAlignments = [];
     drawInfoPanelValues();
