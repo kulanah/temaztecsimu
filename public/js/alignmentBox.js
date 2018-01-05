@@ -119,6 +119,24 @@ class AlignmentBox{
                 break;
             }
             break;
+          case 3:
+            if($('#tunehelpcontent').attr('src')!='./public/html/e05a009d.htm'){
+              $('#tunehelpcontent').attr('src', './public/html/e05a009d.htm');
+            }
+            $('#magnificationvalue').text('LM 17000 x');
+            activateGunShift();
+            switch(this.currentStep){
+              case 0:
+                updateBeamSlider(5);
+                break;
+              case 1:
+                updateBeamSlider(10);
+                break;
+              case 2:
+                updateBeamSlider(11);
+                break;
+            }
+            break;
         }
         break;
       default:

@@ -66,7 +66,7 @@ function setActiveAlignment(){
       stigmatorActive = false;
       alignmentMode = availableAlignments[activeAlignment];
       break;
-  } 
+  }
 }
 
 //TODO remove this target
