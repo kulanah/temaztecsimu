@@ -73,6 +73,7 @@ let mainScreen = function(){
 
   $('#filesaveas').on('click', function(event){
     $('#filemenu').hide();
+    saveImage();
   });
 
   $('#xbox').on('click', function(event){

@@ -458,4 +458,23 @@ let resumeDA = function(){
   }
 }
 
+function saveImage(){
+  // Function based on saveTextAsFile() function from https://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
+  var canvas = document.getElementById('micrographboxcanvas');
+  var dataURL = canvas.toDataURL();
+  console.log(dataURL);
+  var date = new Date();
+  var fileNameToSaveAs = "TEMimage" + (date.getMonth() + 1) + "-" + date.getDate();
+
+  var downloadLink = document.createElement("a");
+  downloadLink.download = fileNameToSaveAs;
+  downloadLink.innerHTML = "Download File";
+  downloadLink.href = dataURL;
+  downloadLink.onclick = destroyClickedElement;
+  downloadLink.style.display = "none";
+  document.body.appendChild(downloadLink);
+
+  downloadLink.click();
+}
+
 window.addEventListener('message', handleMessage, false);
