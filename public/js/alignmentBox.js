@@ -103,6 +103,7 @@ class AlignmentBox{
               $('#tunehelpcontent').attr('src', './public/html/e05a0093.htm');
             }
             $('#magnificationvalue').text('LM 1850 x');
+            $('#objvalue').text('  5.9927 %');
             switch(this.currentStep){
               case 0:
                 updateBeamSlider(6);
@@ -124,6 +125,7 @@ class AlignmentBox{
               $('#tunehelpcontent').attr('src', './public/html/e05a009d.htm');
             }
             $('#magnificationvalue').text('LM 17000 x');
+            $('#objvalue').text(' 91.7470 %');
             activateGunShift();
             switch(this.currentStep){
               case 0:
