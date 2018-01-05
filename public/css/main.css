@@ -58,6 +58,12 @@ body{
   max-height: 75vw;
 }
 
+#objdisplay{
+  position: absolute;
+  top: 86vh;
+  right: 57vw;
+}
+
 #magnificationdisplay{
   position: absolute;
   top: 88.5vh;
