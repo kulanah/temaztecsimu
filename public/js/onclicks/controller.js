@@ -111,7 +111,7 @@ let microscopeControllers = function(){
   $('#buttonr2').on('click', function(event){
     if(availableAlignments.length > 1){
       activeAlignment = (activeAlignment + 1) % availableAlignments.length;
-      alignmentMode = availableAlignments[activeAlignment];
+      setActiveAlignment();
       drawInfoPanelValues();
     }
   });

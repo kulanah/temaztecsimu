@@ -42,15 +42,14 @@ function drawInfoPanelValues(){
   if(stigmatorActive){
     $('#mfxvalue').text(stigmationMode + ' Stig X');
     $('#mfyvalue').text(stigmationMode + ' Stig Y');
-    $('#r2value').text('                      ');
   } else {
     $('#mfxvalue').text(alignmentMode + ' X');
     $('#mfyvalue').text(alignmentMode + ' Y');
-    if(availableAlignments.length > 1){
-      $('#r2value').text('Align MF Toggle');
-    } else {
-      $('#r2value').text('                      ');
-    }
+  }
+  if(availableAlignments.length > 1){
+    $('#r2value').text('Align MF Toggle');
+  } else {
+    $('#r2value').text('                      ');
   }
 };
 
@@ -59,7 +58,15 @@ function setActiveAlignment(){
     // Prevent out-of-bounds indexing for availableAlignments
     activeAlignment = 0;
   }
-  alignmentMode = availableAlignments[activeAlignment];
+  switch(availableAlignments[activeAlignment]){
+    case 'Condensor Stig':
+      activateCondensor();
+      break;
+    default:
+      stigmatorActive = false;
+      alignmentMode = availableAlignments[activeAlignment];
+      break;
+  } 
 }
 
 //TODO remove this target
