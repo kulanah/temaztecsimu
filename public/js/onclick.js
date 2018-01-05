@@ -13,6 +13,7 @@ let onSpecimen = true;
 let alignmentMode = 'None';
 let stigmationMode = 'None';
 let stigmatorActive = false;
+let tuneAlignment = false;
 
 let clickFunctions = function(){
   column();

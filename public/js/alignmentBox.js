@@ -63,7 +63,7 @@ class AlignmentBox{
   activateTuneAlignment(){
     deactivateDA();
     stigmatorActive = false;
-    setupbox.tuneAlignmentStep = 1;
+    tuneAlignment = true;
     // Show help window for the current topic
     $('#tunehelppopup').show();
     switch(this.currentLesson){
@@ -143,7 +143,7 @@ class AlignmentBox{
         break;
       default:
         $('#tunehelppopup').hide();
-        setupbox.tuneAlignmentStep = 0;
+        tuneAlignment = false;
         break;
     }
     drawInfoPanelValues();
