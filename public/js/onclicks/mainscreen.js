@@ -71,6 +71,10 @@ let mainScreen = function(){
     $('#openfiledialogue').show();
   });
 
+  $('#filesaveas').on('click', function(event){
+    $('#filemenu').hide();
+  });
+
   $('#xbox').on('click', function(event){
     $('#openfiledialogue').hide();
   });
