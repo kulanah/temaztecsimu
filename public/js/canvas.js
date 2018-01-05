@@ -227,7 +227,11 @@ class Canvas {
         this.context.fillRect(0, 0, 2000, 1000);
         break;
       default:
-        $('#magnificationvalue').text('  ' + this.zooms[this.mag] + ' x');
+        if(this.zooms[this.mag] >= 100000){
+          $('#magnificationvalue').text('  ' + this.zooms[this.mag] / 1000 + 'k x');
+        } else {
+          $('#magnificationvalue').text('  ' + this.zooms[this.mag] + ' x');
+        }
         this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
           this.imgX + this.alphaTilt * this.specimenHeight - this.defocus * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + this.defocus * Math.sin(this.imgAngle),this.imgW,this.imgH);
         this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
