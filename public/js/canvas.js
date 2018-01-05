@@ -815,6 +815,7 @@ class Canvas {
     }
     availableAlignments = [];
     drawInfoPanelValues();
+    $('#objvalue').text('');
     this.drawCanvas();
   }
 
