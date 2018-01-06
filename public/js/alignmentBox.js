@@ -56,6 +56,7 @@ class AlignmentBox{
     this.currentTopic = topic;
     this.currentStep = 0;
     activeAlignment = 0;
+    this.doneWithTopic = false;
     this.fillCurrent();
     this.activateTuneAlignment()
   };
@@ -111,12 +112,14 @@ class AlignmentBox{
                 setActiveAlignment();
                 break;
               case 1:
-                updateBeamSlider(2);
+                updateBeamSlider(6);
                 availableAlignments = ['Gun Shift', 'Condensor Stig', 'Gun Tilt'];
                 setActiveAlignment();
                 break;
-              default:
-                activateGunShift();
+              case 2:
+                updateBeamSlider(2);
+                availableAlignments = ['Gun Shift', 'Condensor Stig', 'Gun Tilt'];
+                setActiveAlignment();
                 break;
             }
             break;
@@ -162,12 +165,19 @@ class AlignmentBox{
           this.done = true;
           this.drawLocation.text('You have completed the ' + this.jsonObj[this.currentLesson].name + ' alignments.');
         } else {
-          this.currentTopic++;
-          this.currentStep = 0;
-          activeAlignment = 0;
-          if(this.currentLesson == 0 && this.currentTopic == 1){
-            // Skip gun tilt pivot point when clicking next step
+          if(!this.doneWithTopic && this.currentLesson == 0 && this.currentTopic == 2 && this.currentStep == 2){
+            // Repeat the second and third steps of gun shift
+            this.currentStep = 1;
+            this.doneWithTopic = true;
+          } else {
             this.currentTopic++;
+            this.currentStep = 0;
+            activeAlignment = 0;
+            this.doneWithTopic = false;
+            if(this.currentLesson == 0 && this.currentTopic == 1){
+              // Skip gun tilt pivot point when clicking next step
+              this.currentTopic++;
+            }
           }
         }
       } else {
@@ -200,6 +210,7 @@ class AlignmentBox{
         --this.currentTopic;
         this.currentStep = this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1;
         activeAlignment = 0;
+        this.doneWithTopic = false;
       }
     } else {
       --this.currentStep;

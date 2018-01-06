@@ -44,8 +44,8 @@ function drawInfoPanelValues(){
     $('#mfyvalue').text(stigmationMode + ' Stig Y');
   } else {
     if(alignmentMode == 'None'){
-      $('#mfxvalue').text('              ');
-      $('#mfyvalue').text('              ');
+      $('#mfxvalue').text('               ');
+      $('#mfyvalue').text('               ');
     } else {
       $('#mfxvalue').text(alignmentMode + ' X');
       $('#mfyvalue').text(alignmentMode + ' Y');
