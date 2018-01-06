@@ -48,8 +48,8 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
         s31 = 0;
     }
     var h1, k1, l1, h2, k2, l2;
-    var min1 = 0;
-    var max1 = 2;
+    var min1 = -10;
+    var max1 = 10;
     var max2 = max;
     var min2 = -max2;
     var complete = false;
@@ -71,6 +71,9 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
                         for (kk = min2; kk <= max2; kk++) {
                             for (ll = min2; ll <= max2; ll++) {
                                 if (hh == 0 && kk == 0 && ll == 0) {
+                                    continue;
+                                }
+                                if ((h * hh + k * kk + l * ll) % (u + v + w) != 0){
                                     continue;
                                 }
                                 if (hh * u + kk * v + ll * w === 0) {
@@ -95,7 +98,7 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
                                     }
                                     var lambda = 12.27 / Math.sqrt(voltage * (1 + 0.000000978 * voltage));
                                     function calculateR(d) {
-                                        return lambda * cameraLength / d / 5;
+                                        return lambda * cameraLength / d / 5 * (1 + 3 / 32 * lambda ** 2 / d ** 2);
                                     }
                                     var r1 = calculateR(d1);
                                     var r2 = calculateR(d2);
