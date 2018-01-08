@@ -84,7 +84,7 @@ class AlignmentBox{
             $('#magnificationvalue').text('LM 200 x');
             switch(this.currentStep){
               case 0:
-                activateBeamShift();
+                alignmentMode = 'None';
                 break;
               case 1:
                 activatePivotPointX();
@@ -93,7 +93,7 @@ class AlignmentBox{
                 activatePivotPointY();
                 break;
               default:
-                availableAlignments = ['Screen Intensity', 'Gun Tilt'];
+                availableAlignments = ['Screen Intensity']//, 'Gun Tilt'];
                 setActiveAlignment();
                 break;
             }
@@ -108,7 +108,7 @@ class AlignmentBox{
             switch(this.currentStep){
               case 0:
                 updateBeamSlider(6);
-                availableAlignments = ['Beam Shift', 'Condensor Stig'];
+                availableAlignments = ['Gun Shift', 'Condensor Stig'];
                 setActiveAlignment();
                 break;
               case 1:
