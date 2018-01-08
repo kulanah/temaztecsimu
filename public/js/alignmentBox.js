@@ -67,6 +67,7 @@ class AlignmentBox{
     tuneAlignment = true;
     // Show help window for the current topic
     $('#tunehelppopup').show();
+    $('#leftcolumnnotification').show();
     switch(this.currentLesson){
       case 0:
         switch(this.currentTopic){
@@ -146,6 +147,7 @@ class AlignmentBox{
         break;
       default:
         $('#tunehelppopup').hide();
+        $('#leftcolumnnotification').hide();
         tuneAlignment = false;
         break;
     }
