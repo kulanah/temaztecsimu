@@ -143,6 +143,14 @@
   height:  5.82vh;
 }
 
+#leftcolumnnotification{
+  position: absolute;
+  top: 26.2vh;
+  left: 14.28vw;
+  width: 222px;
+  height: 124px;
+}
+
 #leftcolumnfegregisters{
   height: 22.795vh;
 }
