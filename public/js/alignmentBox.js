@@ -171,13 +171,13 @@ class AlignmentBox{
             this.doneWithTopic = true;
           } else {
             this.currentTopic++;
-            this.currentStep = 0;
-            activeAlignment = 0;
-            this.doneWithTopic = false;
             if(this.currentLesson == 0 && this.currentTopic == 1){
               // Skip gun tilt pivot point when clicking next step
               this.currentTopic++;
             }
+            this.currentStep = 0;
+            activeAlignment = 0;
+            this.doneWithTopic = false;
           }
         }
       } else {
@@ -208,6 +208,10 @@ class AlignmentBox{
           //do nothing because we're at the start
       } else {
         --this.currentTopic;
+        if(this.currentLesson == 0 && this.currentTopic == 1){
+          // Skip gun tilt pivot point when clicking previous step
+          this.currentTopic--;
+        }
         this.currentStep = this.jsonObj[this.currentLesson].topics[this.currentTopic].steps.length - 1;
         activeAlignment = 0;
         this.doneWithTopic = false;
