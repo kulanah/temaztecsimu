@@ -70,7 +70,8 @@ class Canvas {
     this.blurVal = 0.0;
     this.saturateVal = 400;
     this.brightnessVal = 100;
-    this.brightnessOffset = 0;
+    this.brightnessOffsetX = 0;
+    this.brightnessOffsetY = 0;
 
     this.startTarget;
 
@@ -547,8 +548,8 @@ class Canvas {
             this.drawDiffractogramImages();
             break;
           case 'Screen Intensity':
-            this.brightnessOffset += deltaX * .1;
-            this.brightnessVal = 100 - Math.abs(this.brightnessOffset);
+            this.brightnessOffsetX += deltaX * .1;
+            this.brightnessVal = 100 - Math.abs(this.brightnessOffsetX) - Math.abs(this.brightnessOffsetY);
             this.maskX += deltaX * .1;
             break;
         }
@@ -606,7 +607,11 @@ class Canvas {
             this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
             this.drawDiffractogramImages();
             break;
-
+          case 'Screen Intensity':
+            this.brightnessOffsetY += deltaY * .1;
+            this.brightnessVal = 100 - Math.abs(this.brightnessOffsetX) - Math.abs(this.brightnessOffsetY);
+            this.maskY += deltaY * .1;
+            break;
         }
       }
       this.drawCanvas();
