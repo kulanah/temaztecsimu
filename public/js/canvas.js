@@ -815,7 +815,7 @@ class Canvas {
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
     diffractionMode = false;
-    if(alignmentMode = 'Diffraction'){
+    if(alignmentMode == 'Diffraction'){
       alignmentMode = 'None';
     }
     availableAlignments = [];
