@@ -74,16 +74,12 @@ function setActiveAlignment(){
   }
 }
 
-//TODO remove this target
-let moveImage = function(deltax, deltay, target){
+let moveImage = function(deltax, deltay){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.moveImage(deltax, deltay);
-    } else {
-      if (setupbox.moveImage(deltax, deltay)){
-        temLens[22].xCenter += deltax / 10;
-        drawColumn();
-      }
+    openbox.moveImage(deltax, deltay);
+    if (setupbox.moveImage(deltax, deltay)){
+      temLens[22].xCenter += deltax / 10;
+      drawColumn();
     }
   } else {
     mainmicro.moveImage(deltax, deltay);
@@ -98,15 +94,12 @@ let moveImage = function(deltax, deltay, target){
 //this is called when the intensity button on the control panel is pressed.
 let changeIntensity = function(delta){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.changeIntensity(delta);
-    } else {
-      let change = setupbox.changeIntensity(delta);
-      temLens[6].f -= change / 30;
-      temLens[20].f += change / 20;
+    openbox.changeIntensity(delta);
+    let change = setupbox.changeIntensity(delta);
+    temLens[6].f -= change / 30;
+    temLens[20].f += change / 20;
 
-      drawColumn();
-    }
+    drawColumn();
   } else {
     mainmicro.changeIntensity(delta);
   }
@@ -135,13 +128,10 @@ let handleMessage = function(message){
 
 let shiftFocus = function(delta){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.focus(delta);
-    } else {
-      setupbox.focus(delta);
-      temLens[12].f += delta / 10;
-      drawColumn();
-    }
+    openbox.focus(delta);
+    setupbox.focus(delta);
+    temLens[12].f += delta / 10;
+    drawColumn();
   } else {
     mainmicro.focus(delta);
   }
@@ -158,13 +148,10 @@ let shiftFocusStep = function(delta){
 
 let zoom = function(delta){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.zoom(delta);
-    } else {
-      setupbox.zoom(delta);
-      temLens[21].f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
-      drawColumn();
-    }
+    openbox.zoom(delta);
+    setupbox.zoom(delta);
+    temLens[21].f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
+    drawColumn();
   } else {
     mainmicro.zoom(delta);
   }
@@ -172,11 +159,8 @@ let zoom = function(delta){
 
 let multiXDrag = function(deltaX){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.multiXDrag(deltaX);
-    } else {
-      setupbox.multiXDrag(deltaX);
-    }
+    openbox.multiXDrag(deltaX);
+    setupbox.multiXDrag(deltaX);
   } else {
     mainmicro.multiXDrag(deltaX);
   }
@@ -184,11 +168,8 @@ let multiXDrag = function(deltaX){
 
 let multiYDrag = function(deltaX){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.multiYDrag(deltaX);
-    } else {
-      setupbox.multiYDrag(deltaX);
-    }
+    openbox.multiYDrag(deltaX);
+    setupbox.multiYDrag(deltaX);
   } else {
     mainmicro.multiYDrag(deltaX);
   }
@@ -209,11 +190,8 @@ let updateCanvas = function(){
 let handleBeamSlider = function(newVal){
   console.log(newVal);
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.handleBeamSlider(newVal);
-    } else {
-      setupbox.handleBeamSlider(newVal);
-    }
+    openbox.handleBeamSlider(newVal);
+    setupbox.handleBeamSlider(newVal);
   } else {
     mainmicro.handleBeamSlider(newVal);
   }
@@ -246,11 +224,8 @@ let activateGunShift = function(){
 let activatePivotPointX = function(){
   stigmatorActive = false;
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.activatePivotPointX();
-    } else {
-      setupbox.activatePivotPointX();
-    }
+    openbox.activatePivotPointX();
+    setupbox.activatePivotPointX();
   } else {
     mainmicro.activatePivotPointX();
   }
@@ -259,11 +234,8 @@ let activatePivotPointX = function(){
 let activatePivotPointY = function(){
   stigmatorActive = false;
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.activatePivotPointY();
-    } else {
-      setupbox.activatePivotPointY();
-    }
+    openbox.activatePivotPointY();
+    setupbox.activatePivotPointY();
   } else {
     mainmicro.activatePivotPointY();
   }
@@ -278,11 +250,8 @@ let activateBeamShift = function(){
 let activateRotationCenter = function(){
   stigmatorActive = false;
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.activateRotationCenter();
-    } else {
-      setupbox.activateRotationCenter();
-    }
+    openbox.activateRotationCenter();
+    setupbox.activateRotationCenter();
   } else {
     mainmicro.activateRotationCenter();
   }
@@ -291,11 +260,8 @@ let activateRotationCenter = function(){
 let activateComaFreeAlignmentX = function(){
   stigmatorActive = false;
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.activateComaFreeAlignmentX();
-    } else {
-      setupbox.activateComaFreeAlignmentX();
-    }
+    openbox.activateComaFreeAlignmentX();
+    setupbox.activateComaFreeAlignmentX();
   } else {
     mainmicro.activateComaFreeAlignmentX();
   }
@@ -304,11 +270,8 @@ let activateComaFreeAlignmentX = function(){
 let activateComaFreeAlignmentY = function(){
   stigmatorActive = false;
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.activateComaFreeAlignmentY();
-    } else {
-      setupbox.activateComaFreeAlignmentY();
-    }
+    openbox.activateComaFreeAlignmentY();
+    setupbox.activateComaFreeAlignmentY();
   } else {
     mainmicro.activateComaFreeAlignmentY();
   }
@@ -361,11 +324,8 @@ let deactivateDirectAlignments  = function(){
 
 let focusUp = function(){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.focusUpButton();
-    } else {
-      setupbox.focusUpButton();
-    }
+    openbox.focusUpButton();
+    setupbox.focusUpButton();
   } else {
     mainmicro.focusUpButton();
   }
@@ -373,11 +333,8 @@ let focusUp = function(){
 
 let focusDown = function(){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.focusDownButton();
-    } else {
-      setupbox.focusDownButton();
-    }
+    openbox.focusDownButton();
+    setupbox.focusDownButton();
   } else {
     mainmicro.focusDownButton();
   }
@@ -385,11 +342,8 @@ let focusDown = function(){
 
 let zeroFocus = function(){
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.zeroFocus();
-    } else {
-      setupbox.zeroFocus();
-    }
+    openbox.zeroFocus();
+    setupbox.zeroFocus();
   } else {
     mainmicro.zeroFocus();
   }
@@ -397,11 +351,8 @@ let zeroFocus = function(){
 
 let resetPosition = function(){ 
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.resetPosition();
-    } else {
-      setupbox.resetPosition();
-    }
+    openbox.resetPosition();
+    setupbox.resetPosition();
   } else {
     mainmicro.resetPosition();
   }
@@ -417,11 +368,8 @@ let toggleWobble = function(){
     stigmatorActive = true;
   }
   if (openScreen == 0){
-    if (activeWindow == 0){
-      openbox.toggleWobble();
-    } else {
-      setupbox.toggleWobble();
-    }
+    openbox.toggleWobble();
+    setupbox.toggleWobble();
   } else {
     mainmicro.toggleWobble();
   }

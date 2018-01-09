@@ -19,7 +19,7 @@ let microscopeControllers = function(){
   let mousemovetemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
-    moveImage(2 * deltas[0], 2 * deltas[1], event.target);
+    moveImage(2 * deltas[0], 2 * deltas[1]);
   };
 
   let mousemultixtemplate = function(event){
@@ -152,12 +152,8 @@ let microscopeControllers = function(){
 
   $('#buttonrollerr').mousedown(function(event){
     if (openScreen == 0){
-      if (activeWindow == 0){
-        openbox.setTarget(event.target.id);
-      }
-      else {
-        setupbox.setTarget(event.target.id);
-      }
+      openbox.setTarget(event.target.id);
+      setupbox.setTarget(event.target.id);
     } else {
       mainmicro.setTarget(event.target.id);
     }
@@ -170,11 +166,8 @@ let microscopeControllers = function(){
 
   $('#buttonrollerl').mousedown(function(event){
     if (openScreen == 0){
-      if (activeWindow == 0){
-        openbox.setTarget(event.target.id);
-      } else {
-        setupbox.setTarget(event.target.id);
-      }
+      openbox.setTarget(event.target.id);
+      setupbox.setTarget(event.target.id);
     } else {
       mainmicro.setTarget(event.target.id);
     }
