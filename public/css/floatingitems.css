@@ -82,6 +82,16 @@
   height: 15.184vw;
 }
 
+#r1warning{
+  position: absolute;
+  top: 74px;
+  left: 0px;
+}
+
+#r1text{
+  background-color: #48c6d4
+}
+
 #filtercontroldiv{
   position: absolute;
   top: 10vh;
