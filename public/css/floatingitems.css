@@ -95,6 +95,14 @@
   padding: 2px;
 }
 
+#controlsinstructiontext{
+  background-color: #48c6d4;
+  color: white;
+  font-family: sans-serif;
+  font-size: small;
+  padding: 2px;
+}
+
 #filtercontroldiv{
   position: absolute;
   top: 10vh;
