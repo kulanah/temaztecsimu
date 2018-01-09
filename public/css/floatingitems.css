@@ -84,12 +84,15 @@
 
 #r1warning{
   position: absolute;
-  top: 74px;
-  left: 0px;
+  bottom: 22vh;
 }
 
 #r1text{
-  background-color: #48c6d4
+  background-color: #48c6d4;
+  color: white;
+  font-family: sans-serif;
+  font-size: small;
+  padding: 2px;
 }
 
 #filtercontroldiv{

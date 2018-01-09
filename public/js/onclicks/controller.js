@@ -102,6 +102,12 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mouseleave', mouseuptemplatefocusstep);    
   });  
 
+  $('#buttonr1').hover(function(){
+    if(diffractionMode || setupbox.maskR < 100){
+      $('#r1warning').fadeToggle();
+    }
+  })
+
   $('#buttonr1').on('click', function(event){
     if(screenLift){
       screenLift = false;
