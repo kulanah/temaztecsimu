@@ -105,7 +105,7 @@ let microscopeControllers = function(){
   $('#buttonr1').on('click', function(event){
     if(screenLift){
       screenLift = false;
-    } else if(setupbox.maskR < 100){
+    } else if(diffractionMode || setupbox.maskR < 100){
       $('#errordiv').show();
     } else {
       screenLift = true;
