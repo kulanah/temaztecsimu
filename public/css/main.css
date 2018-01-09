@@ -58,6 +58,18 @@ body{
   max-height: 75vw;
 }
 
+#viewexposure{
+  position: absolute;
+  top: 19.5vh;
+  left: 18.9vw;
+}
+
+#acquireexposure{
+  position: absolute;
+  top: 39.7vh;
+  left: 18.9vw;
+}
+
 #objdisplay{
   position: absolute;
   top: 86vh;
