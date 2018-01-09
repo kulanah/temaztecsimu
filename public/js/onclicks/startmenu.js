@@ -28,6 +28,8 @@ let startMenu = function(){
     $('#microscopeimage').show();
     $('#basesetup').hide();
     $('#controlsinstruction').hide();
+    $('#viewexposure').hide();
+    $('#acquireexposure').hide();
     mainmicro.drawCanvas();
   });
 
@@ -39,6 +41,8 @@ let startMenu = function(){
     $('#mainimage').css('background-color', 'grey');
     $('#microscopeimage').hide();
     $('#controlsinstruction').show();
+    $('#viewexposure').show();
+    $('#acquireexposure').show();
   });
 
   $('#filtercontrol').on('click', function(event){
