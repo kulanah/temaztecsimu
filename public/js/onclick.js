@@ -14,6 +14,7 @@ let alignmentMode = 'None';
 let stigmationMode = 'None';
 let stigmatorActive = false;
 let tuneAlignment = false;
+let screenLift = false;
 
 let clickFunctions = function(){
   column();

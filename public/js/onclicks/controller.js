@@ -102,6 +102,16 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mouseleave', mouseuptemplatefocusstep);    
   });  
 
+  $('#buttonr1').on('click', function(event){
+    if(screenLift){
+      screenLift = false;
+    } else if(setupbox.maskR < 100){
+      $('#errordiv').show();
+    } else {
+      screenLift = true;
+    }
+    updateCanvas();
+  });
 
   $('#buttonl2').on('click', function(event){
     toggleWobble();

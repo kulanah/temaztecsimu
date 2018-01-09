@@ -145,6 +145,12 @@ class Canvas {
     this.context.save();
 
     if (this == setupbox){
+      if(screenLift){
+        this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
+        this.glowSelector[0].getContext('2d').clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
+        this.context.restore();
+        return;
+      }
       if(diffractionMode){
         this.hueRotateActive = false;
         if(this.diffractionCameraLength >= 1000){

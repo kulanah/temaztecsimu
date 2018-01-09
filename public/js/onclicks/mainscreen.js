@@ -102,7 +102,7 @@ let mainScreen = function(){
   });
 
   $('#startview').on('click', function(event){
-    if(diffractionMode){
+    if(diffractionMode || setupbox.maskR < 100 || !screenLift){
       $('#errordiv').show();
     } else {
       activeWindow = 0;
