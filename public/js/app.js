@@ -17,7 +17,7 @@ $("img[usemap]").rwdImageMaps();
 
 let canvasClasses = [];
 let screenshotCount = 0;
-
+let activeFrames = [];
 
 
 drawColumn();
@@ -422,7 +422,11 @@ function screenshotImage(){
   let area = document.createElement('area');
   area.shape = 'rect';
   area.coords = '497,6,512,20'
-  area.onclick = function(){document.body.removeChild(div);}
+  area.onclick = function(){
+    let i = activeFrames.indexOf(div);
+    activeFrames.splice(i, 1);
+    document.body.removeChild(div);
+  }
 
   let map = document.createElement('map');
   map.name = 'frame' + screenshotCount;
@@ -445,6 +449,7 @@ function screenshotImage(){
   div.appendChild(map);
 
   document.body.appendChild(div);
+  activeFrames.push(div);
 
   $(div).draggable({
     addClasses: true,
@@ -460,9 +465,17 @@ function screenshotImage(){
 
 function saveImage(){
   // Function based on saveTextAsFile() function from https://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
-  var canvas = document.getElementById('micrographboxcanvas');
-  var dataURL = canvas.toDataURL();
-  console.log(dataURL);
+  if(activeFrames.length < 1){
+    console.log('No image to save');
+    return;
+  }
+  var frame = activeFrames[0];
+  for(i = 1; i < activeFrames.length; i++){
+    if(parseInt($(activeFrames[i]).css('z-index')) > parseInt($(frame).css('z-index'))){
+      frame = activeFrames[i];
+    }
+  }
+  var dataURL = frame.firstChild.src;
   var date = new Date();
   var fileNameToSaveAs = "TEMimage" + (date.getMonth() + 1) + "-" + date.getDate();
 
