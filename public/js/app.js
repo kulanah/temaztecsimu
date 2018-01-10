@@ -444,6 +444,17 @@ function screenshotImage(){
   div.appendChild(map);
 
   document.body.appendChild(div);
+
+  $(div).draggable({
+    addClasses: true,
+    cancel: 'map, iframe',
+    iframeFix: true,
+    cursor: 'move'
+  });
+  $(div).mousedown(function(){
+    $(div).css('z-index', zcounter); // moves element to the front on mousedown
+    zcounter++;
+  });
 }
 
 function saveImage(){
