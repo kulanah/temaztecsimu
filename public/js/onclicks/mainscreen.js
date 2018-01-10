@@ -120,8 +120,12 @@ let mainScreen = function(){
     $('#basesetup').hide();
   });
 
-  $('#error').on('click', function(event){
-    $('#errordiv').show();
+  $('#startacquire').on('click', function(event){
+    if(isVisible('openbox')){
+      
+    } else {
+      $('#errordiv').show();
+    }
   });
 
   $('#errorokay').on('click', function(event){
