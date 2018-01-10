@@ -416,6 +416,7 @@ let resumeDA = function(){
 
 function screenshotImage(){
   let div = document.createElement('div');
+  div.style = 'position:absolute; top:' + (11 + screenshotCount * 2 % 15) + 'vh; left:' + (56 + screenshotCount % 9) + 'vw;'
 
   let area = document.createElement('area');
   area.shape = 'rect';
