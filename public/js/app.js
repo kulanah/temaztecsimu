@@ -94,11 +94,13 @@ let moveImage = function(deltax, deltay){
 //this is called when the intensity button on the control panel is pressed.
 let changeIntensity = function(delta){
   if (openScreen == 0){
-    openbox.changeIntensity(delta);
     let change = setupbox.changeIntensity(delta);
     temLens[6].f -= change / 30;
     temLens[20].f += change / 20;
-
+    openbox.maskR = setupbox.maskR * 4;
+    openbox.haloX = setupbox.haloX * 4;
+    openbox.haloY = setupbox.haloY * 4;
+    updateCanvas();
     drawColumn();
   } else {
     mainmicro.changeIntensity(delta);
