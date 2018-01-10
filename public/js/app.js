@@ -16,6 +16,7 @@ $("img[usemap]").rwdImageMaps();
 
 
 let canvasClasses = [];
+let screenshotCount = 0;
 
 
 
@@ -411,6 +412,37 @@ let resumeDA = function(){
       activateComaFreeAlignmentY();
       break;
   }
+}
+
+function screenshotImage(){
+  let div = document.createElement('div');
+
+  let area = document.createElement('area');
+  area.shape = 'rect';
+  area.coords = '497,6,512,20'
+  area.onclick = function(){document.body.removeChild(div);}
+
+  let map = document.createElement('map');
+  map.name = 'frame' + screenshotCount;
+  screenshotCount++;
+  map.appendChild(area);
+
+  let border = document.createElement('img');
+  border.src = './public/img/openbox.png';
+  border.useMap = '#' + map.name;
+  border.className = 'micrographboxcanvas';
+
+  var canvas = document.getElementById('micrographboxcanvas');
+  var dataURL = canvas.toDataURL();
+  let screenshot = document.createElement('img');
+  screenshot.src = dataURL;
+  screenshot.className = 'micrographboxcanvas';
+  
+  div.appendChild(screenshot);
+  div.appendChild(border);
+  div.appendChild(map);
+
+  document.body.appendChild(div);
 }
 
 function saveImage(){

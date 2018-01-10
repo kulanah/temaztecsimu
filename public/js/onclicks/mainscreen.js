@@ -122,8 +122,7 @@ let mainScreen = function(){
 
   $('#startacquire').on('click', function(event){
     if(isVisible('openbox')){
-      let screenshot = document.createElement('img');
-      //screenshot.src = 
+      screenshotImage();
     } else {
       $('#errordiv').show();
     }
