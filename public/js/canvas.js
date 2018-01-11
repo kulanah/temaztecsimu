@@ -774,6 +774,10 @@ class Canvas {
   }
 
   drawDiffractogramImages(){
+    if(this == openbox){
+      // Not necessary to have both setupbox and openbox draw diffractograms, so returning avoids unnecessary slowdown
+      return;
+    }
     drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
     drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
   }
