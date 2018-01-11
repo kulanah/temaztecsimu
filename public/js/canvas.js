@@ -115,11 +115,13 @@ class Canvas {
   };
 
   setDimensions(){
-    this.imgW = this.img.width / this.imgScale * this.zooms[this.mag];
-    this.imgH = this.img.height / this.imgScale * this.zooms[this.mag];
-    this.maskX = this.img.width / 2;
-    this.maskY = this.img.height / 2;
-    this.maskR = this.img.width / 8;
+    this.imgW = 512 / this.imgScale * this.zooms[this.mag];
+    this.imgWInit = this.imgW;
+    this.imgH = this.imgW * this.img.height / this.img.width;
+    this.imgHInit = this.imgH;
+    this.maskX = 256;
+    this.maskY = 256;
+    this.maskR = 64;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
@@ -133,8 +135,8 @@ class Canvas {
     }
     defocusString = 'Defoc.:' + defocusString;
     $('#defocusvalue').text(defocusString);
-    $('#xvalue').text((((this.imgX - this.img.width / 2) * this.imgScale / this.zooms[this.mag] + this.img.width / 2) / 1000).toFixed(2)); // converts from pixels to micrometers
-    $('#yvalue').text(' ' + (((this.imgY - this.img.height / 2) * this.imgScale / this.zooms[this.mag] + this.img.height / 2) / 1000).toFixed(2)); // leading space covers minus sign from original image
+    $('#xvalue').text((((this.imgX - this.imgWInit / 2) * this.imgScale / this.zooms[this.mag] + this.imgWInit / 2) / 1000).toFixed(2)); // converts from pixels to micrometers
+    $('#yvalue').text(' ' + (((this.imgY - this.imgHInit / 2) * this.imgScale / this.zooms[this.mag] + this.imgHInit / 2) / 1000).toFixed(2)); // leading space covers minus sign from original image
     $('#zvalue').text((this.specimenHeight * 200 / 57).toFixed(2)); // maps the current range of 528 to 585 onto a 200 micrometer scale
     $('#alphavalue').text(' ' + this.alphaTilt.toFixed(2));
     $('#betavalue').text(' ' + this.betaTilt.toFixed(2));
@@ -212,9 +214,9 @@ class Canvas {
 
     this.context.clip();
     
-    this.context.translate(this.img.width / 2, this.img.height / 2)
+    this.context.translate(this.imgWInit / 2, this.imgHInit / 2)
     this.context.rotate(this.imgAngle);
-    this.context.translate(-this.img.width / 2, -this.img.height / 2);
+    this.context.translate(-this.imgWInit / 2, -this.imgHInit / 2);
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
 
@@ -291,8 +293,8 @@ class Canvas {
 
     this.imgW *= zoomFactor;
     this.imgH *= zoomFactor;
-    this.imgX = (this.imgX - this.img.width / 2) * zoomFactor + this.img.width / 2;
-    this.imgY = (this.imgY - this.img.height / 2) * zoomFactor + this.img.height / 2;
+    this.imgX = (this.imgX - this.imgWInit / 2) * zoomFactor + this.imgWInit / 2;
+    this.imgY = (this.imgY - this.imgHInit / 2) * zoomFactor + this.imgHInit / 2;
     this.haloX *= zoomFactor;
     this.haloY *= zoomFactor;
 
@@ -547,9 +549,9 @@ class Canvas {
           case 'Coma-free Alignment X':
           case 'Coma-free Alignment Y':
             this.imgW *= Math.pow(1.0005, deltaX);
-            this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, deltaX) + this.img.width / 2;
+            this.imgX = (this.imgX - this.imgWInit / 2) * Math.pow(1.0005, deltaX) + this.imgWInit / 2;
             this.imgH *= Math.pow(1.0005, -deltaX);
-            this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, -deltaX) + this.img.height / 2;
+            this.imgY = (this.imgY - this.imgHInit / 2) * Math.pow(1.0005, -deltaX) + this.imgHInit / 2;
             this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)
             this.drawDiffractogramImages();
             break;
@@ -579,9 +581,9 @@ class Canvas {
             break;
           case 'Objective':
             this.imgW *= Math.pow(1.0005, -deltaY);
-            this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
+            this.imgX = (this.imgX - this.imgWInit / 2) * Math.pow(1.0005, -deltaY) + this.imgWInit / 2;
             this.imgH *= Math.pow(1.0005, deltaY);
-            this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
+            this.imgY = (this.imgY - this.imgHInit / 2) * Math.pow(1.0005, deltaY) + this.imgHInit / 2;
             this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
             break;
           }
@@ -607,9 +609,9 @@ class Canvas {
           case 'Coma-free Alignment X':
           case 'Coma-free Alignment Y':
             this.imgW *= Math.pow(1.0005, -deltaY);
-            this.imgX = (this.imgX - this.img.width / 2) * Math.pow(1.0005, -deltaY) + this.img.width / 2;
+            this.imgX = (this.imgX - this.imgWInit / 2) * Math.pow(1.0005, -deltaY) + this.imgWInit / 2;
             this.imgH *= Math.pow(1.0005, deltaY);
-            this.imgY = (this.imgY - this.img.height / 2) * Math.pow(1.0005, deltaY) + this.img.height / 2;
+            this.imgY = (this.imgY - this.imgHInit / 2) * Math.pow(1.0005, deltaY) + this.imgHInit / 2;
             this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
             this.drawDiffractogramImages();
             break;
@@ -815,8 +817,8 @@ class Canvas {
   }
 
   resetPosition(){
-    this.maskX = this.img.width / 2
-    this.maskY = this.img.height / 2;
+    this.maskX = this.imgWInit / 2;
+    this.maskY = this.imgHInit / 2;
     this.drawCanvas();
   }
 
