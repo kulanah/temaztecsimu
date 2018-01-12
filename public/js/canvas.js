@@ -214,9 +214,9 @@ class Canvas {
 
     this.context.clip();
     
-    this.context.translate(this.imgWInit / 2, this.imgHInit / 2)
+    this.context.translate(this.selector[0].width / 2, this.selector[0].height / 2)
     this.context.rotate(this.imgAngle);
-    this.context.translate(-this.imgWInit / 2, -this.imgHInit / 2);
+    this.context.translate(-this.selector[0].width / 2, -this.selector[0].height / 2);
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
 
@@ -549,9 +549,9 @@ class Canvas {
           case 'Coma-free Alignment X':
           case 'Coma-free Alignment Y':
             this.imgW *= Math.pow(1.0005, deltaX);
-            this.imgX = (this.imgX - this.imgWInit / 2) * Math.pow(1.0005, deltaX) + this.imgWInit / 2;
+            this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, deltaX) + this.selector[0].width / 2;
             this.imgH *= Math.pow(1.0005, -deltaX);
-            this.imgY = (this.imgY - this.imgHInit / 2) * Math.pow(1.0005, -deltaX) + this.imgHInit / 2;
+            this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, -deltaX) + this.selector[0].height / 2;
             this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)
             this.drawDiffractogramImages();
             break;
@@ -581,9 +581,9 @@ class Canvas {
             break;
           case 'Objective':
             this.imgW *= Math.pow(1.0005, -deltaY);
-            this.imgX = (this.imgX - this.imgWInit / 2) * Math.pow(1.0005, -deltaY) + this.imgWInit / 2;
+            this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
             this.imgH *= Math.pow(1.0005, deltaY);
-            this.imgY = (this.imgY - this.imgHInit / 2) * Math.pow(1.0005, deltaY) + this.imgHInit / 2;
+            this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, deltaY) + this.selector[0].height / 2;
             this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
             break;
           }
@@ -609,9 +609,9 @@ class Canvas {
           case 'Coma-free Alignment X':
           case 'Coma-free Alignment Y':
             this.imgW *= Math.pow(1.0005, -deltaY);
-            this.imgX = (this.imgX - this.imgWInit / 2) * Math.pow(1.0005, -deltaY) + this.imgWInit / 2;
+            this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
             this.imgH *= Math.pow(1.0005, deltaY);
-            this.imgY = (this.imgY - this.imgHInit / 2) * Math.pow(1.0005, deltaY) + this.imgHInit / 2;
+            this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, deltaY) + this.selector[0].height / 2;
             this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
             this.drawDiffractogramImages();
             break;
@@ -821,8 +821,8 @@ class Canvas {
   }
 
   resetPosition(){
-    this.maskX = this.imgWInit / 2;
-    this.maskY = this.imgHInit / 2;
+    this.maskX = this.selector[0].width / 2;
+    this.maskY = this.selector[0].height / 2;
     this.drawCanvas();
   }
 
