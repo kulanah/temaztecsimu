@@ -210,7 +210,7 @@ let microscopeControllers = function(){
       alignmentMode = 'None';
     }
     drawInfoPanelValues();
-    // Pixel color detection code based on answer from https://stackoverflow.com/questions/6735470/get-pixel-color-from-canvas-on-mouseover
+    // Pixel color detection code based on answer from https://stackoverflow.com/questions/6735470/get-pixel-color-from-canvas-on-mouseover by Wayne Burkett
     function rgbToHex(r, g, b) {
       if (r > 255 || g > 255 || b > 255)
         throw "Invalid color component";

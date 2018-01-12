@@ -129,7 +129,7 @@ let pageSetup = function(){
   $('#spotsizevalue').text(' ' + $('#beamrange').val());
 
   // Solution to have cursor adjust only in appropriate area for resizeable elements found at
-  // https://stackoverflow.com/questions/9932569/css-to-change-the-cursor-style-of-the-resize-button-on-a-textarea
+  // https://stackoverflow.com/questions/9932569/css-to-change-the-cursor-style-of-the-resize-button-on-a-textarea by SpYk3HH
   $(function() {
     $(document).on('mousemove', 'textarea', function(e) {
         var a = $(this).offset().top + $(this).outerHeight() - 16,  //  top border of bottom-right-corner-box area

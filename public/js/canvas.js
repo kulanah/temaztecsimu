@@ -11,7 +11,12 @@ class Canvas {
     this.colorO = 1;
 
     this.img = new Image;
-    this.img.src = source;
+
+    // Workaround to allow cross-origin access, found at https://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror by Karuban
+    var timestamp = new Date().getTime();
+    this.img.setAttribute('crossOrigin', 'anonymous');
+    this.img.src = source + '?' + timestamp;
+
     this.imgX = 0;
     this.imgY = 0;
     this.imgAngle = 0;

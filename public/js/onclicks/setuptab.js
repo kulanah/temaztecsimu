@@ -80,7 +80,7 @@ turboStart.onended = function(){
   turboLoop.play();
 }
 
-// Approach for avoiding gaps in audio loops found at https://stackoverflow.com/questions/7330023/gapless-looping-audio-html5
+// Approach for avoiding gaps in audio loops found at https://stackoverflow.com/questions/7330023/gapless-looping-audio-html5 answer by shooting_sparks
 turboStart.addEventListener('timeupdate', function(){
   var buffer = 5;
   if(this.currentTime > this.duration - buffer){
