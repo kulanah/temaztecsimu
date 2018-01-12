@@ -119,12 +119,15 @@ class Canvas {
     this.imgWInit = this.imgW;
     this.imgH = this.imgW * this.img.height / this.img.width;
     this.imgHInit = this.imgH;
-    this.maskX = 256;
-    this.maskY = 256;
+    this.maskX = this.selector[0].width / 2;
+    this.maskY = this.selector[0].height / 2;
     this.maskR = 64;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
+
+    this.imgX = (this.selector[0].width - this.imgW) / 2;
+    this.imgY = (this.selector[0].height - this.imgH) / 2;
   };
 
   drawMainScreenValues(){
