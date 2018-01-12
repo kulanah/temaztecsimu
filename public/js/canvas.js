@@ -293,8 +293,8 @@ class Canvas {
 
     this.imgW *= zoomFactor;
     this.imgH *= zoomFactor;
-    this.imgX = (this.imgX - this.imgWInit / 2) * zoomFactor + this.imgWInit / 2;
-    this.imgY = (this.imgY - this.imgHInit / 2) * zoomFactor + this.imgHInit / 2;
+    this.imgX = (this.imgX - this.selector[0].width / 2) * zoomFactor + this.selector[0].width / 2;
+    this.imgY = (this.imgY - this.selector[0].height / 2) * zoomFactor + this.selector[0].height / 2;
     this.haloX *= zoomFactor;
     this.haloY *= zoomFactor;
 
