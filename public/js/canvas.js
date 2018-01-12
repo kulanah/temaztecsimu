@@ -116,9 +116,7 @@ class Canvas {
 
   setDimensions(){
     this.imgW = 512 / this.imgScale * this.zooms[this.mag];
-    this.imgWInit = this.imgW;
     this.imgH = this.imgW * this.img.height / this.img.width;
-    this.imgHInit = this.imgH;
     this.maskX = this.selector[0].width / 2;
     this.maskY = this.selector[0].height / 2;
     this.maskR = 64;
