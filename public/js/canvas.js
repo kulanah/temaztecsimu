@@ -1,7 +1,7 @@
 'use strict';
 
 class Canvas {
-  constructor(source, cssID, scale){
+  constructor(source, cssID, scale, wNM){
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
@@ -18,6 +18,7 @@ class Canvas {
     this.defocus = 0;    
 
     this.imgScale = scale;
+    this.widthNM = wNM;
 
     // Backup method for calculating the image's scale based on the pixel to nanometer ratio
     // The constant approximates number of nanometers in a pixel on the user's monitor, assuming 96 DPI
@@ -136,8 +137,8 @@ class Canvas {
     }
     defocusString = 'Defoc.:' + defocusString;
     $('#defocusvalue').text(defocusString);
-    $('#xvalue').text((((this.imgX - this.selector[0].width / 2) * this.imgScale / this.zooms[this.mag] + this.selector[0].width / 2) / 1000).toFixed(2)); // converts from pixels to micrometers
-    $('#yvalue').text(' ' + (((this.imgY - this.selector[0].height / 2) * this.imgScale / this.zooms[this.mag] + this.selector[0].height / 2) / 1000).toFixed(2)); // leading space covers minus sign from original image
+    $('#xvalue').text((((this.imgX - this.selector[0].width / 2) * this.imgScale / this.zooms[this.mag] + this.selector[0].width / 2) / 1000 * this.widthNM / 512).toFixed(2)); // converts from pixels to micrometers
+    $('#yvalue').text(' ' + (((this.imgY - this.selector[0].height / 2) * this.imgScale / this.zooms[this.mag] + this.selector[0].height / 2) / 1000 * this.widthNM / 512).toFixed(2)); // leading space covers minus sign from original image
     $('#zvalue').text((this.specimenHeight * 200 / 57).toFixed(2)); // maps the current range of 528 to 585 onto a 200 micrometer scale
     $('#alphavalue').text(' ' + this.alphaTilt.toFixed(2));
     $('#betavalue').text(' ' + this.betaTilt.toFixed(2));

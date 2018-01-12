@@ -24,14 +24,15 @@ drawColumn();
 
 let micrographImage = './public/img/23.png';
 let micrographMag = 250000;
+let micrographWidth = 512;
 if(location.search.includes('image=')){
   micrographImage = location.search.split('&')[1].split('image=')[1];
   micrographMag = location.search.split('&')[2].split('mag=')[1];
 }
 
-const setupbox = new Canvas(micrographImage, 'setupboxcanvas', micrographMag);
-const openbox = new Canvas(micrographImage, 'micrographboxcanvas', micrographMag); 
-const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas', 63000);
+const setupbox = new Canvas(micrographImage, 'setupboxcanvas', micrographMag, micrographWidth);
+const openbox = new Canvas(micrographImage, 'micrographboxcanvas', micrographMag, micrographWidth);
+const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas', 63000, 2932);
 
 setupbox.hueRotateActive = true;
 
