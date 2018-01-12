@@ -22,8 +22,15 @@ let activeFrames = [];
 
 drawColumn();
 
-const setupbox = new Canvas('./public/img/23.png', 'setupboxcanvas', 250000);
-const openbox = new Canvas('./public/img/23.png', 'micrographboxcanvas', 250000); 
+let micrographImage = './public/img/23.png';
+let micrographMag = 250000;
+if(location.search.includes('image=')){
+  micrographImage = location.search.split('&')[1].split('image=')[1];
+  micrographMag = location.search.split('&')[2].split('mag=')[1];
+}
+
+const setupbox = new Canvas(micrographImage, 'setupboxcanvas', micrographMag);
+const openbox = new Canvas(micrographImage, 'micrographboxcanvas', micrographMag); 
 const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas', 63000);
 
 setupbox.hueRotateActive = true;
