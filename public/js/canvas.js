@@ -138,8 +138,8 @@ class Canvas {
     }
     defocusString = 'Defoc.:' + defocusString;
     $('#defocusvalue').text(defocusString);
-    $('#xvalue').text((((this.imgX - this.imgWInit / 2) * this.imgScale / this.zooms[this.mag] + this.imgWInit / 2) / 1000).toFixed(2)); // converts from pixels to micrometers
-    $('#yvalue').text(' ' + (((this.imgY - this.imgHInit / 2) * this.imgScale / this.zooms[this.mag] + this.imgHInit / 2) / 1000).toFixed(2)); // leading space covers minus sign from original image
+    $('#xvalue').text((((this.imgX - this.selector[0].width / 2) * this.imgScale / this.zooms[this.mag] + this.selector[0].width / 2) / 1000).toFixed(2)); // converts from pixels to micrometers
+    $('#yvalue').text(' ' + (((this.imgY - this.selector[0].height / 2) * this.imgScale / this.zooms[this.mag] + this.selector[0].height / 2) / 1000).toFixed(2)); // leading space covers minus sign from original image
     $('#zvalue').text((this.specimenHeight * 200 / 57).toFixed(2)); // maps the current range of 528 to 585 onto a 200 micrometer scale
     $('#alphavalue').text(' ' + this.alphaTilt.toFixed(2));
     $('#betavalue').text(' ' + this.betaTilt.toFixed(2));
