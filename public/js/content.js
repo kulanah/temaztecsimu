@@ -132,11 +132,11 @@ function disableButton(button){
 }
 
 function modeAdjustment(){
-    if(location.search.includes('introduction')){
+    if(location.search.includes('mode=introduction')){
         disableButton($('#controlbtn'));
         disableButton($('#homeworkbtn'));
         console.log('Introduction Mode')
-    } else if (location.search.includes('assessment')){
+    } else if (location.search.includes('mode=self-assessment')){
         disableButton($('#lecturebtn'));
         disableButton($('#examplebtn'));
         disableButton($('#qabtn'));
