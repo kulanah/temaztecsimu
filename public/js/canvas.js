@@ -182,7 +182,7 @@ class Canvas {
 
     this.context.fillStyle = rgbaString;
     this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
-    this.context.fillRect(0,0,this.img.width * 2,this.img.height * 2);
+    this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
 
     let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
 
@@ -232,7 +232,7 @@ class Canvas {
     // Block the specimen during tune alignments
     if(tuneAlignment){
       this.context.fillStyle = 'white';
-      this.context.fillRect(0, 0, 2000, 1000);
+      this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     } else {
       if(this.zooms[this.mag] >= 100000){
         $('#magnificationvalue').text('  ' + this.zooms[this.mag] / 1000 + 'k x');
