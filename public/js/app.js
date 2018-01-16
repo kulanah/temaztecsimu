@@ -26,9 +26,9 @@ let micrographImage = './public/img/23.png';
 let micrographMag = 250000;
 let micrographWidth = 512;
 if(location.search.includes('image=')){
-  micrographImage = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + location.search.split('&')[1].split('image=')[1];
-  micrographMag = location.search.split('&')[2].split('mag=')[1];
-  micrographWidth = location.search.split('&')[3].split('width=')[1];
+  micrographImage = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + location.search.split('image=')[1].split('&')[0];
+  micrographMag = location.search.split('mag=')[1].split('&')[0];
+  micrographWidth = location.search.split('width=')[1].split('&')[0];
 }
 
 const setupbox = new Canvas(micrographImage, 'setupboxcanvas', micrographMag, micrographWidth);
