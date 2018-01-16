@@ -12,9 +12,13 @@ class Canvas {
 
     this.img = new Image;
 
-    // Workaround to allow cross-origin access, found at https://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror by Karuban
-    this.img.crossOrigin = 'anonymous';
-    this.img.src = source + '?'; // originally used a timestamp, but that appears to be unnecessary
+    if(source[0] != '.'){
+      // Workaround to allow cross-origin access, found at https://stackoverflow.com/questions/20424279/canvas-todataurl-securityerror by Karuban
+      this.img.crossOrigin = 'anonymous';
+      this.img.src = source + '?'; // originally used a timestamp, but that appears to be unnecessary
+    } else {
+      this.img.src = source;
+    }
 
     this.imgX = 0;
     this.imgY = 0;
