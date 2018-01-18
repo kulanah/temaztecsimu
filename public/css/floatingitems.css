@@ -161,6 +161,7 @@
   height: 32.8vw;
   z-index: 2;
   border: 2px solid black;
+  /*pointer-events: none;*/
 }
 
 .setupcanvas{
@@ -177,7 +178,7 @@
 }
 #setupboxcanvasglow{
   z-index: -1;
-
+  pointer-events: none;
 }
 
 #setupcrosshair{
@@ -187,6 +188,7 @@
   width: 21vw;
   height: 21vw;
   z-index: 1;
+  pointer-events: none;
 }
 
 #micrographboxcanvas{

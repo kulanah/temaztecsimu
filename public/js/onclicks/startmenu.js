@@ -25,7 +25,6 @@ let startMenu = function(){
     $('#temimage').show();
     $('#openbox').hide();
     $('#mainimage').css('background-color', 'transparent');
-    $('#microscopeimage').show();
     $('#basesetup').hide();
     $('#controlsinstruction').hide();
     $('#viewexposure').hide();
@@ -39,7 +38,6 @@ let startMenu = function(){
     $('#temmask').hide();
     $('#temimage').hide();
     $('#mainimage').css('background-color', 'grey');
-    $('#microscopeimage').hide();
     $('#controlsinstruction').show();
     $('#viewexposure').show();
     $('#acquireexposure').show();
