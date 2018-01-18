@@ -89,6 +89,10 @@ let mainScreen = function(){
     $('#openfiledialogue').show();
   });
 
+  $('#savebutton').on('click', function(event){
+    saveImage();
+  });
+
   $('#imagefile').on('click', function(event){
     activeWindow = 0;
     $('#openfiledialogue').hide();
