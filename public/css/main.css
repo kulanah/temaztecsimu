@@ -32,7 +32,6 @@ body{
   height: 94.09vh;
   width: 85.67vw;
   background-color: grey;
-  pointer-events: none;
 }
 
 .hidden{
