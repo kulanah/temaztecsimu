@@ -25,10 +25,12 @@ drawColumn();
 let micrographImage = './public/img/23.png';
 let micrographMag = 250000;
 let micrographWidth = 512;
+let micrographMaterial = silicon;
 if(location.search.includes('image=')){
   micrographImage = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + location.search.split('image=')[1].split('&')[0];
   micrographMag = location.search.split('mag=')[1].split('&')[0];
   micrographWidth = location.search.split('width=')[1].split('&')[0];
+  micrographMaterial = new Material('silicon', 'diamond cube', .5431, .5431, .5431, 90, 90, 90);
 }
 
 const setupbox = new Canvas(micrographImage, 'setupboxcanvas', micrographMag, micrographWidth);
