@@ -168,6 +168,7 @@ function determineValidHKL(crystalStructure, h, k, l) {
                 return false;
             }
         case "diamond cube":
+        case "Tetragonal":
             var remainder = (h + k + l) % 4;
             if((remainder === 0 && h % 2 === 0 && k % 2 === 0 && l % 2 === 0) || (h % 2 === 1 && k % 2 === 1 && l % 2 === 1)) {
                 return true;

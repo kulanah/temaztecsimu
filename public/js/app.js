@@ -30,7 +30,8 @@ if(location.search.includes('image=')){
   micrographImage = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + location.search.split('image=')[1].split('&')[0];
   micrographMag = location.search.split('mag=')[1].split('&')[0];
   micrographWidth = location.search.split('width=')[1].split('&')[0];
-  micrographMaterial = new Material('silicon', 'diamond cube', .5431, .5431, .5431, 90, 90, 90);
+  let m = location.search.split('material=')[1].split('&')[0].split('%2C');
+  micrographMaterial = new Material(m[1], m[3], m[4], m[5], m[6], m[7], m[8], m[9]);
 }
 
 const setupbox = new Canvas(micrographImage, 'setupboxcanvas', micrographMag, micrographWidth);
