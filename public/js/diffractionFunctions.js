@@ -156,12 +156,16 @@ function determineValidHKL(crystalStructure, h, k, l) {
     // Determine valid HKL values based on the crystal structure of the material
     switch(crystalStructure) {
         case "fcc":
+        case "FCC":
+        case "Face Centered Cubic":
             if((h % 2 === 0 && k % 2 === 0 && l % 2 === 0) || (h % 2 === 1 && k % 2 === 1 && l % 2 === 1)) {
                 return true;
             } else {
                 return false;
             }
         case "bcc":
+        case "BCC":
+        case "Body Centered Cubic":
             if((h + k + l) % 2 === 0) {
                 return true;
             } else {
@@ -169,6 +173,7 @@ function determineValidHKL(crystalStructure, h, k, l) {
             }
         case "diamond cube":
         case "Tetragonal":
+        case "Primitive Tetragonal":
             var remainder = (h + k + l) % 4;
             if((remainder === 0 && h % 2 === 0 && k % 2 === 0 && l % 2 === 0) || (h % 2 === 1 && k % 2 === 1 && l % 2 === 1)) {
                 return true;
