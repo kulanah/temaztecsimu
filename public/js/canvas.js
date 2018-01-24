@@ -972,6 +972,7 @@ class Canvas {
   }
 
   supervisorAlign(){
+    this.mag = this.zooms.length - 1;
     for(i = 0; i < this.zooms.length; i++){
       if(this.zooms[i] >= this.imgScale){
         this.mag = i;
