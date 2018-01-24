@@ -155,7 +155,7 @@ class Canvas {
 
   drawMainScreenValues(){
     $('#focusstepvalue').text(this.focusStep);
-    let defocusString = Math.round(this.defocus * this.imgScale / this.zooms[this.mag] * 100) / 100 + ' nm' // converts from pixels to nanometers
+    let defocusString = Math.round(this.defocus * 100) / 100 + ' nm'
     while(defocusString.length < 11){
       defocusString = ' ' + defocusString;
     }
@@ -263,10 +263,11 @@ class Canvas {
       } else {
         $('#magnificationvalue').text('  ' + this.zooms[this.mag] + ' x');
       }
+      let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
       this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-        this.imgX + this.alphaTilt * this.specimenHeight - this.defocus * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + this.defocus * Math.sin(this.imgAngle),this.imgW,this.imgH);
+        this.imgX + this.alphaTilt * this.specimenHeight - defocusPx * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);
       this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-        this.imgX + this.alphaTilt * this.specimenHeight + this.defocus * Math.cos(this.imgAngle) + this.specimenHeight, this.imgY + betaTiltImpact - this.defocus * Math.sin(this.imgAngle),this.imgW,this.imgH);  
+        this.imgX + this.alphaTilt * this.specimenHeight + defocusPx * Math.cos(this.imgAngle) + this.specimenHeight, this.imgY + betaTiltImpact - defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);  
     }
 
     this.drawHalo();
@@ -883,7 +884,8 @@ class Canvas {
       this.drawCanvas();
     } else {
       this.wobbleSavedX = this.imgX;
-      this.wobbleMax = Math.abs(this.defocus);
+      let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
+      this.wobbleMax = Math.abs(defocusPx);
       this.wobbleInterval = setInterval(this.wobbleTimeout.bind(this), 10);
     }
 
@@ -892,7 +894,8 @@ class Canvas {
 
   wobbleTimeout(){
     //reset maximum slide distance
-    this.wobbleMax = Math.abs(this.defocus);
+    let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
+    this.wobbleMax = Math.abs(defocusPx);
     if (this.wobbleRight){
       //moving to the right
       if (this.imgX < this.wobbleMax){
