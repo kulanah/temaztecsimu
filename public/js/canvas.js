@@ -124,14 +124,20 @@ class Canvas {
   };
 
   setDimensions(){
+    this.imgW = 512 / this.imgScale * this.zooms[this.mag];
+    this.imgH = this.imgW * this.img.height / this.img.width;
+
+    this.imgX = (this.selector[0].width - this.imgW) / 2;
+    this.imgY = (this.selector[0].height - this.imgH) / 2;
+
     if(randomProperties){
       this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 2;
       this.maskY = this.selector[0].height / 4  + randomValues[1] * this.selector[0].height / 2;
       this.maskR = 20 + randomValues[2] * 180;
-      this.defocus = 128 - 256 * randomValues[3];
+      this.defocus = 64 - 128 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
       this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
-      let stretchDelta = 100 - 200 * randomValues[6];
+      let stretchDelta = 200 - 400 * randomValues[6];
       this.stretchImage(stretchDelta);
     } else {
       this.maskX = this.selector[0].width / 2;
@@ -139,14 +145,8 @@ class Canvas {
       this.maskR = 64;
     }
 
-    this.imgW = 512 / this.imgScale * this.zooms[this.mag];
-    this.imgH = this.imgW * this.img.height / this.img.width;
-
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
-
-    this.imgX = (this.selector[0].width - this.imgW) / 2;
-    this.imgY = (this.selector[0].height - this.imgH) / 2;
   };
 
   drawMainScreenValues(){
