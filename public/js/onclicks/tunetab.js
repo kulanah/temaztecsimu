@@ -1,7 +1,7 @@
 'use strict';
 
 let tuneTab = function(){
-  $('#tuneexpand').on('click', function(){
+  $('#tunealignexpand').on('click', function(){
     $('#deflectorbox').show();
   });
 
@@ -29,10 +29,6 @@ let tuneTab = function(){
 };
 
 let floatStig = function(){
-  $('#floatexpand').on('click', function(){
-    $('#floatingdeflectorbox').show();
-  });
-
   // Condensor stigmator makes beam ellipse
   $('#floatcondensor').on('click', function(event){
     deactivateDA();

@@ -10,7 +10,7 @@ let zcounter = 6;
 let pageSetup = function(){
   //array of elements that we close when you click outside of the item
   //we loop thorough this later on to set this behavior on all of them
-  let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox', 'floatingdeflectorbox'];
+  let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox'];
   
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms',
@@ -50,7 +50,6 @@ let pageSetup = function(){
   });
 
   // openfiledialog gets bringToFront called on it as a draggable, below
-  // floatingdeflectorbox will already be at front due to being the child element of a draggable
   bringToFront('maindropdown');  
   bringToFront('filemenu');
   bringToFront('deflectorbox');
