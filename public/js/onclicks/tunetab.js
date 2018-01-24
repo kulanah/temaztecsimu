@@ -27,14 +27,22 @@ let tuneTab = function(){
     deactivateStigmator();    
   })
 
-  $('#deflectortab').on('click',function(){
+  $('#deflectortab').on('click', function(){
     $('#filealignments').hide();
     $('#deflectorimg').attr('src','./public/img/deflector.png');
   })
 
-  $('#filetab').on('click',function(){
+  $('#filetab').on('click', function(){
     $('#deflectorimg').attr('src','./public/img/alignmentfile.png');
     $('#filealignments').show();
+  })
+
+  $('#factoryalignment').on('click', function(){
+
+  })
+
+  $('#supervisoralignment').on('click', function(){
+    supervisorAlign();
   })
 };
 

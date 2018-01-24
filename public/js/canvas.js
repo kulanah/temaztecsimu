@@ -23,7 +23,7 @@ class Canvas {
     this.imgX = 0;
     this.imgY = 0;
     this.imgAngle = 0;
-    this.defocus = 0;    
+    this.defocus = 0;
 
     this.imgScale = scale;
     this.widthNM = wNM;
@@ -913,5 +913,63 @@ class Canvas {
 
     }
   this.drawCanvas();
+  }
+
+  supervisorAlign(){
+    for(i = 0; i < this.zooms.length; i++){
+      if(this.zooms[i] >= this.imgScale){
+        this.mag = i;
+        break;
+      }
+    }
+
+    this.imgW = 512 / this.imgScale * this.zooms[this.mag];
+    this.imgH = this.imgW * this.img.height / this.img.width;
+
+    this.imgX = (this.selector[0].width - this.imgW) / 2;
+    this.imgY = (this.selector[0].height - this.imgH) / 2;
+
+    this.maskX = this.selector[0].width / 2;
+    this.maskY = this.selector[0].height / 2;
+    this.maskR = 64;
+
+    this.pivotPointCenterX = this.maskX;
+    this.pivotPointCenterY = this.maskY;
+
+    this.imgAngle = 0;
+    this.defocus = 0;
+
+    this.beamAstigmatismX = 0;
+    this.beamAstigmatismY = 0;
+    this.beamAngle = 0;
+
+    this.haloX = 0;
+    this.haloY = 0;
+
+    this.brightnessVal = 100;
+    this.brightnessOffsetX = 0;
+    this.brightnessOffsetY = 0;
+
+    this.diffractionX = 0;
+    this.diffractionY = 0;
+    this.diffractionMag = 8;
+    this.diffractionCameraLength = 265;
+    this.diffractionRadius = 1280;
+    this.diffractionAstigmatismX = 0;
+    this.diffractionAstigmatismY = 0;
+    this.diffractionAngle = 0;
+    this.specimenThickness = 50;
+    this.c2 = 1; // variable Tony requested, affects diffraction dot size, no current way to manipulate it
+    this.alphaTilt = 0;
+    this.betaTilt = 0;
+
+    this.rotateAlpha = 0;
+    this.rotateBeta = 0;
+
+    this.jump = 64;
+    this.diffractogramAstigmatism = 1;
+    this.diffractogramAngle = 0;
+
+    this.specimenHeight = 0;
   }
 };

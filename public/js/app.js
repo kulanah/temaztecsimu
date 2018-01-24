@@ -15,7 +15,6 @@ $("img[usemap]").rwdImageMaps();
 */
 
 
-let canvasClasses = [];
 let screenshotCount = 0;
 let activeFrames = [];
 let randomProperties = true;
@@ -428,6 +427,13 @@ let resumeDA = function(){
       activateComaFreeAlignmentY();
       break;
   }
+}
+
+function supervisorAlign(){
+  setupbox.supervisorAlign();
+  openbox.supervisorAlign();
+  mainmicro.supervisorAlign();
+  updateCanvas();
 }
 
 function screenshotImage(){
