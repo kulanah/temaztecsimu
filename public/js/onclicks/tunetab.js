@@ -26,6 +26,14 @@ let tuneTab = function(){
   $('#tunenone').on('click', function(event){
     deactivateStigmator();    
   })
+
+  $('#deflectortab').on('click',function(){
+    $('#deflectorimg').attr('src','./public/img/deflector.png');
+  })
+
+  $('#filetab').on('click',function(){
+    $('#deflectorimg').attr('src','./public/img/alignmentfile.png');
+  })
 };
 
 let floatStig = function(){
