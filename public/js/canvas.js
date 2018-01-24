@@ -53,10 +53,14 @@ class Canvas {
 
     this.zooms = [2250, 3500, 4000, 4400, 6200, 8700, 9900, 13000, 15000, 26000, 34000, 38000, 43000, 63000, 86000, 125000, 175000, 250000, 350000, 400000];
     this.mag = this.zooms.length - 1;
-    for(i = 0; i < this.zooms.length; i++){
-      if(this.zooms[i] >= this.imgScale){
-        this.mag = i;
-        break;
+    if(randomProperties){
+      this.mag = Math.floor(randomValues[7] * this.zooms.length);
+    } else {
+      for(i = 0; i < this.zooms.length; i++){
+        if(this.zooms[i] >= this.imgScale){
+          this.mag = i;
+          break;
+        }
       }
     }
 
@@ -131,8 +135,8 @@ class Canvas {
     this.imgY = (this.selector[0].height - this.imgH) / 2;
 
     if(randomProperties){
-      this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 2;
-      this.maskY = this.selector[0].height / 4  + randomValues[1] * this.selector[0].height / 2;
+      this.maskX = this.selector[0].width / 2 - this.imgW / 2 + randomValues[0] * this.imgW;
+      this.maskY = this.selector[0].height / 2 - this.imgH / 2 + randomValues[1] * this.imgH;
       this.maskR = 20 + randomValues[2] * 180;
       this.defocus = 64 - 128 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
