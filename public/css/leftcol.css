@@ -245,3 +245,10 @@
 details{
   cursor: pointer;
 }
+
+#filealignments{
+  position: absolute;
+  top: 97px;
+  left: 16px;
+  line-height: 1em;
+}

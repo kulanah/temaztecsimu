@@ -28,11 +28,13 @@ let tuneTab = function(){
   })
 
   $('#deflectortab').on('click',function(){
+    $('#filealignments').hide();
     $('#deflectorimg').attr('src','./public/img/deflector.png');
   })
 
   $('#filetab').on('click',function(){
     $('#deflectorimg').attr('src','./public/img/alignmentfile.png');
+    $('#filealignments').show();
   })
 };
 
