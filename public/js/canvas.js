@@ -124,11 +124,23 @@ class Canvas {
   };
 
   setDimensions(){
+    if(randomProperties){
+      this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 2;
+      this.maskY = this.selector[0].height / 4  + randomValues[1] * this.selector[0].height / 2;
+      this.maskR = 20 + randomValues[2] * 180;
+      this.defocus = 128 - 256 * randomValues[3];
+      this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
+      this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
+      let stretchDelta = 100 - 200 * randomValues[6];
+      this.strechImage(stretchDelta);
+    } else {
+      this.maskX = this.selector[0].width / 2;
+      this.maskY = this.selector[0].height / 2;
+      this.maskR = 64;
+    }
+
     this.imgW = 512 / this.imgScale * this.zooms[this.mag];
     this.imgH = this.imgW * this.img.height / this.img.width;
-    this.maskX = this.selector[0].width / 2;
-    this.maskY = this.selector[0].height / 2;
-    this.maskR = 64;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
@@ -590,11 +602,7 @@ class Canvas {
             this.beamAstigmatismY += deltaY;
             break;
           case 'Objective':
-            this.imgW *= Math.pow(1.0005, -deltaY);
-            this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
-            this.imgH *= Math.pow(1.0005, deltaY);
-            this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, deltaY) + this.selector[0].height / 2;
-            this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
+            this.strechImage(deltaY);
             break;
           }
       } else {
@@ -634,6 +642,14 @@ class Canvas {
       }
       this.drawCanvas();
     }
+  }
+
+  strechImage(deltaY){
+    this.imgW *= Math.pow(1.0005, -deltaY);
+    this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
+    this.imgH *= Math.pow(1.0005, deltaY);
+    this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, deltaY) + this.selector[0].height / 2;
+    this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
   }
 
   handleBeamSlider(newVal){
