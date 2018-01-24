@@ -132,7 +132,7 @@ class Canvas {
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
       this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
       let stretchDelta = 100 - 200 * randomValues[6];
-      this.strechImage(stretchDelta);
+      this.stretchImage(stretchDelta);
     } else {
       this.maskX = this.selector[0].width / 2;
       this.maskY = this.selector[0].height / 2;
@@ -602,7 +602,7 @@ class Canvas {
             this.beamAstigmatismY += deltaY;
             break;
           case 'Objective':
-            this.strechImage(deltaY);
+            this.stretchImage(deltaY);
             break;
           }
       } else {
@@ -644,7 +644,7 @@ class Canvas {
     }
   }
 
-  strechImage(deltaY){
+  stretchImage(deltaY){
     this.imgW *= Math.pow(1.0005, -deltaY);
     this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
     this.imgH *= Math.pow(1.0005, deltaY);
