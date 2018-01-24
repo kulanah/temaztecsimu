@@ -429,6 +429,13 @@ let resumeDA = function(){
   }
 }
 
+function factoryAlign(){
+  setupbox.factoryAlign();
+  openbox.factoryAlign();
+  mainmicro.factoryAlign();
+  updateCanvas();
+}
+
 function supervisorAlign(){
   setupbox.supervisorAlign();
   openbox.supervisorAlign();

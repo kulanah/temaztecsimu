@@ -38,7 +38,7 @@ let tuneTab = function(){
   })
 
   $('#factoryalignment').on('click', function(){
-
+    factoryAlign();
   })
 
   $('#supervisoralignment').on('click', function(){
