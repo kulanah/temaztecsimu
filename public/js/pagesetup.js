@@ -112,14 +112,6 @@ let pageSetup = function(){
     });
   });
 
-  //Setup for the alignment box, currently only sets the tune tab one.
-  let tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
-  tunealignmentbox.drawInital();
-  tunealignmentbox.addNextButton($('#tunealignright'));
-  tunealignmentbox.addPrevButton($('#tunealignleft'));
-
-  //setup for the canvas classes
-
   if(setupbox.zooms[setupbox.mag] >= 100000){
     $('#magnificationvalue').text('  ' + setupbox.zooms[setupbox.mag] / 1000 + 'k x');
   } else {

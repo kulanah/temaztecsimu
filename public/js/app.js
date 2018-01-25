@@ -37,6 +37,13 @@ if(location.search.includes('image=')){
   micrographMaterial = new Material(m[1], m[3], m[4], m[5], m[6], m[7], m[8], m[9]);
 }
 
+//Setup for the alignment box, currently only sets the tune tab one.
+const tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
+tunealignmentbox.drawInital();
+tunealignmentbox.addNextButton($('#tunealignright'));
+tunealignmentbox.addPrevButton($('#tunealignleft'));
+
+//setup for the canvas classes
 const setupbox = new Canvas(micrographImage, 'setupboxcanvas', micrographMag, micrographWidth);
 const openbox = new Canvas(micrographImage, 'micrographboxcanvas', micrographMag, micrographWidth);
 const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas', 63000, 2932);
