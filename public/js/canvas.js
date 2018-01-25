@@ -143,8 +143,6 @@ class Canvas {
       this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
       let stretchDelta = 200 - 400 * randomValues[6];
       this.stretchImage(stretchDelta);
-      this.haloX = 10 - randomValues[8] * 20;
-      this.haloY = 10 - randomValues[9] * 20;
       this.pivotPointWidth = 20 - randomValues[10] * 40;
       this.pivotPointHeight = 100 - randomValues[11] * 200;
       this.rotateAlpha = 16 - randomValues[12] * 32;
