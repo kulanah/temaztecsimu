@@ -88,6 +88,7 @@ function lectureClicked(){
         if(!isVisible("lecturediv")){
             $("#lecturediv").show();
         }else{
+            toggleVideo('hide');
             $("#lecturediv").hide();
         }
     });
@@ -110,7 +111,7 @@ function toggleVideo(state) {
     // modified to not autoplay video
     // currently unused, included in case we decide to embed videos
     // if state == 'hide', hide. Else: show video
-    var div = document.getElementById("video");
+    var div = document.getElementById("lecturediv");
     var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
     div.style.display = state == 'hide' ? 'none' : '';
     func = state == 'hide' ? 'pauseVideo' : '';
