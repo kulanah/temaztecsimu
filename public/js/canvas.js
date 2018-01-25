@@ -754,8 +754,6 @@ class Canvas {
     xy[1] += thisIn.pivotPointCenterY;
     thisIn.maskX = xy[0];
     thisIn.maskY = xy[1];
-    thisIn.imgX = xy[0] - thisIn.imgW / 2;
-    thisIn.imgY = xy[1] - thisIn.imgH / 2;
     thisIn.drawCanvas();
   }
 
