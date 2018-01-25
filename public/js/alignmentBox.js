@@ -65,6 +65,7 @@ class AlignmentBox{
     deactivateDA();
     stigmatorActive = false;
     tuneAlignment = true;
+    $('#leftcolumnalignments').attr('src', './public/img/alignmentsdone.png')
     // Show help window for the current topic
     $('#tunehelppopup').show();
     $('#leftcolumnnotification').show();
@@ -154,6 +155,7 @@ class AlignmentBox{
   }
 
   deactivateTuneAlignment(){
+    $('#leftcolumnalignments').attr('src', './public/img/alignments.png')
     $('#tunehelppopup').hide();
     $('#leftcolumnnotification').hide();
     tuneAlignment = false;
