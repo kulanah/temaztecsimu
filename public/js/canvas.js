@@ -258,7 +258,7 @@ class Canvas {
     }
     this.context.globalAlpha = .5;
     // Block the specimen during tune alignments
-    if(tuneAlignment){
+    if(blockSpecimen){
       this.context.fillStyle = 'white';
       this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     } else {
@@ -734,12 +734,16 @@ class Canvas {
     alignmentMode = 'Pivot Point X';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
     drawInfoPanelValues();
+    blockSpecimen = true;
+    this.drawCanvas();
   }
 
   activatePivotPointY(){
     alignmentMode = 'Pivot Point Y';
     this.intervalVal = setInterval(this.setPPOffset, 80, this);
     drawInfoPanelValues();
+    blockSpecimen = true;
+    this.drawCanvas();
   }
 
   setPPOffset(thisIn){
@@ -854,6 +858,7 @@ class Canvas {
   deactivateDirectAlignments(){
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
+    blockSpecimen = false;
     diffractionMode = false;
     if(alignmentMode == 'Diffraction'){
       alignmentMode = 'None';

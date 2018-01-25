@@ -239,12 +239,16 @@ let activateGunTilt = function(){
   stigmatorActive = false;
   alignmentMode = 'Gun Tilt';
   drawInfoPanelValues();
+  blockSpecimen = true;
+  updateCanvas();
 }
 
 let activateGunShift = function(){
   stigmatorActive = false;
   alignmentMode = 'Gun Shift';
   drawInfoPanelValues();
+  blockSpecimen = true;
+  updateCanvas();
 }
 
 let activatePivotPointX = function(){
@@ -271,6 +275,8 @@ let activateBeamShift = function(){
   stigmatorActive = false;
   alignmentMode = 'Beam Shift';
   drawInfoPanelValues();
+  blockSpecimen = true;
+  updateCanvas();
 }
 
 let activateRotationCenter = function(){

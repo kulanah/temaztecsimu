@@ -13,7 +13,7 @@ let onSpecimen = true;
 let alignmentMode = 'None';
 let stigmationMode = 'None';
 let stigmatorActive = false;
-let tuneAlignment = false;
+let blockSpecimen = false;
 let screenLift = false;
 
 let clickFunctions = function(){

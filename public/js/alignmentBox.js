@@ -64,7 +64,7 @@ class AlignmentBox{
   activateTuneAlignment(){
     deactivateDA();
     stigmatorActive = false;
-    tuneAlignment = true;
+    blockSpecimen = true;
     $('#leftcolumnalignments').attr('src', './public/img/alignmentsdone.png')
     // Show help window for the current topic
     $('#tunehelppopup').show();
@@ -158,7 +158,7 @@ class AlignmentBox{
     $('#leftcolumnalignments').attr('src', './public/img/alignments.png')
     $('#tunehelppopup').hide();
     $('#leftcolumnnotification').hide();
-    tuneAlignment = false;
+    blockSpecimen = false;
     drawInfoPanelValues();
     updateCanvas();
   }
