@@ -19,7 +19,7 @@ let screenshotCount = 0;
 let activeFrames = [];
 let randomProperties = true;
 let randomValues = [];
-for(i = 0; i < 8; i++){
+for(i = 0; i < 14; i++){
   randomValues.push(Math.random());
 }
 

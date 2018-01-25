@@ -138,11 +138,17 @@ class Canvas {
       this.maskX = this.selector[0].width / 2 - this.imgW / 2 + randomValues[0] * this.imgW;
       this.maskY = this.selector[0].height / 2 - this.imgH / 2 + randomValues[1] * this.imgH;
       this.maskR = 20 + randomValues[2] * 180;
-      this.defocus = 64 - 128 * randomValues[3];
+      this.defocus = 10 - 20 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
       this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
       let stretchDelta = 200 - 400 * randomValues[6];
       this.stretchImage(stretchDelta);
+      this.haloX = 10 - randomValues[8] * 20;
+      this.haloY = 10 - randomValues[9] * 20;
+      this.pivotPointWidth = 20 - randomValues[10] * 40;
+      this.pivotPointHeight = 100 - randomValues[11] * 200;
+      this.rotateAlpha = 16 - randomValues[12] * 32;
+      this.rotateBeta = 16 - randomValues[13] * 32;
     } else {
       this.maskX = this.selector[0].width / 2;
       this.maskY = this.selector[0].height / 2;
@@ -557,7 +563,7 @@ class Canvas {
       } else {
         switch (alignmentMode){
           case 'Gun Tilt':
-            let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
+            //let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
             this.haloX += deltaX;
             break;
           case 'Gun Shift':
@@ -575,11 +581,7 @@ class Canvas {
             break;
           case 'Coma-free Alignment X':
           case 'Coma-free Alignment Y':
-            this.imgW *= Math.pow(1.0005, deltaX);
-            this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, deltaX) + this.selector[0].width / 2;
-            this.imgH *= Math.pow(1.0005, -deltaX);
-            this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, -deltaX) + this.selector[0].height / 2;
-            this.diffractogramAstigmatism *= Math.pow(1.0005, deltaX)
+            this.stretchImage(-deltaX);
             this.drawDiffractogramImages();
             break;
           case 'Screen Intensity':
@@ -613,7 +615,7 @@ class Canvas {
       } else {
         switch (alignmentMode){
           case 'Gun Tilt':
-            let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
+            //let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
             this.haloY += deltaY;
             break;
           case 'Gun Shift':
@@ -631,11 +633,7 @@ class Canvas {
             break;
           case 'Coma-free Alignment X':
           case 'Coma-free Alignment Y':
-            this.imgW *= Math.pow(1.0005, -deltaY);
-            this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
-            this.imgH *= Math.pow(1.0005, deltaY);
-            this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, deltaY) + this.selector[0].height / 2;
-            this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
+            this.stretchImage(deltaY);
             this.drawDiffractogramImages();
             break;
           case 'Screen Intensity':
