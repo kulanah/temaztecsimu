@@ -109,7 +109,6 @@ function notepadClicked(){
 function toggleVideo(state) {
     // function by Rob W found at https://stackoverflow.com/questions/8667882/how-to-pause-a-youtube-player-when-hiding-the-iframe
     // modified to not autoplay video
-    // currently unused, included in case we decide to embed videos
     // if state == 'hide', hide. Else: show video
     var div = document.getElementById("lecturediv");
     var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
