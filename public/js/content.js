@@ -17,6 +17,7 @@ function prepareContent(){
     closeNotes();
     copyNotes();
     saveNotes();
+    shoOverview();
     showCh2Lecture();
     showCh5Lecture();
 }
@@ -185,6 +186,12 @@ function saveNotes(){
 function destroyClickedElement(event)
 {
     document.body.removeChild(event.target);
+}
+
+function shoOverview(){
+    $('#overviewbtn').click(function(){
+        $('#temlecture').attr('src', './public/video/TEMOverview.mp4')
+    })
 }
 
 function showCh2Lecture(){
