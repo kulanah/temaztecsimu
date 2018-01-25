@@ -174,6 +174,9 @@ class AlignmentBox{
         if (this.currentTopic == this.jsonObj[this.currentLesson].topics.length - 1){
           this.done = true;
           this.drawLocation.text('You have completed the ' + this.jsonObj[this.currentLesson].name + ' alignments.');
+          this.deactivateTuneAlignment();
+          this.fillCurrent();
+          return;
         } else {
           if(!this.doneWithTopic && this.currentLesson == 0 && this.currentTopic == 2 && this.currentStep == 2){
             // Repeat the second and third steps of gun shift
