@@ -53,15 +53,14 @@ class Canvas {
 
     this.zooms = [2250, 3500, 4000, 4400, 6200, 8700, 9900, 13000, 15000, 26000, 34000, 38000, 43000, 63000, 86000, 125000, 175000, 250000, 350000, 400000];
     this.mag = this.zooms.length - 1;
-    if(randomProperties){
-      this.mag = Math.floor(randomValues[7] * this.zooms.length);
-    } else {
-      for(i = 0; i < this.zooms.length; i++){
-        if(this.zooms[i] >= this.imgScale){
-          this.mag = i;
-          break;
-        }
+    for(i = 0; i < this.zooms.length; i++){
+      if(this.zooms[i] >= this.imgScale){
+        this.mag = i;
+        break;
       }
+    }
+    if(randomProperties){
+      this.mag = Math.min(Math.max(this.mag + 2 - Math.floor(randomValues[7] * 5), 0), this.zooms.length - 1);
     }
 
     this.focusStep = 3;
