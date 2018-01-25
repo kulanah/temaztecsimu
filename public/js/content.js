@@ -17,7 +17,8 @@ function prepareContent(){
     closeNotes();
     copyNotes();
     saveNotes();
-    shoOverview();
+    showOverview();
+    showWIP();
     showCh2Lecture();
     showCh5Lecture();
 }
@@ -104,7 +105,7 @@ function notepadClicked(){
     });
 }
 
-/*function toggleVideo(state) {
+function toggleVideo(state) {
     // function by Rob W found at https://stackoverflow.com/questions/8667882/how-to-pause-a-youtube-player-when-hiding-the-iframe
     // modified to not autoplay video
     // currently unused, included in case we decide to embed videos
@@ -114,7 +115,7 @@ function notepadClicked(){
     div.style.display = state == 'hide' ? 'none' : '';
     func = state == 'hide' ? 'pauseVideo' : '';
     iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
-}*/
+}
 
 // Disable features in certain modes, direct users seeking those features to learning mode
 function learningModePopup(){
@@ -188,8 +189,14 @@ function destroyClickedElement(event)
     document.body.removeChild(event.target);
 }
 
-function shoOverview(){
+function showOverview(){
     $('#overviewbtn').click(function(){
+        $('#temlecture').attr('src', 'https://www.youtube.com/embed/DL0gA-sE2Xk?enablejsapi=1')
+    })
+}
+
+function showWIP(){
+    $('#wipbtn').click(function(){
         $('#temlecture').attr('src', './public/video/TEMOverview.mp4')
     })
 }
