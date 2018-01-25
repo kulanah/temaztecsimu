@@ -42,6 +42,7 @@ const tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmen
 tunealignmentbox.drawInital();
 tunealignmentbox.addNextButton($('#tunealignright'));
 tunealignmentbox.addPrevButton($('#tunealignleft'));
+tunealignmentbox.addDoneButton($('#tunealigndone'));
 
 //setup for the canvas classes
 const setupbox = new Canvas(micrographImage, 'setupboxcanvas', micrographMag, micrographWidth);
@@ -434,14 +435,6 @@ let resumeDA = function(){
       activateComaFreeAlignmentY();
       break;
   }
-}
-
-function deactivateTuneAlignment(){
-  $('#tunehelppopup').hide();
-  $('#leftcolumnnotification').hide();
-  tuneAlignment = false;
-  drawInfoPanelValues();
-  updateCanvas();
 }
 
 function factoryAlign(){

@@ -14,7 +14,7 @@ let tabs = function(){
     if(next === 2){
       //tunealignmentbox.activateTuneAlignment();
     } else {
-      deactivateTuneAlignment();
+      tunealignmentbox.deactivateTuneAlignment();
     }
   };
 

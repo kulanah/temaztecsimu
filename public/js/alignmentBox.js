@@ -146,9 +146,17 @@ class AlignmentBox{
         }
         break;
       default:
-        deactivateTuneAlignment();
+        this.deactivateTuneAlignment();
         break;
     }
+    drawInfoPanelValues();
+    updateCanvas();
+  }
+
+  deactivateTuneAlignment(){
+    $('#tunehelppopup').hide();
+    $('#leftcolumnnotification').hide();
+    tuneAlignment = false;
     drawInfoPanelValues();
     updateCanvas();
   }
@@ -237,6 +245,12 @@ class AlignmentBox{
   addNextButton(selector){
     selector.on('click', function(){
       this.nextStep();
+    }.bind(this));
+  }
+
+  addDoneButton(selector){
+    selector.on('click', function(){
+      this.deactivateTuneAlignment();
     }.bind(this));
   }
 
