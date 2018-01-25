@@ -11,6 +11,9 @@ let tabs = function(){
     $('#' + tabsList[currentTab]).hide();
     $('#' + tabsList[next]).show();
     currentTab = next;
+    if(next !== 2){
+      deactivateTuneAlignment();
+    }
   };
 
   $('.rightbutton').on('click', function(event){

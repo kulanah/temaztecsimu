@@ -429,6 +429,14 @@ let resumeDA = function(){
   }
 }
 
+function deactivateTuneAlignment(){
+  $('#tunehelppopup').hide();
+  $('#leftcolumnnotification').hide();
+  tuneAlignment = false;
+  drawInfoPanelValues();
+  updateCanvas();
+}
+
 function factoryAlign(){
   setupbox.factoryAlign();
   openbox.factoryAlign();

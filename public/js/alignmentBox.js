@@ -146,9 +146,7 @@ class AlignmentBox{
         }
         break;
       default:
-        $('#tunehelppopup').hide();
-        $('#leftcolumnnotification').hide();
-        tuneAlignment = false;
+        deactivateTuneAlignment();
         break;
     }
     drawInfoPanelValues();
