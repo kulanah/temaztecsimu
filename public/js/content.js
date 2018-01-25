@@ -88,8 +88,8 @@ function lectureClicked(){
         if(!isVisible("lecturediv")){
             $("#lecturediv").show();
         }else{
-            toggleVideo('hide');
             $("#lecturediv").hide();
+            toggleVideo('hide');
         }
     });
 }
