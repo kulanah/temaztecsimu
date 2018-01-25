@@ -197,7 +197,7 @@ function showOverview(){
 
 function showWIP(){
     $('#wipbtn').click(function(){
-        $('#temlecture').attr('src', './public/video/TEMOverview.mp4')
+        $('#temlecture').attr('src', 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/TEMOverviewFixed.mp4')
     })
 }
 
