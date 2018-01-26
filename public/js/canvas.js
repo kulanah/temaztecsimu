@@ -280,7 +280,7 @@ class Canvas {
   };
 
   zoom(delta){
-    if (diffractionMode && this == setupbox){
+    if (diffractionMode && this != mainmicro){
       if (delta > 0) {
         if (this.diffractionMag < this.diffractionZooms.length - 1){
           this.diffractionMag++;
