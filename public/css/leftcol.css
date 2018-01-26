@@ -252,4 +252,5 @@ details{
   left: 16px;
   line-height: 1em;
   list-style-type: none;
+  cursor: pointer;
 }
