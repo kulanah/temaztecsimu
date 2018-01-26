@@ -60,7 +60,7 @@ class Canvas {
       }
     }
     if(randomProperties){
-      this.mag = Math.min(Math.max(this.mag + 2 - Math.floor(randomValues[7] * 5), 0), this.zooms.length - 1);
+      this.mag = Math.min(Math.max(this.mag + 2 - Math.floor(randomValues[7] * 5), 0), this.zooms.length - 1); // pick a valid mag within two steps
     }
 
     this.focusStep = 3;
