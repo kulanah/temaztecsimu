@@ -12,6 +12,7 @@ let tabs = function(){
     $('#' + tabsList[next]).show();
     currentTab = next;
     if(next === 2){
+      // the following line activates tune alignment on switching to the tab - probably not desirable behavior?
       //tunealignmentbox.activateTuneAlignment();
     } else {
       tunealignmentbox.deactivateTuneAlignment();

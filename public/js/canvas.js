@@ -157,7 +157,7 @@ class Canvas {
 
   drawMainScreenValues(){
     $('#focusstepvalue').text(this.focusStep);
-    let defocusString = this.defocus.toFixed(2) + ' nm'
+    let defocusString = this.defocus.toFixed(2) + ' nm';
     while(defocusString.length < 11){
       defocusString = ' ' + defocusString;
     }
