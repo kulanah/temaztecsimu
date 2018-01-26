@@ -415,7 +415,9 @@ class Canvas {
     let flag;
     if (this.startTarget == 'buttonrollerl'){
       this.maskX += deltaX * beamStepSize;
+      this.pivotPointCenterX += deltaX * beamStepSize;
       this.maskY += deltaY * beamStepSize;
+      this.pivotPointCenterY += deltaY * beamStepSize;
       flag = 1;
     } else {
       this.imgX += (deltaX * Math.cos(this.imgAngle) + deltaY * Math.sin(this.imgAngle)) * stageStepSize;
@@ -566,6 +568,7 @@ class Canvas {
           case 'Gun Shift':
           case 'Beam Shift':
             this.maskX += deltaX;
+            this.pivotPointCenterX += deltaX;
             break;
           case 'Pivot Point X':
             this.pivotPointWidth += deltaX / 3;
@@ -585,6 +588,7 @@ class Canvas {
             this.brightnessOffsetX += deltaX * .1;
             this.brightnessVal = 100 - Math.abs(this.brightnessOffsetX) - Math.abs(this.brightnessOffsetY);
             this.maskX += deltaX * .1;
+            this.pivotPointCenterX += deltaX * .1;
             break;
         }
       }
@@ -618,6 +622,7 @@ class Canvas {
           case 'Gun Shift':
           case 'Beam Shift':        
             this.maskY += deltaY;
+            this.pivotPointCenterY += deltaY;
             break;
           case 'Pivot Point X':
             this.pivotPointHeight += deltaY;
@@ -637,6 +642,7 @@ class Canvas {
             this.brightnessOffsetY += deltaY * .1;
             this.brightnessVal = 100 - Math.abs(this.brightnessOffsetX) - Math.abs(this.brightnessOffsetY);
             this.maskY += deltaY * .1;
+            this.pivotPointCenterY += deltaY * .1;
             break;
         }
       }
@@ -784,6 +790,7 @@ class Canvas {
 
   jumpLeftRight(thisIn){
     thisIn.maskX += thisIn.jump;
+    thisIn.pivotPointCenterX += thisIn.jump;
     thisIn.jump = -thisIn.jump;
     thisIn.drawCanvas();
   }
@@ -797,6 +804,7 @@ class Canvas {
 
   jumpUpDown(thisIn){
     thisIn.maskY += thisIn.jump;
+    thisIn.pivotPointCenterY += thisIn.jump;
     thisIn.jump = -thisIn.jump;
     thisIn.drawCanvas();
   }
@@ -851,6 +859,8 @@ class Canvas {
   resetPosition(){
     this.maskX = this.selector[0].width / 2;
     this.maskY = this.selector[0].height / 2;
+    this.pivotPointCenterX = this.selector[0].width / 2;
+    this.pivotPointCenterY = this.selector[0].height / 2;
     this.drawCanvas();
   }
 
