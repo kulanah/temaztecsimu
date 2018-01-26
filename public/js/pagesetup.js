@@ -112,12 +112,21 @@ let pageSetup = function(){
     });
   });
 
+  // Set magnification and spot size displays based on initial values
   if(setupbox.zooms[setupbox.mag] >= 100000){
     $('#magnificationvalue').text('  ' + setupbox.zooms[setupbox.mag] / 1000 + 'k x');
   } else {
     $('#magnificationvalue').text('  ' + setupbox.zooms[setupbox.mag] + ' x');
   }
   $('#spotsizevalue').text(' ' + $('#beamrange').val());
+
+  // Code to display defocus on page load only works if defocus is set as part of canvas construction
+  /*let defocusString = setupbox.defocus.toFixed(2) + ' nm';
+  while(defocusString.length < 11){
+    defocusString = ' ' + defocusString;
+  }
+  defocusString = 'Defoc.:' + defocusString;
+  $('#defocusvalue').text(defocusString);*/
 
   // Solution to have cursor adjust only in appropriate area for resizeable elements found at
   // https://stackoverflow.com/questions/9932569/css-to-change-the-cursor-style-of-the-resize-button-on-a-textarea by SpYk3HH
