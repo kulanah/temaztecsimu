@@ -254,12 +254,13 @@ class Canvas {
     } else {
       betaTiltImpact = this.betaTilt * this.specimenHeight;
     }
-    this.context.globalAlpha = .5;
+    this.context.globalAlpha = 1;
+    this.context.fillStyle = 'white';
+    this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     // Block the specimen during tune alignments
     if(blockSpecimen){
-      this.context.fillStyle = 'white';
-      this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     } else {
+      this.context.globalAlpha = .5;
       if(this.zooms[this.mag] >= 100000){
         $('#magnificationvalue').text('  ' + this.zooms[this.mag] / 1000 + 'k x');
       } else {
