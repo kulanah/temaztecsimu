@@ -29,7 +29,7 @@ let tuneTab = function(){
 
   $('#deflectortab').on('click', function(){
     $('#filealignments').hide();
-    $('#deflectorimg').attr('src','./public/img/deflector.png');
+    $('#deflectorimg').attr('src','./public/img/Deflector.png');
   })
 
   $('#filetab').on('click', function(){
