@@ -324,6 +324,8 @@ class Canvas {
     this.imgW *= zoomFactor;
     this.imgH *= zoomFactor;
     this.imgX = (this.imgX - this.selector[0].width / 2) * zoomFactor + this.selector[0].width / 2;
+    this.wobbleSavedX = (this.wobbleSavedX - this.selector[0].width / 2) * zoomFactor + this.selector[0].width / 2;
+    //this.wobbleMax = Math.abs(defocusPx) + this.wobbleSavedX;
     this.imgY = (this.imgY - this.selector[0].height / 2) * zoomFactor + this.selector[0].height / 2;
     this.haloX *= zoomFactor;
     this.haloY *= zoomFactor;
@@ -893,7 +895,7 @@ class Canvas {
     } else {
       this.wobbleSavedX = this.imgX;
       let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
-      this.wobbleMax = Math.abs(defocusPx);
+      this.wobbleMax = Math.abs(defocusPx) + this.wobbleSavedX;
       this.wobbleInterval = setInterval(this.wobbleTimeout.bind(this), 10);
     }
 
@@ -903,18 +905,18 @@ class Canvas {
   wobbleTimeout(){
     //reset maximum slide distance
     let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
-    this.wobbleMax = Math.abs(defocusPx);
+    this.wobbleMax = Math.abs(defocusPx) + this.wobbleSavedX;
     if (this.wobbleRight){
       //moving to the right
       if (this.imgX < this.wobbleMax){
-        this.imgX += this.wobbleMax / this.wobbleSpeed;
+        this.imgX += Math.abs(defocusPx) / this.wobbleSpeed;
       } else {
         this.wobbleRight = false;
       }
     } else {
       //moving to the left 
       if (this.imgX > -this.wobbleMax){
-        this.imgX -= this.wobbleMax / this.wobbleSpeed;
+        this.imgX -= Math.abs(defocusPx) / this.wobbleSpeed;
       } else {
         this.wobbleRight = true;
       }
