@@ -157,7 +157,7 @@ class Canvas {
 
   drawMainScreenValues(){
     $('#focusstepvalue').text(this.focusStep);
-    let defocusString = Math.round(this.defocus * 100) / 100 + ' nm'
+    let defocusString = this.defocus.toFixed(2) + ' nm'
     while(defocusString.length < 11){
       defocusString = ' ' + defocusString;
     }
@@ -339,7 +339,7 @@ class Canvas {
   };
 
   focus(delta){
-    this.defocus += delta * this.focusStep * .1;
+    this.defocus += delta * this.focusStep * .01;
     this.drawCanvas();
   };
 
