@@ -98,8 +98,10 @@ turboLoop.addEventListener('timeupdate', function(){
 let highTensionWindow = function(){
   let kvSlide = function(){
     if (kvVal == 0){
+      $('#leftcolumntension').attr('src', './public/img/hightension.png');
       kvIncrease();
     } else if (kvVal == 200){
+      $('#leftcolumntension').attr('src', './public/img/hightensiondone.png');
       kvDecrease();
     }
   };
@@ -109,8 +111,6 @@ let highTensionWindow = function(){
       kvVal += 1;
       $('#kvval').text(kvVal + ' kV');
       setTimeout(kvIncrease, 300);
-    } else {
-      $('#leftcolumntension').attr('src', './public/img/hightension.png');
     }
   };
 
@@ -119,8 +119,6 @@ let highTensionWindow = function(){
       kvVal -= 1;
       $('#kvval').text(kvVal + ' kV');
       setTimeout(kvDecrease, 300);
-    } else {
-      $('#leftcolumntension').attr('src', './public/img/hightensiondone.png');
     }
   };
 
