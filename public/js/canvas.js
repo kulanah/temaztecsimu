@@ -123,6 +123,8 @@ class Canvas {
     this.wobbleSpeed = 20;
     this.wobbleInterval;
     this.wobbleSavedX;
+
+    this.drawCanvas();
   };
 
   setDimensions(){
@@ -182,7 +184,7 @@ class Canvas {
       return;
     }
 
-    if (this == setupbox){
+    if (this.selector === '#setupboxcanvas'){
       if(screenLift){
         this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
         this.glowSelector[0].getContext('2d').clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
@@ -723,7 +725,7 @@ class Canvas {
   //this function is used darken the screen at large beam sizes.
   drawShade(context){
     let totalRadius = this.calculateRadius();
-    if(this == openbox){
+    if(this.selector === '#micrographboxcanvas'){
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
