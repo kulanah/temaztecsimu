@@ -14,6 +14,7 @@ turboLoop.loop = true;
 let turboStop = new Audio('./public/audio/Turbo_off.wav');
 let firstTurbo = true;
 let highTension = true;
+let kVChanging = false;
 
 let setupTab = function(){
   vacuumWindow();
@@ -97,34 +98,46 @@ turboLoop.addEventListener('timeupdate', function(){
 
 let highTensionWindow = function(){
   let kvSlide = function(){
-    if (kvVal == 0){
+    if (!highTension){
       $('#leftcolumntension').attr('src', './public/img/hightension.png');
       $('#leftcolumnfegcontrol').attr('src', './public/img/fegcontrol.png');
       highTension = true;
-      updateCanvas();
-      kvIncrease();
-    } else if (kvVal == 200){
+      if(!kVChanging){
+        kvIncrease();
+      }
+    } else {
       $('#leftcolumntension').attr('src', './public/img/hightensiondone.png');
       $('#leftcolumnfegcontrol').attr('src', './public/img/fegcontrolinactive.png');
       highTension = false;
-      updateCanvas();
-      kvDecrease();
+      if(!kVChanging){
+        kvDecrease();
+      }
     }
+    updateCanvas();
+    kVChanging = true;
   };
 
   let kvIncrease = function(){
-    if (kvVal < 200){
+    if(!highTension){
+      setTimeout(kvDecrease, 300);
+    } else if (kvVal < 200){
       kvVal += 1;
       $('#kvval').text(kvVal + ' kV');
       setTimeout(kvIncrease, 300);
+    } else {
+      kVChanging = false;
     }
   };
 
   let kvDecrease = function(){
-    if (kvVal > 0){
+    if(highTension){
+      setTimeout(kvIncrease, 300)
+    } else if (kvVal > 0){
       kvVal -= 1;
       $('#kvval').text(kvVal + ' kV');
       setTimeout(kvDecrease, 300);
+    } else {
+      kVChanging = false;
     }
   };
 
