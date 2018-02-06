@@ -13,7 +13,7 @@ let turboLoop = new Audio('./public/audio/TurboLoop.wav');
 turboLoop.loop = true;
 let turboStop = new Audio('./public/audio/Turbo_off.wav');
 let firstTurbo = true;
-
+let highTension = true;
 
 let setupTab = function(){
   vacuumWindow();
@@ -26,21 +26,21 @@ let vacuumWindow = function(){
     if (colopen){
       if (turboon){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedturboon.png');
-        $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
       } else {
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
-        $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
       }
+      $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
       colopen = false;
+      updateCanvas();
     } else {
       if (turboon){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopenturboon.png');
-        $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
       } else {
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopen.png');
-        $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
       }
+      $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
       colopen = true;
+      updateCanvas();
     }
   });
 
@@ -99,9 +99,15 @@ let highTensionWindow = function(){
   let kvSlide = function(){
     if (kvVal == 0){
       $('#leftcolumntension').attr('src', './public/img/hightension.png');
+      $('#leftcolumnfegcontrol').attr('src', './public/img/fegcontrol.png');
+      highTension = true;
+      updateCanvas();
       kvIncrease();
     } else if (kvVal == 200){
       $('#leftcolumntension').attr('src', './public/img/hightensiondone.png');
+      $('#leftcolumnfegcontrol').attr('src', './public/img/fegcontrolinactive.png');
+      highTension = false;
+      updateCanvas();
       kvDecrease();
     }
   };

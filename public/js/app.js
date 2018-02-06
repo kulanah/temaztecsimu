@@ -14,7 +14,6 @@ $("img[usemap]").rwdImageMaps();
   
 */
 
-
 let screenshotCount = 0;
 let activeFrames = [];
 let randomProperties = true;
