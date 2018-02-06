@@ -725,7 +725,7 @@ class Canvas {
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
-    context.globalAlpha = 0 + (0.0037 * totalRadius);
+    context.globalAlpha = Math.log10(totalRadius) * 500 / extractVal;
     context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
     context.globalAlpha = 1;
