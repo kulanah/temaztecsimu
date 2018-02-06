@@ -127,7 +127,8 @@ class Canvas {
 
   setDimensions(){
     this.imgW = 512 / this.imgScale * this.zooms[this.mag];
-    this.imgH = this.imgW * this.img.height / this.img.width;
+    this.imgH = this.imgW; //square image allows set dimensions on page load
+    //this.imgH = this.imgW * this.img.height / this.img.width; //maintaining aspect ratio requires set dimension to wait for image to load
 
     this.imgX = (this.selector[0].width - this.imgW) / 2;
     this.imgY = (this.selector[0].height - this.imgH) / 2;
