@@ -152,6 +152,7 @@ let fegControlWindow = function(){
       extractVal += 100;
       fegVal += (3/5);
       $('#extractVal').text(extractVal + " V");
+      updateCanvas();
     }
   });
 
@@ -160,6 +161,7 @@ let fegControlWindow = function(){
       extractVal -= 100;
       fegVal -= (3/5);
       $('#extractVal').text(extractVal + " V");
+      updateCanvas();
     }
   });
 
