@@ -174,7 +174,8 @@ class Canvas {
     this.drawMainScreenValues();
     this.context.save();
     if(!colopen || !highTension){
-      this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
+      this.context.fillStyle = 'black';
+      this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
       this.glowSelector[0].getContext('2d').clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
       this.context.restore();
       return;
