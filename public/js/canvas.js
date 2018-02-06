@@ -93,7 +93,10 @@ class Canvas {
 
     const minBeamRadius = 4;
 
-    this.setDimensions();
+    this.img.onload = function(){
+      this.parentThis.setDimensions();
+      this.parentThis.drawCanvas();
+    };
 
     this.diffractionX = 0;
     this.diffractionY = 0;
@@ -121,14 +124,11 @@ class Canvas {
     this.wobbleSpeed = 20;
     this.wobbleInterval;
     this.wobbleSavedX;
-
-    this.drawCanvas();
   };
 
   setDimensions(){
     this.imgW = 512 / this.imgScale * this.zooms[this.mag];
-    this.imgH = this.imgW; //square image allows set dimensions on page load
-    //this.imgH = this.imgW * this.img.height / this.img.width; //maintaining aspect ratio requires set dimension to wait for image to load
+    this.imgH = this.imgW * this.img.height / this.img.width;
 
     this.imgX = (this.selector[0].width - this.imgW) / 2;
     this.imgY = (this.selector[0].height - this.imgH) / 2;
@@ -182,7 +182,7 @@ class Canvas {
       return;
     }
 
-    if (this.selector === '#setupboxcanvas'){
+    if (this == setupbox){
       if(screenLift){
         this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
         this.glowSelector[0].getContext('2d').clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
@@ -723,7 +723,7 @@ class Canvas {
   //this function is used darken the screen at large beam sizes.
   drawShade(context){
     let totalRadius = this.calculateRadius();
-    if(this.selector === '#micrographboxcanvas'){
+    if(this == openbox){
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
