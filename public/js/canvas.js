@@ -95,7 +95,9 @@ class Canvas {
 
     this.img.onload = function(){
       this.parentThis.setDimensions();
-      this.parentThis.drawCanvas();
+      if(this.parentThis === setupbox){
+        this.parentThis.drawCanvas();
+      }
     };
 
     this.diffractionX = 0;
