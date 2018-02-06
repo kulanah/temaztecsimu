@@ -25,22 +25,22 @@ let setupTab = function(){
 let vacuumWindow = function(){
   $('#colvalves').on('click', function(event){
     if (colopen){
+      colopen = false;
       if (turboon){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedturboon.png');
       } else {
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
       }
       $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
-      colopen = false;
       updateCanvas();
     } else {
+      colopen = true;
       if (turboon){
-        $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopenturboon.png');
+        $('#turbo').trigger('click');
       } else {
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopen.png');
       }
       $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
-      colopen = true;
       updateCanvas();
     }
   });
