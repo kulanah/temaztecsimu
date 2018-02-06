@@ -93,9 +93,7 @@ class Canvas {
 
     const minBeamRadius = 4;
 
-    this.img.onload = function(){
-      this.parentThis.setDimensions();
-    };
+    this.setDimensions();
 
     this.diffractionX = 0;
     this.diffractionY = 0;
