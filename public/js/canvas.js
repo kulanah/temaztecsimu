@@ -136,8 +136,8 @@ class Canvas {
     this.imgY = (this.selector[0].height - this.imgH) / 2;
 
     if(randomProperties){
-      this.maskX = this.selector[0].width / 2 - this.imgW / 2 + randomValues[0] * this.imgW;
-      this.maskY = this.selector[0].height / 2 - this.imgH / 2 + randomValues[1] * this.imgH;
+      this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 2;
+      this.maskY = this.selector[0].height / 4 + randomValues[1] * this.selector[0].height / 2;
       this.maskR = 20 + randomValues[2] * 180;
       this.defocus = 10 - 20 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
