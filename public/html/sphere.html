@@ -33,6 +33,13 @@
       scene.add( circle );
       circle.rotation.x = -Math.PI / 2 + .3;
 
+      var geometry = new THREE.BoxGeometry(.1);
+			var material = new THREE.MeshBasicMaterial( { color: 'green' } );
+			var tilt = new THREE.Mesh( geometry, material );
+      scene.add( tilt );
+      tilt.rotation.x = .3;
+      tilt.rotation.z = 1
+
       camera.position.z = 5;
       renderer.render(scene, camera);
 
