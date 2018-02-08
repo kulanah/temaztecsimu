@@ -20,6 +20,7 @@
 			var material = new THREE.MeshBasicMaterial( { color: 'silver', wireframe: true } );
 			var sphere = new THREE.Mesh( geometry, material );
       scene.add( sphere );
+      sphere.rotation.x = .3;
       
       var geometry = new THREE.CylinderGeometry(.01, .01, 10);
 			var material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
@@ -30,7 +31,7 @@
 			var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 			var circle = new THREE.Mesh( geometry, material );
       scene.add( circle );
-      circle.rotation.x = -1.2;
+      circle.rotation.x = -Math.PI / 2 + .3;
 
       camera.position.z = 5;
       renderer.render(scene, camera);
@@ -39,7 +40,7 @@
 			var animate = function () {
 				requestAnimationFrame( animate );
 
-				//sphere.rotation.x += 0.1;
+				//sphere.rotation.x += 0.01;
 				sphere.rotation.y += 0.01;
 
 				renderer.render(scene, camera);
