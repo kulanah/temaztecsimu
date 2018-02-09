@@ -77,12 +77,11 @@
 				//sphere.rotation.x += 0.01;
         sphere.rotation.y += 0.01;
         tilt.rotation.y += 0.01;
-        normal.rotation.y += 0.01
-        PS.rotation.y += 0.01
+        normal.rotation.y += 0.01;
+        PS.rotation.y += 0.01;
         if(mouseDown){
-          tilt.rotation.z += .01
+          tilt.rotation.z = (tilt.rotation.z + .01) % (Math.PI);
           normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
-          PS.rotation.z = Math.atan(Math.tan(normal.rotation.z) / 2);
           let theta = Math.PI / 2 - normal.rotation.z;
           PS.rotation.z = Math.PI / 2 - Math.atan((Math.sin(theta) + 1) / Math.cos(theta));
         }
