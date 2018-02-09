@@ -54,8 +54,11 @@
 			var PS = new THREE.Mesh( geometry, material );
       scene.add( PS );
       PS.rotation.x = .3;
-      PS.rotation.z = Math.atan(Math.tan(normal.rotation.z) / 2);
       PS.position.y = -1;
+
+      let theta = Math.PI / 2 - normal.rotation.z;
+      PS.rotation.z = Math.PI / 2 - Math.atan((Math.sin(theta) + 1) / Math.cos(theta));
+
 
       camera.position.z = 5;
       renderer.render(scene, camera);
@@ -80,6 +83,8 @@
           tilt.rotation.z += .01
           normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
           PS.rotation.z = Math.atan(Math.tan(normal.rotation.z) / 2);
+          let theta = Math.PI / 2 - normal.rotation.z;
+          PS.rotation.z = Math.PI / 2 - Math.atan((Math.sin(theta) + 1) / Math.cos(theta));
         }
 
 				renderer.render(scene, camera);
