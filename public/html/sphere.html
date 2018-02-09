@@ -16,7 +16,7 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
-			var geometry = new THREE.SphereGeometry(1.2);
+			var geometry = new THREE.SphereGeometry();
 			var material = new THREE.MeshBasicMaterial( { color: 'silver', wireframe: true } );
 			var sphere = new THREE.Mesh( geometry, material );
       scene.add( sphere );
@@ -47,7 +47,6 @@
 			var normal = new THREE.Mesh( geometry, material );
       scene.add( normal );
       normal.rotation.x = .3;
-      normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
 
       geometry = new THREE.CylinderGeometry(.01, .01, 2.1);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
@@ -56,11 +55,7 @@
       PS.rotation.x = .3;
       PS.position.y = -1;
 
-      let theta = Math.PI / 2 - normal.rotation.z;
-      let a = Math.cos(theta);
-      let b = Math.sin(theta);
-      PS.rotation.z = Math.PI / 2 - Math.atan((Math.sin(theta) + 1) / Math.cos(theta));
-      PS.scale.y = Math.sqrt(a**2 + (1 + b)**2);
+      drawDeflection();
 
       camera.position.z = 5;
       renderer.render(scene, camera);
@@ -83,16 +78,20 @@
         PS.rotation.y += 0.01;
         if(mouseDown){
           tilt.rotation.z = (tilt.rotation.z + .01) % (Math.PI);
-          normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
-          theta = Math.PI / 2 - normal.rotation.z;
-          a = Math.cos(theta);
-          b = Math.sin(theta);
-          PS.rotation.z = Math.PI / 2 - Math.atan((Math.sin(theta) + 1) / Math.cos(theta));
-          PS.scale.y = Math.sqrt(a**2 + (1 + b)**2);
+          drawDeflection();
         }
 
 				renderer.render(scene, camera);
-			};
+      };
+      
+      function drawDeflection(){
+          normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
+          let theta = Math.PI / 2 - normal.rotation.z;
+          let a = Math.cos(theta);
+          let b = Math.sin(theta);
+          PS.rotation.z = Math.PI / 2 - Math.atan((b + 1) / a);
+          PS.scale.y = Math.sqrt(a**2 + (1 + b)**2);
+      }
 
 			animate();
 		</script>
