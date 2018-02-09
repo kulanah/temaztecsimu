@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
 		<script>
 			var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera( 70, window.innerWidth/window.innerHeight, 0.01, 10 );
+			var camera = new THREE.PerspectiveCamera( 70, window.innerWidth/window.innerHeight, 0.01, 1000 );
 
 			var renderer = new THREE.WebGLRenderer({ antialias: true });
 			renderer.setSize( window.innerWidth, window.innerHeight );
@@ -27,6 +27,7 @@
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
 			var beam = new THREE.Mesh( geometry, material );
       scene.add( beam );
+      beam.rotation.x = .3;
       
       geometry = new THREE.CircleGeometry(1.2,64);
 			material = new THREE.MeshBasicMaterial( { color: 0x001100 } );
@@ -41,16 +42,18 @@
       tilt.rotation.x = .3;
       tilt.rotation.z = 1
 
-      geometry = new THREE.CylinderGeometry(.01, .01, 2.4);
+      geometry = new THREE.CylinderGeometry(.01, .01, 99);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
 			var normal = new THREE.Mesh( geometry, material );
       scene.add( normal );
+      normal.rotation.x = .3;
       normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
 
-      geometry = new THREE.CylinderGeometry(.01, .01, 4.4);
+      geometry = new THREE.CylinderGeometry(.01, .01, 99);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
 			var PS = new THREE.Mesh( geometry, material );
       scene.add( PS );
+      PS.rotation.x = .3;
       PS.rotation.z = Math.atan(Math.tan(normal.rotation.z) / 2);
       PS.position.y = -1;
 
