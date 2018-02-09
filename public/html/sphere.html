@@ -21,34 +21,63 @@
 			var sphere = new THREE.Mesh( geometry, material );
       scene.add( sphere );
       sphere.rotation.x = .3;
+      sphere.rotation.y = .3;
       
-      var geometry = new THREE.CylinderGeometry(.01, .01, 10);
-			var material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
+      geometry = new THREE.CylinderGeometry(.01, .01, 10);
+			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
 			var beam = new THREE.Mesh( geometry, material );
       scene.add( beam );
       
-      var geometry = new THREE.CircleGeometry(1.2,64);
-			var material = new THREE.MeshBasicMaterial( { color: 0x001100 } );
+      geometry = new THREE.CircleGeometry(1.2,64);
+			material = new THREE.MeshBasicMaterial( { color: 0x001100 } );
 			var circle = new THREE.Mesh( geometry, material );
       scene.add( circle );
       circle.rotation.x = -Math.PI / 2 + .3;
 
-      var geometry = new THREE.BoxGeometry(.1);
-			var material = new THREE.MeshBasicMaterial( { color: 'green' } );
+      geometry = new THREE.BoxGeometry(.01);
+			material = new THREE.MeshBasicMaterial( { color: 'green' } );
 			var tilt = new THREE.Mesh( geometry, material );
       scene.add( tilt );
       tilt.rotation.x = .3;
       tilt.rotation.z = 1
 
+      geometry = new THREE.CylinderGeometry(.01, .01, 2.4);
+			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
+			var normal = new THREE.Mesh( geometry, material );
+      scene.add( normal );
+      normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
+
+      geometry = new THREE.CylinderGeometry(.01, .01, 4.4);
+			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
+			var PS = new THREE.Mesh( geometry, material );
+      scene.add( PS );
+      PS.rotation.z = Math.atan(Math.tan(normal.rotation.z) / 2);
+      PS.position.y = -1;
+
       camera.position.z = 5;
       renderer.render(scene, camera);
 
+      var mouseDown = 0;
+      document.body.onmousedown = function() { 
+        ++mouseDown;
+      }
+      document.body.onmouseup = function() {
+        --mouseDown;
+      }
 
 			var animate = function () {
 				requestAnimationFrame( animate );
 
 				//sphere.rotation.x += 0.01;
-				sphere.rotation.y += 0.01;
+        sphere.rotation.y += 0.01;
+        tilt.rotation.y += 0.01;
+        normal.rotation.y += 0.01
+        PS.rotation.y += 0.01
+        if(mouseDown){
+          tilt.rotation.z += .01
+          normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
+          PS.rotation.z = Math.atan(Math.tan(normal.rotation.z) / 2);
+        }
 
 				renderer.render(scene, camera);
 			};
