@@ -16,7 +16,7 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
-			var geometry = new THREE.SphereGeometry();
+			var geometry = new THREE.SphereGeometry(1.2);
 			var material = new THREE.MeshBasicMaterial( { color: 'silver', wireframe: true } );
 			var sphere = new THREE.Mesh( geometry, material );
       scene.add( sphere );
@@ -40,16 +40,16 @@
 			var tilt = new THREE.Mesh( geometry, material );
       scene.add( tilt );
       tilt.rotation.x = .3;
-      tilt.rotation.z = 1
+      tilt.rotation.z = 1;
 
-      geometry = new THREE.CylinderGeometry(.01, .01, 2.4);
+      geometry = new THREE.CylinderGeometry(.01, .01, 2.25);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
 			var normal = new THREE.Mesh( geometry, material );
       scene.add( normal );
       normal.rotation.x = .3;
       normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
 
-      geometry = new THREE.CylinderGeometry(.01, .01, 4.2);
+      geometry = new THREE.CylinderGeometry(.01, .01, 2.1);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
 			var PS = new THREE.Mesh( geometry, material );
       scene.add( PS );
@@ -57,8 +57,10 @@
       PS.position.y = -1;
 
       let theta = Math.PI / 2 - normal.rotation.z;
+      let a = Math.cos(theta);
+      let b = Math.sin(theta);
       PS.rotation.z = Math.PI / 2 - Math.atan((Math.sin(theta) + 1) / Math.cos(theta));
-
+      PS.scale.y = Math.sqrt(a**2 + (1 + b)**2);
 
       camera.position.z = 5;
       renderer.render(scene, camera);
@@ -82,11 +84,11 @@
         if(mouseDown){
           tilt.rotation.z = (tilt.rotation.z + .01) % (Math.PI);
           normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
-          let theta = Math.PI / 2 - normal.rotation.z;
-          let a = Math.cos(theta);
-          let b = Math.sin(theta);
+          theta = Math.PI / 2 - normal.rotation.z;
+          a = Math.cos(theta);
+          b = Math.sin(theta);
           PS.rotation.z = Math.PI / 2 - Math.atan((Math.sin(theta) + 1) / Math.cos(theta));
-          //PS.scale.y = Math.sqrt(a**2 + (1 + b)**2);
+          PS.scale.y = Math.sqrt(a**2 + (1 + b)**2);
         }
 
 				renderer.render(scene, camera);
