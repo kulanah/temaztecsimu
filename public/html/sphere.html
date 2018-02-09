@@ -42,14 +42,14 @@
       tilt.rotation.x = .3;
       tilt.rotation.z = 1
 
-      geometry = new THREE.CylinderGeometry(.01, .01, 99);
+      geometry = new THREE.CylinderGeometry(.01, .01, 2.4);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
 			var normal = new THREE.Mesh( geometry, material );
       scene.add( normal );
       normal.rotation.x = .3;
       normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
 
-      geometry = new THREE.CylinderGeometry(.01, .01, 99);
+      geometry = new THREE.CylinderGeometry(.01, .01, 4.2);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
 			var PS = new THREE.Mesh( geometry, material );
       scene.add( PS );
@@ -83,7 +83,10 @@
           tilt.rotation.z = (tilt.rotation.z + .01) % (Math.PI);
           normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
           let theta = Math.PI / 2 - normal.rotation.z;
+          let a = Math.cos(theta);
+          let b = Math.sin(theta);
           PS.rotation.z = Math.PI / 2 - Math.atan((Math.sin(theta) + 1) / Math.cos(theta));
+          //PS.scale.y = Math.sqrt(a**2 + (1 + b)**2);
         }
 
 				renderer.render(scene, camera);
