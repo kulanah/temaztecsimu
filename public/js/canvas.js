@@ -567,8 +567,8 @@ class Canvas {
             this.beamAstigmatismX += deltaX / 10;
             break;
           case 'Objective':
-            this.imgAngle += deltaX / 180 / 10;
-            this.diffractogramAngle += deltaX / Math.PI / 10;
+            this.imgAngle += deltaX / 180 / 30;
+            this.diffractogramAngle += deltaX / Math.PI / 30;
             break;
         }
       } else {
@@ -622,7 +622,7 @@ class Canvas {
             this.beamAstigmatismY += deltaY / 10;
             break;
           case 'Objective':
-            this.stretchImage(deltaY / 10);
+            this.stretchImage(deltaY / 30);
             break;
           }
       } else {
