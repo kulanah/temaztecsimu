@@ -71,6 +71,7 @@ let pageSetup = function(){
       cancel: 'map, iframe',
       iframeFix: true,
       cursor: 'move',
+      containment: '#maincontent', // keeps users from dragging elements offscreen
       scroll: false
     });
     $('#' + listOfDraggables[i]).mousedown(function(){
@@ -86,6 +87,7 @@ let pageSetup = function(){
       addClasses: true,
       iframeFix: true,
       cursor: 'move',
+      containment: '#maincontent',
       scroll: false
     });
     $('#' + draggablesWithTextInputs[i]).mousedown(function(){
