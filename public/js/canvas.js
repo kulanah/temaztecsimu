@@ -557,18 +557,18 @@ class Canvas {
     if (!isNaN(deltaX)){
       if (diffractionMode && this == setupbox){
         if(stigmationMode == 'Diffraction'){
-          this.diffractionAstigmatismX += deltaX;
+          this.diffractionAstigmatismX += deltaX / 10;
         } else {
           this.diffractionX += deltaX;
         }
       } else if (stigmatorActive) {
         switch (stigmationMode) {
           case 'Condensor':
-            this.beamAstigmatismX += deltaX;
+            this.beamAstigmatismX += deltaX / 10;
             break;
           case 'Objective':
-            this.imgAngle += deltaX / 180;
-            this.diffractogramAngle += deltaX / Math.PI;
+            this.imgAngle += deltaX / 180 / 10;
+            this.diffractogramAngle += deltaX / Math.PI / 10;
             break;
         }
       } else {
@@ -612,17 +612,17 @@ class Canvas {
     if (!isNaN(deltaY)){
       if (diffractionMode && this == setupbox){
         if(stigmationMode == 'Diffraction'){
-          this.diffractionAstigmatismY += deltaY; // the dots are small, so the change is less pronounced (relative to other stigmators)
+          this.diffractionAstigmatismY += deltaY / 10; // the dots are small, so the change is less pronounced (relative to other stigmators)
         } else {
           this.diffractionY += deltaY;
         }
       } else if (stigmatorActive){
         switch (stigmationMode){
           case 'Condensor':
-            this.beamAstigmatismY += deltaY;
+            this.beamAstigmatismY += deltaY / 10;
             break;
           case 'Objective':
-            this.stretchImage(deltaY);
+            this.stretchImage(deltaY / 10);
             break;
           }
       } else {
