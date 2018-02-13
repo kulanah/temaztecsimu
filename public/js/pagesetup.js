@@ -70,7 +70,8 @@ let pageSetup = function(){
       addClasses: true,
       cancel: 'map, iframe',
       iframeFix: true,
-      cursor: 'move'
+      cursor: 'move',
+      scroll: false
     });
     $('#' + listOfDraggables[i]).mousedown(function(){
       $('#' + listOfDraggables[i]).css('z-index', zcounter); // moves element to the front on mousedown
@@ -84,7 +85,8 @@ let pageSetup = function(){
     $('#' + draggablesWithTextInputs[i]).draggable({
       addClasses: true,
       iframeFix: true,
-      cursor: 'move'
+      cursor: 'move',
+      scroll: false
     });
     $('#' + draggablesWithTextInputs[i]).mousedown(function(){
       $('#' + draggablesWithTextInputs[i]).css('z-index', zcounter);
