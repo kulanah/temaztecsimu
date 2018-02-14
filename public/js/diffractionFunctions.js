@@ -236,19 +236,19 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.lineWidth = lineWidth;
         let CO = 5000;
         ctx.beginPath();
-        ctx.arc(xCenter + Math.cos(lineAngle) * CO * (1 + .001 * betaTilt), yCenter + Math.sin(lineAngle) * CO * (1 + .001 * alphaTilt), CO, 0, Math.PI * 2);
+        ctx.arc(xCenter + Math.cos(lineAngle) * CO * (1 + .01 * betaTilt), yCenter + Math.sin(lineAngle) * CO * (1 + .01 * alphaTilt), CO, 0, Math.PI * 2);
         ctx.stroke();
         lineAngle = Math.atan2(dy * j, -dx * j + r1 * i);
         ctx.beginPath();
-        ctx.arc(xCenter + Math.cos(lineAngle) * CO * (1 + .001 * betaTilt), yCenter + Math.sin(lineAngle) * CO * (1 + .001 * alphaTilt), CO, 0, Math.PI * 2);
+        ctx.arc(xCenter + Math.cos(lineAngle) * CO * (1 + .01 * betaTilt), yCenter + Math.sin(lineAngle) * CO * (1 + .01 * alphaTilt), CO, 0, Math.PI * 2);
         ctx.stroke();
         lineAngle = Math.atan2(-dy * j, -dx * j + r1 * i);
         ctx.beginPath();
-        ctx.arc(xCenter + Math.cos(lineAngle) * CO * (1 + .001 * betaTilt), yCenter + Math.sin(lineAngle) * CO * (1 + .001 * alphaTilt), CO, 0, Math.PI * 2);
+        ctx.arc(xCenter + Math.cos(lineAngle) * CO * (1 + .01 * betaTilt), yCenter + Math.sin(lineAngle) * CO * (1 + .01 * alphaTilt), CO, 0, Math.PI * 2);
         ctx.stroke();
         lineAngle = Math.atan2(-dy * j, dx * j - r1 * i);
         ctx.beginPath();
-        ctx.arc(xCenter + Math.cos(lineAngle) * CO * (1 + .001 * betaTilt), yCenter + Math.sin(lineAngle) * CO * (1 + .001 * alphaTilt), CO, 0, Math.PI * 2);
+        ctx.arc(xCenter + Math.cos(lineAngle) * CO * (1 + .01 * betaTilt), yCenter + Math.sin(lineAngle) * CO * (1 + .01 * alphaTilt), CO, 0, Math.PI * 2);
         ctx.stroke();
         /*ctx.fillStyle = gradient;
         ctx.translate(xCenter, yCenter);
@@ -276,7 +276,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         //console.log(dx, dy);
         var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
         var maxDistance = platformRadius;
-        let coords = findClosestDot(dx, dy, alphaTilt, betaTilt);
+        let coords = findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius);
         let xCenter = xOffset + coords[0];
         let yCenter = yOffset + coords[1];
         let brightness = Math.min(intensity, 1);
@@ -321,11 +321,11 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
     }
 }
 
-function findClosestDot(dx, dy, alphaTilt, betaTilt){
+function findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius){
     // Returns the x and y coordinates of the closet dot to the tilt position
-    let topRow = Math.ceil(alphaTilt / dy)
+    let topRow = Math.ceil(alphaTilt * platformRadius / 45 / dy)
     let top = topRow * dy
-    let left = Math.floor(betaTilt / (dx * 2)) * dx * 2 - (topRow % 2) * dx
+    let left = Math.floor(betaTilt * platformRadius / 45 / (dx * 2)) * dx * 2 - (topRow % 2) * dx
     let right = left + dx * 2
     let bottom = top - dy;
     let array = [[left, top], [left + dx, bottom], [right, top], [right + dx, bottom]];
