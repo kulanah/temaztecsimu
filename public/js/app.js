@@ -77,7 +77,7 @@ function drawInfoPanelValues(){
   if(availableAlignments.length > 1){
     $('#r2value').text('Align MF Toggle');
   } else {
-    $('#r2value').text('                      ');
+    $('#r2value').text('                       ');
   }
 };
 
