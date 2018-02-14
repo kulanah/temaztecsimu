@@ -147,12 +147,6 @@ body{
   right: 3.7vw;
 }
 
-#controlsinstruction{
-  position: absolute;
-  top: 77vh;
-  left: 23vw;
-}
-
 button{
   cursor: pointer;
 }

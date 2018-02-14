@@ -95,6 +95,12 @@
   padding: 2px;
 }
 
+#controlsinstruction{
+  position: absolute;
+  top: 77vh;
+  left: 23vw;
+}
+
 #controlsinstructiontext{
   background-color: #48c6d4;
   color: white;
