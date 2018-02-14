@@ -216,6 +216,9 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let lineWidthX = Math.abs(2 * dy * j);
         let lineWidthY = Math.abs(2 * dx * j - 2 * r1 * i);
         let lineWidth = Math.sqrt(Math.pow(lineWidthX, 2) + Math.pow(lineWidthY, 2)) / 2;
+        if (lineWidth === 0){
+            return; // used to avoid drawing a thin vertical line for the center dot
+        }
         let lineTransparency = Math.min(specimenThickness / 20 / Math.pow(lineWidth, 2) * radiusX * radiusY, 1);
         let lineAngle = Math.atan2(dy * j, dx * j - r1 * i);
         
@@ -232,15 +235,19 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.strokeStyle = gradient;
         ctx.lineWidth = lineWidth;
         let CO = 5000;
+        ctx.beginPath();
         ctx.arc(xOffset + Math.cos(lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
         ctx.stroke();
         lineAngle = Math.atan2(dy * j, -dx * j + r1 * i);
+        ctx.beginPath();
         ctx.arc(xOffset + Math.cos(lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
         ctx.stroke();
         lineAngle = Math.atan2(-dy * j, -dx * j + r1 * i);
+        ctx.beginPath();
         ctx.arc(xOffset + Math.cos(lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
         ctx.stroke();
         lineAngle = Math.atan2(-dy * j, dx * j - r1 * i);
+        ctx.beginPath();
         ctx.arc(xOffset + Math.cos(lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
         ctx.stroke();
         //ctx.arc(xOffset + Math.cos(-lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
