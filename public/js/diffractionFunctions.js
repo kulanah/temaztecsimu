@@ -219,6 +219,8 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let lineTransparency = Math.min(specimenThickness / 20 / Math.pow(lineWidth, 2) * radiusX * radiusY, 1);
         let lineAngle = Math.atan2(dy * j, dx * j - r1 * i);
         
+        console.log(lineAngle)
+
         // Applying the blur filter significantly worsens performance, so it is avoided when possible
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
 
@@ -227,7 +229,23 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
-        ctx.fillStyle = gradient;
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = lineWidth;
+        let CO = 5000;
+        ctx.arc(xOffset + Math.cos(lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
+        ctx.stroke();
+        lineAngle = Math.atan2(dy * j, -dx * j + r1 * i);
+        ctx.arc(xOffset + Math.cos(lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
+        ctx.stroke();
+        lineAngle = Math.atan2(-dy * j, -dx * j + r1 * i);
+        ctx.arc(xOffset + Math.cos(lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
+        ctx.stroke();
+        lineAngle = Math.atan2(-dy * j, dx * j - r1 * i);
+        ctx.arc(xOffset + Math.cos(lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
+        ctx.stroke();
+        //ctx.arc(xOffset + Math.cos(-lineAngle) * CO, yOffset + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
+        //ctx.stroke();
+        /*ctx.fillStyle = gradient;
         ctx.translate(xCenter, yCenter);
         ctx.rotate(lineAngle);
         ctx.translate(-xCenter, -yCenter);
@@ -238,7 +256,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.fillRect(xCenter - lineWidth / 2, 0, lineWidth, platformRadius * 2);
         ctx.translate(xCenter, yCenter);
         ctx.rotate(lineAngle);
-        ctx.translate(-xCenter, -yCenter);
+        ctx.translate(-xCenter, -yCenter);*/
     }
 }
 
