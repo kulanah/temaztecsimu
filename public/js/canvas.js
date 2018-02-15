@@ -159,6 +159,11 @@ class Canvas {
   };
 
   drawMainScreenValues(){
+    if(this.zooms[this.mag] >= 100000){
+      $('#magnificationvalue').text('  ' + this.zooms[this.mag] / 1000 + 'k x');
+    } else {
+      $('#magnificationvalue').text('  ' + this.zooms[this.mag] + ' x');
+    }
     $('#focusstepvalue').text(this.focusStep);
     let defocusString = this.defocus.toFixed(2) + ' nm';
     while(defocusString.length < 11){
@@ -268,14 +273,8 @@ class Canvas {
     this.context.fillStyle = 'white';
     this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     // Block the specimen during tune alignments
-    if(blockSpecimen){
-    } else {
+    if(!blockSpecimen){
       this.context.globalAlpha = .5;
-      if(this.zooms[this.mag] >= 100000){
-        $('#magnificationvalue').text('  ' + this.zooms[this.mag] / 1000 + 'k x');
-      } else {
-        $('#magnificationvalue').text('  ' + this.zooms[this.mag] + ' x');
-      }
       let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
       this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
         this.imgX + this.alphaTilt * this.specimenHeight - defocusPx * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);

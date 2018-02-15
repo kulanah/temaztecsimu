@@ -39,6 +39,7 @@ let startMenu = function(){
     $('#controlsinstruction').show();
     $('#viewexposure').show();
     $('#acquireexposure').show();
+    setupbox.drawCanvas();
   });
 
   $('#filtercontrol').on('click', function(event){
