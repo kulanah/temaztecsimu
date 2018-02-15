@@ -53,15 +53,13 @@ let startMenu = function(){
   $('#setupbtn').on('click', function(event){
     if (openScreen == 0){
       if (isVisible('basesetup')){
-        $('#micrographstart').trigger('click');
         $('#basesetup').hide();
       } else {
-        $('#micrographstart').trigger('click');
         $('#basesetup').show();
         $('#openbox').hide();
-        
       }
     } else {
+      $('#micrographstart').trigger('click');
       $('#basesetup').show();
     }
     openScreen = 0;
