@@ -21,8 +21,7 @@ let startMenu = function(){
   $('#temuistart').on('click', function(event){
     openScreen = 1;
     $('#mainimage').attr('src', './public/img/tia.png');
-    $('#temmask').show();
-    $('#temimage').show();
+    $('#mainmicroscopediv').show();
     $('#openbox').hide();
     $('#mainimage').css('background-color', 'transparent');
     $('#basesetup').hide();
@@ -35,8 +34,7 @@ let startMenu = function(){
   $('#micrographstart').on('click', function(event){
     openScreen = 0;
     $('#mainimage').attr('src', './public/img/mainscreen.png');
-    $('#temmask').hide();
-    $('#temimage').hide();
+    $('#mainmicroscopediv').hide();
     $('#mainimage').css('background-color', 'grey');
     $('#controlsinstruction').show();
     $('#viewexposure').show();
