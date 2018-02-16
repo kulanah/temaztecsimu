@@ -3,10 +3,21 @@
 		<title>Diffraction Model</title>
 		<style>
 			body { margin: 0; }
-			canvas { width: 100%; height: 100% }
+      canvas { width: 100%; height: 100% }
+      #info {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        z-index: 100;
+        color: white;
+      }
 		</style>
 	</head>
 	<body>
+    <div id="info">
+      Diffraction Model<br><br>
+      Click to tilt zone axis
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
 		<script>
 			var scene = new THREE.Scene();
