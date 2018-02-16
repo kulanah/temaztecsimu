@@ -137,7 +137,7 @@ class Canvas {
 
     if(randomProperties){
       if(this === mainmicro){
-        // keep the beam in the upper left quadrant so it will not appear off-screen
+        // keep the beam in the upper left quadrant so it will not appear off-screen on lower resolution monitors
         // necessary since mainmicro canvas has a fixed width and height
         this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 4;
         this.maskY = this.selector[0].height / 4 + randomValues[1] * this.selector[0].height / 4;
