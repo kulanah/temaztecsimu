@@ -136,8 +136,15 @@ class Canvas {
     this.imgY = (this.selector[0].height - this.imgH) / 2;
 
     if(randomProperties){
-      this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 2;
-      this.maskY = this.selector[0].height / 4 + randomValues[1] * this.selector[0].height / 2;
+      if(this === mainmicro){
+        // keep the beam in the upper left quadrant so it will not appear off-screen
+        // necessary since mainmicro canvas has a fixed width and height
+        this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 4;
+        this.maskY = this.selector[0].height / 4 + randomValues[1] * this.selector[0].height / 4;
+      } else {
+        this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 2;
+        this.maskY = this.selector[0].height / 4 + randomValues[1] * this.selector[0].height / 2;
+      }
       this.maskR = 20 + randomValues[2] * 180;
       this.defocus = 10 - 20 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
