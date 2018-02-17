@@ -20,6 +20,7 @@ function prepareContent(){
     showOverview();
     showWIP();
     addLectures();
+    setLecture();
 }
 
 // Keep the popup position and dimensions consistent across content
@@ -201,6 +202,7 @@ function showWIP(){
 }
 
 function addLectures(){
+    // Create the buttons to switch between lectures
     let srcs = ['', 
     'https://cemnpdx.github.io/Reveal/HTML/Chapter%202.html',
     '',
@@ -210,6 +212,7 @@ function addLectures(){
         if(srcs[i-1] != ''){
             let btn = document.createElement('button');
             let src = srcs[i-1];
+            $(btn).attr('id', 'ch' + i + 'btn')
             $(btn).addClass('lecturetab');
             $(btn).css('margin', '2px');
             $(btn).text('Chapter ' + i);
@@ -218,5 +221,14 @@ function addLectures(){
             });
             $('#lecturediv').append(btn);
         }
+    }
+}
+
+function setLecture(){
+    // Set the lecture window to the appropriate chapter if the user selected a chapter
+    if(location.search.includes('ch=')){
+        let chNum = location.search.split('ch=')[1].split('&')[0];
+        let chBtn = '#ch' + chNum + 'btn';
+        $(chBtn).trigger('click');
     }
 }
