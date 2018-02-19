@@ -229,6 +229,9 @@ function setLecture(){
     if(location.search.includes('ch=')){
         let chNum = location.search.split('ch=')[1].split('&')[0];
         let chBtn = '#ch' + chNum + 'btn';
-        $(chBtn).trigger('click');
+        if($(chBtn)[0]){
+            $(chBtn).trigger('click');
+            $('#lecturebtn').trigger('click');
+        }
     }
 }
