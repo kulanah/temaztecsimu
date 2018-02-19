@@ -228,7 +228,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
 
         // Scaling transparency by thickness and scaling color by proximity to center
-        let gradient = ctx.createRadialGradient(xOffset + betaTilt, yOffset + alphaTilt, platformRadius, xOffset + betaTilt, yOffset + alphaTilt, 0);
+        let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius, xCenter, yCenter, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
@@ -276,12 +276,12 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         //console.log(dx, dy);
         var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
         var maxDistance = platformRadius;
-        let coords = findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius);
-        let xCenter = xOffset + coords[0];
-        let yCenter = yOffset + coords[1];
+        //let coords = findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius);
+        let xCenter = xOffset + betaTilt * platformRadius / 45;
+        let yCenter = yOffset + alphaTilt * platformRadius / 45;
         let brightness = Math.min(intensity, 1);
-        let gradient = ctx.createRadialGradient(xOffset + betaTilt, yOffset + alphaTilt, platformRadius, xOffset + betaTilt, yOffset + alphaTilt, 0);
-        gradient.addColorStop(0, 'rgba(128,255,154,' + .3 * brightness + ')');
+        let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius, xCenter, yCenter, 0);
+        gradient.addColorStop(0, 'rgba(0,17,0,0');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + .5 * brightness + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + brightness + ')');
         for (var i = 0; i <= layers; i++) {
@@ -297,16 +297,16 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     ctx.ellipse(canvas.width / 2, canvas.height / 2, distance * radiusX / 32, distance * radiusY / 32, rotationRadians, 0, 2 * Math.PI);
                     ctx.fill();
                 } else {
-                    var x = r1 * i - dx * j + xCenter;
-                    var y = dy * j + yCenter;
+                    var x = r1 * i - dx * j + xOffset;
+                    var y = dy * j + yOffset;
                     var rx = radiusX / (distanceRatio + 1);
                     var ry = radiusY / (distanceRatio + 1);
                     drawDot(ctx, x, y, rx, ry, rotationRadians);
-                    x = -r1 * i + dx * j + xCenter;
+                    x = -r1 * i + dx * j + xOffset;
                     drawDot(ctx, x, y, rx, ry, rotationRadians);
-                    y = -dy * j + yCenter;
+                    y = -dy * j + yOffset;
                     drawDot(ctx, x, y, rx, ry, rotationRadians);
-                    x = r1 * i - dx * j + xCenter;
+                    x = r1 * i - dx * j + xOffset;
                     drawDot(ctx, x, y, rx, ry, rotationRadians);
                 }
                 drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j, xCenter, yCenter);                
@@ -321,7 +321,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
     }
 }
 
-function findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius){
+/*function findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius){
     // Returns the x and y coordinates of the closet dot to the tilt position
     let topRow = Math.ceil(alphaTilt * platformRadius / 45 / dy)
     let top = topRow * dy
@@ -341,4 +341,4 @@ function findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius){
     }
     //console.log(closestPoint);
     return closestPoint;
-}
+}*/
