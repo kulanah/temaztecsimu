@@ -234,7 +234,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
         ctx.strokeStyle = gradient;
         ctx.lineWidth = lineWidth;
-        let CO = 5000;
+        let CO = 10000;
         ctx.beginPath();
         ctx.arc(xCenter + Math.cos(lineAngle) * CO + .01 * betaTilt, yCenter + Math.sin(lineAngle) * CO + .01 * alphaTilt, CO, 0, Math.PI * 2);
         ctx.stroke();
