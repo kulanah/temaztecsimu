@@ -20,7 +20,7 @@ function prepareContent(){
     showOverview();
     showWIP();
     addLectures();
-    setLecture();
+    //setLecture();
 }
 
 // Keep the popup position and dimensions consistent across content
@@ -229,9 +229,9 @@ function setLecture(){
     if(location.search.includes('ch=')){
         let chNum = location.search.split('ch=')[1].split('&')[0];
         let chBtn = '#ch' + chNum + 'btn';
-        if($(chBtn)[0]){
+        if($(chBtn).length){
+            $('#lecturediv').show();
             $(chBtn).trigger('click');
-            $('#lecturebtn').trigger('click');
         }
     }
 }
