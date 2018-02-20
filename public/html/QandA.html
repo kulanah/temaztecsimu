@@ -5,6 +5,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
   <style>
     .highlighted { background: yellow }
+    textarea {
+      width: 90vw;
+      height: 50vh;
+    }
+    button {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -24,6 +31,17 @@
   			</div>
   		</div>
   </div>
+  <h3>Contact Us</h3>
+  <p>
+    Didn't find the answer you were looking for? <br>
+    Send us your question:
+  </p>
+  <form>
+    <textarea id='userquestion' name='userquestion'></textarea><br>
+    <div style='text-align: center'>
+      <button type='submit'>Submit question</button>
+    </div>
+  </form>
 </body>
 <script>
   angular.module('myApp', ['ngSanitize']).controller('myCtrl', function($scope) {
