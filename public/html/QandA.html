@@ -3,10 +3,17 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+  <script>
+    window.onload = function(event) {
+      if(location.search.includes('userquestion')){
+        document.getElementById('thanks').style = 'display:block';
+      }
+    };
+  </script>
   <style>
     .highlighted { background: yellow }
     textarea {
-      width: 90vw;
+      width: 80vw;
       height: 50vh;
     }
     button {
@@ -15,6 +22,11 @@
   </style>
 </head>
 <body>
+  <div id='thanks' style='display:none'>
+      <fieldset id='message'>
+          Thank you for sending us your question. <br>We will email you a response.<br>
+      </fieldset><br>
+  </div>
     <div ng-app="myApp" ng-controller="myCtrl">
 
   		<label> Search: <input ng-model="search.$"></label> <br>
@@ -34,7 +46,7 @@
   <h3>Contact Us</h3>
   <p>
     Didn't find the answer you were looking for? <br>
-    Send us your question:
+    Ask us a question:
   </p>
   <form>
     <textarea id='userquestion' name='userquestion'></textarea><br>
