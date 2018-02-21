@@ -228,7 +228,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
 
         // Scaling transparency by thickness and scaling color by proximity to center
-        let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius * cameraLength / 265, xCenter, yCenter, 0);
+        let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
