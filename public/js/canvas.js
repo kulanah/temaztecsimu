@@ -854,7 +854,7 @@ class Canvas {
         drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
           this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 
           0, 2 * beamRadius / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
-          this.specimenThickness, this.selector[0].height / 2, this.alphaTilt, this.betaTilt);
+          this.specimenThickness, this.selector[0].height / 2, this.alphaTilt, this.betaTilt, this.diffractionCameraLength);
       }
     } else {
       drawBeam(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, beamRadius, beamRadius, this.diffractionAngle, radiusX + radiusY);
