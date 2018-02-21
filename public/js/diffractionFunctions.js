@@ -206,6 +206,16 @@ function drawDot(ctx, x, y, rx, ry, rotationRadians){
     ctx.fill();
 }
 
+function drawKikuchiBand(canvas, gradient, lineWidth, CO, lineAngle, xCenter, yCenter){
+    // Draw a single Kikuchi band
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.arc(xCenter + Math.cos(lineAngle) * CO, yCenter + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
+        ctx.stroke();
+    }
+}
+
 function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j, xCenter, yCenter, cameraLength){
     // Draw Kikuchi lines - lines for points that are closer together are narrower and less transparent
     if (specimenThickness <= 0){
@@ -235,21 +245,13 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         ctx.strokeStyle = gradient;
         ctx.lineWidth = lineWidth;
         let CO = 10000;
-        ctx.beginPath();
-        ctx.arc(xCenter + Math.cos(lineAngle) * CO, yCenter + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
-        ctx.stroke();
+        drawKikuchiBand(canvas, gradient, lineWidth, CO, lineAngle, xCenter, yCenter)
         lineAngle = Math.atan2(dy * j, -dx * j + r1 * i);
-        ctx.beginPath();
-        ctx.arc(xCenter + Math.cos(lineAngle) * CO, yCenter + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
-        ctx.stroke();
+        drawKikuchiBand(canvas, gradient, lineWidth, CO, lineAngle, xCenter, yCenter)
         lineAngle = Math.atan2(-dy * j, -dx * j + r1 * i);
-        ctx.beginPath();
-        ctx.arc(xCenter + Math.cos(lineAngle) * CO, yCenter + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
-        ctx.stroke();
+        drawKikuchiBand(canvas, gradient, lineWidth, CO, lineAngle, xCenter, yCenter)
         lineAngle = Math.atan2(-dy * j, dx * j - r1 * i);
-        ctx.beginPath();
-        ctx.arc(xCenter + Math.cos(lineAngle) * CO, yCenter + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
-        ctx.stroke();
+        drawKikuchiBand(canvas, gradient, lineWidth, CO, lineAngle, xCenter, yCenter)
         /*ctx.fillStyle = gradient;
         ctx.translate(xCenter, yCenter);
         ctx.rotate(lineAngle);
