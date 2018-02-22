@@ -206,7 +206,7 @@ function drawDot(ctx, x, y, rx, ry, rotationRadians){
     ctx.fill();
 }
 
-function drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lineWidth, CO, lineAngle, xCenter, yCenter){
+function drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lightGradient, darkGradient, lineWidth, CO, lineAngle, xCenter, yCenter){
     // Draw a single Kikuchi band
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
@@ -217,13 +217,14 @@ function drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lineWidth, CO, l
         ctx.stroke();
         ctx.lineWidth = 1;
         console.log(Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt)
-        if (Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt < 0){
-            ctx.strokeStyle = 'black';
+        if (Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt <= 0){
+            ctx.strokeStyle = darkGradient;
             ctx.beginPath();
             ctx.arc(xCenter + Math.cos(lineAngle) * CO, yCenter + Math.sin(lineAngle) * CO, CO - lineWidth / 2, 0, Math.PI * 2);
             ctx.stroke();
-        } else if (Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt > 0){
-            ctx.strokeStyle = 'white';
+        } 
+        if (Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt >= 0){
+            ctx.strokeStyle = lightGradient;
             ctx.beginPath();
             ctx.arc(xCenter + Math.cos(lineAngle) * CO, yCenter + Math.sin(lineAngle) * CO, CO - lineWidth / 2, 0, Math.PI * 2);
             ctx.stroke();
@@ -257,14 +258,22 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
+        let lightGradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);
+        lightGradient.addColorStop(0, 'rgba(255,255,255,0)');
+        lightGradient.addColorStop(.8, 'rgba(255,255,255,' + lineTransparency + ')');
+        lightGradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
+        let darkGradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);
+        darkGradient.addColorStop(0, 'rgba(0,0,0,0)');
+        darkGradient.addColorStop(.8, 'rgba(0,0,0,' + lineTransparency + ')');
+        darkGradient.addColorStop(1, 'rgba(0,0,0,' + lineTransparency + ')');
         let CO = 10000;
-        drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lineWidth, CO, lineAngle, xCenter, yCenter)
+        drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lightGradient, darkGradient, lineWidth, CO, lineAngle, xCenter, yCenter)
         lineAngle = Math.atan2(dy * j, -dx * j + r1 * i);
-        drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lineWidth, CO, lineAngle, xCenter, yCenter)
+        drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lightGradient, darkGradient, lineWidth, CO, lineAngle, xCenter, yCenter)
         lineAngle = Math.atan2(-dy * j, -dx * j + r1 * i);
-        drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lineWidth, CO, lineAngle, xCenter, yCenter)
+        drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lightGradient, darkGradient, lineWidth, CO, lineAngle, xCenter, yCenter)
         lineAngle = Math.atan2(-dy * j, dx * j - r1 * i);
-        drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lineWidth, CO, lineAngle, xCenter, yCenter)
+        drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lightGradient, darkGradient, lineWidth, CO, lineAngle, xCenter, yCenter)
         /*ctx.fillStyle = gradient;
         ctx.translate(xCenter, yCenter);
         ctx.rotate(lineAngle);
