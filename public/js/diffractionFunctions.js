@@ -301,8 +301,8 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
         var maxDistance = platformRadius;
         //let coords = findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius);
-        let xCenter = xOffset + betaTilt * platformRadius / 45;
-        let yCenter = yOffset + alphaTilt * platformRadius / 45;
+        let xCenter = xOffset + Math.tan(betaTilt * Math.PI / 180) * cameraLength;
+        let yCenter = yOffset + Math.tan(alphaTilt * Math.PI / 180) * cameraLength;
         let brightness = Math.min(intensity, 1);
         let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius * cameraLength / 265, xCenter, yCenter, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0');
