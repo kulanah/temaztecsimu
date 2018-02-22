@@ -217,6 +217,7 @@ function drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lightGradient, d
         ctx.stroke();
         ctx.lineWidth = 1;
         console.log(Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt)
+        // Draw bright edge and dark edge
         if (Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt <= 0){
             ctx.strokeStyle = darkGradient;
             ctx.beginPath();
