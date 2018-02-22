@@ -719,7 +719,7 @@ class Canvas {
 
     context.beginPath();
     context.arc(this.maskX + this.haloX * Math.cos(this.beamAngle) + this.haloY * Math.sin(this.beamAngle), this.maskY + this.haloY * Math.cos(this.beamAngle) - this.haloX * Math.sin(this.beamAngle), haloR / 4, 0, Math.PI * 2);
-    context.strokeStyle = 'white';
+    context.strokeStyle = 'rgba(255,255,255,' + Math.min(1, 10 / haloR) + ')';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
     context.stroke();
 
