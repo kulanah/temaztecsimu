@@ -406,7 +406,7 @@ class Canvas {
 
   changeIntensity(delta){
     let effectiveRadius = this.calculateRadius();
-    delta = delta - 1;
+    delta = delta / -100;
 
     if (effectiveRadius < 11 && effectiveRadius > 0 ){
       this.intUp = !this.intUp;

@@ -79,7 +79,7 @@ let microscopeControllers = function(){
   
   let mousedowntemplateintensity = function(event){
     let deltaIntensity = event.clientY - startIntensity;
-    deltaIntensity = deltaIntensity * intensityStepSize / -100 + 1;
+    deltaIntensity = deltaIntensity * intensityStepSize;
     startIntensity = event.clientY;
 
     changeIntensity(deltaIntensity);
