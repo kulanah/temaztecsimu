@@ -276,12 +276,14 @@ class Canvas {
     // Block the specimen during tune alignments
     if(!blockSpecimen){
       let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale;
+      alphaTiltImpact = Math.min(this.imgW / 2, Math.max(-this.imgW / 2, alphaTiltImpact)); // keep tilt impact limited to staying on specimen
       let betaTiltImpact;
       if (this.specimenHeight == 0){
         betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.zooms[this.mag] / this.imgScale;
       } else {
         betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale;
       }
+      betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
       this.context.globalAlpha = .5;
       let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
       this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
