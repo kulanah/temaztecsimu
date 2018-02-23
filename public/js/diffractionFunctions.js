@@ -331,13 +331,13 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                     let kBandAngle = Math.atan2(dy * j, r1 * i - dx * j) - Math.PI / 2;
                     let xDiff = xCenter - xOffset;
                     let yDiff = yCenter - yOffset;
-                    let diffDistance = Math.abs(xDiff * Math.sin(kBandAngle)) + Math.abs(yDiff * Math.cos(kBandAngle));
+                    let diffDistance = Math.abs(xDiff * Math.sin(kBandAngle) - yDiff * Math.cos(kBandAngle));
                     if (diffDistance <= distance){
                         drawDot(ctx, x1, y1, rx, ry, rotationRadians);
                         drawDot(ctx, x2, y2, rx, ry, rotationRadians);
                     }
                     kBandAngle = Math.atan2(dy * j, -r1 * i + dx * j) - Math.PI / 2;
-                    diffDistance = Math.abs(xDiff * Math.sin(kBandAngle)) + Math.abs(yDiff * Math.cos(kBandAngle));
+                    diffDistance = Math.abs(xDiff * Math.sin(kBandAngle) - yDiff * Math.cos(kBandAngle));
                     if (diffDistance <= distance){
                         drawDot(ctx, x2, y1, rx, ry, rotationRadians);
                         drawDot(ctx, x1, y2, rx, ry, rotationRadians);
