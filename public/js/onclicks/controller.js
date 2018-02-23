@@ -309,6 +309,8 @@ let microscopeControllers = function(){
       focusUp();
       temLens[13].y += stageStepSize;
       drawColumn();
+    } else {
+      setupbox.limitFlash('#zvalue');
     }
   });
 
@@ -317,6 +319,8 @@ let microscopeControllers = function(){
       focusDown();
       temLens[13].y -= stageStepSize;
       drawColumn();
+    } else {
+      setupbox.limitFlash('#zvalue');
     }
   });
 
