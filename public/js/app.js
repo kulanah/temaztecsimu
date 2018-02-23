@@ -35,6 +35,9 @@ if(location.search.includes('image=')){
   let m = location.search.split('material=')[1].split('&')[0].split(',');
   micrographMaterial = new Material(m[1], m[3], m[4], m[5], m[6], m[7], m[8], m[9]);
 }
+if(location.search.includes('focus=')){
+
+}
 
 //Setup for the alignment box, currently only sets the tune tab one.
 const tunealignmentbox = new AlignmentBox(data, '.alignmenttextdata', '#alignmenthelptune');
