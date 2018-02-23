@@ -903,7 +903,21 @@ class Canvas {
 
   sampleTilt(x, y){
     this.betaTilt += x * stageStepSize / this.zooms[this.mag] * this.imgScale;
+    if(this.betaTilt > 20){
+      this.betaTilt = 20;
+      this.limitFlash('#betavalue');
+    } else if(this.betaTilt < -20){
+      this.betaTilt = -20;
+      this.limitFlash('#betavalue');
+    }
     this.alphaTilt += y * stageStepSize / this.zooms[this.mag] * this.imgScale;
+    if(this.alphaTilt > 30){
+      this.alphaTilt = 30;
+      this.limitFlash('#alphavalue');
+    } else if(this.alphaTilt < -30){
+      this.alphaTilt = -30;
+      this.limitFlash('#alphavalue');
+    }
     this.drawCanvas();
   }
 
