@@ -270,23 +270,24 @@ class Canvas {
 
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
 
-    let betaTiltImpact;
-    if (this.specimenHeight == 0){
-      betaTiltImpact = this.betaTilt;
-    } else {
-      betaTiltImpact = this.betaTilt * this.specimenHeight;
-    }
     this.context.globalAlpha = 1;
     this.context.fillStyle = 'white';
     this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     // Block the specimen during tune alignments
     if(!blockSpecimen){
+      let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale;
+      let betaTiltImpact;
+      if (this.specimenHeight == 0){
+        betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.zooms[this.mag] / this.imgScale;
+      } else {
+        betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale;
+      }
       this.context.globalAlpha = .5;
       let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
       this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-        this.imgX + this.alphaTilt * this.specimenHeight - defocusPx * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);
+        this.imgX + alphaTiltImpact - defocusPx * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);
       this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-        this.imgX + this.alphaTilt * this.specimenHeight + defocusPx * Math.cos(this.imgAngle) + this.specimenHeight, this.imgY + betaTiltImpact - defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);  
+        this.imgX + alphaTiltImpact + defocusPx * Math.cos(this.imgAngle) + this.specimenHeight, this.imgY + betaTiltImpact - defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);  
     }
 
     this.drawHalo();
