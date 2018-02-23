@@ -246,7 +246,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         if (lineWidth === 0){
             return; // used to avoid drawing a thin vertical line for the center dot
         }
-        let lineTransparency = Math.min(specimenThickness / 20 / Math.pow(lineWidth, 2) * radiusX * radiusY, 1);
+        let lineTransparency = Math.min(specimenThickness / 1000 / Math.pow(lineWidth, 2) * radiusX * radiusY, 1);
         let lineAngle = Math.atan2(dy * j, dx * j - r1 * i);
         
         console.log(lineAngle)
@@ -257,15 +257,15 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         // Scaling transparency by thickness and scaling color by proximity to center
         let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
-        gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency + ')');
+        gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency * .5 + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
         let lightGradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);
         lightGradient.addColorStop(0, 'rgba(255,255,255,0)');
-        lightGradient.addColorStop(.8, 'rgba(255,255,255,' + lineTransparency + ')');
+        lightGradient.addColorStop(.8, 'rgba(255,255,255,' + lineTransparency * .5 + ')');
         lightGradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
         let darkGradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);
         darkGradient.addColorStop(0, 'rgba(0,0,0,0)');
-        darkGradient.addColorStop(.8, 'rgba(0,0,0,' + lineTransparency + ')');
+        darkGradient.addColorStop(.8, 'rgba(0,0,0,' + lineTransparency * .5 + ')');
         darkGradient.addColorStop(1, 'rgba(0,0,0,' + lineTransparency + ')');
         let CO = 10000;
         drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lightGradient, darkGradient, lineWidth, CO, lineAngle, xCenter, yCenter)
@@ -307,7 +307,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         let brightness = Math.min(intensity, 1);
         let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius * cameraLength / 265, xCenter, yCenter, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0');
-        gradient.addColorStop(.8, 'rgba(128,255,154,' + .5 * brightness + ')');
+        gradient.addColorStop(.8, 'rgba(128,255,154,' + .8 * brightness + ')');
         gradient.addColorStop(1, 'rgba(255,255,255,' + brightness + ')');
         for (var i = 0; i <= layers; i++) {
             for (var j = 0; j <= layers; j++) {
