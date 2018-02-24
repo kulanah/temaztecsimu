@@ -5,11 +5,6 @@ class Canvas {
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
-    this.colorR = 0;
-    this.colorG = 0;
-    this.colorB = 0;
-    this.colorO = 1;
-
     this.img = new Image;
 
     if(source[0] != '.'){
@@ -227,9 +222,7 @@ class Canvas {
 
     this.setFilterString();
 
-    let rgbaString = 'rgba(' + this.colorR + ', ' + this.colorG + ', ' + this.colorB + ', ' + this.colorO + ')';
-
-    this.context.fillStyle = rgbaString;
+    this.context.fillStyle = 'black';
     this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
     this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
 
