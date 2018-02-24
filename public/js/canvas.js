@@ -39,6 +39,7 @@ class Canvas {
 
     this.maskX = 0;
     this.maskY = 0;
+    this.intensity = 0;
     this.maskR = 0;
     this.beamAstigmatismX = 0;
     this.beamAstigmatismY = 0;
@@ -405,7 +406,12 @@ class Canvas {
   };
 
   changeIntensity(delta){
-    let effectiveRadius = this.calculateRadius();
+    this.intensity += delta;
+    let oldR = this.maskR;
+    this.maskR = Math.abs(this.intensity);
+    this.drawCanvas();
+    return (this.maskR - oldR);
+    /*let effectiveRadius = this.calculateRadius();
     delta = delta / -100;
 
     if (effectiveRadius < 11 && effectiveRadius > 0 ){
@@ -428,7 +434,7 @@ class Canvas {
     this.haloY = this.haloY * this.maskR / oldR;
 
     this.drawCanvas();
-    return (this.maskR - oldR);
+    return (this.maskR - oldR);*/
   };
 
   moveImage(deltaX, deltaY){
