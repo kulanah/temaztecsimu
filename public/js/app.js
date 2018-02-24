@@ -123,11 +123,11 @@ let changeIntensity = function(delta){
     openbox.maskR = setupbox.maskR * 4;
     openbox.haloX = setupbox.haloX * 4;
     openbox.haloY = setupbox.haloY * 4;
-    updateCanvas();
     drawColumn();
   } else {
     mainmicro.changeIntensity(delta);
   }
+  updateCanvas();
 };
 
 let isVisible = function(name){

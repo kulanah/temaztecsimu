@@ -405,7 +405,6 @@ class Canvas {
     this.intensity += delta;
     let oldR = this.maskR;
     this.maskR = Math.abs(this.intensity);
-    this.drawCanvas();
     return (this.maskR - oldR);
     /*let effectiveRadius = this.calculateRadius();
     delta = delta / -100;
