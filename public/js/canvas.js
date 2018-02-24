@@ -397,7 +397,9 @@ class Canvas {
   changeIntensity(delta){
     this.intensity += delta;
     let oldR = this.maskR;
-    this.maskR = Math.abs(this.intensity);
+    this.maskR = Math.max(Math.abs(this.intensity), 1);
+    this.haloX = this.haloX * this.maskR / oldR;
+    this.haloY = this.haloY * this.maskR / oldR;
     return (this.maskR - oldR);
     /*let effectiveRadius = this.calculateRadius();
     delta = delta / -100;
