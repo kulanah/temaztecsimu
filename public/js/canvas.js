@@ -401,10 +401,6 @@ class Canvas {
     this.selector.css('filter', 'sepia(1) hue-rotate(40deg) saturate(400%)');
   };
 
-  stripChars(string){
-    return string.replace(/[^0-9.]+/g, '');
-  };
-
   changeIntensity(delta){
     this.intensity += delta;
     let oldR = this.maskR;
@@ -458,13 +454,6 @@ class Canvas {
 
   setTarget(target){
     this.startTarget = target;
-  };
-
-  setColor(r, g, b, o){
-    this.colorR = r;
-    this.colorG = g;
-    this.colorB = b;
-    this.colorO = o;
   };
 
   mapXYfromAngle(angle){
@@ -562,10 +551,6 @@ class Canvas {
     }
     this.context.stroke();
     this.context.filter = savedFilter;
-  }
-
-  drawRotatePath(){
-
   }
 
   multiXDrag(deltaX){
