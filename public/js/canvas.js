@@ -667,7 +667,7 @@ class Canvas {
   }
 
   calculateRadius(){
-    return this.maskR + this.beamslider.val() * 4;
+    return this.maskR / Math.sqrt(2) ** (this.beamslider.val() - 1);
   }
 
   drawHalo(){
