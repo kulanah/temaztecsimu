@@ -212,17 +212,6 @@ let updateCanvas = function(){
   }
 };
 
-let handleBeamSlider = function(newVal){
-  console.log(newVal);
-  if (openScreen == 0){
-    openbox.handleBeamSlider(newVal);
-    setupbox.handleBeamSlider(newVal);
-  } else {
-    mainmicro.handleBeamSlider(newVal);
-  }
-
-}
-
 let updateBeamSlider = function(newValue){
   if (typeof(newValue) == 'number') {
     beamslider.val(newValue);

@@ -686,20 +686,6 @@ class Canvas {
     this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
   }
 
-  handleBeamSlider(newVal){
-    let iterateCount = newVal - this.oldSlider;
-    let delta;
-    if (iterateCount > 0){
-      delta = -4;
-    } else {
-      delta = 4
-    }
-    iterateCount = Math.abs(iterateCount);
-    for (let i = 0; i < iterateCount; ++i){
-      changeIntensity(delta);
-    }
-  }
-
   calculateRadius(){
     return this.maskR + this.beamslider.val() * 4;
   }
