@@ -156,6 +156,7 @@ class Canvas {
       this.maskY = this.selector[0].height / 2;
       this.maskR = 64;
     }
+    this.intensity = this.maskR;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
@@ -941,6 +942,7 @@ class Canvas {
     this.maskX = this.selector[0].width / 2;
     this.maskY = this.selector[0].height / 2;
     this.maskR = 64;
+    this.intensity = this.maskR;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
@@ -1003,6 +1005,7 @@ class Canvas {
     this.maskX = this.selector[0].width / 2;
     this.maskY = this.selector[0].height / 2;
     this.maskR = 64;
+    this.intensity = this.maskR;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
