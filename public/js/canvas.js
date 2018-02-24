@@ -710,7 +710,7 @@ class Canvas {
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
-    context.globalAlpha = totalRadius * this.zooms[this.mag] / 50000 / extractVal;
+    context.globalAlpha = totalRadius * this.zooms[this.mag] / 50000 / extractVal * 2 ** (this.beamslider.val() - 1);
     context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
     context.globalAlpha = 1;
