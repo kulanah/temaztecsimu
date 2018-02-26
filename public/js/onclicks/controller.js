@@ -223,7 +223,7 @@ let microscopeControllers = function(){
       var p = setupbox.context.getImageData(setupbox.maskX, setupbox.maskY, 1, 1).data;
       var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
       console.log(hex);
-      if(hex != '#FFFFFF'){ //if on specimen
+      if(hex != '#ffffff'){ //if on specimen
         onSpecimen = true;
         setupbox.specimenThickness = (255 - p[1]) / 255 * 100;
       } else {
