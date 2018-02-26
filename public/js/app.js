@@ -126,11 +126,11 @@ let changeIntensity = function(delta){
     openbox.maskR = setupbox.maskR * 4;
     openbox.haloX = setupbox.haloX * 4;
     openbox.haloY = setupbox.haloY * 4;
-    updateCanvas();
     drawColumn();
   } else {
     mainmicro.changeIntensity(delta);
   }
+  updateCanvas();
 };
 
 let isVisible = function(name){
@@ -214,17 +214,6 @@ let updateCanvas = function(){
     mainmicro.drawCanvas();
   }
 };
-
-let handleBeamSlider = function(newVal){
-  console.log(newVal);
-  if (openScreen == 0){
-    openbox.handleBeamSlider(newVal);
-    setupbox.handleBeamSlider(newVal);
-  } else {
-    mainmicro.handleBeamSlider(newVal);
-  }
-
-}
 
 let updateBeamSlider = function(newValue){
   if (typeof(newValue) == 'number') {

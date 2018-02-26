@@ -5,11 +5,6 @@ class Canvas {
     this.selector = $('#' + cssID);
     this.context = this.selector[0].getContext('2d');
 
-    this.colorR = 0;
-    this.colorG = 0;
-    this.colorB = 0;
-    this.colorO = 1;
-
     this.img = new Image;
 
     if(source[0] != '.'){
@@ -39,6 +34,7 @@ class Canvas {
 
     this.maskX = 0;
     this.maskY = 0;
+    this.intensity = 0;
     this.maskR = 0;
     this.beamAstigmatismX = 0;
     this.beamAstigmatismY = 0;
@@ -160,6 +156,7 @@ class Canvas {
       this.maskY = this.selector[0].height / 2;
       this.maskR = 64;
     }
+    this.intensity = this.maskR;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
@@ -226,13 +223,11 @@ class Canvas {
 
     this.setFilterString();
 
-    let rgbaString = 'rgba(' + this.colorR + ', ' + this.colorG + ', ' + this.colorB + ', ' + this.colorO + ')';
-
-    this.context.fillStyle = rgbaString;
+    this.context.fillStyle = 'black';
     this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
     this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
 
-    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4);
+    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale / Math.sqrt(2) ** (this.beamslider.val() - 1);
 
     if (alignmentMode == 'Pivot Point X' || alignmentMode == 'Pivot Point Y'){
       this.drawPPPath();
@@ -400,13 +395,15 @@ class Canvas {
     this.selector.css('filter', 'sepia(1) hue-rotate(40deg) saturate(400%)');
   };
 
-  stripChars(string){
-    return string.replace(/[^0-9.]+/g, '');
-  };
-
   changeIntensity(delta){
-    let effectiveRadius = this.calculateRadius();
-    delta = delta - 1;
+    this.intensity += delta;
+    let oldR = this.maskR;
+    this.maskR = Math.max(Math.abs(this.intensity), 1);
+    this.haloX = this.haloX * this.maskR / oldR;
+    this.haloY = this.haloY * this.maskR / oldR;
+    return (this.maskR - oldR);
+    /*let effectiveRadius = this.calculateRadius();
+    delta = delta / -100;
 
     if (effectiveRadius < 11 && effectiveRadius > 0 ){
       this.intUp = !this.intUp;
@@ -428,7 +425,7 @@ class Canvas {
     this.haloY = this.haloY * this.maskR / oldR;
 
     this.drawCanvas();
-    return (this.maskR - oldR);
+    return (this.maskR - oldR);*/
   };
 
   moveImage(deltaX, deltaY){
@@ -452,13 +449,6 @@ class Canvas {
 
   setTarget(target){
     this.startTarget = target;
-  };
-
-  setColor(r, g, b, o){
-    this.colorR = r;
-    this.colorG = g;
-    this.colorB = b;
-    this.colorO = o;
   };
 
   mapXYfromAngle(angle){
@@ -556,10 +546,6 @@ class Canvas {
     }
     this.context.stroke();
     this.context.filter = savedFilter;
-  }
-
-  drawRotatePath(){
-
   }
 
   multiXDrag(deltaX){
@@ -680,22 +666,8 @@ class Canvas {
     this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
   }
 
-  handleBeamSlider(newVal){
-    let iterateCount = newVal - this.oldSlider;
-    let delta;
-    if (iterateCount > 0){
-      delta = -4;
-    } else {
-      delta = 4
-    }
-    iterateCount = Math.abs(iterateCount);
-    for (let i = 0; i < iterateCount; ++i){
-      changeIntensity(delta);
-    }
-  }
-
   calculateRadius(){
-    return this.maskR + this.beamslider.val() * 4;
+    return this.maskR / Math.sqrt(2) ** (this.beamslider.val() - 1);
   }
 
   drawHalo(){
@@ -733,12 +705,12 @@ class Canvas {
 
   //this function is used darken the screen at large beam sizes.
   drawShade(context){
-    let totalRadius = this.calculateRadius();
+    let totalRadius = this.maskR;
     if(this == openbox){
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
-    context.globalAlpha = totalRadius * this.zooms[this.mag] / 50000 / extractVal;
+    context.globalAlpha = 1 - (1 - totalRadius * this.zooms[this.mag] / 100000 / extractVal) / 2 ** ((this.beamslider.val() - 1) / 10)
     context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
     context.globalAlpha = 1;
@@ -843,7 +815,7 @@ class Canvas {
 
   drawDiffraction(){
     clearCanvas(this.selector[0]);
-    let beamRadius = Math.max(this.maskR * this.zooms[this.mag] / this.imgScale + (11 * 4 - (this.beamslider.val() - 1) * 4), 1);
+    let beamRadius = Math.max(this.maskR * this.zooms[this.mag] / this.imgScale * (Math.sqrt(2) ** (this.beamslider.val() - 1)), 1);
     drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, this.selector[0].height / 2 / beamRadius);
     let radiusX = this.c2 * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
     let radiusY = this.c2 * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
@@ -970,6 +942,7 @@ class Canvas {
     this.maskX = this.selector[0].width / 2;
     this.maskY = this.selector[0].height / 2;
     this.maskR = 64;
+    this.intensity = this.maskR;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
@@ -1032,6 +1005,7 @@ class Canvas {
     this.maskX = this.selector[0].width / 2;
     this.maskY = this.selector[0].height / 2;
     this.maskR = 64;
+    this.intensity = this.maskR;
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
