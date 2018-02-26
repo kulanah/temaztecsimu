@@ -72,7 +72,6 @@ function drawBeam(canvas, x, y, radiusX, radiusY, rotation, lineWidth) {
     // Draws the beam
     drawGreenCircle(canvas, x, y, radiusX, radiusY, rotation);
     drawThreeArcs(canvas, x, y, radiusX, radiusY, rotation, lineWidth);
-    drawWhiteDot(canvas, x, y, radiusX, radiusY, rotation);
 }
 
 function drawWhiteDot(canvas, x, y, radiusX, radiusY, rotation) {
@@ -92,7 +91,11 @@ function drawGreenCircle(canvas, x, y, radiusX, radiusY, rotation) {
     if (canvas.getContext) {
         var rotationRadians = rotation / 180 * Math.PI;
         var ctx = canvas.getContext('2d');
-        ctx.fillStyle = 'rgba(128,255,154,.5)'; 
+        let gradient = ctx.createRadialGradient(x, y, (canvas.height + canvas.width) / 4, x, y, 0);
+        gradient.addColorStop(0, 'rgba(0,17,0,0');
+        gradient.addColorStop(.8, 'rgba(128,255,154,' + .8 + ')');
+        gradient.addColorStop(1, 'rgba(255,255,255,' + 1 + ')');      
+        ctx.fillStyle = gradient;  
         ctx.beginPath();
         ctx.ellipse(x, y, radiusX, radiusY, rotationRadians, 0, Math.PI * 2);
         ctx.fill();
