@@ -32,6 +32,8 @@ let overFocusSrc = '';
 let overFocusValue = 0;
 let underFocusSrc = '';
 let underFocusValue = 0;
+let underFocusImage = new Image;
+let overFocusImage = new Image;
 if(location.search.includes('image=')){
   micrographImage = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + location.search.split('image=')[1].split('&')[0];
   micrographMag = location.search.split('mag=')[1].split('&')[0];
@@ -41,14 +43,12 @@ if(location.search.includes('image=')){
 }
 if(location.search.includes('focus=')){
   let f = location.search.split('focus=')[1].split('&')[0].split(',');
-  underFocusSrc = f[0];
+  underFocusSrc = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + f[0];
   underFocusValue = f[1];
-  overFocusSrc = f[2];
+  overFocusSrc = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + f[2];
   overFocusValue = f[3];
-  underFocusImage = new Image;
   underFocusImage.crossOrigin = 'anonymous';
   underFocusImage.src = underFocusSrc + '?';
-  overFocusImage = new Image;
   overFocusImage.crossOrigin = 'anonymous';
   overFocusImage.src = overFocusSrc + '?';
 }
