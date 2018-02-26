@@ -28,6 +28,10 @@ let micrographImage = './public/img/23.png';
 let micrographMag = 250000;
 let micrographWidth = 512;
 let micrographMaterial = silicon;
+let overFocusSrc = '';
+let overFocusValue = 0;
+let underFocusSrc = '';
+let underFocusValue = 0;
 if(location.search.includes('image=')){
   micrographImage = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + location.search.split('image=')[1].split('&')[0];
   micrographMag = location.search.split('mag=')[1].split('&')[0];
@@ -36,7 +40,17 @@ if(location.search.includes('image=')){
   micrographMaterial = new Material(m[1], m[3], m[4], m[5], m[6], m[7], m[8], m[9]);
 }
 if(location.search.includes('focus=')){
-
+  let f = location.search.split('focus=')[1].split('&')[0].split(',');
+  underFocusSrc = f[0];
+  underFocusValue = f[1];
+  overFocusSrc = f[2];
+  overFocusValue = f[3];
+  underFocusImage = new Image;
+  underFocusImage.crossOrigin = 'anonymous';
+  underFocusImage.src = underFocusSrc + '?';
+  overFocusImage = new Image;
+  overFocusImage.crossOrigin = 'anonymous';
+  overFocusImage.src = overFocusSrc + '?';
 }
 
 //Setup for the alignment box, currently only sets the tune tab one.

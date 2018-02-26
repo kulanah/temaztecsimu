@@ -279,12 +279,15 @@ class Canvas {
         betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale;
       }
       betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
-      this.context.globalAlpha = .5;
-      let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
-      this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-        this.imgX + alphaTiltImpact - defocusPx * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);
-      this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-        this.imgX + alphaTiltImpact + defocusPx * Math.cos(this.imgAngle) + this.specimenHeight, this.imgY + betaTiltImpact - defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);  
+      if(this === mainmicro){
+        this.drawSplitImageDefocus(alphaTiltImpact, betaTiltImpact);
+      } else if(this.defocus < 0 && underFocusValue > 0){
+        this.drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, underFocusImage, underFocusValue)
+      } else if(this.defocus > 0 && overFocusValue > 0){
+        this.drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, overFocusImage, overFocusValue)
+      } else {
+        this.drawSplitImageDefocus(alphaTiltImpact, betaTiltImpact);
+      }
     }
 
     this.drawHalo();
@@ -292,6 +295,24 @@ class Canvas {
     this.context.restore();
 
   };
+
+  drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, defocusImage, defocusValue){
+    this.context.globalAlpha = Math.min(Math.abs(this.defocus) / defocusValue, 1);
+    this.context.drawImage(defocusImage,0,0,this.img.width,this.img.height,
+      this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact,this.imgW,this.imgH);
+    this.context.globalAlpha = 1 - this.context.globalAlpha;
+    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+      this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact,this.imgW,this.imgH);
+  }
+
+  drawSplitImageDefocus(alphaTiltImpact, betaTiltImpact){
+    this.context.globalAlpha = .5;
+    let defocusPx = this.defocus * this.zooms[this.mag] / this.imgScale; //convert from nanometers to pixels
+    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+      this.imgX + alphaTiltImpact - defocusPx * Math.cos(this.imgAngle) - this.specimenHeight, this.imgY + betaTiltImpact + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);
+    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
+      this.imgX + alphaTiltImpact + defocusPx * Math.cos(this.imgAngle) + this.specimenHeight, this.imgY + betaTiltImpact - defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH); 
+  }
 
   zoom(delta){
     if (diffractionMode && this != mainmicro){
