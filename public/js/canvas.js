@@ -705,12 +705,12 @@ class Canvas {
 
   //this function is used darken the screen at large beam sizes.
   drawShade(context){
-    let totalRadius = this.calculateRadius();
+    let totalRadius = this.maskR;
     if(this == openbox){
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
-    context.globalAlpha = totalRadius * this.zooms[this.mag] / 50000 / extractVal * 2 ** (this.beamslider.val() - 1);
+    context.globalAlpha = 1 - (1 - totalRadius * this.zooms[this.mag] / 100000 / extractVal) / 2 ** ((this.beamslider.val() - 1) / 10)
     context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
     context.globalAlpha = 1;
