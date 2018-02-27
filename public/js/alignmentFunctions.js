@@ -104,7 +104,12 @@ function drawThreeArcs(canvas, x, y, radiusX, radiusY, rotation, lineWidth) {
     // Draws the three arcs visible in the beam
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
-        ctx.strokeStyle = 'rgba(128,255,154,' + Math.min(1, 20 / (radiusX + radiusY)) + ')';
+        let arcTransparency = Math.min(1, 1024 / (radiusX ** 2 + radiusY ** 2));
+        let gradient = ctx.createRadialGradient(x, y, (canvas.height + canvas.width) / 4, x, y, 0);
+        gradient.addColorStop(0, 'rgba(0,17,0,0');
+        gradient.addColorStop(.8, 'rgba(128,255,154,' + arcTransparency + ')');
+        gradient.addColorStop(1, 'rgba(255,255,255,' + arcTransparency + ')');
+        ctx.strokeStyle = gradient;
         ctx.lineWidth = lineWidth;
         console.log(x, y, radiusX, radiusY, rotation, lineWidth)
         ctx.beginPath();
