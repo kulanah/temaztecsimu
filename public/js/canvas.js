@@ -141,7 +141,7 @@ class Canvas {
         this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 2;
         this.maskY = this.selector[0].height / 4 + randomValues[1] * this.selector[0].height / 2;
       }
-      this.maskR = 20 + randomValues[2] * 180;
+      this.maskR = 20 + randomValues[2] * 500;
       this.defocus = 10 - 20 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
       this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
@@ -154,7 +154,7 @@ class Canvas {
     } else {
       this.maskX = this.selector[0].width / 2;
       this.maskY = this.selector[0].height / 2;
-      this.maskR = 64;
+      this.maskR = 256;
     }
     this.intensity = this.maskR;
 
@@ -963,7 +963,7 @@ class Canvas {
 
     this.maskX = this.selector[0].width / 2;
     this.maskY = this.selector[0].height / 2;
-    this.maskR = 64;
+    this.maskR = 256;
     this.intensity = this.maskR;
 
     this.pivotPointCenterX = this.maskX;
@@ -1026,7 +1026,7 @@ class Canvas {
 
     this.maskX = this.selector[0].width / 2;
     this.maskY = this.selector[0].height / 2;
-    this.maskR = 64;
+    this.maskR = 256;
     this.intensity = this.maskR;
 
     this.pivotPointCenterX = this.maskX;
