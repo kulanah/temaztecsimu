@@ -376,7 +376,7 @@ class Canvas {
   };
 
   focus(delta){
-    this.defocus += delta * this.focusStep * .01;
+    this.defocus += delta * 2 ** (this.focusStep - 1) * .01;
     this.drawCanvas();
   };
 
