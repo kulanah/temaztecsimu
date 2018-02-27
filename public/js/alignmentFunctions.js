@@ -77,11 +77,10 @@ function drawBeam(canvas, x, y, radiusX, radiusY, rotation, lineWidth) {
 function drawWhiteDot(canvas, x, y, radiusX, radiusY, rotation) {
     // Draws the white dot at the center of the beam
     if (canvas.getContext) {
-        var rotationRadians = rotation / 180 * Math.PI;
         var ctx = canvas.getContext('2d');
         ctx.fillStyle = ('#FFF');
         ctx.beginPath();
-        ctx.ellipse(x, y, radiusX / 8, radiusY / 8, rotationRadians, 0, Math.PI * 2);
+        ctx.ellipse(x, y, radiusX / 8, radiusY / 8, rotation, 0, Math.PI * 2);
         ctx.fill();
     }
 }
@@ -89,7 +88,6 @@ function drawWhiteDot(canvas, x, y, radiusX, radiusY, rotation) {
 function drawGreenCircle(canvas, x, y, radiusX, radiusY, rotation) {
     // Draws the green body of the beam
     if (canvas.getContext) {
-        var rotationRadians = rotation / 180 * Math.PI;
         var ctx = canvas.getContext('2d');
         let gradient = ctx.createRadialGradient(x, y, (canvas.height + canvas.width) / 4, x, y, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0');
@@ -97,7 +95,7 @@ function drawGreenCircle(canvas, x, y, radiusX, radiusY, rotation) {
         gradient.addColorStop(1, 'rgba(255,255,255,' + 1 + ')');      
         ctx.fillStyle = gradient;  
         ctx.beginPath();
-        ctx.ellipse(x, y, radiusX, radiusY, rotationRadians, 0, Math.PI * 2);
+        ctx.ellipse(x, y, radiusX, radiusY, rotation, 0, Math.PI * 2);
         ctx.fill();
     }
 }
@@ -105,24 +103,23 @@ function drawGreenCircle(canvas, x, y, radiusX, radiusY, rotation) {
 function drawThreeArcs(canvas, x, y, radiusX, radiusY, rotation, lineWidth) {
     // Draws the three arcs visible in the beam
     if (canvas.getContext) {
-        var rotationRadians = rotation / 180 * Math.PI;
         var ctx = canvas.getContext('2d');
         ctx.strokeStyle = 'rgba(128,255,154,' + Math.min(1, 20 / (radiusX + radiusY)) + ')';
         ctx.lineWidth = lineWidth;
         console.log(x, y, radiusX, radiusY, rotation, lineWidth)
         ctx.beginPath();
-        ctx.ellipse(-2 * radiusX * Math.cos(rotationRadians + Math.PI / 3) + x, -2 * radiusY * Math.sin(rotationRadians + Math.PI / 3) + y,
-         radiusX * Math.sqrt(3), radiusY * Math.sqrt(3), rotationRadians, Math.PI / 6, Math.PI / 2);
+        ctx.ellipse(-2 * radiusX * Math.cos(rotation + Math.PI / 3) + x, -2 * radiusY * Math.sin(rotation + Math.PI / 3) + y,
+         radiusX * Math.sqrt(3), radiusY * Math.sqrt(3), rotation, Math.PI / 6, Math.PI / 2);
         ctx.stroke();
-        console.log((-2 * radiusX * Math.cos(rotationRadians + Math.PI / 3) + x, -2 * radiusY * Math.sin(rotationRadians + Math.PI / 3) + y,
+        console.log((-2 * radiusX * Math.cos(rotation + Math.PI / 3) + x, -2 * radiusY * Math.sin(rotation + Math.PI / 3) + y,
          radiusX * Math.sqrt(3), radiusY * Math.sqrt(3)));
         ctx.beginPath();
-        ctx.ellipse(radiusX * 2 * Math.cos(rotationRadians) + x, radiusY * 2 * Math.sin(rotationRadians) + y,
-         radiusX * Math.sqrt(3), radiusY * Math.sqrt(3), rotationRadians, 5 * Math.PI / 6, 7 * Math.PI / 6);
+        ctx.ellipse(radiusX * 2 * Math.cos(rotation) + x, radiusY * 2 * Math.sin(rotation) + y,
+         radiusX * Math.sqrt(3), radiusY * Math.sqrt(3), rotation, 5 * Math.PI / 6, 7 * Math.PI / 6);
         ctx.stroke();
         ctx.beginPath();
-        ctx.ellipse(-2 * radiusX * Math.cos(rotationRadians + 5 * Math.PI / 3) + x, -2 * radiusY * Math.sin(rotationRadians + 5 * Math.PI / 3) + y,
-         radiusX * Math.sqrt(3), radiusY * Math.sqrt(3), rotationRadians, 3 * Math.PI / 2, 11 * Math.PI / 6);
+        ctx.ellipse(-2 * radiusX * Math.cos(rotation + 5 * Math.PI / 3) + x, -2 * radiusY * Math.sin(rotation + 5 * Math.PI / 3) + y,
+         radiusX * Math.sqrt(3), radiusY * Math.sqrt(3), rotation, 3 * Math.PI / 2, 11 * Math.PI / 6);
         ctx.stroke();
     }
 }
