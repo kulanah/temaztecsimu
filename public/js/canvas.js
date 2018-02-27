@@ -844,8 +844,8 @@ class Canvas {
     this.context.beginPath();
     this.context.arc(this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, 2 * Math.PI);
     this.context.clip();
+    this.diffractionAngle = Math.atan2(this.diffractionAstigmatismY, this.diffractionAstigmatismX);
     if(onSpecimen){
-      this.diffractionAngle = Math.atan2(this.diffractionAstigmatismY, this.diffractionAstigmatismX);
       var settings = calculateR1R2Angle(micrographMaterial, 1, 1, 1, 100000, this.diffractionCameraLength, 10);
       for(i = 1; i < 2; i++) {
         drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
