@@ -43,14 +43,14 @@ if(location.search.includes('image=')){
 }
 if(location.search.includes('focus=')){
   let f = location.search.split('focus=')[1].split('&')[0].split(',');
-  underFocusSrc = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + f[0];
-  underFocusValue = f[1];
-  overFocusSrc = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + f[2];
-  overFocusValue = f[3];
-  underFocusImage.crossOrigin = 'anonymous';
-  underFocusImage.src = underFocusSrc + '?';
+  overFocusSrc = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + f[0];
+  overFocusValue = f[1];
+  underFocusSrc = 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/' + f[2];
+  underFocusValue = f[3];
   overFocusImage.crossOrigin = 'anonymous';
   overFocusImage.src = overFocusSrc + '?';
+  underFocusImage.crossOrigin = 'anonymous';
+  underFocusImage.src = underFocusSrc + '?';
 }
 
 //Setup for the alignment box, currently only sets the tune tab one.
