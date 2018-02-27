@@ -281,9 +281,9 @@ class Canvas {
       betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
       if(this === mainmicro){
         this.drawSplitImageDefocus(alphaTiltImpact, betaTiltImpact);
-      } else if(this.defocus <= 0 && underFocusValue > 0){
+      } else if(this.defocus + this.specimenHeight * 1000 <= 0 && underFocusValue > 0){
         this.drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, underFocusImage, underFocusValue)
-      } else if(this.defocus >= 0 && overFocusValue > 0){
+      } else if(this.defocus + this.specimenHeight * 1000 >= 0 && overFocusValue > 0){
         this.drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, overFocusImage, overFocusValue)
       } else {
         this.drawSplitImageDefocus(alphaTiltImpact, betaTiltImpact);
@@ -297,7 +297,7 @@ class Canvas {
   };
 
   drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, defocusImage, defocusValue){
-    let defocusRatio = Math.min(Math.abs(this.defocus) / defocusValue, 1)
+    let defocusRatio = Math.min(Math.abs(this.defocus + this.specimenHeight * 1000) / defocusValue, 1)
     this.context.globalAlpha = defocusRatio;
     this.context.drawImage(defocusImage,0,0,this.img.width,this.img.height,
       this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact,this.imgW,this.imgH);
