@@ -101,7 +101,7 @@ class Canvas {
     this.diffractionZooms = [26.5, 35, 44, 62, 71, 89, 135, 175, 265, 430, 600, 860, 1650, 2650, 3500, 4100];
     this.diffractionMag = 8;
     this.diffractionCameraLength = 265;
-    this.diffractionRadius = 20;
+    this.diffractionRadius = 128;
     this.diffractionAstigmatismX = 0;
     this.diffractionAstigmatismY = 0;
     this.diffractionAngle = 0;
@@ -420,7 +420,10 @@ class Canvas {
   changeIntensity(delta){
     this.intensity += delta;
     let oldR = this.maskR;
-    this.maskR = Math.max(Math.abs(this.intensity), 1);
+    let minR = .2 * 32;
+    // .2 = minimum beam radius in nm
+    // 32 = current difference in scale between spot size 1 and spot size 11
+    this.maskR = Math.max(Math.abs(this.intensity), minR);
     this.haloX = this.haloX * this.maskR / oldR;
     this.haloY = this.haloY * this.maskR / oldR;
     return (this.maskR - oldR);
@@ -850,11 +853,11 @@ class Canvas {
       for(i = 1; i < 2; i++) {
         drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
           this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 
-          0, 4 * beamRadius / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
+          0, 2 * beamRadius / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
           this.specimenThickness, this.selector[0].height / 2, this.alphaTilt, this.betaTilt, this.diffractionCameraLength);
       }
     } else {
-      drawBeam(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX * 5, radiusY * 5, this.diffractionAngle, radiusX + radiusY);
+      drawBeam(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX * 10, radiusY * 10, this.diffractionAngle, radiusX + radiusY);
     }
   }
 
@@ -987,7 +990,6 @@ class Canvas {
     this.diffractionY = 0;
     this.diffractionMag = 8;
     this.diffractionCameraLength = 265;
-    this.diffractionRadius = 20;
     this.diffractionAstigmatismX = 0;
     this.diffractionAstigmatismY = 0;
     this.diffractionAngle = 0;
@@ -1050,7 +1052,6 @@ class Canvas {
     this.diffractionY = 0;
     this.diffractionMag = 8;
     this.diffractionCameraLength = 265;
-    this.diffractionRadius = 20;
     this.diffractionAstigmatismX = 0;
     this.diffractionAstigmatismY = 0;
     this.diffractionAngle = 0;
