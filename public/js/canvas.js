@@ -377,6 +377,13 @@ class Canvas {
 
   focus(delta){
     this.defocus += delta * 2 ** (this.focusStep - 1) * .01;
+    if(this.defocus < -9999.99){
+      this.defocus = -9999.99;
+      this.limitFlash('#defocusvalue');
+    } else if(this.defocus > 10000){
+      this.defocus = 10000;
+      this.limitFlash('#defocusvalue');
+    }
     this.drawCanvas();
   };
 
