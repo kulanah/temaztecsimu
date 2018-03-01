@@ -860,7 +860,7 @@ class Canvas {
       for(i = 1; i < 2; i++) {
         drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
           this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 
-          0, 2 * beamRadius / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
+          0, 64 * this.maskR / (Math.sqrt(2) ** (this.beamslider.val() - 1)) / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
           this.specimenThickness, this.selector[0].height / 2, this.alphaTilt, this.betaTilt, this.diffractionCameraLength);
       }
     } else {
