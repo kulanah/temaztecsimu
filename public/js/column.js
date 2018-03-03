@@ -93,7 +93,7 @@ function drawColumn(){
 	drawColumnParam();
 }
 
-function drawColumnParam(heightMult = 0.65, yOffset = .238 * $(window).height(), zoomVer = false, widthMult = 0.3){
+function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.3){
 	let columnDiv;
 	let beamDiag;
 	let beamLabels;
