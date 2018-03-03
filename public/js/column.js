@@ -93,7 +93,7 @@ function drawColumn(){
 	drawColumnParam();
 }
 
-function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMult = 0.3){
+function drawColumnParam(heightMult = 0.65, yOffset = .238 * $(window).height(), zoomVer = false, widthMult = 0.3){
 	let columnDiv;
 	let beamDiag;
 	let beamLabels;
@@ -229,11 +229,6 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 		if (!zoomVer){
 			zoomedOutLabels[i].id = temLens[i].name.replace(/\s+/g, '');
 		}
-		if (i == 0){
-			totalHeight = temLens[i].y;
-		} else {
-			totalHeight += temLens[i].y - temLens[i - 1].y;
-		}
 		if(temLens[i].kind=='sample'){
 			ctx.fillStyle = '#fff';
 			ctx.fillRect(xCenter-60,temLens[i].y,180,6);
@@ -297,15 +292,15 @@ function drawColumnParam(heightMult = 0.9, yOffset = 0, zoomVer = false, widthMu
 		} else {
 			if(temLens[i].kind=='screen'){
 				zoomedOutLabels[i].style.left = xCenter + 120 + 'px';
-				zoomedOutLabels[i].style.top = temLens[i].y - 4 * yScale + 'px';
+				zoomedOutLabels[i].style.top = temLens[i].y - 4 * yScale + yOffset + 'px';
 			
 			}else{
 				if(temLens[i].kind=='source'){
 					zoomedOutLabels[i].style.left = xCenter + 95 + 'px';
-					zoomedOutLabels[i].style.top = temLens[i].y + 20 + 'px';
+					zoomedOutLabels[i].style.top = temLens[i].y + 20 + yOffset + 'px';
 				}else{
 					zoomedOutLabels[i].style.left = xCenter + 95 + 'px';
-					zoomedOutLabels[i].style.top = (temLens[i].y * yScale - 8 ) + 'px';
+					zoomedOutLabels[i].style.top = (temLens[i].y * yScale - 8 ) + yOffset + 'px';
 				}
 			}
 
