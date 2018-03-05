@@ -284,16 +284,16 @@ class Canvas {
       // getImageData will only function on a server - it will fail if run locally.
       // To do local testing, create a web server with Python.
       // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
+      if(this.maskX < this.imgX || this.maskX > this.imgX + this.imgW || this.maskY < this.imgY || this.maskY > this.imgY + this.imgH){
+        onSpecimen = false;
+      } else {
+        onSpecimen = true;
+      }
       if(window.location.protocol != 'file:'){
-        var p = setupbox.context.getImageData(setupbox.maskX, setupbox.maskY, 1, 1).data;
+        var p = setupbox.context.getImageData(setupbox.maskX - 1, setupbox.maskY - 1, 3, 3).data;
         var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
         console.log(hex);
-        if(hex != '#ffffff'){ //if on specimen
-          onSpecimen = true;
-          setupbox.specimenThickness = (255 - p[1]) / 255 * 100;
-        } else {
-          onSpecimen = false;
-        }
+        this.specimenThickness = (255 - p[1]) / 255 * 100;
       }
       this.context.save();
       this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
