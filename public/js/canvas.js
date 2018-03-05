@@ -200,33 +200,13 @@ class Canvas {
         this.context.restore();
         return;
       }
-      if(diffractionMode){
-        this.hueRotateActive = false;
-        if(this.diffractionCameraLength >= 1000){
-          $('#magnificationvalue').text('  ' + this.diffractionCameraLength / 1000 + ' m ');
-        } else {
-          $('#magnificationvalue').text('  ' + this.diffractionCameraLength + ' mm ');
-        }
-        let context = this.glowSelector[0].getContext('2d');
-        context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
-        this.setFilterString();
-
-        this.drawDiffraction();
-
-        this.context.restore();
-
-        return;
-      } else {
-        this.hueRotateActive = true;
-      }
+      this.hueRotateActive = true;
     }
 
     this.setFilterString();
 
     this.context.fillStyle = 'black';
-    this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
     this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
-
     let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale / Math.sqrt(2) ** (this.beamslider.val() - 1);
 
     if (alignmentMode == 'Pivot Point X' || alignmentMode == 'Pivot Point Y'){
@@ -266,7 +246,7 @@ class Canvas {
     //(image, sStartx, sStarty, sWidth, sHeight, dStartx, dStarty, dWidth, dHeight);
 
     this.context.globalAlpha = 1;
-    this.context.fillStyle = 'white';
+    this.context.fillStyle = '#CCC';
     this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     // Block the specimen during tune alignments
     if(!blockSpecimen){
@@ -294,6 +274,41 @@ class Canvas {
 
     this.context.restore();
 
+    if(this === setupbox && diffractionMode){
+      // Pixel color detection code based on answer from https://stackoverflow.com/questions/6735470/get-pixel-color-from-canvas-on-mouseover by Wayne Burkett
+      function rgbToHex(r, g, b) {
+        if (r > 255 || g > 255 || b > 255)
+          throw "Invalid color component";
+        return ((r << 16) | (g << 8) | b).toString(16);
+      }
+      // getImageData will only function on a server - it will fail if run locally.
+      // To do local testing, create a web server with Python.
+      // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
+      if(window.location.protocol != 'file:'){
+        var p = setupbox.context.getImageData(setupbox.maskX, setupbox.maskY, 1, 1).data;
+        var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+        console.log(hex);
+        if(hex != '#ffffff'){ //if on specimen
+          onSpecimen = true;
+          setupbox.specimenThickness = (255 - p[1]) / 255 * 100;
+        } else {
+          onSpecimen = false;
+        }
+      }
+      this.context.save();
+      this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
+      this.hueRotateActive = false;
+      if(this.diffractionCameraLength >= 1000){
+        $('#magnificationvalue').text('  ' + this.diffractionCameraLength / 1000 + ' m ');
+      } else {
+        $('#magnificationvalue').text('  ' + this.diffractionCameraLength + ' mm ');
+      }
+      let context = this.glowSelector[0].getContext('2d');
+      context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
+      this.setFilterString();
+      this.drawDiffraction();
+      this.context.restore();
+    }
   };
 
   drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, defocusImage, defocusValue){
