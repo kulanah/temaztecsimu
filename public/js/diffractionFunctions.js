@@ -246,7 +246,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         if (lineWidth === 0){
             return; // used to avoid drawing a thin vertical line for the center dot
         }
-        let lineTransparency = specimenThickness / 600 / Math.pow(lineWidth, 2) * radiusX * radiusY;
+        let lineTransparency = specimenThickness / 300 / Math.pow(lineWidth, 2) * radiusX * radiusY;
         let lineAngle = Math.atan2(dy * j, dx * j - r1 * i);
         
         console.log(lineAngle)
@@ -302,8 +302,8 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         var rotationRadians = rotation; // conversion no longer necessary, rotation is calculated in radians
         var maxDistance = platformRadius;
         //let coords = findClosestDot(dx, dy, alphaTilt, betaTilt, platformRadius);
-        let xCenter = xOffset + Math.tan(betaTilt * Math.PI / 180) * cameraLength;
-        let yCenter = yOffset + Math.tan(alphaTilt * Math.PI / 180) * cameraLength;
+        let xCenter = xOffset + Math.tan(betaTilt * Math.PI / 180) * cameraLength * 3;
+        let yCenter = yOffset + Math.tan(alphaTilt * Math.PI / 180) * cameraLength * 3;
         let brightness = Math.min(intensity, 1);
         let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius * cameraLength / 265, xCenter, yCenter, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0');

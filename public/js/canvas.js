@@ -270,13 +270,13 @@ class Canvas {
     this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     // Block the specimen during tune alignments
     if(!blockSpecimen){
-      let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale;
+      let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
       alphaTiltImpact = Math.min(this.imgW / 2, Math.max(-this.imgW / 2, alphaTiltImpact)); // keep tilt impact limited to staying on specimen
       let betaTiltImpact;
       if (this.specimenHeight == 0){
-        betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.zooms[this.mag] / this.imgScale;
+        betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.zooms[this.mag] / this.imgScale * 3;
       } else {
-        betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale;
+        betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
       }
       betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
       if(this === mainmicro){
@@ -906,7 +906,7 @@ class Canvas {
   }
 
   sampleTilt(x, y){
-    this.betaTilt += x * stageStepSize / this.zooms[this.mag] * this.imgScale;
+    this.betaTilt += x * stageStepSize * .1;
     if(this.betaTilt > 20){
       this.betaTilt = 20;
       this.limitFlash('#betavalue');
@@ -914,7 +914,7 @@ class Canvas {
       this.betaTilt = -20;
       this.limitFlash('#betavalue');
     }
-    this.alphaTilt += y * stageStepSize / this.zooms[this.mag] * this.imgScale;
+    this.alphaTilt += y * stageStepSize * .1;
     if(this.alphaTilt > 30){
       this.alphaTilt = 30;
       this.limitFlash('#alphavalue');
