@@ -207,7 +207,7 @@ class Canvas {
 
     this.context.fillStyle = 'black';
     this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
-    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale / Math.sqrt(2) ** (this.beamslider.val() - 1);
+    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale / Math.sqrt(2) ** (this.beamslider.val() - 1) * c2Sizes[c2Level - 1] / 150;
 
     if (alignmentMode == 'Pivot Point X' || alignmentMode == 'Pivot Point Y'){
       this.drawPPPath();
@@ -876,8 +876,8 @@ class Canvas {
     clearCanvas(this.selector[0]);
     let beamRadius = this.maskR * (Math.sqrt(2) ** (this.beamslider.val() - 1));
     drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, this.selector[0].height / 2 / beamRadius);
-    let radiusX = this.c2 * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
-    let radiusY = this.c2 * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
+    let radiusX = c2Sizes[c2Level - 1] / 150 * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
+    let radiusY = c2Sizes[c2Level - 1] / 150 * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
     this.context.beginPath();
     this.context.arc(this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, 2 * Math.PI);
     this.context.clip();

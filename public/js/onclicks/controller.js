@@ -6,6 +6,8 @@ let beamStepSize = 1;
 let stageStepSize = 1;
 let availableAlignments = [];
 let activeAlignment = 0;
+let c2Level = 4;
+let c2Sizes = [10, 70, 100, 150];
 
 let microscopeControllers = function(){
 
@@ -336,5 +338,25 @@ let microscopeControllers = function(){
         $('#floatingstigmatordiv').show();
       }
     }
+  });
+
+  $('#c21').on('click', function(){
+    c2Level = 1;
+    updateCanvas();
+  });
+
+  $('#c22').on('click', function(){
+    c2Level = 2;
+    updateCanvas();
+  });
+
+  $('#c23').on('click', function(){
+    c2Level = 3;
+    updateCanvas();
+  });
+
+  $('#c24').on('click', function(){
+    c2Level = 4;
+    updateCanvas();
   });
 };
