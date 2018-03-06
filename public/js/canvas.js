@@ -260,7 +260,7 @@ class Canvas {
     // Block the specimen during tune alignments
     if(!blockSpecimen){
       if(this === mainmicro){
-        this.drawSplitImageDefocus(this.context, alphaTiltImpact, betaTiltImpact);
+        this.drawSplitImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact);
       } else {
         imagectx.fillStyle = '#FFF';
         imagectx.fillRect(0, 0, 3, 3);
