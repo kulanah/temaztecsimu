@@ -21,6 +21,9 @@ let randomValues = [];
 for(i = 0; i < 14; i++){
   randomValues.push(Math.random());
 }
+// setupboxcanvasimage tracks the beam pixel and the nine surrounding pixels
+// Used to accurately evaluate specimen height when the beam leaves the microscope setup window or becomes very small
+let imagectx = $('#setupboxcanvasimage')[0].getContext('2d');
 
 drawColumn();
 

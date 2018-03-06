@@ -260,13 +260,20 @@ class Canvas {
       }
       betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
       if(this === mainmicro){
-        this.drawSplitImageDefocus(alphaTiltImpact, betaTiltImpact);
-      } else if(this.defocus + this.specimenHeight * 1000 <= 0 && underFocusValue > 0){
-        this.drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, underFocusImage, underFocusValue)
-      } else if(this.defocus + this.specimenHeight * 1000 >= 0 && overFocusValue > 0){
-        this.drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, overFocusImage, overFocusValue)
+        this.drawSplitImageDefocus(this.context, alphaTiltImpact, betaTiltImpact);
       } else {
-        this.drawSplitImageDefocus(alphaTiltImpact, betaTiltImpact);
+        imagectx.fillStyle = '#FFF';
+        imagectx.fillRect(0, 0, 3, 3);
+        if(this.defocus + this.specimenHeight * 1000 <= 0 && underFocusValue > 0){
+          this.drawTwoImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact, underFocusImage, underFocusValue);
+          this.drawTwoImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1, underFocusImage, underFocusValue);
+        } else if(this.defocus + this.specimenHeight * 1000 >= 0 && overFocusValue > 0){
+          this.drawTwoImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact, overFocusImage, overFocusValue);
+          this.drawTwoImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1, overFocusImage, overFocusValue);
+        } else {
+          this.drawSplitImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact);
+          this.drawSplitImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1);
+        }
       }
     }
 
@@ -281,16 +288,16 @@ class Canvas {
           throw "Invalid color component";
         return ((r << 16) | (g << 8) | b).toString(16);
       }
-      // getImageData will only function on a server - it will fail if run locally.
-      // To do local testing, create a web server with Python.
-      // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
       if(this.maskX < this.imgX || this.maskX > this.imgX + this.imgW || this.maskY < this.imgY || this.maskY > this.imgY + this.imgH){
         onSpecimen = false;
       } else {
         onSpecimen = true;
       }
+      // getImageData will only function on a server - it will fail if run locally.
+      // To do local testing, create a web server with Python.
+      // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
       if(window.location.protocol != 'file:'){
-        var p = setupbox.context.getImageData(setupbox.maskX - 1, setupbox.maskY - 1, 3, 3).data;
+        var p = imagectx.getImageData(0, 0, 3, 3).data;
         var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
         console.log(hex);
         this.specimenThickness = (255 - p[1]) / 255 * 100;
@@ -311,23 +318,23 @@ class Canvas {
     }
   };
 
-  drawTwoImageDefocus(alphaTiltImpact, betaTiltImpact, defocusImage, defocusValue){
+  drawTwoImageDefocus(ctx, x, y, defocusImage, defocusValue){
     let defocusRatio = Math.min(Math.abs(this.defocus + this.specimenHeight * 1000) / defocusValue, 1)
-    this.context.globalAlpha = defocusRatio;
-    this.context.drawImage(defocusImage,0,0,this.img.width,this.img.height,
-      this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact,this.imgW,this.imgH);
-    this.context.globalAlpha = 1 - defocusRatio;
-    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact,this.imgW,this.imgH);
+    ctx.globalAlpha = defocusRatio;
+    ctx.drawImage(defocusImage,0,0,this.img.width,this.img.height,
+      x, y, this.imgW, this.imgH);
+    ctx.globalAlpha = 1 - defocusRatio;
+    ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
+      x, y, this.imgW, this.imgH);
   }
 
-  drawSplitImageDefocus(alphaTiltImpact, betaTiltImpact){
-    this.context.globalAlpha = .5;
+  drawSplitImageDefocus(ctx, x, y){
+    ctx.globalAlpha = .5;
     let defocusPx = Math.max(Math.min((this.defocus / 1000 + this.specimenHeight), 1), -1) * 10 * this.zooms[this.mag] / this.imgScale * 512 / this.widthNM; //convert from nanometers to pixels
-    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + alphaTiltImpact - defocusPx * Math.cos(this.imgAngle), this.imgY + betaTiltImpact + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);
-    this.context.drawImage(this.img,0,0,this.img.width,this.img.height,
-      this.imgX + alphaTiltImpact + defocusPx * Math.cos(this.imgAngle), this.imgY + betaTiltImpact - defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH); 
+    ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
+      x - defocusPx * Math.cos(this.imgAngle), y + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);
+    ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
+      x + defocusPx * Math.cos(this.imgAngle), y - defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH); 
   }
 
   zoom(delta){
