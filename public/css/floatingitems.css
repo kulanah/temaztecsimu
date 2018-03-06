@@ -120,6 +120,14 @@
   width: 10vw;
 }
 
+#c2image{
+  height: 8.605vw;
+}
+
+#objectiveimage{
+  height: 8.784vw;
+}
+
 #filtercontroldiv{
   position: absolute;
   top: 10vh;
