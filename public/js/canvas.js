@@ -248,17 +248,17 @@ class Canvas {
     this.context.globalAlpha = 1;
     this.context.fillStyle = '#CCC';
     this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
+    let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
+    alphaTiltImpact = Math.min(this.imgW / 2, Math.max(-this.imgW / 2, alphaTiltImpact)); // keep tilt impact limited to staying on specimen
+    let betaTiltImpact;
+    if (this.specimenHeight == 0){
+      betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.zooms[this.mag] / this.imgScale * 3;
+    } else {
+      betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
+    }
+    betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
     // Block the specimen during tune alignments
     if(!blockSpecimen){
-      let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
-      alphaTiltImpact = Math.min(this.imgW / 2, Math.max(-this.imgW / 2, alphaTiltImpact)); // keep tilt impact limited to staying on specimen
-      let betaTiltImpact;
-      if (this.specimenHeight == 0){
-        betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.zooms[this.mag] / this.imgScale * 3;
-      } else {
-        betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
-      }
-      betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
       if(this === mainmicro){
         this.drawSplitImageDefocus(this.context, alphaTiltImpact, betaTiltImpact);
       } else {
@@ -282,7 +282,7 @@ class Canvas {
     this.context.restore();
 
     if(this === setupbox && diffractionMode){
-      if(this.maskX < this.imgX || this.maskX > this.imgX + this.imgW || this.maskY < this.imgY || this.maskY > this.imgY + this.imgH){
+      if(this.maskX < this.imgX + alphaTiltImpact || this.maskX > this.imgX + alphaTiltImpact + this.imgW || this.maskY < this.imgY + betaTiltImpact || this.maskY > this.imgY + betaTiltImpact + this.imgH){
         onSpecimen = false;
       } else {
         onSpecimen = true;
