@@ -111,6 +111,15 @@
   padding: 2px;
 }
 
+#apertures{
+  position: absolute;
+  left: 81vw;
+}
+
+.apertureimage{
+  width: 19vw;
+}
+
 #filtercontroldiv{
   position: absolute;
   top: 10vh;

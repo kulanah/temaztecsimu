@@ -13,9 +13,9 @@ let pageSetup = function(){
   let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox'];
   
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
-  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms',
-  'columndivzoom', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 'tunehelppopup',
-  'qanda', 'examples', 'homework', 'curriculum', 'learningmode', 'lecturediv'];
+  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 
+  'columndivzoom', 'apertures', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 
+  'tunehelppopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode', 'lecturediv'];
 
   let draggablesWithTextInputs = ['notepad']
   
