@@ -282,12 +282,6 @@ class Canvas {
     this.context.restore();
 
     if(this === setupbox && diffractionMode){
-      // Pixel color detection code based on answer from https://stackoverflow.com/questions/6735470/get-pixel-color-from-canvas-on-mouseover by Wayne Burkett
-      function rgbToHex(r, g, b) {
-        if (r > 255 || g > 255 || b > 255)
-          throw "Invalid color component";
-        return ((r << 16) | (g << 8) | b).toString(16);
-      }
       if(this.maskX < this.imgX || this.maskX > this.imgX + this.imgW || this.maskY < this.imgY || this.maskY > this.imgY + this.imgH){
         onSpecimen = false;
       } else {
@@ -297,10 +291,21 @@ class Canvas {
       // To do local testing, create a web server with Python.
       // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
       if(window.location.protocol != 'file:'){
+        // Get the average of the values of the pixel at the center of the beam plus the surrounding eight pixels
         var p = imagectx.getImageData(0, 0, 3, 3).data;
-        var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
-        console.log(hex);
-        this.specimenThickness = (255 - p[1]) / 255 * 100;
+        let colorValue = 0;
+        for (let i = 0; i < 9; i++){ 
+          colorValue += p[i * 4] + p[i * 4 + 1] + p[i * 4 + 2];
+        }
+        colorValue /= 27;
+        console.log('colorValue', colorValue);
+        this.specimenThickness = (255 - colorValue) / 255 * 100;
+        // Backup method for checking if on specimen
+        /*if(colorValue > 254){
+          onSpecimen = false;
+        } else {
+          onSpecimen = true;
+        }*/
       }
       this.context.save();
       this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
