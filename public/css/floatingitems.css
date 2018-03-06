@@ -113,11 +113,11 @@
 
 #apertures{
   position: absolute;
-  left: 81vw;
+  left: 90vw;
 }
 
 .apertureimage{
-  width: 19vw;
+  width: 10vw;
 }
 
 #filtercontroldiv{
