@@ -185,28 +185,25 @@ class Canvas {
   drawCanvas(){
     this.drawMainScreenValues();
     this.context.save();
+    this.context.fillStyle = 'black';
+    this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
+    this.glowSelector[0].getContext('2d').clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
     if(!colopen || !highTension){
-      this.context.fillStyle = 'black';
-      this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
-      this.glowSelector[0].getContext('2d').clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
       this.context.restore();
       return;
     }
 
     if (this == setupbox){
       if(screenLift){
-        this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
-        this.glowSelector[0].getContext('2d').clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
         this.context.restore();
         return;
       }
       this.hueRotateActive = true;
+      this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
     }
 
     this.setFilterString();
 
-    this.context.fillStyle = 'black';
-    this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
     let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale / Math.sqrt(2) ** (this.beamslider.val() - 1) * c2Sizes[c2Level - 1] / 150;
 
     if (alignmentMode == 'Pivot Point X' || alignmentMode == 'Pivot Point Y'){
@@ -744,7 +741,6 @@ class Canvas {
     }
 
     context.save();
-    context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
     context.filter = 'blur(3px)';
 
     /*context.beginPath();
