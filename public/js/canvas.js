@@ -223,9 +223,9 @@ class Canvas {
     let shortRadius = Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * Math.min(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
     console.log(this.beamAngle, haloAngle)
     if(haloDistance > 0){
-      this.context.ellipse(this.maskX,this.maskY,longRadius,shortRadius,haloAngle,0,Math.PI * 2);
+      this.context.ellipse(this.maskX + c2x * this.intensity,this.maskY + c2y * this.intensity,longRadius,shortRadius,haloAngle,0,Math.PI * 2);
     } else {
-      this.context.ellipse(this.maskX,this.maskY,longRadius,shortRadius,this.beamAngle,0,Math.PI * 2);
+      this.context.ellipse(this.maskX + c2x * this.intensity,this.maskY + c2y * this.intensity,longRadius,shortRadius,this.beamAngle,0,Math.PI * 2);
     }
 
     // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
@@ -262,6 +262,7 @@ class Canvas {
       if(this === mainmicro){
         this.drawSplitImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact);
       } else {
+        imagectx.globalAlpha = 1;
         imagectx.fillStyle = '#FFF';
         imagectx.fillRect(0, 0, 3, 3);
         if(this.defocus + this.specimenHeight * 1000 <= 0 && underFocusValue > 0){
@@ -752,7 +753,7 @@ class Canvas {
     context.stroke();*/
 
     context.beginPath();
-    context.arc(this.maskX + this.haloX * Math.cos(this.beamAngle) + this.haloY * Math.sin(this.beamAngle), this.maskY + this.haloY * Math.cos(this.beamAngle) - this.haloX * Math.sin(this.beamAngle), haloR / 4, 0, Math.PI * 2);
+    context.arc(this.maskX + c2x * this.intensity + this.haloX * Math.cos(this.beamAngle) + this.haloY * Math.sin(this.beamAngle), this.maskY + c2y * this.intensity + this.haloY * Math.cos(this.beamAngle) - this.haloX * Math.sin(this.beamAngle), haloR / 4, 0, Math.PI * 2);
     context.strokeStyle = 'rgba(255,255,255,' + Math.min(1, 10 / haloR) + ')';
     context.lineWidth = this.calculateHaloLineWidth(haloR);
     context.stroke();

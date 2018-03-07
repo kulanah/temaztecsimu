@@ -43,13 +43,15 @@ let microscopeControllers = function(){
   let mousec2xtemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
-    c2x += deltas[1];
+    c2x += deltas[1] / 1000;
+    updateCanvas();
   }
 
   let mousec2ytemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
-    c2y += deltas[1];
+    c2y += deltas[1] / 1000;
+    updateCanvas();
   }
 
   let mousefocustemplate = function(event){
