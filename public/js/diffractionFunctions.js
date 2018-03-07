@@ -294,6 +294,9 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
     // Draw the lattice diffraction pattern
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2 + objectivex, canvas.height / 2 + objectivey, objectiveSizes[objectiveLevel - 1] * cameraLength / 600, 0, Math.PI * 2);
+        ctx.clip();
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 300)) + 'px)';
         var dx = r1 / 2 //r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2
@@ -343,7 +346,9 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                         drawDot(ctx, x1, y2, rx, ry, rotationRadians);
                     }
                 }
-                drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j, xCenter, yCenter, cameraLength);                
+                if(objectiveLevel > 4){
+                    drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j, xCenter, yCenter, cameraLength);
+                }
             }
         }
         gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);

@@ -15,6 +15,8 @@ let objectiveSizes = [100, 60, 40, 20, 2000, 2000, 2000];
 let objectiveContrast = [.8, .9, 1, 1.15, .65, .65, .65]
 let objectiveBrightness = [1.2, 1.1, 1, .9, 1.5, 1.5, 1.5]
 let contrastVal = 100;
+let objectivex = 0;
+let objectivey = 0;
 
 let microscopeControllers = function(){
 
