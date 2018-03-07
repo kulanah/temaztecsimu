@@ -12,6 +12,8 @@ let c2x = 0;
 let c2y = 0;
 let objectiveLevel = 1;
 let objectiveSizes = [100, 60, 40, 20, 2000, 2000, 2000];
+let objectiveContrast = [.8, .9, 1, 1.15, .65, .65, .65]
+let objectiveBrightness = [1.2, 1.1, 1, .9, 1.5, 1.5, 1.5]
 let contrastVal = 100;
 
 let microscopeControllers = function(){
@@ -383,7 +385,8 @@ let microscopeControllers = function(){
   for (let i = 1; i < 8; i++){
     $('#objective' + i).on('click', function(){
       objectiveLevel = i;
-      contrastVal = 100 * Math.sqrt(40 / objectiveSizes[objectiveLevel - 1]);
+      contrastVal = 100 * objectiveContrast[objectiveLevel - 1];
+      setupbox.brightnessVal = 100 * objectiveBrightness[objectiveLevel - 1];
       updateCanvas();
     });
   }
