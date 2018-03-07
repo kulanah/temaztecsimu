@@ -17,6 +17,10 @@ let objectiveBrightness = [1.2, 1.1, 1, .9, 1.5, 1.5, 1.5]
 let contrastVal = 100;
 let objectivex = 0;
 let objectivey = 0;
+let SAEDInserted = false;
+let SAEDLevel = 1;
+let SAEDx = 0;
+let SAEDy = 0;
 
 let microscopeControllers = function(){
 
