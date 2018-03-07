@@ -12,6 +12,7 @@ let c2x = 0;
 let c2y = 0;
 let objectiveLevel = 1;
 let objectiveSizes = [100, 60, 40, 20, 0, 0, 0];
+let contrastVal = 100;
 
 let microscopeControllers = function(){
 
@@ -378,6 +379,14 @@ let microscopeControllers = function(){
     c2Level = 4;
     updateCanvas();
   });
+
+  for (let i = 1; i < 8; i++){
+    $('#objective' + i).on('click', function(){
+      objectiveLevel = i;
+      contrastVal = 10000 / Math.max(objectiveSizes[objectiveLevel - 1], 1);
+      updateCanvas();
+    });
+  }
 
   $('#c2xdial').on('mousedown', function(event){
     setStartXY();
