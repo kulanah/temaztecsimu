@@ -770,7 +770,7 @@ class Canvas {
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
-    context.globalAlpha = 1 - (1 - totalRadius * this.zooms[this.mag] / 100000 / extractVal) / 2 ** ((this.beamslider.val() - 1) / 10)
+    context.globalAlpha = 1 - (1 - totalRadius * this.zooms[this.mag] / 100000 / extractVal) / 2 ** ((this.beamslider.val() - 1) / 10 / Math.sqrt(c2Sizes[c2Level - 1] / 150))
     context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
     context.globalAlpha = 1;
@@ -877,8 +877,8 @@ class Canvas {
     clearCanvas(this.selector[0]);
     let beamRadius = this.maskR * (Math.sqrt(2) ** (this.beamslider.val() - 1));
     drawBackground(this.selector[0], this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, this.selector[0].height / 2 / beamRadius);
-    let radiusX = c2Sizes[c2Level - 1] / 150 * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
-    let radiusY = c2Sizes[c2Level - 1] / 150 * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
+    let radiusX = Math.sqrt(c2Sizes[c2Level - 1] / 150) * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
+    let radiusY = Math.sqrt(c2Sizes[c2Level - 1] / 150) * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
     this.context.beginPath();
     this.context.arc(this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, 2 * Math.PI);
     this.context.clip();
@@ -888,7 +888,7 @@ class Canvas {
       for(i = 1; i < 2; i++) {
         drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
           this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 
-          0, 64 * this.maskR / (Math.sqrt(2) ** (this.beamslider.val() - 1)) / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
+          0, 64 * this.maskR / (Math.sqrt(2) ** (this.beamslider.val() - 1)) * Math.sqrt(c2Sizes[c2Level - 1] / 150) / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
           this.specimenThickness, this.selector[0].height / 2, this.alphaTilt, this.betaTilt, this.diffractionCameraLength);
       }
     } else {
