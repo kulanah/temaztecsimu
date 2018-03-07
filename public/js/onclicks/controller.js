@@ -486,5 +486,6 @@ let microscopeControllers = function(){
 
   $('#saedswitch').on('click', function(){
     saedInserted = !saedInserted;
+    updateCanvas();
   });
 };

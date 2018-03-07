@@ -346,7 +346,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
                         drawDot(ctx, x1, y2, rx, ry, rotationRadians);
                     }
                 }
-                if(objectiveLevel > 4){
+                if(objectiveLevel > 4 && !saedInserted){
                     drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx, dy, angle, specimenThickness, platformRadius, alphaTilt, betaTilt, i, j, xCenter, yCenter, cameraLength);
                 }
             }
