@@ -17,10 +17,10 @@ let objectiveBrightness = [1.2, 1.1, 1, .9, 1.5, 1.5, 1.5]
 let contrastVal = 100;
 let objectivex = 0;
 let objectivey = 0;
-let SAEDInserted = false;
-let SAEDLevel = 1;
-let SAEDx = 0;
-let SAEDy = 0;
+let saedInserted = false;
+let saedLevel = 1;
+let saedx = 0;
+let saedy = 0;
 
 let microscopeControllers = function(){
 
@@ -77,6 +77,20 @@ let microscopeControllers = function(){
     updateCanvas();
   }
 
+  let mousesaedxtemplate = function(event){
+    let deltas = handleDrag(event);
+    setStartXY();
+    saedx += deltas[1];
+    updateCanvas();
+  }
+
+  let mousesaedytemplate = function(event){
+    let deltas = handleDrag(event);
+    setStartXY();
+    saedy += deltas[1];
+    updateCanvas();
+  }
+
   let mousefocustemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
@@ -101,6 +115,8 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mousemove', mousec2ytemplate);
     $('body')[0].removeEventListener('mousemove', mouseobjectivextemplate);
     $('body')[0].removeEventListener('mousemove', mouseobjectiveytemplate);
+    $('body')[0].removeEventListener('mousemove', mousesaedxtemplate);
+    $('body')[0].removeEventListener('mousemove', mousesaedytemplate);
     $('#grabbingdiv').hide();
     $('body *').removeClass('grabbing');
   };
@@ -413,6 +429,13 @@ let microscopeControllers = function(){
     });
   }
 
+  for (let i = 1; i < 5; i++){
+    $('#saed' + i).on('click', function(){
+      saedLevel = i;
+      updateCanvas();
+    });
+  }
+
   $('#c2xdial').on('mousedown', function(event){
     setStartXY();
 
@@ -443,5 +466,25 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
     $('body')[0].addEventListener('mousemove', mouseobjectiveytemplate);
+  });
+
+  $('#saedxdial').on('mousedown', function(event){
+    setStartXY();
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);
+    $('body')[0].addEventListener('mousemove', mousesaedxtemplate);
+  });
+
+  $('#saedydial').on('mousedown', function(event){
+    setStartXY();
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
+    $('body')[0].addEventListener('mousemove', mousesaedytemplate);
+  });
+
+  $('#saedswitch').on('click', function(){
+    saedInserted = !saedInserted;
   });
 };
