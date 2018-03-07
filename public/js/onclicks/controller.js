@@ -59,6 +59,20 @@ let microscopeControllers = function(){
     updateCanvas();
   }
 
+  let mouseobjectivextemplate = function(event){
+    let deltas = handleDrag(event);
+    setStartXY();
+    objectivex += deltas[1];
+    updateCanvas();
+  }
+
+  let mouseobjectiveytemplate = function(event){
+    let deltas = handleDrag(event);
+    setStartXY();
+    objectivey += deltas[1];
+    updateCanvas();
+  }
+
   let mousefocustemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
@@ -81,6 +95,8 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mousemove', mousemultiytemplate);
     $('body')[0].removeEventListener('mousemove', mousec2xtemplate);
     $('body')[0].removeEventListener('mousemove', mousec2ytemplate);
+    $('body')[0].removeEventListener('mousemove', mouseobjectivextemplate);
+    $('body')[0].removeEventListener('mousemove', mouseobjectiveytemplate);
     $('#grabbingdiv').hide();
     $('body *').removeClass('grabbing');
   };
@@ -407,5 +423,21 @@ let microscopeControllers = function(){
     $('body')[0].addEventListener('mouseup', mouseuptemplate);
     $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
     $('body')[0].addEventListener('mousemove', mousec2ytemplate);
+  });
+
+  $('#objectivexdial').on('mousedown', function(event){
+    setStartXY();
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);
+    $('body')[0].addEventListener('mousemove', mouseobjectivextemplate);
+  });
+
+  $('#objectiveydial').on('mousedown', function(event){
+    setStartXY();
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
+    $('body')[0].addEventListener('mousemove', mouseobjectiveytemplate);
   });
 };
