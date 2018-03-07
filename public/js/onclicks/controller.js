@@ -19,6 +19,7 @@ let objectivex = 0;
 let objectivey = 0;
 let saedInserted = false;
 let saedLevel = 1;
+let saedSizes = [10, 40, 200, 800]
 let saedx = 0;
 let saedy = 0;
 
