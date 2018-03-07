@@ -8,6 +8,10 @@ let availableAlignments = [];
 let activeAlignment = 0;
 let c2Level = 4;
 let c2Sizes = [10, 70, 100, 150];
+let c2x = 0;
+let c2y = 0;
+let objectiveLevel = 1;
+let objectiveSizes = [100, 60, 40, 20, 0, 0, 0];
 
 let microscopeControllers = function(){
 
@@ -33,8 +37,19 @@ let microscopeControllers = function(){
   let mousemultiytemplate = function(event){
     let deltas = handleDrag(event);
     setStartXY();
-
     multiYDrag(deltas[1] * multiStepSize);
+  }
+
+  let mousec2xtemplate = function(event){
+    let deltas = handleDrag(event);
+    setStartXY();
+    c2x += deltas[1];
+  }
+
+  let mousec2ytemplate = function(event){
+    let deltas = handleDrag(event);
+    setStartXY();
+    c2y += deltas[1];
   }
 
   let mousefocustemplate = function(event){
@@ -57,6 +72,8 @@ let microscopeControllers = function(){
     $('body')[0].removeEventListener('mousemove', mousefocustemplate);
     $('body')[0].removeEventListener('mousemove', mousemultixtemplate);
     $('body')[0].removeEventListener('mousemove', mousemultiytemplate);
+    $('body')[0].removeEventListener('mousemove', mousec2xtemplate);
+    $('body')[0].removeEventListener('mousemove', mousec2ytemplate);
     $('#grabbingdiv').hide();
     $('body *').removeClass('grabbing');
   };
@@ -358,5 +375,21 @@ let microscopeControllers = function(){
   $('#c24').on('click', function(){
     c2Level = 4;
     updateCanvas();
+  });
+
+  $('#c2xdial').on('mousedown', function(event){
+    setStartXY();
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);
+    $('body')[0].addEventListener('mousemove', mousec2xtemplate);
+  });
+
+  $('#c2ydial').on('mousedown', function(event){
+    setStartXY();
+
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+    $('body')[0].addEventListener('mouseleave', mouseuptemplate);    
+    $('body')[0].addEventListener('mousemove', mousec2ytemplate);
   });
 };
