@@ -888,12 +888,13 @@ class Canvas {
     this.context.arc(this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, 2 * Math.PI);
     this.context.clip();
     this.diffractionAngle = Math.atan2(this.diffractionAstigmatismY, this.diffractionAstigmatismX);
+    // To-do: SAED affects dot size
     if(onSpecimen){
       var settings = calculateR1R2Angle(micrographMaterial, 1, 1, 1, 100000, this.diffractionCameraLength, 10);
       for(i = 1; i < 2; i++) {
         drawLattice(this.selector[0], this.selector[0].width / 2 + this.diffractionX * this.diffractionCameraLength / 300, 
           this.selector[0].height / 2 + this.diffractionY * this.diffractionCameraLength / 300, radiusX, radiusY, this.diffractionAngle, 
-          0, 64 * this.maskR / (Math.sqrt(2) ** (this.beamslider.val() - 1)) * Math.sqrt(c2Sizes[c2Level - 1] / 150) / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
+          0, 128 * this.maskR / (Math.sqrt(2) ** (this.beamslider.val() - 1)) * Math.sqrt(c2Sizes[c2Level - 1] / 150) / this.selector[0].height, 'single', 3, settings[0][i], settings[1][i], settings[2][i], 
           this.specimenThickness, this.selector[0].height / 2, this.alphaTilt, this.betaTilt, this.diffractionCameraLength);
       }
     } else {

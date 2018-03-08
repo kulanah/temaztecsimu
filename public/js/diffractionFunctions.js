@@ -246,7 +246,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         if (lineWidth === 0){
             return; // used to avoid drawing a thin vertical line for the center dot
         }
-        let lineTransparency = specimenThickness / 300 / Math.pow(lineWidth, 2) * radiusX * radiusY;
+        let lineTransparency = specimenThickness / 150 / Math.pow(lineWidth, 2) * radiusX * radiusY;
         let lineAngle = Math.atan2(dy * j, dx * j - r1 * i);
         
         console.log(lineAngle)
