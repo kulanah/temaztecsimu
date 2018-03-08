@@ -401,31 +401,21 @@ let microscopeControllers = function(){
     }
   });
 
-  $('#c21').on('click', function(){
-    c2Level = 1;
-    updateCanvas();
-  });
 
-  $('#c22').on('click', function(){
-    c2Level = 2;
-    updateCanvas();
-  });
-
-  $('#c23').on('click', function(){
-    c2Level = 3;
-    updateCanvas();
-  });
-
-  $('#c24').on('click', function(){
-    c2Level = 4;
-    updateCanvas();
-  });
+  for (let i = 1; i < 5; i++){
+    $('#c2' + i).on('click', function(){
+      c2Level = i;
+      $('#c2label').text('C2 Aperture: ' + i);
+      updateCanvas();
+    });
+  }
 
   for (let i = 1; i < 8; i++){
     $('#objective' + i).on('click', function(){
       objectiveLevel = i;
       contrastVal = 100 * objectiveContrast[objectiveLevel - 1];
       setupbox.brightnessVal = 100 * objectiveBrightness[objectiveLevel - 1];
+      $('#objectivelabel').text('Objective Aperture: ' + i);
       updateCanvas();
     });
   }
@@ -433,6 +423,9 @@ let microscopeControllers = function(){
   for (let i = 1; i < 5; i++){
     $('#saed' + i).on('click', function(){
       saedLevel = i;
+      if(saedInserted){
+        $('#saedlabel').text('SAED Aperture: ' + i);
+      }
       updateCanvas();
     });
   }
@@ -487,6 +480,11 @@ let microscopeControllers = function(){
 
   $('#saedswitch').on('click', function(){
     saedInserted = !saedInserted;
+    if(saedInserted){
+      $('#saedlabel').text('SAED Aperture: ' + saedLevel);
+    } else {
+      $('#saedlabel').text('SAED Aperture: Out');
+    }
     updateCanvas();
   });
 };
