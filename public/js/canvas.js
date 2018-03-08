@@ -892,7 +892,6 @@ class Canvas {
     this.context.arc(this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, 2 * Math.PI);
     this.context.clip();
     this.diffractionAngle = Math.atan2(this.diffractionAstigmatismY, this.diffractionAstigmatismX);
-    // To-do: SAED affects dot size
     if(onSpecimen){
       var settings = calculateR1R2Angle(micrographMaterial, 1, 1, 1, 100000, this.diffractionCameraLength, 10);
       for(i = 1; i < 2; i++) {
