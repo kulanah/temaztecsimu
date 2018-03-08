@@ -29,7 +29,7 @@ drawColumn();
 
 let micrographImage = './public/img/23.png';
 let micrographMag = 43000;
-let micrographWidth = 512;
+let micrographWidth = 501.961;
 let micrographMaterial = silicon;
 let overFocusSrc = '';
 let overFocusValue = 0;
