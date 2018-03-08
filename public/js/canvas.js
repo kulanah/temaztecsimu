@@ -235,6 +235,14 @@ class Canvas {
     }*/
 
     this.context.clip();
+
+    this.context.beginPath();
+    let saedRadius = 1000;
+    if(saedInserted){
+      saedRadius = saedSizes[saedLevel - 1];
+    }
+    this.context.arc(this.selector[0].width / 2 + saedx, this.selector[0].height / 2 + saedy, saedRadius * this.zooms[this.mag] / this.imgScale * 1000 * 512 / this.widthNM, 0, Math.PI * 2);
+    this.context.clip();
     
     this.context.translate(this.selector[0].width / 2, this.selector[0].height / 2)
     this.context.rotate(this.imgAngle);
