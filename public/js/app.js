@@ -28,7 +28,7 @@ let imagectx = $('#setupboxcanvasimage')[0].getContext('2d');
 drawColumn();
 
 let micrographImage = './public/img/23.png';
-let micrographMag = 250000;
+let micrographMag = 43000;
 let micrographWidth = 512;
 let micrographMaterial = silicon;
 let overFocusSrc = '';
