@@ -119,15 +119,23 @@
 }
 
 .aperturelabel{
-  padding: 10px;
+  padding: 10px 2px;
   color: white;
   font-family: sans-serif;
   font-size: small;
+  white-space: nowrap;
+  border-top: 2px solid black;
+  text-align: center;
 }
 
 .apertureimage{
   width: 9vw;
-  border-bottom: 2px solid black;
+  display: block;
+  margin: auto;
+}
+
+#c2label{
+  border: none;
 }
 
 #c2image{
