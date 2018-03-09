@@ -362,15 +362,15 @@
 #lecturediv {
   position: absolute;  
   top: 0vh;
-  left: 6vw;
+  left: 59.5vw;
   overflow: hidden;
   border: 5px solid black;
   background: black;
 }
 
 #temlecture {
-  width: 87vw;
-  height: 90vh;
+  width: 40vw;
+  height: 57.5vh;
 }
 
 .lecturetab{
