@@ -222,6 +222,25 @@ function addLectures(){
             $('#lecturediv').append(btn);
         }
     }
+    let audiosrcs = ['', 
+    '',
+    '',
+    '',
+    'http://slidespeech.com/s/b7Dt2mJQen/']
+    for(i = 1; i < audiosrcs.length + 1; i++){
+        if(audiosrcs[i-1] != ''){
+            let btn = document.createElement('button');
+            let src = audiosrcs[i-1];
+            $(btn).attr('id', 'ch' + i + 'btn')
+            $(btn).addClass('lecturetab');
+            $(btn).css('margin', '2px');
+            $(btn).text('Chapter ' + i + ' with audio');
+            $(btn).click(function(){
+                $('#temlecture').attr('src', src);
+            });
+            $('#lecturediv').append(btn);
+        }
+    }
 }
 
 function setLecture(){
