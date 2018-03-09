@@ -236,7 +236,8 @@ function addLectures(){
             $(btn).css('margin', '2px');
             $(btn).text('Chapter ' + i + ' with audio');
             $(btn).click(function(){
-                $('#temlecture').attr('src', src);
+                //$('#temlecture').attr('src', src);
+                window.open(src, 'ch' + i)
             });
             $('#lecturediv').append(btn);
         }
