@@ -63,6 +63,7 @@ function drawDiffractogram(canvas, Q, lambda, deltaF, R, phi, phi1, Cs) {
         var ellipseIntensity = Math.abs(Gau(50, q) * CTF(Q, lambda, deltaF, R, phi, phi1, q, Cs));
         drawEllipse(canvas, i, R, phi1, ellipseIntensity)
     }
+    ctx.filter = 'blur(0px)'
 }
 
 function drawEllipse(canvas, radius, R, rotation, ellipseIntensity) {

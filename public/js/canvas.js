@@ -288,6 +288,12 @@ class Canvas {
     this.context.restore();
 
     if(this === setupbox && diffractionMode){
+      /*if(this.maskX > this.selector[0].width / 2){
+        this.context.save();
+        drawDiffractogram(this.selector[0], 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+        this.context.restore();
+        return;
+      }*/
       if(this.maskX < this.imgX + alphaTiltImpact || this.maskX > this.imgX + alphaTiltImpact + this.imgW || this.maskY < this.imgY + betaTiltImpact || this.maskY > this.imgY + betaTiltImpact + this.imgH){
         onSpecimen = false;
       } else {
