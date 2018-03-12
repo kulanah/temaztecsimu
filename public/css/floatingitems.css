@@ -378,6 +378,10 @@
   padding: 2px;
 }
 
+#speakernotesinfo{
+  color:white;
+}
+
 #popplaceholder {
   position: absolute;  
   top: 50vh;

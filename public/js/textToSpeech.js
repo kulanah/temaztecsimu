@@ -57,7 +57,21 @@ function speak(text) {
       window.speechSynthesis.speak(msg);
   }
 
-$('#speakernotesbtn').on('click', function(){
-    let slide = document.getElementById('slidenumber').value;
-    speak(speakerNotes[currentCh - 1][slide - 1]);
+$('#speakernotesplay').on('click', function(){
+    if(window.speechSynthesis.paused && window.speechSynthesis.speaking){
+        console.log("Resuming speech")
+        window.speechSynthesis.resume();
+    } else {
+        let slide = document.getElementById('slidenumber').value;
+        speak(speakerNotes[currentCh - 1][slide - 1]);
+        console.log("Saying:", speakerNotes[currentCh - 1][slide - 1])
+    }
+});
+
+$('#speakernotespause').on('click', function(){
+    window.speechSynthesis.pause();
+});
+
+$('#speakernotesstop').on('click', function(){
+    window.speechSynthesis.cancel();
 });
