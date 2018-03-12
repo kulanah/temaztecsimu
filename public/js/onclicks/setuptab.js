@@ -26,6 +26,7 @@ let vacuumWindow = function(){
   $('#colvalves').on('click', function(event){
     if (colopen){
       colopen = false;
+      $('#microscopebg').attr('src', './public/img/TEM_04blue.png');
       if (turboon){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedturboon.png');
       } else {
@@ -35,6 +36,7 @@ let vacuumWindow = function(){
       updateCanvas();
     } else {
       colopen = true;
+      $('#microscopebg').attr('src', './public/img/TEM_02blue.png');
       if (turboon){
         $('#turbo').trigger('click');
       } else {
