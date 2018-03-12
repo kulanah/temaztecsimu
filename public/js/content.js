@@ -4,6 +4,7 @@
 ****/
 
 var popped = '#popplaceholder';
+let currentCh = 0;
 
 //register all the events to targets when docuemnts are all loaded
 function prepareContent(){
@@ -20,6 +21,7 @@ function prepareContent(){
     showOverview();
     showWIP();
     addLectures();
+    //incrementSlideCounter();
     //setLecture();
 }
 
@@ -192,12 +194,14 @@ function destroyClickedElement(event)
 function showOverview(){
     $('#overviewbtn').click(function(){
         $('#temlecture').attr('src', 'https://www.youtube.com/embed/DL0gA-sE2Xk?enablejsapi=1')
+        currentCh = 0;
     })
 }
 
 function showWIP(){
     $('#wipbtn').click(function(){
         $('#temlecture').attr('src', 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/TEMOverviewFixed.mp4')
+        currentCh = 0;
     })
 }
 
@@ -218,6 +222,7 @@ function addLectures(){
             $(btn).text('Chapter ' + i);
             $(btn).click(function(){
                 $('#temlecture').attr('src', src);
+                currentCh = $(btn).text().split(' ')[1];
             });
             $('#lecturediv').append(btn);
         }
@@ -242,6 +247,28 @@ function addLectures(){
             $('#lecturediv').append(btn);
         }
     }
+}
+
+function incrementSlideCounter(){
+    $('#temlecture').load(function() {
+        var eventlist = 'click dblclick \
+                        blur focus focusin focusout \
+                        keydown keypress keyup \
+                        mousedown mouseenter mouseleave mousemove mouseover mouseout mouseup mousemove \
+                        touchstart touchend touchcancel touchleave touchmove';
+    
+        var iframe = $('#temlecture').contents().find('html');
+    
+        // Bubble events to parent
+        iframe.on(eventlist, function(event) {
+            console.log('event')
+            //$('html').trigger(event);
+        });
+    });
+    /*$('#temlecture'[0].contentWindow).on('click', function(){
+        console.log('clicked lecture')
+        document.getElementById('slidenumber').value += 1;
+    });*/
 }
 
 function setLecture(){

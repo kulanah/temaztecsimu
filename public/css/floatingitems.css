@@ -371,6 +371,7 @@
 #temlecture {
   width: 40vw;
   height: 57.5vh;
+  resize: none;
 }
 
 .lecturetab{
