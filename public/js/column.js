@@ -2,6 +2,7 @@ let temLens = new Array();
 let theta=0;
 let lensFocus = 0;
 let zoomed = false;
+let colValveCutoff = 6;
 
 class lens {
 	constructor(xCenter, x, y, f, kind, name){
@@ -140,7 +141,11 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 	//draw CenterLine
 	ctx.beginPath();
 	ctx.moveTo(xCenter,temLens[0].y + yOffset);
-	ctx.lineTo(xCenter,temLens[temLens.length-1].y);  
+	if(colopen){
+		ctx.lineTo(xCenter,temLens[temLens.length-1].y);  
+	} else {
+		ctx.lineTo(xCenter,temLens[colValveCutoff-1].y);
+	}
 	ctx.strokeStyle = 'blue';
 	ctx.stroke();
 	
@@ -170,7 +175,11 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 		ctx.beginPath();
 		ctx.moveTo(temLens[0].x + xCenter,temLens[0].y + yOffset);
 		var blocked=0;
-		for(var i=0;i<numOfLenses;i++){
+		let rayLenses = numOfLenses;
+		if(!colopen){
+			rayLenses = colValveCutoff;
+		}
+		for(var i=0;i<rayLenses;i++){
 			if(i>0){
 				index = i
 				let prevType = temLens[i-1].kind;

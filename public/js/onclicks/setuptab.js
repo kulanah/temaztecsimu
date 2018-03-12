@@ -33,7 +33,6 @@ let vacuumWindow = function(){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosed.png');
       }
       $('#vacuumimg').attr('src', './public/img/vacuumclosed.png');
-      updateCanvas();
     } else {
       colopen = true;
       $('#microscopebg').attr('src', './public/img/TEM_02blue.png');
@@ -43,8 +42,9 @@ let vacuumWindow = function(){
         $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuopen.png');
       }
       $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
-      updateCanvas();
     }
+    updateCanvas();
+    drawColumn();
   });
 
   $('#turbo').on('click', function(event){
