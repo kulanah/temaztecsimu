@@ -227,7 +227,7 @@ function addLectures(){
             $('#lecturediv').append(btn);
         }
     }
-    let audiosrcs = ['', 
+    /*let audiosrcs = ['', 
     '',
     '',
     '',
@@ -236,7 +236,7 @@ function addLectures(){
         if(audiosrcs[i-1] != ''){
             let btn = document.createElement('button');
             let src = audiosrcs[i-1];
-            $(btn).attr('id', 'ch' + i + 'btn')
+            $(btn).attr('id', 'ch' + i + 'audiobtn')
             $(btn).addClass('lecturetab');
             $(btn).css('margin', '2px');
             $(btn).text('Chapter ' + i + ' with audio');
@@ -246,7 +246,7 @@ function addLectures(){
             });
             $('#lecturediv').append(btn);
         }
-    }
+    }*/
 }
 
 function incrementSlideCounter(){
