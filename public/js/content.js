@@ -8,8 +8,8 @@ let currentCh = 0;
 let fullscreen = false;
 let lectureTop = 0;
 let lectureLeft = 0;
-let lectureWidth = 0;
-let lectureHeight = 0;
+/*let lectureWidth = 0;
+let lectureHeight = 0;*/
 
 //register all the events to targets when docuemnts are all loaded
 function prepareContent(){
@@ -236,21 +236,18 @@ function addLectures(){
         }
     }
     $('#fullscreenbtn').on('click', function(){
-        fullscreen = !fullscreen;
-        if(!fullscreen){
-            $('#lecturediv').css({
-                'left': lectureLeft,
-                'top': lectureTop
-            })
-            $('#temlecture').css({
-                'width': lectureWidth,
-                'height': lectureHeight
-            })
+        if(document.webkitFullscreenElement === document.getElementById('lecturediv')){
+            leaveFullscreen();
         } else {
+            enterFullscreen(document.getElementById('lecturediv'));
+        }
+    });
+    document.onwebkitfullscreenchange = function ( event ) { 
+        if(document.webkitFullscreenElement !== null){
             lectureLeft = $('#lecturediv').css('left');
             lectureTop = $('#lecturediv').css('top');
-            lectureWidth = $('#temlecture').css('width');
-            lectureHeight = $('#temlecture').css('height');
+            //lectureWidth = $('#temlecture').css('width');
+            //lectureHeight = $('#temlecture').css('height');
             $('#lecturediv').css({
                 'left': '0px',
                 'top': '0px'
@@ -259,8 +256,17 @@ function addLectures(){
                 'width': '99.4vw',
                 'height': '94.4vh'
             })
+        } else {
+            $('#lecturediv').css({
+                'left': lectureLeft,
+                'top': lectureTop
+            })
+            $('#temlecture').css({
+                'width': '40vw',
+                'height': '57.5vh'
+            })
         }
-    });
+    };
     /*let audiosrcs = ['', 
     '',
     '',
@@ -281,6 +287,29 @@ function addLectures(){
             $('#lecturediv').append(btn);
         }
     }*/
+}
+
+// Enter fullscreen mode
+function enterFullscreen(element) {
+    // Check which implementation is available
+    var requestMethod = element.requestFullscreen ||
+                        element.webkitRequestFullscreen ||
+                        element.mozRequestFullScreen ||
+                        element.msRequestFullscreen;
+    if( requestMethod ) {
+        requestMethod.apply( element );
+    }
+}
+
+// Exit fullscreen mode
+function leaveFullscreen() {
+    var requestMethod = document.exitFullscreen ||
+                        document.webkitExitFullscreen ||
+                        document.mozExitFullScreen ||
+                        document.msExitFullscreen;
+    if( requestMethod ) {
+        requestMethod.apply( document );
+    }
 }
 
 function incrementSlideCounter(){

@@ -382,6 +382,10 @@
   color:white;
 }
 
+#fullscreenbtn{
+  float:right;
+}
+
 #popplaceholder {
   position: absolute;  
   top: 50vh;
