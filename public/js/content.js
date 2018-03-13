@@ -195,6 +195,7 @@ function showOverview(){
     $('#overviewbtn').click(function(){
         $('#temlecture').attr('src', 'https://www.youtube.com/embed/DL0gA-sE2Xk?enablejsapi=1')
         currentCh = 0;
+        $('#speakernotesplay').prop('disabled', true);
     })
 }
 
@@ -202,6 +203,7 @@ function showWIP(){
     $('#wipbtn').click(function(){
         $('#temlecture').attr('src', 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/TEMOverviewFixed.mp4')
         currentCh = 0;
+        $('#speakernotesplay').prop('disabled', true);
     })
 }
 
@@ -223,6 +225,7 @@ function addLectures(){
             $(btn).click(function(){
                 $('#temlecture').attr('src', src);
                 currentCh = $(btn).text().split(' ')[1];
+                $('#speakernotesplay').prop('disabled', false);
             });
             $('#lecturediv').append(btn);
         }
