@@ -243,7 +243,7 @@ function addLectures(){
         }
     });
     document.onwebkitfullscreenchange = function ( event ) { 
-        if(document.webkitFullscreenElement !== null){
+        if(document.webkitFullscreenElement === document.getElementById('lecturediv')){
             lectureLeft = $('#lecturediv').css('left');
             lectureTop = $('#lecturediv').css('top');
             //lectureWidth = $('#temlecture').css('width');
