@@ -5,6 +5,11 @@
 
 var popped = '#popplaceholder';
 let currentCh = 0;
+let fullscreen = false;
+let lectureTop = 0;
+let lectureLeft = 0;
+let lectureWidth = 0;
+let lectureHeight = 0;
 
 //register all the events to targets when docuemnts are all loaded
 function prepareContent(){
@@ -208,7 +213,7 @@ function showWIP(){
 }
 
 function addLectures(){
-    // Create the buttons to switch between lectures
+    // Create the buttons to switch between lectures plus the fullscreen button
     let srcs = ['', 
     'https://cemnpdx.github.io/Reveal/HTML/Chapter%202.html',
     '',
@@ -230,6 +235,32 @@ function addLectures(){
             $('#lecturediv').append(btn);
         }
     }
+    $('#fullscreenbtn').on('click', function(){
+        fullscreen = !fullscreen;
+        if(!fullscreen){
+            $('#lecturediv').css({
+                'left': lectureLeft,
+                'top': lectureTop
+            })
+            $('#temlecture').css({
+                'width': lectureWidth,
+                'height': lectureHeight
+            })
+        } else {
+            lectureLeft = $('#lecturediv').css('left');
+            lectureTop = $('#lecturediv').css('top');
+            lectureWidth = $('#temlecture').css('width');
+            lectureHeight = $('#temlecture').css('height');
+            $('#lecturediv').css({
+                'left': '0px',
+                'top': '0px'
+            })
+            $('#temlecture').css({
+                'width': '99.4vw',
+                'height': '94.4vh'
+            })
+        }
+    });
     /*let audiosrcs = ['', 
     '',
     '',
