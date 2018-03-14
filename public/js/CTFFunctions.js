@@ -45,8 +45,7 @@ function drawDiffractogram(canvas, Q, lambda, deltaF, R, phi, phi1, Cs) {
     var ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.filter = 'blur(0px)';
-    ctx.fillStyle = ctx.createPattern(document.getElementById("noise"), "no-repeat")
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(document.getElementById('noise'), 0, 0, canvas.width, canvas.height)
     var maxDistance = Math.sqrt(Math.pow(canvas.width / 2, 2) + Math.pow(canvas.height / 2, 2))
     /* Alternative, pixel-by-pixel drawing approach
     for (x = 0; x < canvas.width; x=x+2) {
