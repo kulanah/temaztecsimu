@@ -167,7 +167,7 @@ let ch1SpeakerNotes = [
     +
     "\n"
     +
-    "This graph describes currently available analytical techniques (listed in green at the top) with their analytical spot size (on the bottom horizontal axis), and their detection range (on the left-hand vertical axis).  Essentially, we can see a dozen or so techniques here, yet when we examine techniques capable of preforming analyses of materials smaller than 100 nm, we see there’re only a few – FIB, or focused-ion beam; AFM, or atomic force microscopy; SEM; and, far at the end there, with the smallest analytical spot size available, is TEM/STEM. So if we need quantitative analysis at the nanoscale, we’re already restricted to just AFM, FIB, and electron microscopy, and if we want to investigate phenomena occurring in the smallest extremes between 5 and 0.1 nanometers we’ll be restricted to TEM/STEM. "
+    "This graph describes currently available analytical techniques (listed in green at the top) with their analytical spot size (on the bottom horizontal axis), and their detection range (on the left-hand vertical axis).  Essentially, we can see a dozen or so techniques here, yet when we examine techniques capable of performing analyses of materials smaller than 100 nm, we see there’re only a few – FIB, or focused-ion beam; AFM, or atomic force microscopy; SEM; and, far at the end there, with the smallest analytical spot size available, is TEM/STEM. So if we need quantitative analysis at the nanoscale, we’re already restricted to just AFM, FIB, and electron microscopy, and if we want to investigate phenomena occurring in the smallest extremes between 5 and 0.1 nanometers we’ll be restricted to TEM/STEM. "
     +
     "\n"
     ,
@@ -419,7 +419,7 @@ let ch1SpeakerNotes = [
     +
     "\n"
     +
-    "Some microscopes, like PSU’s Tecnai, are both scanning AND transmission electron microscopes, but of course dedicating the tool to one purpose or the other would lead to performance improvements within that application, so there also exist dedicated scanning transmission electron microscopes that do not preform conventional transmission microscopy. These are called DSTEMs, or just STEMs. "
+    "Some microscopes, like PSU’s Tecnai, are both scanning AND transmission electron microscopes, but of course dedicating the tool to one purpose or the other would lead to performance improvements within that application, so there also exist dedicated scanning transmission electron microscopes that do not perform conventional transmission microscopy. These are called DSTEMs, or just STEMs. "
     +
     "\n"
     +
@@ -537,6 +537,8 @@ let ch1SpeakerNotes = [
     ,
     "There are no speaker notes on this slide."
     ,
+    "There are no speaker notes on this slide."
+    ,
     "The silicon drift detector (SDD) is fabricated from high-purity silicon with a large area contact on the entrance side. On the opposite side is a central small anode contact, which is surrounded by a number of concentric drift electrodes. When a bias is applied to the SDD detector chip and the detector is exposed to X-rays, it converts each X-ray detected to an electron cloud with a charge that is proportional to the characteristic energy of that X-ray. These electrons are then “drifted” down a field gradient applied between the drift rings, and are collected at the anode."
     +
     "\n"
@@ -569,7 +571,7 @@ let ch1SpeakerNotes = [
     +
     "\n"
     +
-    "Or, when working with a crystalline specimen, we can preform electron diffraction experiments, which give us detailed, high-spatial-resolution crystallographic information like:"
+    "Or, when working with a crystalline specimen, we can perform electron diffraction experiments, which give us detailed, high-spatial-resolution crystallographic information like:"
     +
     "\n"
     +
@@ -589,7 +591,7 @@ let ch1SpeakerNotes = [
     +
     "\n"
     +
-    "\u000bWe can also preform chemical analysis with high spatial and energy resolution. In this context, “high energy resolution” means being able to discriminate between electrons at sub-eV energy ranges, and “high spatial resolution” meaning we can resolve atomic features. "
+    "\u000bWe can also perform chemical analysis with high spatial and energy resolution. In this context, “high energy resolution” means being able to discriminate between electrons at sub-eV energy ranges, and “high spatial resolution” meaning we can resolve atomic features. "
     +
     "\n"
     ,
@@ -607,7 +609,7 @@ let ch1SpeakerNotes = [
     +
     "\n"
     ,
-    "However, as we have seen, there are many types of TEMs! What we just observed was the “typical” optics that could be found in an ATEM or CTEM, but as we discussed, specialized TEMs also exist. The DSTEM is one such example – it is only able to preform scanning operations. \u000b\u000bIf we look at this diagram, we can see that there are a lot of differences! For one, the entire microscope is inverted – the electron source and gun are on the bottom, and the detectors are on the top. We see that it has a built-in aberration corrector, as well as scan coils that the typical TEM optical diagram lacked. These are what give it its STEM functionality – the aberration corrector allows a fine probe to be formed, and the scan coils allow it to be rastered through the specimen. \u000b\u000bAnother difference is the cathodoluminescence (or CL) mirror, spectrometer, and detector – these are not present in standard TEMs and represent a unique form of signal utilization seen in DSTEMs. "
+    "However, as we have seen, there are many types of TEMs! What we just observed was the “typical” optics that could be found in an ATEM or CTEM, but as we discussed, specialized TEMs also exist. The DSTEM is one such example – it is only able to perform scanning operations. \u000b\u000bIf we look at this diagram, we can see that there are a lot of differences! For one, the entire microscope is inverted – the electron source and gun are on the bottom, and the detectors are on the top. We see that it has a built-in aberration corrector, as well as scan coils that the typical TEM optical diagram lacked. These are what give it its STEM functionality – the aberration corrector allows a fine probe to be formed, and the scan coils allow it to be rastered through the specimen. \u000b\u000bAnother difference is the cathodoluminescence (or CL) mirror, spectrometer, and detector – these are not present in standard TEMs and represent a unique form of signal utilization seen in DSTEMs. "
     +
     "\n"
     +
@@ -627,7 +629,7 @@ let ch1SpeakerNotes = [
     +
     "\n"
     ,
-    "This diagram shows the scope of techniques that can be preformed with a TEM/STEM"
+    "This diagram shows the scope of techniques that can be performed with a TEM/STEM"
     +
     ". The core areas of imaging, diffraction, and spectroscopy are shown, as are the techniques where these techniques overlap."
     +
@@ -662,6 +664,8 @@ let ch1SpeakerNotes = [
     "LATTICE IMAGING (High Resolution TEM: HRTEM):\n"
     +
     "Where interference of transmitted beam (TB) and diffracted beams (DBs) produces an image of the crystal lattice."
+    +
+    "\u000b\u000bAnd Diffraction Pattern Viewing:\u000bWhere the intermediate lens adjusted to image the diffraction pattern formed in back focal plane (BFP) of objective lens.\u000b\u000b\u000b\u000bThen, moving to Diffraction, key and commonly used techniques are: \u000b\u000bSAED, used to set up certain imaging techniques; \u000b\u000bKikuchi patterns, which are used nearly every time we orient a specimen,\u000b\u000bAnd Convergent beam electron diffraction, or CBED; a powerful crystallographic technique.\u000b\u000bBetween diffraction and spectroscopy we see CBED and Energy filtered TEM – this is because we can use both techniques at the same time. Within pure spectroscopy, however, the key techniques are EDX and energy-loss analyses like EELS. Then, coming full-circle to the overlap between spectroscopy and imaging we see elemental mapping, which utilizes both STEM imaging and EDX or EELS analyses. "
     +
     "\n"
     +
@@ -729,7 +733,7 @@ let ch1SpeakerNotes = [
     +
     "\n"
     ,
-    "Centered bright/dark field imaging is accomplished via inserting an objective aperture after objective lens. The aperture allows us to select the transmitted (during BF) or diffracted beam (during DF) to form an image.  The image at top right is a bright field view, where strong diffraction appears dark. The image on low right is a centered dark field image of the same area. Both were taken from 3D printed Ti-6V-4Al alloy, and dislocations can be observed in both images. Dark field is better suited for defect analyses like this, rather than for grain size analyses, since the appearance of the image depends upon the area that was selected with the aperture. This orientation-specific aspect is something to keep in mind when you preform it on your own.  \u000b\u000bThese contrast mechanisms, like those presented before this, will be discussed in-depth in later material. "
+    "Centered bright/dark field imaging is accomplished via inserting an objective aperture after objective lens. The aperture allows us to select the transmitted (during BF) or diffracted beam (during DF) to form an image.  The image at top right is a bright field view, where strong diffraction appears dark. The image on low right is a centered dark field image of the same area. Both were taken from 3D printed Ti-6V-4Al alloy, and dislocations can be observed in both images. Dark field is better suited for defect analyses like this, rather than for grain size analyses, since the appearance of the image depends upon the area that was selected with the aperture. This orientation-specific aspect is something to keep in mind when you perform it on your own.  \u000b\u000bThese contrast mechanisms, like those presented before this, will be discussed in-depth in later material. "
     +
     "\n"
     ,
@@ -1585,7 +1589,7 @@ let ch5SpeakerNotes = [
     +
     "\n"
     ,
-    "To keep a dry rough pump in good working order, regular inspection and maintenance should be preformed. Always consult the manuals provided with your pump, as what follows is only a general guide intended to give you an idea of the process, rather than exact instructions."
+    "To keep a dry rough pump in good working order, regular inspection and maintenance should be performed. Always consult the manuals provided with your pump, as what follows is only a general guide intended to give you an idea of the process, rather than exact instructions."
     +
     "\n"
     +

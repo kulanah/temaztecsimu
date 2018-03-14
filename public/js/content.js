@@ -218,7 +218,7 @@ function addLectures(){
     'https://cemnpdx.github.io/Reveal/HTML/Chapter%202.html',
     '',
     '',
-    'https://docs.google.com/presentation/d/e/2PACX-1vQviXR-mHf40Xg8w09L5BWO_0or4DzmYFfrnCu1APE7DUgE4HX-l0vOoQBvn5Tk1M8jeaYfdUEbHOgl/embed?start=false&loop=false&delayms=60000']
+    'https://docs.google.com/presentation/d/e/2PACX-1vSbZCb6AR5mZNqE9CwO5FDdpM3QVJXu0CcwaoYcbYlQaziOnAYDz6pMwaVNKl_kp6gaZkLWrEojJVHc/embed?start=false&loop=false&delayms=3000']
     for(i = 1; i < srcs.length + 1; i++){
         if(srcs[i-1] != ''){
             let btn = document.createElement('button');
