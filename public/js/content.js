@@ -214,7 +214,7 @@ function showWIP(){
 
 function addLectures(){
     // Create the buttons to switch between lectures plus the fullscreen button
-    let srcs = ['https://docs.google.com/presentation/d/e/2PACX-1vRtRdCGrwLXotnt8AexCeQmvn1LKf2X1OYyra1CCate_FkLSnEm4e3XqTYtf2v9iXPPA7gZMlz544lm/embed?start=false&loop=false&delayms=3000', 
+    let srcs = ['https://docs.google.com/presentation/d/e/2PACX-1vTmZNiWgLNOUc-i9XLeroyMTG-SWL-OlOxI4VKVU9_2n6ewXmonU5pc-wjG6x-chkNuXH4tMC59X4-N/embed?start=false&loop=false&delayms=3000', 
     'https://cemnpdx.github.io/Reveal/HTML/Chapter%202.html',
     '',
     '',
