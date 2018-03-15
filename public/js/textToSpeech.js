@@ -1981,12 +1981,12 @@ function speak(text) {
 $('#speakernotesplay').on('click', function(){
     if(window.speechSynthesis.paused && window.speechSynthesis.speaking){
         console.log("Resuming speech")
-        window.speechSynthesis.resume();
     } else {
         let slide = document.getElementById('slidenumber').value;
         speak(speakerNotes[currentCh - 1][slide - 1]);
         console.log("Saying:", speakerNotes[currentCh - 1][slide - 1])
     }
+    window.speechSynthesis.resume();
 });
 
 $('#speakernotespause').on('click', function(){
