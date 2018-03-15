@@ -214,11 +214,12 @@ function showWIP(){
 
 function addLectures(){
     // Create the buttons to switch between lectures plus the fullscreen button
-    let srcs = ['https://docs.google.com/presentation/d/e/2PACX-1vTmZNiWgLNOUc-i9XLeroyMTG-SWL-OlOxI4VKVU9_2n6ewXmonU5pc-wjG6x-chkNuXH4tMC59X4-N/embed?start=false&loop=false&delayms=3000', 
+    let srcs = ['https://docs.google.com/presentation/d/e/2PACX-1vTmZNiWgLNOUc-i9XLeroyMTG-SWL-OlOxI4VKVU9_2n6ewXmonU5pc-wjG6x-chkNuXH4tMC59X4-N/embed?start=false&loop=false&delayms=3000', //PPT Online Ch1: 'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21126&authkey=ABwysJ8rPoa5qc0&em=2'
     'https://cemnpdx.github.io/Reveal/HTML/Chapter%202.html',
     '',
     '',
     'https://docs.google.com/presentation/d/e/2PACX-1vSbZCb6AR5mZNqE9CwO5FDdpM3QVJXu0CcwaoYcbYlQaziOnAYDz6pMwaVNKl_kp6gaZkLWrEojJVHc/embed?start=false&loop=false&delayms=3000']
+    //Embed simulator into itself: 'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21120&authkey=AHtG2LBmRaeo0KQ&em=2'
     for(i = 1; i < srcs.length + 1; i++){
         if(srcs[i-1] != ''){
             let btn = document.createElement('button');
