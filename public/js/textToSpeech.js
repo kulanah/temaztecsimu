@@ -687,7 +687,7 @@ let ch1SpeakerNotes = [
     +
     "; scattering is proportional to "
     +
-    "Z2t"
+    "Z squared t" // Manual edit to account for exponent
     +
     ".  Higher-Z or thicker areas are darker in BF.  Applicable to crystalline "
     +
