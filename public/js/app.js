@@ -87,8 +87,8 @@ function drawInfoPanelValues(){
     $('#mfyvalue').text(stigmationMode + ' Stig Y');
   } else {
     if(alignmentMode == 'None'){
-      $('#mfxvalue').text('               ');
-      $('#mfyvalue').text('               ');
+      $('#mfxvalue').text('');
+      $('#mfyvalue').text('');
     } else {
       $('#mfxvalue').text(alignmentMode + ' X');
       $('#mfyvalue').text(alignmentMode + ' Y');
@@ -97,7 +97,7 @@ function drawInfoPanelValues(){
   if(availableAlignments.length > 1){
     $('#r2value').text('Align MF Toggle');
   } else {
-    $('#r2value').text('                       ');
+    $('#r2value').text('');
   }
 };
 
