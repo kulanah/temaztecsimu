@@ -20,7 +20,7 @@ let startMenu = function(){
 
   $('#temuistart').on('click', function(event){
     openScreen = 1;
-    $('#mainimage').attr('src', './public/img/tia.png');
+    $('#mainimage').attr('src', './public/img/tiablank2.png');
     $('#mainmicroscopediv').show();
     $('#openbox').hide();
     $('#mainimage').css('background-color', 'transparent');
@@ -33,7 +33,7 @@ let startMenu = function(){
 
   $('#micrographstart').on('click', function(event){
     openScreen = 0;
-    $('#mainimage').attr('src', './public/img/mainscreen.png');
+    $('#mainimage').attr('src', './public/img/mainscreenblank2.png');
     $('#mainmicroscopediv').hide();
     $('#mainimage').css('background-color', 'grey');
     $('#controlsinstruction').show();
