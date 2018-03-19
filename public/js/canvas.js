@@ -288,6 +288,11 @@ class Canvas {
     this.context.restore();
 
     if(this === setupbox && diffractionMode){
+      if(this.diffractionCameraLength >= 1000){
+        $('#magnificationvalue').text('  ' + this.diffractionCameraLength / 1000 + ' m ');
+      } else {
+        $('#magnificationvalue').text('  ' + this.diffractionCameraLength + ' mm ');
+      }
       let context = this.glowSelector[0].getContext('2d');
       context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
       if(this.maskX > this.selector[0].width / 2){
@@ -324,11 +329,6 @@ class Canvas {
       this.context.save();
       this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
       this.hueRotateActive = false;
-      if(this.diffractionCameraLength >= 1000){
-        $('#magnificationvalue').text('  ' + this.diffractionCameraLength / 1000 + ' m ');
-      } else {
-        $('#magnificationvalue').text('  ' + this.diffractionCameraLength + ' mm ');
-      }
       this.setFilterString();
       this.drawDiffraction();
       this.context.restore();
