@@ -268,26 +268,25 @@ function addLectures(){
             })
         }
     };
-    /*let audiosrcs = ['', 
+    let pptsrcs = ['https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21132&authkey=AEwqUcRF38XDpKw&em=2',
     '',
     '',
     '',
-    'http://slidespeech.com/s/b7Dt2mJQen/']
-    for(i = 1; i < audiosrcs.length + 1; i++){
-        if(audiosrcs[i-1] != ''){
+    '']
+    for(i = 1; i < pptsrcs.length + 1; i++){
+        if(pptsrcs[i-1] != ''){
             let btn = document.createElement('button');
-            let src = audiosrcs[i-1];
-            $(btn).attr('id', 'ch' + i + 'audiobtn')
+            let src = pptsrcs[i-1];
+            $(btn).attr('id', 'ch' + i + 'pptbtn')
             $(btn).addClass('lecturetab');
             $(btn).css('margin', '2px');
-            $(btn).text('Chapter ' + i + ' with audio');
+            $(btn).text('Chapter ' + i + ' (PowerPoint Online)');
             $(btn).click(function(){
-                //$('#temlecture').attr('src', src);
-                window.open(src, 'ch' + i)
+                $('#temlecture').attr('src', src);
             });
             $('#lecturediv').append(btn);
         }
-    }*/
+    }
 }
 
 // Enter fullscreen mode
