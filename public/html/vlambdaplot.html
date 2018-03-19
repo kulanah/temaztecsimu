@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type= "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        $$\lambda  = {h \over p} = {h \over {\sqrt {2{m_0}qV(1 + {{qV} \over {2{m_0}{C^2}}}} )}} \approx {{12.27} \over {\sqrt {V(1 + 0.978 \times {{10}^{ - 6}}V} )}}$$
+        <label for="xmin" style='font-size:smaller'>Min V:</label>
+        <input type="number" id="xmin" style="color:black" value="100000" />
+        <label for="xmax" style='font-size:smaller'>Max V:</label>
+        <input type="number" id="xmax" style="color:black" value="200000" />
+        <label for="ymin" style='font-size:smaller'>Min λ:</label>
+        <input type="number" id="ymin" style="color:black" value="0" />
+        <label for="ymax" style='font-size:smaller'>Max λ:</label>
+        <input type="number" id="ymax" style="color:black" value="0.05" />
+        <div id="plot" style='background:white'></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.5/math.min.js"></script>		
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/function-plot/1.18.1/function-plot.js"></script>
+		<script>
+			// Example of using multiple user-inputted variables
+			function drawLine() {
+				try {
+					functionPlot({
+						target: '#plot',
+						xAxis: {
+							label: 'V',
+							domain: [document.getElementById('xmin').value, document.getElementById('xmax').value]
+						},
+						yAxis: {
+							label: 'λ',
+							domain: [document.getElementById('ymin').value, document.getElementById('ymax').value]
+						},
+						data: [{
+							fn: '12.27 / (x * (1 + .978 * 10 ^ -6 * x))^.5',
+							sampler: 'builtIn',  // this will make function-plot use the evaluator of math.js
+							graphType: 'polyline'
+						}]
+					});
+				}
+				catch (err) {
+					console.log(err);
+				}
+			}
+			
+			// .onclick detects changes to a number input field with the arrows on the side
+			document.getElementById('xmin').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			// .onkeyup gives immediate feedback to changes as the user enters numbers with the keyboard
+			document.getElementById('xmin').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('xmax').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('xmax').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+			
+			document.getElementById('ymin').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('ymin').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+			
+			document.getElementById('ymax').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('ymax').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			drawLine();
+		</script>
+    </body>
+</html>
