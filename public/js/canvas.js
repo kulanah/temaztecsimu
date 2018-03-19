@@ -193,8 +193,74 @@ class Canvas {
       return;
     }
 
+    let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
+    alphaTiltImpact = Math.min(this.imgW / 2, Math.max(-this.imgW / 2, alphaTiltImpact)); // keep tilt impact limited to staying on specimen
+    let betaTiltImpact;
+    if (this.specimenHeight == 0){
+      betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.zooms[this.mag] / this.imgScale * 3;
+    } else {
+      betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
+    }
+    betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
+
     if (this == setupbox){
       if(screenLift){
+        this.context.restore();
+        return;
+      }
+      if (diffractionMode){
+        imagectx.globalAlpha = 1;
+        imagectx.fillStyle = '#FFF';
+        imagectx.fillRect(0, 0, 3, 3);
+        if(!blockSpecimen){
+          if(this.defocus + this.specimenHeight * 1000 <= 0 && underFocusValue > 0){
+            this.drawTwoImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1, underFocusImage, underFocusValue);
+          } else if(this.defocus + this.specimenHeight * 1000 >= 0 && overFocusValue > 0){
+            this.drawTwoImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1, overFocusImage, overFocusValue);
+          } else {
+            this.drawSplitImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1);
+          }
+        }
+        if(this.diffractionCameraLength >= 1000){
+          $('#magnificationvalue').text('  ' + this.diffractionCameraLength / 1000 + ' m ');
+        } else {
+          $('#magnificationvalue').text('  ' + this.diffractionCameraLength + ' mm ');
+        }
+        let context = this.glowSelector[0].getContext('2d');
+        context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
+        if(this.maskX > this.selector[0].width / 2){
+          drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+          this.context.restore();
+          return;
+        }
+        if(blockSpecimen || this.maskX < this.imgX + alphaTiltImpact || this.maskX > this.imgX + alphaTiltImpact + this.imgW || this.maskY < this.imgY + betaTiltImpact || this.maskY > this.imgY + betaTiltImpact + this.imgH){
+          onSpecimen = false;
+        } else {
+          onSpecimen = true;
+        }
+        // getImageData will only function on a server - it will fail if run locally.
+        // To do local testing, create a web server with Python.
+        // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
+        if(window.location.protocol != 'file:'){
+          // Get the average of the values of the pixel at the center of the beam plus the surrounding eight pixels
+          var p = imagectx.getImageData(0, 0, 3, 3).data;
+          let colorValue = 0;
+          for (let i = 0; i < 9; i++){ 
+            colorValue += p[i * 4] + p[i * 4 + 1] + p[i * 4 + 2];
+          }
+          colorValue /= 27;
+          console.log('colorValue', colorValue);
+          this.specimenThickness = (255 - colorValue) / 255 * 100;
+          // Backup method for checking if on specimen
+          /*if(colorValue > 254){
+            onSpecimen = false;
+          } else {
+            onSpecimen = true;
+          }*/
+        }
+        this.hueRotateActive = false;
+        this.setFilterString();
+        this.drawDiffraction();
         this.context.restore();
         return;
       }
@@ -253,32 +319,17 @@ class Canvas {
     this.context.globalAlpha = 1;
     this.context.fillStyle = '#CCC';
     this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
-    let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
-    alphaTiltImpact = Math.min(this.imgW / 2, Math.max(-this.imgW / 2, alphaTiltImpact)); // keep tilt impact limited to staying on specimen
-    let betaTiltImpact;
-    if (this.specimenHeight == 0){
-      betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.zooms[this.mag] / this.imgScale * 3;
-    } else {
-      betaTiltImpact = Math.tan(this.betaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
-    }
-    betaTiltImpact = Math.min(this.imgH / 2, Math.max(-this.imgH / 2, betaTiltImpact));
     // Block the specimen during tune alignments
     if(!blockSpecimen){
       if(this === mainmicro){
         this.drawSplitImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact);
       } else {
-        imagectx.globalAlpha = 1;
-        imagectx.fillStyle = '#FFF';
-        imagectx.fillRect(0, 0, 3, 3);
         if(this.defocus + this.specimenHeight * 1000 <= 0 && underFocusValue > 0){
           this.drawTwoImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact, underFocusImage, underFocusValue);
-          this.drawTwoImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1, underFocusImage, underFocusValue);
         } else if(this.defocus + this.specimenHeight * 1000 >= 0 && overFocusValue > 0){
           this.drawTwoImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact, overFocusImage, overFocusValue);
-          this.drawTwoImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1, overFocusImage, overFocusValue);
         } else {
           this.drawSplitImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact);
-          this.drawSplitImageDefocus(imagectx, this.imgX + alphaTiltImpact - this.maskX + 1, this.imgY + betaTiltImpact - this.maskY + 1);
         }
       }
     }
@@ -286,53 +337,6 @@ class Canvas {
     this.drawHalo();
 
     this.context.restore();
-
-    if(this === setupbox && diffractionMode){
-      if(this.diffractionCameraLength >= 1000){
-        $('#magnificationvalue').text('  ' + this.diffractionCameraLength / 1000 + ' m ');
-      } else {
-        $('#magnificationvalue').text('  ' + this.diffractionCameraLength + ' mm ');
-      }
-      let context = this.glowSelector[0].getContext('2d');
-      context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
-      if(this.maskX > this.selector[0].width / 2){
-        this.context.save();
-        drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
-        this.context.restore();
-        return;
-      }
-      if(this.maskX < this.imgX + alphaTiltImpact || this.maskX > this.imgX + alphaTiltImpact + this.imgW || this.maskY < this.imgY + betaTiltImpact || this.maskY > this.imgY + betaTiltImpact + this.imgH){
-        onSpecimen = false;
-      } else {
-        onSpecimen = true;
-      }
-      // getImageData will only function on a server - it will fail if run locally.
-      // To do local testing, create a web server with Python.
-      // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
-      if(window.location.protocol != 'file:'){
-        // Get the average of the values of the pixel at the center of the beam plus the surrounding eight pixels
-        var p = imagectx.getImageData(0, 0, 3, 3).data;
-        let colorValue = 0;
-        for (let i = 0; i < 9; i++){ 
-          colorValue += p[i * 4] + p[i * 4 + 1] + p[i * 4 + 2];
-        }
-        colorValue /= 27;
-        console.log('colorValue', colorValue);
-        this.specimenThickness = (255 - colorValue) / 255 * 100;
-        // Backup method for checking if on specimen
-        /*if(colorValue > 254){
-          onSpecimen = false;
-        } else {
-          onSpecimen = true;
-        }*/
-      }
-      this.context.save();
-      this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
-      this.hueRotateActive = false;
-      this.setFilterString();
-      this.drawDiffraction();
-      this.context.restore();
-    }
   };
 
   drawTwoImageDefocus(ctx, x, y, defocusImage, defocusValue){
