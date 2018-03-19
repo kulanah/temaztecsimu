@@ -272,7 +272,7 @@ function addLectures(){
     '',
     '',
     '',
-    'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21137&authkey=AFiajYNsJGO7BEo&em=2']
+    'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2']
     for(i = 1; i < pptsrcs.length + 1; i++){
         if(pptsrcs[i-1] != ''){
             let btn = document.createElement('button');
