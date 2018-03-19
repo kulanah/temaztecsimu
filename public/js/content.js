@@ -268,7 +268,7 @@ function addLectures(){
             })
         }
     };
-    let pptsrcs = ['https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21132&authkey=AEwqUcRF38XDpKw&em=2',
+    let pptsrcs = ['https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21143&authkey=AB9lrocCmbUQL2w&em=2',
     '',
     '',
     '',
@@ -283,6 +283,8 @@ function addLectures(){
             $(btn).text('Chapter ' + i + ' (PowerPoint Online)');
             $(btn).click(function(){
                 $('#temlecture').attr('src', src);
+                currentCh = $(btn).text().split(' ')[1];
+                $('#speakernotesplay').prop('disabled', false);
             });
             $('#lecturediv').append(btn);
         }

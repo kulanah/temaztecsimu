@@ -29,7 +29,7 @@ let ch1SpeakerNotes = [
     +
     "\n"
     +
-    "\u000b\t\t Willams’ and Carter’s  "
+    "\u000b\t\t Williams’ and Carter’s  "
     +
     "Transmission Electron Microscopy (2nd ed.) "
     +
