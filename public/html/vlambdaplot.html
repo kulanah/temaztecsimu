@@ -12,7 +12,9 @@
         <label for="ymin" style='font-size:smaller'>Min λ:</label>
         <input type="number" id="ymin" style="color:black" value="0" />
         <label for="ymax" style='font-size:smaller'>Max λ:</label>
-        <input type="number" id="ymax" style="color:black" value="0.05" />
+		<input type="number" id="ymax" style="color:black" value="0.05" />
+		<br>
+		<br>
         <div id="plot" style='background:white'></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.5/math.min.js"></script>		
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
@@ -23,6 +25,8 @@
 				try {
 					functionPlot({
 						target: '#plot',
+						width: 809,
+						height: 500,
 						xAxis: {
 							label: 'V',
 							domain: [document.getElementById('xmin').value, document.getElementById('xmax').value]
