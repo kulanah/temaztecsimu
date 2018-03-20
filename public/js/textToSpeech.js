@@ -1407,6 +1407,586 @@ let ch1SpeakerNotes = [
     ,
     ]
 
+let ch2SpeakerNotes = [
+    "Hi, and welcome back to our presentation on transmission electron microscopy. \n"
+    +
+    "In the last chapter you were introduced to the general fundamentals of TEM, and you were given an overview of the kinds of things we can accomplish with it.  \n"
+    +
+    "\u000bFrom now on our lectures will cover more specific topics in greater depth, and, since we can’t do TEM without electrons, we’re going to start today by discussing electron sources.\n"
+    +
+    "\u000bOur goal for this lecture on is to familiarize you with the three most common types of sources, the physics behind their operation, and what they mean for us as electron microscopists. While we won’t be teaching you everything there is to know about them, since that’s impossible without years of study, we intend to provide you with basic theoretical and practical understandings, as well as expose you to more in-depth references that you can study on your own to gain expertise. \u000b\u000b\n"
+    +
+    "\u000b\n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "Before we get into it, let’s take a look at a few questions that you can use either to aid your understanding of this lecture, or to gauge how relevant the material is for you. If you can answer these easily, you may want to skip ahead. If you can’t, you will probably benefit from the information we’re about to present.\n"
+    +
+    "\u000bSo of course the first question that comes to mind is, “why do we need electrons”?"
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "And, furthermore, what is meant by the, “wave-particle duality” of electrons?"
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "How do we generate the beam of electrons? \n"
+    +
+    "And what is the relationship between accelerating voltage and the wavelength of our electrons? \n"
+    +
+    "How can we control that wavelength? \n"
+    +
+    "What are the criteria for a “good” electron gun? \n"
+    +
+    "What do we really need our source and our gun to do? And why do we need them to do those things? \n"
+    +
+    "\n"
+    +
+    "You’ll see that there are three main types of electron guns commonly found in commercial TEMs, so how do we characterize different types of electron guns? \n"
+    +
+    "Finally, once we know what sources exist, and what their differences are, what implications does the type of source we’re using have on the analyses we can perform, or the samples we can examine? \n"
+    +
+    "\u000b\n"
+    ,
+    "In this chapter, we will start by reviewing the basic properties of the electron. We will then discuss why we want to use electrons as a method of illumination, how to control the wavelength of the electrons, how the generate electrons in a TEM, the ways by which we characterize the electron sources and the types of electron guns, and finally we will discuss practical aspects of the electron gun."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "Our goals for this chapter are to provide you with the foundations of the knowledge you would need to use when deciding what kind of TEM to purchase or use for your work, and the knowledge of how to use it safely and effectively once it has been purchased. Every chapter will teach you ways to avoid destroying your microscope, and since this chapter is on electron sources, we’re going to focus on avoiding destroying those for now. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "We also hope you’ll learn how the choice of electron source is reflected in the quality of your images and performance of your system, and that you’ll be able to achieve optimum performance out of your microscope and source. \u000b\u000bAnd, lastly, "
+    +
+    "we hope to give you the knowledge you’ll need to deal with a source that does not meet specifications. \n"
+    ,
+    "So as you’ll recall from general physics or general chemistry, the electron is a subatomic particle that we consider the “quanta” of negative charge -- it possesses a negative fundamental charge, so -1.6x10E-19 Coulombs and it’s surrounded by its own electric field because of that charge."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "In addition to their charge, electrons all have the same extremely low rest mass, m-sub-zero, of 9.109x10E-31 kg\n"
+    +
+    "\n"
+    +
+    "Electrons don’t exist solely within TEMs, however --they’re everywhere! The sharing and exchange of electrons, called Coulombic interaction, is responsible for all chemical compounds and reactions that we can observe in everyday life, including consciousness. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "And, since these electrons are charged but nearly massless, we can manipulate their motion using electromagnetic fields within the TEM, and we can model the changes induced in the motion of the electrons by our fields with the Lorentz force law. \n"
+    +
+    "\u000b\n"
+    ,
+    "We’ve already mentioned that electrons have a very favorable charge-to-mass ratio, and that this makes them highly controllable -- this is how we can use the optical systems in the TEM to focus the electrons and use them to produce images! The optical systems are composed of magnetic or electric fields, and this is how we manipulate the electrons. At the bottom left you can see an illustration of an electron in an electric field, and at the right you can see an electron interacting with a magnetic field. \n"
+    +
+    "\u000bHowever, we can manipulate more than just their motion -- we can change their wavelengths as well, through adjustment of a parameter we call “accelerating voltage”. The small table here illustrates this – we see that when we’re accelerating our electrons with 100,000 volts, their wavelength is about 0.0037 nm. If we up that to 200,000 volts, we see that we’ve now got a smaller wavelength – 0.0025 nm! And at 300 kV we have a wavelength of 0.001969 nm, so you can see the effect of accelerating voltage on wavelength, and soon you’ll see the effect wavelength has on resolution. \u000b\n"
+    +
+    "Just to stress this, though – the wavelengths of accelerated electrons are extremely small -- about 10,000 times shorter than those of the sun's photons we see with our eyes. This means the resolution we achieve with a TEM will be much greater than that of a LM, meaning we can examine things that are much, much smaller. \n"
+    +
+    "\u000bBesides the resolution, another very important advantage of electrons is the fact that if we ourselves are controlling a beam of electrons -- which we just said essentially make up everything -- that beam will be Coulombically interacting with whatever we direct the beam at, meaning we’re not only “seeing” our sample, but can extract chemical information from it as well. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "\u000b\n"
+    ,
+    "Let’s take a look at the electromagnetic spectrum to see the magnitude of the differences electrons imply -- A thing to note here is that as the energy of a particle (photon or electron, either way) increases, its frequency will increase and its wavelength will decrease-- meaning, the more energy the particle has, the faster it will oscillate in space-time, and since it’s oscillating faster, it will have to cover less linear space per oscillation, so it will have a smaller wavelength! \n"
+    +
+    "\n"
+    +
+    "So we want electrons in our TEM because their wavelength is highly controllable at wavelengths much shorter than those of the photons s used in VLM and human vision, which have wavelengths of around 400 - 700 nm. \u000bOf course, there are higher energy photons, but photons with wavelengths comparable to TEM electrons are very hard to manage, because at that point they’re actually X or gamma rays, which are extremely hazardous and hard to focus.  \n"
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "However, in the average transmission electron microscope operating at about 100,000 volts of accelerating voltage, we can impart much higher energies to our electrons, and maintain a stable wavelength despite slight variations in the voltage that we use to generate them.  At these energies, our electrons are traveling and oscillating so fast with all of this energy, that their wavelengths are actually around 0.037 Angstroms (with one Angstrom being 10^-10 meters, so the wavelength is 0.0037 nm)  in well-equipped modern TEMs,.\n"
+    ,
+    "When high energy electrons interact with TEM specimen, structural information can be gleaned from transmitted and diffracted electrons. Chemical information can be acquired from the  characteristic X-rays and electron energy loss as well. The fine details of these techniques will be discussed further in other chapters – just know that our incident electron beam from the source produces many useful signals when it interacts with a specimen.\n"
+    ,
+    "De Broglie’s 1924 thesis relating wavelength lambda to Planck’s constant and linear electron momentum\n"
+    +
+    "\u000bWavelength relating to voltage when not considering relativistic effects, -- usually our electrons in TEM is approaching half the speed of light, so we need to factor in relativistic effects. Apparently wavelength is inversely proportional to voltage – key point. \u000b\u000b\n"
+    +
+    "qV = kinetic energy = (m"
+    +
+    "o"
+    +
+    "V"
+    +
+    " to the " +
+    "2"
+    +
+    ")/2\n"
+    +
+    "\u000bV = accelerating voltage \n"
+    +
+    "\u000b~~\n"
+    +
+    "Now that we know the inverse relationship between wavelength and energy and have seen it graphically with the electromagnetic spectrum, we can quantify the relationship. To do this we’ll use a few very basic equations that you’ve probably already seen many times before. \u000b\u000bThe inverse wavelength/energy relationship is expressed through the wave relation that Louis de Broglie postulated in 1924, and all this is doing is effectively restating mathematically what the electromagnetic spectrum showed us visually -- the fact that when we divide Planck’s constant by the linear momentum, p, of a subatomic particle, we get a fair approximation of the wavelength of the quanta, in our case, electrons. \n"
+    +
+    "\u000bSince momentum isn’t shown *exactly* as energy, if we equate it to the product of electron mass and velocity, we can get an approximate value for wavelength just by dividing 12.27 over the square-root of our accelerating voltage! \n"
+    +
+    "\u000bThough, if we set our accelerating voltage to anything more than around 100,000 volts, we’ll actually be accelerating our electrons beyond half the speed of light in a vacuum, or 0.5c. To do this and still get accurate results, we’ll have to incorporate relativistic effects, but we see that even after doing this that our equation for wavelength is still quite simple. \u000b\u000b\u000b\n"
+    +
+    "\u000b\n"
+    ,
+    "Wavelength of electron in TEM  < 3.7 picometers , wavelength of visible photons between ~ 400 – 700 nm\n"
+    +
+    "\n"
+    +
+    ">10,000 X shorter wavelength than optical\n"
+    +
+    "\n"
+    +
+    "~~\n"
+    +
+    "We’ve already mentioned that electrons have a very favorable charge-to-mass ratio, and that this makes them highly controllable -- this is how we can use the optical systems in the TEM to focus the electrons and use them to produce images! \n"
+    +
+    "\u000bHowever, we can manipulate more than just their motion -- we can change their wavelengths as well, through adjustment of a parameter we call “accelerating voltage”.\u000b\u000b\n"
+    +
+    "The wavelengths we achieve through this are extremely small -- about 10,000 times shorter than those of the visible photons we see with our eyes. This means the resolution we achieve with a TEM will be much greater than that of a VLM, meaning we can examine things that are much, much smaller. \n"
+    +
+    "\u000bBesides the resolution, another very important advantage of electrons is the fact that if we ourselves are controlling a beam of electrons -- which we just said essentially make up everything -- that beam will be Coulombically interacting with whatever it is hitting, meaning we’re not only “seeing” our sample, but can extract chemical information from it as well. \n"
+    +
+    "\u000b\n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "Here we see Abbe's equation, which was created to model the effect of various variables on resolution, ro, in a VL system, but can be adapted and used in TEM. \n"
+    +
+    "For our purposes, we'll define the new variables as follows:\n"
+    +
+    "Eta"
+    +
+    " is the index of refraction between the source and the lens. In VLM this could be air, or immersion oil – it’s just the medium that the radiation travels through.\n"
+    +
+    "Alpha"
+    +
+    ", expressed in radians, is the half angle of the cone of electrons that is coming out of the specimen, going into the imaging section of the microscope.\n"
+    +
+    "And you can just think of this as the cone of light, or the cone of electrons that will come out of the specimen then be used to form our image.\n"
+    +
+    "\u000bNote that you’ll often see the entire denominator, "
+    +
+    "etaSin(alpha) "
+    +
+    "of Abbe’s equation shortened to “"
+    +
+    "N.A"
+    +
+    "”, or “numerical aperture”, which is a dimensionless quantity that determines the range of angles from which radiation can enter or exit an optical system. \n"
+    +
+    "\u000b\n"
+    ,
+    "Take a few minutes to explore Abbe's equation with this interactive module. You can enter in any value, and we've provided a list of values for different optical setups, from VLM all the way to aberration-corrected TEM -- this will show you first hand that the wavelengths found in TEM are four orders of magnitude smaller than those found in VLM! Note that the leftmost values given for electron microscopes are for 100 kV of acceleration, and the rightmost are for 300 kV instruments. \n"
+    +
+    "\n"
+    +
+    "Note the differences between VLM and TEM, so, photons and immersion oil vs. electrons and varying degrees of vacuum, and the difference between CTEM and aberration corrected TEM – we see wavelength differences of about 4 orders of magnitude between VLM and TEM, and an order of magnitude between the lowest and highest resolution TEM set-ups. \n"
+    +
+    "\u000b\n"
+    ,
+    "We have seen that the short wavelength of electrons can be achieved via accelerating the electron with high voltage, sometimes also called high tension. This results in a more than four-order improvement in resolution. Now let’s take a look at how we can generate electrons. Can we think about something in our daily life that already does this? Yeah! That is right! The cathode ray tube used in older televisions is the electron generator. It consists of one or more electron guns  which generate electrons. It modulates, accelerates, and deflects electron beam(s) onto the screen to create the images. Similar in principle, TEM also uses an electron gun to generate electrons. These electrons are accelerated by high tension, modulated and deflected by lenses and apertures on to the camera or phosphor screen where they create images. OK, let’s find out how to generate electrons."
+    +
+    "\n"
+    ,
+    "First let’s take a look at this atomic model while we remember that an atom is made up of three kinds of subatomic particles: neutrons, protons, and electrons. Electrons are fermions, a classification named for particle physicist Enrico Fermi."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "The Fermi level is used to describe the top of the collection of fermion energy levels, like those of electrons, at different temperatures. \n"
+    +
+    "\n"
+    +
+    "The "
+    +
+    "Fermi energy"
+    +
+    " is defined as the energy difference between the highest and lowest occupied single-particle states in a quantum system of non-interacting fermions at absolute zero temperature, where the energy of the electrons is at its lowest point. Basically the fermi level at absolute zero is the fermi energy. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "In a metal, the lowest occupied state is typically considered the bottom of the conduction band.  "
+    +
+    "The Fermi energies of metals are on the order of electron volts. This implies that the vast majority of the electrons cannot receive energy because there are no available energy states for them to go to within a fraction of an electron volt of their present energy. At higher temperatures, however, a certain fraction characterized by the Fermi function will exist above the Fermi level and become free electrons in the conduction band. Further heating, or the application of an electrical field can potentially lead to a consistently high probability of the electrons escaping from the metal surface; this process is called electron emission. This means that we’ll always have to apply some amount of heat (anywhere between hundreds to thousands of Kelvin) to our electron source in order to facilitate emission. \n"
+    +
+    "\n"
+    +
+    "\n"
+    ,
+    "But, how much energy do we need to encourage electron emission? \u000b\u000bLet’s consider a case where just one electron is emitted from the metal surface. This results in a positive charge on the metal surface, and potentials between "
+    +
+    "the escaped electron "
+    +
+    "and the metal surface. The potential energy V(x) can be expressed as a function of the distance between the electron and metal surface. This is an electrical field potential whose energy is related to the work function, and columbic interaction between e- and the positive charge depends on the strength of the field that is applied – you can’t just take electrons out by hand -- you have to apply these external electric fields to “extract” them. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "To address the three terms in this equation more specifically, though: \u000b\u000bthe first, q.phi, represents the work function – we can think of this as the minimum energy needed to remove electrons from the conduction band at the metal surface and pull them out into the vacuum. \n"
+    +
+    "\n"
+    +
+    "\t This second term"
+    +
+    ", q-squared over 16 pi eta-sub-zero all multiplied by one over x"
+    +
+    ", represents the interactions between the positively charged nuclei and the negatively charged electrons that we’re trying to remove from those nuclei. Because these particles are oppositely charged they will resist our attempts to separate them, and that is what this term models.  "
+    +
+    "\n"
+    +
+    "\t"
+    +
+    "\n"
+    +
+    "\tAnd this third term, q times the magnitude of E times x, represents our extraction voltage – the electric field we apply to extract electrons! \u000b\n"
+    +
+    "So we can conceptualize this equation as the three factors that we must overcome to stimulate electron emission, and remember that these factors are represented by each of these three terms: \n"
+    +
+    "\n"
+    +
+    "\tThe the work function, which depends on the material we chose to construct our electron source out of. It is the critical barrier for electron emission."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "\tThe the Fermi energy, that is defined for materials at absolute zero, that we can therefore effect via heating our source. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "\tThen the final term was the extraction voltage, and again, that was an applied external electric field that the operator of the microscope controls. \n"
+    +
+    "\u000b\n"
+    ,
+    "So we just saw that the critical barrier for electron emission is the work function of the emitter material. Logically then, we should just choose a material with a very low work function, achieve emission that way, and be done with it. Sadly, that isn’t possible, and we can examine this table of work functions for selected elements to see why. \u000b\n"
+    +
+    "Looking at this table, we can see that cesium has the lowest work function of the elements listed, but its melting point is only 307.1K. \n"
+    +
+    "This is a problem, since we must apply some heat in order overcome the work function barrier -- unfortunately we’ll always need to heat sources to around 300 Kelvin or more, so this means the only currently viable thermionic sources are either "
+    +
+    "refractory"
+    +
+    " (high melting point) materials with unremarkable work functions that are useful because they can tolerate extreme heating, or compounds like rare-earth hexaborides that have low work-functions and melting points that are high enough to facilitate emission at cooler, but still elevated temperatures without melting or vaporization."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "For instance: W has a melting point of 3695 K with a 4.5 eV work function, and LaB"
+    +
+    "6"
+    +
+    " has a low work function Φ of 2.4 eV and a melting point of 2483 K"
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "But if you think about it, let's look at copper here and tungsten, and when you look at their work functions, they're almost identical and tungsten is actually what we use in many electron microscopes today. So… Why do we use expensive tungsten and not the cheaper and more abundant copper? When we look at the differences in melting point between copper and tungsten, this kind of becomes clear: because we know that we need to apply around 2000 Kelvin to the filament to get it to emit electrons through thermionic emission. \n"
+    +
+    "\n"
+    +
+    "So we have copper melting at 1358 Kelvin and tungsten melting at 3695 Kelvin, the problem here is that by the time we get copper to the emission temperature it will no longer be a solid  -- it will be a vapor, and for our intents and purposes it effectively is useless even though it is an attractive emitter from a cost standpoint, in practice it is not used because it will just become a vapor before it can even emit, whereas tungsten has the high melting point and can withstand this.\n"
+    +
+    "\n"
+    +
+    "So this is why you'll usually see sources restricted to materials that are called, “refractory” materials, or ones with very high melting points. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "And, as we said, this isn’t restricted specifically to metals -- you can use compounds, but again the compound has to have a melting point greater than the temperature needed to facilitate emission. Really just know that if your material melts at a temperature that is less than the emission temperature then you don't have an emitter, you just have a vaporized substance in your column. \u000b\n"
+    +
+    "Crystallography is also important to consider, because all of these materials that we’re considering right now are in the crystalline state; it’s a very ordered state in which the sharing of electrons is easy, meaning that we can extract them easier -- it’s just easier to work with. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "You may have noticed these the sets of integers here, and you may know what these are, or you may not, but they’re called a “Miller index”, or “Miller indices”, and tell us how the crystal is oriented. So take note here that even within the same material, different orientations of that material have different work functions -- they can vary by up to an electron volt, so that's a pretty significant difference considering you're working with the same material. \n"
+    +
+    "\u000b"
+    +
+    "\n"
+    ,
+    "Of course, no matter what materials we choose, it seems that we still need overcome the work function barrier of the emitter. So if we think about the remaining two factors from the single electron potential model we just looked at, we can see that electrons can be emitted in the three ways: heating the filament, heating and applying an electrical field to the filament, and applying an electrical field only.  These three methods correspond to the three common electron emission gun designs: thermionic, Schottky, and field. \u000b\n"
+    +
+    "If you're using a thermionic electron gun, which by definition relies primarily on an increase in temperature to achieve emission, it will get very, very hot, and it will continue heating to the point where the Fermi energy has grown so much that the work function is very small, and the electrons are emitted into vacuum. \n"
+    +
+    "\n"
+    +
+    "Then the bottom, the field emission gun (FEG) relies on the application of a strong extraction voltage to a small tip-- so it'll leverage that last term from the equation and really just pull the electrons from their source. The filament is still heated to around 300 Kelvin, but compared to the temperatures of the other designs, this is “cold”. \n"
+    +
+    "\n"
+    +
+    "In the middle, the Schottky emitter, leverages what's called the Schottky effect, and will rely on both an increase in temperature and an increase in electric field around the source."
+    +
+    "\n"
+    +
+    " \n"
+    +
+    "So to break it down very simply, the thermionic relies on heat, the Schottky effect relies on heat and extraction voltage, and field emission guns rely purely on extraction voltage. The three correspondent electron sources are thermionic emission gun, Schottky Field emission gun (FEG), cold field emission gun (cold FEG)."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "\u000b\u000b\n"
+    ,
+    "In a thermionic emission gun, we have to heat it up, and that heating gives electrons enough kinetic energy to wiggle up into the conduction band, then hopefully out into the vacuum.The relationship between Fermi distribution and temperature can be expressed as a Fermi-Dirac function. As we heat up the filament, there is a higher and higher probability that electrons will exist in the conduction band of the emitter."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "Once the temperature is high enough, electrons in the tails of the fermi distribution in the conductive band acquire enough kinetic energy to overcome the work function. This is when heat energy, kT, is larger than the work function energy barrier,"
+    +
+    " q dot "
+    +
+    "πηι – ηενχε, τηερμιονιχ εμισσιον οχχυρσ."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "And once we have emission, when you think about how many electrons we’re getting out per time we can actually relate the number of electrons to current because of the fact that electrons possess that fundamental electric charge. This current output per time from the source is something called, “current density” --  and you can think of that as current per time, or electrons per time. So to get a measure of the performance of our cathode, we can use Richardson's law, and mathematically this just shows us that temperature is extremely important in emission and in current density -- it'll both lower the energy barrier, and as such it will increase the amount of electrons per time that we're getting out of our source.  This seems to suggest that the current density can be increased infinitely via increasing the heating temperature or reduce the work functions of the emitter.\n"
+    +
+    "\n"
+    +
+    "\u000b\n"
+    +
+    "\n"
+    ,
+    "For reasons you’ll understand soon, we would like to get the highest emission current density possible. There are a few ways to go about this:\n"
+    +
+    "\n"
+    +
+    "Richardson’s Law  seems to say that that the current density can always be increased via increasing the temperature of the filament, which is what we call the electron source because of the shape of the emitter. Sharper and smaller filaments allow for easier emission, but we will discuss that later when we learn about field emission electron guns."
+    +
+    "\n"
+    +
+    " Right now we need realize that although we get more electrons per time as we increase temperature, there exists a point, called “saturation”, beyond which the curve of filament heating current vs filament emission current plateaus – so, past a certain temperature the only effect you really see is quicker degradation of your source, not an increased emission current. To avoid that pointless degradation, we choose to operate just below the saturation point, but have to take care to stay near saturation, since operation too far from saturation will result in decreased brightness and analytical signal."
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "So, unfortunately, we’re limited in our application of heat either by filament melting point OR the filament heating current/emission current plateau. \u000b\n"
+    +
+    "Another option, as we know, is to choose a material with a low work function. In practice, LaB6 and CeB6 single crystals are often used in the electron microscope because of their lower work function energy barrier. As these materials are more sensitive to gas molecules like, oxygen, water vapor, etc. they will need to be kept under high vacuum. \u000b\n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "Here are some examples of the two main thermionic sources, as well as a full thermionic gun assembly. At far left is a “tungsten hairpin” – a very simple, cheap, and robust type of filament made from tungsten. To the right is a computer-generated rendering of a lanthanum hexaboride (or “Lab-6”) source, which is visibly more complex. This complexity, along with the precision involved in manufacturing the crystal, mean that lab-6 sources are much more expensive than tungsten hairpins. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "Shown at left in the far right image is a tungsten filament ready to be placed into the Wehnelt, shown at right. \n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "And again, the optimization of this Wehnelt bias is a crucial factor, because if you're not operating at optimum parameters then you're really not getting the most out of your system and you're not getting the the best quality of data for the money that you invested. \n"
+    +
+    "\u000bOptimum bias settings do exist, but they do depend on the distance between your filament and your Wehnelt, and the type of filament material you're using, and really who made your gun and how they made it -- this will all be described in manufacturer's specifications in your operating manuals. But the bias and the distance are adjustable parameters on most instruments. The tip-wehnelt distance is a little bit more involved -- you have to actually crack open the microscope to adjust it, and that involves a lot of careful planning and cleanliness to ensure that you don't contaminate your column. \n"
+    +
+    "\u000bThe bias voltage on the other hand, is a very readily adjustable parameter. \n"
+    +
+    "\u000bSo remember that we need to select an optimized bias -- not too high, not too low -- that will leave us with with the best balance of emission current and brightness.\n"
+    +
+    "\u000b\n"
+    ,
+    "A very common type of source will see for thermionic guns is the so-called, \"tungsten hairpin\". As you’ve heard, tungsten isn't the highest-performance source material available, but it is very robust, it's reliable, stable, and inexpensive, because of its simple construction.  It’s one of the few sources we’ll discuss that can operate in low vacuum, which could mean cost-savings if we don’t have to invest in a high or ultra-high vacuum system, but there are some downsides to this:"
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "at lower vacuum conditions you will still have charged ions bouncing around near your filament, and when these ions impinge on your source they'll actually “sputter” material away. Sputtering just means that these particles will hit with sufficient kinetic energy to knock atoms out of your source, so eventually, over time, from evaporation and erosion through high temperature and through sputtering your source will gradually wither until it is thin enough to melt and break the circuit, at which point it is “dead” and no TEM can occur until it is replaced. Here we see what a source looks like, generally, when we put it into the microscope. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "\u000b\n"
+    ,
+    "We mentioned rare earth cathodes, and these are lanthanum and cerium hexaboride predominantly, but you’ll mostly see lab-6. \u000b\n"
+    +
+    "From the Richardson equation we remember that we can increase the current density and the brightness by using a material with a lower work function, and that’s why we’re interested in lanthanum and cerium hexaboride. Their work functions, if you remember, were about two electron volts lower than tungsten. This is really important because when we evaluate the Richardson equation we see that as we increase our operating temperature to about 2700 Kelvin, which is approaching the operating temperatures of tungsten sources, every 0.1 eV of work function we can eliminate will result in a current density improvement of about 1.5 times. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "So even though we will be operating in the same temperature regime as as tungsten, we'll see that since we have a lower work function we're going to get a much better current density, and therefore much better brightness and much better data, because of the properties of these cathodes.\n"
+    +
+    "\u000b\n"
+    ,
+    "And you'll notice that the construction of a lanthanum or cerium hexaboride cathode is quite different than that of a tungsten one, and that is because they operate differently. \n"
+    +
+    "\n"
+    +
+    "Basically it comes down to the fact that you're going to use a single crystal of your cathode material, where lanthanum or cerium atoms can move around freely in the boron lattice. This means that the emitter atoms can be depleted from the tip, but performance won’t be affected since more can still migrate to the tip from distant areas of the crystal. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "As we said it has a relatively low work function compared to tungsten, and we can get an equivalent current density at about 1500 Kelvin, so we can match the tungsten hairpin emission current at a much lower temperature. \n"
+    +
+    "\u000bAnd if we continue to increase the temperature until we’re on par with the operating T of  of a tungsten thermionic emitter, we see that our current density will increase to about 100 amps per square centimeter at 2000 Kelvin. This means that we're gonna have not just a longer life, but also higher brightess; a longer life because we're going to have lower operating temperatures and, mobile lanthanum and cerium within the crystal. And the higher brightness, again, because of the lower work function, which means an increase in our current density, and all of these things together contribute to a higher resolution.\n"
+    +
+    "\u000b\n"
+    ,
+    "But there are some drawbacks, one of which is the fact that they’re very reactive when they’re at operating temperatures, especially with carbon and fluorine. With C and F being common in semiconductor or other applications, things are a bit risky, because when rare earth borides come in contact with C or F the cathode gets what’s called “poisoned”, and this will really change its emission properties in a way that isn’t very useful for us, so we want to avoid that if at all possible.  \u000b\n"
+    +
+    "Another drawback is that in order to protect these crystals from contamination, you have to use exceptionally good vacuum, levels around 10E-7 torr or better, and doing that itself is expensive -- you have to invest a lot of money in your facilities to install and maintain multiple stages of vacuum pumps. \n"
+    +
+    "\n"
+    +
+    "And of course the crystal itself and the mountings are expensive! It costs a lot to produce these and it costs a lot to buy and install them. \n"
+    +
+    "\n"
+    +
+    "And since this crystal isn’t a metal but is really more of a ceramic compound, it’s very brittle, so the electrical stresses and the thermal stresses it’s exposed to will  eventually cause mechanical failure no matter how carefully we maintain it.\u000b\n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "So for a Schottky emitter, we see that the the filament tip is actually poking through what used to be the Wehnelt, and in Schottky guns this is not a Wehnelt, but is instead called a suppressor.  The fact that the filament is now protruding from the suppressor and will be directing the electrons down, here, is an important distinction between the two gun types. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "And there's a potential applied between the filament and the first anode, and this is our “extraction voltage”, that factor that we discussed that is going to draw electrons from our tip. And as they're extracted into the vacuum they approach the second anode and as they pass between the two andoes they form the crossover that we’ll also refer to as the “virtual source”. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "From the crossover they head towards the second anode, and this explains why you may hear somebody say that they're operating a TEM at “200 kV”, what this statement really means is that the potential difference between the filament tip and the second anode here, the “accelerating voltage”, as it's called, is a potential difference of 200000 volts, and that's really what serves to accelerate the electrons down the column. \n"
+    +
+    "\n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "So to maintain stable emission in Schottky electron guns, we need to pay attention to these critical parameters:"
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "We need to ensure that the zirconium coverage, and zirconium to oxygen ratio on the tip is correct and homogeneous enough to allow the low work function across the entire tip. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "And because we've decreased the tip size now -- and we know that for emission to occur the surfaces of the emitters have to be very pristine -- we now have a smaller area, meaning contaminants can build up faster. To counteract this, we need to do 2 things: "
+    +
+    "\n"
+    +
+    "One is use a higher gun vacuum of of about 10E-8 torr, substantially higher than is needed for thermionic emission, to prevent contamination "
+    +
+    "\n"
+    +
+    "and two: we can keep the source hot, around, 1800 Kelvin to burn off any contaminants that may be present. \u000b\n"
+    +
+    "We also have to make sure that we're using an appropriate extraction voltage, because if we apply too much we will have an incoherent beam, since we're drawing electrons not just from the small tip, but from the sides and other areas that aren’t suitable for precise emission. \u000bBut if we have to low of an extraction voltage, we won't have enough brightness or current density to form a useful beam. "
+    +
+    "\n"
+    +
+    "\n"
+    +
+    "And we also need to maintain that distance separating emitter tip and the first anode --  that extraction anode -- and that's a function of the extraction voltage that we're applying.\n"
+    +
+    "\u000b\n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "Merger of slides 10 & 11? \n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "In general, the coherence of a beam of electrons is a way for defining how well the electron waves are in step, or in phase with each other.  Phase is a key property of all waves, and in ideally temporally coherent beams, all of the electrons will have a constant phase difference and a constant frequency. "
+    +
+    "\n"
+    +
+    "\u000b\u000bWe want to ensure that this is all happening over a large period of time as well, because if we have coherence moment to moment it's not particularly useful. \u000b\u000bWe can mathematically define the “coherence wavelength” lambda sub c, as the ratio between the product of Planck’s constant and electron velocity and the energy spread of the beam, delta E. \u000bIf the “wave packets” from the source are all identical, they have the same coherence wavelength. \n"
+    +
+    "\n"
+    +
+    "And since wavelength is related to accelerating voltage, that means our voltage also has to be stable, and these things are very crucial if we want to maintain a tight energy spread, so that the variations in energy across the electrons comprising the beam are very minimal."
+    +
+    "\n"
+    +
+    "\u000bEssentially this all just boils down to the fact that we want our electrons to all be as similar as possible, or, in reality, since we're considering them as waves here, we want all of our electron waves to be as similar as possible -- we want them to all be oscillating with the same frequency, and all be emanating from the same point and ideally we want that point to be as small as we can possibly be.\n"
+    +
+    "\n"
+    +
+    "In practice, the typical delta E values for the three sources we’ve discussed are in the 0.1 to 3 eV range, which is remarkably small compared with a total energy of 100 to 400 keV. \u000b\u000b\n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "\u000bHere’s a table of all of the sources and properties that we've discussed. But keep in mind that before passing any judgment on a type of source, you really need to consider the application you want to use it for. \n"
+    +
+    "For instance, even though tungsten hairpins do have a short life, if you're trying to do biological work, or work with polymers, their high contrast will be an advantage to you.\n"
+    +
+    "On the other hand, if you need to do advanced analytical work, or if you're doing work in materials science, then field emission tips with extremely high coherence and small beam size might be useful.\n"
+    +
+    "\u000b\n"
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    "There are no speaker notes on this slide."
+    ,
+    ]
+
 let ch5SpeakerNotes = [
     "There are no speaker notes on this slide."
     ,
@@ -1957,7 +2537,7 @@ let ch5SpeakerNotes = [
 
 let speakerNotes = [
     ch1SpeakerNotes,
-    [],
+    ch2SpeakerNotes,
     [],
     [],
     ch5SpeakerNotes
