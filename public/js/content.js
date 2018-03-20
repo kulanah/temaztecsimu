@@ -268,15 +268,18 @@ function addLectures(){
             })
         }
     };
-    let pptsrcs = ['https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21143&authkey=AB9lrocCmbUQL2w&em=2',
-    'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21155&authkey=AIMaNlZHb6E8XH4&em=2',
-    '',
-    '',
-    'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2']
-    for(i = 1; i < pptsrcs.length + 1; i++){
-        if(pptsrcs[i-1] != ''){
+    let pptsrcs = [
+        'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21157&authkey=ANhP2NnjGf3uE0c&em=2',
+        'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21143&authkey=AB9lrocCmbUQL2w&em=2',
+        'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21155&authkey=AIMaNlZHb6E8XH4&em=2',
+        '',
+        '',
+        'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2'
+    ]
+    for(i = 0; i < pptsrcs.length; i++){
+        if(pptsrcs[i] != ''){
             let btn = document.createElement('button');
-            let src = pptsrcs[i-1];
+            let src = pptsrcs[i];
             $(btn).attr('id', 'ch' + i + 'pptbtn')
             $(btn).addClass('lecturetab');
             $(btn).css('margin', '2px');
@@ -284,7 +287,11 @@ function addLectures(){
             $(btn).click(function(){
                 $('#temlecture').attr('src', src);
                 currentCh = $(btn).text().split(' ')[1];
-                $('#speakernotesplay').prop('disabled', false);
+                if(currentCh === '0'){
+                    $('#speakernotesplay').prop('disabled', true);
+                } else {
+                    $('#speakernotesplay').prop('disabled', false);
+                }
             });
             $('#lecturediv').append(btn);
         }
