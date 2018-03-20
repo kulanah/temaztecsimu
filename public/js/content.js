@@ -212,6 +212,15 @@ function showWIP(){
     })
 }
 
+let pptsrcs = [
+    'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21157&authkey=ANhP2NnjGf3uE0c&em=2',
+    'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21143&authkey=AB9lrocCmbUQL2w&em=2',
+    'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21155&authkey=AIMaNlZHb6E8XH4&em=2',
+    '',
+    '',
+    'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2'
+]
+
 function addLectures(){
     // Create the buttons to switch between lectures plus the fullscreen button
     let srcs = ['https://docs.google.com/presentation/d/e/2PACX-1vTmZNiWgLNOUc-i9XLeroyMTG-SWL-OlOxI4VKVU9_2n6ewXmonU5pc-wjG6x-chkNuXH4tMC59X4-N/embed?start=false&loop=false&delayms=3000', //PPT Online Ch1: 'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21126&authkey=ABwysJ8rPoa5qc0&em=2'
@@ -268,14 +277,6 @@ function addLectures(){
             })
         }
     };
-    let pptsrcs = [
-        'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21157&authkey=ANhP2NnjGf3uE0c&em=2',
-        'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21143&authkey=AB9lrocCmbUQL2w&em=2',
-        'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21155&authkey=AIMaNlZHb6E8XH4&em=2',
-        '',
-        '',
-        'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2'
-    ]
     for(i = 0; i < pptsrcs.length; i++){
         if(pptsrcs[i] != ''){
             let btn = document.createElement('button');
@@ -345,12 +346,16 @@ function incrementSlideCounter(){
 
 function setLecture(){
     // Set the lecture window to the appropriate chapter if the user selected a chapter
+    // Unreliable, so not currently used
     if(location.search.includes('ch=')){
-        let chNum = location.search.split('ch=')[1].split('&')[0];
-        let chBtn = '#ch' + chNum + 'btn';
-        if($(chBtn).length){
-            $('#lecturediv').show();
-            $(chBtn).trigger('click');
-        }
+        currentCh = location.search.split('ch=')[1].split('&')[0];
+        $('#lecturediv').show();
+        let src = pptsrcs[currentCh];
+        $('#temlecture').attr('src', src);
+        if(currentCh === '0'){
+            $('#speakernotesplay').prop('disabled', true);
+        } else {
+            $('#speakernotesplay').prop('disabled', false);
+        }        
     }
 }
