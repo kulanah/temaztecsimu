@@ -85,7 +85,7 @@
     <script>
         let chapters = document.getElementsByTagName('li');
         for (i = 1; i <= chapters.length; i++){
-            (chapters[i-1]).addEventListener('click',parent.setChapter(i));
+            (chapters[i-1]).addEventListener('click',function(){parent.setChapter(i)});
         }
     </script>
 </body>
