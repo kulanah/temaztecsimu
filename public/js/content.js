@@ -346,7 +346,6 @@ function incrementSlideCounter(){
 
 function setChapter(){
     // Set the lecture and homework windows to the appropriate chapter if the user selected a chapter 
-    // and opens the lecture window if a valid chapter was selected
     if(location.search.includes('ch=')){
         currentCh = location.search.split('ch=')[1].split('&')[0];
         $('#temlecture').ready(function(){
@@ -356,7 +355,7 @@ function setChapter(){
                 if (currentCh !== '0'){
                     $('#speakernotesplay').prop('disabled', false);
                 }
-                $('#lecturediv').show();
+                //$('#lecturediv').show();
             }
         });
         if(currentCh > 1 && currentCh < 8 && currentCh != 6){
