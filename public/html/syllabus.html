@@ -2,11 +2,13 @@
 <html>
 <head>
     <style>
-        /*li {
+        li {
             color: blue;
             text-decoration: underline;
-        }*/
-
+        }
+        li:hover{
+            cursor: pointer;
+        }
         h2 {
             text-align: center
         }
@@ -86,7 +88,10 @@
         let chapters = document.getElementsByTagName('li');
         for (i = 1; i <= chapters.length; i++){
             let n = i;
-            (chapters[i-1]).addEventListener('click',function(){parent.setChapter(n)});
+            (chapters[i-1]).addEventListener('click',function(){
+                parent.setChapter(n);
+                parent.popContentDisplay('#homework');
+            });
         }
     </script>
 </body>
