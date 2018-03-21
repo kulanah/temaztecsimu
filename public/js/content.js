@@ -27,7 +27,7 @@ function prepareContent(){
     showWIP();
     addLectures();
     //incrementSlideCounter();
-    setChapter();
+    initializeChapter();
 }
 
 // Keep the popup position and dimensions consistent across content
@@ -344,22 +344,26 @@ function incrementSlideCounter(){
     });*/
 }
 
-function setChapter(){
-    // Set the lecture and homework windows to the appropriate chapter if the user selected a chapter 
+function initializeChapter(){
     if(location.search.includes('ch=')){
-        currentCh = location.search.split('ch=')[1].split('&')[0];
-        $('#temlecture').ready(function(){
-            let src = pptsrcs[currentCh];
-            if(src != ''){
-                $('#temlecture').attr('src', src);
-                if (currentCh !== '0'){
-                    $('#speakernotesplay').prop('disabled', false);
-                }
-                //$('#lecturediv').show();
+        setChapter(location.search.split('ch=')[1].split('&')[0]);
+    }
+}
+
+function setChapter(chNum){
+    // Set the lecture and homework windows to the appropriate chapter if the user selected a chapter 
+    currentCh = chNum;
+    $('#temlecture').ready(function(){
+        let src = pptsrcs[currentCh];
+        if(src != ''){
+            $('#temlecture').attr('src', src);
+            if (currentCh !== '0'){
+                $('#speakernotesplay').prop('disabled', false);
             }
-        });
-        if(currentCh > 1 && currentCh < 8 && currentCh != 6){
-            $('#homeworkiframe').attr('src', 'public/html/hw' + currentCh + '.html');
+            //$('#lecturediv').show();
         }
+    });
+    if(currentCh > 1 && currentCh < 8 && currentCh != 6){
+        $('#homeworkiframe').attr('src', 'public/html/hw' + currentCh + '.html');
     }
 }
