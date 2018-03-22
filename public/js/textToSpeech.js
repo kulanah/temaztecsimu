@@ -1529,13 +1529,13 @@ let ch2SpeakerNotes = [
     +
     "we hope to give you the knowledge you’ll need to deal with a source that does not meet specifications. \n"
     ,
-    "So as you’ll recall from general physics or general chemistry, the electron is a subatomic particle that we consider the “quanta” of negative charge -- it possesses a negative fundamental charge, so -1.6x10E-19 Coulombs and it’s surrounded by its own electric field because of that charge."
+    "So as you’ll recall from general physics or general chemistry, the electron is a subatomic particle that we consider the “quanta” of negative charge -- it possesses a negative fundamental charge, so -1.6x10 to the -19 Coulombs and it’s surrounded by its own electric field because of that charge."
     +
     "\n"
     +
     "\n"
     +
-    "In addition to their charge, electrons all have the same extremely low rest mass, m-sub-zero, of 9.109x10E-31 kg\n"
+    "In addition to their charge, electrons all have the same extremely low rest mass, m-sub-zero, of 9.109x10 to the -31 kg\n"
     +
     "\n"
     +
@@ -1928,7 +1928,7 @@ let ch2SpeakerNotes = [
     ,
     "But there are some drawbacks, one of which is the fact that they’re very reactive when they’re at operating temperatures, especially with carbon and fluorine. With C and F being common in semiconductor or other applications, things are a bit risky, because when rare earth borides come in contact with C or F the cathode gets what’s called “poisoned”, and this will really change its emission properties in a way that isn’t very useful for us, so we want to avoid that if at all possible.  \u000b\n"
     +
-    "Another drawback is that in order to protect these crystals from contamination, you have to use exceptionally good vacuum, levels around 10E-7 torr or better, and doing that itself is expensive -- you have to invest a lot of money in your facilities to install and maintain multiple stages of vacuum pumps. \n"
+    "Another drawback is that in order to protect these crystals from contamination, you have to use exceptionally good vacuum, levels around 10 to the -7 torr or better, and doing that itself is expensive -- you have to invest a lot of money in your facilities to install and maintain multiple stages of vacuum pumps. \n"
     +
     "\n"
     +
@@ -1976,7 +1976,7 @@ let ch2SpeakerNotes = [
     +
     "\n"
     +
-    "One is use a higher gun vacuum of of about 10E-8 torr, substantially higher than is needed for thermionic emission, to prevent contamination "
+    "One is use a higher gun vacuum of of about 10 to the -8 torr, substantially higher than is needed for thermionic emission, to prevent contamination "
     +
     "\n"
     +
@@ -2163,9 +2163,9 @@ let ch5SpeakerNotes = [
     +
     "\n"
     ,
-    "There are no speaker notes on this slide."
+    "Rotary vane pumps rely on eccentrically rotating vanes to suck air through an inlet valve and into a chamber, where the rotation will further compress it and eventually expel it from an exhaust port. They are reliable and relatively cheap, but are noisy and dirty, so, if used, they should be housed separately from the TEM itself so that their vibrations do not interfere with imaging or analysis. These pumps can provide an ultimate pressure of about 10 to the -3 Torr."
     ,
-    "There are no speaker notes on this slide."
+    "Rotary vane pumps rely on eccentrically rotating vanes to suck air through an inlet valve and into a chamber, where the rotation will further compress it and eventually expel it from an exhaust port. They are reliable and relatively cheap, but are noisy and dirty, so, if used, they should be housed separately from the TEM itself so that their vibrations do not interfere with imaging or analysis. These pumps can provide an ultimate pressure of about 10 to the -3 Torr."
     ,
     "When selecting a vacuum pump, the application is key – you should ask things like, “what pressures do I need?”, “how fast do I need my pumping/venting cycles to be?”, “what gases will I need to pump?”, “how clean does my vacuum need to be?” and (of course) “what is an appropriate price-point?”."
     +
@@ -2308,7 +2308,7 @@ let ch5SpeakerNotes = [
     +
     "\n"
     ,
-    "Oil diffusion pumps offer maximum pump rates of 1000 liters per second (1 cubic meter per second), and can not operate above 10E-2 Torr, in order to ensure that the oil is not vaporized. "
+    "Oil diffusion pumps offer maximum pump rates of 1000 liters per second (1 cubic meter per second), and can not operate above 10 to the -2 Torr, in order to ensure that the oil is not vaporized. "
     +
     "\n"
     +
@@ -2508,7 +2508,7 @@ let ch5SpeakerNotes = [
     +
     "\n"
     +
-    "The Pirani gauge is usually the first kind used, because it operates accurately between around 10 - 10E-2 Pa, in rough vacuum. "
+    "The Pirani gauge is usually the first kind used, because it operates accurately between around 10 - 10 to the -2 Pa, in rough vacuum. "
     +
     "\n"
     +
@@ -2522,7 +2522,7 @@ let ch5SpeakerNotes = [
     +
     "\n"
     ,
-    "A Penning gauge, which you will also hear called a “cold cathode” gauge can be used to measure medium and high vacuum, between 1 - 1E-7 Pa. It does this by creating a flow of ions between between electrodes within a chamber open to the vacuum, and using the ion current from cathode to anode as a measure of pressure."
+    "A Penning gauge, which you will also hear called a “cold cathode” gauge can be used to measure medium and high vacuum, between 1 - 10 to the -7 Pa. It does this by creating a flow of ions between between electrodes within a chamber open to the vacuum, and using the ion current from cathode to anode as a measure of pressure."
     +
     "\n"
     +
@@ -2546,9 +2546,9 @@ let ch5SpeakerNotes = [
     +
     "\n"
     ,
-    "There are no speaker notes on this slide."
+    "Though the specifics of vacuum systems will change, there are a few rules of thumb that are useful to keep in mind: We’ll start with the three that are the most important, but also the most simple: Always handle your tools, components, and specimens only while wearing appropriate gloves -- for us, this means particle-free disposable gloves at least, with clean-room grade disposable gloves being ideal. Always ensure that your specimen is completely dry before you load it into your TEM! Furthermore, always make sure that your specimen is free from substances and structures that could evaporate, sublimate, or otherwise release gases when put under vacuum, a process called “offgassing” or “outgassing”. Always be aware of your specimen and its properties -- a substance that is innocuous and stable at atmospheric pressures may rapidly become a vacuum-degrading or emitter-killing vapor once exposed to the low pressures of the column.  If you can’t avoid introducing such a material, make sure your vacuum system will be able to cope, and at least try to ensure that the off-gassing has already occurred in a different, less important vacuum chamber used for specimen preparation. Any set-up designed to reach high or ultra-high vacuum will always consist of a multiple pumps, since no one pump can go from atmosphere to UHV. To the same end, any system that consists of more than one stage needs to have valves to isolate the stages from one another to preserve the vacuum and the pumps themselves. Differential vacuum, where areas of different pressure exist within the same general area, is possible due to the use of small openings between the different areas of pressure. These openings are called differential apertures. The efficiency of any pump will vary depending on the gas that it is pumping. Not all vacuum systems produce contaminant-free vacuum, but all vacuum systems must be kept clean to ensure safe operation. Volatile chemicals like fats, oils, and water should never be placed in traditional vacuum systems. Air-locks will be omnipresent -- they are what allow us to move our specimen into the vacuum! And, when we choose to let the pressures in our chambers rise, we can’t just suck in room-air -- all venting should be done with dry, clean, inert gases at appropriate flow-rates; you’ll see nitrogen used for this almost everywhere."
     ,
-    "There are no speaker notes on this slide."
+    "Here’s a diagram of a TEM that pays special attention to the vacuum system. Note that the projection system and the lower column are separated by a differential pumping system. The specimen environment in the mid-column has a dedicated IGP, and is kept around 10 to the -7 Torr during operation. The only time the specimen environment’s pressure should exceed that is when we have just introduced a specimen through the airlock, which is pumped by the TMP. The liner-tubes are also pre-pumped by the TMP. Further up, in the gun area, we see a region of higher vacuum that exists beyond the second differential pumping system. This area is pumped by a second IGP, and is usually around 10 to the -8 Torr. The FEG itself is kept between 10 to the -8 and 10 to the -9 Torr by its own IGP, which is mounted directly above the emitter."
     ,
     "Typical contaminants of vacuum systems include "
     +
