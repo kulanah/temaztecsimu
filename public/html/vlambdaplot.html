@@ -15,7 +15,7 @@
 		<input type="number" id="ymax" style="color:black" value="0.05" />
 		<br>
 		<br>
-        <div id="plot" style='background:white'></div>
+        <div id="plot"></div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/4.0.1/math.min.js"></script>		
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/function-plot/1.18.1/function-plot.js"></script>
@@ -34,10 +34,12 @@
 							label: 'λ',
 							domain: [document.getElementById('ymin').value, document.getElementById('ymax').value]
 						},
+						grid: true,
 						data: [{
 							fn: '12.27 / (x * (1 + .978 * 10 ^ -6 * x))^.5',
 							sampler: 'builtIn',  // this will make function-plot use the evaluator of math.js
-							graphType: 'polyline'
+							graphType: 'polyline',
+							closed: true
 						}]
 					});
 				}
