@@ -100,6 +100,7 @@
 			};
 
 			document.onwebkitfullscreenchange = function ( event ) { 
+				event.preventDefault();
 				drawLine();
 			}
 
