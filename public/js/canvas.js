@@ -843,6 +843,8 @@ class Canvas {
     alignmentMode = 'Rotation Center';
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
     drawInfoPanelValues();
+    $('#tunehelpcontent').prop('src', 'public/html/help.html');
+    $('#tunehelppopup').show();
   }
 
   setRotateOffset(thisIn){
@@ -949,6 +951,7 @@ class Canvas {
   deactivateDirectAlignments(){
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
+    $('#tunehelppopup').hide();
     blockSpecimen = false;
     diffractionMode = false;
     if(alignmentMode == 'Diffraction'){
