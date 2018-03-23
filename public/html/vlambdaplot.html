@@ -99,10 +99,10 @@
 				drawLine();
 			};
 
-			document.onwebkitfullscreenchange = function ( event ) { 
+			window.addEventListener('resize', function ( event ) { 
 				event.preventDefault();
 				drawLine();
-			}
+			});
 
 			drawLine();
 		</script>
