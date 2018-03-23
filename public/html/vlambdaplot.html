@@ -26,6 +26,14 @@
 					functionPlot({
 						target: '#plot',
 						width: 834,
+						tip: {
+							xLine: true,
+							yLine: true,
+							renderer: function (x, y, index) {
+								// the returning value will be shown in the tip
+								return 'V: ' + x.toFixed(3) + ', λ: ' + y.toFixed(3);
+							}
+						},
 						xAxis: {
 							label: 'V',
 							domain: [document.getElementById('xmin').value, document.getElementById('xmax').value]
