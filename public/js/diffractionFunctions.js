@@ -216,7 +216,7 @@ function drawKikuchiBand(canvas, alphaTilt, betaTilt, gradient, lightGradient, d
         ctx.arc(xCenter + Math.cos(lineAngle) * CO, yCenter + Math.sin(lineAngle) * CO, CO, 0, Math.PI * 2);
         ctx.stroke();
         ctx.lineWidth = 1;
-        console.log(Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt)
+        //console.log(Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt)
         // Draw bright edge and dark edge
         if (Math.sin(lineAngle) * alphaTilt + Math.cos(lineAngle) * betaTilt <= 0){
             ctx.strokeStyle = darkGradient;
@@ -249,7 +249,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let lineTransparency = specimenThickness / 150 / Math.pow(lineWidth, 2) * radiusX * radiusY;
         let lineAngle = Math.atan2(dy * j, dx * j - r1 * i);
         
-        console.log(lineAngle)
+        //console.log(lineAngle)
 
         // Applying the blur filter significantly worsens performance, so it is avoided when possible
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 1000)) + 'px)';
