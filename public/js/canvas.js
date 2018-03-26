@@ -249,7 +249,7 @@ class Canvas {
             colorValue += p[i * 4] + p[i * 4 + 1] + p[i * 4 + 2];
           }
           colorValue /= 27;
-          console.log('colorValue', colorValue);
+          //console.log('colorValue', colorValue);
           this.specimenThickness = (255 - colorValue) / 255 * 100;
           // Backup method for checking if on specimen
           /*if(colorValue > 254){
@@ -284,7 +284,7 @@ class Canvas {
     let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
     let longRadius = Math.max(newRadius, haloDistance) * Math.max(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
     let shortRadius = Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * Math.min(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
-    console.log(this.beamAngle, haloAngle)
+    //console.log(this.beamAngle, haloAngle)
     if(haloDistance > 0){
       this.context.ellipse(this.maskX + c2x * this.intensity,this.maskY + c2y * this.intensity,longRadius,shortRadius,haloAngle,0,Math.PI * 2);
     } else {
@@ -385,7 +385,7 @@ class Canvas {
       //   this.mag = 0;
       // } else {
       if (this.mag < this.zooms.length - 1){
-        console.log('zooming from ' + this.zooms[this.mag] + ' to ' + this.zooms[this.mag+1]);
+        //console.log('zooming from ' + this.zooms[this.mag] + ' to ' + this.zooms[this.mag+1]);
         zoomFactor = this.zooms[this.mag + 1] / this.zooms[this.mag];
         ++this.mag;
       } else {
