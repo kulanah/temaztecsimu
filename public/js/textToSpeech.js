@@ -1291,7 +1291,7 @@ let ch5SpeakerNotes = [
 let speakerNotes = [
     ch1SpeakerNotes,
     ch2SpeakerNotes,
-    [],
+    ch3SpeakerNotes,
     ch4SpeakerNotes,
     ch5SpeakerNotes
 ]
