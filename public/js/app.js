@@ -249,6 +249,8 @@ let activateGunTilt = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=369');
+  $('#tunehelppopup').show();
 }
 
 let activateGunShift = function(){
@@ -257,6 +259,8 @@ let activateGunShift = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=369');
+  $('#tunehelppopup').show();
 }
 
 let activatePivotPointX = function(){

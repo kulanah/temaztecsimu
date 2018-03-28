@@ -843,7 +843,7 @@ class Canvas {
     alignmentMode = 'Rotation Center';
     this.intervalVal = setInterval(this.setRotateOffset, 10, this);
     drawInfoPanelValues();
-    $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=355');
+    $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=355');
     $('#tunehelppopup').show();
   }
 
