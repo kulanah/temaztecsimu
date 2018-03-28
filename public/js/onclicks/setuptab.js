@@ -58,7 +58,6 @@ let vacuumWindow = function(){
       turboLoop.pause();
       turboStart.pause();
       turboStop.currentTime = Math.min(turboStart.duration, turboStop.duration) - turboStart.currentTime;
-      console.log(turboStop.currentTime)
       turboStop.play();
     } else {
       if (colopen){
