@@ -250,8 +250,9 @@ let activateGunTilt = function(){
   blockSpecimen = true;
   updateCanvas();
   $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=369');
-  $('#tunehelppopup').show();
-}
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activateGunShift = function(){
   stigmatorActive = false;
@@ -260,8 +261,9 @@ let activateGunShift = function(){
   blockSpecimen = true;
   updateCanvas();
   $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=369');
-  $('#tunehelppopup').show();
-}
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activatePivotPointX = function(){
   stigmatorActive = false;
@@ -272,8 +274,9 @@ let activatePivotPointX = function(){
     mainmicro.activatePivotPointX();
   }
   $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=337');
-  $('#tunehelppopup').show();
-}
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activatePivotPointY = function(){
   stigmatorActive = false;
@@ -284,8 +287,9 @@ let activatePivotPointY = function(){
     mainmicro.activatePivotPointY();
   }
   $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=337');
-  $('#tunehelppopup').show();
-}
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activateBeamShift = function(){
   stigmatorActive = false;
@@ -294,7 +298,9 @@ let activateBeamShift = function(){
   blockSpecimen = true;
   updateCanvas();
   $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=349');
-  $('#tunehelppopup').show();
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }
 }
 
 let activateRotationCenter = function(){
@@ -306,8 +312,9 @@ let activateRotationCenter = function(){
     mainmicro.activateRotationCenter();
   }
   $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=355');
-  $('#tunehelppopup').show();
-}
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activateComaFreeAlignmentX = function(){
   stigmatorActive = false;

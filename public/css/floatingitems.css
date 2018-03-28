@@ -291,6 +291,12 @@
   line-height: 15px;
 }
 
+#daautohelp{
+  position: absolute;
+  left: 161px;
+  top: 190px;
+}
+
 .highlightitem{
   padding-left: 2px;
 }
