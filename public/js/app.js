@@ -271,6 +271,8 @@ let activatePivotPointX = function(){
   } else {
     mainmicro.activatePivotPointX();
   }
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=337');
+  $('#tunehelppopup').show();
 }
 
 let activatePivotPointY = function(){
@@ -281,6 +283,8 @@ let activatePivotPointY = function(){
   } else {
     mainmicro.activatePivotPointY();
   }
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=337');
+  $('#tunehelppopup').show();
 }
 
 let activateBeamShift = function(){
@@ -289,6 +293,8 @@ let activateBeamShift = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=349');
+  $('#tunehelppopup').show();
 }
 
 let activateRotationCenter = function(){
@@ -299,6 +305,8 @@ let activateRotationCenter = function(){
   } else {
     mainmicro.activateRotationCenter();
   }
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=355');
+  $('#tunehelppopup').show();
 }
 
 let activateComaFreeAlignmentX = function(){
