@@ -193,7 +193,7 @@
 #basesetup{
   position: absolute;
   z-index: 0;
-  top: 11vh;
+  top: 10.3vh;
   left: 26vw;
   max-width: 33vw;
   max-height: 33vw;
@@ -330,8 +330,8 @@
 #diffractograms{
   position: absolute;
   z-index: -1;
-  top: 11vh;
-  left: 62vw;
+  top: 10.3vh;
+  left: 12.1vw;
   max-width: 33vw;
   max-height: 66vw;
   overflow: hidden;
