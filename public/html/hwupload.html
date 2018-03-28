@@ -13,12 +13,12 @@
                 <li><a href='./hw7.html'>Chapter 7</a></li>
             </ul>
         </details>
-        <h2 style='text-align:center'>Upload Example Question</h2>
-        <form method='post'>
-            <br>Ex) Example file upload question<br>
-            <br><input type='file' name='ex'></input><br>
+        <h2 style='text-align:center'>File Upload</h2>
+        <form method='post' enctype='multipart/form-data'>
+            <br>Please select which file(s) you wish to upload:<br>
+            <br><input type='file' name='hwupload' multiple></input><br>
             <div style='text-align: center'>
-                <button type='submit'>Submit answers</button>
+                <button type='submit'>Submit</button>
             </div>
         </form>
     </body>
