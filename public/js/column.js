@@ -325,3 +325,7 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 		ctx.restore();
 	}
 }
+
+$(window).resize(function(){
+	drawColumn();
+});
