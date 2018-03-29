@@ -61,14 +61,17 @@ body{
 
 #viewexposure{
   position: absolute;
-  top: 19.5vh;
-  left: 18.9vw;
+  top: 19.6vh;
 }
 
 #acquireexposure{
   position: absolute;
-  top: 39.7vh;
+  top: 39.9vh;
+}
+
+.exposureinput{
   left: 18.9vw;
+  width: 2.5vw;
 }
 
 #objdisplay{
