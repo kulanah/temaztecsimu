@@ -160,6 +160,10 @@ class Canvas {
 
     this.pivotPointCenterX = this.maskX;
     this.pivotPointCenterY = this.maskY;
+
+    openbox.maskR = setupbox.maskR * 4;
+    openbox.haloX = setupbox.haloX * 4;
+    openbox.haloY = setupbox.haloY * 4;
   };
 
   drawMainScreenValues(){
@@ -1071,6 +1075,8 @@ class Canvas {
 
     this.pivotPointWidth = 20;
     this.pivotPointHeight = 100;
+
+    openbox.maskR = setupbox.maskR * 4;
   }
 
   supervisorAlign(){
@@ -1133,5 +1139,7 @@ class Canvas {
 
     this.pivotPointWidth = 0;
     this.pivotPointHeight = 0;
+
+    openbox.maskR = setupbox.maskR * 4;
   }
 };
