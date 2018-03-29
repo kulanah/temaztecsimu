@@ -24,9 +24,7 @@ function prepareContent(){
     copyNotes();
     saveNotes();
     showOverview();
-    showWIP();
     addLectures();
-    //incrementSlideCounter();
     initializeChapter();
 }
 
@@ -96,7 +94,6 @@ function lectureClicked(){
             $("#lecturediv").show();
         }else{
             $("#lecturediv").hide();
-            toggleVideo('hide');
         }
     });
 }
@@ -115,7 +112,7 @@ function notepadClicked(){
 
 function toggleVideo(state) {
     // function by Rob W found at https://stackoverflow.com/questions/8667882/how-to-pause-a-youtube-player-when-hiding-the-iframe
-    // modified to not autoplay video
+    // modified to not autoplay video, not currently used
     // if state == 'hide', hide. Else: show video
     var div = document.getElementById("lecturediv");
     var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
@@ -198,15 +195,7 @@ function destroyClickedElement(event)
 
 function showOverview(){
     $('#overviewbtn').click(function(){
-        $('#temlecture').attr('src', 'https://www.youtube.com/embed/DL0gA-sE2Xk?enablejsapi=1')
-        currentCh = 0;
-        $('#speakernotesplay').prop('disabled', true);
-    })
-}
-
-function showWIP(){
-    $('#wipbtn').click(function(){
-        $('#temlecture').attr('src', 'https://s3-us-west-2.amazonaws.com/cemn-upload-image/TEMOverviewFixed.mp4')
+        $('#temlecture').attr('src', 'public/html/ch1v1.html')
         currentCh = 0;
         $('#speakernotesplay').prop('disabled', true);
     })
@@ -320,28 +309,6 @@ function leaveFullscreen() {
     if( requestMethod ) {
         requestMethod.apply( document );
     }
-}
-
-function incrementSlideCounter(){
-    $('#temlecture').load(function() {
-        var eventlist = 'click dblclick \
-                        blur focus focusin focusout \
-                        keydown keypress keyup \
-                        mousedown mouseenter mouseleave mousemove mouseover mouseout mouseup mousemove \
-                        touchstart touchend touchcancel touchleave touchmove';
-    
-        var iframe = $('#temlecture').contents().find('html');
-    
-        // Bubble events to parent
-        iframe.on(eventlist, function(event) {
-            console.log('event')
-            //$('html').trigger(event);
-        });
-    });
-    /*$('#temlecture'[0].contentWindow).on('click', function(){
-        console.log('clicked lecture')
-        document.getElementById('slidenumber').value += 1;
-    });*/
 }
 
 function initializeChapter(){
