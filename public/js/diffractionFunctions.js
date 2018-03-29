@@ -258,7 +258,7 @@ function drawKikuchiLines(canvas, xOffset, yOffset, radiusX, radiusY, r1, r2, dx
         let gradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0)');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + lineTransparency * .8 + ')');
-        gradient.addColorStop(1, 'rgba(255,255,255,' + lineTransparency + ')');
+        gradient.addColorStop(1, 'rgba(128,255,154,' + lineTransparency + ')');
         let lightGradient = ctx.createRadialGradient(xOffset, yOffset, platformRadius * cameraLength / 265, xOffset, yOffset, 0);
         lightGradient.addColorStop(0, 'rgba(255,255,255,0)');
         lightGradient.addColorStop(.8, 'rgba(255,255,255,' + lineTransparency * .8 + ')');
@@ -316,7 +316,7 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
         let gradient = ctx.createRadialGradient(xCenter, yCenter, platformRadius * cameraLength / 265, xCenter, yCenter, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + .8 * brightness + ')');
-        gradient.addColorStop(1, 'rgba(255,255,255,' + brightness + ')');
+        gradient.addColorStop(1, 'rgba(128,255,154,' + brightness + ')');
         for (var i = 0; i <= layers; i++) {
             for (var j = 0; j <= layers; j++) {
                 ctx.fillStyle = gradient;
