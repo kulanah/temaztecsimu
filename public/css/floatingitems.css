@@ -374,6 +374,14 @@
   resize: none;
 }
 
+#blocker {
+  position: absolute;
+  top: 55vh;
+  left: 35vw;
+  width: 100px;
+  height: 23px;
+}
+
 .lecturetab{
   padding: 2px;
 }
