@@ -91,8 +91,8 @@ function drawGreenCircle(canvas, x, y, radiusX, radiusY, rotation) {
         var ctx = canvas.getContext('2d');
         let gradient = ctx.createRadialGradient(x, y, (canvas.height + canvas.width) / 4, x, y, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0');
-        gradient.addColorStop(.8, 'rgba(128,255,154,' + .8 + ')');
-        gradient.addColorStop(1, 'rgba(255,255,255,' + 1 + ')');      
+        gradient.addColorStop(.8, 'rgba(128,255,154,' + .4 + ')');
+        gradient.addColorStop(1, 'rgba(128,255,154,' + .5 + ')');      
         ctx.fillStyle = gradient;  
         ctx.beginPath();
         ctx.ellipse(x, y, radiusX, radiusY, rotation, 0, Math.PI * 2);
@@ -108,7 +108,7 @@ function drawThreeArcs(canvas, x, y, radiusX, radiusY, rotation, lineWidth) {
         let gradient = ctx.createRadialGradient(x, y, (canvas.height + canvas.width) / 4, x, y, 0);
         gradient.addColorStop(0, 'rgba(0,17,0,0');
         gradient.addColorStop(.8, 'rgba(128,255,154,' + arcTransparency + ')');
-        gradient.addColorStop(1, 'rgba(255,255,255,' + arcTransparency + ')');
+        gradient.addColorStop(1, 'rgba(128,255,154,' + arcTransparency + ')');
         ctx.strokeStyle = gradient;
         ctx.lineWidth = lineWidth;
         console.log(x, y, radiusX, radiusY, rotation, lineWidth)
