@@ -8,10 +8,6 @@ function closeFloatingItems(){
 }
 
 let mainScreen = function(){
-  /*$(window).on('click', function(event){
-    console.log('click');
-  });*/
-
   $('#mainscreendropdown').on('click', function(event){
     if(isVisible('maindropdown')){
       $('#maindropdown').hide();
