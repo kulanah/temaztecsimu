@@ -121,7 +121,7 @@ let moveImage = function(deltax, deltay){
   if (openScreen == 0){
     openbox.moveImage(deltax, deltay);
     if (setupbox.moveImage(deltax, deltay)){
-      temLens[23].xCenter += deltax / 10;
+      temLens[24].xCenter += deltax / 10;
       drawColumn();
     }
   } else {
@@ -195,7 +195,7 @@ let zoom = function(delta){
   if (openScreen == 0){
     openbox.zoom(delta);
     setupbox.zoom(delta);
-    temLens[22].f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
+    temLens[23].f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
     drawColumn();
   } else {
     mainmicro.zoom(delta);

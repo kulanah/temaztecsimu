@@ -40,10 +40,11 @@ temLens[17] = new lens(0,0,610,100, 'label', 'Image Deflection 1');
 temLens[18] = new lens(0,0,620,30, 'label', 'Image Deflection 2');
 temLens[19] = new lens(0,0,622,30, 'label', 'Diffraction Stigmator');
 temLens[20] = new lens(0,0,625,24, 'aperture', 'SAED Aperture');
-temLens[21] = new lens(0,0,630,58, 'lens', 'Intermediate/Diffraction Lens');
-temLens[22] = new lens(0,0,714,85, 'lens', 'Projection lens 1');
-temLens[23] = new lens(0,0,795,10, 'lens', 'Projection Lens 2');
-temLens[24] = new lens(0,0,1090,5, 'screen', 'Viewing Screen');
+temLens[21] = new lens(0,0,630,58, 'lens', 'Diffraction Lens');
+temLens[22] = new lens(0,0,633,58, 'lens', 'Intermediate Lens');
+temLens[23] = new lens(0,0,714,85, 'lens', 'Projection lens 1');
+temLens[24] = new lens(0,0,795,10, 'lens', 'Projection Lens 2');
+temLens[25] = new lens(0,0,1090,5, 'screen', 'Viewing Screen');
 
 
 //These are static references for the above.  This allows us to use these as references 
