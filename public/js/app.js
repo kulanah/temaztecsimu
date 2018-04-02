@@ -138,8 +138,7 @@ let moveImage = function(deltax, deltay){
 let changeIntensity = function(delta){
   if (openScreen == 0){
     let change = setupbox.changeIntensity(delta);
-    condensorLens2.f -= change / 30;
-    temLens[21].f += change / 20;
+    condenserLens2.f -= change / 30;
     openbox.maskR = setupbox.maskR * 4;
     openbox.haloX = setupbox.haloX * 4;
     openbox.haloY = setupbox.haloY * 4;
@@ -175,7 +174,7 @@ let shiftFocus = function(delta){
   if (openScreen == 0){
     openbox.focus(delta);
     setupbox.focus(delta);
-    objectiveUpperPolePiece.f += delta / 10;
+    objectiveUpperPolepiece.f += delta / 10;
     drawColumn();
   } else {
     mainmicro.focus(delta);
