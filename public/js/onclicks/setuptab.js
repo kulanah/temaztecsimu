@@ -175,15 +175,17 @@ let fegControlWindow = function(){
   $('#gunLenseDown').on('click', function(){
     if (gunLense > 1){
       --gunLense;
+      $('#gunLenseVal').text(gunLense);
+      updateCanvas();
     }
     //min 1 max 7
-    $('#gunLenseVal').text(gunLense);
   });
 
   $('#gunLenseUp').on('click', function(){
     if(gunLense < 7){
       ++gunLense;
       $('#gunLenseVal').text(gunLense);
+      updateCanvas();
     }
   });
 
