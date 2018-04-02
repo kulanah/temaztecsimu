@@ -121,7 +121,7 @@ let moveImage = function(deltax, deltay){
   if (openScreen == 0){
     openbox.moveImage(deltax, deltay);
     if (setupbox.moveImage(deltax, deltay)){
-      temLens[24].xCenter += deltax / 10;
+      projectionLens2.xCenter += deltax / 10;
       drawColumn();
     }
   } else {
@@ -138,7 +138,7 @@ let moveImage = function(deltax, deltay){
 let changeIntensity = function(delta){
   if (openScreen == 0){
     let change = setupbox.changeIntensity(delta);
-    temLens[6].f -= change / 30;
+    condensorLens2.f -= change / 30;
     temLens[21].f += change / 20;
     openbox.maskR = setupbox.maskR * 4;
     openbox.haloX = setupbox.haloX * 4;
@@ -175,7 +175,7 @@ let shiftFocus = function(delta){
   if (openScreen == 0){
     openbox.focus(delta);
     setupbox.focus(delta);
-    temLens[12].f += delta / 10;
+    objectiveUpperPolePiece.f += delta / 10;
     drawColumn();
   } else {
     mainmicro.focus(delta);
@@ -195,7 +195,7 @@ let zoom = function(delta){
   if (openScreen == 0){
     openbox.zoom(delta);
     setupbox.zoom(delta);
-    temLens[23].f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
+    projectionLens1.f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
     drawColumn();
   } else {
     mainmicro.zoom(delta);

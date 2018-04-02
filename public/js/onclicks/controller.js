@@ -351,7 +351,7 @@ let microscopeControllers = function(){
   $('#buttonupr').on('click', function(event){
     if (temLensSpecimen.y < 585 - stageStepSize){
       focusUp();
-      temLens[13].y += stageStepSize;
+      temLensSpecimen.y += stageStepSize;
       drawColumn();
     } else {
       setupbox.limitFlash('#zvalue');
@@ -361,7 +361,7 @@ let microscopeControllers = function(){
   $('#buttondownr').on('click', function(event){
     if (temLensSpecimen.y > 528 + stageStepSize){
       focusDown();
-      temLens[13].y -= stageStepSize;
+      temLensSpecimen.y -= stageStepSize;
       drawColumn();
     } else {
       setupbox.limitFlash('#zvalue');
@@ -370,7 +370,7 @@ let microscopeControllers = function(){
 
   $('#buttontop1r').on('click', function(event){
     zeroFocus();
-    temLens[12].f = 70;
+    objectiveUpperPolepiece.f = 70;
     drawColumn();
   })
 

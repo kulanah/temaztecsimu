@@ -49,7 +49,11 @@ temLens[25] = new lens(0,0,1090,5, 'screen', 'Viewing Screen');
 
 //These are constant references for the above.  This allows us to use these as references 
 //so that if the above are reordered we don't need to track down every reference
+const condenserLens2 = temLens[6];
+const objectiveUpperPolepiece = temLens[12];
 const temLensSpecimen = temLens[13];
+const projectionLens1 = temLens[23];
+const projectionLens2 = temLens[24];
 
 
 //creates the labels for the lenses
@@ -247,9 +251,9 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 		if(temLens[i].kind=='lens'){
 			ctx.fillStyle = '#fff';
 			if (zoomedIn){
-				ctx.fillRect(xCenter+100,temLens[i].y - 4, 20, 7);
+				ctx.fillRect(xCenter+100,temLens[i].y - 2, 20, 5);
 			} else {
-				ctx.fillRect(xCenter-114,temLens[i].y - 12,14,14);
+				ctx.fillRect(xCenter-114,temLens[i].y - 10,14,18);
 			}
 		}
 		if (temLens[i].kind == 'label'){
@@ -313,7 +317,6 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 					zoomedOutLabels[i].style.top = (temLens[i].y * yScale - 8 ) + yOffset + 'px';
 				}
 			}
-				console.log(temLens[i].name + " is a " + temLens[i].kind);
 			if (temLens[i].kind !== 'label'){
 				columnDiv[0].append(zoomedOutLabels[i]);
 			}
