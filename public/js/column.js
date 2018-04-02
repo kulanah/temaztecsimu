@@ -17,31 +17,33 @@ class lens {
 
 
 
-//              xCenter  WIDTH  y      f       kind     nam
-temLens[00] = new lens(0,0,-10,5,'source','Electron Gun');
-temLens[01] = new lens(0,0,90,55,'lens','Gun lens');
-temLens[02] = new lens(0,0,130,90,'label','Gun Deflection 1');
-temLens[03] = new lens(0,20,160,0,'label','Gun Deflection 2');
-temLens[04] = new lens(0,0,220,60,'lens','Condenser Lens 1');
-temLens[05] = new lens(0,0,260,6.1,'aperture','C1 Aperture');
-temLens[06] = new lens(0,0,320,75,'lens','Condenser Lens 2');
-temLens[07] = new lens(0,0,350,25,'aperture','C2 Aperture');
-temLens[08] = new lens(0,0,370,05, 'label', 'Condenser Stigmator');
-temLens[09] = new lens(0,0,400,55, 'label','Beam Deflection X');
-temLens[10] = new lens(0,0,440,9, 'label','Beam Deflection Y');
-temLens[11] = new lens(0,0,480,24, 'lens','Minicondenser Lens');
-temLens[12] = new lens(0,0,520,70, 'lens','Objective UpperPolepiece');
-temLens[13] = new lens(0,0,570,-10, 'sample','Specimen');
-temLens[14] = new lens(0,0,600,60, 'lens','Objective LowerPolepiece');
-temLens[15] = new lens(0,0,650,16, 'aperture','Objective Aperture');
-temLens[16] = new lens(0,0,675,16, 'label','Objective Stigmator');
-temLens[17] = new lens(0,0,700,100,'label','Image Deflection 1');
-temLens[18] = new lens(0,0,750,30,'label','Image Deflection 2');
-temLens[19] = new lens(0,0,800,24,'aperture','SAED Aperture');
-temLens[20] = new lens(0,0,840,58,'lens','Intermediate/Diffraction Lens');
-temLens[21] = new lens(0,0,880,85,'lens','Projection lens 1');
-temLens[22] = new lens(0,0,990,10,'lens','Projection Lens 2');
-temLens[23] = new lens(0,0,1090,5,'screen','Viewing Screen');
+
+//              xCenter, WIDTH, y, f, kind, name
+temLens[00] = new lens(0,0,-10,5, 'source', 'Electron Gun');
+temLens[01] = new lens(0,0,55,55, 'lens', 'Gun lens');
+temLens[02] = new lens(0,0,100,90, 'label', 'Gun Deflection 1');
+temLens[03] = new lens(0,20,130,0, 'label', 'Gun Deflection 2');
+temLens[04] = new lens(0,0,210,60, 'lens', 'Condenser Lens 1');
+temLens[05] = new lens(0,0,260,6.1, 'aperture', 'C1 Aperture');
+temLens[06] = new lens(0,0,305,75, 'lens', 'Condenser Lens 2');
+temLens[07] = new lens(0,0,330,25, 'aperture', 'C2 Aperture');
+temLens[08] = new lens(0,0,337,05, 'label', 'Condenser Stigmator');
+temLens[09] = new lens(0,0,344,55, 'label', 'Beam Deflection X');
+temLens[10] = new lens(0,0,351,9, 'label', 'Beam Deflection Y');
+temLens[11] = new lens(0,0,353,24, 'lens', 'Minicondenser Lens');
+temLens[12] = new lens(0,0,417,70, 'lens', 'Objective UpperPolepiece');
+temLens[13] = new lens(0,0,470,-10, 'sample', 'Specimen');
+temLens[14] = new lens(0,0,538,60, 'lens', 'Objective LowerPolepiece');
+temLens[15] = new lens(0,0,583,16, 'aperture', 'Objective Aperture');
+temLens[16] = new lens(0,0,600,16, 'label', 'Objective Stigmator');
+temLens[17] = new lens(0,0,610,100, 'label', 'Image Deflection 1');
+temLens[18] = new lens(0,0,620,30, 'label', 'Image Deflection 2');
+temLens[19] = new lens(0,0,622,30, 'label', 'Diffraction Stigmator');
+temLens[20] = new lens(0,0,625,24, 'aperture', 'SAED Aperture');
+temLens[21] = new lens(0,0,630,58, 'lens', 'Intermediate/Diffraction Lens');
+temLens[22] = new lens(0,0,714,85, 'lens', 'Projection lens 1');
+temLens[23] = new lens(0,0,795,10, 'lens', 'Projection Lens 2');
+temLens[24] = new lens(0,0,1090,5, 'screen', 'Viewing Screen');
 
 
 //These are static references for the above.  This allows us to use these as references 
