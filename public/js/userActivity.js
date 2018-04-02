@@ -1,3 +1,4 @@
+// Tracks whether user is active; currently incomplete and unused
 let userActive = true;
 
 $(window).on('mousedown', function(event){
