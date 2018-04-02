@@ -250,26 +250,28 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 			ctx.fillRect(xCenter+100,temLens[i].y-12,14,24);
 		}
 		if (temLens[i].kind == 'label'){
-			ctx.strokeStyle= '#fff';
-			//draws the empty squares for the label boxes
-			ctx.strokeRect(xCenter-114,temLens[i].y-12,14,24);
-			ctx.strokeRect(xCenter+100,temLens[i].y-12,14,24);
+			if (zoomedIn){
+				ctx.strokeStyle= '#fff';
+				//draws the empty squares for the label boxes
+				ctx.strokeRect(xCenter - 114, temLens[i].y - 12, 14, 24);
+				ctx.strokeRect(xCenter + 100, temLens[i].y - 12, 14, 24);
 
-			//draws the x's in the label boxes
-			ctx.beginPath();
-			ctx.moveTo(xCenter - 112, temLens[i].y-10);
-			ctx.lineTo(xCenter - 102, temLens[i].y + 10);
+				//draws the x's in the label boxes
+				ctx.beginPath();
+				ctx.moveTo(xCenter - 112, temLens[i].y - 10);
+				ctx.lineTo(xCenter - 102, temLens[i].y + 10);
 
-			ctx.moveTo(xCenter - 102, temLens[i].y - 10);
-			ctx.lineTo(xCenter - 112, temLens[i].y + 10);
+				ctx.moveTo(xCenter - 102, temLens[i].y - 10);
+				ctx.lineTo(xCenter - 112, temLens[i].y + 10);
 
-			ctx.moveTo(xCenter + 102, temLens[i].y + 10);
-			ctx.lineTo(xCenter + 112, temLens[i].y - 10);
+				ctx.moveTo(xCenter + 102, temLens[i].y + 10);
+				ctx.lineTo(xCenter + 112, temLens[i].y - 10);
 
-			ctx.moveTo(xCenter + 102, temLens[i].y - 10);
-			ctx.lineTo(xCenter + 112, temLens[i].y + 10);
+				ctx.moveTo(xCenter + 102, temLens[i].y - 10);
+				ctx.lineTo(xCenter + 112, temLens[i].y + 10);
 
-			ctx.stroke();
+				ctx.stroke();
+			}
 		}
 		if(temLens[i].kind=='aperture'){
 			ctx.beginPath();
@@ -314,8 +316,10 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 					zoomedOutLabels[i].style.top = (temLens[i].y * yScale - 8 ) + yOffset + 'px';
 				}
 			}
-
-			columnDiv[0].append(zoomedOutLabels[i]);
+				console.log(temLens[i].name + " is a " + temLens[i].kind);
+			if (temLens[i].kind !== 'label'){
+				columnDiv[0].append(zoomedOutLabels[i]);
+			}
 		}
 	}
 	ctx.restore();	
