@@ -121,7 +121,7 @@ let moveImage = function(deltax, deltay){
   if (openScreen == 0){
     openbox.moveImage(deltax, deltay);
     if (setupbox.moveImage(deltax, deltay)){
-      temLens[22].xCenter += deltax / 10;
+      temLens[23].xCenter += deltax / 10;
       drawColumn();
     }
   } else {
@@ -139,7 +139,7 @@ let changeIntensity = function(delta){
   if (openScreen == 0){
     let change = setupbox.changeIntensity(delta);
     temLens[6].f -= change / 30;
-    temLens[20].f += change / 20;
+    temLens[21].f += change / 20;
     openbox.maskR = setupbox.maskR * 4;
     openbox.haloX = setupbox.haloX * 4;
     openbox.haloY = setupbox.haloY * 4;
@@ -195,7 +195,7 @@ let zoom = function(delta){
   if (openScreen == 0){
     openbox.zoom(delta);
     setupbox.zoom(delta);
-    temLens[21].f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
+    temLens[22].f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
     drawColumn();
   } else {
     mainmicro.zoom(delta);

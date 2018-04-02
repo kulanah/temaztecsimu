@@ -199,7 +199,7 @@ let microscopeControllers = function(){
     if (beamslider[0].value > 1){
       let value = beamslider.val();
       --value;
-      temLens[20].f -= .1;
+      temLens[21].f -= .1;
       updateBeamSlider(value);    
       drawColumn();
     } else {
@@ -211,7 +211,7 @@ let microscopeControllers = function(){
     if (beamslider[0].value < 11){
       let value = beamslider.val();
       ++value;
-      temLens[20].f += .1;
+      temLens[21].f += .1;
       updateBeamSlider(value);
       drawColumn();
     } else {
