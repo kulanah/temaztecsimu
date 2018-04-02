@@ -28,9 +28,9 @@ temLens[05] = new lens(0,0,260,6.1, 'aperture', 'C1 Aperture');
 temLens[06] = new lens(0,0,305,75, 'lens', 'Condenser Lens 2');
 temLens[07] = new lens(0,0,330,25, 'aperture', 'C2 Aperture');
 temLens[08] = new lens(0,0,337,05, 'label', 'Condenser Stigmator');
-temLens[09] = new lens(0,0,344,55, 'label', 'Beam Deflection X');
-temLens[10] = new lens(0,0,351,9, 'label', 'Beam Deflection Y');
-temLens[11] = new lens(0,0,353,24, 'lens', 'Minicondenser Lens');
+temLens[09] = new lens(0,0,343,55, 'label', 'Beam Deflection X');
+temLens[10] = new lens(0,0,349,9, 'label', 'Beam Deflection Y');
+temLens[11] = new lens(0,0,356,24, 'lens', 'Minicondenser Lens');
 temLens[12] = new lens(0,0,417,70, 'lens', 'Objective UpperPolepiece');
 temLens[13] = new lens(0,0,470,-10, 'sample', 'Specimen');
 temLens[14] = new lens(0,0,538,60, 'lens', 'Objective LowerPolepiece');
@@ -246,29 +246,26 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 		}
 		if(temLens[i].kind=='lens'){
 			ctx.fillStyle = '#fff';
-			ctx.fillRect(xCenter-114,temLens[i].y-12,14,24);
-			ctx.fillRect(xCenter+100,temLens[i].y-12,14,24);
+			if (zoomedIn){
+				ctx.fillRect(xCenter+100,temLens[i].y - 4, 20, 7);
+			} else {
+				ctx.fillRect(xCenter-114,temLens[i].y - 12,14,14);
+			}
 		}
 		if (temLens[i].kind == 'label'){
 			if (zoomedIn){
 				ctx.strokeStyle= '#fff';
 				//draws the empty squares for the label boxes
-				ctx.strokeRect(xCenter - 114, temLens[i].y - 12, 14, 24);
-				ctx.strokeRect(xCenter + 100, temLens[i].y - 12, 14, 24);
+				// ctx.strokeRect(xCenter - 114, temLens[i].y - 5, 3, 3);
+				ctx.strokeRect(xCenter + 102, temLens[i].y - 2, 16, 4);
 
 				//draws the x's in the label boxes
 				ctx.beginPath();
-				ctx.moveTo(xCenter - 112, temLens[i].y - 10);
-				ctx.lineTo(xCenter - 102, temLens[i].y + 10);
+				ctx.moveTo(xCenter + 103, temLens[i].y + 1);
+				ctx.lineTo(xCenter + 117, temLens[i].y - 1);
 
-				ctx.moveTo(xCenter - 102, temLens[i].y - 10);
-				ctx.lineTo(xCenter - 112, temLens[i].y + 10);
-
-				ctx.moveTo(xCenter + 102, temLens[i].y + 10);
-				ctx.lineTo(xCenter + 112, temLens[i].y - 10);
-
-				ctx.moveTo(xCenter + 102, temLens[i].y - 10);
-				ctx.lineTo(xCenter + 112, temLens[i].y + 10);
+				ctx.moveTo(xCenter + 103, temLens[i].y - 1);
+				ctx.lineTo(xCenter + 117, temLens[i].y + 1);
 
 				ctx.stroke();
 			}
