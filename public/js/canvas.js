@@ -234,15 +234,15 @@ class Canvas {
         }
         let context = this.glowSelector[0].getContext('2d');
         context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
-        if(this.maskX > this.selector[0].width / 2){
-          drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
-          this.context.restore();
-          return;
-        }
         if(blockSpecimen || this.maskX < this.imgX + alphaTiltImpact || this.maskX > this.imgX + alphaTiltImpact + this.imgW || this.maskY < this.imgY + betaTiltImpact || this.maskY > this.imgY + betaTiltImpact + this.imgH){
           onSpecimen = false;
         } else {
           onSpecimen = true;
+          if(this.maskX > this.imgX + alphaTiltImpact + this.imgW / 2){
+            drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+            this.context.restore();
+            return;
+          }
         }
         // getImageData will only function on a server - it will fail if run locally.
         // To do local testing, create a web server with Python.
