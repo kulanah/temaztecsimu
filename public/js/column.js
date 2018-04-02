@@ -49,6 +49,7 @@ temLens[25] = new lens(0,0,1090,5, 'screen', 'Viewing Screen');
 
 //These are constant references for the above.  This allows us to use these as references 
 //so that if the above are reordered we don't need to track down every reference
+const condenserLens1 = temLens[4];
 const condenserLens2 = temLens[6];
 const objectiveUpperPolepiece = temLens[12];
 const temLensSpecimen = temLens[13];
