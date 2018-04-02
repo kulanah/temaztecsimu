@@ -96,12 +96,12 @@ function drawColumn(){
 	drawColumnParam();
 }
 
-function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(), zoomVer = false, widthMult = 0.3){
+function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(), zoomedIn = false, widthMult = 0.3){
 	let columnDiv;
 	let beamDiag;
 	let beamLabels;
 
-	if (!zoomVer){
+	if (!zoomedIn){
 		columnDiv = $('#columndiv');
 		beamDiag = $('#columncanvas');
 		beamLabels = $('#labelcanvas');
@@ -155,7 +155,7 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 	var widthOfSource = 2;
 	ctx.fillStyle = "#9b9b9b";
 	for (i = 0; i < numOfLenses; ++i){
-		if (zoomVer){
+		if (zoomedIn){
 			lenswidth = 45;
 			lensxCenter = xCenter;
 			lensheight = 2;
@@ -237,7 +237,7 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 
 	//drawing squares to point at different lenses
 	for(var i=0;i<numOfLenses;i++){
-		if (!zoomVer){
+		if (!zoomedIn){
 			zoomedOutLabels[i].id = temLens[i].name.replace(/\s+/g, '');
 		}
 		if(temLens[i].kind=='sample'){
@@ -284,7 +284,7 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 		ctx = beamLabels[0].getContext('2d');
 		
 
-		if (zoomVer){
+		if (zoomedIn){
 			if(temLens[i].kind=='screen'){
 				zoomedInLabels[i].style.left = xCenter + 120 + 'px';
 				zoomedInLabels[i].style.top = temLens[i].y * heightMult + yOffset + 'px';
@@ -320,7 +320,7 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 	}
 	ctx.restore();	
 
-	if (zoomed && !zoomVer){
+	if (zoomed && !zoomedIn){
 		ctx.beginPath();
 		ctx.lineWidth = 5;
 		ctx.strokeRect(10, temLens[lensFocus].y-50, canvasWidth- 15, 100);
