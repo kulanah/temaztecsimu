@@ -35,21 +35,20 @@ temLens[12] = new lens(0,0,417,70, 'lens', 'Objective UpperPolepiece');
 temLens[13] = new lens(0,0,470,-10, 'sample', 'Specimen');
 temLens[14] = new lens(0,0,538,60, 'lens', 'Objective LowerPolepiece');
 temLens[15] = new lens(0,0,583,16, 'aperture', 'Objective Aperture');
-temLens[16] = new lens(0,0,600,16, 'label', 'Objective Stigmator');
-temLens[17] = new lens(0,0,610,100, 'label', 'Image Deflection 1');
-temLens[18] = new lens(0,0,620,30, 'label', 'Image Deflection 2');
-temLens[19] = new lens(0,0,622,30, 'label', 'Diffraction Stigmator');
-temLens[20] = new lens(0,0,625,24, 'aperture', 'SAED Aperture');
+temLens[16] = new lens(0,0,589,16, 'label', 'Objective Stigmator');
+temLens[17] = new lens(0,0,595,100, 'label', 'Image Deflection 1');
+temLens[18] = new lens(0,0,601,30, 'label', 'Image Deflection 2');
+temLens[19] = new lens(0,0,607,30, 'label', 'Diffraction Stigmator');
+temLens[20] = new lens(0,0,613,24, 'aperture', 'SAED Aperture');
 temLens[21] = new lens(0,0,630,58, 'lens', 'Diffraction Lens');
-temLens[22] = new lens(0,0,633,58, 'lens', 'Intermediate Lens');
+temLens[22] = new lens(0,0,650,58, 'lens', 'Intermediate Lens');
 temLens[23] = new lens(0,0,714,85, 'lens', 'Projection lens 1');
 temLens[24] = new lens(0,0,795,10, 'lens', 'Projection Lens 2');
 temLens[25] = new lens(0,0,1090,5, 'screen', 'Viewing Screen');
 
 
-//These are static references for the above.  This allows us to use these as references 
+//These are constant references for the above.  This allows us to use these as references 
 //so that if the above are reordered we don't need to track down every reference
-
 const temLensSpecimen = temLens[13];
 
 
