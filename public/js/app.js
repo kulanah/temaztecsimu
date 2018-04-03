@@ -249,7 +249,10 @@ let activateGunTilt = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
-}
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21183&authkey=AArU9KRe0jvE7vs&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activateGunShift = function(){
   stigmatorActive = false;
@@ -257,7 +260,10 @@ let activateGunShift = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
-}
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21183&authkey=AArU9KRe0jvE7vs&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activatePivotPointX = function(){
   stigmatorActive = false;
@@ -267,7 +273,10 @@ let activatePivotPointX = function(){
   } else {
     mainmicro.activatePivotPointX();
   }
-}
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?&resid=4438293664F5F344%21181&authkey=AI-AY12lmIQtu74&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activatePivotPointY = function(){
   stigmatorActive = false;
@@ -277,7 +286,10 @@ let activatePivotPointY = function(){
   } else {
     mainmicro.activatePivotPointY();
   }
-}
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?&resid=4438293664F5F344%21181&authkey=AI-AY12lmIQtu74&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }}
 
 let activateBeamShift = function(){
   stigmatorActive = false;
@@ -285,6 +297,10 @@ let activateBeamShift = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?&resid=4438293664F5F344%21181&authkey=AI-AY12lmIQtu74&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }
 }
 
 let activateRotationCenter = function(){
@@ -294,6 +310,10 @@ let activateRotationCenter = function(){
     setupbox.activateRotationCenter();
   } else {
     mainmicro.activateRotationCenter();
+  }
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21184&authkey=AMTRGuRlihBMuxs&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
   }
 }
 
@@ -305,6 +325,10 @@ let activateComaFreeAlignmentX = function(){
   } else {
     mainmicro.activateComaFreeAlignmentX();
   }
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21182&authkey=AISgm7X7W5yZAhw&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
+  }
 }
 
 let activateComaFreeAlignmentY = function(){
@@ -314,6 +338,10 @@ let activateComaFreeAlignmentY = function(){
     setupbox.activateComaFreeAlignmentY();
   } else {
     mainmicro.activateComaFreeAlignmentY();
+  }
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21182&authkey=AISgm7X7W5yZAhw&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
   }
 }
 

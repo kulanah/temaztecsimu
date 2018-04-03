@@ -184,4 +184,14 @@ let mainScreen = function(){
     alignmentMode = 'None';
     deactivateDA();
   })
+
+  $('#daautohelp').on('click', function(){
+    if(this.checked){
+      if(alignmentMode !== 'None' || stigmatorMode !== 'None'){
+        $('#tunehelppopup').show();
+      }
+    } else {
+      $('#tunehelppopup').hide();
+    }
+  });
 };
