@@ -200,6 +200,7 @@ let microscopeControllers = function(){
       let value = beamslider.val();
       --value;
       condenserLens1.f -= .1;
+      projectionLens2.f -= 1;
       updateBeamSlider(value);    
       drawColumn();
     } else {
@@ -212,6 +213,7 @@ let microscopeControllers = function(){
       let value = beamslider.val();
       ++value;
       condenserLens1.f += .1;
+      projectionLens2.f += 1;
       updateBeamSlider(value);
       drawColumn();
     } else {
