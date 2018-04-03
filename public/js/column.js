@@ -101,6 +101,13 @@ function drawColumn(){
 	drawColumnParam();
 }
 
+let setTemBeamStart = function(percentOfTotal){
+	let newXval = ((4.1 + 3.4) * percentOfTotal) - 3.4;
+	projectionLens2.xCenter =  newXval;
+
+
+}
+
 function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(), zoomedIn = false, widthMult = 0.3){
 	let columnDiv;
 	let beamDiag;

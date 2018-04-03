@@ -140,6 +140,7 @@ class Canvas {
       } else {
         this.maskX = this.selector[0].width / 4 + randomValues[0] * this.selector[0].width / 2;
         this.maskY = this.selector[0].height / 4 + randomValues[1] * this.selector[0].height / 2;
+        setTemBeamStart(this.maskX / this.selector[0].width);
       }
       this.maskR = 20 + randomValues[2] * 500;
       this.defocus = 10 - 20 * randomValues[3];
