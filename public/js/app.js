@@ -138,7 +138,9 @@ let moveImage = function(deltax, deltay){
 let changeIntensity = function(delta){
   if (openScreen == 0){
     let change = setupbox.changeIntensity(delta);
-    condenserLens2.f -= change / 30;
+
+    condenserLens2.f -= -change / 30;
+
     openbox.maskR = setupbox.maskR * 4;
     openbox.haloX = setupbox.haloX * 4;
     openbox.haloY = setupbox.haloY * 4;
