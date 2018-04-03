@@ -121,7 +121,7 @@ let moveImage = function(deltax, deltay){
   if (openScreen == 0){
     openbox.moveImage(deltax, deltay);
     if (setupbox.moveImage(deltax, deltay)){
-      projectionLens2.xCenter += deltax / 100;
+      projectionLens2.xCenter += deltax / 20;
       drawColumn();
     }
   } else {
