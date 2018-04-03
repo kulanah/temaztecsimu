@@ -145,6 +145,8 @@ let microscopeControllers = function(){
     deltaIntensity = deltaIntensity * intensityStepSize;
     startIntensity = event.clientY;
 
+    projectionLens2.f -= deltaIntensity / 50;
+
     changeIntensity(deltaIntensity);
   };
 
