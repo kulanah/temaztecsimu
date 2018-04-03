@@ -31,17 +31,17 @@ temLens[08] = new lens(0,0,337,05, 'label', 'Condenser Stigmator');
 temLens[09] = new lens(0,0,343,55, 'label', 'Beam Deflection X');
 temLens[10] = new lens(0,0,349,9, 'label', 'Beam Deflection Y');
 temLens[11] = new lens(0,0,356,24, 'lens', 'Minicondenser Lens');
-temLens[12] = new lens(0,0,417,70, 'lens', 'Objective UpperPolepiece');
+temLens[12] = new lens(0,0,417,30, 'lens', 'Objective UpperPolepiece');
 temLens[13] = new lens(0,0,470,-10, 'sample', 'Specimen');
-temLens[14] = new lens(0,0,538,60, 'lens', 'Objective LowerPolepiece');
+temLens[14] = new lens(0,0,538,40, 'lens', 'Objective LowerPolepiece');
 temLens[15] = new lens(0,0,583,16, 'aperture', 'Objective Aperture');
 temLens[16] = new lens(0,0,589,16, 'label', 'Objective Stigmator');
 temLens[17] = new lens(0,0,595,100, 'label', 'Image Deflection 1');
-temLens[18] = new lens(0,0,601,30, 'label', 'Image Deflection 2');
-temLens[19] = new lens(0,0,607,30, 'label', 'Diffraction Stigmator');
+temLens[18] = new lens(0,0,601,10, 'label', 'Image Deflection 2');
+temLens[19] = new lens(0,0,607,15, 'label', 'Diffraction Stigmator');
 temLens[20] = new lens(0,0,613,24, 'aperture', 'SAED Aperture');
-temLens[21] = new lens(0,0,630,58, 'lens', 'Diffraction Lens');
-temLens[22] = new lens(0,0,650,58, 'lens', 'Intermediate Lens');
+temLens[21] = new lens(0,0,630,8, 'lens', 'Diffraction Lens');
+temLens[22] = new lens(0,0,650,20, 'lens', 'Intermediate Lens');
 temLens[23] = new lens(0,0,714,85, 'lens', 'Projection lens 1');
 temLens[24] = new lens(0,0,795,10, 'lens', 'Projection Lens 2');
 temLens[25] = new lens(0,0,1090,5, 'screen', 'Viewing Screen');
@@ -123,8 +123,6 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 	beamDiag.css('position', 'absolute');
 	beamDiag.css('top', yOffset);
 
-	//unsure if I want this here or not, this saves it if the user modifies
-	//screen size but it is also inefficicent if they don't 
 	let canvasHeight = $(window).height() * heightMult;
 	let canvasWidth = $(window).height() * widthMult;
 	beamDiag[0].height = canvasHeight;
@@ -202,9 +200,9 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 				let prevX = temLens[prevIndex].x;
 
 				//if the current type isn't a label, because if it's a label we don't want to modify the ray path at all.
-				if (!(temLens[i].type == 'label')){
+				if (temLens[i].type !== 'label'){
 					//check the previous item because if it's a aperture we need to compute if the ray is blocked or not
-					if(prevType =='lens' || prevType =='source'){
+					if(prevType == 'lens' || prevType == 'source'){
 						//previous rays width - (current y - previous y) * (width of current ray / previous F val)
 						temLens[i].x = prevX - 
 						(temLens[i].y - temLens[prevIndex].y) * ((prevX-temLens[prevIndex].xCenter) / temLens[prevIndex].f);
