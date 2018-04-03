@@ -176,7 +176,7 @@ let shiftFocus = function(delta){
   if (openScreen == 0){
     openbox.focus(delta);
     setupbox.focus(delta);
-    objectiveUpperPolepiece.f += delta / 10;
+    objectiveUpperPolepiece.f = 30 + setupbox.defocus / 100;
     drawColumn();
   } else {
     mainmicro.focus(delta);

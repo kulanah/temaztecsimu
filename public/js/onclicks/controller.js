@@ -374,7 +374,7 @@ let microscopeControllers = function(){
 
   $('#buttontop1r').on('click', function(event){
     zeroFocus();
-    objectiveUpperPolepiece.f = 70;
+    objectiveUpperPolepiece.f = 30;
     drawColumn();
   })
 
