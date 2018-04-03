@@ -249,7 +249,7 @@ let activateGunTilt = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
-  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=369');
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21183&authkey=AArU9KRe0jvE7vs&em=2');
   if(document.getElementById('daautohelp').checked){
     $('#tunehelppopup').show();
   }}
@@ -260,7 +260,7 @@ let activateGunShift = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
-  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=369');
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21183&authkey=AArU9KRe0jvE7vs&em=2');
   if(document.getElementById('daautohelp').checked){
     $('#tunehelppopup').show();
   }}
@@ -297,7 +297,7 @@ let activateBeamShift = function(){
   drawInfoPanelValues();
   blockSpecimen = true;
   updateCanvas();
-  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=349');
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?&resid=4438293664F5F344%21181&authkey=AI-AY12lmIQtu74&em=2');
   if(document.getElementById('daautohelp').checked){
     $('#tunehelppopup').show();
   }
@@ -311,10 +311,11 @@ let activateRotationCenter = function(){
   } else {
     mainmicro.activateRotationCenter();
   }
-  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=355');
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21184&authkey=AMTRGuRlihBMuxs&em=2');
   if(document.getElementById('daautohelp').checked){
     $('#tunehelppopup').show();
-  }}
+  }
+}
 
 let activateComaFreeAlignmentX = function(){
   stigmatorActive = false;
@@ -323,6 +324,10 @@ let activateComaFreeAlignmentX = function(){
     setupbox.activateComaFreeAlignmentX();
   } else {
     mainmicro.activateComaFreeAlignmentX();
+  }
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21182&authkey=AISgm7X7W5yZAhw&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
   }
 }
 
@@ -333,6 +338,10 @@ let activateComaFreeAlignmentY = function(){
     setupbox.activateComaFreeAlignmentY();
   } else {
     mainmicro.activateComaFreeAlignmentY();
+  }
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21182&authkey=AISgm7X7W5yZAhw&em=2');
+  if(document.getElementById('daautohelp').checked){
+    $('#tunehelppopup').show();
   }
 }
 
