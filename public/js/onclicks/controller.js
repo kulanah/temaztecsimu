@@ -353,7 +353,7 @@ let microscopeControllers = function(){
   });
 
   $('#buttonupr').on('click', function(event){
-    if (temLensSpecimen.y < 515 - stageStepSize){
+    if (temLensSpecimen.y < 480 - stageStepSize){
       focusUp();
       temLensSpecimen.y += stageStepSize;
       drawColumn();
@@ -363,7 +363,7 @@ let microscopeControllers = function(){
   });
 
   $('#buttondownr').on('click', function(event){
-    if (temLensSpecimen.y > 440 + stageStepSize){
+    if (temLensSpecimen.y > 460 + stageStepSize){
       focusDown();
       temLensSpecimen.y -= stageStepSize;
       drawColumn();
