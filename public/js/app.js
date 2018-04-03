@@ -273,7 +273,7 @@ let activatePivotPointX = function(){
   } else {
     mainmicro.activatePivotPointX();
   }
-  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=337');
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?&resid=4438293664F5F344%21181&authkey=AI-AY12lmIQtu74&em=2');
   if(document.getElementById('daautohelp').checked){
     $('#tunehelppopup').show();
   }}
@@ -286,7 +286,7 @@ let activatePivotPointY = function(){
   } else {
     mainmicro.activatePivotPointY();
   }
-  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?resid=4438293664F5F344%21173&authkey=AKT4gHHco1-gnOQ&em=2&wdSlideId=337');
+  $('#tunehelpcontent').prop('src', 'https://onedrive.live.com/embed?&resid=4438293664F5F344%21181&authkey=AI-AY12lmIQtu74&em=2');
   if(document.getElementById('daautohelp').checked){
     $('#tunehelppopup').show();
   }}
