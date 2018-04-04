@@ -7,7 +7,7 @@
 }
 .external-button{
   border-collapse: separate; 
-  background:linear-gradient(mediumblue, darkblue); 
+  background:linear-gradient(#003F87, #001F44); 
   border-radius: 50px; 
   height: 2vh; 
   color: white;   
@@ -21,7 +21,7 @@
 }
 
 .external-button:hover{
-  background:linear-gradient(darkblue, mediumblue);
+  background:linear-gradient(#001F44, #003F87);
 }
 
 .single-button{ 
