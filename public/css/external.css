@@ -7,7 +7,7 @@
 }
 .external-button{
   border-collapse: separate; 
-  background:linear-gradient(#48C6D4, #3EACBA); 
+  background:linear-gradient(mediumblue, darkblue); 
   border-radius: 50px; 
   height: 2vh; 
   color: white;   
@@ -16,12 +16,12 @@
   font-size: 0.8em;  
   margin: .4vh 0 0.59vh; 
   padding: 0.4px 9px 0 9px;  
-  box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);  
+  box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 navy, 0 4px 2px rgba(0, 0, 0, .5);  
   outline: 0;   
 }
 
 .external-button:hover{
-  background:linear-gradient(#3EACBA, #48C6D4);
+  background:linear-gradient(darkblue, mediumblue);
 }
 
 .single-button{ 
