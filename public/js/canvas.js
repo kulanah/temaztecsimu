@@ -425,7 +425,12 @@ class Canvas {
   };
 
   focus(delta){
-    this.defocus += delta * 2 ** (this.focusStep - 1) * .01;
+    let oldDefocus = this.defocus;
+    this.defocus += delta * 4 ** (this.focusStep - 1) * .47;
+    if(Math.sign(oldDefocus) !== Math.sign(this.defocus) && oldDefocus !== 0){
+      // Snap to zero when changing between positive and negative
+      this.defocus = 0;
+    }
     if(this.defocus < -9999.99){
       this.defocus = -9999.99;
       this.limitFlash('#defocusvalue');
