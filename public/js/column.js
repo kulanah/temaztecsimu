@@ -54,7 +54,6 @@ const condenserLens2 = temLens[6];
 const objectiveUpperPolepiece = temLens[12];
 const temLensSpecimen = temLens[13];
 const projectionLens1 = temLens[23];
-projectionLens1.f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
 const projectionLens2 = temLens[24];
 
 
