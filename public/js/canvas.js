@@ -244,6 +244,8 @@ class Canvas {
         } else {
           onSpecimen = true;
           if(this.maskX > this.imgX + alphaTiltImpact + this.imgW / 2){
+            this.hueRotateActive = true;
+            this.setFilterString();
             drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
             this.context.restore();
             return;
@@ -471,6 +473,10 @@ class Canvas {
       let blurString = 'blur(' + this.blurVal + 'px) ';
       let brightnessString = 'brightness(' + this.brightnessVal + '%) ';
       let contrastString = 'contrast(' + contrastVal + '%) '
+      if(diffractionMode){
+        brightnessString = 'brightness(100%) '
+        contrastString = 'contrast(100%) '
+      }
       stringVal = sepiaString + hueRotateString + saturateString + blurString + brightnessString + contrastString;
     } else {
       stringVal = 'blur(' + this.blurVal + 'px) ';
