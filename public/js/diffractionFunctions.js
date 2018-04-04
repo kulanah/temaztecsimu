@@ -294,11 +294,6 @@ function drawLattice(canvas, xOffset, yOffset, radiusX, radiusY, rotation, blur,
     // Draw the lattice diffraction pattern
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
-        if(objectiveLevel < 5){
-            ctx.beginPath();
-            ctx.arc(canvas.width / 2 + objectivex, canvas.height / 2 + objectivey, objectiveSizes[objectiveLevel - 1] * cameraLength / 600, 0, Math.PI * 2);
-            ctx.clip();
-        }
         //ctx.filter = 'blur(' + Math.floor(Math.abs(blur) + Math.abs(specimenThickness / 300)) + 'px)';
         var dx = r1 / 2 //r2 * Math.cos(angle / 180 * Math.PI); // x component for vector r2
         var dy = r2 * Math.sin(angle / 180 * Math.PI); // y component for vector r2

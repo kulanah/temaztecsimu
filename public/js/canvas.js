@@ -234,6 +234,11 @@ class Canvas {
         }
         let context = this.glowSelector[0].getContext('2d');
         context.clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
+        if(objectiveLevel < 5){
+          this.context.beginPath();
+          this.context.arc(this.selector[0].width / 2 + objectivex, this.selector[0].height / 2 + objectivey, objectiveSizes[objectiveLevel - 1] * this.diffractionCameraLength / 600, 0, Math.PI * 2);
+          this.context.clip();
+        }
         if(blockSpecimen || this.maskX < this.imgX + alphaTiltImpact || this.maskX > this.imgX + alphaTiltImpact + this.imgW || this.maskY < this.imgY + betaTiltImpact || this.maskY > this.imgY + betaTiltImpact + this.imgH){
           onSpecimen = false;
         } else {
