@@ -145,6 +145,8 @@ let microscopeControllers = function(){
     deltaIntensity = deltaIntensity * intensityStepSize;
     startIntensity = event.clientY;
 
+    projectionLens2.f -= deltaIntensity / 50;
+
     changeIntensity(deltaIntensity);
   };
 
@@ -199,7 +201,8 @@ let microscopeControllers = function(){
     if (beamslider[0].value > 1){
       let value = beamslider.val();
       --value;
-      temLens[20].f -= .1;
+      condenserLens1.f -= .1;
+      projectionLens2.f -= 1;
       updateBeamSlider(value);    
       drawColumn();
     } else {
@@ -211,7 +214,8 @@ let microscopeControllers = function(){
     if (beamslider[0].value < 11){
       let value = beamslider.val();
       ++value;
-      temLens[20].f += .1;
+      condenserLens1.f += .1;
+      projectionLens2.f += 1;
       updateBeamSlider(value);
       drawColumn();
     } else {
@@ -349,9 +353,9 @@ let microscopeControllers = function(){
   });
 
   $('#buttonupr').on('click', function(event){
-    if (temLensSpecimen.y < 585 - stageStepSize){
+    if (temLensSpecimen.y < 470 - stageStepSize){
       focusUp();
-      temLens[13].y += stageStepSize;
+      temLensSpecimen.y += stageStepSize;
       drawColumn();
     } else {
       setupbox.limitFlash('#zvalue');
@@ -359,9 +363,9 @@ let microscopeControllers = function(){
   });
 
   $('#buttondownr').on('click', function(event){
-    if (temLensSpecimen.y > 528 + stageStepSize){
+    if (temLensSpecimen.y > 443 + stageStepSize){
       focusDown();
-      temLens[13].y -= stageStepSize;
+      temLensSpecimen.y -= stageStepSize;
       drawColumn();
     } else {
       setupbox.limitFlash('#zvalue');
@@ -370,7 +374,7 @@ let microscopeControllers = function(){
 
   $('#buttontop1r').on('click', function(event){
     zeroFocus();
-    temLens[12].f = 70;
+    objectiveUpperPolepiece.f = 30;
     drawColumn();
   })
 

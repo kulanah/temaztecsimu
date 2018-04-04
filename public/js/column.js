@@ -17,37 +17,45 @@ class lens {
 
 
 
-//              xCenter  WIDTH  y      f       kind     nam
-temLens[00] = new lens(0,0,-10,5,'source','Electron Gun');
-temLens[01] = new lens(0,0,90,55,'lens','Gun lens');
-temLens[02] = new lens(0,0,130,90,'label','Gun Deflection 1');
-temLens[03] = new lens(0,20,160,0,'label','Gun Deflection 2');
-temLens[04] = new lens(0,0,220,60,'lens','Condenser Lens 1');
-temLens[05] = new lens(0,0,260,6.1,'aperture','C1 Aperture');
-temLens[06] = new lens(0,0,320,75,'lens','Condenser Lens 2');
-temLens[07] = new lens(0,0,350,25,'aperture','C2 Aperture');
-temLens[08] = new lens(0,0,370,05, 'label', 'Condenser Stigmator');
-temLens[09] = new lens(0,0,400,55, 'label','Beam Deflection X');
-temLens[10] = new lens(0,0,440,9, 'label','Beam Deflection Y');
-temLens[11] = new lens(0,0,480,24, 'lens','Minicondenser Lens');
-temLens[12] = new lens(0,0,520,70, 'lens','Objective UpperPolepiece');
-temLens[13] = new lens(0,0,570,-10, 'sample','Specimen');
-temLens[14] = new lens(0,0,600,60, 'lens','Objective LowerPolepiece');
-temLens[15] = new lens(0,0,650,16, 'aperture','Objective Aperture');
-temLens[16] = new lens(0,0,675,16, 'label','Objective Stigmator');
-temLens[17] = new lens(0,0,700,100,'label','Image Deflection 1');
-temLens[18] = new lens(0,0,750,30,'label','Image Deflection 2');
-temLens[19] = new lens(0,0,800,24,'aperture','SAED Aperture');
-temLens[20] = new lens(0,0,840,58,'lens','Intermediate/Diffraction Lens');
-temLens[21] = new lens(0,0,880,85,'lens','Projection lens 1');
-temLens[22] = new lens(0,0,990,10,'lens','Projection Lens 2');
-temLens[23] = new lens(0,0,1090,5,'screen','Viewing Screen');
+
+//              xCenter, WIDTH, y, f, kind, name
+temLens[00] = new lens(0,0,-10,5, 'source', 'Electron Gun');
+temLens[01] = new lens(0,0,55,55, 'lens', 'Gun lens');
+temLens[02] = new lens(0,0,100,90, 'label', 'Gun Deflection 1');
+temLens[03] = new lens(0,20,130,0, 'label', 'Gun Deflection 2');
+temLens[04] = new lens(0,0,210,60, 'lens', 'Condenser Lens 1');
+temLens[05] = new lens(0,0,260,6.1, 'aperture', 'C1 Aperture');
+temLens[06] = new lens(0,0,305,75, 'lens', 'Condenser Lens 2');
+temLens[07] = new lens(0,0,330,25, 'aperture', 'C2 Aperture');
+temLens[08] = new lens(0,0,337,05, 'label', 'Condenser Stigmator');
+temLens[09] = new lens(0,0,343,55, 'label', 'Beam Deflection X');
+temLens[10] = new lens(0,0,349,9, 'label', 'Beam Deflection Y');
+temLens[11] = new lens(0,0,356,24, 'lens', 'Minicondenser Lens');
+temLens[12] = new lens(0,0,417,30, 'lens', 'Objective UpperPolepiece');
+temLens[13] = new lens(0,0,458,-10, 'sample', 'Specimen');
+temLens[14] = new lens(0,0,510,40, 'lens', 'Objective LowerPolepiece');
+temLens[15] = new lens(0,0,550,16, 'aperture', 'Objective Aperture');
+temLens[16] = new lens(0,0,570,16, 'label', 'Objective Stigmator');
+temLens[17] = new lens(0,0,576,100, 'label', 'Image Deflection 1');
+temLens[18] = new lens(0,0,582,10, 'label', 'Image Deflection 2');
+temLens[19] = new lens(0,0,588,15, 'label', 'Diffraction Stigmator');
+temLens[20] = new lens(0,0,594,24, 'aperture', 'SAED Aperture');
+temLens[21] = new lens(0,0,630,45, 'lens', 'Diffraction Lens');
+temLens[22] = new lens(0,0,700,30, 'lens', 'Intermediate Lens');
+temLens[23] = new lens(0,0,773,25, 'lens', 'Projection lens 1');
+temLens[24] = new lens(0,0,805,60, 'lens', 'Projection Lens 2');
+temLens[25] = new lens(0,0,1090,5, 'screen', 'Viewing Screen');
 
 
-//These are static references for the above.  This allows us to use these as references 
+//These are constant references for the above.  This allows us to use these as references 
 //so that if the above are reordered we don't need to track down every reference
-
+const condenserLens1 = temLens[4];
+const condenserLens2 = temLens[6];
+const objectiveUpperPolepiece = temLens[12];
 const temLensSpecimen = temLens[13];
+const projectionLens1 = temLens[23];
+projectionLens1.f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
+const projectionLens2 = temLens[24];
 
 
 //creates the labels for the lenses
@@ -94,12 +102,19 @@ function drawColumn(){
 	drawColumnParam();
 }
 
-function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(), zoomVer = false, widthMult = 0.3){
+let setTemBeamStart = function(percentOfTotal){
+	let newXval = ((4.1 + 3.4) * percentOfTotal) - 3.4;
+	projectionLens2.xCenter =  newXval;
+
+
+}
+
+function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(), zoomedIn = false, widthMult = 0.3){
 	let columnDiv;
 	let beamDiag;
 	let beamLabels;
 
-	if (!zoomVer){
+	if (!zoomedIn){
 		columnDiv = $('#columndiv');
 		beamDiag = $('#columncanvas');
 		beamLabels = $('#labelcanvas');
@@ -116,8 +131,6 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 	beamDiag.css('position', 'absolute');
 	beamDiag.css('top', yOffset);
 
-	//unsure if I want this here or not, this saves it if the user modifies
-	//screen size but it is also inefficicent if they don't 
 	let canvasHeight = $(window).height() * heightMult;
 	let canvasWidth = $(window).height() * widthMult;
 	beamDiag[0].height = canvasHeight;
@@ -153,7 +166,7 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 	var widthOfSource = 2;
 	ctx.fillStyle = "#9b9b9b";
 	for (i = 0; i < numOfLenses; ++i){
-		if (zoomVer){
+		if (zoomedIn){
 			lenswidth = 45;
 			lensxCenter = xCenter;
 			lensheight = 2;
@@ -195,9 +208,9 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 				let prevX = temLens[prevIndex].x;
 
 				//if the current type isn't a label, because if it's a label we don't want to modify the ray path at all.
-				if (!(temLens[i].type == 'label')){
+				if (temLens[i].type !== 'label'){
 					//check the previous item because if it's a aperture we need to compute if the ray is blocked or not
-					if(prevType =='lens' || prevType =='source'){
+					if(prevType == 'lens' || prevType == 'source'){
 						//previous rays width - (current y - previous y) * (width of current ray / previous F val)
 						temLens[i].x = prevX - 
 						(temLens[i].y - temLens[prevIndex].y) * ((prevX-temLens[prevIndex].xCenter) / temLens[prevIndex].f);
@@ -235,7 +248,7 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 
 	//drawing squares to point at different lenses
 	for(var i=0;i<numOfLenses;i++){
-		if (!zoomVer){
+		if (!zoomedIn){
 			zoomedOutLabels[i].id = temLens[i].name.replace(/\s+/g, '');
 		}
 		if(temLens[i].kind=='sample'){
@@ -244,30 +257,29 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 		}
 		if(temLens[i].kind=='lens'){
 			ctx.fillStyle = '#fff';
-			ctx.fillRect(xCenter-114,temLens[i].y-12,14,24);
-			ctx.fillRect(xCenter+100,temLens[i].y-12,14,24);
+			if (zoomedIn){
+				ctx.fillRect(xCenter+100,temLens[i].y - 2, 20, 5);
+			} else {
+				ctx.fillRect(xCenter-114,temLens[i].y - 10,14,18);
+			}
 		}
 		if (temLens[i].kind == 'label'){
-			ctx.strokeStyle= '#fff';
-			//draws the empty squares for the label boxes
-			ctx.strokeRect(xCenter-114,temLens[i].y-12,14,24);
-			ctx.strokeRect(xCenter+100,temLens[i].y-12,14,24);
+			if (zoomedIn){
+				ctx.strokeStyle= '#fff';
+				//draws the empty squares for the label boxes
+				// ctx.strokeRect(xCenter - 114, temLens[i].y - 5, 3, 3);
+				ctx.strokeRect(xCenter + 102, temLens[i].y - 2, 16, 4);
 
-			//draws the x's in the label boxes
-			ctx.beginPath();
-			ctx.moveTo(xCenter - 112, temLens[i].y-10);
-			ctx.lineTo(xCenter - 102, temLens[i].y + 10);
+				//draws the x's in the label boxes
+				ctx.beginPath();
+				ctx.moveTo(xCenter + 103, temLens[i].y + 1);
+				ctx.lineTo(xCenter + 117, temLens[i].y - 1);
 
-			ctx.moveTo(xCenter - 102, temLens[i].y - 10);
-			ctx.lineTo(xCenter - 112, temLens[i].y + 10);
+				ctx.moveTo(xCenter + 103, temLens[i].y - 1);
+				ctx.lineTo(xCenter + 117, temLens[i].y + 1);
 
-			ctx.moveTo(xCenter + 102, temLens[i].y + 10);
-			ctx.lineTo(xCenter + 112, temLens[i].y - 10);
-
-			ctx.moveTo(xCenter + 102, temLens[i].y - 10);
-			ctx.lineTo(xCenter + 112, temLens[i].y + 10);
-
-			ctx.stroke();
+				ctx.stroke();
+			}
 		}
 		if(temLens[i].kind=='aperture'){
 			ctx.beginPath();
@@ -282,7 +294,7 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 		ctx = beamLabels[0].getContext('2d');
 		
 
-		if (zoomVer){
+		if (zoomedIn){
 			if(temLens[i].kind=='screen'){
 				zoomedInLabels[i].style.left = xCenter + 120 + 'px';
 				zoomedInLabels[i].style.top = temLens[i].y * heightMult + yOffset + 'px';
@@ -312,13 +324,14 @@ function drawColumnParam(heightMult = 0.86, yOffset = 0.04 * $(window).height(),
 					zoomedOutLabels[i].style.top = (temLens[i].y * yScale - 8 ) + yOffset + 'px';
 				}
 			}
-
-			columnDiv[0].append(zoomedOutLabels[i]);
+			if (temLens[i].kind !== 'label'){
+				columnDiv[0].append(zoomedOutLabels[i]);
+			}
 		}
 	}
 	ctx.restore();	
 
-	if (zoomed && !zoomVer){
+	if (zoomed && !zoomedIn){
 		ctx.beginPath();
 		ctx.lineWidth = 5;
 		ctx.strokeRect(10, temLens[lensFocus].y-50, canvasWidth- 15, 100);
