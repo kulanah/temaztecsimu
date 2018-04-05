@@ -1,6 +1,6 @@
 /****
 *This file handles button events
-* for the six bottom buttons on the right
+* for the eight bottom buttons on the right
 ****/
 
 var popped = '#popplaceholder';
@@ -19,6 +19,7 @@ function prepareContent(){
     homeworkClicked();
     ucClicked();
     notepadClicked();
+    helpClicked();
     modeAdjustment();
     closeNotes();
     copyNotes();
@@ -108,6 +109,17 @@ function notepadClicked(){
             $("#notepad").hide();
         }
     });
+}
+
+function helpClicked(){
+    $('#helpbtn').click(function(){
+        if(isVisible('tunehelppopup') && $('#tunehelpcontent').prop('src').includes('Functions.htm')){
+            $('#tunehelppopup').hide();
+        } else {
+            $('#tunehelpcontent').prop('src','public/docs/OEMP Functions.htm');
+            $('#tunehelppopup').show();
+        }
+    })
 }
 
 function toggleVideo(state) {
