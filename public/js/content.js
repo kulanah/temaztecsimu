@@ -20,6 +20,7 @@ function prepareContent(){
     ucClicked();
     notepadClicked();
     helpClicked();
+    labSessionClicked();
     modeAdjustment();
     closeNotes();
     copyNotes();
@@ -117,6 +118,17 @@ function helpClicked(){
             $('#tunehelppopup').hide();
         } else {
             $('#tunehelpcontent').prop('src','public/docs/OEMP Functions.htm');
+            $('#tunehelppopup').show();
+        }
+    })
+}
+
+function labSessionClicked(){
+    $('#labbtn').click(function(){
+        if(isVisible('tunehelppopup') && $('#tunehelpcontent').prop('src').includes('labsession.html')){
+            $('#tunehelppopup').hide();
+        } else {
+            $('#tunehelpcontent').prop('src','public/html/psulabsession.html');
             $('#tunehelppopup').show();
         }
     })
