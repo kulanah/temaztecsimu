@@ -368,7 +368,7 @@
 
 #generalhelppopup{
   position: absolute;  
-  top: 0vh;
+  top: 1vh;
   left: 59.5vw;
   overflow: hidden;
   border: 5px solid black;
