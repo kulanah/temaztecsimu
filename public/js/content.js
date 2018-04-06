@@ -114,22 +114,22 @@ function notepadClicked(){
 
 function helpClicked(){
     $('#helpbtn').click(function(){
-        if(isVisible('tunehelppopup') && $('#tunehelpcontent').prop('src').includes('Functions.htm')){
-            $('#tunehelppopup').hide();
+        if(isVisible('generalhelppopup') && $('#generalhelpcontent').prop('src').includes('Functions.htm')){
+            $('#generalhelppopup').hide();
         } else {
-            $('#tunehelpcontent').prop('src','public/docs/OEMP Functions.htm');
-            $('#tunehelppopup').show();
+            $('#generalhelpcontent').prop('src','public/docs/OEMP Functions.htm');
+            $('#generalhelppopup').show();
         }
     })
 }
 
 function labSessionClicked(){
     $('#labbtn').click(function(){
-        if(isVisible('tunehelppopup') && $('#tunehelpcontent').prop('src').includes('labsession.html')){
-            $('#tunehelppopup').hide();
+        if(isVisible('generalhelppopup') && $('#generalhelpcontent').prop('src').includes('labsession.html')){
+            $('#generalhelppopup').hide();
         } else {
-            $('#tunehelpcontent').prop('src','public/html/psulabsession.html');
-            $('#tunehelppopup').show();
+            $('#generalhelpcontent').prop('src','public/html/psulabsession.html');
+            $('#generalhelppopup').show();
         }
     })
 }

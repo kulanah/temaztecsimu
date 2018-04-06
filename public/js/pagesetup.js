@@ -15,7 +15,7 @@ let pageSetup = function(){
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 
   'columndivzoom', 'apertures', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 
-  'tunehelppopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode'];
+  'tunehelppopup', 'generalhelppopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode'];
 
   let draggablesWithTextInputs = ['lecturediv', 'notepad']
   
