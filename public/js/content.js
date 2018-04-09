@@ -96,6 +96,7 @@ function lectureClicked(){
             $("#lecturediv").show();
         }else{
             $("#lecturediv").hide();
+            window.speechSynthesis.cancel();
         }
     });
 }
@@ -258,6 +259,8 @@ function addLectures(){
             $('#lecturediv').append(btn);
         }
     }*/
+
+    // Fullscreen button only functions properly in Chrome - other browsers use different prefixes for the Fullscreen API
     $('#fullscreenbtn').on('click', function(){
         if(document.webkitFullscreenElement === document.getElementById('lecturediv')){
             leaveFullscreen();
