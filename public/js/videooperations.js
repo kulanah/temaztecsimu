@@ -9,6 +9,11 @@ video.addEventListener('click', function(){
 })
 
 // Pause video when not visible
+window.onblur = function(){
+    video.pause();
+}
+/*
+
 // Visibility change code based on example in documentation at https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
 var hidden, visibilityChange; 
 if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
@@ -26,14 +31,14 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
 // if the page is shown, play the video
 function handleVisibilityChange() {
     if (document[hidden]) {
-      video.pause();
+        video.pause();
     }
-  }
+}
   
-  // Warn if the browser doesn't support addEventListener or the Page Visibility API
-  if (typeof document.addEventListener === "undefined" || typeof document.hidden === "undefined") {
+// Warn if the browser doesn't support addEventListener or the Page Visibility API
+if (typeof document.addEventListener === "undefined" || typeof document.hidden === "undefined") {
     console.log("This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
-  } else {
+} else {
     // Handle page visibility change   
     document.addEventListener(visibilityChange, handleVisibilityChange, false);
-  }
+}*/
