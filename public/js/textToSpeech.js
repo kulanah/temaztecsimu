@@ -115,836 +115,836 @@ let ch2SpeakerNotes = [
 ]
 
 let ch3SpeakerNotes = [
-`	Hi; welcome back to our lecture series on transmission electron microscopy! In this chapter, we’ll be discussing the basic aspects of electron optics in a TEM. 
-
-In this lecture we will focus on the fundamentals of the lenses, apertures, deflectors, and stigmators, since these are the basic parts of the optical system. 
-
-
-
-`,
-`	In this chapter, we’re going to discuss the electron optical system of the TEM.
-
- We’ll discuss the two types of lenses, electrostatic and electromagnetic; as well as how electronic lenses compare to glass lenses. There will be a brief review of optical geometry, including Newton and Gauss’s lens equations and magnification.
-
-Then we’ll re-examine the similarities and differences between electronic and glass lenses before explaining the position and function of all of the lenses within the TEM. 
-
-We’ll discuss each lens in detail before introducing the basic ideas surrounding a lens defect called “astigmatism”, and how we can correct it. We’ll learn about essential non-lens optical components like apertures and deflection coils. We’ll learn about how deflection coils allow us to perform beam tilts and beam shifts, and, using slides and videos, we’ll cover the practical aspects of aligning and using lenses and apertures during crucial TEM operations. 
-
-
-`,
-`	The additional references we used to compile this lecture were: 
-
-Bob Hafner’s Introductory Transmission Electron Microscopy Primer, freely available from Charfac.umn.edu
-
-Kimoto et al.’s, Practical Procedure for Coma-Free Alignment Using Caustic Figure”, from Ultramicroscopy volume 96, issue 2 (2003) pages 219-227
-
-And John Rodenburg’s Introductory TEM Guide, an excellent web resource found at www.roderburg.org. 
-
-
-`,
-`	To make sure you get the most out of this lesson, keep these questions in mind as we go through the material.
-
-What lenses and apertures are used in TEM?
-
-Are they the same as the glass lenses used in visible light microscopy? 
-
-If not, how do they work? 
-
-Do they suffer from any aberrations?
-
-If so, how do we correct them?
-
-How do lenses and apertures control the electron beam?
-
-How do we align them?
-
-How do they form the images or diffraction patterns inside a TEM?
-
-
-
-
-
-`,
-`	In the previous chapter, we learned how we generate an electron beam with an electron gun, and that the beam from gun varied in size from around 100 nm, all the way up into micron scale. Remember that in a FEG, the “virtual source” of illumination is formed by the 1st crossover, between the extraction and accelerator anodes. Electron sources create a divergent beam, but different samples and different kinds of TEM analysis require a large dynamic range of different beam conditions (e.g. focus, intensity, beam size, etc.). In order to do that, we would have to create electron optics components to control it. 
-
-We’ll also recall that the size of virtual source right in that crossover is going to be around 15 nm, which seems pretty small. 
-However, since individual atoms are much smaller than this, with their sizes being expressed in Angstroms, it turns out that this beam is still too large to allow us to analyze structures at the atomic level. 
-
-So if our virtual source is tens of nanometers too large, we’ll have to shrink it in some way. Thankfully, the lenses that allow us to magnify images of tiny things also allow us to shrink images of big things – the difference is arbitrary as far as the lens is concerned. So we rely on lenses and apertures to both magnify and demagnify different objects at different times. This is really where the utility and versatility of a modern TEM ultimately comes from – the use value of a TEM is almost entirely thanks to the sophisticated lens and aperture systems that you’ll find inside the column.
-
-
-
-`,
-`	As discussed in the chapter 1, TEM share the similar principle as the light microscope, but TEM use different lenses and apertures.  In TEM, two kinds of lenses are used for optics formation: one is electrostatic lens, the other is electromagnetic lens.
-
-The apertures are either different size of the hole or discs with hole in the center. The figure on the left shows the cross-section schematic of objective aperture strip. The metal that the holes are cut from is called the “diaphragm”, and the holes themselves are the apertures. We can retract or insert this aperture strip around within the column and position the apertures around the beam. 
-
-To the right, you’ll see a ray diagram of multi-colored electron beams diverging from this dashed pink line. That line, the optical (or optic) axis, is a hypothetical mid-line that runs from the electron source all the way through the optical system as a reference point. 
-
-So now that we have an idea of what we’re looking at, let’s get to it. 
-
-Lenses and apertures are essential for beam demagnification, as well as for image and diffraction formation within the TEM -- without these, nothing happens. 
-
-A simple example illustrating this importance is the fact that switching between diffraction and imaging modes, which is something you’ll do almost every time you operate the microscope, is achieved by changing the strength of a single lens, called the intermediate lens. 
- 
-So the change in the strength of one lens gives you a radically different view of the data from your specimen, and if you didn’t have that lens you wouldn’t be able to accomplish that change at all! 
-
-However, just lenses alone aren’t enough. 
-As you can see, we use them together with apertures so that we can control what parts of the beam are allowed into the lenses. This use of apertures, or “aperturing” of the beam is how we control the angle of divergence or convergence of the beam through the lenses. 
-
-They serve another purpose as well -- if we’re selecting a portion of the beam, some other portion must be blocked. So we’ll have less electrons in that selected beam, and hence a lower probe current at the specimen -- so this is how apertures give us some control of the probe current, too! 
-
-
-
-
-
-`,
-`	We can categorize apertures both by their location within the microscope and also by their composite materials and design. 
-
-Three main types of apertures (or, technically, “diaphragms”) exist, with different shapes and materials depending on the intended application. 
-
-The most common apertures are a metallic disk with a small hole. These can be used in the condenser lens 1, objective, and SAED aperture housings. These apertures are low cost, lessen the negative effects of contamination, and don’t leak electrons. The disadvantages are that they require occasional cleaning, and that the aperture shape is not as well defined as those found in thin foil apertures. 
-
-The thick “top-hat” apertures can also be used as condenser lens 2 apertures – these will stop all unwanted electrons and hard x-rays. The disadvantages are the same as normal aperture.
-
-The thin foil apertures can be used for objective aperture and SAED apertures. This kind of aperture has a well-defined hole with a precise size.  It remains clean and highly functional over a wide range of possible sizes. The drawback is that it has higher electron leakage at high voltages, which may lead to contrast loss artefacts when working at low magnifications.
-
-
-
-
-`,
-`	A TEM is usually equipped with four or five controllable apertures, depending on how many condenser lenses it has. 
-
--	In the illumination system, the C1 aperture is above the column valve V7, within a region of higher vacuum, so it usually stays cleaner than apertures found in the chamber, where things are generally dirtier. 
-
-	This aperture is used as the beam-defining aperture, so that some electrons from the beam’s side lobe are scattered at the edges of the aperture and do not follow the path of the beam anymore but occur outside. 
-	Usually the largest C1 aperture is used for all operation modes besides analytical modes, such as EDX and EELS. 
-	Small C1 apertures are usually used to acquire cleaner EDX spectrum with lower system noise backgrounds. However, the disadvantage of using the C1 aperture is the relatively large (~0.8 nm FWHM) smallest spot size 	attainable.
-	The C2/C3 aperture in C2/C3 lens is used as the beam-defining aperture (it limits the amount of the beam convergence for a fully focused beam) and it also sets the beam current at the specimen.
-
--The objective aperture is on the back focal plane below the objective lens, and is used to enhance contrast by eliminating the diffracted beam (in dark-field imaging in TEM mode) or transmitted beam (in bright-field imaging in TEM mode). 
-	Therefore, the objective aperture is also called the “contrast-forming” aperture.
-	The SAED aperture is positioned on the image plane of the objective lens, which is above the immediate lens. This aperture acts as the area-selection tool for diffraction analysis.
-
-
-
-`,
-`	We know that TEM uses electrostatic and electromagnetic lenses that are different from those found in optical microscopes, but what are these TEM lenses made from? How do they work? 
-
- As shown in the left figure, an electrostatic lens which can also be called a “unipotential” or “Einzel” lens, is made of two or more circular electrodes, with their negative potentials pointing towards the axis of the lens. 
-
- In order to generate enough negative potential, high voltage is required, which allows the negative potentials to repel the off-axis electrons towards the optic axis with an unbalanced force. To clarify this action, we can use a 2D schematic of electrons interacting with an electric field, offered by the Lorentz force, to describe the forces experienced by the electron while it travels through the lens.  
-
-The closer an electron is to the electrodes, the more force it will experience. This “unbalanced force” will push the electron towards the optic axis, where the forces are “balanced” since they are pushing on the optic axis equally from every direction –this is why we can say that the deflection angle of an electron is proportional to the distance of that electron from the optic axis. 
-
-- Following the Lorentz force law, the force experienced by an electron traveling through the lens is the product of the electron’s charge, negative q, and the electric field potential vector, V. 
-
-- The direction of motion of the on-axis electrons will not be changed, because of the balanced Lorentz force found at the optic axis. This is how a point source of electrons is focused to a single point on the axis. 
-
-- While they’re simple and effective, we don’t usually use these lenses in the imaging and diffraction systems because of their aberrations – aberrations are lens defects that we will discuss later. So to utilize Einzel lenses in TEM without introducing a lot of aberration into our final images, we end up using them for non-imaging functions, like acceleration/deceleration, and beam manipulation or deflection, which we’ll address shortly.
-
-
-
-
-`,
-`	Electromagnetic lenses are what we use to accomplish the precise focusing and defocusing of the beam that is needed for imaging applications. 
-
-- This kind of lens is an electromagnet composed of copper coils wound within a cylindrical yoke of magnetically soft iron. You can see a schematics of the lens in this figure. 
-
-- As electrical current goes through the red coils, a magnetic field is generated, and this field is concentrated by the yoke within the hollow “bore”, which is a term for the interior of the lens. 
-
-- The field is rotationally symmetric, but its strength is heterogeneously distributed – it’s weakest in the center of the lens, and is strongest closer to the bore. 
-
-- Because the strength of the field varies, electrons close to the bore are more strongly deflected than those passing through the lens directly along the optic axis.
-
-- Just like we saw with an ES lens, as the electrons exit the lens, the overall effect is that electrons are focused through the lens axis, resulting in a parallel electron beam being focused into a single spot, which is sometimes called a cross-over. 
-
-
-
-
-
-
-`,
-`	Following the Lorentz force law as it applies to vectors like velocity and magnetic fields, the force generated by the electromagnetic lens parallel to the optic axis is the product of electron charge and the vector (or cross-) product of the velocity and the magnetic field strength vectors. 
-
-Essentially this means that we can break down the velocity of the incident electrons into two components: V1 and V2. V2 being parallel to the magnetic, or B field, and V1 being perpendicular to it. 
-
-- The direction of force F is given by the right hand rule. 
-
-In the right-hand rule, imagine that you are aligning your outstretched hand North to South down the B vector, with your fingers pointing South, and representing the B field. 
-Your vertical thumb represents the velocity vector of the electron, and for a negatively charged particle like the electron, the force vector acting on the electron is projected out of the backside of your hand. 
-
-- With this, we can calculate the magnitude of the Lorentz force using the product of electron charge, the speed perpendicular to the magnetic field, and the magnetic field strength, which is controlled by the amount of electrical current running through the lens coils.
-
--The electrons have velocity components parallel and perpendicular to the field, as long as electrons are not traveling at 90 degree to the file direction of magnetic field B. So when theta = 0, or they’re travelling parallel to the direction of the magnetic field, there is no force on the electrons, therefore they experience no change in motion. When theta = 90 degrees we find the most force, and the greatest change in direction of motion. This change in motion of course depends on the energy of the electron as well, though, and this is why different lens designs exist for microscopes of different accelerating voltages. 
-
-This Lorentz force causes electrons passing the point P on the optic axis to spiral through the field and intersect the axis again at P’, which when examined over time is seen to be a helical path. This helical path means that even our images will be seen as rotated when compared to the orientation of the object from which they were made. 
-
-
-
-`,
-`	The working principles of electromagnetic lenses seem much more complicated than those of glass lenses, but what kind of practical differences does that imply for us? The different mechanisms, namely that electromagnetic lenses use the Lorentz force to focus electrons, means that we will see different orientations between the image and the object, due to the helical path of electrons focused by a lens. 
-
-So there are differences in the construction of the lenses, as well as the orientation of the images from the lenses, but: are there any similarities? 
-
-
-`,
-`	To a large extent, electromagnetic lenses are actually the TEM’s (geometric) equivalent of glass lenses in light microscopy. 
-
-- So, the mechanisms of all lenses in a standard TEM on electrons are approximately the same as the mechanisms of a convex glass lens on visible light -- the lens takes all the rays emanating from a point in an object, and recreates that point in an image by focusing parallel rays to a point in the focal plane of the lens. This commonality is why we can say they share similar optical geometries. 
-
-	Their mechanisms differ, mainly, since electromagnetic lenses use the Lorentz force, not refraction. 
-	Their focuses are also achieved through different means – we change field strengths in electromagnetic lenses, but glass lenses require that the lens or object move with respect to each-other for focus to be achieved.
-
-Objects are only inverted when imaged through glass lenses.
-But objects are inverted and rotated when imaged through electromagnetic lenses. 
-	
--	Both types of lenses have imperfections, and these imperfections degrade the quality of any images they form, and this is what we mean when we say they have “aberrations”.
-	
-
-
-
-
-`,
-`	- Just like lenses in light microscopy, the optics axes of electromagnetic or electrostatic lenses are defined by the principal axis perpendicular to lens surface, passing through its center. 
-
-- The lens plane refers to a principal plane through middles of the lens, and is sometimes called the “vertical axis” in non-TEM optical diagrams. 
-- And the focal length is the distance between the focus point and the lens plane.
-
-- The ray diagrams of electrostatic or electromagnetic lenses are analogous to those of convex VL lenses as well. Both types obey the refraction rule of a converging lens, which states that: 
-
- Any incident ray parallel to the optics axis of the lens will refract through the lens and go through the focal point on the opposite of the lens; 
-Any incident ray that passes through the focal point on the way to the lens will refract through the lens and travel parallel to the optics axis on the image side.
-
-All ray diagrams abide by this rule, and it is critical to remember when you are constructing your own. 
-
-
-
-
-`,
-`	We have been discussing how lenses bring the scattered electrons into a focused point, but we do not really know how lens can magnify or demagnify an object yet. 
-
-In order to understand the mechanism, we have to understand the lens geometries we mentioned earlier. 
-
-These are described by Newton’s Lens equation, or Gauss’ thin-lens equation. 
-
-- In Newton’s lens equation, the square of focus length is the product of the distance from the focal plane to the object plane plus the distance from the back focal plane to the image plane. 
-
-- In Gaussian thin-lens equations, the inverse of the focal length is equal to the sum of the inverse of image distance and object distance. 
-
-- These two equations appear to be different since they are using different similar triangles in their geometrical approaches to the problem, but they can be used to construct an equation for magnification, where magnification, M, is just equal to v, the image distance, divided by, u, the object distance. 
-
-
-
-
-`,
-`	So, based on the Newtonian and Gaussian lens equations, we know that: 
- 
-If the object is placed between F, the focus length (or the distance between the lens and the focal point), to 2F, twice the focus length then the probe/image will be magnified 
-
-And that
-
-If the object is placed beyond 2F, then the probe/image will be demagnified 
-
-
-
-
-`,
-`	Knowing what we know now, let’s think about what is actually happening when we focus an image in the TEM. To see an image in clearly, so in good focus, we must position the image plane so that it coincides with some sort of detector -- camera film, imaging chip, phosphor screen, etc. 
-	
-	Of course the only way we can move the image plane is by either:
-
-		Moving the lenses, like we do in light microscopy,
-		Moving the object, which we do with the TEM stage
-		and changing the lens voltage (in electrostatic lenses) or coil current (in electromagnetic lenses)
-
-And, for magnification, we clearly can’t switch to different lenses like in light microscopy -- we instead stack and selectively combine TEM lenses to achieve the same effect. 
-
-Also remember that since these images are being formed in different ways, we will experience an inversion of the image in relation to the object (like we see in light microscopy), AND there will be additional rotation of the image in TEM as well. 
-
-
-
-`,
-`	It should also be stated here that when we’ve been talking about “strong” or “weak” lenses, we’ve really been referring to the lens current within the coils, shown in red, which we know is used to generate the magnetic field whose force is used to focus the electrons.  We can vary the “strength” of the lens, or the current used to generate the magnetic field. All of this should leave you wondering: how will variations in lens current affect focal length? 
-
-Looking at this equation here, in which focal length is represented by f, and lens current is represented by i. we can see that  the focal length, f, is equal to a constant, K, times V over i squared, where V is the  accelerating voltage of the microscope at the time in question. 
-
-This shows us that short focal lengths are the product of strong lenses. And, as expected, long focal lengths are the product of weak lenses. 
-
-
-`,
-`	Using this equation, we can see that when we hold K and V to be constant, “strengthen” the lens field, or increase the lens current, our focal length gets shorter. And, of course, then, when we “weaken” our lens (i.e. decrease our lens current), the focal length will get longer. 
-
-And, remembering that magnification is image distance divided by object distance, we can imagine how adjusting the currents of two stacked lenses could allow us to magnify or demagnify by changing the image: object distance ratio of the lower lens. 
-
-
-`,
-`	Until now we’ve been treating electromagnetic lenses as if they were ideal – in reality, they are imperfect and do not behave exactly as described. Even though considerable effort has been devoted to ensuring high lens quality, the symmetry of the lens field will be variable due to both: 
-
-	Permanent inhomogeneities that are present from time of manufacture, or arise through use, such as if dust enters the vacuum system and adheres to a pole piece. 
-
-	As well as temporary inhomogeneities, which are usually caused by any magnetism or charging of the specimen itself. 
-
-	Any of these imperfections cause the lens to lose the ability to focus symmetrically. 
-
-As shown in the ray diagram on the right, electrons entering the lens from one direction the lens will be focused more strongly than those entering from the perpendicular direction, causing an asymmetry called, “astigmatism”, found in both glass and magnetic lenses, when the beam, image, or diffraction pattern appear elongated or stretched. 
-The word astigmatism, from the Greek word “stigma", which translates loosely to “point”, could be defined to mean, “without point”, or even, “without circle”, which makes sense when we remember that the ideal beam shape should be circular, as shown in the middle image. In the presence of astigmatism, however, the electron beam’s shape will lose its circularity, and be elongated into an oval, as shown on either side of the original beam. This distortion in the beam causes the final image and/or diffraction patterns to be distorted as well. 
-
-Fortunately, unlike some other aberrations, the astigmatism of our lenses can be corrected by devices called “stigmators” which are built-into all modern TEMs.
-
-
-`,
-`	Stigmators are made up of one or more quadrupoles, which, basically, form a lens whose astigmatism can be varied continuously. This is how we use them to correct astigmatism! 
-
-A single quadrupole has four elements, arranged at 90 degrees to one another, all around the beam. 
-
-These elements are used together in two sets, with each set lying on opposite sides of the beam. 
-If one set is given a positive value and the other a negative, then the positive elements will attract the electrons, while the negative elements repel the electrons (green arrows). 
-
-The resulting astigmatism (dark red ellipse) from the stigmator cancels out the original astigmatism from the lens (making the beam round: red circle). 
-
-The actual design of the stigmators inside the microscope is - as with the deflection coils - more complicated, and based on a magnetic field. (The field direction and strength shown by blue arrows).
-
-Each stigmator consists of, at least, two of the elements, one mounted above the other and rotated by 45° with respect to each other, since this combination of two elements allows correction of astigmatism in any direction. 
-Each of these elements is controlled by one of the Multifunction knobs (MF X, MF Y). 
-
-
-`,
-`	And, in addition to stigmators, there are also deflection coils within the column. Deflection coils play an essential role in the alignment of the microscope and are used for aligning the gun, beam, objective lens, magnification system (where they govern image and diffraction shifts of the beam to the screen center) and detector alignments (governing image or diffraction shifts of the beam to a detector that is situated off the optical axis). Deflection coils are only intended to “shift” or “tilt” the direction of the beam. 
-
-
-A deflection coil is a set of coils on either side of the electron beam.
-
- If one is given a positive magnetic field and the other one a negative one, the electrons in the beam will be attracted by the positive field and repelled by the other, leading to a deflection towards the positive coil. 
-
-The actual coils are extended over arcs of 120°. The arcs are used to generate a homogeneous magnetic field, which we then use to control the beam path inside the TEM.  
-
-In general, a TEM has three sets of double deflection coils: the gun coils just underneath the electron gun (or underneath the high-tension accelerator in case of 200 or 300 kV instruments); the beam deflection coils above the objective lens; and the image deflection coils below the objective lens.
-
-
-
-`,
-`	We can roughly break the TEM down into 4 systems: The probe forming or illumination system, the imaging and diffraction system, the projection system, and any optional “post-column” analytical systems that might be included, but since these are variable we’ll ignore them for now and consider the TEM to be broken into just the top three. 
-
-The top third goes by many names, but we can consider it to be the “beam forming”, “probe forming”, or “illumination” system, and you already even know a bit about this, because that’s where the electron gun sits!
-
-We call the uppermost chunk the illumination system because it’s entirely devoted to shaping that crude “straight-from-the-gun” electron beam into a useful and versatile probe, so none of its lenses are doing anything directly related to forming or magnifying images of our sample -- the illumination system takes the gun crossover as its object, and the modified image of the crossover that we get out of the last lens in the system is passed on to the next chunk. 
-
-The chunk that takes the probe exiting the illumination system as its image is the middle third -- the image or diffraction formation system. I say “or” because it could produce an image or it could produce a diffraction pattern, but more on this later. 
-
-All you need to know right now is that the imaging system deals with the beam immediately before and after the specimen, so it will be manipulating an actual image or diffraction pattern of whatever it is we’ve put in our TEM and passing that along to the last chunk.
-
-The lower third of the microscope, barring the electron energy loss spectrometer (or, EELS, like the fish) at the very bottom, we’ll call the magnification and/or projection system, since, remember, we used the entire beam forming system to create a tiny, tiny probe, and then sent that probe into the imaging system, through an equally tiny area of the sample (or our FOI “feature of interest”), and got an image of our FOI projected into the magnification system. The trouble is, that image is still extremely small, so we have this entire projection system to magnify the tiny image into the macro scale. 
-
-Once it’s magnified, the rest of the projection system projects it onto some kind of surface that will allow us to view the image, either through a phosphor screen that will convert electrons to photons that we can see with our eyes, or through a CCD camera that will allow us to feed the data into a computer. 
-
-
-`,
-`	Since we already know from the last lecture that the electron gun is what generates our beam, we’ll start just below the extractor anode, at the gun lens. This is an electrostatic lens that sits just underneath the extractor anode we talked about last lecture. We control this lens, like all of the lenses in a modern TEM, through a computer running specialized software provided by the manufacturer. In our case, this is what the gun lens controls will look like within the software. For FEI/Thermo Fisher Scientific tools, we see that there is an integer value for the gun lens displayed here, and that we can increase or decrease this incrementally from one to eight.
-
- As we increase our gun lens setting, we’ll reduce the beam size and beam current, with each whole-number increment (so, moving from 2 to 3, for example) reducing the beam current that comes out of the lens by around 35%. 
-
-Looking at this graphic, this is pretty easy to understand -- at smaller gun lens settings, the crossover generated by the lens is very close to the bottom of the lens, meaning the beam hitting C1 will contain the most possible energy, and we filter out what we don’t want with the C1 aperture.
-
- As we increase our gun lens setting, the crossover moves up higher within the lens, meaning the beam spreads more and more across C1, so that no matter what size of C1 aperture we insert into its path, there will be more electrons excluded by the aperture, leading to a smaller and weaker beam. 
-
-This might seem strange since we emphasized the importance of having a “strong”, dense beam in the electron gun lecture, but that’s only because we wanted to ensure that we have the option to weaken a strong beam like this rather, than being stuck with a weak beam from the outset. 
-
-And, again, this is the first lens-induced crossover in the microscope, and this crossover is the object that the first condenser lens sees and manipulates, because lenses are just a discrete chain of inputs and outputs, which is sort of counterintuitive when we just took a more holistic look at the optical system.
-
-
-
-
-`,
-`	When we’re adjusting the settings of your electron gun, it’s important to remember that the crossover has to be within the lens, and that the position of the crossover is affected by three operator-controlled factors: 
-
-●	The high tension voltage, 
-●	The extraction voltage, 
-●	And the actual setting of the gun lens itself. 
-
-In short: if the crossover it outside the gun lens, the lens, and by extension the entire TEM will be incorrectly aligned. Furthermore, changing gun lens settings means that the entire TEM will have to be re-aligned afterwards to account for the change. 
-
-Keep in mind, HT and extraction voltages can have effects on the position of the crossover within gun lens, so you must first establish appropriate HT, an appropriate extraction voltage, and then set your gun lens at a setting that is adequate for the previous settings. 
- 
-Since a change of gun lens settings may decrease overall stability of the TEM, only modify them if you need to correct a misplaced gun crossover, or switch between two modes (such as from TEM to STEM or otherwise). 
-
-
-
-`,
-`	After leaving the gun lens and passing through the accelerating anode, the beam interacts with two sets of deflection coils that can be seen directly underneath the anode. 
-
-Each set has a certain function:
-
-The function of the first set, the gun tilt coils, is to ensure that the electron beam enters the microscope (or, really the first condenser lens, C1) parallel to the optic axis – this is accomplished by the “gun tilt” alignment, which we can only control due to the existence of these coils. 
-
-The function of the second set, the gun shift coils, is to ensure that the beam goes through the center of the C1 lens – this is accomplished by performing the “gun shift” direct alignment. 
-
-We’ll discuss both of these alignments in greater detail towards the end of this chapter. 
-
-
-
-
-`,
-`	Now that we’re out of the gun lens, with a well-placed 1st crossover thanks to correct high tension, extraction, and gun lens settings, the beam passes through properly configured gun deflection coils, emerges traveling parallel to the optic axis, and enters the first lens of the condenser system. 
-
-This system and its relevant software settings are how we control the diameter of the beam via dynamic demagnification, and also how we can improve our beam’s coherence, as well as modulate the beam current. 
-
-We remember that the first aperture in the system was below C1, and that there is an aperture in C2 -- we’ll use these condenser apertures in conjunction with the lenses to eliminate the very divergent (or, high angle) electrons from our beam by centering the aperture around the most coherent part of the beam, ensuring that what we’re working with from here down is as coherent as possible. 
-
-A key thing to know is that if we increase the current of an electromagnetic lens above an aperture, the current of our beam below the aperture is reduced. This is because increasing the “strength” of the lens moves the focal point of the lens, where the beam begins to diverge, higher above the apertures, allowing a larger portion to diverge into and hence be blocked by the diaphragm, thereby reducing our measured current below the aperture! 
-
-Generally, we get the most use out of our condenser system when we’re working at higher magnifications, usually greater than 400,000 X magnification, because we can use them to shorten the focal length of the beam in order to demagnify it into the tiny probe we’ll need to operate at those high magnifications. 
-
-
-
-
-`,
-`	So, knowing generally about the condenser system, let’s go over each lens individually -- 
-
-C1, the first condenser lens, serves to demagnify the image of the gun crossover. 
-This lens is how we set the “spot size”, which is the smallest beam diameter that will be available to the rest of the system below this lens. 
-C1, in conjunction with its aperture will also place an upper limit on the beam current going through the rest of the column. 
-
-So now we know that the C1 lens and aperture, in conjunction with C2 and its aperture, control spot size and can limit beam current, but how can we control the illumination area or the beam convergence angle? 
-
-It turns out that C2 and its in-lens aperture control the convergence or divergence of the beam at the specimen, the diameter of the area on the specimen that is illuminated, and, just like C1, C2 can also set a new upper limit on the beam current for the rest of the system through appropriate lens strength selection and aperture placement.
-
-The sometimes-present C3, which isn’t in our microscope, but can be found in more advanced tools, offers an extended area of illumination -- so if you have a microscope with a third condenser lens, you’ll be able to see a larger area of your specimen, should you desire. 
-
-
-
-
-
-`,
-`	Spot size, as we said, is the setting that determines the minimum probe size that will be available to the rest of the microscope, and that’s controlled by the condenser system. 
-In the microscope software, the spot size is represented by an integer value much like the gun lens setting was, in this case the values range from 1 - 11, with 1 being the largest spot, and 11 being the smallest.
-
-We can see in this diagram that if we have our spot size set to 1, our C1 crossover is down very close to C2, so we could say in this situation that C1 is “weakened”, or that the current running through it is relatively low, and that’s how we get that low crossover. Note that we’ve drawn the C2 aperture below the lens, just for convenience, but know that in reality this is within the lens.
- This weakened C1, with its very low crossover, means that all of the beam passing through the C1 aperture hits C2 and is permitted to pass through its aperture without any restriction, hence we have the highest beam current and the largest spot size when we’re operating at a spot size setting of “1”. 
-
-If we take a look at the rightmost example, which is illustrative of a much higher spot size setting, we can see that C1 is strong, or “excited”, so we’ve got a relatively high lens current at C1 that is giving us a high crossover above C2, and C2 itself is weakened, meaning a large portion of the beam is blocked by the C2 diaphragm and therefore we have a decreased beam current. 
-
-If this seems a little abstract, take a second to think about the practical implications: 
-If you’re working with large, conductive structures at low magnifications, would you want a high gun lens setting?
-
- Well, a strong C1 and weakened C2, along with the heavy aperturing of the beam that would be occurring would make your probe small and would reduce its current substantially.  Both of these would actually be very inconvenient if your structures of interest are large, because you would only be able to see the tiny area afforded by your probe. If you tried to get around this by increasing your beam diameter, by turning your intensity knob, you would spread your beam, but since there is a relatively low current in your spot you would still be unable to see or gather useful data from your structures because the beam would be so weak that it might even be invisible to your eyes.
-
-So for large structures or low-mag work, it’s important to remember to choose a low spot size so that you have a suitable minimum beam diameter and enough current density to work with. Conversely, it’s also important to remember to choose higher spot sizes when you’re working at extremely high magnifications so that you have a suitably small probe! 
-
-
-
-`,
-`	In the last example we mentioned a previously undefined control: the intensity knob. This is an important thing to be aware of, because it’s how we control the diameter of the beam at the specimen. This is a physical knob on the microscope controls that sends instructions to the microscope software, telling it to alter the current running through C2 depending on which way we turn it. 
-
-We see that if we were to increase our intensity, we would be strengthening C2, pulling that crossover up, which would in turn give us a broader beam entering the rest of the system and, ultimately, give us a larger area of illumination at the specimen. Now, of course, if we’re changing the height of the C2 crossover we’re also changing something other than just the diameter of the beam at the specimen -- we’re changing the convergence angle as well. 
-This is because every lens has a focusing action, so even though we’re creating a broad beam at C2 to send through the rest of the system, the lenses below it will still focus it into a crossover, so it will still converge down to a point somewhere; the intensity control will affect this, with more intense, small beams necessarily being more convergent, and less intense, broad beams being more divergent. 
-
-And, since we’re altering the size of the beam without the influence of an aperture, the change in size means there will be a related change in electron dose at the specimen, because our beam current is fixed! So if we have a very broad beam, we’ll have a lower dose, since the fixed current is distributed across the entire sample and beyond. But, and you probably see where I’m going here by now, if we have a very focused beam, all of the available beam current is focused into that spot, meaning we’ll have a much higher electron dose there, which as we know can cause contamination to build up on the sample, or, worse, damage the sample. 
-
-
-
-
-`,
-`	The beam deflection coils facilitate beam tilts and beam shifts for imaging, diffraction, and microscope alignments. They also act as scan coils for rastering the beam in STEM mode. 
-
-- A beam shift comes about by deflecting the beam through an angle g by the upper coil, and then doing the reverse (-g) with the lower coil.
-In this case, both coil currents are the same.
-
-- Since the electron beam comes out from deflection coils parallel to the optical axis and must go through a single point in the back-focal plane, shifting the beam should have no effect on the location of the beam in the back-focal plane.
-
-- A beam tilt comes about by deflecting the beam through an angle g with the upper deflection coil, and then deflecting by -2 g by the lower coil.  In this case, the current of the bottom coil is greater than that of the top coil.  
-A beam tilt will result in a beam shift in the back-focal plane, but should cause no shift in the image plane.
-
-
-
-
-`,
-`	So, we’ve got C1 and C2 setting our spot size, and C2 giving us control of intensity, so by now our beam is probably sufficiently small for atomic-scale imaging, right? Wrong! 
-It turns out that, for our convenience, we frequently operate in “microprobe” mode, which means we’re using the minicondenser lens to purposefully magnify our probe as it exits the main condenser system, which you can see on the left in this diagram. 
-
-Notice how the small probe is entering the minicondenser, but is then spread out by its lens at the top there, and the final probe we get coming out is actually larger than what we sent in!
- Why would we do this if we’ve already invested so much in demagnifying our beam? 
-
-Thinking back to what we said about illumination area, it sort of makes sense that we’d want a large probe at first to make it easier to find our way around our sample, or to take low-magnification images. So we have the minicondenser there to magnify our probe for us and make these things easier. 
-
-
-If we want a smaller probe for higher-mag work, all we have to do is enter “nanoprobe’ mode, which will switch the minicondenser lens optically “off” (even though, to keep the column stable,  it’s never actually off -- turning it “on” or “off” just changes the direction the current flows through it; the same current is flowing all the time in order to avoid temperature swings and field fluctuations that would interfere with our alignments). When it’s optically “off”, the probe coming into the system is not affected by the topmost lens, and instead can enter a weakened objective and continue down the column as a much finer nanoprobe. While on, the minicondenser lens field is reinforced by the field of the objective lens in the microprobe mode.
-
-
-
-
-
-
-
-
-`,
-`	And without turning off the minicondenser lens, we would not be able to perform STEM! 
-
-During the formation of nanoprobes for STEM the upper polepiece of the objective lens acts as a 3rd condenser lens (C3). 
-
-C1 is strengthened so that the image of the gun crossover is well above C3, and C2 is weakened or turned off. 
-
-The minicondenser being powered down allows for this large demagnification of the C1 crossover. 
-
-The beam deflection coils will also begin to act as scanning coils at this point, and, again, are how we raster the beam over the specimen. 
-
-You can see a typical example of the optical configuration for STEM mode at right. 
-
-
-`,
-`	
-
-The main function of these lenses and apertures is summarized in this table.
-
->The gun lens, and the first condenser lens control the beam current and final probe size.
-The main role of C1 is to demagnify the image of the source, and we change this demagnification via the Spot-Size setting on the microscope controls. 
-Increasing the current in the gun lens and in C1 reduces the beam current and probe size -- so, increasing the gun lens setting in the software leads to increased demagnification of the source, and to decreased current in the beam. This means that increasing the gun lens setting restricts the beam current available to the rest of the system below it. 
-
->The degree of beam convergence at the specimen, which we see as the size of the illuminated area, is governed by C2 (and C3 in a three condenser lens system).  We modify this with the Intensity knob. 
-	
->The aspects of probe formation controlled by the minicondenser are mode-dependent – that is, TEM illumination uses the Microprobe setting (when the minicondenser lens is “on”), and fine-probe modes like STEM and nanodiffraction illumination use the Nanoprobe setting (with minicondenser lens “off”).  In Microprobe, the illuminated area and probe size are five times larger than in Nanoprobe, because the convergence angle in Microprobe is five times smaller than in Nanoprobe.   
-
->We see that the upper objective lens also contributes to probe formation – how is that? 
-
-
-
-
-
-`,
-`		The objective lens is the most important lens in the whole microscope.
-
-	But we see that if the magnification is large (and in practice, it is generally a factor of 20-50, then the range of angles of rays impinging upon the first image plane is very small relative to the range the angles entering the object lens from the specimen. Of course, other lenses below the objective lens (which are in the projector system) also magnify, and as the magnification increases, then the range of angles that each subsequent lens must deal with is reduced and reduced.
-
-	Because aberrations are worse at high angles than at low angles (with haven’t proved this, but it is generally true), then the lens which will be most affected by aberrations will be the objective lens, because it has to deal with biggest range of angles in the whole microscope. That means that our biggest single concern in electron microscopy should be to make sure that the objective lens is perfectly aligned and stigmated. In fact, if the objective lens is mis-aligned, the errors it introduces will so huge that no matter what we do with the other lenses, we will never be able to correct the error.
-
-
-
-`,
-`	Before we can understand its function, and role in probe formation, let’s get a bit of historical context, since this is a very critical piece of the optical system. 
-
-Historically, three objective systems have been used in a TEM, and you can see these three here: 
-
--the conventional objective lens, 
--the symmetrical condenser-objective lens developed by Riecke and Ruska (in 1966), 
--and the twin lens design, which is shown twice; once in “microprobe” mode, and once in “nanoprobe”.
-
-
-`,
-`	- In the conventional objective lens, the specimen occupies 1/3rd of the lens gap, and the objective aperture is located in the second third. This type of objective lens has a number of disadvantages:
-
-	- Since the space below the objective aperture cannot be used to accommodate a tilting specimen, and the conventional lens suffers from either a limited tilt range, or an unnecessarily wide gap, with the latter deteriorating the Cs and Cc, and thus the resolution.
-
-	- The lack of a strong objective pre-field in the conventional lens design doesn’t allow for small spot sizes, so Scanning Transmission Electron Microscopy, Microanalysis and Convergent Beam Diffraction are severely hampered.
-
-	- The asymmetry of the lens also results in a very restricted view of reciprocal space in the diffraction pattern, as the pattern occurs too high above the lower objective pole piece.
-
-	- The strongly asymmetrical magnetic lens field produces a rapid change of the lens parameters, making it crucial to always work at the same objective-lens current if you want reproducible high-resolution results, which you should! 
-
-Even though you will probably never use a TEM with a conventional objective lens design, the ability to raise and lower the specimen within the lens remains a daily necessity in TEM. 
-
-
-`,
-`	The limitations of the conventional objective lens led Riecke and Ruska to develop the symmetrical condenser-objective lens in 1966. 
-
-This lens design is compatible with a side-entry, so-called “eucentric” specimen stage, making it easy to work at a fixed position in the lens. 
-
-
-- In this arrangement, the specimen is located in the middle of the objective-lens pole pieces, with the objective aperture below it, just above the lower pole piece. 
-
-- This lens reduces the pole piece gap and retains the ability to tilt the specimen to high angles, which is desirable.
-
-- This reduction does have consequences, however. For example, 
- 
-	>The lens parameters far from the center are slow to change. 
-	>The lens also has a large diffraction angle, and provides only small spot sizes. 
-	>And the beam cannot be spread very far. 
- 
--These consequences are somewhat limiting when it comes to TEM -- In fact, the maximum area that can be illuminated is typically around 1 micrometer, which severely restricts the field of view at lower magnifications. 
-
--Additionally, defocusing of the beam is limited by spherical aberration effects of the objective pre-field, which will give us poor coherence across the field of view as a whole.
-
-
-
-
-`,
-`	In the TWIN-lens design, however, the disadvantages of the original symmetrical condenser-objective lens are no longer present, and an entirely new lens has been added. 
-
-The minicondenser lens, incorporated into the upper pole piece, can be switched 'optically' on (referred to as the microprobe mode, shown on the left), in which case a cross-over is created at the front-focal point of the objective-lens pre-field, which will give us a wide field of view, and coherent illumination on the specimen. 
-
-When the minicondenser lens is switched 'optically' off, the lens is in the nanoprobe mode (shown on the right), and the performance of the TEM in this mode is similar to the original Riecke-Ruska design. 
-
-
-
-
-`,
-`	The image deflection coils, situated below the objective lens, have many uses.
-
-	They shift the image and the diffraction pattern, to align various magnifications, camera lengths and modes (such as TEM and STEM),
-
-	they correct image or diffraction-pattern movement caused by the objective and diffraction stigmators, respectively,
-
-	 and set the Detector alignments that move the image or diffraction pattern to a detector that is situated off the microscope axis (STEM BF/DF, TV). 
-
-	In addition, the image deflection coils can be used coupled to the beam deflection coils in a number of instances, for example during image shifts. 
-
-
-`,
-`	The Diffraction lens is the lens immediately beneath the objective lens, and above the intermediate lens. 
-
-In diffraction mode, the diffraction lens serves to focus the diffraction pattern via
-In LM mode, the diffraction lens determines image focus
-
-The diffraction lens is able to control image focus in LM mode because the objective is automatically turned off. 
-
-All focusing actions of the diffraction lens can be controlled through the focus knob on the microscope user interface panel. 
-
-
-
-
-
-
-`,
-`	Between the diffraction lens and the projection lens is the intermediate lens.
-
-We use this lens to switch between image and the diffraction modes.
-Increasing the lens current results in switching a TEM from the diffraction mode to  image mode, and decreasing the lens current leads to switching from the image mode to diffraction mode.
-
-In modern systems, this is performed simply by pushing the diffraction button on the control panel.
-
-
-
-
-`,
-`	The Projector lenses are used for final magnification within the TEM.
-
-We control the current in this lens with the aptly-named magnification knob. This is how you’ll change your image magnification in image mode, and camera length in diffraction mode.
-
- Similar to light microscopy, the total magnification is the product of the magnifications of all of the lenses of the system – so, here, total magnification is the product of the individual magnifications of the objective, diffraction, intermediate, and projection lenses.
-In diffraction mode, instead of using magnification, we use the effective distance from the sample to the detector, or camera length, to measure the distances recorded in diffraction patterns, the total camera length in a projection system is given by the product of objective focal length, individual magnificactions of the diffraction, intermediate, and projector lenses
-
-
-
-`,
-`	So, to briefly summarize this table: We use our illumination system to control: beam demagnification, spot size, convergence, intensity, and the switch between micro- and nano-probe modes. The lenses of the illumination system are the gun, C1, C2 & possibly C3, as well as the minicondenser.  We control C1 with the L3 and R3 buttons, which incrementally decrease and increase spot-size, respectively. C2 is controlled by the intensity knob, which we use to determine the convergence of the beam on the specimen. 
-
-The condenser stigmator is the only stigmator within the illumination system, where we also find the gun and beam deflection coils. The apertures available for use in this system are all of those associated with a condenser lens. 
-
-The imaging and projection systems control imaging functions, diffraction functions, and magnification. Its lenses are the objective, diffraction, and intermediate, as well as the two projection lenses. We can control the intermediate lens via the diffraction button, and we can control the behavior of the projection lens with the magnification knob. 
-
-There are two stigmators in this system: the objective stigmator, and the diffraction stigmator. The only deflection coil is the image deflection coil. Apertures in this system are paired with the objective and SAED lenses. 
-
-`,
-`	Everything that we have learned today is what we need to understand how to begin to craft optical conditions within the TEM to suit applications and experimental needs. Per discussion in the introduction chapter, TEM is one of most versatile electron microscopes for nanomaterials or device characterization because of all of the different modes that can be used for analysis. The two most common modes are imaging and diffraction mode.
-
-In imaging mode, the critical lenses are the objective lens and the intermediate lens. The objective lens is used to form a diffraction pattern in its back-focal plane and the objective aperture, in combination with a stronger intermediate lens, is used to select the proper beam needed to form bright or dark field images on the viewing screen or electron detector. When a transmitted (also called direct) beam is selected to pass through the objective aperture, a bright field image is formed. However, if one or more diffracted beam are selected to pass through the aperture, a dark field image is generated.
-
- In diffraction mode, a selected area aperture may be inserted into the image plane of the objective lens, which is above the intermediate lens, so that the diffraction pattern can be formed from a specific region of the specimen with a retracted objective aperture. The object plane of the intermediate lens is coincident with the back focal plane of the objective lens.  More application examples of lens and apertures are discussed in the videos pertaining to different modes.
-
-
-
-`,
-`	The lenses in a TEM are not always functioning as they should be, though. Over time the lenses will “drift” and become misaligned. We correct misalignments in order to optimize the performance of the microscope, and we do this using the “direct alignments” included in the microscope software. These are procedural corrections for the electro-magnetic alignment of the beam with the optical axis of the optical elements, including: 
-
-	The electron gun, aligned with the gun tilt and gun shift direct alignments,
-	The illumination system, which is made symmetric and homogeneous using the beam tilt and beam shift alignments,
-	And the imaging system, where the diffraction shift, image magnification, and camera length can be calibrated
-	
-We will also have to correct the calibration of deflection coils and lenses, which we accomplish with the pivot point direct alignment. 
-
-Not all of the routine alignments we’ll have to perform are electronic, though! Each time we insert an aperture, we’ll have to mechanically adjust its position within the column in order for it to functions as intended. We’ll have to do this with all apertures: 
-	Those associated with the condenser lenses,
-	Objective,
-	And SAED.
-
- 
-And, once we’ve performed these other alignments, we’ll have significantly changed the electronic state of the microscope and will probably notice the presence of astigmatism, as well as comma. We can correct comma with the relevant direct alignment, and we can correct astigmatism in the afflicted lenses by running the relevant stigmator alignment for the condenser, objective, or diffraction lens. 
-
-
-	
-
-
-
-
-
-`,
-`	- We mentioned that the ability to adjust the vertical position of the specimen within the objective lens fields was critical – this is actually because all set-up, calibrations, and alignments on TEMs are based on this reference position. So for everything to work as intended, we need to preform all of our own work with our specimen at this plane, called the Eucentric plane, as well. Doing so will allow the objective lens current to remain fixed, so we know our results will be closer to being accurate and reproducible. 
-
--	In a twin objective lens, the eucentric height, is defined as the plane exactly between the upper and lower objective polepiece fields.
- 
--	At eucentric height, the area of interest stays centered when the specimen is tilted about the tilt axis. When the specimen is not at eucentric height, proper image focus will require an objective lens current that is sub-optimum, which will affect:
-	
-	●The accuracy of displayed effective magnifications and camera lengths (the objective lens not only focuses the image, but also contributes the largest magnification of any lens in the system; strong changes in objective lens current change this magnification and thereby also the final magnification and camera length).
-	●Proper alignments.
-	●Stage drift, causing it to move away from the optic axis when the specimen is tilted
-	●Image drift, causing blur in gathered images.
-
-- Practically, there are four different methods to bring a specimen to eucentric height – to learn how to bring a specimen to eucentric height, follow this link. 
-
-
-`,
-`	This slide is a video showing the procedure for bringing a specimen to eucentric height. 
-`,
-`	It is important to have the C2 aperture centered before checking or carrying out any other alignments. The purpose of the alignment of C2 aperture is to make sure that the aperture is centered on the optic axis. The adjustment uses the screen center as a reference point. First, bring the focused beam to the center of the screen, then overfocus and spread the beam to fill the larger inner circle. Finely adjust the aperture position so that it is centered on the screen. As shown in the figures, when C2 aperture is centered, the electron beam should remain centered as we sweep through focus back and forth from under and over focused conditions. 
-
-
-`,
-`  	This slide is a video showing the procedure for centering the second condenser aperture. 
-`,
-`	The idea of the gun tilt alignment is to make the beam travel parallel to the optic axis, since this will allow us to use all of the electrons emitted from the source. It is ESSENTIAL for sufficient beam intensity and condenser astigmatism correction. The alignment is performed through changing the operating currents of the gun deflection coils
-
-The purpose of the gun shift alignment is to make sure that the beam movement that occurs when switching between spot sizes is minimal. It is ESSENTIAL for minimizing movements between different spot sizes and for having the beam correctly aligned along the optical axis for all spot sizes
-
-All gun tilt and shift alignments are performed through changing the current of the gun deflection coils. Gun tilt pivot point is used to change the current ratio of the upper and lower coils to avoid gun shift occurring during gun tilt.
-
-For more details on these procedures, please watch the Direct Alignment lab video. 
-
-
-`,
-`	- A pivot point is simply a point around which the beam will pivot (like a seesaw on a playground). 
-
-- The alignment of the pivot point determines the relationship between the two coils used to manipulate the beam.
-
-
-
-
-
-`,
-`	Double deflection coils are capable of two completely independent actions: a tilt and a shift.
-These two actions should be decoupled, that is, when a shift is intended, only a shift and no tilt should occur (a pure shift) and vice versa (pure tilt). 
-
-Examples of the importance of pure shift are:
-
-• In high-resolution imaging, where a beam tilt would undo all the effort spent in correctly aligning the objective lens;
-• In STEM, where a tilt in addition to the beam shift will change the magnification;
-• In TEM dark-field imaging, where a beam shift with an additional beam tilt would change the incident beam direction and thus the nature of the diffracting condition.
-
-Because of the importance of pure shift and pure tilt, considerable effort is spent correctly aligning the deflection coils by means of setting “pivot points”.
-
-The purpose of aligning the pivot points of deflection coils is to ensure that the beam tilt and beam shift functions are “decoupled” 
-
-Makes the beam jump between two tilt settings. If the pivot points are wrong, you see two beams separated laterally: just two blobs of intensity on the phosphor screen. 
-
-It is then a simple matter to adjust the two correction knobs (which may well be the multi-function knobs again) until the two beams are coincident. 
-
-The correction knobs adjust the ratio of excitation of the two sets of deflection coils. There are two ratios, because sometimes the x- and y- coils have cross-talk between them as a result of residual misalignment and the rotation effects of the objective pre-field. Don’t worry about details: just get the beams coincident. You have to do this twice – for both x- and y- tilts.
-
-
-
-`,
-`		Adjusts the lens current so that the center of the lens field corresponds to the actual center of the lens.  
-
-	If the field is off center, electrons will be focused off axis, causing the image to rotate as you change focus.
-
-	A common means of rotation centering involves varying (wobbling) the voltage of the gun. The beam tilts are then adjusted to ensure that electrons remain on axis through the lens as their energy varies
-
-	Current and voltage fluctuations should not produce a image shift or defocus the image once the rotation center is well aligned.  The beam should pass through the axis of rotational symmetry of the objective lens.  This is the same idea as aligning the incident beam to the optical axis.  
-
-	Another benefit of this procedure is that, since lens aberrations are less distinct near the optical axis, the effects of all lens aberrations are lessened slightly.
-
-	In the diagrams below, you can see a mis-aligned objective at left, and one whose lens field is well-aligned with the physical lens at right – notice the asymmetry of the misaligned lens, whose image is projected at a skew compared to the even and concentric appearance of the well-aligned lens’ beam. 
-
-
-
-
-
-`,
-`	➢	In spherical lenses, different parts of the lens surface exhibit different degrees of magnification, or different focal lengths of electron paths with different angles of incidence
-➢	Each concentric zone, or “different part” of a lens displaying different behaviors forms a ring-shaped image called a “comatic circle”
-➢	The existence comatic circles causes increasing blurring in the image plane of off-axis objects,
-➢	And results in changes in magnification with changes of aperture
-➢	Thankfully this is generally eliminated by proper lens alignment
-
-
-➢	To avoid coma, we must make sure that the beam is traveling along the optical axis of the objective lens
-
-➢	And, to do this, we must wobble the incident beam and minimizing focus difference
-
-
-
-`,
-`	Performing the coma-free alignment is crucial during HRTEM – you should check and, if necessary, correct it before taking an image if you have navigated to a new specimen location. 
-
-	The effect of coma aberration in HRTEM images was originally demonstrated by Zemlin using a “diffractogram tableau”, that is a set of the diffractograms rotating the azimuth of the beam tilt direction. 
-
-	After this study, a variety of alignment procedures have been proposed
-
-	These can be categorized into four methods: 
-	Beam-tilt-induced astigmatism (TIA) method 
-	Beam-tilt-induced focus change (TIF) method
-	Beam-tilt-induced image displacement (TID) method. 
-	Coinciding the bright-field spot with the center of caustic curve (or the aberration-free point) as observed in an underfocused image
-
-
-`,
-`	If we look at the work of Kimoto et al., we can understand this process a bit better: 
-
-At left, we can see schematics of (a) electron trajectories, (b) an image on an observed image plane, and (c) the electron beam positions in underfocused imaging. Transmitted (i) and diffracted beams (ii–iv) form (i) a bright-field spot, (ii) a caustic curve, (iii) an aberration-free point, and (iv) background. The positions of (ii) and (iii) are not changed by tilting the incident beam. The position of (i) moves according to the incident beam angle. Alignment can be done to make  the bright-field spot correspond with the center of the caustic curve (or the aberration-free point).
-
-At right, we can see underfocused caustic images with the incident beam axis being varied from 0 to 10 miliradians. The specimen is an amorphous carbon (contamination). Defocus is about 5 mm.
-
-
-`,
-`	Here we can see an example of the effects of the coma free alignment: 
-
-At left and right are two images taken of an amorphous specimen while the objective was purposefully misaligned. We can see the asymmetry in the inset fast-Fourier transforms, as well as the distortion in the images when they are compared with the central, well-aligned image and the corresponding symmetrical FFT. 
-
-
-`,
-`	This slide is a video showing how to perform the TEM direct alignments. 
-`,
-`	As we’ve mentioned, each lens system has its own associated stigmator. Correcting astigmatism in a lens with a stigmator is known as “stigmating” or “stigmation”. The corrections for the lenses are all carried out using the multi-function X and Y knobs, and the alignment is activated through the software. Condenser stigmation is covered in our lab video series. 
-
-
-`,
-`	In our Tecnai, and in the OEMP TEM simulation, we can choose from:
-
-The condenser stigmator, 
-The objective stigmator, 
-And the diffraction stigmator. 
-
-
-- As we would expect, the condenser stigmator is positioned at the end of the condenser system, so just below C2. Its job is to ensure that the beam exiting the condenser system is a circular as possible, and we know that condenser astigmatism has been corrected when we see that the beam remains circular as we vary its intensity with the intensity knob. 
-
-- The objective stigmator is below the objective lens. Astigmatism of the objective lens causes image distortion in high magnification images and low-angle diffraction patterns, and its correction can be verified in a few ways. 
-
-- The diffraction stigmator is found below the diffraction lens, and it will correct astigmatism in our LM images and diffraction patterns.  Correction of astigmatism can be checked by making sure that the crossover image (also called the caustic image) of the diffraction lens symmetrical. 
-
-
-
-
-
-`,
-`	Here we can see an example of a beam with and without the presence of condenser lens astigmatism, as seen in the TEM simulator. The leftmost “stigmatic” image is more USA-football like than circular. Even though this is astigmatism of the probe, this will degrade image quality. 
-
-
-`,
-`	This slide is a video showing the procedure for the correction of objective lens astigmatism. 
-`,
-`	And here we can see the effects objective lens astigmatism on the appearance of our images.
-
- Notice the bi-directional lines in the astigmatic image, which are traced in red for easier identification, compared to the relatively random dispersion of apparent texture in the corrected, therefore stigmatic image. The difference in image quality before and after stagnation is an easy to see reminder of why it is important to check ALL lenses for astigmatism, rather than just the condenser where it may be more obvious. 
-
-
-`,
-`	1. Can we consider convex glass lenses to be analogous to magnetic TEM lenses? 
-
-2. Where does the analogy begin to break down? 
-
-3. Why? 
-
-4. Name the components of a magnetic lens and state their functions. * 
-
-5. What force acts on an electron in a magnetic field? * 
-
-6. Describe the action of the lens field on electrons. How does this lead to aberrations? 
-
-7. Why do we use apertures in TEM? *
-
-8. After drawing a ray diagram of an over-focused beam impinging on a specimen,  
-how would you describe the strength of the objective lens? The focal length? 
-
-9. After drawing a ray diagram of an under-focused beam impinging on a specimen,  
-how would you describe the strength of the objective lens? The focal length? `
+    `	Hi; welcome back to our lecture series on transmission electron microscopy! In this chapter, we’ll be discussing the basic aspects of electron optics in a TEM. 
+    
+    In this lecture we will focus on the fundamentals of the lenses, apertures, deflectors, and stigmators, since these are the basic parts of the optical system. 
+    
+    
+    
+    `,
+    `	In this chapter, we’re going to discuss the electron optical system of the TEM.
+    
+     We’ll discuss the two types of lenses, electrostatic and electromagnetic; as well as how electronic lenses compare to glass lenses. There will be a brief review of optical geometry, including Newton and Gauss’s lens equations and magnification.
+    
+    Then we’ll re-examine the similarities and differences between electronic and glass lenses before explaining the position and function of all of the lenses within the TEM. 
+    
+    We’ll discuss each lens in detail before introducing the basic ideas surrounding a lens defect called “astigmatism”, and how we can correct it. We’ll learn about essential non-lens optical components like apertures and deflection coils. We’ll learn about how deflection coils allow us to perform beam tilts and beam shifts, and, using slides and videos, we’ll cover the practical aspects of aligning and using lenses and apertures during crucial TEM operations. 
+    
+    
+    `,
+    `	The additional references we used to compile this lecture were: 
+    
+    Bob Hafner’s Introductory Transmission Electron Microscopy Primer, freely available from Charfac.umn.edu
+    
+    Kimoto et al.’s, Practical Procedure for Coma-Free Alignment Using Caustic Figure”, from Ultramicroscopy volume 96, issue 2 (2003) pages 219-227
+    
+    And John Rodenburg’s Introductory TEM Guide, an excellent web resource found at www.roderburg.org. 
+    
+    
+    `,
+    `	To make sure you get the most out of this lesson, keep these questions in mind as we go through the material.
+    
+    What lenses and apertures are used in TEM?
+    
+    Are they the same as the glass lenses used in visible light microscopy? 
+    
+    If not, how do they work? 
+    
+    Do they suffer from any aberrations?
+    
+    If so, how do we correct them?
+    
+    How do lenses and apertures control the electron beam?
+    
+    How do we align them?
+    
+    How do they form the images or diffraction patterns inside a TEM?
+    
+    
+    
+    
+    
+    `,
+    `	In the previous chapter, we learned how we generate an electron beam with an electron gun, and that the beam from gun varied in size from around 100 nm, all the way up into micron scale. Remember that in a FEG, the “virtual source” of illumination is formed by the 1st crossover, between the extraction and accelerator anodes. Electron sources create a divergent beam, but different samples and different kinds of TEM analysis require a large dynamic range of different beam conditions (e.g. focus, intensity, beam size, etc.). In order to do that, we would have to create electron optics components to control it. 
+    
+    We’ll also recall that the size of virtual source right in that crossover is going to be around 15 nm, which seems pretty small. 
+    However, since individual atoms are much smaller than this, with their sizes being expressed in Angstroms, it turns out that this beam is still too large to allow us to analyze structures at the atomic level. 
+    
+    So if our virtual source is tens of nanometers too large, we’ll have to shrink it in some way. Thankfully, the lenses that allow us to magnify images of tiny things also allow us to shrink images of big things – the difference is arbitrary as far as the lens is concerned. So we rely on lenses and apertures to both magnify and demagnify different objects at different times. This is really where the utility and versatility of a modern TEM ultimately comes from – the use value of a TEM is almost entirely thanks to the sophisticated lens and aperture systems that you’ll find inside the column.
+    
+    
+    
+    `,
+    `	As discussed in the chapter 1, TEM share the similar principle as the light microscope, but TEM use different lenses and apertures.  In TEM, two kinds of lenses are used for optics formation: one is electrostatic lens, the other is electromagnetic lens.
+    
+    The apertures are either different size of the hole or discs with hole in the center. The figure on the left shows the cross-section schematic of objective aperture strip. The metal that the holes are cut from is called the “diaphragm”, and the holes themselves are the apertures. We can retract or insert this aperture strip around within the column and position the apertures around the beam. 
+    
+    To the right, you’ll see a ray diagram of multi-colored electron beams diverging from this dashed pink line. That line, the optical (or optic) axis, is a hypothetical mid-line that runs from the electron source all the way through the optical system as a reference point. 
+    
+    So now that we have an idea of what we’re looking at, let’s get to it. 
+    
+    Lenses and apertures are essential for beam demagnification, as well as for image and diffraction formation within the TEM -- without these, nothing happens. 
+    
+    A simple example illustrating this importance is the fact that switching between diffraction and imaging modes, which is something you’ll do almost every time you operate the microscope, is achieved by changing the strength of a single lens, called the intermediate lens. 
+     
+    So the change in the strength of one lens gives you a radically different view of the data from your specimen, and if you didn’t have that lens you wouldn’t be able to accomplish that change at all! 
+    
+    However, just lenses alone aren’t enough. 
+    As you can see, we use them together with apertures so that we can control what parts of the beam are allowed into the lenses. This use of apertures, or “aperturing” of the beam is how we control the angle of divergence or convergence of the beam through the lenses. 
+    
+    They serve another purpose as well -- if we’re selecting a portion of the beam, some other portion must be blocked. So we’ll have less electrons in that selected beam, and hence a lower probe current at the specimen -- so this is how apertures give us some control of the probe current, too! 
+    
+    
+    
+    
+    
+    `,
+    `	We can categorize apertures both by their location within the microscope and also by their composite materials and design. 
+    
+    Three main types of apertures (or, technically, “diaphragms”) exist, with different shapes and materials depending on the intended application. 
+    
+    The most common apertures are a metallic disk with a small hole. These can be used in the condenser lens 1, objective, and SAED aperture housings. These apertures are low cost, lessen the negative effects of contamination, and don’t leak electrons. The disadvantages are that they require occasional cleaning, and that the aperture shape is not as well defined as those found in thin foil apertures. 
+    
+    The thick “top-hat” apertures can also be used as condenser lens 2 apertures – these will stop all unwanted electrons and hard x-rays. The disadvantages are the same as normal aperture.
+    
+    The thin foil apertures can be used for objective aperture and SAED apertures. This kind of aperture has a well-defined hole with a precise size.  It remains clean and highly functional over a wide range of possible sizes. The drawback is that it has higher electron leakage at high voltages, which may lead to contrast loss artefacts when working at low magnifications.
+    
+    
+    
+    
+    `,
+    `	A TEM is usually equipped with four or five controllable apertures, depending on how many condenser lenses it has. 
+    
+    -	In the illumination system, the C1 aperture is above the column valve V7, within a region of higher vacuum, so it usually stays cleaner than apertures found in the chamber, where things are generally dirtier. 
+    
+        This aperture is used as the beam-defining aperture, so that some electrons from the beam’s side lobe are scattered at the edges of the aperture and do not follow the path of the beam anymore but occur outside. 
+        Usually the largest C1 aperture is used for all operation modes besides analytical modes, such as EDX and EELS. 
+        Small C1 apertures are usually used to acquire cleaner EDX spectrum with lower system noise backgrounds. However, the disadvantage of using the C1 aperture is the relatively large (~0.8 nm FWHM) smallest spot size 	attainable.
+        The C2/C3 aperture in C2/C3 lens is used as the beam-defining aperture (it limits the amount of the beam convergence for a fully focused beam) and it also sets the beam current at the specimen.
+    
+    -The objective aperture is on the back focal plane below the objective lens, and is used to enhance contrast by eliminating the diffracted beam (in dark-field imaging in TEM mode) or transmitted beam (in bright-field imaging in TEM mode). 
+        Therefore, the objective aperture is also called the “contrast-forming” aperture.
+        The SAED aperture is positioned on the image plane of the objective lens, which is above the immediate lens. This aperture acts as the area-selection tool for diffraction analysis.
+    
+    
+    
+    `,
+    `	We know that TEM uses electrostatic and electromagnetic lenses that are different from those found in optical microscopes, but what are these TEM lenses made from? How do they work? 
+    
+     As shown in the left figure, an electrostatic lens which can also be called a “unipotential” or “Einzel” lens, is made of two or more circular electrodes, with their negative potentials pointing towards the axis of the lens. 
+    
+     In order to generate enough negative potential, high voltage is required, which allows the negative potentials to repel the off-axis electrons towards the optic axis with an unbalanced force. To clarify this action, we can use a 2D schematic of electrons interacting with an electric field, offered by the Lorentz force, to describe the forces experienced by the electron while it travels through the lens.  
+    
+    The closer an electron is to the electrodes, the more force it will experience. This “unbalanced force” will push the electron towards the optic axis, where the forces are “balanced” since they are pushing on the optic axis equally from every direction –this is why we can say that the deflection angle of an electron is proportional to the distance of that electron from the optic axis. 
+    
+    - Following the Lorentz force law, the force experienced by an electron traveling through the lens is the product of the electron’s charge, negative q, and the electric field potential vector, V. 
+    
+    - The direction of motion of the on-axis electrons will not be changed, because of the balanced Lorentz force found at the optic axis. This is how a point source of electrons is focused to a single point on the axis. 
+    
+    - While they’re simple and effective, we don’t usually use these lenses in the imaging and diffraction systems because of their aberrations – aberrations are lens defects that we will discuss later. So to utilize Einzel lenses in TEM without introducing a lot of aberration into our final images, we end up using them for non-imaging functions, like acceleration/deceleration, and beam manipulation or deflection, which we’ll address shortly.
+    
+    
+    
+    
+    `,
+    `	Electromagnetic lenses are what we use to accomplish the precise focusing and defocusing of the beam that is needed for imaging applications. 
+    
+    - This kind of lens is an electromagnet composed of copper coils wound within a cylindrical yoke of magnetically soft iron. You can see a schematics of the lens in this figure. 
+    
+    - As electrical current goes through the red coils, a magnetic field is generated, and this field is concentrated by the yoke within the hollow “bore”, which is a term for the interior of the lens. 
+    
+    - The field is rotationally symmetric, but its strength is heterogeneously distributed – it’s weakest in the center of the lens, and is strongest closer to the bore. 
+    
+    - Because the strength of the field varies, electrons close to the bore are more strongly deflected than those passing through the lens directly along the optic axis.
+    
+    - Just like we saw with an ES lens, as the electrons exit the lens, the overall effect is that electrons are focused through the lens axis, resulting in a parallel electron beam being focused into a single spot, which is sometimes called a cross-over. 
+    
+    
+    
+    
+    
+    
+    `,
+    `	Following the Lorentz force law as it applies to vectors like velocity and magnetic fields, the force generated by the electromagnetic lens parallel to the optic axis is the product of electron charge and the vector (or cross-) product of the velocity and the magnetic field strength vectors. 
+    
+    Essentially this means that we can break down the velocity of the incident electrons into two components: V1 and V2. V2 being parallel to the magnetic, or B field, and V1 being perpendicular to it. 
+    
+    - The direction of force F is given by the right hand rule. 
+    
+    In the right-hand rule, imagine that you are aligning your outstretched hand North to South down the B vector, with your fingers pointing South, and representing the B field. 
+    Your vertical thumb represents the velocity vector of the electron, and for a negatively charged particle like the electron, the force vector acting on the electron is projected out of the backside of your hand. 
+    
+    - With this, we can calculate the magnitude of the Lorentz force using the product of electron charge, the speed perpendicular to the magnetic field, and the magnetic field strength, which is controlled by the amount of electrical current running through the lens coils.
+    
+    -The electrons have velocity components parallel and perpendicular to the field, as long as electrons are not traveling at 90 degree to the file direction of magnetic field B. So when theta = 0, or they’re travelling parallel to the direction of the magnetic field, there is no force on the electrons, therefore they experience no change in motion. When theta = 90 degrees we find the most force, and the greatest change in direction of motion. This change in motion of course depends on the energy of the electron as well, though, and this is why different lens designs exist for microscopes of different accelerating voltages. 
+    
+    This Lorentz force causes electrons passing the point P on the optic axis to spiral through the field and intersect the axis again at P’, which when examined over time is seen to be a helical path. This helical path means that even our images will be seen as rotated when compared to the orientation of the object from which they were made. 
+    
+    
+    
+    `,
+    `	The working principles of electromagnetic lenses seem much more complicated than those of glass lenses, but what kind of practical differences does that imply for us? The different mechanisms, namely that electromagnetic lenses use the Lorentz force to focus electrons, means that we will see different orientations between the image and the object, due to the helical path of electrons focused by a lens. 
+    
+    So there are differences in the construction of the lenses, as well as the orientation of the images from the lenses, but: are there any similarities? 
+    
+    
+    `,
+    `	To a large extent, electromagnetic lenses are actually the TEM’s (geometric) equivalent of glass lenses in light microscopy. 
+    
+    - So, the mechanisms of all lenses in a standard TEM on electrons are approximately the same as the mechanisms of a convex glass lens on visible light -- the lens takes all the rays emanating from a point in an object, and recreates that point in an image by focusing parallel rays to a point in the focal plane of the lens. This commonality is why we can say they share similar optical geometries. 
+    
+        Their mechanisms differ, mainly, since electromagnetic lenses use the Lorentz force, not refraction. 
+        Their focuses are also achieved through different means – we change field strengths in electromagnetic lenses, but glass lenses require that the lens or object move with respect to each-other for focus to be achieved.
+    
+    Objects are only inverted when imaged through glass lenses.
+    But objects are inverted and rotated when imaged through electromagnetic lenses. 
+        
+    -	Both types of lenses have imperfections, and these imperfections degrade the quality of any images they form, and this is what we mean when we say they have “aberrations”.
+        
+    
+    
+    
+    
+    `,
+    `	- Just like lenses in light microscopy, the optics axes of electromagnetic or electrostatic lenses are defined by the principal axis perpendicular to lens surface, passing through its center. 
+    
+    - The lens plane refers to a principal plane through middles of the lens, and is sometimes called the “vertical axis” in non-TEM optical diagrams. 
+    - And the focal length is the distance between the focus point and the lens plane.
+    
+    - The ray diagrams of electrostatic or electromagnetic lenses are analogous to those of convex VL lenses as well. Both types obey the refraction rule of a converging lens, which states that: 
+    
+     Any incident ray parallel to the optics axis of the lens will refract through the lens and go through the focal point on the opposite of the lens; 
+    Any incident ray that passes through the focal point on the way to the lens will refract through the lens and travel parallel to the optics axis on the image side.
+    
+    All ray diagrams abide by this rule, and it is critical to remember when you are constructing your own. 
+    
+    
+    
+    
+    `,
+    `	We have been discussing how lenses bring the scattered electrons into a focused point, but we do not really know how lens can magnify or demagnify an object yet. 
+    
+    In order to understand the mechanism, we have to understand the lens geometries we mentioned earlier. 
+    
+    These are described by Newton’s Lens equation, or Gauss’ thin-lens equation. 
+    
+    - In Newton’s lens equation, the square of focus length is the product of the distance from the focal plane to the object plane plus the distance from the back focal plane to the image plane. 
+    
+    - In Gaussian thin-lens equations, the inverse of the focal length is equal to the sum of the inverse of image distance and object distance. 
+    
+    - These two equations appear to be different since they are using different similar triangles in their geometrical approaches to the problem, but they can be used to construct an equation for magnification, where magnification, M, is just equal to v, the image distance, divided by, u, the object distance. 
+    
+    
+    
+    
+    `,
+    `	So, based on the Newtonian and Gaussian lens equations, we know that: 
+     
+    If the object is placed between F, the focus length (or the distance between the lens and the focal point), to 2F, twice the focus length then the probe/image will be magnified 
+    
+    And that
+    
+    If the object is placed beyond 2F, then the probe/image will be demagnified 
+    
+    
+    
+    
+    `,
+    `	Knowing what we know now, let’s think about what is actually happening when we focus an image in the TEM. To see an image in clearly, so in good focus, we must position the image plane so that it coincides with some sort of detector -- camera film, imaging chip, phosphor screen, etc. 
+        
+        Of course the only way we can move the image plane is by either:
+    
+            Moving the lenses, like we do in light microscopy,
+            Moving the object, which we do with the TEM stage
+            and changing the lens voltage (in electrostatic lenses) or coil current (in electromagnetic lenses)
+    
+    And, for magnification, we clearly can’t switch to different lenses like in light microscopy -- we instead stack and selectively combine TEM lenses to achieve the same effect. 
+    
+    Also remember that since these images are being formed in different ways, we will experience an inversion of the image in relation to the object (like we see in light microscopy), AND there will be additional rotation of the image in TEM as well. 
+    
+    
+    
+    `,
+    `	It should also be stated here that when we’ve been talking about “strong” or “weak” lenses, we’ve really been referring to the lens current within the coils, shown in red, which we know is used to generate the magnetic field whose force is used to focus the electrons.  We can vary the “strength” of the lens, or the current used to generate the magnetic field. All of this should leave you wondering: how will variations in lens current affect focal length? 
+    
+    Looking at this equation here, in which focal length is represented by f, and lens current is represented by i. we can see that  the focal length, f, is equal to a constant, K, times V over i squared, where V is the  accelerating voltage of the microscope at the time in question. 
+    
+    This shows us that short focal lengths are the product of strong lenses. And, as expected, long focal lengths are the product of weak lenses. 
+    
+    
+    `,
+    `	Using this equation, we can see that when we hold K and V to be constant, “strengthen” the lens field, or increase the lens current, our focal length gets shorter. And, of course, then, when we “weaken” our lens (i.e. decrease our lens current), the focal length will get longer. 
+    
+    And, remembering that magnification is image distance divided by object distance, we can imagine how adjusting the currents of two stacked lenses could allow us to magnify or demagnify by changing the image: object distance ratio of the lower lens. 
+    
+    
+    `,
+    `	Until now we’ve been treating electromagnetic lenses as if they were ideal – in reality, they are imperfect and do not behave exactly as described. Even though considerable effort has been devoted to ensuring high lens quality, the symmetry of the lens field will be variable due to both: 
+    
+        Permanent inhomogeneities that are present from time of manufacture, or arise through use, such as if dust enters the vacuum system and adheres to a pole piece. 
+    
+        As well as temporary inhomogeneities, which are usually caused by any magnetism or charging of the specimen itself. 
+    
+        Any of these imperfections cause the lens to lose the ability to focus symmetrically. 
+    
+    As shown in the ray diagram on the right, electrons entering the lens from one direction the lens will be focused more strongly than those entering from the perpendicular direction, causing an asymmetry called, “astigmatism”, found in both glass and magnetic lenses, when the beam, image, or diffraction pattern appear elongated or stretched. 
+    The word astigmatism, from the Greek word “stigma", which translates loosely to “point”, could be defined to mean, “without point”, or even, “without circle”, which makes sense when we remember that the ideal beam shape should be circular, as shown in the middle image. In the presence of astigmatism, however, the electron beam’s shape will lose its circularity, and be elongated into an oval, as shown on either side of the original beam. This distortion in the beam causes the final image and/or diffraction patterns to be distorted as well. 
+    
+    Fortunately, unlike some other aberrations, the astigmatism of our lenses can be corrected by devices called “stigmators” which are built-into all modern TEMs.
+    
+    
+    `,
+    `	Stigmators are made up of one or more quadrupoles, which, basically, form a lens whose astigmatism can be varied continuously. This is how we use them to correct astigmatism! 
+    
+    A single quadrupole has four elements, arranged at 90 degrees to one another, all around the beam. 
+    
+    These elements are used together in two sets, with each set lying on opposite sides of the beam. 
+    If one set is given a positive value and the other a negative, then the positive elements will attract the electrons, while the negative elements repel the electrons (green arrows). 
+    
+    The resulting astigmatism (dark red ellipse) from the stigmator cancels out the original astigmatism from the lens (making the beam round: red circle). 
+    
+    The actual design of the stigmators inside the microscope is - as with the deflection coils - more complicated, and based on a magnetic field. (The field direction and strength shown by blue arrows).
+    
+    Each stigmator consists of, at least, two of the elements, one mounted above the other and rotated by 45° with respect to each other, since this combination of two elements allows correction of astigmatism in any direction. 
+    Each of these elements is controlled by one of the Multifunction knobs (MF X, MF Y). 
+    
+    
+    `,
+    `	And, in addition to stigmators, there are also deflection coils within the column. Deflection coils play an essential role in the alignment of the microscope and are used for aligning the gun, beam, objective lens, magnification system (where they govern image and diffraction shifts of the beam to the screen center) and detector alignments (governing image or diffraction shifts of the beam to a detector that is situated off the optical axis). Deflection coils are only intended to “shift” or “tilt” the direction of the beam. 
+    
+    
+    A deflection coil is a set of coils on either side of the electron beam.
+    
+     If one is given a positive magnetic field and the other one a negative one, the electrons in the beam will be attracted by the positive field and repelled by the other, leading to a deflection towards the positive coil. 
+    
+    The actual coils are extended over arcs of 120°. The arcs are used to generate a homogeneous magnetic field, which we then use to control the beam path inside the TEM.  
+    
+    In general, a TEM has three sets of double deflection coils: the gun coils just underneath the electron gun (or underneath the high-tension accelerator in case of 200 or 300 kV instruments); the beam deflection coils above the objective lens; and the image deflection coils below the objective lens.
+    
+    
+    
+    `,
+    `	We can roughly break the TEM down into 4 systems: The probe forming or illumination system, the imaging and diffraction system, the projection system, and any optional “post-column” analytical systems that might be included, but since these are variable we’ll ignore them for now and consider the TEM to be broken into just the top three. 
+    
+    The top third goes by many names, but we can consider it to be the “beam forming”, “probe forming”, or “illumination” system, and you already even know a bit about this, because that’s where the electron gun sits!
+    
+    We call the uppermost chunk the illumination system because it’s entirely devoted to shaping that crude “straight-from-the-gun” electron beam into a useful and versatile probe, so none of its lenses are doing anything directly related to forming or magnifying images of our sample -- the illumination system takes the gun crossover as its object, and the modified image of the crossover that we get out of the last lens in the system is passed on to the next chunk. 
+    
+    The chunk that takes the probe exiting the illumination system as its image is the middle third -- the image or diffraction formation system. I say “or” because it could produce an image or it could produce a diffraction pattern, but more on this later. 
+    
+    All you need to know right now is that the imaging system deals with the beam immediately before and after the specimen, so it will be manipulating an actual image or diffraction pattern of whatever it is we’ve put in our TEM and passing that along to the last chunk.
+    
+    The lower third of the microscope, barring the electron energy loss spectrometer (or, EELS, like the fish) at the very bottom, we’ll call the magnification and/or projection system, since, remember, we used the entire beam forming system to create a tiny, tiny probe, and then sent that probe into the imaging system, through an equally tiny area of the sample (or our FOI “feature of interest”), and got an image of our FOI projected into the magnification system. The trouble is, that image is still extremely small, so we have this entire projection system to magnify the tiny image into the macro scale. 
+    
+    Once it’s magnified, the rest of the projection system projects it onto some kind of surface that will allow us to view the image, either through a phosphor screen that will convert electrons to photons that we can see with our eyes, or through a CCD camera that will allow us to feed the data into a computer. 
+    
+    
+    `,
+    `	Since we already know from the last lecture that the electron gun is what generates our beam, we’ll start just below the extractor anode, at the gun lens. This is an electrostatic lens that sits just underneath the extractor anode we talked about last lecture. We control this lens, like all of the lenses in a modern TEM, through a computer running specialized software provided by the manufacturer. In our case, this is what the gun lens controls will look like within the software. For FEI/Thermo Fisher Scientific tools, we see that there is an integer value for the gun lens displayed here, and that we can increase or decrease this incrementally from one to eight.
+    
+     As we increase our gun lens setting, we’ll reduce the beam size and beam current, with each whole-number increment (so, moving from 2 to 3, for example) reducing the beam current that comes out of the lens by around 35%. 
+    
+    Looking at this graphic, this is pretty easy to understand -- at smaller gun lens settings, the crossover generated by the lens is very close to the bottom of the lens, meaning the beam hitting C1 will contain the most possible energy, and we filter out what we don’t want with the C1 aperture.
+    
+     As we increase our gun lens setting, the crossover moves up higher within the lens, meaning the beam spreads more and more across C1, so that no matter what size of C1 aperture we insert into its path, there will be more electrons excluded by the aperture, leading to a smaller and weaker beam. 
+    
+    This might seem strange since we emphasized the importance of having a “strong”, dense beam in the electron gun lecture, but that’s only because we wanted to ensure that we have the option to weaken a strong beam like this rather, than being stuck with a weak beam from the outset. 
+    
+    And, again, this is the first lens-induced crossover in the microscope, and this crossover is the object that the first condenser lens sees and manipulates, because lenses are just a discrete chain of inputs and outputs, which is sort of counterintuitive when we just took a more holistic look at the optical system.
+    
+    
+    
+    
+    `,
+    `	When we’re adjusting the settings of your electron gun, it’s important to remember that the crossover has to be within the lens, and that the position of the crossover is affected by three operator-controlled factors: 
+    
+    ●	The high tension voltage, 
+    ●	The extraction voltage, 
+    ●	And the actual setting of the gun lens itself. 
+    
+    In short: if the crossover it outside the gun lens, the lens, and by extension the entire TEM will be incorrectly aligned. Furthermore, changing gun lens settings means that the entire TEM will have to be re-aligned afterwards to account for the change. 
+    
+    Keep in mind, HT and extraction voltages can have effects on the position of the crossover within gun lens, so you must first establish appropriate HT, an appropriate extraction voltage, and then set your gun lens at a setting that is adequate for the previous settings. 
+     
+    Since a change of gun lens settings may decrease overall stability of the TEM, only modify them if you need to correct a misplaced gun crossover, or switch between two modes (such as from TEM to STEM or otherwise). 
+    
+    
+    
+    `,
+    `	After leaving the gun lens and passing through the accelerating anode, the beam interacts with two sets of deflection coils that can be seen directly underneath the anode. 
+    
+    Each set has a certain function:
+    
+    The function of the first set, the gun tilt coils, is to ensure that the electron beam enters the microscope (or, really the first condenser lens, C1) parallel to the optic axis – this is accomplished by the “gun tilt” alignment, which we can only control due to the existence of these coils. 
+    
+    The function of the second set, the gun shift coils, is to ensure that the beam goes through the center of the C1 lens – this is accomplished by performing the “gun shift” direct alignment. 
+    
+    We’ll discuss both of these alignments in greater detail towards the end of this chapter. 
+    
+    
+    
+    
+    `,
+    `	Now that we’re out of the gun lens, with a well-placed 1st crossover thanks to correct high tension, extraction, and gun lens settings, the beam passes through properly configured gun deflection coils, emerges traveling parallel to the optic axis, and enters the first lens of the condenser system. 
+    
+    This system and its relevant software settings are how we control the diameter of the beam via dynamic demagnification, and also how we can improve our beam’s coherence, as well as modulate the beam current. 
+    
+    We remember that the first aperture in the system was below C1, and that there is an aperture in C2 -- we’ll use these condenser apertures in conjunction with the lenses to eliminate the very divergent (or, high angle) electrons from our beam by centering the aperture around the most coherent part of the beam, ensuring that what we’re working with from here down is as coherent as possible. 
+    
+    A key thing to know is that if we increase the current of an electromagnetic lens above an aperture, the current of our beam below the aperture is reduced. This is because increasing the “strength” of the lens moves the focal point of the lens, where the beam begins to diverge, higher above the apertures, allowing a larger portion to diverge into and hence be blocked by the diaphragm, thereby reducing our measured current below the aperture! 
+    
+    Generally, we get the most use out of our condenser system when we’re working at higher magnifications, usually greater than 400,000 X magnification, because we can use them to shorten the focal length of the beam in order to demagnify it into the tiny probe we’ll need to operate at those high magnifications. 
+    
+    
+    
+    
+    `,
+    `	So, knowing generally about the condenser system, let’s go over each lens individually -- 
+    
+    C1, the first condenser lens, serves to demagnify the image of the gun crossover. 
+    This lens is how we set the “spot size”, which is the smallest beam diameter that will be available to the rest of the system below this lens. 
+    C1, in conjunction with its aperture will also place an upper limit on the beam current going through the rest of the column. 
+    
+    So now we know that the C1 lens and aperture, in conjunction with C2 and its aperture, control spot size and can limit beam current, but how can we control the illumination area or the beam convergence angle? 
+    
+    It turns out that C2 and its in-lens aperture control the convergence or divergence of the beam at the specimen, the diameter of the area on the specimen that is illuminated, and, just like C1, C2 can also set a new upper limit on the beam current for the rest of the system through appropriate lens strength selection and aperture placement.
+    
+    The sometimes-present C3, which isn’t in our microscope, but can be found in more advanced tools, offers an extended area of illumination -- so if you have a microscope with a third condenser lens, you’ll be able to see a larger area of your specimen, should you desire. 
+    
+    
+    
+    
+    
+    `,
+    `	Spot size, as we said, is the setting that determines the minimum probe size that will be available to the rest of the microscope, and that’s controlled by the condenser system. 
+    In the microscope software, the spot size is represented by an integer value much like the gun lens setting was, in this case the values range from 1 - 11, with 1 being the largest spot, and 11 being the smallest.
+    
+    We can see in this diagram that if we have our spot size set to 1, our C1 crossover is down very close to C2, so we could say in this situation that C1 is “weakened”, or that the current running through it is relatively low, and that’s how we get that low crossover. Note that we’ve drawn the C2 aperture below the lens, just for convenience, but know that in reality this is within the lens.
+     This weakened C1, with its very low crossover, means that all of the beam passing through the C1 aperture hits C2 and is permitted to pass through its aperture without any restriction, hence we have the highest beam current and the largest spot size when we’re operating at a spot size setting of “1”. 
+    
+    If we take a look at the rightmost example, which is illustrative of a much higher spot size setting, we can see that C1 is strong, or “excited”, so we’ve got a relatively high lens current at C1 that is giving us a high crossover above C2, and C2 itself is weakened, meaning a large portion of the beam is blocked by the C2 diaphragm and therefore we have a decreased beam current. 
+    
+    If this seems a little abstract, take a second to think about the practical implications: 
+    If you’re working with large, conductive structures at low magnifications, would you want a high gun lens setting?
+    
+     Well, a strong C1 and weakened C2, along with the heavy aperturing of the beam that would be occurring would make your probe small and would reduce its current substantially.  Both of these would actually be very inconvenient if your structures of interest are large, because you would only be able to see the tiny area afforded by your probe. If you tried to get around this by increasing your beam diameter, by turning your intensity knob, you would spread your beam, but since there is a relatively low current in your spot you would still be unable to see or gather useful data from your structures because the beam would be so weak that it might even be invisible to your eyes.
+    
+    So for large structures or low-mag work, it’s important to remember to choose a low spot size so that you have a suitable minimum beam diameter and enough current density to work with. Conversely, it’s also important to remember to choose higher spot sizes when you’re working at extremely high magnifications so that you have a suitably small probe! 
+    
+    
+    
+    `,
+    `	In the last example we mentioned a previously undefined control: the intensity knob. This is an important thing to be aware of, because it’s how we control the diameter of the beam at the specimen. This is a physical knob on the microscope controls that sends instructions to the microscope software, telling it to alter the current running through C2 depending on which way we turn it. 
+    
+    We see that if we were to increase our intensity, we would be strengthening C2, pulling that crossover up, which would in turn give us a broader beam entering the rest of the system and, ultimately, give us a larger area of illumination at the specimen. Now, of course, if we’re changing the height of the C2 crossover we’re also changing something other than just the diameter of the beam at the specimen -- we’re changing the convergence angle as well. 
+    This is because every lens has a focusing action, so even though we’re creating a broad beam at C2 to send through the rest of the system, the lenses below it will still focus it into a crossover, so it will still converge down to a point somewhere; the intensity control will affect this, with more intense, small beams necessarily being more convergent, and less intense, broad beams being more divergent. 
+    
+    And, since we’re altering the size of the beam without the influence of an aperture, the change in size means there will be a related change in electron dose at the specimen, because our beam current is fixed! So if we have a very broad beam, we’ll have a lower dose, since the fixed current is distributed across the entire sample and beyond. But, and you probably see where I’m going here by now, if we have a very focused beam, all of the available beam current is focused into that spot, meaning we’ll have a much higher electron dose there, which as we know can cause contamination to build up on the sample, or, worse, damage the sample. 
+    
+    
+    
+    
+    `,
+    `	The beam deflection coils facilitate beam tilts and beam shifts for imaging, diffraction, and microscope alignments. They also act as scan coils for rastering the beam in STEM mode. 
+    
+    - A beam shift comes about by deflecting the beam through an angle g by the upper coil, and then doing the reverse (-g) with the lower coil.
+    In this case, both coil currents are the same.
+    
+    - Since the electron beam comes out from deflection coils parallel to the optical axis and must go through a single point in the back-focal plane, shifting the beam should have no effect on the location of the beam in the back-focal plane.
+    
+    - A beam tilt comes about by deflecting the beam through an angle g with the upper deflection coil, and then deflecting by -2 g by the lower coil.  In this case, the current of the bottom coil is greater than that of the top coil.  
+    A beam tilt will result in a beam shift in the back-focal plane, but should cause no shift in the image plane.
+    
+    
+    
+    
+    `,
+    `	So, we’ve got C1 and C2 setting our spot size, and C2 giving us control of intensity, so by now our beam is probably sufficiently small for atomic-scale imaging, right? Wrong! 
+    It turns out that, for our convenience, we frequently operate in “microprobe” mode, which means we’re using the minicondenser lens to purposefully magnify our probe as it exits the main condenser system, which you can see on the left in this diagram. 
+    
+    Notice how the small probe is entering the minicondenser, but is then spread out by its lens at the top there, and the final probe we get coming out is actually larger than what we sent in!
+     Why would we do this if we’ve already invested so much in demagnifying our beam? 
+    
+    Thinking back to what we said about illumination area, it sort of makes sense that we’d want a large probe at first to make it easier to find our way around our sample, or to take low-magnification images. So we have the minicondenser there to magnify our probe for us and make these things easier. 
+    
+    
+    If we want a smaller probe for higher-mag work, all we have to do is enter “nanoprobe’ mode, which will switch the minicondenser lens optically “off” (even though, to keep the column stable,  it’s never actually off -- turning it “on” or “off” just changes the direction the current flows through it; the same current is flowing all the time in order to avoid temperature swings and field fluctuations that would interfere with our alignments). When it’s optically “off”, the probe coming into the system is not affected by the topmost lens, and instead can enter a weakened objective and continue down the column as a much finer nanoprobe. While on, the minicondenser lens field is reinforced by the field of the objective lens in the microprobe mode.
+    
+    
+    
+    
+    
+    
+    
+    
+    `,
+    `	And without turning off the minicondenser lens, we would not be able to perform STEM! 
+    
+    During the formation of nanoprobes for STEM the upper polepiece of the objective lens acts as a 3rd condenser lens (C3). 
+    
+    C1 is strengthened so that the image of the gun crossover is well above C3, and C2 is weakened or turned off. 
+    
+    The minicondenser being powered down allows for this large demagnification of the C1 crossover. 
+    
+    The beam deflection coils will also begin to act as scanning coils at this point, and, again, are how we raster the beam over the specimen. 
+    
+    You can see a typical example of the optical configuration for STEM mode at right. 
+    
+    
+    `,
+    `	
+    
+    The main function of these lenses and apertures is summarized in this table.
+    
+    >The gun lens, and the first condenser lens control the beam current and final probe size.
+    The main role of C1 is to demagnify the image of the source, and we change this demagnification via the Spot-Size setting on the microscope controls. 
+    Increasing the current in the gun lens and in C1 reduces the beam current and probe size -- so, increasing the gun lens setting in the software leads to increased demagnification of the source, and to decreased current in the beam. This means that increasing the gun lens setting restricts the beam current available to the rest of the system below it. 
+    
+    >The degree of beam convergence at the specimen, which we see as the size of the illuminated area, is governed by C2 (and C3 in a three condenser lens system).  We modify this with the Intensity knob. 
+        
+    >The aspects of probe formation controlled by the minicondenser are mode-dependent – that is, TEM illumination uses the Microprobe setting (when the minicondenser lens is “on”), and fine-probe modes like STEM and nanodiffraction illumination use the Nanoprobe setting (with minicondenser lens “off”).  In Microprobe, the illuminated area and probe size are five times larger than in Nanoprobe, because the convergence angle in Microprobe is five times smaller than in Nanoprobe.   
+    
+    >We see that the upper objective lens also contributes to probe formation – how is that? 
+    
+    
+    
+    
+    
+    `,
+    `		The objective lens is the most important lens in the whole microscope.
+    
+    	But we see that if the magnification is large (and in practice, it is generally a factor of 20-50, then the range of angles of rays impinging upon the first image plane is very small relative to the range the angles entering the object lens from the specimen. Of course, other lenses below the objective lens (which are in the projector system) also magnify, and as the magnification increases, then the range of angles that each subsequent lens must deal with is reduced and reduced.
+    
+    	Because aberrations are worse at high angles than at low angles (with haven’t proved this, but it is generally true), then the lens which will be most affected by aberrations will be the objective lens, because it has to deal with biggest range of angles in the whole microscope. That means that our biggest single concern in electron microscopy should be to make sure that the objective lens is perfectly aligned and stigmated. In fact, if the objective lens is mis-aligned, the errors it introduces will so huge that no matter what we do with the other lenses, we will never be able to correct the error.
+    
+    
+    
+    `,
+    `	Before we can understand its function, and role in probe formation, let’s get a bit of historical context, since this is a very critical piece of the optical system. 
+    
+    Historically, three objective systems have been used in a TEM, and you can see these three here: 
+    
+    -the conventional objective lens, 
+    -the symmetrical condenser-objective lens developed by Riecke and Ruska (in 1966), 
+    -and the twin lens design, which is shown twice; once in “microprobe” mode, and once in “nanoprobe”.
+    
+    
+    `,
+    `	- In the conventional objective lens, the specimen occupies 1/3rd of the lens gap, and the objective aperture is located in the second third. This type of objective lens has a number of disadvantages:
+    
+        - Since the space below the objective aperture cannot be used to accommodate a tilting specimen, and the conventional lens suffers from either a limited tilt range, or an unnecessarily wide gap, with the latter deteriorating the Cs and Cc, and thus the resolution.
+    
+        - The lack of a strong objective pre-field in the conventional lens design doesn’t allow for small spot sizes, so Scanning Transmission Electron Microscopy, Microanalysis and Convergent Beam Diffraction are severely hampered.
+    
+        - The asymmetry of the lens also results in a very restricted view of reciprocal space in the diffraction pattern, as the pattern occurs too high above the lower objective pole piece.
+    
+        - The strongly asymmetrical magnetic lens field produces a rapid change of the lens parameters, making it crucial to always work at the same objective-lens current if you want reproducible high-resolution results, which you should! 
+    
+    Even though you will probably never use a TEM with a conventional objective lens design, the ability to raise and lower the specimen within the lens remains a daily necessity in TEM. 
+    
+    
+    `,
+    `	The limitations of the conventional objective lens led Riecke and Ruska to develop the symmetrical condenser-objective lens in 1966. 
+    
+    This lens design is compatible with a side-entry, so-called “eucentric” specimen stage, making it easy to work at a fixed position in the lens. 
+    
+    
+    - In this arrangement, the specimen is located in the middle of the objective-lens pole pieces, with the objective aperture below it, just above the lower pole piece. 
+    
+    - This lens reduces the pole piece gap and retains the ability to tilt the specimen to high angles, which is desirable.
+    
+    - This reduction does have consequences, however. For example, 
+     
+        >The lens parameters far from the center are slow to change. 
+        >The lens also has a large diffraction angle, and provides only small spot sizes. 
+        >And the beam cannot be spread very far. 
+     
+    -These consequences are somewhat limiting when it comes to TEM -- In fact, the maximum area that can be illuminated is typically around 1 micrometer, which severely restricts the field of view at lower magnifications. 
+    
+    -Additionally, defocusing of the beam is limited by spherical aberration effects of the objective pre-field, which will give us poor coherence across the field of view as a whole.
+    
+    
+    
+    
+    `,
+    `	In the TWIN-lens design, however, the disadvantages of the original symmetrical condenser-objective lens are no longer present, and an entirely new lens has been added. 
+    
+    The minicondenser lens, incorporated into the upper pole piece, can be switched 'optically' on (referred to as the microprobe mode, shown on the left), in which case a cross-over is created at the front-focal point of the objective-lens pre-field, which will give us a wide field of view, and coherent illumination on the specimen. 
+    
+    When the minicondenser lens is switched 'optically' off, the lens is in the nanoprobe mode (shown on the right), and the performance of the TEM in this mode is similar to the original Riecke-Ruska design. 
+    
+    
+    
+    
+    `,
+    `	The image deflection coils, situated below the objective lens, have many uses.
+    
+        They shift the image and the diffraction pattern, to align various magnifications, camera lengths and modes (such as TEM and STEM),
+    
+        they correct image or diffraction-pattern movement caused by the objective and diffraction stigmators, respectively,
+    
+         and set the Detector alignments that move the image or diffraction pattern to a detector that is situated off the microscope axis (STEM BF/DF, TV). 
+    
+        In addition, the image deflection coils can be used coupled to the beam deflection coils in a number of instances, for example during image shifts. 
+    
+    
+    `,
+    `	The Diffraction lens is the lens immediately beneath the objective lens, and above the intermediate lens. 
+    
+    In diffraction mode, the diffraction lens serves to focus the diffraction pattern via
+    In LM mode, the diffraction lens determines image focus
+    
+    The diffraction lens is able to control image focus in LM mode because the objective is automatically turned off. 
+    
+    All focusing actions of the diffraction lens can be controlled through the focus knob on the microscope user interface panel. 
+    
+    
+    
+    
+    
+    
+    `,
+    `	Between the diffraction lens and the projection lens is the intermediate lens.
+    
+    We use this lens to switch between image and the diffraction modes.
+    Increasing the lens current results in switching a TEM from the diffraction mode to  image mode, and decreasing the lens current leads to switching from the image mode to diffraction mode.
+    
+    In modern systems, this is performed simply by pushing the diffraction button on the control panel.
+    
+    
+    
+    
+    `,
+    `	The Projector lenses are used for final magnification within the TEM.
+    
+    We control the current in this lens with the aptly-named magnification knob. This is how you’ll change your image magnification in image mode, and camera length in diffraction mode.
+    
+     Similar to light microscopy, the total magnification is the product of the magnifications of all of the lenses of the system – so, here, total magnification is the product of the individual magnifications of the objective, diffraction, intermediate, and projection lenses.
+    In diffraction mode, instead of using magnification, we use the effective distance from the sample to the detector, or camera length, to measure the distances recorded in diffraction patterns, the total camera length in a projection system is given by the product of objective focal length, individual magnificactions of the diffraction, intermediate, and projector lenses
+    
+    
+    
+    `,
+    `	So, to briefly summarize this table: We use our illumination system to control: beam demagnification, spot size, convergence, intensity, and the switch between micro- and nano-probe modes. The lenses of the illumination system are the gun, C1, C2 & possibly C3, as well as the minicondenser.  We control C1 with the L3 and R3 buttons, which incrementally decrease and increase spot-size, respectively. C2 is controlled by the intensity knob, which we use to determine the convergence of the beam on the specimen. 
+    
+    The condenser stigmator is the only stigmator within the illumination system, where we also find the gun and beam deflection coils. The apertures available for use in this system are all of those associated with a condenser lens. 
+    
+    The imaging and projection systems control imaging functions, diffraction functions, and magnification. Its lenses are the objective, diffraction, and intermediate, as well as the two projection lenses. We can control the intermediate lens via the diffraction button, and we can control the behavior of the projection lens with the magnification knob. 
+    
+    There are two stigmators in this system: the objective stigmator, and the diffraction stigmator. The only deflection coil is the image deflection coil. Apertures in this system are paired with the objective and SAED lenses. 
+    
+    `,
+    `	Everything that we have learned today is what we need to understand how to begin to craft optical conditions within the TEM to suit applications and experimental needs. Per discussion in the introduction chapter, TEM is one of most versatile electron microscopes for nanomaterials or device characterization because of all of the different modes that can be used for analysis. The two most common modes are imaging and diffraction mode.
+    
+    In imaging mode, the critical lenses are the objective lens and the intermediate lens. The objective lens is used to form a diffraction pattern in its back-focal plane and the objective aperture, in combination with a stronger intermediate lens, is used to select the proper beam needed to form bright or dark field images on the viewing screen or electron detector. When a transmitted (also called direct) beam is selected to pass through the objective aperture, a bright field image is formed. However, if one or more diffracted beam are selected to pass through the aperture, a dark field image is generated.
+    
+     In diffraction mode, a selected area aperture may be inserted into the image plane of the objective lens, which is above the intermediate lens, so that the diffraction pattern can be formed from a specific region of the specimen with a retracted objective aperture. The object plane of the intermediate lens is coincident with the back focal plane of the objective lens.  More application examples of lens and apertures are discussed in the videos pertaining to different modes.
+    
+    
+    
+    `,
+    `	The lenses in a TEM are not always functioning as they should be, though. Over time the lenses will “drift” and become misaligned. We correct misalignments in order to optimize the performance of the microscope, and we do this using the “direct alignments” included in the microscope software. These are procedural corrections for the electro-magnetic alignment of the beam with the optical axis of the optical elements, including: 
+    
+        The electron gun, aligned with the gun tilt and gun shift direct alignments,
+        The illumination system, which is made symmetric and homogeneous using the beam tilt and beam shift alignments,
+        And the imaging system, where the diffraction shift, image magnification, and camera length can be calibrated
+        
+    We will also have to correct the calibration of deflection coils and lenses, which we accomplish with the pivot point direct alignment. 
+    
+    Not all of the routine alignments we’ll have to perform are electronic, though! Each time we insert an aperture, we’ll have to mechanically adjust its position within the column in order for it to functions as intended. We’ll have to do this with all apertures: 
+        Those associated with the condenser lenses,
+        Objective,
+        And SAED.
+    
+     
+    And, once we’ve performed these other alignments, we’ll have significantly changed the electronic state of the microscope and will probably notice the presence of astigmatism, as well as comma. We can correct comma with the relevant direct alignment, and we can correct astigmatism in the afflicted lenses by running the relevant stigmator alignment for the condenser, objective, or diffraction lens. 
+    
+    
+        
+    
+    
+    
+    
+    
+    `,
+    `	- We mentioned that the ability to adjust the vertical position of the specimen within the objective lens fields was critical – this is actually because all set-up, calibrations, and alignments on TEMs are based on this reference position. So for everything to work as intended, we need to preform all of our own work with our specimen at this plane, called the Eucentric plane, as well. Doing so will allow the objective lens current to remain fixed, so we know our results will be closer to being accurate and reproducible. 
+    
+    -	In a twin objective lens, the eucentric height, is defined as the plane exactly between the upper and lower objective polepiece fields.
+     
+    -	At eucentric height, the area of interest stays centered when the specimen is tilted about the tilt axis. When the specimen is not at eucentric height, proper image focus will require an objective lens current that is sub-optimum, which will affect:
+        
+        ●The accuracy of displayed effective magnifications and camera lengths (the objective lens not only focuses the image, but also contributes the largest magnification of any lens in the system; strong changes in objective lens current change this magnification and thereby also the final magnification and camera length).
+        ●Proper alignments.
+        ●Stage drift, causing it to move away from the optic axis when the specimen is tilted
+        ●Image drift, causing blur in gathered images.
+    
+    - Practically, there are four different methods to bring a specimen to eucentric height – to learn how to bring a specimen to eucentric height, follow this link. 
+    
+    
+    `,
+    `	This slide is a video showing the procedure for bringing a specimen to eucentric height. 
+    `,
+    `	It is important to have the C2 aperture centered before checking or carrying out any other alignments. The purpose of the alignment of C2 aperture is to make sure that the aperture is centered on the optic axis. The adjustment uses the screen center as a reference point. First, bring the focused beam to the center of the screen, then overfocus and spread the beam to fill the larger inner circle. Finely adjust the aperture position so that it is centered on the screen. As shown in the figures, when C2 aperture is centered, the electron beam should remain centered as we sweep through focus back and forth from under and over focused conditions. 
+    
+    
+    `,
+    `  	This slide is a video showing the procedure for centering the second condenser aperture. 
+    `,
+    `	The idea of the gun tilt alignment is to make the beam travel parallel to the optic axis, since this will allow us to use all of the electrons emitted from the source. It is ESSENTIAL for sufficient beam intensity and condenser astigmatism correction. The alignment is performed through changing the operating currents of the gun deflection coils
+    
+    The purpose of the gun shift alignment is to make sure that the beam movement that occurs when switching between spot sizes is minimal. It is ESSENTIAL for minimizing movements between different spot sizes and for having the beam correctly aligned along the optical axis for all spot sizes
+    
+    All gun tilt and shift alignments are performed through changing the current of the gun deflection coils. Gun tilt pivot point is used to change the current ratio of the upper and lower coils to avoid gun shift occurring during gun tilt.
+    
+    For more details on these procedures, please watch the Direct Alignment lab video. 
+    
+    
+    `,
+    `	- A pivot point is simply a point around which the beam will pivot (like a seesaw on a playground). 
+    
+    - The alignment of the pivot point determines the relationship between the two coils used to manipulate the beam.
+    
+    
+    
+    
+    
+    `,
+    `	Double deflection coils are capable of two completely independent actions: a tilt and a shift.
+    These two actions should be decoupled, that is, when a shift is intended, only a shift and no tilt should occur (a pure shift) and vice versa (pure tilt). 
+    
+    Examples of the importance of pure shift are:
+    
+    • In high-resolution imaging, where a beam tilt would undo all the effort spent in correctly aligning the objective lens;
+    • In STEM, where a tilt in addition to the beam shift will change the magnification;
+    • In TEM dark-field imaging, where a beam shift with an additional beam tilt would change the incident beam direction and thus the nature of the diffracting condition.
+    
+    Because of the importance of pure shift and pure tilt, considerable effort is spent correctly aligning the deflection coils by means of setting “pivot points”.
+    
+    The purpose of aligning the pivot points of deflection coils is to ensure that the beam tilt and beam shift functions are “decoupled” 
+    
+    Makes the beam jump between two tilt settings. If the pivot points are wrong, you see two beams separated laterally: just two blobs of intensity on the phosphor screen. 
+    
+    It is then a simple matter to adjust the two correction knobs (which may well be the multi-function knobs again) until the two beams are coincident. 
+    
+    The correction knobs adjust the ratio of excitation of the two sets of deflection coils. There are two ratios, because sometimes the x- and y- coils have cross-talk between them as a result of residual misalignment and the rotation effects of the objective pre-field. Don’t worry about details: just get the beams coincident. You have to do this twice – for both x- and y- tilts.
+    
+    
+    
+    `,
+    `		Adjusts the lens current so that the center of the lens field corresponds to the actual center of the lens.  
+    
+    	If the field is off center, electrons will be focused off axis, causing the image to rotate as you change focus.
+    
+    	A common means of rotation centering involves varying (wobbling) the voltage of the gun. The beam tilts are then adjusted to ensure that electrons remain on axis through the lens as their energy varies
+    
+    	Current and voltage fluctuations should not produce a image shift or defocus the image once the rotation center is well aligned.  The beam should pass through the axis of rotational symmetry of the objective lens.  This is the same idea as aligning the incident beam to the optical axis.  
+    
+    	Another benefit of this procedure is that, since lens aberrations are less distinct near the optical axis, the effects of all lens aberrations are lessened slightly.
+    
+    	In the diagrams below, you can see a mis-aligned objective at left, and one whose lens field is well-aligned with the physical lens at right – notice the asymmetry of the misaligned lens, whose image is projected at a skew compared to the even and concentric appearance of the well-aligned lens’ beam. 
+    
+    
+    
+    
+    
+    `,
+    `	➢	In spherical lenses, different parts of the lens surface exhibit different degrees of magnification, or different focal lengths of electron paths with different angles of incidence
+    ➢	Each concentric zone, or “different part” of a lens displaying different behaviors forms a ring-shaped image called a “comatic circle”
+    ➢	The existence comatic circles causes increasing blurring in the image plane of off-axis objects,
+    ➢	And results in changes in magnification with changes of aperture
+    ➢	Thankfully this is generally eliminated by proper lens alignment
+    
+    
+    ➢	To avoid coma, we must make sure that the beam is traveling along the optical axis of the objective lens
+    
+    ➢	And, to do this, we must wobble the incident beam and minimizing focus difference
+    
+    
+    
+    `,
+    `	Performing the coma-free alignment is crucial during HRTEM – you should check and, if necessary, correct it before taking an image if you have navigated to a new specimen location. 
+    
+    	The effect of coma aberration in HRTEM images was originally demonstrated by Zemlin using a “diffractogram tableau”, that is a set of the diffractograms rotating the azimuth of the beam tilt direction. 
+    
+    	After this study, a variety of alignment procedures have been proposed
+    
+    	These can be categorized into four methods: 
+    	Beam-tilt-induced astigmatism (TIA) method 
+    	Beam-tilt-induced focus change (TIF) method
+    	Beam-tilt-induced image displacement (TID) method. 
+    	Coinciding the bright-field spot with the center of caustic curve (or the aberration-free point) as observed in an underfocused image
+    
+    
+    `,
+    `	If we look at the work of Kimoto et al., we can understand this process a bit better: 
+    
+    At left, we can see schematics of (a) electron trajectories, (b) an image on an observed image plane, and (c) the electron beam positions in underfocused imaging. Transmitted (i) and diffracted beams (ii–iv) form (i) a bright-field spot, (ii) a caustic curve, (iii) an aberration-free point, and (iv) background. The positions of (ii) and (iii) are not changed by tilting the incident beam. The position of (i) moves according to the incident beam angle. Alignment can be done to make  the bright-field spot correspond with the center of the caustic curve (or the aberration-free point).
+    
+    At right, we can see underfocused caustic images with the incident beam axis being varied from 0 to 10 miliradians. The specimen is an amorphous carbon (contamination). Defocus is about 5 mm.
+    
+    
+    `,
+    `	Here we can see an example of the effects of the coma free alignment: 
+    
+    At left and right are two images taken of an amorphous specimen while the objective was purposefully misaligned. We can see the asymmetry in the inset fast-Fourier transforms, as well as the distortion in the images when they are compared with the central, well-aligned image and the corresponding symmetrical FFT. 
+    
+    
+    `,
+    `	This slide is a video showing how to perform the TEM direct alignments. 
+    `,
+    `	As we’ve mentioned, each lens system has its own associated stigmator. Correcting astigmatism in a lens with a stigmator is known as “stigmating” or “stigmation”. The corrections for the lenses are all carried out using the multi-function X and Y knobs, and the alignment is activated through the software. Condenser stigmation is covered in our lab video series. 
+    
+    
+    `,
+    `	In our Tecnai, and in the OEMP TEM simulation, we can choose from:
+    
+    The condenser stigmator, 
+    The objective stigmator, 
+    And the diffraction stigmator. 
+    
+    
+    - As we would expect, the condenser stigmator is positioned at the end of the condenser system, so just below C2. Its job is to ensure that the beam exiting the condenser system is a circular as possible, and we know that condenser astigmatism has been corrected when we see that the beam remains circular as we vary its intensity with the intensity knob. 
+    
+    - The objective stigmator is below the objective lens. Astigmatism of the objective lens causes image distortion in high magnification images and low-angle diffraction patterns, and its correction can be verified in a few ways. 
+    
+    - The diffraction stigmator is found below the diffraction lens, and it will correct astigmatism in our LM images and diffraction patterns.  Correction of astigmatism can be checked by making sure that the crossover image (also called the caustic image) of the diffraction lens symmetrical. 
+    
+    
+    
+    
+    
+    `,
+    `	Here we can see an example of a beam with and without the presence of condenser lens astigmatism, as seen in the TEM simulator. The leftmost “stigmatic” image is more USA-football like than circular. Even though this is astigmatism of the probe, this will degrade image quality. 
+    
+    
+    `,
+    `	This slide is a video showing the procedure for the correction of objective lens astigmatism. 
+    `,
+    `	And here we can see the effects objective lens astigmatism on the appearance of our images.
+    
+     Notice the bi-directional lines in the astigmatic image, which are traced in red for easier identification, compared to the relatively random dispersion of apparent texture in the corrected, therefore stigmatic image. The difference in image quality before and after stagnation is an easy to see reminder of why it is important to check ALL lenses for astigmatism, rather than just the condenser where it may be more obvious. 
+    
+    
+    `,
+    `	1. Can we consider convex glass lenses to be analogous to magnetic TEM lenses? 
+    
+    2. Where does the analogy begin to break down? 
+    
+    3. Why? 
+    
+    4. Name the components of a magnetic lens and state their functions.  
+    
+    5. What force acts on an electron in a magnetic field? 
+    
+    6. Describe the action of the lens field on electrons. How does this lead to aberrations? 
+    
+    7. Why do we use apertures in TEM? 
+    
+    8. After drawing a ray diagram of an over-focused beam impinging on a specimen,  
+    how would you describe the strength of the objective lens? The focal length? 
+    
+    9. After drawing a ray diagram of an under-focused beam impinging on a specimen,  
+    how would you describe the strength of the objective lens? The focal length? `
 ]
 
 let ch4SpeakerNotes = [
