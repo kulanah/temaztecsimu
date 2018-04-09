@@ -1955,6 +1955,7 @@ $('#speakernotesstop').on('click', function(){
     window.speechSynthesis.cancel();
 });
 
+/*
 // Stop speaking if the window is not visible
 // Visibility change code based on example in documentation at https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
 var hidden, visibilityChange; 
@@ -1984,3 +1985,4 @@ if (typeof document.addEventListener === "undefined" || typeof document.hidden =
     // Handle page visibility change   
     document.addEventListener(visibilityChange, handleVisibilityChange, false);
 }
+*/
