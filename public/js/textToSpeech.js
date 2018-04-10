@@ -1085,7 +1085,7 @@ let ch4SpeakerNotes = [
     
     Now we can see that the theoretical resolution, d, is equal to a new constant 0.74786 divided by the product of the numerical aperture eta sin(alpha) and the square root of U times (1 + 0.9788 to the -6 times U).
     
-    We can use this equation to calculate the resolution of simplified optical systems – for example, the calculated resolution of a 200 kV TEM is < 0.1 nm, about 0.09 nm.
+    We can use this equation to calculate the resolution of simplified optical systems – for example, the calculated resolution of a 200 kV TEM is less than 0.1 nm, about 0.09 nm.
     
     
     
@@ -1697,12 +1697,12 @@ let ch5SpeakerNotes = [
     +
     "\n"
     ,
-    "The IGP was used in almost every single vacuum application in high vacuum pressure ranges of up to <10"
+    "The IGP was used in almost every single vacuum application in high vacuum pressure ranges of up to less than 10"
     +
     " to the " +
     "-6"
     +
-    "mbar before turbo molecular pumps were widely adopted. Nowadays, IGP with larger pumping speeds are mostly used in pressure ranges <10"
+    "mbar before turbo molecular pumps were widely adopted. Nowadays, IGP with larger pumping speeds are mostly used in pressure ranges less than 10"
     +
     " to the " +
     "-9 "
@@ -1913,12 +1913,1049 @@ let ch5SpeakerNotes = [
     ,
     ]
 
+let ch6SpeakerNotes = [
+    `	Title slide – no notes
+    `,
+    `	We used the following references while compiling this lecture: 
+    
+    D Wlliams, and CB Carter, Transmission Electron Microscopy, a Textbook for Materials Science, 
+    
+    JM Zuo and JCH Spence, Advance Transmission Electron Microscopy Imaging and Diffraction in Nanoscience, Springer, 2017
+    
+    Ludwig Reimer, Transmission Electron Microscopy, Physics of Image Formation, Springer, 2008
+    
+    Frank Krumeich, Swiss Federal Institute of Technology in Zurich, Properties of Electrons, their Interactions with Matter and Applications in Electron Microscopy 
+        found at: http://www.microscopy.ethz.ch/downloads/Interactions.pdf
+    
+    Peter Crozier, Arizona State University School for Engineering of Matter, Transport, and Energy; Introduction to Transmission Electron Microscopy found at: https://le-csss.asu.edu/sites/default/files/1.4.16_crozier_intro_to_tem.pdf
+    
+    
+    
+    
+    `,
+    `	Lecture outline – no notes 
+    
+    `,
+    `	To get the most out of this lecture, be sure to keep these questions in mind as you go through the material: 
+    
+    Why are electrons scattered in the specimen?
+    How can the scattering processes in the specimen affect the energy and the coherence of the incident electrons?
+    What is elastic scattering? Inelastic scattering? 
+    What is coherent scattering? Incoherent scattering?
+    What is meant by the “wave-particle duality” of electrons?
+    What are the transmitted and diffracted beams?
+    What is a scattering cross section; what is a differential cross section?
+    Why are these cross sections important?
+    What is the mean free path of the electrons we manipulate in the TEM?
+    What are the differences between Fraunhofer diffraction and Fresnel diffraction?
+    What is the probability of an electron being scattered when it travels near an atom?
+    If the electron is scattered, will its direction change? If so, by what angle? 
+    What is the average distance an electron travels between scattering events?
+    Do electrons lose energy during all scattering events? During only some scattering events? 
+    
+    
+    
+    `,
+    `	We can simplify a TEM into a very basic system consisting of only an incident electron beam, a specimen, lenses, and detectors. 
+    
+    We know that any atom consists of negatively charged electrons in the outer orbitals and positively charge protons in the nucleus. 
+    
+    We have also heard that the electrons composing our electron beam are “dualistic” charged quanta that can be thought of as particles AND waves. This means the electrons behave like a low-mass, negatively charged particles, and as such they can easily be deflected when they travel near one or more atoms. 
+    
+    This scattering is due to the electrostatic forces present within atoms. These are also known as Coulombic forces, and these are what we use to begin to conceptualize the mechanics of electron scattering. 
+    
+    Accurate descriptions of scattering phenomena are very important for our understanding of electron microscopy because without electron scattering, neither images nor diffraction patterns, like the figure shown here, would be observed. In fact, any object that doesn’t scatter electrons will be invisible within the TEM. 
+    
+    This chapter is devoted to deepening our understanding of scattering mechanisms, which allow us to describe the relationship between the structure/composition of a sample and the intensity of the electron wave function (usually described as images, diffraction patterns, or spectra) striking the electron detector. 
+    
+    
+    
+    `,
+    `	To review: early experiments with electrons suggested that they behaved as tiny particles with well-defined mass and charge.  They exhibit typical properties associated with particles, like mass and the ability to transfer momentum. 
+    
+    However, they are not classical particles, so we can’t expect them to behave like an apple that falls from a tree. The position of the falling apple can be fully determined using only the tools of classical physics. In contrast, electrons are quanta governed by quantum mechanical laws. These laws describe the electron as so-called “electron wave”. Electrons also behaved as waves. If you allow two beams of electrons to cross each other and interact you see an interference pattern. This is due to the fact that the spatial coordinates and momenta of quanta cannot be perfectly known at the same time (the “Heisenberg Uncertainty principle”).
+    
+    Hence, the space-time behavior of quanta cannot predicted with absolute certainty; instead, we can only determine the probabilities of finding an electron within a certain volume. These probabilities are calculated by treating the electron as a wave. 
+    
+    Therefore, electrons are said to exhibit this “wave-particle” duality. 
+    
+    For example, in HREM images, both amplitude and phase have to be considered before one can confidently interpret the experimental findings. 
+    
+    To summarize and review: as particles, electrons have mass and kinetic energy, given by one half m sub zero times the square of the velocity. 
+    
+    They also possess a negative fundamental charge, q, and resulting electrostatic energy equal to q times V. 
+    
+    The forces governing their interactions can be electrostatic, modeled by dotting their charge into the electrostatic field vector, or magnetic, modeled by dotting the charge into the cross product of the electron velocity and magnetic field strength vectors, since they are charged particles. 
+    
+    As charged particles, they can be scattered as a result of their interactions with the electrons and nuclei of specimen atoms. The position before, during, and after this scattering can be localized via probability, but not definitely determined. As waves, they can propagate and be characterized by their wavelength, given by dividing planck’s constant by the product of mass and velocity, phase, and amplitude. In some instances, two or more waves may interfere with each other, which is called “superposition” -- diffraction patterns formed by periodic lattices inside the TEM are good examples of the existence and usefulness of this phenomenon. 
+    
+    
+    `,
+    `	And, if you need it, here’s a reference for both relativistic and non-relativistic electrons. 
+    
+    de Broglie postulated that you could associate a wave with an electron and other small particles like atoms, protons and. These waves are known as matter waves, which have well-defined wavelengths and frequencies. These wavelengths and frequencies are determined by the masses and energies of the electrons being examined. We can see that electrons have a rest mass, defined at absolute 0 (where there are no contributions to energy from thermal vibrations) as 9.109 times ten to the negative thirty-one kilograms.
+    
+    Let’s imagine a single electron traveling through an infinite vacuum, far away from any pesky external electric or magnetic fields. We call this a free electron, since nothing is influencing it. In this situation, the only form of energy the electron has is kinetic. The classical kinetic energy of a free electron is found using the momentum p of a particle of mass m moving with velocity v (this is not the phase velocity of wave).  Thanks to de Broglie, the momentum can also be related to a wave vector, k, by taking momentum to be the product of Planck’s constant and the wave vector k. 
+    
+    
+    
+    
+    `,
+    `	And now that we’ve refreshed ourselves on the properties of electrons, let’s review some general physics we probably already know, in order to get ourselves in the right frame of mind for the discussion of scattering.  In a general case, a collision occurs when two or more uncharged objects hit each other.  
+    
+    When objects collide, each object feels a force for a short amount of time.
+    
+    This force imparts an impulse, or changes the momentum of each of the colliding objects.
+    
+    	But if the system of particles is isolated, we know that momentum is conserved. Therefore, while the momentum of each individual particle involved in the collision changes, the total momentum of the system remains constant.
+    
+    	Kinetic energy is conserved in elastic collisions
+    
+    	Kinetic energy is converted into other forms of energy during an inelastic collision
+    
+    	In both types of collisions, momentum is conserved.
+    
+    Since momentum, a vector equal to the product of mass and velocity, is conserved rather than entirely lost, collisions can be characterized by the change in momentum experienced by the objects. 
+    
+    Kinetic energy, e sub kin, is defined as being equal to one-half the mass of the object. 
+    
+    Conservation of Linear Momentum is described by the sum of the scalar product of a mass and velocity vector associated with object one plus the mass and the velocity vector of the second object. 
+    
+    
+    
+    
+    `,
+    `	Collisions of charged particles like electrons and nuclei are, at a basic level, modeled only slightly differently, and we can see this more clearly if we examine a case involving both a positive and a negative potential. 
+    
+    In such a case the charges are opposite, so an electrostatic attraction will exist. In this case, it becomes obvious that two particles will naturally be brought together.
+    
+     In the repulsive case, with two like-charges as shown at right, it becomes obvious that the two particles will not orbit each other - they will, at most, approach each other until reaching a distance at which the repulsive potential causes them to move away from each other and never meet again. This type of behavior is typically referred to as “scattering”, a concept which is exemplified by the electrostatically induced change in the path of the electron in these two figures.  
+    
+    We will assume that the two particles interact through a central potential, which in the case of a stationary target essentially acts as an external central potential on the smaller body. For this reason, we know that we can still make use of linear momentum, angular momentum, and energy conservation in solving our problem, which means that all of the usual results from the study of the two-body problem should still be applicable. 
+    
+    After making these assumptions, we can begin to use Coulomb’s law to model the electrostatic forces at work in our problem. We can model the Coulomb force F on a charged particle by taking it to be equal to k, Coulomb’s constant of 8.9875 times ten to the nine newton square meters per square Coulomb, times the quotient of small q, the charge of the first particle, times big Q, the charge of the second particle, divided by r squared, or the square of the distance separating both particles. R may also be called the “impact parameter”, which is defined as The radius of the closest possible approach to the scatterer.
+    
+    Theta, shown in the diagrams above, is the scattering angle – the angular distance between the incoming and outgoing electron velocities. 
+    
+    
+    
+    `,
+    `	It would be totally feasible to start listing specific examples of interaction potentials, and then solve for the motion of the electrons in these cases. However, in electrons scattering experiments, there are a variety of experimental limitations which in fact make it impossible to know, for a given scattering event, exactly what the initial impact parameter was. For this reason, most scattering experiments involve firing a large number of electrons at a collection of targets, measuring the outgoing angles, and then comparing the results against a set of statistical predictions. For this reason, there is some additional terminology we need, related to the concept of a cross section, that will allow us to create more accurate models. 
+    
+    If we treat the single atom as a rigid ball, the interaction between an incident electron and the atom can be described by V of r, which is 0 when the impact parameter is less than the radius of the atom, and is equal to a constant k times the quotient of charge one times charge two over the square of the impact parameter
+    
+    This type of scattering potential is known as “hard sphere scattering”
+    
+    There is a region of space, a cross-sectional area of the atom, sigma, equal to pi times the square of the atomic radius, that the electron cannot pass through.
+    
+    If the incoming path of an electron passes through this cross sectional area, it will be deflected off at an angle of , scattering angle.
+    
+    For this reason, we define σ to be the scattering cross section
+    
+    The scattering cross section gives us an intuitive sense of how much area a scattering event can occur, in other words, the scattering probability of an incident electron on single atom. The cross section give the effective “size” of an atom, but not represent a physical area, only a probability that a scattering event will occur. 
+    
+    
+    
+    `,
+    `	The total scattering probability, theta sub t, of multiple atoms in just two dimensions can be defined as:
+    Sigma, which is equal to n sub t times n sub I times sigma all over A 
+    nt – the number of target site atoms
+    ni – the number of incident electrons
+    A- the total physical area for the multiple atoms in two dimensions.
+    
+    
+    
+    
+    
+    
+    `,
+    `	For a real specimen of a thickness t with some real number N of atoms, we can use the Heidenreich approach, where the total cross section sigma sub n is equal to n times the quotient of sigma over A. This is equivalent to the product of N and the quotient of sigma times t divided by A times t, which is also equivalent to sigma times ro times p, where A is equal to the sample area, pi r squared; and ro, the density of the scattering atoms, is equivalent to N over the product of A times t. 
+    
+    The product of ro times t is called the mass thickness of the specimen. It affects the scattering probability from a real specimen and gives mass thickness contrast on TEM bright field images of polymeric, biological, and amorphous specimina.
+    
+    This formula allows us to experimentally determine the scattering cross section as long as we know the density of the specimen, the number of incident electrons, and the number of scattered electrons. But it is essentially impossible to measure the impact parameter of a given incident electron.
+    
+    
+    
+    
+    `,
+    `	What interests us in the TEM is weather or not the scattering process deviates the incident-beam electrons through a particular scattering angle, theta, such that they do not travel to the apertures, lenses, or electron detectors. To know this, we have to know the differential cross section, d sigma over d omega. 
+    
+    A solid angle, omega, is a three-dimensional analog of an angle, such as that subtended by a cone or formed by planes meeting at a point. It is measured in steradians.
+    
+     where A is the sphere's segment area.  Just as plane angle, it is the ratio of arc length and radius.
+    
+    The differential cross section, d sigma over d omega, describes the angular distribution of scattering from an atom,  and is a measurement of the probability for scattering within a solid angle, d omega. It can be determined experimentally.
+    
+    Using this cross section we can characterize, but not calculate, the impact parameter little r and describe the results of scattering experiments more effectively.
+    
+    
+    `,
+    `	To quantitatively characterize the scattering events, we must first consider: the incident electron energy, the atomic number/weight of the scattering atom, as well as the density, thickness, and crystallinity of the sample, and the angle of beam incidence on the specimen. To understand these variables, we need to examine the physics of the scattering in greater depth. 
+    
+    One of the most important observables in scattering experiments is called ’differential cross section’. 
+    
+    It is important since detectors usually function by recording the number of particles scattered from a target into a certain solid angle.  This means we can characterize the detected scattering by the angular current density j read by the detector such that the integration over a portion Ω of the unit sphere gives the current or flux (i.e. the number of particles per unit time) of particles through the angular cone defined by Ω. 
+    
+    This is very important, because we have just correlated detectable experimental outcomes to our theoretical scattering models for the first time. 
+    
+    
+    
+    `,
+    `	So, if we can now link detector signals to differential cross sections, we should give thought to the mechanisms of signal generation within the TEM. We’ll start with the case of a single scatterer. 
+    
+    Pictured is the traditional “shell” model of an atom, and impinging/scattered electrons can be seen as colored arrows. It’s easy to see that these electrons may take many different paths through or around just one atom. What is harder to see, however, is that the signals produced by these electrons could be very different depending on the type of interaction that occurs. 
+    
+    The leftmost electron path, representing a– they suffered no energy loss and little to no change in their direction of travel. This type of interaction is responsible for the presence of the central bright spot seen in many diffraction operations – it is the direct beam, composed of impinging electrons that more or less flew straight through the sample as if it was not there. 
+    
+    Then, moving deeper into the atom, we can see an incident electron deflecting around the edge of the K shell – this is an elastically scattered electron. It didn’t lose energy to the atom, but it did experience a change in direction due to its proximity to the massive nucleus.  Electrons of this type are usually coherent if the interactions are occurring in thin, crystalline samples, but they become increasingly less coherent at angles greater than about ten degrees. 
+    
+    The next electron, which appears to swing around the nucleus before being “backscattered” nearly back to its original position is an example of the scattering power found close to the concentrated nuclear charge. 
+    
+    Looking at the rightmost green incident ray, we can see that it passes quite close to the nucleus and may emerge as a yellow scattered ray with a low angle. This is an inelastically scattered electron that will have lost some amount of energy, delta E, and will most likely be incoherent.  
+    
+    We can now understand that the type of interaction an electron experiences near or within an atom determines both its energy and direction, meaning the incident electrons can effectively be “converted” into many different signals depending on how they are scattered by a single atom. 
+    
+    
+    
+    `,
+    `	In reality, though, we aren’t dealing with just one atom – we’re dealing with many, many, many atoms! Usually in the TEM these atoms are all arranged as the regular lattice of a crystal.
+    
+    One high-kV incident beam within the TEM is sufficient to produce secondary signals like: 
+    
+    The direct (or transmitted) beam,
+    
+    Backscattered and secondary electrons, ejected from the specimen at high angles. 
+    
+    Auger electrons, produced at slightly lower angles, which are not yet detectable in current TEMs.
+    
+    Elastically scattered electrons, which are responsible for electron diffraction pattern formation;
+    
+    Inelastically scattered electrons, which are what we’re interested in when we’re performing EELS. 
+    
+    Characteristic X-rays, used to determine chemical composition via EDXS. 
+    
+     And more. 
+    
+    These are the signals we use to form our images and diffraction patterns. We detect the distribution of electrons coming out of the specimen. There are two main ways of visualizing this:
+    
+    One way uses the spatial distribution of scattering events as contrast in the images of the specimen – this would result in an image, as seen in the top HRTEM micrograph. 
+    
+    And the other way uses the angular distribution of the scattering events as a way to form a pattern that can characterize the distribution, which we call a diffraction pattern. 
+    
+    As discussed in Chapter 3, TEM operation consists of controlling the lens strength, selecting proper aperture size, and electron detector type and placement needed to gather the necessary information. 
+    
+    To fully understand information contained within the collected images, diffraction patterns, or spectra, you have to understand what causes electrons to scatter in the first place. 
+    
+    
+    `,
+    `	Electrons entering a material interact as negatively charged particles within the electric fields of specimen atoms. The specimen atom’s positive charge is strongly concentrated at the nucleus, while the negatively charged electrons are loosely distributed throughout the shells. 
+    
+    If we conceive of these electrons as particles, then we have two possible options for scattering processes that could occur: 
+    
+    Elastic interactions, during which no energy is transferred from electron to sample.  Diffraction is a very special form of elastic scattering.
+    
+    And inelastic interactions: where some energy of the incident electron is transferred to the sample atoms. Hence, after the interaction electron energy is reduced. 
+    
+    However, since we must consider the electron as both a particle AND a wave, a crucial aspect of reality that our scattering models have neglected so far, we must take wave properties like coherence into account, since the electron beam from a TEM’s source is a bundle of coherent electron waves before hitting the specimen. 
+    
+    After interacting with specimen, electron waves can form either coherent or incoherent beams – elastically scattered electrons are usually coherent, while inelastic electrons from low angles less than about one degree, along with elastically scattered electrons from higher angles greater than about ten degrees are usually “incoherent” after emerging from the specimen. 
+    
+    
+    
+    `,
+    `	And, on top of the fact that our models have neglected wave-like behavior, we have also treated atoms as solid, highly simplified rigid bodies. We know this is inaccurate, since in reality an atom consists of positively charged nuclei surrounded by distant orbitals of electrons. Therefore, before considering the wave behavior of electrons at all we can still increase the accuracy of our statistical description of electron scattering by incorporating more complexity into our calculations: we must now account for the fact that there are actually two ways for an electrons to be scattered: 
+    
+    by the atomic nucleus,
+    AND by the atom’s electron “clouds”. 
+    
+    Practically, we can develop equations to represent this complexity fairly simply. 
+    
+    
+    
+    
+    
+    `,
+    `	Electron scattering by a more realistic atom consisting of a nucleus and electron shells can be qualitatively described using two simple Hall equations, which, though more complex than our last conceptions, are still using a simplified billiard-ball model of subatomic interaction. 
+    
+    Nevertheless, we’ll use one of these equations to model a concept called the “scattering cross section” for both the target atom’s electron distribution and its nucleus. 
+    
+    The scattering cross section itself is a hypothetical area around a scatterer which describes the volume within which a passing electron may be scattered. Dividing the scattering cross section by the total area of the scatterer gives the probability of scattering. 
+    
+    The scattering cross section for electron-electron cloud interactions is given by:
+    
+    Sigma sub cloud, equal to pi r sub e which is also equal to q over v-theta quantity squared all times pi. 
+    
+    where V is the voltage through which the incoming electron beam is accelerated (defining its energy and velocity), r sub e is the radius of the electron cloud, and θ is the scattering angle
+    
+    An electron-nucleus scattering cross section can be modeled using 
+    
+    Sigma sub nuclei, which is equal to the product of pi and r sub n, which is equivalent to pi times the squared ratio between the product of Z and q and the product of v and theta.
+    
+    So we now know that images are made up of scattered electron that resulted from the interactions of our specimen atoms and our primary electrons.  Z, V, and theta all affect the distribution of the scattered electrons. And, since image contrast is proportional to electron distribution, we now know that the interplay of Z, V, and theta play a pivotal role in TEM data gathering, and hence we should realize that we need to know much more about them. That’s good, since this approach is defective in many aspects. It is very useful for giving you a good qualitative sense of the various parameters that affect elastic scattering, though.
+    
+     Obviously the nuclear scattering is controlled by atomic number Z and accelerating voltage, V. However, the electron cloud scattering is only affected by V.
+    
+     In both cases, higher accelerating voltage results in lower scattering cross sections, meaning less electrons are deflected, leading to fewer electrons being detected, and hence lower contrast in our images. 
+    
+    
+    
+    
+    `,
+    `	To quantify the scattering of electrons by nucleus, we can use the Rutherford scattering cross section, which affords better results when describing some features of electron scattering at high angles. This cross section is given by the angular dependence of scattering, i.e. sigma as a function of theta as a function of the solid angle of scattering, omega. 
+     
+    The equation itself is: 
+    
+    D sigma over d omega equals Z squared times q squared all over the quantity sixteen times the square of V times the quartic sin of theta over two. 
+    
+    
+    As you can see, the scattering probability increases quadratically with atomic number, and decreases with quadratically with the kinetic energy of the incident electrons, U.
+    
+    High angle scattering is not nearly as likely as lower angle scattering, because of the influence of the quartic sine function of half-theta. 
+    
+    Though less likely, high angle scattering contributes heavily to mass-thickness or Z contrast, but not to diffraction contrast. 
+    
+    
+    `,
+    `	Furthermore, the high-angle forward scattering can be used to form exceptionally high resolution images of a crystalline specimen in which the image contrast is due entirely to the value of Z (this is Z contrast), not the orientation of the specimen (as in the case for low-angle coherent diffraction). 
+    
+    High angle backscattered electrons can be used to form images of the beam-entrance surface of the specimen, in which the contrast is not only due to differences in Z, but also to changes in surface topography of the specimen such as in scanning electron microscopes detecting backscattered electrons. These backscattered electron images are rarely used in the TEM because the BSE signal is very weak. 
+    
+    
+    `,
+    `	However, even the Rutherford scattering cross section neglected another key variable: the screening effect of the electron cloud, which decreases the effective positive charge of the nucleus. 
+    This screening effect serves to lessen the repulsive force of the nucleus on incident electrons passing by far from the atomic core. A screening parameter, theta sub zero, was given by Cosslett and Thomas as being equal to 0.1167 times z to the one-third power all divided by  U to the one third power. 
+    
+    Considering the relativistic effect and screening effect, the Rutherford differential cross section is can be modified by:
+    D sigma over d omega, which is equal to the product of z squared times lambda sub-R to the fourth all over sixty-four pi to the fourth a sub zero squared times sin-squared of the argument theta over two plus theta sub zero squared over four times the quartic sin of theta over two. 
+    Z =  atomic number,
+    A sub zero = 0.0529 nm, the Bohr radius
+    L sub r = relativistic wavelength of the incident electrons 
+    Theta = scattering semi-angle, 
+    Theta d omega = differential solid angle, 2 p sin q d q
+    This formula describes the screened, relativistic, differential Rutherford cross section. One very important effect of incorporating screening into these equations is that the cross section does not go to infinity as the scattering angle goes to zero. The screened Rutherford cross section is one most widely used for TEM calculations, since it incorporates so many crucial factors. 
+    
+    `,
+    `	The cross section is often more convenient to use after having been transformed into a “mean free path”, or MFP. 
+    
+    
+    The total MFP is a measure of the thickness needed for the average electron to undergo one elastic scattering event while passing through the specimen foil. 
+    
+    
+        Mathematically, the MFP is defined as the ratio of A divided by the quantity sigma times N-sub-zero times ro, and is given in units of centimeters per event. 
+    
+        Where, N-sub-zero is Avogadro’s number, 6.022 times ten to the twenty-three 
+             A is the atomic weight
+            and ro is the density. 
+    
+    In general, it is said that “thinner is better” when it comes to specimen foil preparation, but, in reality, it should be stipulated that thinner is better only so long as the specimen does not bend. It is important to preserve the specimen’s structure, which can be compromised and bend out of shape if thinned too aggressively.  
+    
+    The figure plots the related mean free paths for elastic scattering. From this graph you can see that very few high-angle elastic scattering events will occur if you can make your specimen less than 100 nm in thickness. Within such specimens, most electrons either undergo a single-scattering event or are not scattered and we’ll assume that this simplification is a viable approximation to what’s actually going on in the microscope many times throughout this text. This approximation is the main reason why, as we’ve already noted, in almost all TEM studies, the ‘thinner is better’ criterion applies.
+    
+    
+    
+    `,
+    `	This of course seems to imply that incident electrons can potentially undergo numerous scattering events. The scattering means that the sample experiences sub-surface excitement across a volume much more significant than the incident beam diameter. The region into which the electrons penetrate the specimen is known as the interaction volume  -- the volume of space within the samples that is “touched” by the impinging electrons. 
+    
+    In the SEM, this interaction volume is much larger than those observed in a TEM, because TEM samples are generally only about100 nm thick, whereas SEM samples may still be bulk material. 
+    
+    In the illustration at left, which depicts a very thick specimen, we see that the impinging beam penetrates and has a high probability of “touching” atoms within a large spherical area with a diameter of approximately one micron within the bulk of the material. Backscattered electrons are represented in green, and emanate from the surface and near-surface areas of the interaction volume. Secondary electrons are confined closer to the surface, and X-rays are the predominant signal generated by deep interactions. Note that there is little to no transmission of electrons through the sample! This is an example of an SEM sample, rather than a TEM sample, for this reason. 
+    
+    In contrast, the illustration to the right depicts the average TEM thin-foil, whose interaction volume is much smaller. Without substantial amounts of material beneath the impinging beam, the total interaction volume is reduced to anywhere between one to zero point five nanometers. 
+    
+    The maximum diameter, B, of the reduced interaction volume within a TEM (represented in red in the illustrations) can be estimated as 
+        
+        B , equal to zero point one nine eight times the product of the ratios  (Z over E) and the square root of (ro over A), all times t to the three-halves power. 
+        Where Z is the atomic number of the material
+        E is the electron energy in kiloelectron volts,	
+        ro is the density in grams per cubic centimeter,	 
+        and t is the specimen thickness in nanometers. 
+    
+    
+    
+    `,
+    `	This brings us to a slight lexical dilemma, though -- If specimen thickness is very slightly less than or equal to the MFP, there is a good chance of observing just one scattering event. But, how do we communicate ideas about scattering events involving more than one atom? 
+    
+    We can say that if specimen thickness, t, is greater than the MFP, then what is called “plural scattering” will occur, which implies that anywhere between 2 and 20 scattering events have occurred, because the electron will be forced to interact with the specimen lattice due to t being greater than the MFP.  
+    
+    Continuing with that same line of thinking, if the specimen thickness is even thicker, we use the term “multiple scattering”, which means that about 25 or more events will occur. 
+    
+    
+    
+    
+    
+    `,
+    `	Here is a table of experimental MFPs (in nanometers) for different elements, given as a function of accelerating voltage for elastic electron scattering events from greater than two degrees. Based off this, what can we say about the relationship between atomic number and requisite accelerating voltage? 
+    
+    
+    
+    `,
+    `	As we saw, higher-Z elements had shorter MFPs – the same trend can be observed here, where graphs of different scattering probabilities, given as modified Rutherford scattering cross section are displayed. At left, we see three curves for three different sample compositions; from top to bottom we see gold, copper, and carbon.  At right, we can see the difference that 100,000 additional accelerating volts will make. 
+    
+    So, if scattering probability is a function of accelerating voltage, scattering angle, wavelength, atomic number, then by looking at these graphs we can visually confirm that: 
+    
+    Scattering is most likely to occur in the forward direction, which means low angle scattering: the probability of scattering decreases with increasing scattering angle. As you can see for copper, the cross section decreases by several orders of magnitude from around ten to the negative twenty two to ten to the negative twenty eight square meters as the scattering angle increases from 0 to 180 degrees. Scattering is most likely to occur in the forward direction (zero degrees) and drops off rapidly above a few degrees.
+    
+    Higher accelerating voltages can be seen to result in less scattering. Doubling the electron-beam energy can lower the cross section by a factor of two or three, which is why higher energy electrons are less likely to be scattered by your specimen than lower-energy electrons, all else being equal. 
+    
+    Increasing atomic number increases the probability of scattering. Increasing Z from carbon to gold can increase the cross section by a factor of 100, which is why you need proportionately thinner TEM specimens if you want to ‘see’ through higher-Z materials. 
+    
+    And, at long last, we have an adequate way to model the way our specimen nuclei will scatter particle-like electrons. Wonderful! However, the wave-problem still needs to be addressed – how can we incorporate the wave-like reality of the electrons into this equation? Can that even be done? If not, we have serious problems, since we have no way to usefully describe electron-cloud induced scattering events! That requires a wave treatment of the electron. So, how can we get there? 
+    
+    
+    
+    
+    
+    
+    `,
+    `	Well, first, let’s think about what exactly and electron wave IS: 
+    
+    de Broglie postulated that you could associate a wave with an electron and other small particles like atoms, protons and neutron (which also showed wave and particles properties). These waves are know as matter waves. The wave would have a well-defined wavelength and frequency. 
+    The wavelength and frequency would be determined by the energy and mass of the particle. 
+    
+    The wavefunction representing this free electron can be represented with a complex exponential function as (explicitly showing time independence).
+    
+    
+    As you move along the direction r, the wave function oscillates. Notice that even though k and r are vectors, the phase of the wave is still a scalar quantity. 
+    
+    The phase can expanded by Euler’s formula. It is an angle, so it is measured in degrees or radians. 
+    
+    When two waves with the same wavelength come together, they interact through a process called “interference” to create a new wave. The shape of new wave depends on relative phase difference between two interfering waves. 
+    
+    The phase difference between a point at position r1 to position r2 is defined as xi, which is equal to two pi times the difference of r2 minus r1, all over lambda. This is equivalent to two times pi times k times delta r, where delta r is r2 minus r1. 
+    
+    
+    `,
+    `	This wave interference is illustrated here – 
+    
+    When we consider interference, we are typically discussing electromagnetic radiation (visible light, x-rays, etc.) or matter waves (electrons, neutrons, etc.), although sound waves also behave in this way. 
+    
+    Any two (or more) waves whose wavefronts meet will interfere with each other, and the resultant wave is the sum of the first two. There are, however, two kinds of interference: constructive, and destructive. 
+    
+    Constructive interference occurs when the two initial waves are exactly in-phase - the peaks and troughs of one wave are aligned with the peaks and troughs of the other. 
+    
+    Destructive interference occurs when the peaks of one wave coincide with the troughs of the other. 
+    
+    When two waves of equal amplitude are exactly half a wavelength (pi radians or 180 degrees) out of phase, then their resultant wave has zero amplitude - they cancel out! 
+    
+    We can see constructive interference illustrated at left – the dashed waves are in-phase and will interfere to form the solid black wave. At right we can see a perfect example of complete destructive interference – the dashed waves interfere with each other so completely that they zero out. 
+    
+    
+    
+    `,
+    `	This interference is intricately related to diffraction, which describes the interaction of waves. 
+    
+    The Huygens-Fresnel principle, which you may remember from basic physics, is a way to simply model the complex behavior of diffracting radiation over distance. The basic idea of the model is that we can conceive of every point on a plane wave front as being a source of secondary spherical wavelets. 
+    
+    So, our plane wave illumination is not a plane-wave – it is many spherical waves acting in concert. The plane wave front can be considered to exist along a line tangent to the wavelets, but really it is the wavelets creating the appearance of the plane wave, rather than the wave really existing. We can see this illustrated here, where the leftmost yellow plane wavefront is allowed to act as many spherical point sources. The waves from these point sources interact and effectively construct a new plane wavefront some distance away. 
+    
+     This is important, because our intuition about how radiation works in the real world would be flawed without this knowledge, as we will see in a moment. 
+    
+    
+    
+    `,
+    `	We can model the behavior of these spherical wavefronts in one of two ways, based on the distances involved: either through Fresnel diffraction, which we use when the optical components are all fairly close together, at finite distances; or through Faunhofer diffraction, which is an approximation of conditions observed when the optical components very far, or infinitely far apart.  
+    
+    Fresnel diffraction occurs in the so-called “near-field”, when the Fresnel number, which is quotient of the squared height of the aperture or slit divided by the product of the distance from the aperture to the source or opposite point and the wavelength of the radiation, is a value much less than one.
+    
+    Fraunhofer diffraction, on the other hand, occurs when the Fresnel number is greater than or equal to one, so we say that Fraunhofer diffraction occurs in the far-field. 
+    
+    And, again, the core idea of the Huygens-Fresnel principle is that plane waves are really just made up of spherical wavelets. 
+    
+    
+    `,
+    `	Now, this might seem a bit counterintuitive, so let’s think about how we could try to disprove this whole spherical wavelet business experimentally. 
+    
+    Thankfully, this is an easy task! According to geometric optics, a point-source providing planar illumination of an object in front of a screen should cast a perfectly defined shadow where the separation between bright and dark is perfect. 
+    
+    Assuming the components of the optical setup are at finite distances from each other, which seems reasonable, we can expect to make one of two possible observations: 
+    
+    If light behaves as a pure plane wave, then we should observe a shadow with extremely strong contrast, where 100% of the intensity is located on the portion of the screen above the straightedge, with complete darkness below the projected blade edge. 
+    
+    Or, if light really only appears to be a plane wave, but is really made up of many spherical wavelets, then we should see a shadow that is less than perfectly defined. 
+    
+    
+    
+    
+    `,
+    `	If we examine the outcome of a similar experiment, in which a planar razor blade was illuminated via plane waves from a monochromatic point source, we can see the somewhat unsettling outcome:
+    
+    Geometric shadows are purely theoretical! They simply don’t happen as geometric optics prescribes. This is because wave optics offers a more realistic description of light! The “plane waves” we want to conceive of are really just simplifications of more complex interactions between many spherical waves. We can see this here, where: 
+    
+    The planar illumination of the razor blade is evidently spherical wavelets that “bend” around the edges, creating a bright outline completely unpredicted by our plane-wave intuition. Moreover, the “shadow” cast by the blade is not a shadow at all – it’s a Fresnel fringe interference pattern just like the ones we observe in TEM! 
+    
+    
+    `,
+    `	We can see this clearly when we perform a single-slit diffraction experiment. 
+    
+    In this set-up, parallel-ray monochromatic light is passed through a single slit of width, “a”. We can now understand that we will not see a single bright band proportional to width a, but instead will see a set of interference fringes, due to diffraction of the spherical wavelets by the aperture.
+    
+     And, now that this spherical-wavelet reality is starting to sink in, we can also begin to grapple with the fact that the size of our slit seems to be inversely proportional to the size of our diffraction pattern! The narrower the slit, the broader the pattern. 
+    
+    
+    
+    
+    `,
+    `	We observe this interference pattern due to the fundamental wave nature of light. The maxima and minima of similar waves destructively and constructively interfere, which results in the interference patterns we see in place of geometric shadows
+    
+    
+    
+    `,
+    `	So, now, after being forced to reconsider our assumptions about the behavior of a beam of radiation with wavelength lambda passing through a slit of size h, let’s summarize the Huygens – Fresnel principle. What we used to think of as plane waves have been shown to be the collective interaction of many spherical wavelets. We can describe the way objects diffract these spherical wavelets in two ways, depending on the optical conditions. 
+    
+    The first way, Fresnel Diffraction, provides an adequate description of diffraction for cases where our initial wave is either planar or spherical, and has only a finite travel distance. Regardless of the form of the impinging wave, the wave front resulting from the diffraction will be spherical. 
+    
+    The second way, using Fraunhofer diffraction, provides an adequate approximation of the diffraction of plane waves across infinite distances.  This of course would meant that the initial wave would have to be planar, and since the distances involved are so vast, the exit wave will seem planar as well. 
+    
+    There is also another way to interpret this that depends upon the intensity profiles, illustrated here in red, of the diffraction. As you can see, the peak intensity of the first profile, very much in the near-field, is fairly representative of the size, h, of the slit. However, as we progress into the far field, we can see the intensity profile has broadened into a few rounded peaks. The leftmost intensity profile is characteristic of Fresnel diffraction, and the rightmost is characteristic of Fraunhoffer diffraction. 
+    
+    
+    
+    
+    
+    `,
+    `	There is a problem, however – how can Fraunhofer diffraction exist at all, let alone in the TEM, if it requires infinite propagation distances? 
+    
+    Well, we know that a slit can act as a source of spherical wavelets regardless of the initial wave entering the slit. We can simplify this further by imagining that the slit has been divided into many imaginary segments  We also know that if the detector is close to the slit, then we’re operating in the near-field and can expect Fresnel diffraction to be an adequate method of describing the wavelets. 
+    
+    Since the propagation of the spherical wavelets can be represented by direction of the purple rays, we see that since the detector and the slit are proximal the rays from the different segments to a point P on the detector are not parallel – in other words, they are convergent. 
+    
+    However, if the detector is infinitely distant, as in far-field Fraunhofer diffraction, then the rays from the segments to a point P on the detector are approximately parallel. 
+    
+    So, to utilize both Fresnel and Fraunhofer diffraction, then, we can use a lens! This allows us to operate in the near and far fields within the same physical space. 
+    
+    
+     
+    
+    
+    `,
+    `	Now if we take all of that scattering knowledge and simply replace the concepts of slits with atoms, we are much closer to an understanding of electron wave scattering by an atom. 
+    
+    The incident electrons act as a plane wave, but the scattering by the atom can be approximated as resulting in a spherical exit wave that is superimposed on the incident wave, whose intensity is slightly reduced. 
+    
+    This means that the atom has effectively broadened the angular distribution of the electron beam. 
+    
+    The angular distribution of the scattering gives the diffraction pattern.
+    
+    
+    `,
+    `	So far we have developed an increasingly comprehensive conception of elastic scattering, but only within the context of particle-like interactions. This is because the Rutherford scattering equation, with and without modifications, can only describe the probability that an electron will be scattered by the nucleus of atoms in the specimen when assuming a particle-like electron. More precise calculation of the cross sections that include the wave-nature of electrons will be needed if we are to make our probabilities more accurate.  
+    
+    A full derivation of wave mechanics will be further discussed in the lecture covering the kinematical theory of electron diffraction. We’ll start examining the wave-like treatment of a scattering cross section by first defining the simple equation for the scattering factor 𝑓 𝑜𝑓 𝑡ℎ𝑒𝑡𝑎
+    
+    where the magnitude of f of theta is equal to d sigma of theta over d omega. 
+    
+    The scattering factor f of theta, based in theory surrounding x-ray scattering, is physically significant because it is a measure of the amplitude of an electron wave scattered from an single, isolated atom, with the squared magnitude of f of theta being proportional to the scattered intensity.
+    
+    It should be said though, that the scattering-factor approach is not necessarily a complete replacement for Rutherford differential cross section analysis, because the scattering factor is only most useful when describing the low-angle (i.e., less than ~3 degrees) elastic scattering where the Rutherford model is inappropriate.
+    
+    If we consider scattering from the nucleus and the electron cloud, we can define an atomic scattering factor, f of theta, to be equal to the quotient of the quantity one plus U over U sub zero divided by 8 pi to the zero times a sub zero. This quotient is multiplied by the squared ratio of lambda over sin of theta over two, and that quotient is also multiplied by the difference between Z and f sub x. 
+    
+    Hence, this expression contains components of both elastic muclear scattering (Z) and elastic electron-cloud scattering (fx) 
+    
+    This means that the atomic scattering factor depends on the electron wavelength (lamda), atomic number (Z), and the scattering angle (theta).
+    
+    
+    `,
+    `	If we examine a graph of the atomic scattering factor as we vary wavelength, scattering angle, and atomic number , we can see that: 
+    
+    The atomic scattering factor 𝑙𝑖𝑡𝑡𝑙𝑒 𝑓 𝑜𝑓 𝑡ℎ𝑒𝑡𝑎 decreases as theta increases
+    
+    The atomic scattering factor f of theta decreases as 𝑙𝑎𝑚𝑏𝑑𝑎  decreases 
+    
+    It increases with Z for any value of scattering angle.
+    
+    Both the differential cross section and the scattering factor are simply measures of how the electron-scattering intensity varies with 𝑡ℎ𝑒𝑡𝑎
+    
+    
+    
+    
+    `,
+    `	It should also be mentioned that the mechanics describing the scattering of x-rays were the starting point for the description of scattering of electrons, so the two are quite similar aside from some key differences: 
+    
+    For one, the X-rays are scattered by the electrons in a material, while electrons are scattered by both the atomic electrons AND the nuclei of the specimen material. 
+    
+    Secondly, the electrons are directly scattered, while X-rays are scattered by field-to-field exchange. 
+    
+    And, perhaps most critically, while X-ray diffraction pattern formation does not depend on the scattering process undergone by the ray, the scattering process is VERY important for the formation of electron diffraction patterns. 
+    
+    
+    `,
+    `	SO: 
+    
+    We now have a wave-optical description for the behavior of electrons scattered by either the nuclei or atomic electrons of a scattering atom. There is one more layer of complexity that needs to be addressed before we can consider this simple model to be “complete” – the fact that our incident plane wave phi is not impinging on one atom, but rather an ordered arrangement of atoms called a crystal. 
+    
+    In terms of scattering, we can consider a crystal to be a region with periodic electrostatic potential V of r due to the regular arrangement of atoms within the lattice
+    
+    Each atom in the crystal scatters the incident plane electron waves, creating spherical waves which are peaked in the forward direction. 
+    
+    These spherical waves interfere with the incident wave and give rise to patterns of standing waves 
+    
+    These standing waves are converted to charge density patterns on the detector, and these patterns have the periodicity of the lattice. 
+    
+    The periodic standing waves are related to Bloch waves or Bloch states, and are ubiquitous in solid state physics of periodic structures. 
+    
+    
+    `,
+    `	In order to quantify this scattering in a crystal specimen, we can introduce another concept called the “structure factor” Big F of theta. 𝐵𝑖𝑔 𝐹 𝑜𝑓 𝑡ℎ𝑒𝑡𝑎 is defined as the sum of the atomic scattering factor from all the i atoms in the unit cell with atomic coordinates, x sub i, y sub i, and z sub i multiplied by a phase factor. This phase factor takes account for the difference in phase between waves scattered from atoms on different but parallel atomic planes with the same Miller indices (hkl). The scattering angle is the angle between incident and scattered electron beams.
+    
+    Apparently the amplitude of scattering depends on the type of atom, the position of the atom in the cell, and the specific atomic planes that make up the crystal structure. This equation predicts that in certain circumstances the amplitude of scattering is zero
+    
+    
+    
+    `,
+    `	Now let’s go back to the simplified optical model we began the chapter with. As we learned, the interaction of the incident wave with the highly regular three-dimensional atomic lattice can scatter incident electrons over a wide range of angles according to their wavelengths. These scattered spherical waves interact (or: diffract) with themselves and the incident wave to form so-called standing waves; they reinforce one another in some directions and cancel one another in others. The standing wave pattern that springs up inside the crystal causes the angular distribution of the scattered wave leaving the crystal to be strongly peaked at certain special angles that depend on the periodicity of the crystal. In all other directions, destructive interference takes place causing, intensity to drop to zero!
+    
+    Close to the exit surface of the crystal, all the exiting waves are overlapping and interfering with each other – this is the near field, Fresnel regime. 
+    
+    However, after a few hundred microns, the waves completely separate and give rise to distinct beams propagating in different directions – the far field or Fraunhofer regime. 
+    
+    The beams are called Bragg beams, and the special angles are called Bragg angles. This distribution of scattered intensity is the diffraction pattern from the crystal.
+    
+    
+    
+    `,
+    `	Bragg argued that waves reflected off adjacent scattering centers must have a path difference equal to an integral number of wavelengths, if they are to remain in phase
+    
+    The approach used by von laue to calculate the path difference for a wave can be represented in one dimension by the wave, incident at an angle theta sub 1 scattered at an angle theta sub two from two atoms B and C, which are a distance a apart. The path difference between the scattered waves is AB-CD
+    
+    `,
+    `	The Bragg equation assumes that we are working with parallel monochromatic illumination of a perfect crystal, and it only considers beams which are diffracted at an angle equal to the incident angle. 
+    
+    Bragg diffraction occurs when radiation with a wavelength comparable to atomic spacing  displays constructive interference after being scattered by a crystal. 
+    
+    Waves are scattered from lattice planes separated by interplanar distance d. 
+    
+    When the scattered waves interfere constructively, they remain in phase since the difference between the path lengths of the two waves is equal to an integer multiple of the wavelength. 
+    This is described by the equation 2 d sin theta equals two pi n lambda. 
+    
+    This is extremely important, since it correlates observed diffraction with the crystal structure of the specimen via the d spacing in real space. 
+    
+    This is why the Bragg equation is a fundamental aspect of diffraction interpretation. 
+    
+    
+    `,
+    `	So, to summarize the general concepts discussed in this chapter: 
+    
+    Diffraction is by far the most important scattering phenomenon in TEM 
+    
+    Positions of the diffracted beams are determined by the size and shape of the unit cell 
+    
+    Intensities of the diffracted beams are determined by the distribution, number and types of atoms in the specimen. 
+    
+    Diffraction (and TEM imaging) is well interpreted by coherent low- angle elastic scattering (from the electron cloud) 
+    
+    High-angle elastic scattering (mainly from the nuclei), is instead important for STEM Z-contrast imaging and is well interpreted in terms of particle interactions (Rutherford Scattering) 
+    
+    
+    
+    `,
+    `	And, more specifically: 
+    
+    Two complementary, but different, approaches are used to explain scattering: 
+    
+        The differential cross section, used to describe Incoherent Elastic Rutherford scattering, 
+    
+        And the Atomic Scattering Factor, used for describing coherent low-angle elastic scattering events for which the Rutherford model is inappropriate. 
+    
+    Both of these methods are simply a measure of how electron scattering varies across an angle theta.
+    
+    Incoherent elastic scattering due to high-angle electron-nucleus interaction is analogous to Rutherford backscattering 
+    
+    And, Rutherford-scattered electrons are incoherent: the phases of the electron waves are not “in step”. 
+    
+    
+    `,
+    `	All slides beyond this point are considered “enhanced” materials that can be useful for forming a deep understanding of the topics, but are not necessary for an introductory course. 
+    `,
+    `	No notes
+    `,
+    `	No notes
+    `,
+    `	Here we can see an example of the diffraction of an incident plane wave into many spherical waves by a row of atoms.
+    
+    The interaction of the incident plane electron wave with the atoms leads to equidistant secondary wavelets that constructively interfere with each other in (a) forward and (b) other directions. The angle between the direct and the diffracted beam (diffraction angle) increases (c) with decreasing interatomic distance and (d) with increasing wavelength. All waves are represented schematically by their maxima. 
+    
+    
+    
+    `,
+    `	Essentially, electron diffraction and imaging processes all rely on the wave properties of the electron. 
+    
+    This means that only the most basic understandings can be had via particle-like mechanics – hence, a basic understanding of waves and their properties is required for the interpretation of electron micrographs and the understanding of the processes governing electron probe formation using electron lenses. 
+    
+    Waves are characterized by propagation, or spreading, as well as local disturbance. We can identify a wave based on qualities such as its wavelength and amplitude. 
+    
+    
+    `,
+    `	Like ripples in a pond, electron waves propagate periodically both in space and time.
+    
+    These waves can both be described by a wave function phi of (r,t) given by the amplitude and phase, which follows the “Helmholtz equation”. 
+    
+    An important thing to note is that waves can’t be localized; they fill any available space in the shortest time allowed by their energy. 
+    
+    This, of course, would seem to meant that waves transport energy, which is true! The energy flow per unit area and unit time is proportional to the intensity. 
+    
+    The intensity is found by the squared magnitude of phi-sub-i of (r,t) 
+    
+    
+    `,
+    `	Waves in beams of any kind can be deemed either “coherent” or “incoherent”. 
+    
+     “Coherent” waves have the same wavelength, and are in-phase with each other. Waves being “in phase” with each-other means that the maxima/minima of the wave always appear at the same point. 
+    
+    In contrast, “incoherent” waves have different wavelengths (like those from the sun) or are not in-phase with each other.  You can see the difference between coherent and incoherent waves in this image created by Frank Krumeich. Notice the orderly and uniform progression of the topmost set of coherent waves, and the messy-looking incoherent waves at the bottom. That’s why we want coherent probes -- so that we can be sure our input is fairly uniform before it interacts with the specimen. This ensures that the “output” to our detectors is decipherable and will yield data about the structure of the object we’re examining.  
+    
+    Electrons accelerated to a selected energy have the same wavelength -- a fact we can easily verify thanks to de Broglie. 
+    
+    That said, the energy spread, and as a result the wavelength, varies depending on the type of electron gun being used to produce the beam. 
+    
+    For example, electron waves from a thermionic electron gun are only nearly in-phase with each other, but the coherence would be much higher if a field emitter was used instead. 
+    
+    The generation of a highly monochromatic and coherent electron beam is an important but challenging part of the design of modern electron microscopes. However, it is a good and valid approximation to regard the pre-specimen electron beam as a bundle of coherent waves. 
+    
+    After interacting with a specimen, electron waves can form either incoherent or coherent beams.
+    
+    
+    
+    
+    `,
+    `	Now, to better understand the interaction of waves, we must be able to describe a “wave packet”. 
+    
+    An infinite plane-wave with a discrete k-spectrum can be described by the function: 
+    
+        phi of (x, t) equals phi-sub-zero exponent (i times (two pi k dot x minus omega t)). 
+    
+    A wave packet of lateral width delta x and a broad k-spectrum of width delta k equal to one over delta x. 
+    
+        phi of (x, t) = the sum of phi-sub-n exponent (i times (two pi k dot x minus omega sub n times t))
+    
+    A wave packet refers to the case where two (or more) waves exist simultaneously. A wave packet may also be referred to as a “wave group”. 
+    
+    The wave packet can be thought of as the product or sum (superimposition) of two or more waves.
+    
+    
+    
+    `,
+    `	A wave is phi (r, t) is a phenomenon periodic in both space, r, and time, t. It obeys the so-called wave equation -- Helmholtz equation. 
+    
+    The Helmholtz equation, which represents a time-independent for of the wave equation, results from applying the technique of separation of variables to reduce the complexity of the analysis. 
+    
+    Where the second partial derivative of phi of (r, t) with respect to r is equal to the product of one over v, and the second partial derivative of phi (r, t) with respect to t. 
+    
+    where v is the phase velocity of the wave,
+    and r is the position vector of the wave. 
+    
+    As a second-order differential equation, it has a 2D solution space: all linear combinations of solutions are again a possible solution. 
+    
+    
+    
+    
+    
+    `,
+    `	One dimensional waves are simple, with no vector character. 
+    
+        The wave function of a 1D wave is simply phi-sub-zero exp [ i(2 pi over lambda time x minus omega t)] 
+    
+    The intensity of 1D waves is described by I equals phi of (x, and t) times the complex conjugate of phi of (x, t), and is equal to the squared magnitude of phi-sub-zero. 
+    
+        So, in light of this electron wavefunction, we can see that the intensity would be a probability density, with 
+        Time independent propagation occurring only in on arbitrary direction. 
+    
+    A plane wave, on the other hand, gets a bit stickier: 
+    
+    the wave function of a plane wave is described by phi of (r, and t) equals phi-sub-zero exponent (i (two pi k dot r minus omega t)), where the magnitude of k is again equal to one over lambda. This is called the wave vector. 
+    
+    The wave vector (or k) of a plane wave is a vector which points in the direction in which the wave propagates. It is always perpendicular to the wavefronts. 
+    
+    Spherical waves are given by the wave function: 
+        
+        wave function phi (r, t) equals to phi-sub-zero over r, exp (i (two pi k dot r minus omega t))
+    
+    
+    A stationary plane wave that propagates in the x direction can be described by a wave function,  phi (𝑥, 𝑡),  that depends on the position x and time t.
+    
+    
+    `,
+    `	In 1924, Louis de Broglie postulated that all particles have some wave-like properties, and that the wavelength is associated with the momentum, p, of the particle. 
+    
+        lambda is equal to h divided by p
+        Where lambda is wavelength, 
+        h is Planck’s constant, 
+        p is equal to the product of h and k, and remember that k, the wavenumber, is equal to one over lambda.
+    
+    This establishes a linear relation between momentum space and reciprocal space, since the magnitude of k  has the dimensions of a reciprocal length. 
+    
+    Reciprocal space is identical to momentum space, apart from the influence of a scaling factor, h. 
+    
+    The wave function of a particle in coordinate space can be considered to be a linear combination of the momentum eigenfunctions 
+        phi of r is equal to A times the sum of a-sub-n exponent (i times (p-sub-n dot r minus omega t) all over h)
+        which is also equal to the sum of a-sub-k exponent two pi i (k dot r minus omega t). 
+    
+    
+    `,
+    `	When the electron passes through the lenses and sample in the TEM, it interacts with the atoms and electron magnetic fields via electromagnetic forces. 
+    
+    The total energy of the electron moves in an electrostatic field, where E-sub-tot is the sum of the kinetic and potential energies: 
+    
+        E-sub-tot is equal to m-sub-zero times c squared plus E-sub-kin plus V of (r). 
+    
+    
+    
+    
+    
+    `,
+    `	Schrödinger hypothesized that, in the presence of a potential field, a wave equation could take a form that mirrors the energy conservation law.
+    
+    Schrödinger’s equation, composed of a kinetic energy term (h squared divided by eight times pi times m squared, all times nabla squared times phi), minus the potential energy term (q times v times r times phi), and gives the total energy, described by i times h over 2 pi tines phi partially differentiated with respect to t. 
+    
+        Where the term qV(r) is a potential field
+        and phi is an electron wave function. 
+    
+    The time period of electron wave oscillation, 2 pi over omega is equal to four times ten to the negative twenty seconds for electrons with an energy of 100 kiloelectron volts. This oscillation is too short to be detected. 
+    
+    Any TEM observation is much longer than the oscillation period of the electron.
+    
+    Therefore, the potential can be assumed to be time independent. 
+    
+    The complex wave function can be separated into two parts: the time dependent and the time-independent parts phi of (r, t) which is equal to phi (of r) exponent(negative i omega t). 
+    
+    The time-independent Schrödinger equation is:
+    
+        h squared over eight pi m squared times nabla ph, minus qv(r) phi, which is equal to E phi. 
+        Where, E equals h times w. 
+    
+        one over four pi squared all times nabla squared phi which is equivalent to two m E over h squared all times phi, which is also equivalent to k squared times phi.
+        where capital K is equal to the square root of the ratio of two m E over the square of h.
+    
+    
+    
+    `,
+    `	A general property of linear function is the that the sum of any two functions is also a solution.
+    
+    The wave function is linear in both classical and quantum mechanical forms
+    
+    the function only involves phi, no higher order terms including products of phi in the wave function. 
+    
+    Therefore, any number of such waves and the sum of these waves are a solution of wave function: 
+    
+        phi is equal to the sum from i = one to N of phi-sub-i. 
+    
+    
+    This enables us to write any wave function as a sum of solutions, such as sinusoidal waves and the spherical waves form individual point sources. 
+    
+    By linear superposition, the amplitudes of the two waves are added up to form a new one. The interference of two waves with the same wavelength can result in two extreme cases. 
+    
+    
+    `,
+    `	The complex wave can be separated into three components 
+        The amplitude, Phi, equals A exponent (i theta) exponent (negative-i omega t) 
+    
+        A position-dependent phase Theta equal to two pi k dot r plus delta, 
+        And a time-dependent phase. 
+    
+    In the case that we have two waves with the same frequency, omega: 
+    
+        Phi is equal to [A-sub-one exponent (i theta-sub-one) plus A-sub-two exponent (i theta-sub-2)] exponent (negative-i omega t)
+    
+    
+    
+    
+    
+    `,
+    `	The interpretation of the electron wavefunction is different from that of simple wave. In the language of quantum mechanics, the goal of electron microscopy is to figure out the relationship between the intensity of the wavefunction striking our electron detector (usually images or diffraction patterns or spectra) and the sample structure and composition. 
+    
+    The superimposition of two waves can be described mathematically by: 
+    
+        phi (r, t) equals phi-sub-one or (r, t) plus phi-sub-two of (r, t)
+        which is also equal to A-sub-one exponent [two pi i (k-sub-one times r minus v-sub-one times t) all plus A-sub-two exponent [two pi i (k-sub-two times r minus v-sub-two times t) plus i delta-sub-two].
+    
+    The intensity of these superimposed waves is then given by: 
+    
+        I of (r, t) equals phi of (r, t) times the complex conjugate of phi (r,t) which is equivalent to A-sub-one squared plus A-sub-two squared plus two times A-sub-one times A-sub-two times the cosine of the argument (two pi times the product of the difference of k-sub-one minus k-sub-two and r minus the product of the difference of omega-sub-one minus omega -sub-two and t plus delta-sub-one minus delta-sub-two. 
+    
+    In a typical experiment, the electron intensity is measured over a certain limited period of time (exposure time), T, the average intensity of the waves is: 
+        
+        I-sub-obs of (r, t) equals A-sub-i exponent two plus A-sub-two exponent-two plus two A-sub-one times A-sub-two times the cosine of the argument [two pi times the difference between k-sub-one and k-sub-two times r all minus the difference between omega-sub-one minus omega-sub-2) plus delta-sub-one minus delta-dub-two.] 
+    
+    
+        Where the intensity of wave one is A sub one,
+        and the intensity of wave two is A sub two. 
+        and the interference of wave one and two being two times A-sub-one times A-sub-two times the cosine of the argument [two pi times the difference between k-sub-one and k-sub-two times r all minus the difference between omega sub-one-minus omega-sub-two) plus delta-sub-one minus delta-sub-two.] 
+    
+    
+    
+    
+    
+    `,
+    `	I-sub-obs of (r and t) equals A-sub-one squared plus A-sub-two squared plus two times A-sub-one and A-sub-two times the cosine of the argument two pi(k-sub-one minus k-sub-two) times r minus (omega-sub-one minus omega-sub-two) times t plus delta-sub-one minus delta-sub-two))sub T
+    
+     In case one, where omega-sub-one is not equal to omega-sub-two AND T is much greater than the ratio of two pi over the magnitude of the difference between omega-sub-one and omega-sub-two, which is also called the beat period, then the positive and negative contributions of the cosine function cancel each other out. The overall intensity is given by: 
+    
+        I-sub-obs of (r, t) is equal to A-sub-one squared plus A-sub-two squared. 
+    
+    In case two, where omega-sub-one is equal to omega-sub-two, and both delta sub one and delta sub two are constant, intensity varies with r; the period varies with the difference k-sub-one minus k-sub-two. 
+    
+        I-sub-obs of (r, t) is equal to A-sub-one squared plus A-sub-two squared plus two times A-sub-one times A-sub-two times the cosine of the argument [two pi times the product of (the difference between k-sub-one and k-sub-two) and r plus delta-sub-one minus delta-sub-two].  
+    
+    In case three, when omega-sub-one equals omega-sub-two and both delta-sub-one and delta-sub-two vary with time randomly, the positive and negative contributions of the cosine function cancel each other out. The overall intensity is the same as in case 1. 
+    
+    In case four, when omega-sub-1 is not equal to omega-sub-two and T is much less than the ratio between two pi and the magnitude of the difference between omega-sub-one and omega-sub-two, the detection time is shorter than the beat period which waves of different frequency can interfere, so we get the same results as case 2 or case 3. 
+    
+    
+    
+    
+    `,
+    `	Coherent scattering preserves the relative phases of the wavelets, phi-sub-i, scattered from different locations, r-sub-i, in a material -- all the waves have the same frequency. 
+    
+    The total scattered wave for coherent scattering, phi-sub-coh, is constructed by adding the amplitudes of the scattered wavelets: 
+        
+        phi-sub-coh is equal to the sum from r-sub-i of phi-sub-i (r-sub-i). 
+    
+    The total coherent wave therefore depends on the constructive and destructive interferences of the wavelet amplitudes.
+    
+    The total coherent intensity, I-sub-coh: 
+    
+        I-sub-coh is equal to the product of the complex conjugate of phi-sub-coh and phi-sub-coh, which is all equal to the magnitude of the total scattered wave. 
+    
+    Coherent scattering depends on the relative phases of the scattered wavelets and the relative positions of the N atoms in the group -- case 2. 
+    
+    Coherent scattering is useful for diffraction experiments. 
+    
+    
+    
+    `,
+    `	Incoherent scattering does not preserve the phase relationship between incident wave and the scattered wavelets -- the waves have different frequencies. 
+    
+    They cannot interfere constructively or destructively. 
+    
+    The total intensity of incoherent scattering, I-sub-inc, is the sum of individual scattered intensities. 
+    
+        I-sub-inc equals the sum of r-sub-i times I-sub-i (r-sub-i) and is equal to the sum of r-sub-i times the magnitude of phi-sub-i times (r-sub-i). 
+    
+    The angular distribution of incoherent scattering from a group of N identical atoms is the same as for a single atoms, regardless of how these N atoms are positioned in space. 
+    
+    The total intensity is simply N times larger. 
+    
+    Some types of incoherent scattering occur with a transfer of energy from the wave to the materials. 
+    
+    These processes can be useful for spectroscopic analysis of a material. 
+    
+    
+    `,
+    `	In the real world, however, things aren’t so simple -- 
+    
+    The previous discussion had been concerned with two opposite cases -- fully incoherent, and fully coherent. 
+    
+    In reality, electron wave interference often lies in between these two, being “partially” coherent. The degree of interference can vary in large extent. 
+    
+    The degree of partial coherence is defined by the correlation function of the two electron waves. 
+    
+        (I) is equal to (the magnitude of phi-sub-i of (r, t) plus phi-sub-j of (r, t plus tau))
+            which is equal to (the magnitude of phi-sub-i of (r,t)) plus (the magnitude of phi-sub-j of (r, t plus tau)) plus two R-sub-e multiplied by {(phi-sub-j of (r,t) times the complex conjugate of phi-sub-j of (r, t plus tau))} 
+            which is also equal to I-sub-i plus I-sub-i plus two times R-sub-e times Gamma-sub-i,j 
+    
+    Where Gamma-sub-i,j is equal to (phi-sub-i of (r, t) times the complex conjugate of phi-sub-j of (r, t plus tau)) 
+            
+    
+    
+    
+    
+    `,
+    `	The degree of coherence is measured from the maximum and minimum intensity recorded in an interference pattern 
+    
+    (I) is equal to I-sub-i plus I-sub-i plus two times the square root of I-sub-i times I-sub-j times R-sub-e of {gamma-sub-twelve of (tau)} 
+    
+    Where, gamma-sub-twelve of (tau) is equal to the ratio of Gamma-sub-twelve of (tau) over the product of the square-root of Gamma-sub-eleven at (zero) and the square-root of Gamma-sub-twenty-two at (zero)
+    and v is equal to the ratio between the difference of I-sub-max and I-sub-min over I-sub-max plus I-sub-min.
+    
+    Experimentally, the longitudinal and transverse components of gamma-sub-twelve of (tau) is measured using interferometry. 
+    
+    The longitudinal component along the propagation direction can be measured using a Michelson interferometer. 
+    
+    The transverse coherence can be measured by the Young’s slit experiment. 
+    
+    In this illustration you can see the partially coherent wavefronts traveling down the page, with a point P1 at a maxima and a point P2 at a minima below it. Constructing a right triangle from these points, the longitudinal coherence would be represented by the vertical side, and the transverse coherence by the base. These terms were already introduced in the second lecture -- longitudinal coherence can also be called “temporal” coherence, and transverse coherence can be called “spatial” coherence. 
+    
+    
+    
+    `,
+    `	Now, there are differences between the concepts of waves as they arise in classical and quantum mechanics -- 
+    
+    The interference of classical waves requires multiple waves to be present simultaneously. 
+    
+    In quantum mechanical waves, though, it is possible for a single particle/wave to give rise to an interference pattern. 
+    
+    The double-slit experiment provides a standard illustration of this phenomenon. 
+    
+    This interference is entirely due to the way the experiment is carried out. 
+    
+    At any given moment in time on TEM, only one single beam electron is present in the specimen, whose crystalline structure acts as a “screen” with many slits. 
+    
+    The electron wave will interfere with itself and form interference patterns. 
+    
+    
+    
+    
+    
+    `,
+    `	So far, we have only discussed sinusoidal waves, which are continuous, infinite, and monochromatic with a single frequency. These are only approximations of the actual wave functions of free electron waves, because they cannot be normalized, and because the emitted electrons have a finite energy spread as well as a finite angular distribution. Sinusoidal waves are a solution of the wave equations for free electrons, which can be expressed by a wave packet of single momentum, k, 
+    
+    
+    `,
+    `	
+    The scattering of electrons by a single atom is determined by the total charge distribution of that atom: 
+    
+        ro of ( r ) is equal to the magnitude of q times [ro-sub-n of ( r ) minus ro-sub-e of ( r )]
+    
+        where, ro-sub-n of ( r ) is the nuclear charge distribution 
+        and ro-sub-e of ( r ) is the electron charge distribution. 
+    
+    The electrostatic atomic potential V-sup-a of ( r ) is related to the total charge distribution through Poisson’s equation: 
+    
+    Delta V-sup-a of ( r ) is equal to negative e over -sub-zero times the magnitude of ro-sub-n ( r ) minus ro-sub-e of ( r ). 
+    
+        Where delta is the Laplacian differential operator. 
+    
+    The probability amplitude for an electron with wave vector k-sub-i to be scattered by the atom potential V-sup-a ( r ) into a certain direction k sub d can be computed using the bra-ket concept 
+    
+    where P = ( exp( 2 pi i k-sub-d) times the magnitude of V-sup-a of ( r ) exponentiated to the power of (two pi i k-sub-i)) 
+    
+    
+    `,
+    `	If we examine the incident beam, which we take to be a plane wave, we see that it is of the form 
+    
+    Phi of r, t is equal to phi sub zero raised to the (I times (two pi k dotted into r sub zero minus omega t))
+    
+    And the spherical wave resulting from scattering is: 
+    
+    phi of r,t equal to f of k sub I, k sub d all over r minus r sub zero, with this quotient raised to the power of I times two pi k dotted into the difference vector of r and r sub zero minus omega t. 
+    
+    
+    
+    
+    `,
+    `	The atomic scattering amplitude, F sup e of the change in the momentum transfer vector k, describes how the momentum of an incident electron changes when it is elastically scattered by an atom. We define this to be equal to the probability amplitude, or, equivalently, to the Fourier transform of the atomic potential distribution V sup a of the vector r. 
+    
+    We define the atomic scattering amplitude as the third integral of the atomic potential distribution raised to the (negative two I delta k dotted into r), integrated with respect to r. 
+    The momentum transfer vector delta k is defined as the difference vector of k prime and k. 
+    
+    The X-ray scattering amplitude Fx of delta-k is defined as the Fourier transform of the electron charge density ro sub e of the vector r. 
+    
+    
+    
+    
+    
+    `,
+    `	No notes`
+]
+
 let speakerNotes = [
     ch1SpeakerNotes,
     ch2SpeakerNotes,
     ch3SpeakerNotes,
     ch4SpeakerNotes,
-    ch5SpeakerNotes
+    ch5SpeakerNotes,
+    ch6SpeakerNotes
 ]
 
 // Speak code based on https://codepen.io/matt-west/pen/wGzuJ
