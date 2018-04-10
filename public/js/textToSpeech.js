@@ -3672,7 +3672,496 @@ To calibrate displayed magnification for high-mag work, use graphite or any crys
 ]
 
 let ch8SpeakerNotes = [
+    `	Title slide – no notes
 
+
+    `,
+    `	Preliminary question slide – no notes
+    `,
+    `	Reference slide – no notes
+    `,
+    `	In the previous chapter, we discussed Bragg’s law and how diffraction can reveal crystallographic information. In this chapter we’ll begin to give an introduction to crystallography – this is important for understanding the relationship between diffraction patterns, images, and the crystal structure. This lecture will provide a brief introduction to the fundamentals of crystallography, such as: 
+    
+    Crystal structure, made up of unit cells, Wigner-Seitz cells, Bravais lattices, and crystal systems
+    
+    And how we can mathematically describe the planes and directions found in crystal structures, including concepts like: miller indices, crystallographic directions, zone axes, and the zone law. 
+    
+    We will discuss the symmetry observed in crystals, and how we can describe different symmetries and methods of notating point groups and space groups, which offer insight into the specific forms of symmetry. 
+    
+    The electron diffraction allows us to determine the orientation of our specimen within the microscope, as well as identify our material and any defects in it. To do this, we must first understand crystallography. 
+    
+    We are also used to describe space with Cartesian coordinates, but we will see that we can also describe the orientation of objects in 3D space using Euler angles. 
+    
+    
+    `,
+    `	From the start, single crystal silicon ingots are produced, then cut into different thicknesses of wafers that the semiconductor industry can use to produce thousands of electronic devices on one wafer. These will be laser-cut and “packaged” into consumer-recognizable forms like RAM and storage devices. 
+    
+    
+    Process engineers will need to know what materials have been fabricated; product engineers will need to know how they can improve the quality of the product, or what might cause a product to fail. As semiconductor devices continue to demand smaller and smaller form factors, TEM has provided the dominant method for these kinds of analyses. On the bottom left, there are two kinds of diffraction patterns illustrated as observed in the TEM – the leftmost is called “selected area electron diffraction” and the right is CBED – as we know from our discussions of electron-specimen interaction, we know that these are representations of the electron intensity distributions resulting from constructive interference leaving the specimen. How can we correlate this diffraction pattern from a product with the structure of our sample, or with the defect that causes failure? We’ll need to know crystallographic information about the specimen, and will need to use the TEM to access the information. 
+    
+    
+    
+    
+    `,
+    `	Crystallography is the general term for the study of crystalline materials. Before we talk about it, though, let’s think about how materials can be classified according to the degree of order exhibited by their structure – this could also be thought of as how the atoms are packed into the material. 
+    
+    In general, solids can be classified into two forms:
+    
+    “Amorphous”, a word meaning “without form”, is the term we use to describe materials whose atomic arrangements are more or less random. These materials are aperiodic, meaning they lack ordered structural repetition. As such they can be expect to be fairly loosely packed. Examples of amorphous materials that you may be familiar with are glasses, epoxies, and glues – in TEM, we are frequently interested in the properties of the amorphous materials used in the dielectric layers of nanodevices. 
+     
+    When the atoms of a material are arranged in regular (or periodic) arrays, we say the material is “crystalline”. While there are varying degrees of crystallinity, generally these materials are dense due to their three dimensional periodicity. These atomic “lattices” are said to be “anisotropic”, meaning the material properties of the bulk depend on the orientation of the underlying structure. 
+    
+    
+    `,
+    `	The world crystal refers to any solid material in which the component atoms are arranged in a periodic, three dimensional lattice. Another definition could be: “a 3D or 2D translationally periodic arrangement of atoms.” 
+    
+    Crystallography can then be defined as the description and study of crystals by using vector calculus to construct a rectilinear, but not necessarily orthonormal (or even orthogonal) reference frame called a lattice. 
+    
+    The lattice , the 2/3D frame on which motifs are regularly arranged. 
+    We create this lattice from lattice points using all integer linear combinations of three basis vectors, a, b, and c
+    
+    A motif is an atom, or a group of atoms, associated with each lattice point. 
+    
+    
+    
+    
+    `,
+    `	Speaking in terms of crystallographic convention, a crystal can be defined as being made up of one crystal lattice and some number of motifs. 
+    
+    The relationship can be made more explicit with the equation:
+    
+     1 Crystal is equal to 1 Crystal Lattice + n times Motif
+    
+    
+    
+    
+    `,
+    `	Since crystals are a periodic arrangement of atoms, they can be easily characterized using the unit cells. Therefore, a unit cell can be defined as the smallest unit of volume that permits identical cells to be stacked together to fill all of a space. The edges of the unit cell are given by three non-coplanar basis vectors a, b and c, with each representing translations between two adjacent lattice points. It is by repeating the pattern of the unit cell over and over in all directions that the entire crystal lattice comes to be. 
+    
+    Any vector representing a directional translation between lattice points is called a lattice vector, denoted as r, which is equal to an integer scalar u times the vector a plus a scalar v times a vector b plus a scalar w times a scalar c. 
+    
+    The magnitudes of three basis vectors a, b, and c in 3 dimensions form the axes of the unit cell. 
+    
+    The angles between vector a and vector b, vector b and vector c, and vector a and vector c are conventionally labelled gamma, alpha and beta, respectively.
+    
+    
+    
+    `,
+    `	If a unit cell contains only one lattice, it is said to be primitive.  
+    
+    This is somewhat problematic, though, since are an infinite number of lattice vectors which could have been used in defining the unit cell. 
+    
+    By convention, the unit cell is usually chosen so that it is as small as possible while still reflecting the full symmetry of the lattice.,
+    
+    Since teaching a full section on crystallography is not within the scope of this course, our treatment of unit cell choice will be regretfully brief. Know that the unit cell is always chosen so that the symmetry elements are positioned in accord with Volume A of the International Tables for Crystallography, which you should reference if you are interested. The preferred choice includes small basis vectors which are as equal as possible, provided the shape of the cell reflects the essential symmetry of the lattice. When the symmetry is low, there can be a wide choice of possible unit-cells. In certain cases it is better to choose a non-primitive, centered cell in order to show the full symmetry of the structure more clearly.
+    
+    When there is no symmetry, the position and shape but not volume of the cell may be chosen freely. Here a primitive cell with angles close to 90º (A or C) is preferable. 
+    
+    
+    
+    
+    
+    `,
+    `	Which of these unit cells are most appropriate? Why? 
+    
+    We can see that there are many possibilities for unit cells, but we should always try to select the smallest volume that, when repeated, can replicate the full symmetry of the lattice. So an easy step towards eliminating inappropriate unit cells would be to see which cells contain duplicate examples of symmetry, or which cells would not reproduce the real pattern if they were repeated. 
+    
+    
+    `,
+    `	A thorough understanding of crystallography is a prerequisite for anybody who wishes to learn transmission electron microscope (TEM) and its applications within solid (mostly inorganic) materials.
+    
+    All crystals are characterized by a fundamental unit of structure called a “unit cell” which describes the geometry of the lattice as it repeats periodically in the x, y, and z directions. The unit cell of silicon is shown here in blue. Different planes within the crystal are shown in grey, and different directions within the crystal are communicated using Cartesian coordinates (x, y z). 
+    
+    
+    `,
+    `		One algorithm for unit-cell construction is the Wigner Seitz cell method -- A Wigner-Seitz cell is a specific type of primitive unit cell.  In real space, it is primarily a mathematical construct prepared by Drawing a line from one lattice point to all its nearest neighbors
+    	Then drawing the perpendicular bisector for each of these lines
+    
+    It is mathematically correlated to real space.  In momentum space, however, it defines the Brillouin zone. 
+    
+    
+    `,
+    `	Although Weiner-Seitz cell has the smallest number of atoms per unit cell, but it does not display the full symmetry of structure. 
+    
+    	Namesake Auguste Bravais defined these as the smallest lattice that can fill -- without leaving gaps or causing overlaps – 2D or 3D spaces using only periodically repeating units of itself. 
+    
+    	There is a finite number of different crystal structures, and different crystalline solids may crystallize according to the same pattern.
+    	 The metrics of the lattice may be different, 
+    	but the symmetry is the same in such cases. 
+    
+    	There are five lattices in two dimensional space, and 14 in three dimensional space.
+    
+    
+    
+    
+    `,
+    `	The number of ways in which points can be arranged regularly in three dimensions, such that the stacking of unit cells fills space, is not limitless; Bravais showed in 1848 that all possible arrangements can be represented by just fourteen lattices.
+    
+    The fourteen Bravais lattices can be categorised into seven crystal systems: cubic, tetragonal, orthorhombic, trigonal, hexagonal, monoclinic and triclinic
+    
+    
+    
+    
+    
+    `,
+    `	Bravais Lattices allow for the possible variations within a given unit cell type. For example, a cubic unit cell can be simple cubic, body centred cubic (BCC) which has an atom at the centre of the unit cell, or face cantered cubic (FCC) with an atom located in each face. Similar variants exist for the other, as shown.
+    
+    These 14 Bravais Lattices can be derived to classify all crystals into one of the 7 systems.
+    
+    
+    
+    `,
+    `	Now that we have our base unit cells, we can begin to examine how cells are associated ‘lattice points’ that define the unit cell and are related to each other by translation. These are a mathematical abstraction and do not necessarily represent a single atom -- the actual atoms are part of the motif.
+    
+    In principle, atoms can occupy any partial position within the unit cell. However, there is a very restricted set of points that can serve as symmetry elements.
+    
+    As a rule, these are the parallelepiped corners, (0, 0, 0), the centers of its faces (½, ½,0), (½,0, ½), (0, ½, ½), the center of the unit cell, (½, ½, ½), and points equally displaces from other points of high symmetry, i.e. (1/4,1/4.1/4)
+    
+    In a crystal of rhombohedral (trigonal) or hexagonal symmetries, containing regular triangles as a 2D motif, the center of such a triangle is a highly symmetric point with coordinates (2/3, 1/3, 0), (1/3, 2/3, 0).
+    
+    In order to obtain lattice coordinates, we draw lines parallel to the crystal axes to measure the interception of the vector basis, a, b, c. The coordinates are determined by x/a, y/b, z/c. they are fractional multiples of the unit cell axes length.
+    
+    
+    
+    `,
+    `	The body centered cubic cell has two lattice points per cell, at coordinates zero zero zero and one-half one-half one-half. It is found in crystals of lithium, vanadium, chromium, etc. 
+    
+    
+    `,
+    `	The face centered cubic cell has 4 lattice points per cell, and is seen in the crystals of aluminum, nickel, and other metals. 
+    
+    
+    `,
+    `	In the HCP, hexagonal close-packed structure, is an example of a non-Bravais lattice. It can be thought of as one primitive lattice, shown in red, with 2 atom basis. Each atom has 6 equidistant neighbours in its own plane at a distance a, and two sets of 3  neighbors in the planes above and below. If c divided by a has the ideal value of 1.633, the whole array is said to exhibit hexagonal close packing. The unit cell contains two close-packed layers, not related by a lattice vector (in contrast to cubic close packing, with three layers related by lattice vectors). Elements that crystalize according to this scheme are beryllium, magnesium, cadmium, titanium, and more. 
+    
+    
+    `,
+    `	Diamond structure, another non-Bravais lattice, can be thought of as one FCC bravais lattice with a two atom basis. It has 8 atoms per unit cell, and is particularly important to us because the crystals of technologically important elements like carbon, silicon, and germanium adopt this structure. 
+    
+    
+    `,
+    `	Rock-salt, though non-Bravais, can be thought of as an FCC lattice with a two atom basis. It also has 8 atoms per unit cell, and is represented by many compounds, table salt, silver chloride, and titanium carbide among them. 
+    
+    
+    `,
+    `	The zincblende or sphalerite structure, is a non-Bravais lattice conceivable as an FCC lattice with a two atom basis. It has 8 atoms per unit cell, and can be found in materials like zinc sulfide, gallium arsenide, and silicon carbide, which are all important to the semiconductor industry. 
+    
+    
+    `,
+    `	Wurtzite structure was and is the name of the βeta modification of zinc sulfide – a high-temperature variant with hexagonality. It is named after the French chemist C. A. Wurtz (born 1817, died 1884), which gives us an idea of how old those names are. As a modification, it is seen in the same 
+    
+    
+    
+    `,
+    `	The atomic packing factor, or APF, Describes the portion of the volume of a unit cell taken up by atoms. We can calculate it by dividing the total volume of the atoms in the cell by the volume of the cell. 
+    
+    For example, FCC close-packed directions: 4r is equal to the squareroot of 2a, the volume for 4 atoms in one unit is around 0.74 cubic angstroms. Therefore APF = 0.74. How about for bcc, or hcp?
+    
+    	If we calculate the APF, we find that APF for hcp is 0.74 as well, even though they are a different crystal structure. It suggests that there are two ways to stack spheres for close packing: ABAB… and ABCABC…
+    
+    
+    
+    
+    `,
+    `	ABCABC packing is a scheme in which a base of 7 “A” atoms can be stacked with three “B” atoms, and then again with six “C” atoms. This scheme for the stacking of spheres gives rise to the FCC structure. 
+    
+    
+    `,
+    `	ABAB packing, on the other hand, consists of a base layer of seven A atoms, which can be covered by three B atoms, which are then capped with another layer of A atoms identical to the previous A layer.
+    
+    ABAB packing can be observed in the HCP structure. 
+    
+    
+    `,
+    `	As we know, the lattice vector r is the vector connecting the origin of the coordinate system to a specific point of a unit cell
+    
+    We can use a set of simple rules to determine the index of the lattice vector: 
+    
+    
+    •	Position a vector of the desired length such that it passes through the origin of the coordinate system. 
+    •	Determine the length of the vector projection on each axis in terms of unit cell dimensions (a, b, c). 
+    •	Find a common factor that you can multiply or divide the three lengths by in order to reduce them to whole numbers. 
+    •	These numbers, when placed in square brackets, define the direction of the desired lattice vector.
+    
+    
+    
+    
+    `,
+    `	Here we can see the basis vectors A, B, and C, along with the lattice vector index r. 
+    
+    The values U, V, & W are the whole numbers to be placed in the brackets, and n is the common factor mentioned in the last slide. 
+    
+    
+    `,
+    `	Here are a few examples of lattice vectors and the notation of the corresponding directions. 
+    
+    
+    `,
+    `	For HCP crystallographic directions, however, the rules are a bit differently. 
+    
+    The vector is repositioned (if necessary) to pass through origin.
+    
+    We then, because it is convenient, use a four-axis coordinate system, ( referred to as Miller-Bravais), with axes A1, A2, A3, and Z, in which the  𝑎﷯1,  𝑎﷯2, and  𝑎﷯3 axes lay in one plane angled 120 degrees with respect to each other, with the Z axis existing perpendicular to that plane. This of course means that our bracketed index will need four integers, instead of just three. 
+    
+    We can confine ourselves to the Bravais parallelopiped in the hexagon, formed by  𝑎﷯1,  𝑎﷯2, and z to determine an index u prime, v prime, and w prime. 
+    
+    Here: [1 1 0]  - so now apply the models to create O-B Indices
+    
+    
+    `,
+    `	For our purposes, a plane is a one-dimensional surface constructed within 3D space by the points A, B, and C along the basis vectors  𝑎﷯,  𝑏,﷯ and  𝑐﷯ 
+    
+    We can describe the plane using three integers h, k, and l, called Miller indices, where h is equal to OA divided by a, k is equal to OB divided by b, and l is equal to OC divided by C. 
+    
+    
+    
+    
+    `,
+    `	Miller indices are defined as the reciprocals of the (three) axial intercepts of a plane, cleared of fractions & common multiples.  All parallel planes have the same Miller indices.
+    
+    Crystallographic planes are typically specified by three Miller indices (hkl)
+    These effectively just list the intercepts of the plane with axes in terms of  𝑎﷯,  𝑏﷯, and  𝑐﷯. 
+    
+    To find these indices, simply take the reciprocal of the intercepts and reduce them to the smallest possible whole-number values. 
+    These are miller indices, and are traditionally enclosed in parenthesis without commas.  
+    
+    
+    
+    `,
+    `	Here we can see examples of the indexing process for cubic crystals : 
+    
+    For the blue plane, we first find the intercepts – so the plane intersects the X axis at point a, the y axis at point b, and the z axis at point c. Since we’re working with the idea of unit cells, we’ll just call the coordinate of the intercept “1”. So a and b have intercepts of 1, but the plane never crosses the z axis, so the intercept there can be taken to be infinitely large. 
+    
+    Now we move on to step two, finding the reciprocals. So we now have one over one, one over one, and one over infinity, which we know to be one, one, and zero. 
+    
+    Step three, reduction of the reciprocals, is already done – they are in their simplest forms. 
+    
+    Put them together 
+    
+    
+    
+    `,
+    `	So, to summarize the ways we represent different concepts with indices: 
+    
+    If the indices uvw are in square brackets, we’re referring to a direction or a zone axis. 
+    
+    If the indices are uvw are in angle brackets, then they are denoting a family of symmetry related directions. 
+    
+    If the indices are hkl within standard parenthesis, then a plane (or set of parallel planes) are being denoted. 
+    
+    Curly brackets around hkl indices denote a family of planes, 
+    
+    And four indices, uvtw or hkil, in brackets or parens respectively, are the Millter-Bravais indices for a direction, and for a plane in hexagonal crystals. 
+    
+    
+    
+    
+    `,
+    `	Euler angles are a sequence of three angles which describe the rotation of a crystal with reference to crystal axes.
+    
+    The first is a rotation of about the crystal [001] (z axis), then about the [100] (x), and finally f 1 about [001] (z)
+    
+    Three rotations phi 1 and phi 2 about the Z, X, and Z axes are then quoted in degrees
+    
+    Euler Angles are the three rotations about the main crystal axes 
+    
+    Euler angles are one possible means of describing a crystal orientation
+    
+    
+    
+    
+    
+    
+    `,
+    `	Christian Samuel Weiss formulated the concept of a ‘Zone’ in the early 1800’s. The concept was originally used to denote a prominent direction of crystal growth. 
+    
+    We now use the word zone to refer to one or more faces or plane(s) of a crystal that exist parallel to an imaginary line. 
+    
+    The zone axis is the imaginary line relative to which intersecting zones may be defined. Indicates the common direction of the intersection. 
+    
+    
+    
+    `,
+    `	By definition, any two nonparallel planes will eventually intersect, and the intersection can be characterized with a line. We can use the Weiss zone law to describe this, which is useful because it can be used to describe the mechanisms of diffraction. 
+    
+    	In a crystal, each member of a set of planes (h1k1l1) will intersect each member of a nonparallel set of planes (h2k2l2) along parallel lines with direction [uvw] where
+    
+    u equals k one l two minus l one k two
+    v equals l one h two minus h one l two
+    w equals h one k two minus k one h 2
+    
+    	The planes of a zone axis [uvw] must satisfy the Weiss Zone Law, which requires that:
+    H u + k v +l w is equal to 0
+    
+    	If points h 1 k 1 l 1 and h 2 k 2 l 2 are in same zone, then point h 1+h 2  k 1 + k 2  L 1 + L 2  will also be in the same zone
+    
+    
+    
+    `,
+    `	All material beyond this slide will be useful for enhancing your understanding of TEM
+    and materials science, but is not necessary for an introductory understanding, and is
+    therefore technically outside the scope of this course– feel free to continue if you are
+    interested, though.
+    `,
+    `	The Oxford English Dictionary defines symmetry as “The quality of being made up of exactly similar parts facing each other or around an axis.”
+    
+    An object is said to possess some degree of symmetry if an operation can be performed on it without changing the appearance/structure of the object. 
+    For example, the human form has (approximate) bi-lateral symmetry. 
+    
+    
+    
+    
+    `,
+    `	In Translational symmetry all the points are moved in the asymmetric unit the same distance in the same direction – this essentially means that you can move the points a certain distance in a certain direction. 
+    
+    In this kind of symmetry, there are no invariant points that “map” onto themselves after a translation; that is, no one point will be exactly where it was before the operation occurred, but the points are still in the same positions in relation to each other. 
+    
+    
+    
+    `,
+    `	In rotational symmetry all points in the asymmetric unit are spun around an axis. 
+    
+    This rotation does not change the handedness, or chirality, of the figures, yet the axis of the rotation is the only invariant point. 
+    
+    If an object can come into self-coincidence when rotated through a small non-zero angle theta, then it is said to have an n-fold rotation axis, where
+    
+    N is equal to 360 divided by theta
+    
+    
+    
+    
+    `,
+    `	Here are some simple examples of rotational symmetries that we have probably seen many times during daily life. 
+    
+    
+    
+    `,
+    `	Inversion center symmetry may also exist, whereby every point on one side of a center of symmetry has a similar point at an equal distance on the opposite side of the center of symmetry. 
+    
+    The center of symmetry, or the inversion center, is the point through which the operation moves an atom at coordinates x y z to coordinates –x –y -z
+    
+    
+    `,
+    `	Reflectional, bilateral, line, or mirror symmetry is an operation by which all points in the asymmetric unit can be flipped over a line, which is taken to be the “mirror”, and by doing so changes the handedness of any figures in the unit, just like how you observe “your” left hand move in a mirror while raising your right hand. 
+    
+    The points along the mirror line are all invariant points after a reflection. 
+    
+    
+    `,
+    `	Glide reflection (which can be thought of as a combination of mirroring and translation) 
+    
+    Reflects the asymmetric unit across a mirror and then translates parallel to the mirror. 
+    
+    The mirror plane changes the handedness of figure, and the “glide” translates them. 
+    
+    There are no invariant points (points that map onto themselves) under a glide reflection.
+    
+    
+    
+    `,
+    `	Screw symmetry is defined as a 360 divided by n degree rotation about an axis of symmetry, followed by a translation moving parallel to the axis by r divided by n of the unit cell length in that direction, where r is less than n. 
+    
+    A two-fold screw axis, 21, refers to a rotation of or 180 degrees, combined with a translation along the screw axis. +one-half indicates translation of +1/2 normal to the plane of the page.
+    (21is read two sub one)
+    
+    A three-fold screw axis, 31, refers to a rotation of or 120 degrees, combined with a translation of along the screw axis.
+    
+    A second operation of the 31 results in the object translated by 1/3+1/3=2/3
+    
+    A three-fold screw axis, 31, refers to a rotation of or 120 degrees, combined with a translation of  along the screw axis.
+    
+    A second operation of the 32 results in the object translated by 2/3+2/3=4/3=1/3
+    
+    Notice the result is a set of screws that turn in opposite directions.
+    
+    In contrast to two-one screw axes, three-one and three-two axes possess a sense of handedness.
+    
+    Four-one (and six-one) and four-three (and six-five) screw axes correspond to right-handed and left-handed helices, respectively. Like the two-one screw axis, both the four-two and six-three axes have no sense. What is the sense of a six-two axis?
+    
+    
+    
+    `,
+    `	In a crystal system, a set of point groups and their corresponding space groups are assigned to a lattice. Of the 32 point groups that exist in three dimensions, most are assigned to only one lattice system, in which case both the crystal and lattice systems have the same name. However, five point groups are assigned to two lattice systems, rhombohedral and hexagonal, because both exhibit threefold rotational symmetry. These point groups are assigned to the trigonal crystal system. In total there are seven crystal systems: triclinic, monoclinic, orthorhombic, tetragonal, trigonal, hexagonal and cubic.
+    
+    A crystal family is determined by lattices and point groups. It is formed by combining crystal systems which have space groups assigned to a common lattice system. In three dimensions, the crystal families and systems are identical, except the hexagonal and trigonal crystal systems, which are combined into one hexagonal crystal family. In total there are six crystal families: triclinic, monoclinic, orthorhombic, tetragonal, hexagonal and cubic.
+    
+    
+    
+    `,
+    `	No notes
+    `,
+    `		Lattice are classified according to their symmetry, which is defined as a state in which parts on opposite sides of a plane, line, or point display arrangements that are related to one another
+    
+    
+    	Lattices have three different forms of symmetry:
+    	Translational symmetry
+    	Rotational symmetry
+    	Reflection symmetry
+    
+    	The group of all crystal symmetry elements except translations (i.e. rotation, reflections etc.) that characterize one crystal are collectively called its “point group”. 
+    
+    	Based on the point groups, we have 7 types of lattices or crystal systems
+    
+    	The complete group of all symmetry elements in two dimensions is called the “plane group”
+    
+    	While the complete group of all symmetry elements including translations of a crystal is called its “space group”
+    
+    	Based on the space group symmetry, 14 types of lattices or Bravais lattices
+    
+    `,
+    `	No notes 
+    `,
+    `	The simplest crystallographic point groups are 1, 2, 3, 4, and 6 --  all of which possess only one rotation axis. Likewise, the rotation-inversion axes are the basis for the point groups -1, m, -3, -4, and -6. 
+    The remaining 22 crystallographic point groups result from the combination of the previous 10 point groups. 
+    
+    with the exception of point groups belonging to the cubic crystal system, only twofold rotation axes and/or mirror planes can be taken together with other rotation or rotation-inversion axes: Twofold axes can be combined perpendicular to other axes (e.g. point-group 422) while mirror planes can act either perpendicular (e.g. 2/m) or parallel to another axis (mm2). A slash ("/") character before the symbol m indicates a mirror plane perpendicular to the main axis of rotation.
+    
+    The crystallographic point groups may be classified according to the crystal system with which they are associated. Thus the point groups of the trigonal crystal system all possess a threefold axis, while those of the tetragonal and hexagonal crystal systems possess a fourfold and six fold axis, respectively. The cubic point groups all have multiple threefold axes (see below). The orthorhombic point groups have twofold symmetry (either 2 or m with respect to each of the X-, Y-, Z- directions of an orthogonal axis system, while the monoclinic point groups are limited to twofold symmetry with respect to a single axis direction. Finally, the triclinic point groups can only have an axis of order 1.
+    
+    The cubic point groups are all characterized by the four threefold rotation axes which act along the body diagonals of a cube. This is indicated by the digit "3" in the cubic point-group symbols. In addition, the cubic point groups all contain at least three mutually perpendicular twofold rotation axes.
+    
+    Of the 32 crystallographic point groups, those highlighted in magenta possess a center of inversion and are called centrosymmetric, while those highlighted in red possess only rotation axes and are termed enantiomorphic. A third type, highlighted in bold type, are referred to as polar. The properties of these different types of point groups are explained in more detail in the subsequent sections.
+    
+    
+    
+    
+    `,
+    `	No notes 
+    `,
+    `	
+    The last table made use of something called Hermann–Mauguin notation, Hermann-mauguin, when compared with another form of notation, Schoenflies notation, is preferred in crystallography because it can easily include translational symmetry elements, and it specifies the directions of the symmetry axes.
+    
+    Hermann–Mauguin symbols show symmetrically non-equivalent axes and planes. The direction of a symmetry element is represented by its position in the Hermann–Mauguin symbol. If a rotation axis n and a mirror plane m have the same direction (i.e. the plane is perpendicular to axis n), then they are denoted as a fraction n/m or n/m.
+    
+    
+    Plane groups can also be depicted using the Hermann–Mauguin system. The first letter is either lowercase p or c to represent primitive or centered unit cells. The next number is the rotational symmetry, as given above. The presence of mirror planes are denoted m, while glide reflections are denoted g.
+    
+    
+    
+    `,
+    `	Space groups are notated by combining the uppercase letter describing the lattice type with symbols specifying the symmetry elements. 
+    
+    The symmetry elements are ordered the same way as in the symbol of the corresponding point group. 
+    
+    The symbols for symmetry elements are more diverse, because in addition to rotations axes and mirror planes, space group may contain more complex symmetry elements — screw axes (combination of rotation and translation) and glide planes (combination of mirror reflection and translation). As a result, many different space groups can correspond to the same point group. For example, choosing different lattice types and glide planes one can generate 28 different space groups from point group mmm, e.g. Pmmm, Pnnn, Pccm, Pban, Cmcm, Ibam, Fmmm, Fddd
+    
+    Rotation axes are denoted by a number n — 1, 2, 3, 4, 5, 6, 7, 8 ... (angle of rotation φ = 360°/n). 
+    
+    Hermann–Mauguin symbols show rotoinversion axes, n— 1, 3, 4, 5, 6, 7, 8 ... 
+    
+     Symbol for a mirror plane (rotoinversion axis 2) is m. 
+    
+    The possible screw axes are: 21, 31, 32, 41, 42, 43, 61, 62, 63, 64, and 65.
+    
+    
+    `,
+    `	No notes 
+    `,
+    `	No notes 
+    `,
+    `	No notes 
+    `,
+    `	No notes `    
 ]
 
 let speakerNotes = [
