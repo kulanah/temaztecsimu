@@ -2949,13 +2949,741 @@ let ch6SpeakerNotes = [
     `	No notes`
 ]
 
+let ch7SpeakerNotes = [
+`	Title slide – no notes
+`,
+`	These are the resources we used as references when compiling the material in this lecture.
+
+ If you want to learn more about the topics addressed here, we encourage you to pursue your curiosity and broaden your understanding of the subject by engaging in learning beyond the time-restricted format of this lecture. 
+
+
+`,
+`	Lecture outline – no notes
+`,
+`	Lecture outline flowchart – no notes. 
+`,
+`	Now that you’ve reviewed the material presented in the lectures on electron beam generation, electron-specimen interactions, and the formation of images and diffraction patterns, it’s time to address a crucial part of electron microscopy. In this lecture we’ll cover the fundamentals of how and why we can actually “see” and collect data using the electrons in our TEM. As usual, keep these questions in mind as you go through this lecture, in order to help yourself thoroughly understand what’s being presented. 
+
+
+How do we even detect electrons? 
+
+What is the true definition of a digital image? 
+
+What do we record with a camera? 
+
+Why do we use the fluorescence screen? 
+
+How do we digitize images? 
+
+Furthermore, what is a pixel? 
+
+And what is a CCD camera? How does a CCD work? 
+
+What is a direct electron detection camera, and how does it work? 
+
+How can we characterize electron detectors? 
+
+And, lastly, what is a scintillator-photomultiplier detector? And how does it work? 
+
+
+
+
+
+`,
+`	As we learned when we were introduced to electron beam-specimen interactions, an incident beam of high-energy electrons produces many different kinds of signals after interacting with a specimen, not all of which are electrons! Nonetheless, during this lecture we’re going to focus strictly on the electronic signals generated within the TEM. 
+
+Each of these signals contain information that could be useful to us, so understanding their origin and the processes governing their detection is vital. 
+
+
+One incident beam of electrons within the average TEM is capable of generating: 
+
+Backscattered and secondary electrons, which are usually utilized in scanning electron microscopes. Recently, some manufacturers utilize secondary electrons in the STEM mode of TEM;
+Auger electrons, though these are not detectable in current TEMs;
+Elastically scattered electrons, which are responsible for electron diffraction pattern formation;
+Inelastically scattered electrons, which are what we’re interested in when we’re performing EELS. 
+and of course the transmitted beam, composed of the electrons that didn’t deviate significantly from the optic axis after their interactions with the specimen. 
+
+So, clearly, the more signals we can capture and analyze, the better! 
+
+
+
+
+
+
+
+`,
+`	Unfortunately, we can’t use just one device to detect all of these different signals -- the energies and geometries of the signals frequently mean we have to use relatively specific detector placements, or have detector with specific characteristics in order to gather a particular type of signal. 
+This means that while a detector may be very useful for capturing some signals, it won’t easily be able to pick up others very well, if it can at all. You’ll see that TEMs are equipped with a variety of detectors, so that they will be able to provide information about all signals relevant to the tool’s intended application.
+
+For example,
+
+BSE and SE electrons are “seen” through backscatter electron detectors (or BSDs) and Everhart-Thornley detectors (or ETDs), though these detectors are generally used in SEMs rather than in TEMs. 
+
+Images or diffraction patterns formed by transmitted and elastically scattered electrons are recorded with the help of a charge-coupled device (or CCD) camera or (more frequently in modern instruments) a complementary metal-oxide semiconductor (CMOS) detector.
+
+The signals generated in STEM mode are detected by Bright Field (BF), Annular Dark field (ADF), and High-Angle Annular Dark Field (HAADF) detectors, which can be photomultiplier-based detectors, or CMOS based detectors. 
+
+Diffraction contrast can be detected by the BF and ADF detectors, while Z contrast may be seen with the ADF and HAADF detectors, but more attention will be given to the contrast mechanisms during the STEM/EELS lectures. 
+
+The ADF and HAADF sensors themselves provide an interesting advantage, since they allow a portion of the electron beam to go through the detector so that STEM and EELS can be performed simultaneously. This, too, will be discussed further in the STEM/EELS lectures. 
+ 
+These EELS data are gathered using CCDs or CMOS detectors located at the bottom of the TEM.
+
+
+
+
+
+`,
+`	
+
+Since the methods of generating TEM and STEM images are fundamentally different, a detector intended for use in one mode must operate differently than a detector intended for use in the other. 
+
+This is because the process of image or DP recording in TEM mode means that the whole area of the image sensor will be illuminated with the static electron beam. So, constructing a digital image from these pixels can only be done if they are readout in parallel, a feature found in area or array detectors, which are what we use for TEM imaging or diffraction pattern recording. 
+
+In STEM mode, as its name implies, an image is generated point-by-point by rastering the fine electron probe over the region of interest of the specimen. In this application, the digital image is formed only when the pixels can be read out in serial, meaning the intensity of each pixel is read out and displayed independently, in order. Clearly an array detector would not be applicable in this situation, which is why we rely on “point detectors” when we’re operating in STEM. 
+
+
+ 
+
+
+`,
+`	Looking at the ray diagram at left, we can see the anatomy of the various STEM detectors --  the convergent electron beam is formed above the specimen. We can see electron rays diverging from the specimen and impinging on different STEM detectors depending on their scattering angle. The electrons that scatter from the specimen through angles larger than 50 milliradians are captured by the HAADF detector, while those scattered through intermediate angles between about 10 to 50 milliradians are captured by the ADF. 
+
+Electrons that pass through the hollow centers of both detectors can be allowed to continue further down the column through the EELS entrance aperture, where EELS signal is acquired. 
+
+On the right of the TEM we see the ray diagram of the imaging and projection systems projecting an image onto the fluorescence screen, which is a kind of analog detector. 
+If we choose to raise the screen up and out of the path of the beam, we can utilize the CCD or direct-electron detection cameras located under the projection tank to gather TEM-mode images or diffraction patterns.
+
+
+`,
+`	So, we know that we need a variety of detectors. But, of course, not all detectors were created equally -- in general, any ideal detector would have the following characteristics: 
+
+➢	Single-electron sensitivity; this sensitivity is usually described by the detective quantum efficiency, or DQE. A detector with the ability to consistently detect a single electron is characterized by a high DQE value. 
+➢	A linear relation between the incident intensity and the detector signal for a wide range of intensities, so that we know the output of a detector is representative of the input it received from the specimen. 
+➢	High spatial resolution, usually described by the detector’s modulation transfer function (MTF).
+➢	Low noise level, since we can only gather useful data when the signal we want to study can be differentiated from system noise. 
+➢	High readout speed (or frequency), which decreases the amount of time needed for the detector to gather enough counts (or detected electrons). We’ll learn more about this process shortly.  
+➢	Reproducibility, or consistency in performance which will decrease artifacting. 
+➢	Ease of use
+➢	Long lifetimes
+➢	And low cost
+
+
+
+`,
+`	To quantify the quality of a detector, and especially to quantitatively compare and contrast two or more different detectors, we can evaluate several criteria, which are the detector’s :
+
+Resolution
+Point spread function-- real resolution or modulation transfer function
+Noise
+Detection quantum efficiency (DQE) (noise amplification):
+Gain
+Linearity
+& Dynamic range. 
+
+
+
+`,
+`	For any detector, the first criterion, resolution, can be expressed by its point spread function (or PSF), which describes how the detector will perform when its input is an image of a point-object much smaller than the detector’s own pixel size. 
+
+The modulus of the Fourier transform of the PSF is the MTF, and as such it defines the ratio between input and output signals as a function of the spatial frequency. 
+
+Higher spatial frequencies end up being lost to cross-talk between adjacent pixels, which results in decreased contrast. 
+
+A detector’s MTF is determined by the pixel size, the type and quality of the electron-optical coupling, as well as the type and size of its scintillator. 
+
+A detector’s resolution is a function of the number of photodiodes on the chip, and their size relative to the image projected onto the chip's surface by the TEM optics.
+
+
+
+
+
+
+
+
+
+`,
+`	The second criterion used to evaluate detectors is the PSF. The PSF is closely related to the MTF, which we will discuss now.
+
+●	We use the PSF because, ideally, a single electron of a given intensity should cause a single signal in a single pixel on our detector. But, in reality, a single electron may cause a signal in a small neighborhood of pixels; a process called point-spread. 
+This “spreading” of the signal is mathematically described by the PSF, and because of this object-pixel size discrepancy, images generated by detectors are really the image of the object convoluted with the distortions caused by the cross-pixel spread. The PSF exists as a way to quantify the extent of this convolution. 
+
+We can express it mathematically via this equation: 
+
+		“ I sub d at pixel (i,j) is equal to I at (i,j) convoluted with the PSF at (i,j) “
+
+	Where I sub d is the incident intensity on each detector pixel given by the real-space coordinates (i, j)  and I(i,j), is the intensity of the signal before it has reached the detector. 
+
+●	But it is often convenient to express this relation in Fourier space given by this equation:
+
+“ The Fourier transform of the intensity at a detector pixel (i,j) is equivalent to the intensity at the detector at point (u, v) which is equal to the the product of the incident intensity before the detector at (u,v) and the modulation transfer function at (u,v) “ 
+
+	In this equation, the middle term is the Fourier transform of the intensity detected by each pixel of the detector, and the last term is the intensity incident on the detector or camera. 
+Essentially this means that the readout intensity on the detector or camera is the product of the incident intensity and the MTF. 
+
+
+●	Apparently, because of this, the MTF is the modulus of the Fourier transform of the PSF. 
+●	The MTF is a mathematical descriptor that defines the ratio between input signal and output signal as a function of spatial frequency, 
+●	and is useful a way of incorporating contrast and resolution to determine the total performance of a sensor. 
+
+Formally, the MTF is defined as the magnitude of the Fourier transform of the point spread function (PSF) of a detector, and only considers detectors performing in ideal conditions. 
+
+The MTF measures the contrast (magnitude response) across all spatial frequencies up to the theoretical resolution limit of the detector (the Nyquist frequency, which will be addressed soon). 
+
+For TEM detectors, the MTF is typically calculated by collecting an image of a straight edge (such as the microscope’s beamstop), and then using software to calculate the edge spread function (ESF), which describes the amount of blurring apparent on the straight-edge image. The Fourier transform of the derivative of the calculated ESF is the MTF.
+
+Put simply, the MTF curve can be thought of as resolution on the X-axis and contrast on the Y-axis (where higher is better). 
+
+
+
+
+
+
+
+`,
+`	And, in addition to the MTF, all detectors suffer from various forms of “noise”, the extent of which is the third criterion we will use to evaluate detector performance. 
+
+Noise can be loosely defined in signal processing terms as external or random signals that are not the signal we’re interested in. For us, this would mean any signal that doesn’t come from the sample, but instead comes from the detector itself. We always aim to reduce the amount of noise, but some can never be entirely removed.  
+
+One form, “readout noise”, is just that -- noise generated during the process of reading out what the detector has “seen”. 
+Caused by electronic noise in the CCD output transistor and possibly also in the external circuitry, readout noise places a fundamental limit on the performance of a CCD, since even the most sensitive and highest resolution detector imaginable would still be useless if it generated a very large amount of noise.
+Readout noise can be reduced by utilizing slower read-out times, but this comes at a cost: our detector will be slower to respond to new inputs. Scientific CCDs have a readout noise of around 2-3 electrons RMS .
+
+A second form of noise, caused by and generally referred to as “dark current”, or “dark noise” is a result of electrons being generated entirely within the detector, either by the thermal vibrations caused by photon or electron absorption. Thankfully, dark noise can be minimized or even made negligible in our images as long as we constantly cool the CCD and digitally remove the remaining noise using a “dark reference”, which will be discussed shortly. 
+
+A third type, “shot noise” is present due to the discrete particle nature of photons and electrons. 
+
+The last type of noise we’ll discuss is “pixel response noise”. 
+Until now we’ve treated pixels as if they were identical and equally responsive, but sadly this is not the case. This is because we will never be able to fabricate “perfect” pixels that respond evenly, due to imperfections from manufacture or use. Thankfully, this noise scales linearly with signal, and can be removed by an image processing technique called gain normalization. Gain normalization relies on even illumination of the sensor, an image is taken to gather the varying responses of the pixels to the homogeneous illumination, which can be saved as a gain reference file and used to remove the noise from later images.
+
+During our experiments, we must take care to minimize the noise present in our detectors. 
+
+
+`,
+`	A useful way to quantify and compare noise between detectors is found in the concept of a “signal to noise ratio”. You’ll also see this written as SNR, or sometimes S/N, and for the most part it is exactly what it sounds like -- a simple ratio. 
+
+
+-	 For our purposes, our “signal” term is the number of electrons, which we’ll represent with a capital N. 
+
+-	We’ll define the “noise” term as the square root of the sum of the read noise squared and the number of electrons.
+
+-	And, the ratio of these two terms, so N divided by the square root of the sum of the read noise squared plus N, is the SNR.
+
+ When the number of photons or electrons is much less than the read noise squared,  then read noise dominates 
+
+When the number of photons or electrons is much greater than the read noise squared,  then shot noise dominates
+
+
+And, when shot noise dominates, it is possible to double your signal to noise ratio by either quadrupling your image acquisition time, or by 2x2 binning. 
+
+
+
+
+
+
+
+
+`,
+`	Before we can discuss the fourth criterion, Detective Quantum Efficiency (or D.Q.E.), we need to understand that an ideal detector would be capable of detecting one, single electron. In this ideal case the intensity of each pixel is simply equal to the number of detected electrons.
+
+Unfortunately, a real detector is much more complicated because:
+
+The signal from an individual electron may be spread over multiple pixels,
+
+Not all electrons can be detected,
+
+And the inherent noise level in the detector electronics may place a lower limit on the number of electrons detected. 
+
+We use DQE because it enables quantification of detector quality even in the presence of these complications. 
+
+Mathematically, it is equal to the squared ratio of output signal divided by the output noise all divided by the squared ratio of the input signal divided by the input noise -- by dividing the SNR squared of the output by the SNR squared of the input, we’re getting a picture of how much of the input signal is accurately converted to output signal.  
+
+So an ideal detector will have a DQE value of one 1 , but DQE for a real detector is of course the DQE is always less than 1; the closer, the better!  
+
+
+`,
+`	As an example of the benefits of having high DQE, let’s think about the example that was given by Kuijiper et al. in the Journal of Structural Biology: 
+
+imagine that you have two cameras: 
+
+Camera A, which has a certain level of DQE, 
+and camera B, which has a DQE four times higher than that of camera A. 
+Other than different DQE’s, the cameras and exposure times are identical. 
+Your goal is to use each camera take one photo of the subject, who is shot noise limited and depicted at top left. 
+
+How do you think the photos will look? And Why? Hint: remember what you’ve learned about the SNR, and that the subject is shot noise limited! 
+
+It turns out that the photo from camera A would be of much lower quality than the photo from camera B, which you can see at the bottom left. 
+
+However, if you were to increase the exposure for the DQE-deficient camera A by a factor of four, your images would be of similar quality.
+
+This is because image quality depends on both dose and DQE. Likewise, this is why a detector with a high-DQE would be beneficial if you’re working with beam sensitive biological materials, for example -- you could achieve identical quality with much less irradiation. 
+
+
+
+
+
+
+`,
+`	So, since we’ve seen firsthand how a DQE closer to one will allow for more efficient imaging, we can begin to understand that it’s probably in our best interests as responsible electron microscopists to know what effects the DQE of a detector. 
+
+-	It turns out that it’s influenced by the MTF and readout noise, as well as the efficiency of the imaging system’s other components. 
+
+-	DQE is a measure of the detector’s ability to produce high-quality images. High DQE means better image resolution! Remember, a DQE of 1 is perfection, but for practical comparisons of image quality it is enough to know that higher DQE equals better resolution in an imaging system.
+
+-	And recall from our two-camera example that if a detector has a DQE value four times that of another detector, the first detector is said to be four times as efficient, meaning that it can produce an image with an equivalent SNR after being exposed to only half of the dose required by the detector with a lower DQE. 
+This can be generalized to mean: “DQE values increase → necessary dosages decrease.” 
+
+-	 However, keep in mind that DQE only describes the detector -- it says nothing about the quality of imaging system as a whole.  Take care not to conflate this with the fact that the efficiency of the imaging system DOES influence DQE. 
+ 
+
+
+
+`,
+`	The fifth criterion we can use to judge detector performance is “gain”. 
+
+But to understand gain, we must first know that the primary purpose of an electron detector is to convert the number of electrons to a digital unit (counts) to form a digital image, and that the gain value is set by the electronics that govern the CCD readout -- it is not a property of the pixels.
+
+For digital images, gain can be used to describe the magnitude of the amplification of the original signal, and it is reported in units of “electrons per count”, or “electrons per analog-to-digital unit (ADU)”. For example, A gain value of 8 means that the camera digitizes the detector signal in such a way that each individual ADU corresponds to 8 photoelectrons (in a detector with a DQE. of 1).
+
+The actual gain, however, can only be determined by subjecting a detector to a gain calibration test. 
+
+
+
+
+`,
+`	Dynamic range is the sixth criterion by which we can compare or evaluate detectors. It represents the camera’s ability to display/reproduce the brightest and darkest portions of the image, as well as all of the variations between them. 
+
+The largest possible signal is directly proportional to the maximum number of electrons that can be accepted by a single pixel. This upper limit on electrons is called the “full well capacity” of the pixel.
+
+Therefore, dynamic range is a ratio between the full well capacity and the noise floor, which is the RMS of the noise level of a black image, which contains sensor readout noise, camera processing noise, noise from dark current, and shot noise. 
+
+Mathematically, dynamic range (or DR) is the ratio between the maximum output signal level and the noise floor at minimum signal amplification, and is equal to:
+twenty times the natural logarithm of the ratio of maximum intensity, I sub max, divided by sigma sub r, the detector’s readout noise. 
+
+Grayscale is a range of shades of gray without apparent color. We have known that digital image is an indexed array of numeric values. Grayscale is the assigned number value of each pixel. The lower grayscale value gets darker shade than the higher value.
+
+
+`,
+`	According to Freyhammer et al., full-well capacity of a pixel is more formally defined as the number of electrons a pixel can hold before the charges escape the device’s potential barriers and spills over into adjacent pixels in the column. 
+
+Numerical saturation limit is the ceiling of the digital counts from the analog-to-digital converter, which are mostly 16 bit, meaning they have 65,535 analog-to-digital units available.
+
+
+`,
+`	Now let’s take a look at specific detectors.
+
+As we learned earlier, in TEM mode, the incident signals are static and analog, so we need area/array detectors for TEM imaging and diffraction recording. 
+
+Because of this, you can expect to find several different types of array detectors in a TEM -- common types of array detectors include:
+
+The fluorescence screen, 
+The CCD and
+CMOS cameras, 
+and, in older tools, film negatives
+as well as phase plates, but these last two types are antiquated and rarely used because viewing the data they’ve gathered requires time-consuming post-processing.
+Compared to film and plate detection, modern CCD cameras are faster and more convenient to get results from. Direct electron cameras can now perform equally well, but aren’t yet as widely utilized as CCDs. 
+In light of this, and since the fundamental principles of all array detectors are fairly similar, we won’t discuss film or phase plates any further. 
+
+
+`,
+`	Charge Coupled Devices (CCDs) were invented in the 1970s and originally found application as memory devices. 
+
+CCDs work by converting photons into a pattern of electronic charge in a silicon chip. 
+
+This pattern of charge is converted into a video waveform, digitized and stored as an image file on a computer.
+
+`,
+`	The image area of the CCD is positioned underneath the fluorescence screen. When the screen is raised, electrons hit the scintillator and generate photons. Fiber optics guide the photons to the CCD chip, where the patterns of electric charge form the image. 
+
+At the end of the exposure period this pattern is transferred pixel by pixel through the serial register to the on-chip amplifier. After amplification, the signal is passed through thin gold wires connected to bond-pads around the periphery of the chip, where it can then be read by external devices. 
+
+In the image of a chip on the left, there is an image sensor in the center of the chip, surrounded by packaging material which could be metal, ceramic, or plastic. The image sensor is a parallel array of pixels, with a serial register at the bottom. All pixel values are read through the register, output to the amplifier, through the bond pads and are recorded into a computer. 
+
+
+`,
+`	The n-type layer of silicon contains an excessive amount of electrons that diffuse into the p-layer, and the p-layer contains an excessive amount of holes that diffuse into the n-layer. This is exactly like the diode junctions we were exposed to in physics class. The diffusion of electrons and holes creates a charge imbalance, and induces an internal electric field. The electric potential reaches a maximum just inside the n-layer, where photo-generated electrons will collect. All research-grade CCDs have this junction structure, which is known as a ‘Buried Channel. The buried channel is useful because it reduces the amount of thermally generated (dark current) nosie, and keeps the photo-electrons away from the surface of the CCD, where they could become trapped.
+
+
+`,
+`	During integration of the image, one electrode in each pixel is held at a positive potential. This further increases the potential in the silicon below that electrode, where photoelectrons 
+accumulate. The lower potentials of the neighboring electrodes act as potential barriers that define the vertical boundaries of the pixel, and the horizontal boundaries are defined by the channel stops.
+
+
+
+`,
+`	Photons entering the CCD create electron-hole pairs. The electrons are then attracted to the most positive potential in the device, where they create ‘charge packets’. Each packet corresponds to one pixel.
+
+
+
+`,
+`	Historically, the first generation CCD cameras, shown in figure A, were made with glass bi-prisms after the scintillator, and directed the photons through glass lenses to the sensor. As you can see, this is the largest and most complex design pictured, hence the need for improvement. 
+
+The second generation, shown in figure B, used fiber optical coupling to gather photons and pipe them to the image sensor without the use of lenses -- this is the type we have in our system. 
+
+In very modern instruments, you will find CMOS sensors that operate without using any scintillators or fiber optics. Instead, these sensors detect electrons directly through the bulk CMOS structures, as depicted in figure C. 
+
+The detection sensitivity can be improved through back-thinning of the sensor, as shown in D, which reduces the thickness of the active sensor area. These are the most modern sensors on the commercial market today. 
+
+
+
+
+`,
+`	During CCD image formation, multi-stage conversion of electron energy takes place. The incident electrons generate photons after interacting with the scintillator, and these are transferred to the chip itself by way of fiber optics.  
+
+For CMOS sensors, however, electrons impinge directly on the sensor element‘s active region after penetrating through a few microns of surface electronics and interconnects, without having to be converted to photons.  
+
+Both types of sensors require Peltier cooling for operation.
+
+
+`,
+`	During charge transfer, the charge packet held in the potential well is transferred from pixel-to-pixel by a cycling or clocking process.
+You can think of this like conveyor belts carrying buckets in a rainstorm, with electrons as raindrops.
+
+ First, the electrons are collected by an array of parallel rows of buckets. Once they are filled, or exposed, the conveyor belt begins to move to the right, dumping the right-most column of array buckets into the waiting column of serial register buckets. Once they have been filled with the rainwater from one column of array buckets, the serial register conveyor begins to move downwards. Their water is output, bucket by bucket, to a “calibrated measuring container”, or the output node. Different clocking circuit configurations are used for different types of CCDs. 
+
+The most important thing to take away is that, due to their precision, CCD arrays have low noise, good DQE when cooled, and a high dynamic range. BUT they are expensive, with prices of $150K~250K for 4Kx4K CCDs being the norm. 
+
+
+
+`,
+`	Here is an example of a working CMOS direct electron detector, made by Thermo Fisher Scientific. The camera is composed of three components: its back-thinned sensor membrane, indicated as component 1, which is shown in cross-section in the other figures. In addition to the membrane, with a material characterized by a low coefficient of thermal expansion being used as the carrier mount, and low-atomic mass backscatter reduction plates, indicated with numbers 2 and 3 respectively.  
+
+Impinging electrons penetrate the passivation layer and generate electron-hole pairs in the active layer and substrate. The generated electrons migrate to the blue gate electrodes, where they can be read as signals. 
+
+
+
+If we look at a drawing of the sensor cross-section during electron beam exposure, we can see the trajectory of a single incident electron, which goes on to generate a handful of electron–hole pairs. The electrons generated within the active layer then diffuse to the nearest blue gate electrode. 
+
+The figures at bottom left show the process by which spurious signals (stars) can be generated by electrons that reach a gate after having already been in the substrate. In the leftmost figure this is simply by chance, but in the figure at right we can see that the electron has actually been reflected by the bottom of the camera. 
+
+The optimal thickness of the active layer is mainly determined by a compromise between two opposing components. The first component that determines optimum active layer thickness is signal variance, which decreases as the active layer gets thinner. The second one is signal localization, which improves as the thickness of the active layer increases. Given a fixed active layer depth, a larger pixel will always lead to a better DQE when operating in normal mode. However, there are practical constraints that limit the possible pixel size, so it has been fixed to 14 μm by some manufacturers and a DQE-optimized the active layer thickness has been designed around it. 
+
+
+`,
+`	Would it be accurate to describe this as a process by which we can account for the energy lost from incident electrons to the detector?
+
+The true incident intensity from TEM  can be derived from the detector signal by means of the following operation:
+ 
+I (i,j) is equal to the inverse Fourier transform of the ratio whose numerator is the Fourier transform of the ratio of I sub d (i,j) minus D (i,j) divided by G (i,j) - D (i,j), with the whole ratio multiplied by the overbarred difference of G (i,j) - D (i,j); and whose denominator is the (MTF) at (i,j).
+
+Where I (i,j) is the true incident intensity at the pixel (i,j),
+I sub d (i,j) is the unprocessed detector signal. 
+G (i,j) is the gain reference, 
+D (i,j) is the dark reference or background image,
+MTF (i,j) is the modulus transfer function of the pixel (i,j)
+and the overbar denotes the average over the entire image of pixels. 
+
+Therefore, the raw camera output value for a pixel (i,j) can be expressed as: 
+
+I sub d (i,j) minus D (i,j), the difference of which is equal to the product of a fraction, which is the inverse Fourier transform of the product of the Fourier transform of I (i,j) and the MTF at (i,j), all over G (i,j) minus D (i,j); and the difference of G (i,j) - D (i,j)
+
+But, remember:  to get the “true” incident intensity you must perform post-processing procedures using dark and gain reference images.
+
+The first operation (background subtraction and gain normalization) can be performed in real time, and the inverse of the gain reference image can be stored in memory. Deconvolution of the point spread function, however, is slightly more time consuming, and is usually not performed in real time.
+
+
+`,
+`	Here we are going to present one simple way to measure the MTF, called the silhouette method. The silhouette method is based on estimating the input image before detection by converting the detected image into a black-and-white image using a threshold value that separates pixels within the silhouette of the beam stop from the pixels outside it. 
+
+A flat-field corrected beam-stop image is used to evaluate the MTF, whose signal is defined as the difference between the signal strengths of the bright and the dark areas as depicted in the example line trace 1 crossing the arm of the beam block. Ignoring the non-zero noise resulting from dark current in the conversion efficiency calculation will overestimate the DQE. The transitions between bright and dark at the silhouette’s edges, as well as any irregularities, like the one circled in the image, are not factored in. 
+
+DQE is equivalent to q sub zero times the square of G times the square of the MTF of f, all over NPS of f.
+
+Where q sub zero is defined as the mean incident influence, 
+G is the system gain, 
+and NPS is the noise power spectrum 
+
+
+`,
+`	After the camera has cooled to its operating temperature of ~25°C, a dark reference must be taken to calibrate the bias, or amount of noise present due to dark current. Remember that this “dark noise” is caused by thermal vibrations in the sensor atoms -- hence the name “thermal counts”  
+
+Dark reference images are also taken during the gain reference generation process.
+
+To prepare a dark reference image, begin by obscuring the camera  by lowering the screen and using the camera’s shutter to exclude signal, or by turning off the electron beam. 
+Then, under the camera menu select “Prepare dark reference”. 
+
+
+`,
+`	Most modern CCDs have four output amplifiers, which can reduce the read-out time by a factor of four when operated in parallel. 
+
+Unfortunately, it is almost inevitable that the CCD and/or the associated read-out electronics exhibit signal cross-talk between the amplifiers during such parallel clocking operations, which will lead to performance differences between quadrants. Looking at the image from Gatan’s Ultrascan CCD user manual, you can see just how drastic these differences can be, even at uniform detector intensities. 
+
+The “set bias levels” routine corrects variations in apparent intensity through post-processing that relies on the acquisition of dark reference images. 
+
+As you can see in the image of the clearly distinct quadrants, the presence of a bright source is present in one quadrant, a ghost image (or images) appears in the other quadrants of the CCD; elimination or minimization of the differences between the quadrants is necessary in situations like this. In practice, to prepare these references we will have to be imaging an area without a specimen, using sufficient beam intensity to provide enough counts (as shown on the colorful intensity bar in the image). We must also be sure that the beam size is sufficient to illuminate the entire camera. This process will have to be repeated for all desired binning configurations as well -- because of this, the entire calibration process will end up taking more than an hour, but is entirely necessary to ensure optimal performance. Gatan’s ultrascan CCD camera manual states that it is important to run the gain normalization routine after you run the prepare quadrant correction reference in order to activate the linearization correction routine, so that it is applied to all the future acquired images. These reference images will be saved in the control PC for future reference, but should still be updated regularly by the equipment manager. 
+
+
+`,
+`	Different picture elements (called pixels) have different output signals at equal electron densities (this adjustable and highly intentional difference between input signal and output signal is called gain). It is important to prepare a new gain reference image only once the CCD has been cooled, and its temperature has stabilized  (the software will confirm if the CCD bias level is stable or not). The sensor normally reaches its equilibrium temperature around -25 degrees Celsius. 
+
+Gain normalization is to correct the gain variance from pixel to pixel.
+
+To prepare a new gain reference, remove specimen from the field of view, and evenly spread the illumination across the CCD sensor. 
+
+Under the Camera menu, choose Prepare Gain Reference. Set the target intensity to about 5,000 counts, or to the intensity specified by the manufacturer.
+
+The gain reference image of your sensor should be checked regularly. You can do this by taking an image from an area without any specimen in the view -- if gain normalization has been performed correctly, you will not see any inhomogeneity in the image. If you see ghost images, you should try to re-prepare the gain reference, then the quadrant correction reference. 
+
+Multiple gain references will be assigned to specific magnification ranges on the TEM by the software. Only one magnification gain reference is needed for this to occur.  
+
+
+
+`,
+`	The fluorescent screen found in the projection tank is another relatively simple area detector. It is essentially a disk-shaped plate coated with phosphorescent zinc sulfide or zinc sulfide/cadmium sulfide powder that will convert the invisible electrons into visible photons. 
+
+Thinking back to the lecture on electron-matter interaction, you may be able to infer that cathodoluminescence is at work here, which would be correct, since Zinc and cadmium sulfides are intrinsic wide-bandgap semiconductors. The small particles of semiconducting material on the screen produce electron-hole pairs, which recombine and produce visible photons in response to high-energy electron bombardment. 
+
+This means that the intensity of the light given off by the screen is proportional to the incident current density of the impinging electron beam. 
+
+The color of the light excited from the screen is tuned by adding small concentrations of activator atoms such as manganese to the sulfides during manufacturing. The photon emission usually peaks in green (550nm) in the middle of the visible spectrum, which is why we see a green color when the electron beam interacts with the screen. 
+
+The screen’s resolution depends on the grain size of the coating, which varies between manufacturers and production processes. 
+
+The coatings usually have an average particles size of less than 100 microns, since the apparent resolution of the screen would be affected by the ability of the human eye to resolve individual particles of this size. Typical grain size is about 50 microns for the main viewing screens, and 10 microns on the smaller focusing screens.
+
+Intense beams will damage the coating on the screen if you allow them to dwell there for excessive amounts of time -- this will result in the development of a dark, useless spot where the phosphors have been destroyed. This is why we do our best to avoid using very intense beams for illumination. 
+
+
+
+`,
+`	The simplest electron detector in a TEM is the Faraday cup, which detects high-energy electrons by converting them into electrical signals, which then can be analyzed and visualized to yield a measurement of the total electron current of the beam.   
+
+The design of the detector consists of a grounded shield with a metallic cup, covered by a lid that has a very small opening which serves as a “black hole” for electrons. 
+
+The whole cup is smaller than the specimen cup of a standard specimen holder, which allows them to be integrated into the column or the ends of special specimen holder rods. 
+
+The small size of the entrance hole, along with the depth of the cup, prevent the escape of backscattered and secondary electrons generated at the bottom and sides of the cup, which is why it’s termed a “black hole” -- once electrons go in, they should never be able to come back out. 
+
+These devices cannot be used to for imaging processes; instead, we use them to characterize the TEM’s electron source, and assure appropriate current during EDX analysis in AEM (analytical electron microscopy).
+
+
+
+`,
+`	There are two kinds of point detector for STEM in the market. One kind are the semiconductor ADF and BF detectors, developed by Gatan and based on CMOS technology, and the other the kinds based on photomultiplier tube (or PMT) technology.
+
+The CMOS detectors are easy to fabricate, making them cheap to replace. Since they’re silicon-based, they can also be made in any shape, as long as it is flat. 
+
+However, they suffer from large amounts of dark current, and have poor DQE at low intensities. 
+They are also susceptible to electron beam damage, and lack sensitivity required to detect low-energy electrons.   
+
+Scintillator photomultiplier tube based point detectors have high gain and good DQE, with low noise levels and good performance when dealing with low signal. 
+These detectors aren’t as robust as CMOS sensors, though. They’re also much more expensive, and take up more space within the TEM. 
+
+That said, PMT detectors are still the best to use if your goal is Z contrast STEM imaging. 
+
+
+
+
+`,
+`	Solid-state detectors consist of a silicon annulus (ADF) or disc (BF). p/n Junctions are formed, and allow for electron sensitivity. The surfaces of the detectors are then coated with a layer of silicon dioxide, before the entire detector gets covered by a thin metallic film of gold or aluminum to allow electrical contacts to be made. 
+
+The electrons scattered from the specimen impinge on the detector, and, if they have sufficient energy, will continue traveling through the metal coating to the doped silicon, where they will generate signals.
+
+
+`,
+`	At the left, you can see a schematic cross-section of a typical ADF detector. On the right are two photographs of a Fischione 3000 ADF detector on its retractable mounting. The grey cylinder seen extending towards the floor in the top image is the photomultiplier tube, and it can be seen protruding from above the projection tank on our tecnai. The bottom picture shows the metal shielding and the entrance to the quartz rod and the YAP crystal clamp.
+
+STEM ADF and HAADF detectors are point detectors, which take advantage of the same electron detection principles that allow the Everhart-Thornley detector (ETD) to work. Detection is made possible by converting high energy electron into photons using scintillators made from yttrium aluminum perovskite (YAP) The resulting photons are then collected using an aluminum-coated quartz light pipe, which directs them to a photomultiplier tube outside the TEM column, where they are detected.  
+
+
+
+
+`,
+`	Photomultipliers are extremely sensitive light detectors capable of providing a current output proportional to the incident light intensity. They can be used to measure any process which directly or indirectly emits light. They operate using the photoelectric effect, with photons striking a photocathode at the entrance window of a PMT to produce an electron, which is then accelerated by a high-voltage field and multiplied to suit demanded gain by way of multiple secondary emission events along a chain of dynodes 
+
+They have fast, linear response with very high gain, but poor DQE of about 0.25. 
+
+
+`,
+`	Now that we have discussed detectors, we should take time to ensure that we understand the principles of digital images -- what they actually are. In contrast with physical images, which are continuous and have measurable area, digital images are arrays of numbers without physical area -- each number is a dimensionless point. 
+
+One square area of the displayed image is assigned to a single numeric value, then calls this area a picture element, or a “pixel” for short. This number value is assigned to either the center or the corner of the pixel. 
+
+Gatan’s Digitalmicrograph software uses the corner definition. 
+
+
+`,
+`	A detector’s pixel size is the size of the smallest region (which is usually square) that contains a readable signal.  As an example, photographic film has a pixel size is equal to the size of the grains of silver halide used in the emulsion. 
+
+Electronic images are always discrete images, sampled on a square grid of pixels. For a CCD camera, the pixel size is set by the physical dimensions of the sensor elements, which you already know are arranged in square grids. 
+
+Digital Imaging is the transfer of an image’s analog signal (continuous gradients) into a digital signal (step gradients) using a technique called sampling.
+
+Sampling is a technique used to digitally record analog information with a series of periodic snapshots, called “samples”. If the sampling rate is fast enough, the gaps between each snapshot are inconsequential when they are played back, just like the way “video” is really a series of still images played quickly. 
+
+The Nyquist Theorem states that to adequately reproduce a signal , you should sample it at a rate that is two-times greater than the highest frequency you wish to record.
+
+Nyquist sampling f equals d over 2,
+ where d is the smallest object, or highest frequency, you wish to record.
+
+With images, frequency is related to structure size. Small structures are said to have a high frequency. Thus, the imaging sample rate (or pixel) size should be 1/2 the size of the smallest object you wish to record.
+
+
+
+
+
+`,
+`	Nyquist sampling is described by the sample rate, which is:
+
+Nyquist sampling rate or frequency is equal to d divided by 2,
+
+ where d is the size of the smallest feature being imaged. 
+
+As far as we are concerned, frequency is dependent on  the size of the structures we’re examining; the smaller the structure, the higher the sampling frequency needs to be to ensure adequate reproduction.  
+
+So, using the Nyquist theorem, we know that the imaging sample rate (or pixel size!) should be half the size of d, the size of the smallest feature. 
+
+
+
+
+
+`,
+`	Here is a visual illustration of the implications of Nyquist sampling -- the red waveform represents an analog signal, and sampled data points are shown in black. 
+
+On the left, the signal is sampled according to the Nyquist theorem.
+●	Note that the key features of the signal are captured and digitized, 
+●	But that fine details about the waveform are lost at the expense of efficiency. 
+●	However, if the lost details are needed later the signal can be re-sampled with a new, more appropriate Nyquist frequency. 
+
+In the figure on the right the digitization process used an excessively high sample rate, so 
+●	Many more samples were used than were needed
+●	This oversampling is time consuming, 
+●	And its storage and playback will require larger file sizes and more processing power. 
+
+So, really, since the Nyquist “critical frequency” is defined based on what features of the analog signal you need, any sampling rate above the defined critical frequency is simply inefficient.  
+
+
+
+
+
+
+`,
+`	We now know that the sample rate determines the resolution and acquisition time of the final image. When we are operating the TEM, we usually need to search, focus, and acquire images of our area of interest, in that order.
+
+●	 In search mode, we use the lowest possible sampling rate, coupled with large pixel sizes and fast exposure times so that the image on the camera can be refreshed fast enough to keep up with our frequent movement of the specimen.
+
+●	In focus mode we like to have enough resolution that we can make sure the area we need to image is in good focus. This is where we rely on intermediate sampling rates, and medium resolution and pixel sizes.
+
+●	In acquire mode, we need the highest possible resolution, so a high sample rate is critical. Small pixels sizes and slow acquisition times allow for maximum resolution. 
+
+●	And remember: A digital representation of a continuous signal should have a sampling rate that is at least twice that needed to present the smallest details of the interest in the signal.
+
+●	As the detector pixel size is often fixed, to resolve the smallest details of interest the images must, of course, still be acquired at the proper microscope magnification in order to show the FOI.
+
+
+
+`,
+`	Here you can see the effects of pixel size on resolution -- the number of pixels used to make up each subsequent image of an identical feature increases from left to right. So, we can see that as we increase the number of pixels, we increase resolution. But what is the optimized amount? 
+
+
+`,
+`	Pixel size is defined as the size of the smallest region containing a readable signal. 
+
+Electronic images are always discrete arrays of numerical values. 
+
+
+`,
+`	The relation between pixel size and resolution is fairly straightforward -- if you know the pixel size and the number of pixels, then you can determine the resolution of your acquisition area. 
+
+For example, in the illustration the sensor array is composed of a 1392 x 1040 pixel grid, with each square pixel having side lengths of 6.45 microns. 
+
+Typical magnification from sample to camera is roughly objective magnification, so 100 x objective -> 65 nm per pixel
+
+
+
+`,
+`	Binning, which we mentioned earlier during our discussion of DQE, is a data processing technique we can use to help increase our SNR. 
+
+Essentially, when you take an image without binning, you are reading one pixel as one pixel, as expected. 
+
+However, when you “bin” an image, you take the outputs of a number of nearby pixels, sum them all into one register, and take the new value to be the output of one pixel, effectively increasing your pixel size. 
+2x2 binning, however, means that we’ll be reading out 4 pixels as one, which of course will
+
+increase your SNR by a factor of two, 
+
+and will decrease your read time 2-4 times.  
+
+There is a catch, though -- you will also decrease your resolution a factor of two! 
+
+
+`,
+`	Bit depth refers to the grey level stored in an image.
+
+The intensity of a digital image has a range from 0 to some maximum, which depends on how many electrons a pixel can detect before saturation occurs. For electron detectors, this is given by the number of bits per pixel.
+
+If a detector uses 8 bit per pixel, then the range of detectable intensities is from 0 to 255 gray levels, or 256 gray levels in total.  The higher the bit depth of an image, the more grey levels it can store. 8 bit refers to 256 gray levels stored, 16-bit to 65536 gray levels, and so on. 
+
+Keep in mind that working with greater bitdepth also requires the capacity to store more data per image file. 
+
+
+`,
+`	Most FEI electron microscopes acquire data with either Gatan Digitalmicrograph (for TEM) and ES Vision TIA (for STEM). The DM3 file format is the gold standard for saving Digital Micrograph files. The metadata in the image stores microscope and image information that is lost if the image is stored in any other format type. However, programs such as Adobe Photoshop do not, natively, read the DM3 files so that means users are forced to work only on machines where the Digital Micrograph program is installed.
+
+TIA (Tecnai Imaging and Analysis) is the program used on FEI Tecnai and Titan microscopes for acquiring and displaying scanned images and spectra. It is based on ES Vision, originally produced by Emispec company, now owned by Thermo Fisher Scientific. TIA files have EMI/SER file extensions. In this format, images and spectra are stored in a group of files (usually 2 but sometimes more). One file has the ending .emi and contains the screen layout information, the rest of the files (series file format) have the ending .ser and contain the image(s) and spectra themselves.
+
+The TIFF (Tagged Image File Format) format is a flexible format that normally saves eight bits or sixteen bits per color (red, green, blue) for 24-bit and 48-bit totals, respectively, usually using either the TIFF or TIF filename extension. The tagged structure was designed to be easily extendible, and many vendors have introduced proprietary special-purpose tags – with the result that no one reader handles every flavor of TIFF file.
+
+All TEM and STEM images are able to be transferred to other format as well, such as JPEG, bitmap. GIF format.
+
+
+`,
+`	The displayed nominal magnification on TEM is calibrated for photographic film, and has an accuracy of 5-10%.
+
+The CCD camera is located on a different X-Y plane along the optic/Z axis than the film camera. 
+
+As a consequence of the different positions, the magnification must be calibrated.
+
+You can use a standardized gold cross grating specimen to calibrate low magnification image magnification, or camera length values. To see a video of this calibration being performed, please click here. 
+
+To calibrate displayed magnification for high-mag work, use graphite or any crystalline specimen with a well-known d spacing, and use the FFT method to calibrate high magnification -- to see a video of this calibration being performed, please click here. 
+
+
+
+`,
+`	To calculate the system gain, first begin by: 
+
+1. collecting a bias (or zero-integration dark) image, and label it “bias”. 
+2. Then, collect two evenly-illuminated images, and label them “flat1” and “flat2”.
+3. Calculate the difference image, which you will label “diff”. “diff” is equal to “flat2” - “flat1” 
+4. Then calculate the standard deviation of the central 100 by 100 block of pixels in “diff”. 
+5. Next, square the standard deviation and divide by 2 to calculate the variance. Variance adds per image, so the variance of the difference image is the sum of the variance of “flat1” and “flat2”. 
+6. Calculate a bias-corrected image by subtracting the bias from one of the flat images, and labeling the result “corr”. So “corr” = “flat1” - “bias”. 
+7. Then, obtain the mean illumination level by calculating the mean of the central 100 by 100 square region of the “corr” image. 
+8. Finally, divide the mean by the variance to calculate the gain. So, gain equals mean divided by variance. 
+
+
+
+`,
+`		To view the many different signals in the TEM, we look at fluorescent screens and computer displays and we (sometimes) still record occasional pictures on photographic film.
+
+	 Electron detection is in a state of rapid flux as new electronic technology develops. 
+
+	Semiconductor detectors, scintillators, and CCDs all bring with them the advantage of digital images that can be processed and stored either magnetically or optically. 
+
+	Digital imaging hinges on the design and construction of these sensors
+
+	We can use MTF and DQE to quantify & compare detector performance 
+
+	Calibrations like quadrant correction, dark reference, and gain reference must be performed to ensure best results
+
+
+`
+]
+
+let ch8SpeakerNotes = [
+
+]
+
 let speakerNotes = [
     ch1SpeakerNotes,
     ch2SpeakerNotes,
     ch3SpeakerNotes,
     ch4SpeakerNotes,
     ch5SpeakerNotes,
-    ch6SpeakerNotes
+    ch6SpeakerNotes,
+    ch7SpeakerNotes,
+    ch8SpeakerNotes
 ]
 
 // Speak code based on https://codepen.io/matt-west/pen/wGzuJ

@@ -233,7 +233,8 @@ let pptsrcs = [
     'https://onedrive.live.com/embed?resid=4438293664F5F344%21171&authkey=AMYBQiOoIw1f8xA&em=2',
     'https://onedrive.live.com/embed?resid=4438293664F5F344%21169&authkey=AJO7eA8rvJVuRE4&em=2',
     'https://onedrive.live.com/embed?resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21204&authkey=AJZ5j-T659F-odg&em=2'
+    'https://onedrive.live.com/embed?resid=4438293664F5F344%21204&authkey=AJZ5j-T659F-odg&em=2',
+    'https://onedrive.live.com/embed?resid=4438293664F5F344%21208&authkey=AApOCyFB1WFHLyE&em=2'
 ]
 
 function addLectures(){
