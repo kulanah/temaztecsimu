@@ -657,7 +657,7 @@ class Canvas {
       } else if (stigmatorActive) {
         switch (stigmationMode) {
           case 'Condensor':
-            this.beamAstigmatismX += deltaX / 10;
+            this.beamAstigmatismX += deltaX;
             break;
           case 'Objective':
             this.imgAngle += deltaX / 180 / 30;
@@ -712,7 +712,7 @@ class Canvas {
       } else if (stigmatorActive){
         switch (stigmationMode){
           case 'Condensor':
-            this.beamAstigmatismY += deltaY / 10;
+            this.beamAstigmatismY += deltaY;
             break;
           case 'Objective':
             this.stretchImage(deltaY / 30);
