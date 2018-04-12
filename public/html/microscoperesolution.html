@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <body style='text-align:center'>
+        <div id="myDiv"></div>
+        <label for='a'>a:</label>
+        <input id='a' name='a' type='number' value='0.04' step='0.001'>
+        <label for='lambda'>𝜆:</label>
+        <input id='lambda' name='lambda' type='number' value='0.0025' step='0.0001'>
+        <script>
+function draw(){
+let a = document.getElementById('a').value;
+let lambda = document.getElementById('lambda').value;
+var z_data=[ ]
+for(i=-25;i<25;i++)
+{
+    let row = [];
+    for(j=-25;j<25;j++){
+        let k = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000)) / 
+            Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000)) ** 2
+        row.push(k);
+    }
+    z_data.push(row);
+}
+
+var data = [{
+           z: z_data,
+           type: 'surface'
+        }];
+  
+var layout = {
+  title: 'Microscope Resolution Function',
+  autosize: true,
+  height: 500,
+  margin: {
+    l: 65,
+    r: 50,
+    b: 65,
+    t: 90,
+  }
+};
+Plotly.newPlot('myDiv', data, layout);
+}
+
+draw();
+
+			document.getElementById('a').onclick = function (event) {
+				draw();
+            };
+            
+            document.getElementById('a').onkeyup = function (event) {
+				draw();
+            };
+            
+            document.getElementById('lambda').onclick = function (event) {
+				draw();
+            };
+            
+            document.getElementById('lambda').onkeyup = function (event) {
+				draw();
+            };
+            
+			window.addEventListener('resize', function ( event ) { 
+				draw();
+			});
+        </script>
+    </body>
+</html>
