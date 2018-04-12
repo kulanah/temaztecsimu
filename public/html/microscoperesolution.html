@@ -8,7 +8,7 @@
         <!--Range for a: 20000 to 400000, Range for lambda: .0018 to .004-->
         <!--Adjustable x and y for second function-->
         <label for='a'>a:</label>
-        <input id='a' name='a' type='number' value='0.04' step='0.001' title='Value for a'>
+        <input id='a' name='a' type='number' value='200000' step='10000' title='Value for a'>
         <label for='lambda'>𝜆:</label>
         <input id='lambda' name='lambda' type='number' value='0.0025' step='0.0001' title='Value for 𝜆'>
         <script>
@@ -18,14 +18,14 @@ let lambda = document.getElementById('lambda').value;
 let x_data = [];
 let y_data = [];
 var z_data=[ ]
-for(i=-25;i<25;i++)
+for(i=-20000000;i<20000000;i+=200000)
 {
     let xrow = [];
     let yrow = [];
     let zrow = [];
-    for(j=-25;j<25;j++){
+    for(j=-20000000;j<20000000;j+=200000){
         let k = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000)) / 
-            Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000)) ** 2
+            (Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000))) ** 2
         zrow.push(k);
         xrow.push(i);
         yrow.push(j);
