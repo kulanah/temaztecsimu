@@ -11,22 +11,35 @@
         <input id='a' name='a' type='number' value='200000' step='10000' title='Value for a'>
         <label for='lambda'>𝜆:</label>
         <input id='lambda' name='lambda' type='number' value='0.0025' step='0.0001' title='Value for 𝜆'>
+        <br>
+        <label for='xOffset'>x:</label>
+        <input id='xOffset' name='xOffset' type='number' value='12000000' step='1000000' title='x position'>
+        <label for='yOffset'>y:</label>
+        <input id='yOffset' name='yOffset' type='number' value='0' step='1000000' title='y position'>
         <script>
 function draw(){
 let a = document.getElementById('a').value;
 let lambda = document.getElementById('lambda').value;
 let x_data = [];
 let y_data = [];
-var z_data=[ ]
-for(i=-20000000;i<20000000;i+=200000)
+let x_data2 = [];
+let y_data2 = [];
+var z_data=[ ];
+let xOffset = Number(document.getElementById('xOffset').value);
+let yOffset = Number(document.getElementById('yOffset').value);
+for(let i=-24000000;i<36000000;i+=200000)
 {
     let xrow = [];
     let yrow = [];
+    let xrow2 = [];
+    let yrow2 = [];
     let zrow = [];
-    for(j=-20000000;j<20000000;j+=200000){
-        let k = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000)) / 
+    for(let j=-30000000;j<30000000;j+=200000){
+        let k1 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000)) / 
             (Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000))) ** 2
-        zrow.push(k);
+        let k2 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2) / Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2 + 250000)) / 
+            (Math.PI * a / lambda * Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2) / Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2 + 250000))) ** 2
+        zrow.push(Math.max(k1, k2));
         xrow.push(i);
         yrow.push(j);
     }
@@ -41,7 +54,6 @@ var data = [{
            z: z_data,
            type: 'surface'
         }];
-  
 var layout = {
   title: 'Microscope Resolution Function',
   autosize: true,
