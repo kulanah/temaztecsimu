@@ -2,11 +2,24 @@
 <html>
     <head>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+			input{
+				width: 80px;
+			}
+			label {
+				display:inline-block;
+				width:50px;
+				text-align:right;
+			}
+		</style>
     </head>
-    <body style='text-align:center'>
-        <div id="myDiv"></div>
+    <body>
+
         <!--Range for a: 20000 to 400000, Range for lambda: .0018 to .004-->
         <!--Adjustable x and y for second function-->
+        <table>
+            <tr>
+                <td>
         <label for='a'>a:</label>
         <input id='a' name='a' type='number' value='200000' step='10000' title='Value for a'>
         <br>
@@ -14,12 +27,24 @@
         <input id='lambda' name='lambda' type='number' value='0.0025' step='0.0001' title='Value for 𝜆'>
         <br>
         <label for='xOffset'>x:</label>
-        <input id='xOffset' name='xOffset' type='number' value='12000000' step='1000000' title='x position'>
+        <input id='xOffset' name='xOffset' type='number' value='12000000' step='1000000' title='x Offset'>
         <br>
         <label for='yOffset'>y:</label>
-        <input id='yOffset' name='yOffset' type='number' value='0' step='1000000' title='y position'>
+        <input id='yOffset' name='yOffset' type='number' value='0' step='1000000' title='y Offset'>
+                </td>
+                <td>
+        <div id="myDiv"></div>
+                </td>
+            </tr>
+        </table>
         <script>
+let init = true;
+
 function draw(){
+    let oldCamera = {};
+    if(!init){
+        oldCamera = document.getElementById('myDiv').layout.scene.camera;
+    }
 let a = document.getElementById('a').value;
 let lambda = document.getElementById('lambda').value;
 let x_data = [];
@@ -65,9 +90,24 @@ var layout = {
     r: 50,
     b: 65,
     t: 90,
+  },
+  scene1:{
+  camera: {
+          center: {
+                x: 0, y: 0, z: 0}, 
+          eye: { 
+                x:0, y:2.5, z:0}, 
+          up: {
+                x: 0, y: 0, z: 1}
+        },
   }
 };
+if(!init){
+    // Retain prior camera position
+      layout.scene1.camera = oldCamera;
+  }
 Plotly.newPlot('myDiv', data, layout);
+init = false;
 }
 
 draw();
