@@ -19,7 +19,7 @@
  */
 
 var CALACA_CONFIGS = {
-	url: "https://jg3zirwxcw:khidzw0qe5@media-6114740069.us-west-2.bonsaisearch.net",
+	url: "http://34.216.189.225:9200/",
 	index_name: "simulator",
 	type: "microscopy",
 	size: 3,

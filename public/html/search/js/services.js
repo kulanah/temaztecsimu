@@ -14,7 +14,7 @@ Calaca.factory('calacaService', ['$q', 'esFactory', '$location', function($q, el
     //Set default url if not configured
     CALACA_CONFIGS.url = 'js/config.js';
 
-    var esHost = 'https://jg3zirwxcw:khidzw0qe5@media-6114740069.us-west-2.bonsaisearch.net';
+    var esHost = 'http://34.216.189.225:9200/';
 
     var client = elasticsearch({ host: esHost });
 
