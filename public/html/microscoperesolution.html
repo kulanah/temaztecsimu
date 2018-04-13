@@ -54,14 +54,14 @@ let y_data2 = [];
 var z_data=[ ];
 let xOffset = Number(document.getElementById('xOffset').value);
 let yOffset = Number(document.getElementById('yOffset').value);
-for(let i=-24000000;i<36000000;i+=200000)
+for(let i=-24000000;i<=36000000;i+=200000)
 {
     let xrow = [];
     let yrow = [];
     let xrow2 = [];
     let yrow2 = [];
     let zrow = [];
-    for(let j=-30000000;j<30000000;j+=200000){
+    for(let j=-30000000;j<=30000000;j+=200000){
         let k1 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000)) / 
             (Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 250000))) ** 2
         let k2 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2) / Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2 + 250000)) / 
