@@ -266,11 +266,33 @@
 }
 
 #errordiv{
-  width: 10vw;
-  height: 10vh;
+  width: 35vw;
   position: absolute;
   top: 40vh;
   left: 40vw;
+  background-color: #003F87;
+  color: white;
+  font-size: x-large;
+  line-height: 1.4em;
+  font-family: sans-serif;
+}
+
+#errortitle{
+  border-bottom: solid white 2px;
+  padding: 10px;
+}
+
+#errormessage{
+  padding: 20px;
+}
+
+#errorokay{
+  font-size: xx-large;
+  padding: 20px;
+  color: inherit;
+  background-color: inherit;
+  border: solid white 1px;
+  margin: 20px;
 }
 
 #directalignmentspopout{
