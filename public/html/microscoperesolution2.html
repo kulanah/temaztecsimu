@@ -53,12 +53,12 @@
                 var z_data=[ ];
                 let xOffset = Number(document.getElementById('xOffset').value);
                 let yOffset = Number(document.getElementById('yOffset').value);
-                for(let i=-5000000;i<=5000000;i+=50000)
+                for(let i=-2000000;i<=4000000;i+=20000)
                 {
                     let xrow = [];
                     let yrow = [];
                     let zrow = [];
-                    for(let j=-5000000;j<=5000000;j+=50000){
+                    for(let j=-3000000;j<=3000000;j+=20000){
                         let k1 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 500000000 ** 2)) / 
                             (Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 500000000 ** 2))) ** 2
                         let k2 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2) / Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2 + 500000000 ** 2)) / 
