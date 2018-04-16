@@ -20,16 +20,16 @@
             <tr>
                 <td>
                     <label for='a'>a:</label>
-                    <input id='a' name='a' type='number' value='100000' step='10000' title='Value for a' min='20000' max='400000'>
+                    <input id='a' name='a' type='number' value='100000' step='10000' title='Value for a (in nm)' min='20000' max='400000'>
                     <br>
                     <label for='lambda'>𝜆:</label>
                     <input id='lambda' name='lambda' type='number' value='0.0025' step='0.0001' title='Value for 𝜆 (in nm)' min='0.0018' max='0.004'>
                     <br>
                     <label for='xOffset'>x:</label>
-                    <input id='xOffset' name='xOffset' type='number' value='1000000' step='100000' title='x Offset'>
+                    <input id='xOffset' name='xOffset' type='number' value='1000000' step='100000' title='x Offset (in nm)'>
                     <br>
                     <label for='yOffset'>y:</label>
-                    <input id='yOffset' name='yOffset' type='number' value='0' step='100000' title='y Offset'>
+                    <input id='yOffset' name='yOffset' type='number' value='0' step='100000' title='y Offset (in nm)'>
                 </td>
                 <td>
                     <div id="myDiv"></div>
@@ -53,12 +53,12 @@
                 var z_data=[ ];
                 let xOffset = Number(document.getElementById('xOffset').value);
                 let yOffset = Number(document.getElementById('yOffset').value);
-                for(let i=-10000000;i<=10000000;i+=100000)
+                for(let i=-5000000;i<=5000000;i+=50000)
                 {
                     let xrow = [];
                     let yrow = [];
                     let zrow = [];
-                    for(let j=-10000000;j<=10000000;j+=100000){
+                    for(let j=-5000000;j<=5000000;j+=50000){
                         let k1 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 500000000 ** 2)) / 
                             (Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 500000000 ** 2))) ** 2
                         let k2 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2) / Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2 + 500000000 ** 2)) / 
