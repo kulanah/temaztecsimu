@@ -28,10 +28,9 @@
           We will email you a response.<br>
       </fieldset><br>
   </div>
+  <!--a href='#contact'>Contact Us</a><br><br-->
     <div ng-app="myApp" ng-controller="myCtrl">
-
-  		<label> Search: <input ng-model="search.$"></label> <br>
-  		<br>
+      <label> Search: <input ng-model="search.$"></label> <br>
   		<div id="searchObjResults">
   			<div ng-repeat="qa in data | filter:search:strict">
           <p> <strong> Question: </strong>
@@ -44,7 +43,7 @@
   			</div>
   		</div>
   </div>
-  <h3>Contact Us</h3>
+  <h3 id='contact'>Contact Us</h3>
   <p>
     Didn't find the answer you were looking for? <br>
     Ask us a question using the form below or email us at cemn@pdx.edu.

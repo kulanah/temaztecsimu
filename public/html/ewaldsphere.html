@@ -40,18 +40,25 @@
       scene.add( beam );
       beam.rotation.x = .3;
       
-      geometry = new THREE.CircleGeometry(1.2,64);
+      /*geometry = new THREE.CircleGeometry(1.2,64);
 			material = new THREE.MeshBasicMaterial( { color: 0x001100 } );
 			var circle = new THREE.Mesh( geometry, material );
       scene.add( circle );
-      circle.rotation.x = -Math.PI / 2 + .3;
+      circle.rotation.x = -Math.PI / 2 + .3;*/
 
       geometry = new THREE.BoxGeometry(.01);
 			material = new THREE.MeshBasicMaterial( { color: 'green' } );
-			var tilt = new THREE.Mesh( geometry, material );
-      scene.add( tilt );
-      tilt.rotation.x = .3;
-      tilt.rotation.z = 1;
+			var plane1 = new THREE.Mesh( geometry, material );
+      scene.add( plane1 );
+      plane1.rotation.x = .3;
+      plane1.rotation.z = 1;
+      plane1.position.y = .2;
+
+      let plane2 = new THREE.Mesh( geometry, material );
+      scene.add( plane2 );
+      plane2.rotation.x = .3;
+      plane2.rotation.z = 1;
+      plane2.position.y = -.2;
 
       geometry = new THREE.CylinderGeometry(.01, .01, 2.25);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
@@ -84,11 +91,11 @@
 
 				//sphere.rotation.x += 0.01;
         sphere.rotation.y += 0.01;
-        tilt.rotation.y += 0.01;
+        plane1.rotation.y += 0.01;
         normal.rotation.y += 0.01;
         PS.rotation.y += 0.01;
         if(mouseDown){
-          tilt.rotation.z = (tilt.rotation.z + .01) % (Math.PI);
+          plane1.rotation.z = (plane1.rotation.z + .01) % (Math.PI);
           drawDeflection();
         }
 
@@ -96,7 +103,7 @@
       };
       
       function drawDeflection(){
-          normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
+          normal.rotation.z = -Math.PI / 2 + plane1.rotation.z;
           let theta = Math.PI / 2 - normal.rotation.z;
           let a = Math.cos(theta);
           let b = Math.sin(theta);
@@ -113,7 +120,7 @@
 
       window.addEventListener( 'resize', onWindowResize, false );
 
-			animate();
+			//animate();
 		</script>
 	</body>
 </html>
