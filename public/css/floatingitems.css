@@ -425,12 +425,30 @@
   height: 23px;
 }
 
+.lecturecontrol{
+  font-size: large;
+  padding: 5px;
+  margin: 4px 0px;
+}
+
 .lecturetab{
   padding: 2px;
 }
 
 #speakernotesinfo{
   color:white;
+}
+
+#slidenumber{
+  width: 6em;
+}
+
+#speakernotespause{
+  padding-top: 2px;
+}
+
+#speakernotesstop{
+  padding-top: 2px;
 }
 
 #fullscreenbtn{
