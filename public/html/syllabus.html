@@ -89,10 +89,9 @@
             let n = i;
             (chapters[i-1]).addEventListener('click',function(){
                 parent.setChapter(n);
-                if(parent.getSimulatorMode() != 'introduction'){
+                if(parent.getSimulatorMode() === 'self-assessment'){
                     parent.popContentDisplay('#homework');
-                }
-                if(parent.getSimulatorMode() != 'self-assessment'){
+                } else {
                     parent.$('#lecturediv').show();
                 }
             });
