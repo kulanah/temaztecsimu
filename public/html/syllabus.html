@@ -92,6 +92,9 @@
                 if(parent.getSimulatorMode() != 'introduction'){
                     parent.popContentDisplay('#homework');
                 }
+                if(parent.getSimulatorMode() != 'self-assessment'){
+                    parent.$('#lecturediv').show();
+                }
             });
         }
     </script>
