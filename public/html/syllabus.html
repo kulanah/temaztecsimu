@@ -89,7 +89,9 @@
             let n = i;
             (chapters[i-1]).addEventListener('click',function(){
                 parent.setChapter(n);
-                parent.popContentDisplay('#homework');
+                if(parent.getSimulatorMode() != 'introduction'){
+                    parent.popContentDisplay('#homework');
+                }
             });
         }
     </script>

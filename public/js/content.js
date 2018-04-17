@@ -10,6 +10,7 @@ let lectureTop = 0;
 let lectureLeft = 0;
 /*let lectureWidth = 0;
 let lectureHeight = 0;*/
+let simulatorMode = 'learning';
 
 //register all the events to targets when docuemnts are all loaded
 function prepareContent(){
@@ -167,15 +168,21 @@ function modeAdjustment(){
         disableButton($('#controlbtn'));
         disableButton($('#homeworkbtn'));
         console.log('Introduction Mode')
+        simulatorMode = 'introduction';
     } else if (location.search.includes('mode=self-assessment')){
         disableButton($('#lecturebtn'));
         disableButton($('#examplebtn'));
         disableButton($('#qabtn'));
         disableButton($('#columnbtn'));
         console.log('Self-Assessment Mode')
+        simulatorMode = 'self-assessment';
     } else {
         console.log('Learning Mode');
     }
+}
+
+function getSimulatorMode(){
+    return simulatorMode;
 }
 
 // Add functionality to notepad buttons
