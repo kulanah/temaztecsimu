@@ -490,6 +490,7 @@ iframe {
   width: 30.5vw;
   height: 16vh;
   font-size: large;
+  padding: 2px;
 }
 
 #floatingstigmatordiv {
