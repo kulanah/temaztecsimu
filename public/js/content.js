@@ -203,6 +203,7 @@ function saveNotes(){
     $('#downloadnotes').click(function(){
         // Function based on saveTextAsFile() function from https://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
         var textToSave = document.getElementById("notes").value;
+        textToSave = textToSave.replace(/\n/g, '\r\n');
         var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
         var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
         var date = new Date();
