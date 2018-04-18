@@ -106,6 +106,7 @@ let pageSetup = function(){
       observer.disconnect();
       $('#leftControllerDiv').css('z-index', zcounter);
       $('#rightControllerDiv').css('z-index', zcounter);
+      $('#apertures').css('z-index', zcounter);
       zcounter++;
       observer.observe(target, {
         attributeFilter: ['style']
