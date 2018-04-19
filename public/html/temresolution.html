@@ -31,6 +31,9 @@
                     <br>
                     <label for='yOffset'>y:</label>
                     <input id='yOffset' name='yOffset' type='number' value='0' step='1' title='y Offset (in nm)'>
+                    <br>
+                    <label for='scale'>scale:</label>
+                    <input id='scale' name='scale' type='number' value='10' step='10' title='x and y axis scale' min='10'>
                 </td>
                 <td>
                     <div id="myDiv"></div>
@@ -55,7 +58,7 @@
                 let xOffset = Number(document.getElementById('xOffset').value);
                 let yOffset = Number(document.getElementById('yOffset').value);
                 let d = Math.sqrt(xOffset ** 2 + yOffset ** 2)
-                let xymax = 30;
+                let xymax = Number(document.getElementById('scale').value);
                 let xyinterval = xymax / 100;
                 for(let i=-xymax;i<=xymax;i+=xyinterval)
                 {
@@ -147,6 +150,14 @@
             };
             
             document.getElementById('yOffset').onkeyup = function (event) {
+				draw();
+            };
+
+            document.getElementById('scale').onclick = function (event) {
+				draw();
+            };
+            
+            document.getElementById('scale').onkeyup = function (event) {
 				draw();
             };
             
