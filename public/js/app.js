@@ -27,7 +27,7 @@ let imagectx = $('#setupboxcanvasimage')[0].getContext('2d');
 
 //temColumn.column.focusColumn(1);
 
-//let foo = new MicroscopeColumn('columnDiv');
+let columnVar = new temColumn.MicroscopeColumn('divName')
 
 drawColumn();
 
