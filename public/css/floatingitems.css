@@ -7,6 +7,15 @@
   border: 2px white solid;
 }
 
+#divName{
+  position: absolute;
+  height: 90vh;
+  width: 40vh;
+  background: black;
+  overflow: hidden;
+  border: 2px white solid;
+}
+
 .columnZoomButton{
   cursor: pointer;
 }
