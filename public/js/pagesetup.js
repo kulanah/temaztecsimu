@@ -13,7 +13,7 @@ let pageSetup = function(){
   let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'deflectorbox'];
   
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
-  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 
+  'openbox', 'basesetup', 'columndiv', 'column3d', 'errordiv', 'directalignmentspopout', 'diffractograms', 
   'columndivzoom', 'apertures', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 
   'tunehelppopup', 'generalhelppopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode'];
 
