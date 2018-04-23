@@ -27,13 +27,13 @@
                     <input id='lambda' name='lambda' type='number' value='0.0025' step='0.0005' title='Value for 𝜆 (in nm)' min='0.0015' max='0.004'>
                     <br>
                     <label for='xOffset'>x:</label>
-                    <input id='xOffset' name='xOffset' type='number' value='3' step='1' title='x Offset (in nm)'>
+                    <input id='xOffset' name='xOffset' type='number' value='3' step='.1' title='x Offset (in nm)'>
                     <br>
                     <label for='yOffset'>y:</label>
-                    <input id='yOffset' name='yOffset' type='number' value='0' step='1' title='y Offset (in nm)'>
+                    <input id='yOffset' name='yOffset' type='number' value='0' step='.1' title='y Offset (in nm)'>
                     <br>
                     <label for='scale'>scale:</label>
-                    <input id='scale' name='scale' type='number' value='5' step='5' title='x and y axis scale' min='5'>
+                    <input id='scale' name='scale' type='number' value='5' step='1' title='x and y axis scale' min='1'>
                 </td>
                 <td>
                     <div id="myDiv"></div>
@@ -90,7 +90,7 @@
                     type: 'surface'
                 }];
                 var layout = {
-                    title: 'Microscope Resolution Function',
+                    title: 'TEM Resolution Function',
                     autosize: true,
                     height: 500,
                     margin: {
