@@ -25,8 +25,6 @@ for(let i = 0; i < 14; i++){
 // Used to accurately evaluate specimen height when the beam leaves the microscope setup window or becomes very small
 let imagectx = $('#setupboxcanvasimage')[0].getContext('2d');
 
-let columnVar = new temColumn.MicroscopeColumn('column3d')
-
 drawColumn();
 
 let micrographImage = './public/img/23.png';

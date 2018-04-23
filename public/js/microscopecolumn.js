@@ -1,0 +1,1 @@
+let columnVar = new temColumn.MicroscopeColumn('column3d')

@@ -411,6 +411,7 @@ let microscopeControllers = function(){
       c2Level = i;
       $('#c2label').text('C2 Aperture: ' + i);
       updateCanvas();
+      columnVar.updateAperture(3, c2Sizes[c2Level - 1] / 150)
     });
   }
 
