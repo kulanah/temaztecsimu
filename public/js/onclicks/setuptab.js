@@ -44,6 +44,7 @@ let vacuumWindow = function(){
       $('#vacuumimg').attr('src', './public/img/vacuumopen.png');
     }
     updateCanvas();
+    columnVar.toggleValve();
     drawColumn();
   });
 
