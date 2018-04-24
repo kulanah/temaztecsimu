@@ -10,13 +10,16 @@
 				display:inline-block;
 				width:50px;
 				text-align:right;
-			}
+            }
+            #myDiv {
+                width: 60vw;
+                height: 90vh;
+            }
 		</style>
     </head>
     <body>
         <!--Range for a: 200000 to 800000, Range for lambda: .0015 to .004; 200 to 1000-->
         <!--Adjustable x and y for second function-->
-        <p id='criterion'></p>
         <table>
             <tr>
                 <td>
@@ -34,6 +37,8 @@
                     <br>
                     <label for='scale'>scale:</label>
                     <input id='scale' name='scale' type='number' value='1500000' step='500000' title='x and y axis scale' min='500000'>
+                    <br>
+                    <p id='criterion'></p>
                 </td>
                 <td>
                     <div id="myDiv"></div>
@@ -87,17 +92,16 @@
                     y: y_data,
                     z: z_data,
                     colorscale: 'YIOrRd',
-                    type: 'surface'
+                    type: 'surface',
+                    showscale: false,
                 }];
                 var layout = {
                     title: 'Optical Microscope Resolution Function',
-                    autosize: true,
-                    height: 500,
                     margin: {
-                        l: 65,
-                        r: 50,
-                        b: 65,
-                        t: 90,
+                        l: 0,
+                        r: 0,
+                        b: 0,
+                        t: 25,
                     },
                     scene: {
                     camera: {
