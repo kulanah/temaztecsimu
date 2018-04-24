@@ -119,9 +119,9 @@
                     layout.scene.camera = oldCamera;
                 }
                 if(d >= 1.22 * lambda * 600000000 / a){
-                    document.getElementById('criterion').textContent = 'Rayleigh criterion satisfied'
+                    document.getElementById('criterion').innerHTML = 'Rayleigh criterion: <br>satisfied'
                 } else {
-                    document.getElementById('criterion').textContent = 'Rayleigh criterion not satisfied'
+                    document.getElementById('criterion').innerHTML = 'Rayleigh criterion: <br>not satisfied'
                 }
                 Plotly.newPlot('myDiv', data, layout);
                 init = false;
