@@ -11,10 +11,10 @@ let startMenu = function(){
   });
 
   $('#columnbtn').on('click', function(){
-    if(isVisible('columndiv')){
-      $('#columndiv').hide();
+    if(isVisible('column3d')){
+      $('#column3d').hide();
     } else{
-      $('#columndiv').show();
+      $('#column3d').show();
     }
   });
 
