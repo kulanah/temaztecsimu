@@ -1035,6 +1035,21 @@ let ch4SpeakerNotes = [
     
     
     `,
+    `	In optical microscope, three different resolution criteria are used to describe the resolution of a light microscope: Rayleigh’s, Abbe’s, and Spurrow’s criteria. The mathematical description of optical resolution was laid down separately by Lord Rayleigh and Ernst Abbe in the latter part of the 19th century. Although both approaches lead to essentially similar conclusions, each has a somewhat different way of describing the underlying rules of resolution. Keep in mind that “resolution” in this context is quite different from resolution as we usually think about it in terms of image crispness – this is a bare-bones, fundamental definition of resolution. 
+    
+    The Rayleigh criterion states that two points can just be resolved when the first diffraction minimum of the image of one source point coincides with the maximum of the other. The intensity of the resultant wave drops by about 15% in the center, which is just sufficient for the two points to be resolved. Distances less than this are unresolvable. This minimum resolution is often called the diffraction barrier. 
+    
+    The resolution of a microscope is a function of the diffraction behavior of the radiation being used, as well as the wavelength of the radiation. Perfection of the lenses, and scattering events in the sample also play a role in determining the resolution of a microscope. 
+    
+    The example of diffraction through a circular aperture is of great importance because the eye and many optical (including electron optical) instruments have circular apertures. All microscopes diffract radiation because, even if an aperture is not deliberately introduced, since the physical dimensions of the lenses are restricted and so act as apertures themselves.
+    
+     When light from a point source passes through a small circular aperture, it does not produce a bright dot as an image, but rather a diffuse circular disc known as the Airy disc† surrounded by much fainter concentric circular rings sometimes called a jinc distribution, which we have already discussed. Most of the intensity (84%) is contained in the central disc which has a diameter of d1. If two points are images, each of them will form an Airy disc. 
+    
+    Moving the objects closer together will move the intensity patterns together until they overlap. As the overlap increases, a condition is reached at which the two points cannot be distinguished and appear like a single point. 
+    
+    
+    
+    `,
     `	The Abbe criterion takes a complementary approach to describe resolution.
     
     The object in this diagram is a diffraction grating that splits the incident light into three different rays: the (undiffracted) red ray, called zeroth order diffraction, and +1 and –1 order diffraction being visible in blue and green. If the grating is coarse, then the diffracted orders are diffracted through a small angle and pass through the objective lens L1, forming diffraction-limited points in the so-called Fourier plane. 
