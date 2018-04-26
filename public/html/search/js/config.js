@@ -19,7 +19,7 @@
  */
 
 var CALACA_CONFIGS = {
-	url: "http://34.216.189.225:9200/",
+	url: "https://34.216.189.225:9200/",
 	index_name: "simulator",
 	type: "microscopy",
 	size: 3,
