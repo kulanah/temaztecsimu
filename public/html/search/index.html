@@ -32,11 +32,10 @@
     <article class='result' ng-repeat='result in results track by $id(result)'>
       <div class="media">
       <div class="media-left">
-      <img style="width: 100px;" src="result.imageUrl" alt="" />
+      <!--img style="width: 100px;" src="result.imageUrl" alt="" /-->
       </div>
       <div class="media-body">
-        <h2>{{result.name}}</h2>
-        <p>{{result.latex}}</p>
+        <a href={{result.Location[0].url}}><h2>Chapter {{result.chapter}}, Slide {{result.page}}</h2></a>
       </div>
       </div>
     </article>
