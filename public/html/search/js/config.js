@@ -19,7 +19,7 @@
  */
 
 var CALACA_CONFIGS = {
-	url: "https://elastic:cemn04@34.216.189.225:9200/",
+	url: "https://elastic:cemn04@nanoemedu.org:9200/",
 	index_name: "simulator",
 	type: "microscopy",
 	size: 3,
