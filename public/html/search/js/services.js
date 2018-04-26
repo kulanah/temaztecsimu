@@ -16,7 +16,7 @@ Calaca.factory('calacaService', ['$q', 'esFactory', '$location', function($q, el
 
     var esHost = 'https://34.216.189.225:9200/';
 
-    var client = elasticsearch({ host: esHost });
+    var client = elasticsearch({ host: esHost, auth: 'elastic:cemn04' });
 
     var search = function(query, mode, offset){
 
