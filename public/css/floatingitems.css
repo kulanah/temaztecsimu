@@ -435,6 +435,10 @@
   padding: 2px;
 }
 
+.speakerelements{
+  display: inline-block;
+}
+
 #speakernotesinfo{
   color:white;
   line-height: 1em;
