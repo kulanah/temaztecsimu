@@ -120,6 +120,8 @@ function helpClicked(){
             $('#generalhelppopup').hide();
         } else {
             $('#generalhelpcontent').prop('src','public/docs/OEMP Functions.htm');
+            $('#generalhelppopup').css('z-index', zcounter);
+            zcounter++;
             $('#generalhelppopup').show();
         }
     })
@@ -131,6 +133,8 @@ function labSessionClicked(){
             $('#generalhelppopup').hide();
         } else {
             $('#generalhelpcontent').prop('src','public/html/psulabsession.html');
+            $('#generalhelppopup').css('z-index', zcounter);
+            zcounter++;
             $('#generalhelppopup').show();
         }
     })
