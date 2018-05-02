@@ -179,7 +179,6 @@ function disableButton(button){
 
 function modeAdjustment(){
     if(location.search.includes('mode=introduction')){
-        disableButton($('#controlbtn'));
         disableButton($('#homeworkbtn'));
         console.log('Introduction Mode')
         simulatorMode = 'introduction';
