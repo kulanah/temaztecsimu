@@ -480,6 +480,13 @@ let resumeDA = function(){
   }
 }
 
+function resetHolder(){
+  setupbox.resetHolder();
+  openbox.resetHolder();
+  mainmicro.resetHolder();
+  updateCanvas();
+}
+
 function factoryAlign(){
   setupbox.factoryAlign();
   openbox.factoryAlign();
