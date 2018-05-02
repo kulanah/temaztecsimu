@@ -79,6 +79,12 @@ let pageSetup = function(){
       zcounter++;
     });
     bringToFront(listOfDraggables[i]);
+    $('#' + listOfDraggables[i]).children().on('load', function(){
+      $(this).contents().mousedown(function(){
+        $('#' + listOfDraggables[i]).css('z-index', zcounter); // moves element to the front on mousedown inside iframe
+        zcounter++;
+      })
+    });
   }
 
   // Make draggablesWithTextInputs draggable separately because cancelling map on notepad causes the textarea to become unclickable
@@ -95,6 +101,12 @@ let pageSetup = function(){
       zcounter++;
     });
     bringToFront(draggablesWithTextInputs[i]);
+    $('#' + draggablesWithTextInputs[i]).children().on('load', function(){
+      $(this).contents().mousedown(function(){
+        $('#' + draggablesWithTextInputs[i]).css('z-index', zcounter);
+        zcounter++;
+      })
+    });
   }
 
   // Special case for microscope controls since the container div is shown/hidden,
