@@ -774,8 +774,8 @@ class Canvas {
 
     let maskRadius = this.calculateRadius() - 10;
 
-    if (maskRadius < 1.5){
-      haloR = 1;
+    if (maskRadius < 10){
+      haloR = 10;
     } else {
       haloR = maskRadius
     }
