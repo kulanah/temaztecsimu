@@ -125,6 +125,16 @@ function helpClicked(){
             $('#generalhelppopup').show();
         }
     })
+    $('#helpmenubutton').click(function(){
+        if(isVisible('generalhelppopup') && $('#generalhelpcontent').prop('src').includes('Functions.htm')){
+            $('#generalhelppopup').hide();
+        } else {
+            $('#generalhelpcontent').prop('src','public/docs/OEMP Functions.htm');
+            $('#generalhelppopup').css('z-index', zcounter);
+            zcounter++;
+            $('#generalhelppopup').show();
+        }
+    })
 }
 
 function labSessionClicked(){
