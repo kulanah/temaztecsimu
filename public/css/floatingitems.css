@@ -174,6 +174,10 @@
   left: 20.8vw;
 }
 
+.offmenu{
+  cursor: auto;
+}
+
 #openbox{
   position: absolute;
   z-index: 0;

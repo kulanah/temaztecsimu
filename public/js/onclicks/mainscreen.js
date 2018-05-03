@@ -88,6 +88,14 @@ let mainScreen = function(){
     $('#processmenu').hide();
   });
 
+  $('#processtransparent1').on('click', function(event){
+    $('#processmenu').hide();
+  });
+
+  $('#processtransparent2').on('click', function(event){
+    $('#processmenu').hide();
+  });
+
   $('#xbox').on('click', function(event){
     $('#openfiledialogue').hide();
   });
