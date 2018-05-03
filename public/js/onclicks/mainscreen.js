@@ -84,6 +84,10 @@ let mainScreen = function(){
     saveImage();
   });
 
+  $('#processfft').on('click', function(event){
+    $('#processmenu').hide();
+  });
+
   $('#xbox').on('click', function(event){
     $('#openfiledialogue').hide();
   });
