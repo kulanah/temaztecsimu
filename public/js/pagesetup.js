@@ -15,9 +15,8 @@ let pageSetup = function(){
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'fft',
   'columndivzoom', 'apertures', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 
-  'tunehelppopup', 'generalhelppopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode'];
-
-  let draggablesWithTextInputs = ['lecturediv', 'notepad']
+  'tunehelppopup', 'generalhelppopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode',
+  'lecturediv', 'notepad'];
   
   function bringToFront(id) {
     // Whenever an element appears, move it to the front
@@ -69,7 +68,7 @@ let pageSetup = function(){
   for (let i = 0; i < listOfDraggables.length; ++i){
     $('#' + listOfDraggables[i]).draggable({
       addClasses: true,
-      cancel: 'map, iframe',
+      cancel: 'map, iframe, button, textarea, input, select, option',
       iframeFix: true,
       cursor: 'move',
       containment: '#maincontent', // keeps users from dragging elements offscreen
@@ -83,28 +82,6 @@ let pageSetup = function(){
     $('#' + listOfDraggables[i]).children().on('load', function(){
       $(this).contents().mousedown(function(){
         $('#' + listOfDraggables[i]).css('z-index', zcounter); // moves element to the front on mousedown inside iframe
-        zcounter++;
-      })
-    });
-  }
-
-  // Make draggablesWithTextInputs draggable separately because cancelling map on notepad causes the textarea to become unclickable
-  for (let i = 0; i < draggablesWithTextInputs.length; ++i){    
-    $('#' + draggablesWithTextInputs[i]).draggable({
-      addClasses: true,
-      iframeFix: true,
-      cursor: 'move',
-      containment: '#maincontent',
-      scroll: false
-    });
-    $('#' + draggablesWithTextInputs[i]).mousedown(function(){
-      $('#' + draggablesWithTextInputs[i]).css('z-index', zcounter);
-      zcounter++;
-    });
-    bringToFront(draggablesWithTextInputs[i]);
-    $('#' + draggablesWithTextInputs[i]).children().on('load', function(){
-      $(this).contents().mousedown(function(){
-        $('#' + draggablesWithTextInputs[i]).css('z-index', zcounter);
         zcounter++;
       })
     });
