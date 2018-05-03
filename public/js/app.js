@@ -434,7 +434,10 @@ let checkDiffractograms = function(){
 }
 
 let drawFFT = function(){
-  if(isVisible('openbox') && openbox.zooms[openbox.mag] >= 125000 && colopen){
+  if(!isVisible('openbox')){
+    return;
+  }
+  if(openbox.zooms[openbox.mag] >= 125000 && colopen){
     drawDiffractogram(document.getElementById('fftcanvas'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
   } else {
     clearCanvas(document.getElementById('fftcanvas'));

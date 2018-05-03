@@ -137,6 +137,7 @@ let mainScreen = function(){
       activeWindow = 0;
       $('#openbox').show();
       openbox.drawCanvas();
+      checkDiffractograms();
       $('#basesetup').hide();
     }
   });
