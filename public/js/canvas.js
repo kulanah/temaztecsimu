@@ -720,7 +720,7 @@ class Canvas {
             this.beamAstigmatismY += deltaY;
             break;
           case 'Objective':
-            this.stretchImage(deltaY / 30);
+            this.stretchImage(deltaY);
             if(this == setupbox){
               checkDiffractograms();
             }
