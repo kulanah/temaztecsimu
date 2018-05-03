@@ -509,6 +509,16 @@
       </div>
     </div>
 
+    <div id='fft' class='hidden'>
+      <div class='popuptitle'>
+      <span>A: Live FFT of view</span>
+      <button id='fftclose' style='float: right'><img src='./public/img/iconmonstr-x-mark-1-240.png' alt='Close' width=15px height=15px style='padding:2px'></button>
+      </div>
+      <div class='bigstage'>
+        <canvas class='diffractogramcanvas' id='fftcanvas' width='512' height='512'></canvas>
+      </div>
+    </div>
+
     <!--iframe divs-->
     <div id='popplaceholder' class='hidden'>
       <iframe class='popcontent'></iframe>
@@ -525,15 +535,11 @@
     <div id='curriculum' class='popcontainer'>
       <iframe class='popcontent' src='public/html/syllabus.html'></iframe>
     </div>
-    <!--div id='generalhelp' class='popcontainer'>
-      <iframe class='popcontent' src='public/docs/OEMP Functions.htm'></iframe>
-    </div-->
     <div id='learningmode' class='popcontainer'>
       <iframe class='popcontent' src='public/html/learningmode.html'></iframe>
     </div>
 
     <div id='lecturediv' class='hidden'>
-      <!--img id='blocker' src='public/img/iconmonstr-x-mark-1-240.png'-->
       <iframe id='temlecture' src="public/html/ch1v1.html" width='582' height='360'></iframe>
       <br>
       <span id='speakernotesinfo' class='lecturecontrol'>Read speaker notes aloud for slide number:</span>

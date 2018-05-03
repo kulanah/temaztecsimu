@@ -384,6 +384,28 @@
   border: 2px solid black;
 }
 
+#fft{
+  position: absolute;
+  top: 10.3vh;
+  left: 59.5vw;
+  background-color: #003F87;
+  color: white;
+  line-height: 1.4em;
+  font-family: sans-serif;
+  border: solid white 2px;
+}
+
+.popuptitle {
+  border-bottom: solid white 2px;
+}
+
+.bigstage {
+  width: 512px;
+  height: 512px;
+  position: relative;
+  border: 2px solid black;
+}
+
 #tunehelppopup{
   position: absolute;  
   top: 0vh;

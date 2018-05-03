@@ -86,6 +86,8 @@ let mainScreen = function(){
 
   $('#processfft').on('click', function(event){
     $('#processmenu').hide();
+    drawDiffractogram(document.getElementById('fftcanvas'), (1 / Math.max(Math.abs(setupbox.intensity),1)) ** .1, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
+    $('#fft').show();
   });
 
   $('#processtransparent1').on('click', function(event){
@@ -99,7 +101,6 @@ let mainScreen = function(){
   $('#xbox').on('click', function(event){
     $('#openfiledialogue').hide();
   });
-
 
   $('#cancel').on('click', function(event){
     $('#openfiledialogue').hide();
@@ -119,6 +120,10 @@ let mainScreen = function(){
     $('#openbox').show();
     openbox.drawCanvas();
     $('#basesetup').hide();
+  });
+
+  $('#fftclose').on('click', function(event){
+    $('#fft').hide();
   });
 
   $('#filtercontrolclosebox').on('click', function(event){

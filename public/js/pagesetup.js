@@ -13,7 +13,7 @@ let pageSetup = function(){
   let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'processmenu', 'deflectorbox'];
   
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
-  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 
+  'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'fft',
   'columndivzoom', 'apertures', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 
   'tunehelppopup', 'generalhelppopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode'];
 
@@ -38,7 +38,7 @@ let pageSetup = function(){
     });
   };
 
-  $(document).mouseup(function(e) {
+  $(document).mousedown(function(e) {
     for (let i = 0; i < closewhenoffclick.length; ++i){
       var $container = $('#' + closewhenoffclick[i]);
 
@@ -52,6 +52,7 @@ let pageSetup = function(){
   // openfiledialog gets bringToFront called on it as a draggable, below
   bringToFront('maindropdown');  
   bringToFront('filemenu');
+  bringToFront('processmenu');
   bringToFront('deflectorbox');
   bringToFront('grabbingdiv');  
 
