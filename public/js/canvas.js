@@ -246,7 +246,9 @@ class Canvas {
           if(this.maskX > this.imgX + alphaTiltImpact + this.imgW / 2){
             this.hueRotateActive = true;
             this.setFilterString();
-            drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+            drawDiffractogram(this.selector[0], .5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+            // Version that adjusts intensity
+            //drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
             this.context.restore();
             return;
           }

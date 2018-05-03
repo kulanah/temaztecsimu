@@ -86,7 +86,7 @@ let mainScreen = function(){
 
   $('#processfft').on('click', function(event){
     $('#processmenu').hide();
-    drawDiffractogram(document.getElementById('fftcanvas'), (1 / Math.max(Math.abs(setupbox.intensity),1)) ** .1, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
+    drawDiffractogram(document.getElementById('fftcanvas'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
     $('#fft').show();
   });
 
