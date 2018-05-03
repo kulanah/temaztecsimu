@@ -168,6 +168,12 @@
   left: 14.5vw;
 }
 
+#processmenu{
+  position: absolute;
+  top: 8.2vh;
+  left: 20.8vw;
+}
+
 #openbox{
   position: absolute;
   z-index: 0;

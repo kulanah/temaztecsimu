@@ -66,6 +66,14 @@ let mainScreen = function(){
     }
   });
 
+  $('#processbutton').on('click', function(event){
+    if($('#processmenu').css('display') == 'none'){
+      $('#processmenu').show();
+    } else {
+      $('#processmenu').hide();
+    }
+  });
+
   $('#fileopen').on('click', function(event){
     $('#filemenu').hide();
     $('#openfiledialogue').show();
