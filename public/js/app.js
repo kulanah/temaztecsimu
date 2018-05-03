@@ -199,6 +199,9 @@ let zoom = function(delta){
     setupbox.zoom(delta);
     projectionLens1.f = 100 - 50 * setupbox.mag / setupbox.zooms.length;
     drawColumn();
+    if(isVisible('fft')){
+      drawFFT();
+    }
   } else {
     mainmicro.zoom(delta);
   }
@@ -426,7 +429,15 @@ let checkDiffractograms = function(){
     drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -setupbox.defocus - 1000, 1 / setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
   }
   if(isVisible('fft')){
+    drawFFT();
+  }
+}
+
+let drawFFT = function(){
+  if(isVisible('openbox') && openbox.zooms[openbox.mag] >= 125000 && colopen){
     drawDiffractogram(document.getElementById('fftcanvas'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
+  } else {
+    clearCanvas(document.getElementById('fftcanvas'));
   }
 }
 
@@ -504,6 +515,7 @@ function factoryAlign(){
   openbox.factoryAlign();
   mainmicro.factoryAlign();
   updateCanvas();
+  checkDiffractograms();
 }
 
 function supervisorAlign(){
@@ -511,6 +523,7 @@ function supervisorAlign(){
   openbox.supervisorAlign();
   mainmicro.supervisorAlign();
   updateCanvas();
+  checkDiffractograms();
 }
 
 function screenshotImage(){

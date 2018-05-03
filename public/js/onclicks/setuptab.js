@@ -45,6 +45,9 @@ let vacuumWindow = function(){
     }
     updateCanvas();
     drawColumn();
+    if(isVisible('fft')){
+      drawFFT();
+    }
   });
 
   $('#turbo').on('click', function(event){
