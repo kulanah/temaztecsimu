@@ -664,6 +664,9 @@ class Canvas {
           case 'Objective':
             this.imgAngle += deltaX / 180 / 30;
             this.diffractogramAngle += deltaX / Math.PI / 30;
+            if(this == setupbox){
+              checkDiffractograms();
+            }
             break;
         }
       } else {
@@ -718,6 +721,9 @@ class Canvas {
             break;
           case 'Objective':
             this.stretchImage(deltaY / 30);
+            if(this == setupbox){
+              checkDiffractograms();
+            }
             break;
           }
       } else {
@@ -918,6 +924,9 @@ class Canvas {
     }
     drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
     drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+    if(isVisible('fft')){
+      drawDiffractogram(document.getElementById('fftcanvas'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
+    }
   }
 
   drawDiffraction(){

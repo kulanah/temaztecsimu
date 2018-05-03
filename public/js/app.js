@@ -178,6 +178,7 @@ let shiftFocus = function(delta){
     setupbox.focus(delta);
     objectiveUpperPolepiece.f = 30 + setupbox.defocus / 100;
     drawColumn();
+    checkDiffractograms();
   } else {
     mainmicro.focus(delta);
   }
@@ -413,8 +414,19 @@ let zeroFocus = function(){
   if (openScreen == 0){
     openbox.zeroFocus();
     setupbox.zeroFocus();
+    checkDiffractograms();
   } else {
     mainmicro.zeroFocus();
+  }
+}
+
+let checkDiffractograms = function(){
+  if(isVisible('diffractograms')){
+    drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
+    drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -setupbox.defocus - 1000, 1 / setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
+  }
+  if(isVisible('fft')){
+    drawDiffractogram(document.getElementById('fftcanvas'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
   }
 }
 
