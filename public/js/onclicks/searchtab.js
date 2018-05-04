@@ -18,6 +18,11 @@ let searchTab = function(){
     resetAB();
   });
 
+  $('#wobbler').on('click', function(){
+    toggleWobble();
+    deactivateDirectAlignments();
+  });
+
   $('#nano').on('click', function(event){
     $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsmicro.png');
     updateBeamSlider(3);
