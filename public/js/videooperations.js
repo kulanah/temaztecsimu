@@ -1,12 +1,14 @@
 // Play/pause video on click
-let video = document.getElementsByTagName('video')[0];
-video.addEventListener('click', function(){
-    if(video.paused){
-        video.play();
-    } else {
-        video.pause();
-    }
-})
+let videos = document.getElementsByTagName('video');
+for(let video in videos){
+    videos[video].addEventListener('click', function(){
+        if(videos[video].paused){
+            videos[video].play();
+        } else {
+            videos[video].pause();
+        }
+    })
+}
 
 // Pause video when not visible
 // Visibility change code based on example in documentation at https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
@@ -23,10 +25,11 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
 }
 
 // If the page is hidden, pause the video;
-// if the page is shown, play the video
 function handleVisibilityChange() {
     if (document[hidden]) {
-        video.pause();
+        for(let video in videos){
+            videos[video].pause();
+        }
     }
 }
   

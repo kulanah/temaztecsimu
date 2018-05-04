@@ -180,6 +180,7 @@ function disableButton(button){
 function modeAdjustment(){
     if(location.search.includes('mode=introduction')){
         disableButton($('#homeworkbtn'));
+        $('#intropopup').show();
         console.log('Introduction Mode')
         simulatorMode = 'introduction';
     } else if (location.search.includes('mode=self-assessment')){
