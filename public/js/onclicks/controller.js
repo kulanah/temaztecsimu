@@ -177,6 +177,7 @@ let microscopeControllers = function(){
     if(screenLift){
       screenLift = false;
     } else if(diffractionMode || setupbox.maskR < 100){
+      $('#errormessage').text('What you are doing could be damaging to the microscope. \nPlease spread the beam to half screen before you lift the screen.')
       $('#errordiv').show();
     } else {
       screenLift = true;

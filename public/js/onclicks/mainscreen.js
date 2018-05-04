@@ -132,6 +132,7 @@ let mainScreen = function(){
 
   $('#startview').on('click', function(event){
     if(diffractionMode || setupbox.maskR < 100 || !screenLift){
+      $('#errormessage').text('What you are doing could be damaging to the microscope. \nPlease spread the beam to half screen and lift the screen before you use the CCD camera to acquire the image.')
       $('#errordiv').show();
     } else {
       activeWindow = 0;
