@@ -269,6 +269,12 @@
   left: 59.5vw;
 }
 
+#stage2popout{
+  position: absolute;
+  top: 6.79vh;
+  left: 14.28vw;
+}
+
 #deflectorbox{
   position: absolute;
   top: 6.79vh;

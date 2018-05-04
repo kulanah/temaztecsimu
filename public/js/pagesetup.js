@@ -10,7 +10,7 @@ let zcounter = 6;
 let pageSetup = function(){
   //array of elements that we close when you click outside of the item
   //we loop thorough this later on to set this behavior on all of them
-  let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'processmenu', 'deflectorbox'];
+  let closewhenoffclick = ['maindropdown', 'openfiledialogue', 'filemenu', 'processmenu', 'stage2popout', 'deflectorbox'];
   
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'fft',
@@ -52,6 +52,7 @@ let pageSetup = function(){
   bringToFront('maindropdown');  
   bringToFront('filemenu');
   bringToFront('processmenu');
+  bringToFront('stage2popout');
   bringToFront('deflectorbox');
   bringToFront('grabbingdiv');  
 
