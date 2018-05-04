@@ -11,6 +11,7 @@ let lectureLeft = 0;
 /*let lectureWidth = 0;
 let lectureHeight = 0;*/
 let simulatorMode = 'learning';
+let introStep = -1;
 
 //register all the events to targets when docuemnts are all loaded
 function prepareContent(){
@@ -181,6 +182,7 @@ function modeAdjustment(){
     if(location.search.includes('mode=introduction')){
         disableButton($('#homeworkbtn'));
         $('#intropopup').show();
+        introStep = 0;
         console.log('Introduction Mode')
         simulatorMode = 'introduction';
     } else if (location.search.includes('mode=self-assessment')){
