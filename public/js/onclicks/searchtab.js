@@ -10,6 +10,14 @@ let searchTab = function(){
     resetHolder();
   });
 
+  $('#resetxy').on('click', function(){
+    resetXY();
+  });
+
+  $('#resetab').on('click', function(){
+    resetAB();
+  });
+
   $('#nano').on('click', function(event){
     $('#leftcolumnbeamsettings').attr('src', './public/img/beamsettingsmicro.png');
     updateBeamSlider(3);

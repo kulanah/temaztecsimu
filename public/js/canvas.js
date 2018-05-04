@@ -1061,6 +1061,18 @@ class Canvas {
     this.betaTilt = 0;
   }
 
+  resetXY(){
+    this.imgW = 512 / this.imgScale * this.zooms[this.mag];
+    this.imgH = this.imgW * this.img.height / this.img.width;
+    this.imgX = (this.selector[0].width - this.imgW) / 2;
+    this.imgY = (this.selector[0].height - this.imgH) / 2;
+  }
+
+  resetAB(){
+    this.alphaTilt = 0;
+    this.betaTilt = 0;
+  }
+
   factoryAlign(){
     this.mag = Math.floor(this.zooms.length / 2);
 
