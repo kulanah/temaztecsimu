@@ -6,6 +6,20 @@ let searchTab = function(){
     $('#stage2popout').show();
   });
 
+  $('#stagestepup').on('click', function(event){
+    if(stageStepSize < 8){
+      stageStepSize *= 2;
+      $('#stagestepdisplay').text(stageStepSize);
+    }
+  });
+
+  $('#stagestepdown').on('click', function(event){
+    if(stageStepSize > 1/8){
+      stageStepSize *= 0.5;
+      $('#stagestepdisplay').text(stageStepSize);
+    }
+  });
+
   $('#resetholder').on('click', function(){
     resetHolder();
   });
