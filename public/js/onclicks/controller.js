@@ -341,12 +341,14 @@ let microscopeControllers = function(){
   $('#buttonpolyleftr').on('click', function(event){
     if(stageStepSize > 1/8){
       stageStepSize *= 0.5;
+      $('#stagestepdisplay').text(stageStepSize);
     }
   });
 
   $('#buttonpolyrightr').on('click', function(event){
     if(stageStepSize < 8){
       stageStepSize *= 2;
+      $('#stagestepdisplay').text(stageStepSize);
     }
   });
 
