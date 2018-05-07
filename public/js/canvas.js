@@ -143,7 +143,7 @@ class Canvas {
         setTemBeamStart(this.maskX / this.selector[0].width);
         projectionLens1.f = 100 - 50 * this.mag / this.zooms.length;
       }
-      this.maskR = 20 + randomValues[2] * 500;
+      this.maskR = 20 + randomValues[2] * 50000000 / this.zooms[this.mag];
       this.defocus = 10 - 20 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
       this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
@@ -285,7 +285,7 @@ class Canvas {
 
     this.setFilterString();
 
-    let newRadius = this.maskR * this.zooms[this.mag] / this.imgScale / Math.sqrt(2) ** (this.beamslider.val() - 1) * c2Sizes[c2Level - 1] / 150;
+    let newRadius = this.maskR * this.zooms[this.mag] / 100000 / Math.sqrt(2) ** (this.beamslider.val() - 1) * c2Sizes[c2Level - 1] / 150;
 
     if (alignmentMode == 'Pivot Point X' || alignmentMode == 'Pivot Point Y'){
       this.drawPPPath();
@@ -823,7 +823,8 @@ class Canvas {
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
-    context.globalAlpha = (1 - (1 - totalRadius * this.zooms[this.mag] / 100000000) / 2 ** ((this.beamslider.val() - 1) / 10 / Math.sqrt(c2Sizes[c2Level - 1] / 150))) * 4500 / extractVal * 1.35 ** (gunLense - 2);
+    context.globalAlpha = (1 - (1 - totalRadius * this.zooms[this.mag] / 200000000) / 2 ** ((this.beamslider.val() - 1) / 10 / Math.sqrt(c2Sizes[c2Level - 1] / 150))) * 4500 / extractVal * 1.35 ** (gunLense - 2);
+    console.log(context.globalAlpha)
     context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
     context.globalAlpha = 1;
