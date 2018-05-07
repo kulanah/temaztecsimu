@@ -6,8 +6,35 @@ let searchTab = function(){
     $('#stage2popout').show();
   });
 
+  $('#stagestepup').on('click', function(event){
+    if(stageStepSize < 8){
+      stageStepSize *= 2;
+      $('#stagestepdisplay').text(stageStepSize);
+    }
+  });
+
+  $('#stagestepdown').on('click', function(event){
+    if(stageStepSize > 1/8){
+      stageStepSize *= 0.5;
+      $('#stagestepdisplay').text(stageStepSize);
+    }
+  });
+
   $('#resetholder').on('click', function(){
     resetHolder();
+  });
+
+  $('#resetxy').on('click', function(){
+    resetXY();
+  });
+
+  $('#resetab').on('click', function(){
+    resetAB();
+  });
+
+  $('#wobbler').on('click', function(){
+    toggleWobble();
+    deactivateDirectAlignments();
   });
 
   $('#nano').on('click', function(event){

@@ -513,6 +513,20 @@ function resetHolder(){
   updateCanvas();
 }
 
+function resetXY(){
+  setupbox.resetXY();
+  openbox.resetXY();
+  mainmicro.resetXY();
+  updateCanvas();
+}
+
+function resetAB(){
+  setupbox.resetAB();
+  openbox.resetAB();
+  mainmicro.resetAB();
+  updateCanvas();
+}
+
 function factoryAlign(){
   setupbox.factoryAlign();
   openbox.factoryAlign();

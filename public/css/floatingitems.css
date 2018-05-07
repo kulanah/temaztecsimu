@@ -275,6 +275,13 @@
   left: 14.28vw;
 }
 
+#stagestepdisplay{
+  position: absolute;
+  top: 90px;
+  left: 164px;
+  font-family: monospace;
+}
+
 #deflectorbox{
   position: absolute;
   top: 6.79vh;

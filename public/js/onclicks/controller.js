@@ -177,6 +177,7 @@ let microscopeControllers = function(){
     if(screenLift){
       screenLift = false;
     } else if(diffractionMode || setupbox.maskR < 100){
+      $('#errormessage').text('What you are doing could be damaging to the microscope. \nPlease spread the beam to half screen before you lift the screen.')
       $('#errordiv').show();
     } else {
       screenLift = true;
@@ -340,12 +341,14 @@ let microscopeControllers = function(){
   $('#buttonpolyleftr').on('click', function(event){
     if(stageStepSize > 1/8){
       stageStepSize *= 0.5;
+      $('#stagestepdisplay').text(stageStepSize);
     }
   });
 
   $('#buttonpolyrightr').on('click', function(event){
     if(stageStepSize < 8){
       stageStepSize *= 2;
+      $('#stagestepdisplay').text(stageStepSize);
     }
   });
 
