@@ -183,18 +183,42 @@ function modeAdjustment(){
         disableButton($('#homeworkbtn'));
         $('#intropopup').show();
         introStep = 0;
-        console.log('Introduction Mode')
+        advanceIntro();
+        console.log('Introduction Mode');
         simulatorMode = 'introduction';
     } else if (location.search.includes('mode=self-assessment')){
         disableButton($('#lecturebtn'));
         disableButton($('#examplebtn'));
         disableButton($('#qabtn'));
         disableButton($('#columnbtn'));
-        console.log('Self-Assessment Mode')
+        console.log('Self-Assessment Mode');
         simulatorMode = 'self-assessment';
     } else {
         console.log('Learning Mode');
     }
+}
+
+function advanceIntro(){
+    switch(introStep){
+        case 0:
+            $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedredrectangle.png')
+            $('#colvalves').on('click', introElementClick)
+            break;
+        case 1:
+            $('#controlbtn').css('border', '2px solid skyblue');
+            $('#controlbtn').on('click', introElementClick)
+            break;
+        case 2:
+
+            break;
+    }
+}
+
+function introElementClick(event){
+    introStep++;
+    advanceIntro();
+    $(event.target).off('click', introElementClick);
+    $(event.target).css('border', '');
 }
 
 function getSimulatorMode(){
