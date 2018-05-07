@@ -773,7 +773,7 @@ class Canvas {
   }
 
   calculateRadius(){
-    return this.maskR / Math.sqrt(2) ** (this.beamslider.val() - 1);
+    return this.maskR * this.zooms[this.mag] / 100000 / Math.sqrt(2) ** (this.beamslider.val() - 1) * c2Sizes[c2Level - 1] / 150;
   }
 
   drawHalo(){
