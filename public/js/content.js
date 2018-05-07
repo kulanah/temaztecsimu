@@ -201,15 +201,16 @@ function modeAdjustment(){
 function advanceIntro(){
     switch(introStep){
         case 0:
-            $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedredrectangle.png')
-            $('#colvalves').on('click', introElementClick)
+            $('#setupbtn').css('border', '2px solid skyblue');
+            $('#setupbtn').on('click', introElementClick)
             break;
         case 1:
             $('#controlbtn').css('border', '2px solid skyblue');
             $('#controlbtn').on('click', introElementClick)
             break;
         case 2:
-
+            $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedredrectangle.png')
+            $('#colvalves').on('click', introElementClick)
             break;
     }
 }
