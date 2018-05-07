@@ -205,21 +205,46 @@ function advanceIntro(){
             $('#setupbtn').on('click', introElementClick)
             break;
         case 1:
-            $('#controlbtn').css('border', '2px solid skyblue');
-            $('#controlbtn').on('click', introElementClick)
-            break;
+            if(!isVisible('microControls')){
+                $('#controlbtn').css('border', '2px solid skyblue');
+                $('#controlbtn').on('click', introElementClick)
+                break;
+            }
+            introStep++;
         case 2:
-            $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedredrectangle.png')
-            $('#colvalves').on('click', introElementClick)
+            if(!colopen){
+                $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedredrectangle.png')
+                $('#colvalves').on('click', introElementClick)
+                break;
+            }
+            introStep++;
+        case 3:
+            if(Number(beamslider.val()) > 3){
+                console.log('Lower spot size')
+                $('#controlsLeft').css('border', '2px solid skyblue');
+                $('#buttonl3').on('click', introElementClickRepeat);
+                break;
+            }
+            introStep++;
+        case 4:
+            console.log('Center beam')
+            $('#controlsLeft').css('border', '');
             break;
+
     }
 }
 
 function introElementClick(event){
-    introStep++;
-    advanceIntro();
     $(event.target).off('click', introElementClick);
     $(event.target).css('border', '');
+    introStep++;
+    advanceIntro();
+}
+
+function introElementClickRepeat(event){
+    $(event.target).off('click', introElementClickRepeat);
+    $(event.target).css('border', '');
+    advanceIntro();
 }
 
 function getSimulatorMode(){
