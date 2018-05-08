@@ -213,7 +213,7 @@ function advanceIntro(){
             introStep++;
         case 2:
             if(!colopen){
-                $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedredrectangle.png')
+                $('#leftcolumnvacuum').attr('src', './public/img/vacuummenuclosedbluerectangle.png')
                 $('#colvalves').on('click', introElementClick)
                 break;
             }
@@ -221,16 +221,33 @@ function advanceIntro(){
         case 3:
             if(Number(beamslider.val()) > 3){
                 console.log('Lower spot size')
-                $('#controlsLeft').css('border', '2px solid skyblue');
+                $('#controlsLeft').css('background', 'skyblue');
                 $('#buttonl3').on('click', introElementClickRepeat);
                 break;
             }
             introStep++;
         case 4:
-            console.log('Center beam')
-            $('#controlsLeft').css('border', '');
+            if(setupbox.maskX < 250 || setupbox.maskX > 268 || setupbox.maskY < 255 || setupbox.maskY > 282){
+                console.log('Center beam')
+                $('#controlsLeft').css('background', 'skyblue');
+                $('body')[0].addEventListener('mousemove', introConditionCheck);
+                break;
+            }
+            $('#controlsLeft').css('background', '');
+            introStep++;
+        case 5:
+            $('#controlsRight').css('background', 'skyblue');
+            $('#buttontop1r').on('click', introElementClick)
             break;
-
+        case 6:
+            /*if(setupbox.zooms[setupbox.mag] !== 34000){
+                $('#controlsRight').css('background', 'skyblue');
+                $('body')[0].addEventListener('mouseup', introConditionCheck);
+                break;
+            }*/
+            introStep++;
+        case 7:
+            $('#controlsRight').css('background', '');
     }
 }
 
@@ -244,6 +261,10 @@ function introElementClick(event){
 function introElementClickRepeat(event){
     $(event.target).off('click', introElementClickRepeat);
     $(event.target).css('border', '');
+    advanceIntro();
+}
+
+function introConditionCheck(event){
     advanceIntro();
 }
 
