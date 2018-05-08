@@ -36,9 +36,12 @@ function advanceIntro(){
             $('#controlsLeft').css('background', '');
             introStep = 5;
         case 5:
-            $('#controlsRight').css('background', 'skyblue');
-            $('#buttontop1r').on('click', introElementClick)
-            break;
+            if(setupbox.defocus !== 0){
+                $('#controlsRight').css('background', 'skyblue');
+                $('#buttontop1r').on('click', introConditionCheck);
+                break;
+            }
+            introStep = 6
         case 6:
             if(setupbox.zooms[setupbox.mag] !== 34000){
                 $('#controlsRight').css('background', 'skyblue');
@@ -48,6 +51,38 @@ function advanceIntro(){
             introStep = 7;
         case 7:
             $('#controlsRight').css('background', '');
+            if(setupbox.calculateRadius() > 6.4){
+                $('#controlsLeft').css('background', 'skyblue');
+                $('body')[0].addEventListener('mousemove', introConditionCheck);
+                break;
+            }
+            introStep = 8;
+        case 8:
+            let distanceFromCenter = Math.sqrt((setupbox.maskX - 259) ** 2 + (setupbox.maskY - 268.5) ** 2)
+            if(distanceFromCenter > 6.4){
+                $('#controlsLeft').css('background', 'skyblue');
+                $('body')[0].addEventListener('mousemove', introConditionCheck);
+                break;
+            }
+            introStep = 9;
+        case 9:
+            $('#controlsLeft').css('background', '');
+            if(setupbox.zooms[setupbox.mag] !== 125000){
+                $('#controlsRight').css('background', 'skyblue');
+                $('body')[0].addEventListener('mouseup', introConditionCheck);
+                break;
+            }
+            introStep = 10;
+        case 10:
+            $('#controlsRight').css('background', '');
+            if(setupbox.calculateRadius() < 7.5){
+                $('#controlsLeft').css('background', 'skyblue');
+                $('body')[0].addEventListener('mousemove', introConditionCheck);
+                break;
+            }
+            introStep = 11;
+        case 11:
+            $('#controlsLeft').css('background', '');
     }
 }
 
