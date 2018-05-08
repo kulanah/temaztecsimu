@@ -46,6 +46,7 @@ function advanceIntro(){
             if(setupbox.zooms[setupbox.mag] !== 34000){
                 $('#controlsRight').css('background', 'skyblue');
                 $('body')[0].addEventListener('mouseup', introConditionCheck);
+                $('body')[0].addEventListener('mouseleave', introConditionCheck);
                 break;
             }
             introStep = 7;
@@ -70,6 +71,7 @@ function advanceIntro(){
             if(setupbox.zooms[setupbox.mag] !== 125000){
                 $('#controlsRight').css('background', 'skyblue');
                 $('body')[0].addEventListener('mouseup', introConditionCheck);
+                $('body')[0].addEventListener('mouseleave', introConditionCheck);
                 break;
             }
             introStep = 10;
