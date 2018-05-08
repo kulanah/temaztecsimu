@@ -34,18 +34,18 @@ function advanceIntro(){
                 break;
             }
             $('#controlsLeft').css('background', '');
-            introStep++;
+            introStep = 5;
         case 5:
             $('#controlsRight').css('background', 'skyblue');
             $('#buttontop1r').on('click', introElementClick)
             break;
         case 6:
-            /*if(setupbox.zooms[setupbox.mag] !== 34000){
+            if(setupbox.zooms[setupbox.mag] !== 34000){
                 $('#controlsRight').css('background', 'skyblue');
                 $('body')[0].addEventListener('mouseup', introConditionCheck);
                 break;
-            }*/
-            introStep++;
+            }
+            introStep = 7;
         case 7:
             $('#controlsRight').css('background', '');
     }
@@ -65,5 +65,5 @@ function introElementClickRepeat(event){
 }
 
 function introConditionCheck(event){
-    advanceIntro();
+    setTimeout(advanceIntro, 10);
 }
