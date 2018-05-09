@@ -462,64 +462,6 @@
   height: 48vh;
 }
 
-#lecturediv {
-  position: absolute;  
-  top: 0vh;
-  left: 59.5vw;
-  overflow: hidden;
-  border: 5px solid black;
-  background: black;
-}
-
-#temlecture {
-  width: 40vw;
-  height: 57.5vh;
-  resize: none;
-}
-
-#blocker {
-  position: absolute;
-  top: 55vh;
-  left: 35vw;
-  width: 100px;
-  height: 23px;
-}
-
-.lecturecontrol{
-  font-size: large;
-  padding: 5px;
-  margin: 2px 0px;
-}
-
-.lecturetab{
-  padding: 2px;
-}
-
-.speakerelements{
-  display: inline-block;
-}
-
-#speakernotesinfo{
-  color:white;
-  line-height: 1em;
-}
-
-#slidenumber{
-  width: 6em;
-}
-
-#speakernotespause{
-  padding-top: 2px;
-}
-
-#speakernotesstop{
-  padding-top: 2px;
-}
-
-#fullscreenbtn{
-  float:right;
-}
-
 #popplaceholder {
   position: absolute;  
   top: 50vh;

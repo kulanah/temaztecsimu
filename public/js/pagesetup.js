@@ -16,7 +16,7 @@ let pageSetup = function(){
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'fft',
   'columndivzoom', 'apertures', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 
   'tunehelppopup', 'generalhelppopup', 'intropopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode',
-  'lecturediv', 'notepad'];
+  'notepad'];
   
   function bringToFront(id) {
     // Whenever an element appears, move it to the front
