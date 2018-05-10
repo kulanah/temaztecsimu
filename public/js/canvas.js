@@ -283,6 +283,11 @@ class Canvas {
       this.context.clearRect(0,0,this.selector[0].width,this.selector[0].height);
     }
 
+    if(this === openbox && !screenLift){
+      this.context.restore();
+      return;
+    }
+
     this.setFilterString();
 
     let newRadius = this.maskR * this.zooms[this.mag] / 100000 / Math.sqrt(2) ** (this.beamslider.val() - 1) * c2Sizes[c2Level - 1] / 150;
