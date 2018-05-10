@@ -439,8 +439,10 @@ let drawFFT = function(){
   }
   if(openbox.zooms[openbox.mag] >= 125000 && colopen){
     drawDiffractogram(document.getElementById('fftcanvas'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
+    $('#ffttitle').text('A: Live FFT of view');
   } else {
     clearCanvas(document.getElementById('fftcanvas'));
+    $('#ffttitle').text('Set magnification to 125k+ and open column valves');
   }
 }
 
