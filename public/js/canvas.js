@@ -362,19 +362,19 @@ class Canvas {
     let defocusRatio = Math.min(Math.abs(this.defocus + this.specimenHeight * 1000) / defocusValue, 1)
     ctx.globalAlpha = defocusRatio;
     ctx.drawImage(defocusImage,0,0,this.img.width,this.img.height,
-      x - this.imageAstigmatismY * this.imgW / 2, y - this.imageAstigmatismX * this.imgH / 2, this.imgW, this.imgH);
+      x - this.imageAstigmatismY * this.img.width / 2, y - this.imageAstigmatismX * this.img.height / 2, this.imgW, this.imgH);
     ctx.globalAlpha = 1 - defocusRatio;
     ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
-      x  - this.imageAstigmatismY * this.imgW / 2, y - this.imageAstigmatismX * this.imgH / 2, this.imgW, this.imgH);
+      x  - this.imageAstigmatismY * this.img.width / 2, y - this.imageAstigmatismX * this.img.height / 2, this.imgW, this.imgH);
   }
 
   drawSplitImageDefocus(ctx, x, y){
     ctx.globalAlpha = .5;
     let defocusPx = Math.max(Math.min((this.defocus / 1000 + this.specimenHeight), 1), -1) * 10 * this.zooms[this.mag] / this.imgScale * 512 / this.widthNM; //convert from nanometers to pixels
     ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
-      x - defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.imgW / 2, y + defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.imgH / 2,this.imgW,this.imgH);
+      x - defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y + defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH);
     ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
-      x + defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.imgW / 2, y - defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.imgH / 2,this.imgW,this.imgH); 
+      x + defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y - defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH); 
   }
 
   zoom(delta){
