@@ -1,3 +1,5 @@
+let introInterval;
+
 function advanceIntro(){
     switch(introStep){
         case 0:
@@ -33,11 +35,11 @@ function advanceIntro(){
                 break;
             }
             introStep++;
+            introInterval = setInterval(advanceIntro, 10);
         case 4:
             if(setupbox.maskX < 250 || setupbox.maskX > 268 || setupbox.maskY < 255 || setupbox.maskY > 282){
                 console.log('Center beam')
                 $('#controlsLeft').css('background', 'skyblue');
-                $('body')[0].addEventListener('mousemove', introConditionCheck);
                 break;
             }
             $('#controlsLeft').css('background', '');
@@ -45,15 +47,12 @@ function advanceIntro(){
         case 5:
             if(setupbox.defocus !== 0){
                 $('#controlsRight').css('background', 'skyblue');
-                $('#buttontop1r').on('click', introConditionCheck);
                 break;
             }
             introStep = 6
         case 6:
             if(setupbox.zooms[setupbox.mag] !== 34000){
                 $('#controlsRight').css('background', 'skyblue');
-                $('body')[0].addEventListener('mouseup', introConditionCheck);
-                $('body')[0].addEventListener('mouseleave', introConditionCheck);
                 break;
             }
             introStep = 7;
@@ -61,7 +60,6 @@ function advanceIntro(){
             $('#controlsRight').css('background', '');
             if(setupbox.calculateRadius() > 6.4){
                 $('#controlsLeft').css('background', 'skyblue');
-                $('body')[0].addEventListener('mousemove', introConditionCheck);
                 break;
             }
             introStep = 8;
@@ -69,7 +67,6 @@ function advanceIntro(){
             let distanceFromCenter = Math.sqrt((setupbox.maskX - 259) ** 2 + (setupbox.maskY - 268.5) ** 2)
             if(distanceFromCenter > 6.4){
                 $('#controlsLeft').css('background', 'skyblue');
-                $('body')[0].addEventListener('mousemove', introConditionCheck);
                 break;
             }
             introStep = 9;
@@ -77,8 +74,6 @@ function advanceIntro(){
             $('#controlsLeft').css('background', '');
             if(setupbox.zooms[setupbox.mag] !== 125000){
                 $('#controlsRight').css('background', 'skyblue');
-                $('body')[0].addEventListener('mouseup', introConditionCheck);
-                $('body')[0].addEventListener('mouseleave', introConditionCheck);
                 break;
             }
             introStep = 10;
@@ -86,12 +81,12 @@ function advanceIntro(){
             $('#controlsRight').css('background', '');
             if(setupbox.calculateRadius() < 7.5){
                 $('#controlsLeft').css('background', 'skyblue');
-                $('body')[0].addEventListener('mousemove', introConditionCheck);
                 break;
             }
             introStep = 11;
         case 11:
             $('#controlsLeft').css('background', '');
+            clearInterval(introInterval);
     }
 }
 
@@ -106,8 +101,4 @@ function introElementClickRepeat(event){
     $(event.target).off('click', introElementClickRepeat);
     $(event.target).css('border', '');
     advanceIntro();
-}
-
-function introConditionCheck(event){
-    setTimeout(advanceIntro, 10);
 }
