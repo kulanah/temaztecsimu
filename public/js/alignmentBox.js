@@ -1,3 +1,5 @@
+// Specifies operations for the tune alignment information box
+
 class AlignmentBox{
   constructor(extJson, ulClass, drawLocation){
     this.currentStep = 0;

@@ -1,3 +1,6 @@
+// Includes various functions for beam alignment checking and drawing
+// Currently used exclusively for drawing the beam when off-specimen
+
 var orbiting = false;
 
 function update() {

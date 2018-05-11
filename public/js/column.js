@@ -1,3 +1,5 @@
+// Code for drawing the original, 2D microscope column
+
 let temLens = new Array();
 let theta=0;
 let lensFocus = 0;

@@ -1,5 +1,6 @@
 // Establishes material class, contains specimen data
-// Currently hard-coded data, but will eventually be read in from database
+// Hard-coded examples below
+// Images selection passes specimen data through to the simulator via the url
 
 class Material {
   constructor(name, crystalStructure, a, b, c, alpha, beta, gamma) {

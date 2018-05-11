@@ -1,3 +1,5 @@
+// Handles the highlighting for walking first-time users through the steps included in the Startup page showed in Introduction mode
+
 let introInterval;
 
 function advanceIntro(){

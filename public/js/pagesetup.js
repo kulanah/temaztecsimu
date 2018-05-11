@@ -1,5 +1,5 @@
 //pagesetup.js -- various functions that set up page to be ready for use
-//i.e. disabling drabbables, setting the 'close when clicked out of' items, etc
+//i.e. enabling draggables, setting the 'close when clicked out of' items, etc
 
 'use strict';
 
