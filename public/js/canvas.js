@@ -249,8 +249,7 @@ class Canvas {
           if(this.maskX > this.imgX + alphaTiltImpact + this.imgW / 2){
             this.hueRotateActive = true;
             this.setFilterString();
-            this.diffractogramAstigmatism = 1 + Math.sqrt(this.imageAstigmatismX ** 2 + this.imageAstigmatismY ** 2) * 10;
-            this.diffractogramAngle = Math.atan2(this.imageAstigmatismY, this.imageAstigmatismX);
+            setDiffractogramValues();
             drawDiffractogram(this.selector[0], .5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
             // Version that adjusts intensity
             //drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
@@ -923,8 +922,7 @@ class Canvas {
       return;
     }
     //document.getElementById('diffractogram1').getContext('2d').setTransform(1, this.imageAstigmatismX, this.imageAstigmatismY, 1, 0, 0);
-    this.diffractogramAstigmatism = 1 + Math.sqrt(this.imageAstigmatismX ** 2 + this.imageAstigmatismY ** 2) * 10;
-    this.diffractogramAngle = Math.atan2(this.imageAstigmatismY, this.imageAstigmatismX);
+    setDiffractogramValues();
     drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
     drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
     if(isVisible('fft')){
