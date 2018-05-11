@@ -40,6 +40,9 @@ class Canvas {
     this.beamAstigmatismY = 0;
     this.beamAngle = 0;
 
+    this.imageAstigmatismX = 0;
+    this.imageAstigmatismY = 0;
+
     this.haloX = 0;
     this.haloY = 0;
 
@@ -147,8 +150,8 @@ class Canvas {
       this.defocus = 10 - 20 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
       this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
-      let stretchDelta = 200 - 400 * randomValues[6];
-      this.stretchImage(stretchDelta);
+      this.imageAstigmatismX = (200 - 400 * randomValues[6]) / 10000;
+      this.imageAstigmatismY = (200 - 400 * randomValues[8]) / 10000;
       this.pivotPointWidth = 20 - randomValues[10] * 40;
       this.pivotPointHeight = 100 - randomValues[11] * 200;
       this.rotateAlpha = 16 - randomValues[12] * 32;
@@ -246,6 +249,7 @@ class Canvas {
           if(this.maskX > this.imgX + alphaTiltImpact + this.imgW / 2){
             this.hueRotateActive = true;
             this.setFilterString();
+            setDiffractogramValues();
             drawDiffractogram(this.selector[0], .5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
             // Version that adjusts intensity
             //drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
@@ -341,6 +345,7 @@ class Canvas {
     this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     // Block the specimen during tune alignments
     if(!blockSpecimen){
+      this.context.setTransform(1, this.imageAstigmatismX, this.imageAstigmatismY, 1, 0, 0);
       if(this === mainmicro){
         this.drawSplitImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact);
       } else {
@@ -363,19 +368,19 @@ class Canvas {
     let defocusRatio = Math.min(Math.abs(this.defocus + this.specimenHeight * 1000) / defocusValue, 1)
     ctx.globalAlpha = defocusRatio;
     ctx.drawImage(defocusImage,0,0,this.img.width,this.img.height,
-      x, y, this.imgW, this.imgH);
+      x - this.imageAstigmatismY * this.img.width / 2, y - this.imageAstigmatismX * this.img.height / 2, this.imgW, this.imgH);
     ctx.globalAlpha = 1 - defocusRatio;
     ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
-      x, y, this.imgW, this.imgH);
+      x  - this.imageAstigmatismY * this.img.width / 2, y - this.imageAstigmatismX * this.img.height / 2, this.imgW, this.imgH);
   }
 
   drawSplitImageDefocus(ctx, x, y){
     ctx.globalAlpha = .5;
     let defocusPx = Math.max(Math.min((this.defocus / 1000 + this.specimenHeight), 1), -1) * 10 * this.zooms[this.mag] / this.imgScale * 512 / this.widthNM; //convert from nanometers to pixels
     ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
-      x - defocusPx * Math.cos(this.imgAngle), y + defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH);
+      x - defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y + defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH);
     ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
-      x + defocusPx * Math.cos(this.imgAngle), y - defocusPx * Math.sin(this.imgAngle),this.imgW,this.imgH); 
+      x + defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y - defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH); 
   }
 
   zoom(delta){
@@ -667,8 +672,7 @@ class Canvas {
             this.beamAstigmatismX += deltaX;
             break;
           case 'Objective':
-            this.imgAngle += deltaX / 180 / 30;
-            this.diffractogramAngle += deltaX / Math.PI / 30;
+            this.imageAstigmatismX += deltaX / 10000;
             if(this == setupbox){
               checkDiffractograms();
             }
@@ -695,8 +699,11 @@ class Canvas {
             this.rotateAlpha += deltaX;
             break;
           case 'Coma-free Alignment X':
+            this.imageAstigmatismX += deltaX / 10000;
+            this.drawDiffractogramImages();
+            break;
           case 'Coma-free Alignment Y':
-            this.stretchImage(-deltaX);
+            this.imageAstigmatismY += deltaX / 10000;
             this.drawDiffractogramImages();
             break;
           case 'Screen Intensity':
@@ -725,7 +732,7 @@ class Canvas {
             this.beamAstigmatismY += deltaY;
             break;
           case 'Objective':
-            this.stretchImage(deltaY);
+            this.imageAstigmatismY += deltaY / 10000;
             if(this == setupbox){
               checkDiffractograms();
             }
@@ -753,8 +760,7 @@ class Canvas {
             break;
           case 'Coma-free Alignment X':
           case 'Coma-free Alignment Y':
-            this.stretchImage(deltaY);
-            this.drawDiffractogramImages();
+            // Do nothing
             break;
           case 'Screen Intensity':
             this.brightnessOffsetY += deltaY * .1;
@@ -766,15 +772,6 @@ class Canvas {
       }
       this.drawCanvas();
     }
-  }
-
-  stretchImage(deltaY){
-    this.imgW *= Math.pow(1.0005, -deltaY);
-    this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
-    this.wobbleSavedX = (this.wobbleSavedX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
-    this.imgH *= Math.pow(1.0005, deltaY);
-    this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, deltaY) + this.selector[0].height / 2;
-    this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
   }
 
   calculateRadius(){
@@ -924,10 +921,13 @@ class Canvas {
   }
 
   drawDiffractogramImages(){
+    //TODO: account for objective stigmation impact here, in diffraction mode, and in app.js
     if(this == openbox){
       // Not necessary to have both setupbox and openbox draw diffractograms, so returning avoids unnecessary slowdown
       return;
     }
+    //document.getElementById('diffractogram1').getContext('2d').setTransform(1, this.imageAstigmatismX, this.imageAstigmatismY, 1, 0, 0);
+    setDiffractogramValues();
     drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
     drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -this.defocus - 1000, 1 / this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
     if(isVisible('fft')){
@@ -1105,6 +1105,9 @@ class Canvas {
     this.beamAstigmatismY = 0;
     this.beamAngle = 0;
 
+    this.imageAstigmatismX = 0;
+    this.imageAstigmatismY = 0;
+
     this.haloX = 0;
     this.haloY = 0;
 
@@ -1170,6 +1173,9 @@ class Canvas {
     this.beamAstigmatismX = 0;
     this.beamAstigmatismY = 0;
     this.beamAngle = 0;
+
+    this.imageAstigmatismX = 0;
+    this.imageAstigmatismY = 0;
 
     this.haloX = 0;
     this.haloY = 0;

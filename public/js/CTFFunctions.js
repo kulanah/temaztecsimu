@@ -67,12 +67,11 @@ function drawDiffractogram(canvas, Q, lambda, deltaF, R, phi, phi1, Cs) {
 
 function drawEllipse(canvas, radius, R, rotation, ellipseIntensity) {
     // Draws an ellipse
-    var rotationRadians = rotation * Math.PI / 180;
     var ctx = canvas.getContext('2d');
     ctx.filter = 'blur(1px)';
     ctx.strokeStyle = 'rgba(0, 0, 0, ' + ellipseIntensity + ')';
     ctx.beginPath();
-    ctx.ellipse(canvas.width / 2, canvas.height / 2, radius * Math.sqrt(R), radius / Math.sqrt(R), rotationRadians, 0, 2 * Math.PI);
+    ctx.ellipse(canvas.width / 2, canvas.height / 2, radius * Math.sqrt(R), radius / Math.sqrt(R), rotation, 0, 2 * Math.PI);
     ctx.stroke();
 }
 
