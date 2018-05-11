@@ -424,6 +424,8 @@ let zeroFocus = function(){
 }
 
 let checkDiffractograms = function(){
+  setupbox.diffractogramAstigmatism = 1 + Math.sqrt(setupbox.imageAstigmatismX ** 2 + setupbox.imageAstigmatismY ** 2) * 10;
+  setupbox.diffractogramAngle = Math.atan2(setupbox.imageAstigmatismY, setupbox.imageAstigmatismX);
   if(isVisible('diffractograms')){
     drawDiffractogram(document.getElementById('diffractogram1'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
     drawDiffractogram(document.getElementById('diffractogram2'), 0.5, lambdaCalculation(100000) * 10, -setupbox.defocus - 1000, 1 / setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
@@ -438,6 +440,8 @@ let drawFFT = function(){
     return;
   }
   if(openbox.zooms[openbox.mag] >= 125000 && colopen){
+    setupbox.diffractogramAstigmatism = 1 + Math.sqrt(setupbox.imageAstigmatismX ** 2 + setupbox.imageAstigmatismY ** 2) * 10;
+    setupbox.diffractogramAngle = Math.atan2(setupbox.imageAstigmatismY, setupbox.imageAstigmatismX);
     drawDiffractogram(document.getElementById('fftcanvas'), 0.5, lambdaCalculation(100000) * 10, setupbox.defocus - 1000, setupbox.diffractogramAstigmatism, 0, setupbox.diffractogramAngle, 500000);
   } else {
     clearCanvas(document.getElementById('fftcanvas'));
