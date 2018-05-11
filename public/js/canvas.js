@@ -150,8 +150,8 @@ class Canvas {
       this.defocus = 10 - 20 * randomValues[3];
       this.beamAstigmatismX = 1000 - 2000 * randomValues[4];
       this.beamAstigmatismY = 1000 - 2000 * randomValues[5];
-      let stretchDelta = 200 - 400 * randomValues[6];
-      this.stretchImage(stretchDelta);
+      this.imageAstigmatismX = (200 - 400 * randomValues[6]) / 10000;
+      this.imageAstigmatismY = (200 - 400 * randomValues[8]) / 10000;
       this.pivotPointWidth = 20 - randomValues[10] * 40;
       this.pivotPointHeight = 100 - randomValues[11] * 200;
       this.rotateAlpha = 16 - randomValues[12] * 32;
@@ -666,7 +666,7 @@ class Canvas {
             this.beamAstigmatismX += deltaX;
             break;
           case 'Objective':
-            this.imageAstigmatismX += deltaX / 1000;
+            this.imageAstigmatismX += deltaX / 10000;
             if(this == setupbox){
               checkDiffractograms();
             }
@@ -693,8 +693,11 @@ class Canvas {
             this.rotateAlpha += deltaX;
             break;
           case 'Coma-free Alignment X':
+            this.imageAstigmatismX += deltaX / 10000;
+            this.drawDiffractogramImages();
+            break;
           case 'Coma-free Alignment Y':
-            this.stretchImage(-deltaX);
+            this.imageAstigmatismY += deltaX / 10000;
             this.drawDiffractogramImages();
             break;
           case 'Screen Intensity':
@@ -723,7 +726,7 @@ class Canvas {
             this.beamAstigmatismY += deltaY;
             break;
           case 'Objective':
-            this.imageAstigmatismY += deltaY / 1000;
+            this.imageAstigmatismY += deltaY / 10000;
             if(this == setupbox){
               checkDiffractograms();
             }
@@ -751,8 +754,7 @@ class Canvas {
             break;
           case 'Coma-free Alignment X':
           case 'Coma-free Alignment Y':
-            this.stretchImage(deltaY);
-            this.drawDiffractogramImages();
+            // Do nothing
             break;
           case 'Screen Intensity':
             this.brightnessOffsetY += deltaY * .1;
@@ -764,15 +766,6 @@ class Canvas {
       }
       this.drawCanvas();
     }
-  }
-
-  stretchImage(deltaY){
-    this.imgW *= Math.pow(1.0005, -deltaY);
-    this.imgX = (this.imgX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
-    this.wobbleSavedX = (this.wobbleSavedX - this.selector[0].width / 2) * Math.pow(1.0005, -deltaY) + this.selector[0].width / 2;
-    this.imgH *= Math.pow(1.0005, deltaY);
-    this.imgY = (this.imgY - this.selector[0].height / 2) * Math.pow(1.0005, deltaY) + this.selector[0].height / 2;
-    this.diffractogramAstigmatism *= Math.pow(1.0005, -deltaY)
   }
 
   calculateRadius(){
