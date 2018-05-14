@@ -15,8 +15,8 @@ let pageSetup = function(){
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'fft',
   'columndivzoom', 'apertures', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 
-  'tunehelppopup', 'directalignmentshelppopup', 'generalhelppopup', 'intropopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode',
-  'lecturediv', 'notepad'];
+  'tunehelppopup', 'directalignmentshelppopup', 'generalhelppopup', 'intropopup', 'examplepopup',
+   'qanda', 'examples', 'homework', 'curriculum', 'learningmode', 'lecturediv', 'notepad'];
   
   function bringToFront(id) {
     // Whenever an element appears, move it to the front

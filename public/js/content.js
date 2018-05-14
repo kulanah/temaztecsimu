@@ -61,6 +61,11 @@ function popContentDisplay(id){
         swapPosition(id, '#popplaceholder')
         popped = '#popplaceholder';
     }
+    if(popped === '#examples'){
+        $('#examplepopup').show();
+    } else {
+        $('#examplepopup').hide();
+    }
 }
 
 //add function to Q/A button
