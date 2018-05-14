@@ -15,7 +15,7 @@ let pageSetup = function(){
   let listOfDraggables = ['openfiledialogue', 'vacuumoverview', 'filtercontroldiv', 
   'openbox', 'basesetup', 'columndiv', 'errordiv', 'directalignmentspopout', 'diffractograms', 'fft',
   'columndivzoom', 'apertures', 'leftControllerDiv', 'rightControllerDiv', 'floatingstigmatordiv', 
-  'tunehelppopup', 'generalhelppopup', 'intropopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode',
+  'tunehelppopup', 'directalignmentshelppopup', 'generalhelppopup', 'intropopup', 'qanda', 'examples', 'homework', 'curriculum', 'learningmode',
   'lecturediv', 'notepad'];
   
   function bringToFront(id) {

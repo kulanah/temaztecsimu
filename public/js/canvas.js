@@ -988,7 +988,7 @@ class Canvas {
   deactivateDirectAlignments(){
     clearInterval(this.intervalVal);
     $('#diffractograms').hide();
-    $('#tunehelppopup').hide();
+    $('#directalignmentshelppopup').hide();
     blockSpecimen = false;
     diffractionMode = false;
     if(alignmentMode == 'Diffraction'){

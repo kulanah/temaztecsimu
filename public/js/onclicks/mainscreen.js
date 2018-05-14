@@ -215,10 +215,10 @@ let mainScreen = function(){
   $('#daautohelp').on('click', function(){
     if(this.checked){
       if(alignmentMode !== 'None' || stigmatorMode !== 'None'){
-        $('#tunehelppopup').show();
+        $('#directalignmentshelppopup').show();
       }
     } else {
-      $('#tunehelppopup').hide();
+      $('#directalignmentshelppopup').hide();
     }
   });
 };
