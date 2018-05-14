@@ -446,6 +446,7 @@
 #directalignmentshelpcontent{
   width: 29.5vw;
   height: 48vh;
+  resize: none;
 }
 
 #generalhelppopup{
