@@ -394,3 +394,7 @@ function setChapter(chNum){
         $('#homeworkiframe').attr('src', 'public/html/hw' + currentCh + '.html');
     }
 }
+
+function setExample(exampleSrc){
+    $('#examplecontent').attr('src', exampleSrc);
+}
