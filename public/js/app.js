@@ -86,12 +86,22 @@ function drawInfoPanelValues(){
     $('#mfxvalue').text(stigmationMode + ' Stig X');
     $('#mfyvalue').text(stigmationMode + ' Stig Y');
   } else {
-    if(alignmentMode == 'None'){
-      $('#mfxvalue').text('');
-      $('#mfyvalue').text('');
-    } else {
-      $('#mfxvalue').text(alignmentMode + ' X');
-      $('#mfyvalue').text(alignmentMode + ' Y');
+    switch(alignmentMode){
+      case 'None':
+        $('#mfxvalue').text('');
+        $('#mfyvalue').text('');
+        break;
+      case 'Coma-free Alignment X':
+        $('#mfxvalue').text('Coma-free Alignment X');
+        $('#mfyvalue').text('');
+        break;
+      case 'Coma-free Alignment Y':
+        $('#mfxvalue').text('Coma-free Alignment Y');
+        $('#mfyvalue').text('');
+        break;
+      default:
+        $('#mfxvalue').text(alignmentMode + ' X');
+        $('#mfyvalue').text(alignmentMode + ' Y');
     }
   }
   if(availableAlignments.length > 1){
