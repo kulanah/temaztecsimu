@@ -990,10 +990,6 @@ class Canvas {
     $('#diffractograms').hide();
     $('#directalignmentshelppopup').hide();
     blockSpecimen = false;
-    diffractionMode = false;
-    if(alignmentMode == 'Diffraction'){
-      alignmentMode = 'None';
-    }
     availableAlignments = [];
     drawInfoPanelValues();
     $('#objvalue').text('');

@@ -382,9 +382,6 @@ let activateDiffractionStigmator = function(){
   stigmatorActive = true;
   stigmationMode = 'Diffraction';
   drawInfoPanelValues();
-  if(!diffractionMode){
-    $('#buttondiffraction').trigger('click');
-  }
 }
 
 let deactivateStigmator = function(){
