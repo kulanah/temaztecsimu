@@ -273,9 +273,12 @@ let microscopeControllers = function(){
     // Switch between image and diffraction views
     diffractionMode = !diffractionMode;
     if(diffractionMode){
+      deactivateDA();
       alignmentMode = 'Diffraction';
+      $('#directalignmentspopouttext').hide();
     } else {
       alignmentMode = 'None';
+      $('#directalignmentspopouttext').show();
     }
     drawInfoPanelValues();
 
