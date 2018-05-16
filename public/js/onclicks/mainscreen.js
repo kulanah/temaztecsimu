@@ -214,7 +214,7 @@ let mainScreen = function(){
 
   $('#daautohelp').on('click', function(){
     if(this.checked){
-      if(alignmentMode !== 'None' || stigmatorMode !== 'None'){
+      if(alignmentMode !== 'None' && alignmentMode !== 'Diffraction'){
         $('#directalignmentshelppopup').show();
       }
     } else {
