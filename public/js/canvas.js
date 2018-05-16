@@ -708,7 +708,6 @@ class Canvas {
             break;
           case 'Screen Intensity':
             this.brightnessOffsetX += deltaX * .1;
-            this.brightnessVal = 100 - Math.abs(this.brightnessOffsetX) - Math.abs(this.brightnessOffsetY);
             this.maskX += deltaX * .1;
             this.pivotPointCenterX += deltaX * .1;
             break;
@@ -764,7 +763,6 @@ class Canvas {
             break;
           case 'Screen Intensity':
             this.brightnessOffsetY += deltaY * .1;
-            this.brightnessVal = 100 - Math.abs(this.brightnessOffsetX) - Math.abs(this.brightnessOffsetY);
             this.maskY += deltaY * .1;
             this.pivotPointCenterY += deltaY * .1;
             break;
@@ -825,7 +823,7 @@ class Canvas {
       // Accomodate for the greater beam spread in camera view
       totalRadius /= 4;
     }
-    context.globalAlpha = (1 - (1 - totalRadius * this.zooms[this.mag] / 200000000) / 2 ** ((this.beamslider.val() - 1) / 10 / Math.sqrt(c2Sizes[c2Level - 1] / 150))) * 4500 / extractVal * 1.35 ** (gunLense - 2);
+    context.globalAlpha = (1 - (1 - totalRadius * this.zooms[this.mag] / 200000000) / 2 ** ((this.beamslider.val() - 1) / 10 / Math.sqrt(c2Sizes[c2Level - 1] / 150))) * 4500 / extractVal * 1.35 ** (gunLense - 2) * (100 + Math.abs(this.brightnessOffsetX) + Math.abs(this.brightnessOffsetY)) / 100;
     console.log(context.globalAlpha)
     context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
 
@@ -1107,7 +1105,7 @@ class Canvas {
     this.haloX = 0;
     this.haloY = 0;
 
-    this.brightnessVal = 100;
+    //this.brightnessVal = 100;
     this.brightnessOffsetX = 0;
     this.brightnessOffsetY = 0;
 
@@ -1176,7 +1174,7 @@ class Canvas {
     this.haloX = 0;
     this.haloY = 0;
 
-    this.brightnessVal = 100;
+    //this.brightnessVal = 100;
     this.brightnessOffsetX = 0;
     this.brightnessOffsetY = 0;
 
