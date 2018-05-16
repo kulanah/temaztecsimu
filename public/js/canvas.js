@@ -660,13 +660,7 @@ class Canvas {
 
   multiXDrag(deltaX){
     if (!isNaN(deltaX)){
-      if (diffractionMode && this == setupbox){
-        if(stigmationMode == 'Diffraction'){
-          this.diffractionAstigmatismX += deltaX / 10;
-        } else {
-          this.diffractionX += deltaX;
-        }
-      } else if (stigmatorActive) {
+      if (stigmatorActive) {
         switch (stigmationMode) {
           case 'Condensor':
             this.beamAstigmatismX += deltaX;
@@ -677,9 +671,15 @@ class Canvas {
               checkDiffractograms();
             }
             break;
+          case 'Diffraction':
+            this.diffractionAstigmatismX += deltaX / 10;
+            break;
         }
       } else {
         switch (alignmentMode){
+          case 'Diffraction':
+            this.diffractionX += deltaX;
+            break;
           case 'Gun Tilt':
             //let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;        
             this.haloX += deltaX;
@@ -719,13 +719,7 @@ class Canvas {
 
   multiYDrag(deltaY){
     if (!isNaN(deltaY)){
-      if (diffractionMode && this == setupbox){
-        if(stigmationMode == 'Diffraction'){
-          this.diffractionAstigmatismY += deltaY / 10; // the dots are small, so the change is less pronounced (relative to other stigmators)
-        } else {
-          this.diffractionY += deltaY;
-        }
-      } else if (stigmatorActive){
+      if (stigmatorActive){
         switch (stigmationMode){
           case 'Condensor':
             this.beamAstigmatismY += deltaY;
@@ -736,9 +730,15 @@ class Canvas {
               checkDiffractograms();
             }
             break;
+          case 'Diffraction':
+            this.diffractionAstigmatismY += deltaY / 10; // the dots are small, so the change is less pronounced (relative to other stigmators)
+            break;
           }
       } else {
         switch (alignmentMode){
+          case 'Diffraction':
+            this.diffractionY += deltaY;
+            break;
           case 'Gun Tilt':
             //let maskRadius = this.maskR * this.zooms[this.mag] / this.imgScale + (this.beamslider.val() - 1) * 4 - (this.calculateRadius() - 10) / 4;
             this.haloY += deltaY;
@@ -941,12 +941,14 @@ class Canvas {
     if(saedInserted){
       saedImpact = Math.sqrt(saedSizes[saedLevel - 1] / 1000);
     }
-    let radiusX = Math.sqrt(c2Sizes[c2Level - 1] / 150) * saedImpact * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
-    let radiusY = Math.sqrt(c2Sizes[c2Level - 1] / 150) * saedImpact * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)), Math.pow(1.0005, Math.abs(this.diffractionAstigmatismY)) / Math.pow(1.0005, Math.abs(this.diffractionAstigmatismX))) / beamRadius;
+    let combinedAstigmatismX = this.diffractionAstigmatismX + this.beamAstigmatismX / 10;
+    let combinedAstigmatismY = this.diffractionAstigmatismY + this.beamAstigmatismY / 10;
+    let radiusX = Math.sqrt(c2Sizes[c2Level - 1] / 150) * saedImpact * this.diffractionRadius * Math.max(Math.pow(1.0005, Math.abs(combinedAstigmatismX)) / Math.pow(1.0005, Math.abs(combinedAstigmatismY)), Math.pow(1.0005, Math.abs(combinedAstigmatismY)) / Math.pow(1.0005, Math.abs(combinedAstigmatismX))) / beamRadius;
+    let radiusY = Math.sqrt(c2Sizes[c2Level - 1] / 150) * saedImpact * this.diffractionRadius * Math.min(Math.pow(1.0005, Math.abs(combinedAstigmatismX)) / Math.pow(1.0005, Math.abs(combinedAstigmatismY)), Math.pow(1.0005, Math.abs(combinedAstigmatismY)) / Math.pow(1.0005, Math.abs(combinedAstigmatismX))) / beamRadius;
     this.context.beginPath();
     this.context.arc(this.selector[0].width / 2, this.selector[0].height / 2, this.selector[0].height / 2, 0, 2 * Math.PI);
     this.context.clip();
-    this.diffractionAngle = Math.atan2(this.diffractionAstigmatismY, this.diffractionAstigmatismX);
+    this.diffractionAngle = Math.atan2(combinedAstigmatismY, combinedAstigmatismX);
     if(onSpecimen){
       var settings = calculateR1R2Angle(micrographMaterial, 1, 1, 1, 100000, this.diffractionCameraLength, 10);
       for(i = 1; i < 2; i++) {
