@@ -249,8 +249,11 @@ class Canvas {
           if(this.maskX > this.imgX + alphaTiltImpact + this.imgW / 2){
             this.hueRotateActive = true;
             this.setFilterString();
-            setDiffractogramValues();
-            drawDiffractogram(this.selector[0], .5, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
+            let combinedAstigmatismX = this.diffractionAstigmatismX + this.beamAstigmatismX / 10;
+            let combinedAstigmatismY = this.diffractionAstigmatismY + this.beamAstigmatismY / 10;
+            this.diffractionAngle = Math.atan2(combinedAstigmatismY, combinedAstigmatismX);
+            let diffractionCTFAstigmatism = 1 + Math.sqrt((combinedAstigmatismX / 1000) ** 2 + (combinedAstigmatismY / 1000) ** 2);
+            drawDiffractogram(this.selector[0], .5, lambdaCalculation(100000) * 10, this.defocus - 1000, diffractionCTFAstigmatism, 0, this.diffractionAngle, 500000);
             // Version that adjusts intensity
             //drawDiffractogram(this.selector[0], (1 / Math.max(Math.abs(this.intensity),1)) ** .1, lambdaCalculation(100000) * 10, this.defocus - 1000, this.diffractogramAstigmatism, 0, this.diffractogramAngle, 500000);
             this.context.restore();
