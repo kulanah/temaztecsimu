@@ -16,10 +16,10 @@ let init = function(){
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   //change this to be based on the size of the crystals we use
-  renderer.domElement.id = 'threeCanvas';
+  renderer.domElement.id = 'latticeSimCanvas';
   document.body.appendChild(renderer.domElement);
 
-  controls = new THREE.TrackballControls(camera, document.getElementById('threeCanvas'));
+  controls = new THREE.TrackballControls(camera, document.getElementById('latticeSimCanvas'));
   controls.addEventListener('change', render);
 
 
@@ -46,6 +46,10 @@ let init = function(){
     color: '#0f0',
     preferredFormat: 'hex',
     flat: true,
+  });
+  
+  $('#backgroundcolorpicker').spectrum({
+    color: '#000',
   });
   
   createUserDefinedCrystals();
@@ -88,14 +92,18 @@ let loadJSONAtoms = function(object){
 };
 
 
-let exportAtoms = function(){
+let exportAtoms = function(destination){
   let filename = $('#specimenname')[0].value + '.json';
   if (filename == '.json'){ 
     filename = 'atomconfig.json';
   }
 
   let object = createDownloadJson();
-  downloadAtomsFile(object, filename);
+  if(destination === 'database'){
+    uploadAtomsFile(object, filename);
+  } else {
+    downloadAtomsFile(object, filename);
+  }
   $('#specimenname')[0].value = '';
 };
 
@@ -127,9 +135,19 @@ let createDownloadJson = function(){
   };
 
   let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
+  console.log(dataStr)
   return dataStr;
 };
 
+let uploadAtomsFile = function(object, filename){
+  $.ajax({
+    url: 'https://www.e-microscopy.org/public/html/latticeSimulator/index.html',
+    type: 'POST',
+    contentType: 'application/json',
+    data: object,
+    dataType: 'json'
+  });
+};
 
 let downloadAtomsFile = function(object, filename){
   let dlAnchorElem = document.getElementById('downloadAnchorElem');
@@ -259,6 +277,11 @@ let resetCounts = function(){
   }
 };
 
+let updateBackgroundColor = function(hex){
+  scene.background = null;
+  scene.background = new THREE.Color(hex);
+  render();
+};
 
 $('.hidden').hide();
 

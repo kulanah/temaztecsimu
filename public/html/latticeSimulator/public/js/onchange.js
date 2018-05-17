@@ -67,19 +67,19 @@ $('#latticeweight').on('input', function(){
 });
 
 $('.camerainput').on('input', function(){
-  let u = $('#cameraposx').val();
-  let v = $('#cameraposy').val();
-  let w = $('#cameraposz').val();
+  let u = $('#cameraposx').val() * 20;
+  let v = $('#cameraposy').val() * 20;
+  let w = $('#cameraposz').val() * 20;
   let newCameraX = newSpecimen.calculateCameraX(u, v, w);
   let newCameraY = newSpecimen.calculateCameraY(u, v, w);
   let newCameraZ = newSpecimen.calculateCameraZ(u, v, w);
-
+  
   camera.position.set(newCameraX, newCameraY, newCameraZ);
-
+  
   render();
 });
 
-$('#importbutton').on('change', function(event){
+$('#importlocallybutton').on('change', function(event){
   let reader = new FileReader();
   reader.onload = onReaderLoad;
   reader.readAsText(event.target.files[0]);
@@ -90,8 +90,9 @@ let onReaderLoad = function(event){
   clearAtomList();
   loadJSONAtoms(obj.atoms);
   setCrystalParams(obj.crystal);
-  $('#importbutton')[0].value = null;
+  $('#importlocallybutton')[0].value = null;
 };
+
 
 let atomOnMouseup = function(e){
   let $container = closeWhenOffClickDiv;
@@ -118,3 +119,8 @@ let atomNewColorOnchange = function(){
 
   newSpecimen.updateAtomColor(cellId, colorHex);
 };
+
+$('#backgroundcolorpicker').on('change', function(){
+  let colorHex = $('#backgroundcolorpicker').spectrum('get').toHexString();
+  updateBackgroundColor(colorHex);
+});

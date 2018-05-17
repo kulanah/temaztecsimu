@@ -70,12 +70,15 @@ $('#atomclearbutton').on('click', function(){
   clearAtomList();
 });
 
-$('#exportbutton').on('click', function(){
-  exportAtoms();
+$('#exportlocallybutton').on('click', function(){
+  exportAtoms('local');
+});
+
+$('#exportdatabasebutton').on('click', function(){
+  exportAtoms('database');
 });
 
 $('.element').on('click',  function(){
-  console.log(elementTarget);
   elementTarget.innerText = this.id;
   $('#periodictable').hide();
   elementTarget = $('#elementinput');
