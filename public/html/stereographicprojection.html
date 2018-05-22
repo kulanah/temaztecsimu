@@ -16,7 +16,6 @@
 	<body>
     <div id="info">
       Stereographic Projection<br><br>
-      Click to tilt zone axis
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/91/three.min.js"></script>
 		<script>
@@ -34,16 +33,16 @@
       sphere.rotation.x = .3;
       sphere.rotation.y = .3;
 
-      geometry = new THREE.CircleGeometry(1.2,64);
+      /*geometry = new THREE.CircleGeometry(1.2,64);
 			material = new THREE.MeshBasicMaterial( { color: 0x001100, wireframe: true } );
 			var circle = new THREE.Mesh( geometry, material );
       scene.add( circle );
-      circle.rotation.x = -Math.PI / 2 + .3;
+      circle.rotation.x = -Math.PI / 2 + .3;*/
 
       // Drawing circle based on https://stackoverflow.com/questions/13756112/draw-a-circle-not-shaded-with-three-js
       var radius = 1,
       segments = 64,
-      material = new THREE.LineBasicMaterial( { color: 0x0000ff } ),
+      material = new THREE.LineBasicMaterial( { color: 0x00ff88 } ),
       geometry = new THREE.CircleGeometry( radius, segments );
 
       // Remove center vertex
@@ -52,8 +51,15 @@
       // Non closed circle with one open segment:
       //scene.add( new THREE.Line( geometry, material ) );
 
+      for (let i = 0; i < 4; i++){
+        let circle = new THREE.LineLoop( geometry, material )
+        scene.add(circle);
+        circle.rotation.x = Math.PI / 4 * i;
+        circle.rotation.y = Math.PI / 4 * i;
+      }
+
       // To get a closed circle use LineLoop instead (see also @jackrugile his comment):
-      scene.add( new THREE.LineLoop( geometry, material ) );
+      //scene.add( new THREE.LineLoop( geometry, material ) );
       
       /*geometry = new THREE.CylinderGeometry(.01, .01, 10);
 			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
