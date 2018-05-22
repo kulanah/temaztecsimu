@@ -4,6 +4,7 @@
 ****/
 
 var popped = '#popplaceholder';
+let currentSection = 1;
 let currentCh = 0;
 let fullscreen = false;
 let lectureTop = 0;
@@ -244,15 +245,31 @@ function showOverview(){
 }
 
 let pptsrcs = [
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21157&authkey=ANhP2NnjGf3uE0c&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21167&authkey=AH5tGo5jMAE6Tto&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21189&authkey=AKDMMdxseBnzZd4&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21171&authkey=AMYBQiOoIw1f8xA&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21169&authkey=AJO7eA8rvJVuRE4&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21204&authkey=AJZ5j-T659F-odg&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21208&authkey=AApOCyFB1WFHLyE&em=2',
-    'https://onedrive.live.com/embed?resid=4438293664F5F344%21210&authkey=AP-0QHOM68t8_4Q&em=2'
+    [],
+    [
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21157&authkey=ANhP2NnjGf3uE0c&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21167&authkey=AH5tGo5jMAE6Tto&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21189&authkey=AKDMMdxseBnzZd4&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21171&authkey=AMYBQiOoIw1f8xA&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21169&authkey=AJO7eA8rvJVuRE4&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21204&authkey=AJZ5j-T659F-odg&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21208&authkey=AApOCyFB1WFHLyE&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21210&authkey=AP-0QHOM68t8_4Q&em=2'
+    ],
+    [
+        '',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21210&authkey=AP-0QHOM68t8_4Q&em=2',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21218&authkey=AJJGlgQX6I5iZZQ&em=2',
+        '',
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21219&authkey=ACwN_CMzEu9sk88&em=2'
+    ],
+    [
+        ''
+    ],
+    [
+        ''
+    ]
 ]
 
 function addLectures(){
@@ -290,10 +307,10 @@ function addLectures(){
             })
         }
     };
-    for(i = 0; i < pptsrcs.length; i++){
-        if(pptsrcs[i] != ''){
+    for(i = 0; i < pptsrcs[1].length; i++){
+        if(pptsrcs[1][i] != ''){
             let btn = document.createElement('button');
-            let src = pptsrcs[i];
+            let src = pptsrcs[1][i];
             $(btn).attr('id', 'ch' + i + 'pptbtn')
             $(btn).addClass('lecturetab');
             $(btn).css('margin', '2px');
@@ -336,16 +353,17 @@ function leaveFullscreen() {
 }
 
 function initializeChapter(){
-    if(location.search.includes('ch=')){
-        setChapter(location.search.split('ch=')[1].split('&')[0]);
+    if(location.search.includes('chapter=')){
+        setChapter(location.search.split('section=')[1].split('&')[0], location.search.split('chapter=')[1].split('&')[0]);
     }
 }
 
-function setChapter(chNum){
-    // Set the lecture and homework windows to the appropriate chapter if the user selected a chapter 
+function setChapter(sNum, chNum){
+    // Set the lecture and homework windows to the appropriate chapter if the user selected a chapter
+    currentSection = sNum;
     currentCh = chNum;
     $('#temlecture').ready(function(){
-        let src = pptsrcs[currentCh];
+        let src = pptsrcs[currentSection][currentCh];
         if(src != ''){
             $('#temlecture').attr('src', src);
             if (currentCh !== '0'){
@@ -353,7 +371,7 @@ function setChapter(chNum){
             }
         }
     });
-    if(currentCh > 1 && currentCh < 8 && currentCh != 6){
+    if(currentSection == 1 && currentCh > 1 && currentCh < 8 && currentCh != 6){
         $('#homeworkiframe').attr('src', 'public/html/hw' + currentCh + '.html');
     }
 }

@@ -4179,7 +4179,7 @@ let ch8SpeakerNotes = [
     `	No notes `    
 ]
 
-let speakerNotes = [
+let section1SpeakerNotes = [
     ch1SpeakerNotes,
     ch2SpeakerNotes,
     ch3SpeakerNotes,
@@ -4188,6 +4188,18 @@ let speakerNotes = [
     ch6SpeakerNotes,
     ch7SpeakerNotes,
     ch8SpeakerNotes
+]
+
+let section2SpeakerNotes = [
+    ch8SpeakerNotes,
+    [],
+    [],
+    []
+]
+
+let speakerNotes = [
+    section1SpeakerNotes,
+    section2SpeakerNotes
 ]
 
 // Speak code based on https://codepen.io/matt-west/pen/wGzuJ
@@ -4210,8 +4222,8 @@ $('#speakernotesplay').on('click', function(){
         console.log("Resuming speech")
     } else {
         let slide = document.getElementById('slidenumber').value;
-        speak(speakerNotes[currentCh - 1][slide - 1]);
-        console.log("Saying:", speakerNotes[currentCh - 1][slide - 1])
+        speak(speakerNotes[currentSection - 1][currentCh - 1][slide - 1]);
+        console.log("Saying:", speakerNotes[currentSection - 1][currentCh - 1][slide - 1])
     }
     window.speechSynthesis.resume();
 });
