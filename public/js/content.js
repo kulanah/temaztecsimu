@@ -307,8 +307,11 @@ function addLectures(){
             })
         }
     };
-    for(i = 0; i < pptsrcs[1].length; i++){
-        if(pptsrcs[1][i] != ''){
+    for(i = 0; i < pptsrcs.length; i++){
+        if(pptsrcs[i].length > 1){
+            $('#sectionselect').append('<option value=' + i + '>Section ' + i + '</option>')
+        }
+        /*if(pptsrcs[1][i] != ''){
             let btn = document.createElement('button');
             let src = pptsrcs[1][i];
             $(btn).attr('id', 'ch' + i + 'pptbtn')
@@ -325,8 +328,14 @@ function addLectures(){
                 }
             });
             $('#lecturediv').append(btn);
-        }
+        }*/
     }
+    $('#sectionselect').on('change', function(){
+
+    });
+    $('#chapterselect').on('change', function(){
+
+    });
 }
 
 // Enter fullscreen mode
