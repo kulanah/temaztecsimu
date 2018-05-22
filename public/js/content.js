@@ -254,8 +254,7 @@ let pptsrcs = [
         'https://onedrive.live.com/embed?resid=4438293664F5F344%21169&authkey=AJO7eA8rvJVuRE4&em=2',
         'https://onedrive.live.com/embed?resid=4438293664F5F344%21145&authkey=ADHOH-YI97IM8VY&em=2',
         'https://onedrive.live.com/embed?resid=4438293664F5F344%21204&authkey=AJZ5j-T659F-odg&em=2',
-        'https://onedrive.live.com/embed?resid=4438293664F5F344%21208&authkey=AApOCyFB1WFHLyE&em=2',
-        'https://onedrive.live.com/embed?resid=4438293664F5F344%21210&authkey=AP-0QHOM68t8_4Q&em=2'
+        'https://onedrive.live.com/embed?resid=4438293664F5F344%21208&authkey=AApOCyFB1WFHLyE&em=2'
     ],
     [
         '',
@@ -307,7 +306,7 @@ function addLectures(){
             })
         }
     };
-    for(i = 0; i < pptsrcs.length; i++){
+    for(let i = 0; i < pptsrcs.length; i++){
         if(pptsrcs[i].length > 1){
             $('#sectionselect').append('<option value=' + i + '>Section ' + i + '</option>')
         }
@@ -331,10 +330,12 @@ function addLectures(){
         }*/
     }
     $('#sectionselect').on('change', function(){
-
+        setSection($('#sectionselect').val());
     });
     $('#chapterselect').on('change', function(){
-
+        if($('#chapterselect').val() != -1){
+            setChapter($('#sectionselect').val(), $('#chapterselect').val());
+        }
     });
 }
 
@@ -367,10 +368,29 @@ function initializeChapter(){
     }
 }
 
+function setSection(sNum){
+    // Set the section select to the specified value and populate the chapter select appropriately
+    $('#sectionselect').val(sNum)
+    $('#chapterselect').empty();
+    $('#chapterselect').append('<option value="-1">Select a chapter:</option>')
+    for(let i = 0; i < pptsrcs[$('#sectionselect').val()].length; i++){
+        if(pptsrcs[$('#sectionselect').val()][i] != ''){
+            $('#chapterselect').append('<option value=' + i + '>Chapter ' + i + '</option>')
+        }
+    }
+    if (pptsrcs[$('#sectionselect').val()].length < 1){
+        $('#chapterselect').prop('disabled', true);
+    } else {
+        $('#chapterselect').prop('disabled', false);
+    }
+}
+
 function setChapter(sNum, chNum){
     // Set the lecture and homework windows to the appropriate chapter if the user selected a chapter
     currentSection = sNum;
+    setSection(sNum);
     currentCh = chNum;
+    $('#chapterselect').val(chNum)
     $('#temlecture').ready(function(){
         let src = pptsrcs[currentSection][currentCh];
         if(src != ''){
