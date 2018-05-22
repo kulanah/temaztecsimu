@@ -8,8 +8,6 @@ let currentCh = 0;
 let fullscreen = false;
 let lectureTop = 0;
 let lectureLeft = 0;
-/*let lectureWidth = 0;
-let lectureHeight = 0;*/
 let simulatorMode = 'learning';
 let introStep = -1;
 
@@ -156,17 +154,6 @@ function labSessionClicked(){
     })
 }
 
-function toggleVideo(state) {
-    // function by Rob W found at https://stackoverflow.com/questions/8667882/how-to-pause-a-youtube-player-when-hiding-the-iframe
-    // modified to not autoplay video, not currently used
-    // if state == 'hide', hide. Else: show video
-    var div = document.getElementById("lecturediv");
-    var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
-    div.style.display = state == 'hide' ? 'none' : '';
-    func = state == 'hide' ? 'pauseVideo' : '';
-    iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
-}
-
 // Disable features in certain modes, direct users seeking those features to learning mode
 function learningModePopup(){
     popContentDisplay('#learningmode');
@@ -270,29 +257,6 @@ let pptsrcs = [
 
 function addLectures(){
     // Create the buttons to switch between lectures plus the fullscreen button
-    /*let srcs = ['https://docs.google.com/presentation/d/e/2PACX-1vTmZNiWgLNOUc-i9XLeroyMTG-SWL-OlOxI4VKVU9_2n6ewXmonU5pc-wjG6x-chkNuXH4tMC59X4-N/embed?start=false&loop=false&delayms=3000', //PPT Online Ch1: 'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21126&authkey=ABwysJ8rPoa5qc0&em=2'
-    'https://cemnpdx.github.io/Reveal/HTML/Chapter%202.html',
-    '',
-    '',
-    'https://docs.google.com/presentation/d/e/2PACX-1vSbZCb6AR5mZNqE9CwO5FDdpM3QVJXu0CcwaoYcbYlQaziOnAYDz6pMwaVNKl_kp6gaZkLWrEojJVHc/embed?start=false&loop=false&delayms=3000']
-    //Embed simulator into itself: 'https://onedrive.live.com/embed?cid=4438293664F5F344&resid=4438293664F5F344%21120&authkey=AHtG2LBmRaeo0KQ&em=2'
-    for(i = 1; i < srcs.length + 1; i++){
-        if(srcs[i-1] != ''){
-            let btn = document.createElement('button');
-            let src = srcs[i-1];
-            $(btn).attr('id', 'ch' + i + 'btn')
-            $(btn).addClass('lecturetab');
-            $(btn).css('margin', '2px');
-            $(btn).text('Chapter ' + i);
-            $(btn).click(function(){
-                $('#temlecture').attr('src', src);
-                currentCh = $(btn).text().split(' ')[1];
-                $('#speakernotesplay').prop('disabled', false);
-            });
-            $('#lecturediv').append(btn);
-        }
-    }*/
-
     // Fullscreen button only functions properly in Chrome - other browsers use different prefixes for the Fullscreen API
     $('#fullscreenbtn').on('click', function(){
         if(document.webkitFullscreenElement === document.getElementById('lecturediv')){
@@ -387,7 +351,6 @@ function setChapter(chNum){
             if (currentCh !== '0'){
                 $('#speakernotesplay').prop('disabled', false);
             }
-            //$('#lecturediv').show();
         }
     });
     if(currentCh > 1 && currentCh < 8 && currentCh != 6){
