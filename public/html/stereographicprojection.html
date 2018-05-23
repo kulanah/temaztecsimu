@@ -16,6 +16,7 @@
 	<body>
     <div id="info">
       Stereographic Projection<br><br>
+      Click to rotate along different axis
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
 		<script>
@@ -49,10 +50,22 @@
       camera.position.z = 5;
       renderer.render(scene, camera);
 
+      var mouseDown = false;
+      document.body.onmousedown = function() { 
+        mouseDown = true;
+      }
+      document.body.onmouseup = function() {
+        mouseDown = false;
+      }
+
 			var animate = function () {
         requestAnimationFrame( animate );
         for(let circle in circles){
-          circles[circle].rotation.x += .01
+          if(mouseDown){
+            circles[circle].rotation.y += .01;
+          } else {
+            circles[circle].rotation.x += .01;
+          }
         }
 
 				renderer.render(scene, camera);

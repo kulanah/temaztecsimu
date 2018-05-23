@@ -71,12 +71,12 @@
       camera.position.z = 5;
       renderer.render(scene, camera);
 
-      var mouseDown = 0;
+      var mouseDown = false;
       document.body.onmousedown = function() { 
-        ++mouseDown;
+        mouseDown = true;
       }
       document.body.onmouseup = function() {
-        --mouseDown;
+        mouseDown = false;
       }
 
 			var animate = function () {
