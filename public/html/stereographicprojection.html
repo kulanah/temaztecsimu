@@ -36,12 +36,12 @@
       geometry.vertices.shift();
 
       let circles = [];
-      for (let j = 0; j < 4; j++){
-        for (let i = 0; i < 4; i++){
+      for (let i = 0; i < 4; i++){
+        for (let j = 0; j < 4; j++){
           let circle = new THREE.LineLoop( geometry, material )
           scene.add(circle);
-          circle.rotation.x = Math.PI / 4 * j;
-          circle.rotation.y = Math.PI / 4 * i;
+          circle.rotation.x = Math.PI / 4 * i;
+          circle.rotation.y = Math.PI / 4 * j;
           circles.push(circle);
         }
       }
