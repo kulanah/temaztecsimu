@@ -66,8 +66,29 @@ let mainScreen = function(){
     }
   });
 
+  // Select the node that will be observed for mutations
+  let targetNode = document.getElementById('openbox');
+
+  // Options for the observer (which mutations to observe)
+  let config = { attributes: true };
+
+  // Callback function to execute when mutations are observed
+  let callback = function(mutationsList) {
+    if(isVisible('openbox')){
+      $('#processbutton').removeClass('unusable');
+    } else {
+      $('#processbutton').addClass('unusable');
+    }
+  };
+
+  // Create an observer instance linked to the callback function
+  let observer = new MutationObserver(callback);
+
+  // Start observing the target node for configured mutations
+  observer.observe(targetNode, config);
+
   $('#processbutton').on('click', function(event){
-    if($('#processmenu').css('display') == 'none'){
+    if($('#processmenu').css('display') == 'none' && isVisible('openbox')){
       $('#processmenu').show();
     } else {
       $('#processmenu').hide();
