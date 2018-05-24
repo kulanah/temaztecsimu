@@ -46,16 +46,19 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
+      // Drawing circle based on https://stackoverflow.com/questions/13756112/draw-a-circle-not-shaded-with-three-js
       let radius = 1,
-      width = Math.PI / 360,
       segments = 64,
-      material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
-      geometry = new THREE.TorusGeometry( radius, width, 8, segments );
+      material = new THREE.LineBasicMaterial( { color: 0x00ff88 } ),
+      geometry = new THREE.CircleGeometry( radius, segments );
+
+      // Remove center vertex
+      geometry.vertices.shift();
 
       let pattern = [];
       for (let i = 0; i < 4; i++){
         for (let j = 0; j < 4; j++){
-          var band = new THREE.Mesh( geometry, material );
+          var band = new THREE.LineLoop( geometry, material );
           scene.add( band );
           band.rotation.x = Math.PI / 4 * i;
           band.rotation.y = Math.PI / 4 * j;
@@ -78,16 +81,18 @@
         for(let band in pattern){
           scene.remove(pattern[band]);
         }
-        radius = Number(document.getElementById('radius').value),
-        width =  radius * Math.PI / 360,
+        radius = document.getElementById('radius').value,
         segments = 64,
-        material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
-        geometry = new THREE.TorusGeometry( radius, width, 8, segments );
+        material = new THREE.LineBasicMaterial( { color: 0x00ff88 } ),
+        geometry = new THREE.CircleGeometry( radius, segments );
+
+        // Remove center vertex
+        geometry.vertices.shift();
 
         pattern = [];
         for (let i = 0; i < 4; i++){
           for (let j = 0; j < 4; j++){
-            var band = new THREE.Mesh( geometry, material );
+            var band = new THREE.LineLoop( geometry, material );
             scene.add( band );
             band.rotation.x = Math.PI / 4 * i + Math.PI / 180 * document.getElementById('alphatilt').value;
             band.rotation.y = Math.PI / 4 * j + Math.PI / 180 * document.getElementById('betatilt').value;
@@ -115,8 +120,7 @@
       function onWindowResize() {
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
-        renderer.setSize( window.innerWidth, window.innerHeight );
-        update();
+				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 
       window.addEventListener( 'resize', onWindowResize, false );
