@@ -48,9 +48,8 @@
 
       let radius = 1,
       width = Math.PI / 360,
-      segments = 64,
       material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
-      geometry = new THREE.TorusGeometry( radius, width, 8, segments );
+      geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
 
       let pattern = [];
       for (let i = 0; i < 4; i++){
@@ -80,9 +79,8 @@
         }
         radius = Number(document.getElementById('radius').value),
         width =  radius * Math.PI / 360,
-        segments = 64,
         material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
-        geometry = new THREE.TorusGeometry( radius, width, 8, segments );
+        geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
 
         pattern = [];
         for (let i = 0; i < 4; i++){
