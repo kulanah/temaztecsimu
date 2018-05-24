@@ -25,11 +25,11 @@
     <div id="info">
       Stereographic Projection<br><br>
       <label for='radius'>radius:</label>
-      <input id='radius' type='number' value='1' min='0' oninput='updateRadius()'><br>
+      <input id='radius' type='number' value='1' min='0' oninput='update()'><br>
       <label for='alphatilt'>α tilt:</label>
-      <input id='alphatilt' type='number'><br>
+      <input id='alphatilt' type='number' value='0' oninput='update()'><br>
       <label for='betatilt'>β tilt:</label>
-      <input id='betatilt' type='number'><br>
+      <input id='betatilt' type='number' value='0' oninput='update()'><br>
       <label for='u'>u:</label>
       <input id='u' type='number'><br>
       <label for='v'>v:</label>
@@ -77,7 +77,7 @@
         mouseDown = false;
       }
 
-      function updateRadius(){
+      function update(){
         for(let band in pattern){
           scene.remove(pattern[band]);
         }
@@ -94,11 +94,13 @@
           for (let j = 0; j < 4; j++){
             var band = new THREE.LineLoop( geometry, material );
             scene.add( band );
-            band.rotation.x = Math.PI / 4 * i;
-            band.rotation.y = Math.PI / 4 * j;
+            band.rotation.x = Math.PI / 4 * i + Math.PI / 180 * document.getElementById('alphatilt').value;
+            band.rotation.y = Math.PI / 4 * j + Math.PI / 180 * document.getElementById('betatilt').value;
             pattern.push(band);
           }
         }
+
+        renderer.render(scene, camera);
       }
 
 			var animate = function () {
@@ -123,7 +125,7 @@
 
       window.addEventListener( 'resize', onWindowResize, false );
 
-			animate();
+			//animate();
 		</script>
 	</body>
 </html>
