@@ -49,22 +49,38 @@
       // Drawing circle based on https://stackoverflow.com/questions/13756112/draw-a-circle-not-shaded-with-three-js
       let radius = 1,
       segments = 64,
-      material = new THREE.LineBasicMaterial( { color: 0x00ff88 } ),
-      geometry = new THREE.CircleGeometry( radius, segments );
+      material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
+      geometry = new THREE.SphereGeometry( radius, segments, segments, 0, Math.PI / 36, 0, Math.PI * 2 );
 
-      // Remove center vertex
-      geometry.vertices.shift();
+      var band = new THREE.Mesh( geometry, material );
+      band.material.side = THREE.DoubleSide;
+      scene.add( band );
 
       let pattern = [];
       for (let i = 0; i < 4; i++){
         for (let j = 0; j < 4; j++){
-          var band = new THREE.LineLoop( geometry, material );
+          var band = new THREE.Mesh( geometry, material );
+          band.material.side = THREE.DoubleSide;
           scene.add( band );
           band.rotation.x = Math.PI / 4 * i;
           band.rotation.y = Math.PI / 4 * j;
           pattern.push(band);
         }
       }
+
+      // Remove center vertex
+      /*geometry.vertices.shift();
+
+      let circles = [];
+      for (let i = 0; i < 4; i++){
+        for (let j = 0; j < 4; j++){
+          let circle = new THREE.LineLoop( geometry, material )
+          scene.add(circle);
+          circle.rotation.x = Math.PI / 4 * i;
+          circle.rotation.y = Math.PI / 4 * j;
+          circles.push(circle);
+        }
+      }*/
 
       camera.position.z = 5;
       renderer.render(scene, camera);
