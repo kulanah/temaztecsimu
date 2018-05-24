@@ -25,7 +25,7 @@
     <div id="info">
       Stereographic Projection<br><br>
       <label for='radius'>radius:</label>
-      <input id='radius' type='number' value='1' min='0'><br>
+      <input id='radius' type='number' value='1' min='0' onchange='updateRadius()'><br>
       <label for='alphatilt'>α tilt:</label>
       <input id='alphatilt' type='number'><br>
       <label for='betatilt'>β tilt:</label>
@@ -75,6 +75,30 @@
       }
       document.body.onmouseup = function() {
         mouseDown = false;
+      }
+
+      function updateRadius(){
+        for(let band in pattern){
+          scene.remove(pattern[band]);
+        }
+        radius = document.getElementById('radius').value,
+        segments = 64,
+        material = new THREE.LineBasicMaterial( { color: 0x00ff88 } ),
+        geometry = new THREE.CircleGeometry( radius, segments );
+
+        // Remove center vertex
+        geometry.vertices.shift();
+
+        pattern = [];
+        for (let i = 0; i < 4; i++){
+          for (let j = 0; j < 4; j++){
+            var band = new THREE.LineLoop( geometry, material );
+            scene.add( band );
+            band.rotation.x = Math.PI / 4 * i;
+            band.rotation.y = Math.PI / 4 * j;
+            pattern.push(band);
+          }
+        }
       }
 
 			var animate = function () {
