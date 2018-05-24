@@ -25,7 +25,7 @@
     <div id="info">
       Stereographic Projection<br><br>
       <label for='radius'>radius:</label>
-      <input id='radius' type='number' value='1' min='0' oninput='update()'><br>
+      <input id='radius' type='number' value='10' min='1' oninput='update()'><br>
       <label for='alphatilt'>α tilt:</label>
       <input id='alphatilt' type='number' value='0' oninput='update()'><br>
       <label for='betatilt'>β tilt:</label>
@@ -46,8 +46,8 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
-      let radius = 1,
-      width = Math.PI / 360,
+      let radius = 10,
+      width = Math.PI / 36,
       material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
       geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
 
@@ -62,7 +62,7 @@
         }
       }
 
-      camera.position.z = 5;
+      camera.position.z = 50;
       renderer.render(scene, camera);
 
       function update(){
@@ -85,6 +85,10 @@
           }
         }
 
+        //camera.position.x = 50 * document.getElementById('u').value;
+        //camera.rotation.y = Math.PI / 4 * document.getElementById('u').value;
+        //camera.position.y = 50 * document.getElementById('v').value;
+        //camera.position.z = 50 * document.getElementById('w').value;
         renderer.render(scene, camera);
       }
 
