@@ -50,7 +50,7 @@
 
       let radius = 10,
       width = Math.PI / 36,
-      material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
+      material = new THREE.MeshBasicMaterial( { color: 'silver' } ),
       geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
 
       let pattern = [];
@@ -73,7 +73,7 @@
         }
         radius = Number(document.getElementById('radius').value),
         width =  radius * document.getElementById('width').value * Math.PI / 180,
-        material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
+        material = new THREE.MeshBasicMaterial( { color: 'silver' } ),
         geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
 
         pattern = [];
