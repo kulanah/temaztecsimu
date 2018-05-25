@@ -12,11 +12,11 @@
         color: white;
       }
       input{
-				width: 80px;
+				width: 50px;
 			}
 			label {
 				display:inline-block;
-				width:50px;
+				width:100px;
 				text-align:right;
       }
 		</style>
@@ -24,12 +24,14 @@
 	<body>
     <div id="info">
       Stereographic Projection<br><br>
-      <label for='radius'>radius:</label>
+      <label for='radius'>Sphere radius:</label>
       <input id='radius' type='number' value='10' min='1' oninput='update()'><br>
+      <label for='width'>Band width:</label>
+      <input id='width' type='number' value='0.5' min='0.1' step='0.1' oninput='update()'>°<br>
       <label for='alphatilt'>α tilt:</label>
-      <input id='alphatilt' type='number' value='0' oninput='update()'><br>
+      <input id='alphatilt' type='number' value='0' oninput='update()'>°<br>
       <label for='betatilt'>β tilt:</label>
-      <input id='betatilt' type='number' value='0' oninput='update()'><br>
+      <input id='betatilt' type='number' value='0' oninput='update()'>°<br>
       <label for='u'>u:</label>
       <input id='u' type='number'value='1' oninput='update()'><br>
       <label for='v'>v:</label>
@@ -70,7 +72,7 @@
           scene.remove(pattern[band]);
         }
         radius = Number(document.getElementById('radius').value),
-        width =  radius * Math.PI / 360,
+        width =  radius * document.getElementById('width').value * Math.PI / 180,
         material = new THREE.MeshBasicMaterial( { color: 0x00ff88 } ),
         geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
 
@@ -85,10 +87,6 @@
           }
         }
 
-        //camera.position.x = 50 * document.getElementById('u').value;
-        //camera.rotation.y = Math.PI / 4 * document.getElementById('u').value;
-        //camera.position.y = 50 * document.getElementById('v').value;
-        //camera.position.z = 50 * document.getElementById('w').value;
         renderer.render(scene, camera);
       }
 
