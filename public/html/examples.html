@@ -26,9 +26,9 @@
                 'public/html/sphere.html'
             ]
             let examples = document.getElementsByTagName('li');
-            for (i = 0; i <= examples.length; i++){
+            for (i = 0; i < examples.length; i++){
                 let n = i;
-                (examples[i]).addEventListener('click', function(){
+                examples[i].addEventListener('click', function(){
                     // parent.setExample will only function on a server - it will fail if run locally.
                     // To do local testing, create a web server with Python.
                     // See https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server for directions.
