@@ -48,8 +48,8 @@ function calculateR1R2Angle(material, u, v, w, voltage, cameraLength, max) {
         s31 = 0;
     }
     var h1, k1, l1, h2, k2, l2;
-    var min1 = -10;
-    var max1 = 10;
+    var min1 = -4;
+    var max1 = 4;
     var max2 = max;
     var min2 = -max2;
     var complete = false;
