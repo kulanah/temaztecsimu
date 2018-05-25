@@ -64,14 +64,9 @@
         }
       }
 
-      // Positions: x = right, y = up, z = back
-      // Rotations: x = up, y = left, z = twist
+
       let cameraDistance = 50;
-      /*camera.position.x = 50;
-      camera.rotation.y = Math.PI / 4;
-      camera.position.y = 50;
-      camera.rotation.x = -Math.PI / 4;*/
-      camera.position.z = 50;
+      camera.position.z = cameraDistance;
       renderer.render(scene, camera);
 
       function update(){
@@ -99,16 +94,18 @@
         let w = Number(document.getElementById('w').value);
         let sum = Math.sqrt(u ** 2 + v ** 2 + w ** 2);
         console.log(sum);
+        // Positions: x = right, y = up, z = back
+        // Rotations: x = up, y = left, z = twist
         camera.position.x = cameraDistance * v / sum;
-        if(u < 0){
-          camera.rotation.y = -Math.asin(v/sum) + Math.PI;
-          camera.rotation.x = Math.asin(w/sum)
-        } else {
-          camera.rotation.y = Math.asin(v/sum)
-          camera.rotation.x = -Math.asin(w/sum)
-        }
         camera.position.y = cameraDistance * w / sum;
         camera.position.z = cameraDistance * u / sum;
+        if(u < 0){
+          camera.rotation.y = -Math.asin(v/sum) + Math.PI;
+          camera.rotation.x = Math.asin(w/sum);
+        } else {
+          camera.rotation.y = Math.asin(v/sum);
+          camera.rotation.x = -Math.asin(w/sum);
+        }
         renderer.render(scene, camera);
       }
 
