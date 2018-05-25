@@ -100,6 +100,14 @@
 
       window.addEventListener( 'resize', onWindowResize, false );
 
+      function onMouseWheel(event) {
+        camera.position.z += event.deltaY / 100;
+        //document.getElementById('radius').value = Math.max(1, Number(document.getElementById('radius').value) - event.deltaY / 100);
+        update();
+      }
+
+      window.addEventListener('wheel', onMouseWheel, false);
+
 		</script>
 	</body>
 </html>
