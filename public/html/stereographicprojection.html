@@ -56,12 +56,25 @@
         for(let band in pattern){
           scene.remove(pattern[band]);
         }
+        pattern = [];
         let radius = Number(document.getElementById('radius').value),
         width =  radius * document.getElementById('width').value * Math.PI / 180,
         material = new THREE.MeshBasicMaterial( { color: 'silver' } ),
         geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
 
-        pattern = [];
+        for (let i = 0; i < 2; i++){
+          for (let j = 0; j < 2; j++){
+            var band = new THREE.Mesh( geometry, material );
+            scene.add( band );
+            band.rotation.x = Math.PI / 2 * i + Math.PI / 180 * document.getElementById('alphatilt').value;
+            band.rotation.y = Math.PI / 2 * j + Math.PI / 180 * document.getElementById('betatilt').value;
+            pattern.push(band);
+          }
+        }
+
+        material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: 1 / Math.sqrt(2) } );
+        geometry = new THREE.TorusGeometry( radius, width * Math.sqrt(2), 8, 100 );
+
         for (let i = 0; i < 4; i++){
           for (let j = 0; j < 4; j++){
             var band = new THREE.Mesh( geometry, material );
