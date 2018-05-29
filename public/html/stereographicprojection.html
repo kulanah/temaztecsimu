@@ -48,32 +48,15 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
-      let radius = 10,
-      width = Math.PI / 36,
-      material = new THREE.MeshBasicMaterial( { color: 'silver' } ),
-      geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
-
       let pattern = [];
-      for (let i = 0; i < 4; i++){
-        for (let j = 0; j < 4; j++){
-          var band = new THREE.Mesh( geometry, material );
-          scene.add( band );
-          band.rotation.x = Math.PI / 4 * i;
-          band.rotation.y = Math.PI / 4 * j;
-          pattern.push(band);
-        }
-      }
-
-
       let cameraDistance = 50;
-      camera.position.z = cameraDistance;
-      renderer.render(scene, camera);
+      update();
 
       function update(){
         for(let band in pattern){
           scene.remove(pattern[band]);
         }
-        radius = Number(document.getElementById('radius').value),
+        let radius = Number(document.getElementById('radius').value),
         width =  radius * document.getElementById('width').value * Math.PI / 180,
         material = new THREE.MeshBasicMaterial( { color: 'silver' } ),
         geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
