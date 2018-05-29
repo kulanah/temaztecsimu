@@ -101,7 +101,7 @@
         if(u < 0){
           camera.rotation.y = -Math.asin(v/sum) + Math.PI;
           camera.rotation.x = Math.asin(w/Math.sqrt(u**2 + w**2));
-        } else if(u == 0 && w == 0){
+        } else if(u === 0 && w === 0){
           camera.rotation.y = Math.PI / 2 * Math.sign(v);
           camera.rotation.x = 0;
         } else {
