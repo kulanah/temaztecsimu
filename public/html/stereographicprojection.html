@@ -93,7 +93,6 @@
         let v = Number(document.getElementById('v').value);
         let w = Number(document.getElementById('w').value);
         let sum = Math.sqrt(u ** 2 + v ** 2 + w ** 2);
-        console.log(sum);
         // Positions: x = right, y = up, z = back
         // Rotations: x = up, y = left, z = twist
         camera.position.x = cameraDistance * v / sum;
@@ -101,10 +100,13 @@
         camera.position.z = cameraDistance * u / sum;
         if(u < 0){
           camera.rotation.y = -Math.asin(v/sum) + Math.PI;
-          camera.rotation.x = Math.asin(w/sum);
+          camera.rotation.x = Math.asin(w/Math.sqrt(u**2 + w**2));
+        } else if(u == 0 && w == 0){
+          camera.rotation.y = Math.PI / 2 * Math.sign(v);
+          camera.rotation.x = 0;
         } else {
           camera.rotation.y = Math.asin(v/sum);
-          camera.rotation.x = -Math.asin(w/sum);
+          camera.rotation.x = -Math.asin(w/Math.sqrt(u**2 + w**2));
         }
         renderer.render(scene, camera);
       }
