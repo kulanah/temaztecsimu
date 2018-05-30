@@ -115,17 +115,15 @@
           camera.rotation.y = Math.asin(v/sum);
           camera.rotation.x = -Math.asin(w/Math.sqrt(u**2 + w**2));
         }
+        // render the scene so raycaster detects rotations
         renderer.render(scene, camera);
         // update the picking ray with the camera and mouse position
 				raycaster.setFromCamera( mouse, camera );
-
         // calculate objects intersecting the picking ray
         var intersects = raycaster.intersectObjects( pattern );
         console.log(intersects);
         for ( var i = 0; i < intersects.length; i++ ) {
-
           intersects[0].object.material.color.set( 0xff0000 );
-
         }
         renderer.render(scene, camera);
       }
