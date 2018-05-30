@@ -126,11 +126,31 @@
         console.log(intersects);
         if(intersects.length > 0) {
           intersects[0].object.material.color.set( 0xff0000 );
-          document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + ' ' + ')';
+          let axis = '';
+          switch(intersects[0].object.rotation.x){
+            case 0:
+              switch(intersects[0].object.rotation.y){
+                case 0:
+                  axis = '1, 0, 0';
+                  break;
+                case Math.PI/2:
+                  axis = '0, 1, 0';
+                  break;
+              }
+              break;
+            case Math.PI/2:
+              switch(intersects[0].object.rotation.y){
+                  case 0:
+                    axis = '0, 0, 1'
+                    break;
+              }
+              break;
+          }
+          document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + axis + ')';
           document.getElementById('xrotation').textContent = 'x rotation: ' + intersects[0].object.rotation.x.toFixed(2);
           document.getElementById('yrotation').textContent = 'y rotation: ' + intersects[0].object.rotation.y.toFixed(2);
         } else {
-          document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + ' ' + ')';
+          document.getElementById('hoverlabel').textContent = 'The mouse is over:';
           document.getElementById('xrotation').textContent = 'x rotation:';
           document.getElementById('yrotation').textContent = 'y rotation:';
         }
