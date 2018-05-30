@@ -38,7 +38,9 @@
       <input id='v' type='number' value='0' oninput='update()'><br>
       <label for='w'>w:</label>
       <input id='w' type='number' value='0' oninput='update()'>
-      <p id='hoverlabel'>The mouse is over: ()</p>
+      <p id='hoverlabel'></p>
+      <p id='xrotation'></p>
+      <p id='yrotation'></p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
 		<script>
@@ -124,9 +126,13 @@
         console.log(intersects);
         if(intersects.length > 0) {
           intersects[0].object.material.color.set( 0xff0000 );
-          document.getElementById('hoverlabel').textContent = ('The mouse is over: (' + intersects[0].object.rotation.x.toFixed(2) + ', ' + intersects[0].object.rotation.y.toFixed(2) + ')');
+          document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + ' ' + ')';
+          document.getElementById('xrotation').textContent = 'x rotation: ' + intersects[0].object.rotation.x.toFixed(2);
+          document.getElementById('yrotation').textContent = 'y rotation: ' + intersects[0].object.rotation.y.toFixed(2);
         } else {
-          document.getElementById('hoverlabel').textContent = 'The mouse is over: ()';
+          document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + ' ' + ')';
+          document.getElementById('xrotation').textContent = 'x rotation:';
+          document.getElementById('yrotation').textContent = 'y rotation:';
         }
         renderer.render(scene, camera);
       }
