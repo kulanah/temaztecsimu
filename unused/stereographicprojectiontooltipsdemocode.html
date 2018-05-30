@@ -1,0 +1,248 @@
+<html>
+	<head>
+		<title>Stereographic Projection</title>
+		<style>
+			body { margin: 0; }
+      canvas { width: 100%; height: 100% }
+      #info {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        z-index: 100;
+        color: white;
+      }
+      input{
+				width: 50px;
+			}
+			label {
+				display:inline-block;
+				width:100px;
+				text-align:right;
+      }
+		</style>
+	</head>
+	<body>
+    <div id="info">
+      Stereographic Projection<br><br>
+      <label for='radius'>Sphere radius:</label>
+      <input id='radius' type='number' value='10' min='1' oninput='update()'><br>
+      <label for='width'>Band width:</label>
+      <input id='width' type='number' value='0.5' min='0.1' step='0.1' oninput='update()'>°<br>
+      <label for='alphatilt'>α tilt:</label>
+      <input id='alphatilt' type='number' value='0' oninput='update()'>°<br>
+      <label for='betatilt'>β tilt:</label>
+      <input id='betatilt' type='number' value='0' oninput='update()'>°<br>
+      <label for='u'>u:</label>
+      <input id='u' type='number'value='1' oninput='update()'><br>
+      <label for='v'>v:</label>
+      <input id='v' type='number' value='0' oninput='update()'><br>
+      <label for='w'>w:</label>
+      <input id='w' type='number' value='0' oninput='update()'>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+		<script>
+      // standard global variables
+var container, controls, stats;
+
+// custom global variables
+var cube;
+var projector, mouse = { x: 0, y: 0 }, INTERSECTED;
+var sprite1;
+var canvas1, context1, texture1;
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 70, window.innerWidth/window.innerHeight, 0.01, 1000 );
+
+			var renderer = new THREE.WebGLRenderer({ antialias: true });
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+      let pattern = [];
+      let cameraDistance = 50;
+      update();
+
+      function update(){
+        for(let band in pattern){
+          scene.remove(pattern[band]);
+        }
+        pattern = [];
+        let radius = Number(document.getElementById('radius').value),
+        minWidth =  radius * document.getElementById('width').value * Math.PI / 180,
+        material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 } ),
+        geometry = new THREE.TorusGeometry( radius, minWidth, 8, 100 );
+
+        for (let i = 0; i < 2; i++){
+          for (let j = 0; j < 2; j++){
+            if(i === 1 && j === 1){
+              // Avoid drawing (0, 1, 0) circle twice
+              continue;
+            } 
+            var band = new THREE.Mesh( geometry, material );
+            scene.add( band );
+            band.rotation.x = Math.PI / 2 * i + Math.PI / 180 * document.getElementById('alphatilt').value;
+            band.rotation.y = Math.PI / 2 * j + Math.PI / 180 * document.getElementById('betatilt').value;
+            pattern.push(band);
+          }
+        }
+
+        material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(2) } );
+        geometry = new THREE.TorusGeometry( radius, minWidth * Math.sqrt(2), 8, 100 );
+
+        for (let i = 0; i < 4; i++){
+          for (let j = 0; j < 4; j++){
+            if(i > 0 && j === 2){
+              // Avoid drawing (0, 1, 0) circle multiple times
+              continue;
+            } 
+            var band = new THREE.Mesh( geometry, material );
+            scene.add( band );
+            band.rotation.x = Math.PI / 4 * i + Math.PI / 180 * document.getElementById('alphatilt').value;
+            band.rotation.y = Math.PI / 4 * j + Math.PI / 180 * document.getElementById('betatilt').value;
+            pattern.push(band);
+          }
+        }
+
+        let u = Number(document.getElementById('u').value);
+        let v = Number(document.getElementById('v').value);
+        let w = Number(document.getElementById('w').value);
+        let sum = Math.sqrt(u ** 2 + v ** 2 + w ** 2);
+        // Positions: x = right, y = up, z = back
+        // Rotations: x = up, y = left, z = twist
+        camera.position.x = cameraDistance * v / sum;
+        camera.position.y = cameraDistance * w / sum;
+        camera.position.z = cameraDistance * u / sum;
+        if(u < 0){
+          camera.rotation.y = -Math.asin(v/sum) + Math.PI;
+          camera.rotation.x = Math.asin(w/Math.sqrt(u**2 + w**2));
+        } else if(u === 0 && w === 0){
+          camera.rotation.y = Math.PI / 2 * Math.sign(v);
+          camera.rotation.x = 0;
+        } else {
+          camera.rotation.y = Math.asin(v/sum);
+          camera.rotation.x = -Math.asin(w/Math.sqrt(u**2 + w**2));
+        }
+
+	////////////
+	// CUSTOM //
+	////////////
+	var cubeGeometry = new THREE.CubeGeometry( 50, 50, 50 );
+	var cubeMaterial = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+	cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
+	cube.position.set(0,26,0);
+	cube.name = "Cube";
+	scene.add(cube);
+	
+	// initialize object to perform world/screen calculations
+	projector = new THREE.Projector();
+	
+	// when the mouse moves, call the given function
+	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+		
+	/////// draw text on canvas /////////
+
+	// create a canvas element
+	canvas1 = document.createElement('canvas');
+	context1 = canvas1.getContext('2d');
+	context1.font = "Bold 20px Arial";
+	context1.fillStyle = "rgba(0,0,0,0.95)";
+    context1.fillText('Hello, world!', 0, 20);
+    
+	// canvas contents will be used for a texture
+	texture1 = new THREE.Texture(canvas1) 
+	texture1.needsUpdate = true;
+	
+	////////////////////////////////////////
+	
+	var spriteMaterial = new THREE.SpriteMaterial( { map: texture1, useScreenCoordinates: true, alignment: THREE.SpriteAlignment.topLeft } );
+	
+	sprite1 = new THREE.Sprite( spriteMaterial );
+	sprite1.scale.set(200,100,1.0);
+	sprite1.position.set( 50, 50, 0 );
+	scene.add( sprite1 );	
+
+	//////////////////////////////////////////
+
+        // create a Ray with origin at the mouse position
+        //   and direction into the scene (camera direction)
+        var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+        projector.unprojectVector( vector, camera );
+        var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+
+        // create an array containing all objects in the scene with which the ray intersects
+        var intersects = ray.intersectObjects( scene.children );
+
+        // INTERSECTED = the object in the scene currently closest to the camera 
+        //		and intersected by the Ray projected from the mouse position 	
+        
+        // if there is one (or more) intersections
+        if ( intersects.length > 0 )
+        {
+          // if the closest object intersected is not the currently stored intersection object
+          if ( intersects[ 0 ].object != INTERSECTED ) 
+          {
+              // restore previous intersection object (if it exists) to its original color
+            if ( INTERSECTED ) 
+              INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+            // store reference to closest object as current intersection object
+            INTERSECTED = intersects[ 0 ].object;
+            // store color of closest object (for later restoration)
+            INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+            // set a new color for closest object
+            INTERSECTED.material.color.setHex( 0xffff00 );
+            
+            // update text, if it has a "name" field.
+            if ( intersects[ 0 ].object.name )
+            {
+                context1.clearRect(0,0,640,480);
+              var message = intersects[ 0 ].object.name;
+              var metrics = context1.measureText(message);
+              var width = metrics.width;
+              context1.fillStyle = "rgba(0,0,0,0.95)"; // black border
+              context1.fillRect( 0,0, width+8,20+8);
+              context1.fillStyle = "rgba(255,255,255,0.95)"; // white filler
+              context1.fillRect( 2,2, width+4,20+4 );
+              context1.fillStyle = "rgba(0,0,0,1)"; // text color
+              context1.fillText( message, 4,20 );
+              texture1.needsUpdate = true;
+            }
+            else
+            {
+              context1.clearRect(0,0,300,300);
+              texture1.needsUpdate = true;
+            }
+          }
+        } 
+        else // there are no intersections
+        {
+          // restore previous intersection object (if it exists) to its original color
+          if ( INTERSECTED ) 
+            INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+          // remove previous intersection object reference
+          //     by setting current intersection object to "nothing"
+          INTERSECTED = null;
+          context1.clearRect(0,0,300,300);
+          texture1.needsUpdate = true;
+        }
+        renderer.render(scene, camera);
+      }
+
+      // Function from https://github.com/mrdoob/three.js/blob/master/examples/webgl_animation_cloth.html
+      function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        update();
+			}
+
+      window.addEventListener( 'resize', onWindowResize, false );
+
+      function onMouseWheel(event) {
+        cameraDistance += event.deltaY / 100;
+        //document.getElementById('radius').value = Math.max(1, Number(document.getElementById('radius').value) - event.deltaY / 100);
+        update();
+      }
+
+      renderer.domElement.addEventListener('wheel', onMouseWheel, false);
+
+		</script>
+	</body>
+</html>
