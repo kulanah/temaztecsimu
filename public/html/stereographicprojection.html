@@ -38,6 +38,7 @@
       <input id='v' type='number' value='0' oninput='update()'><br>
       <label for='w'>w:</label>
       <input id='w' type='number' value='0' oninput='update()'>
+      <p>The mouse is over: ()</p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
 		<script>
@@ -50,6 +51,8 @@
 
       let pattern = [];
       let cameraDistance = 50;
+      var raycaster = new THREE.Raycaster();
+      var mouse = new THREE.Vector2(), INTERSECTED;
       update();
 
       function update(){
@@ -59,7 +62,6 @@
         pattern = [];
         let radius = Number(document.getElementById('radius').value),
         width =  radius * document.getElementById('width').value * Math.PI / 180,
-        material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 } ),
         geometry = new THREE.TorusGeometry( radius, width, 8, 100 );
 
         for (let i = 0; i < 2; i++){
@@ -68,6 +70,7 @@
               // Avoid drawing (0, 1, 0) circle twice
               continue;
             } 
+            let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 } );
             var band = new THREE.Mesh( geometry, material );
             scene.add( band );
             band.rotation.x = Math.PI / 2 * i + Math.PI / 180 * document.getElementById('alphatilt').value;
@@ -76,7 +79,6 @@
           }
         }
 
-        material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(2) } );
         geometry = new THREE.TorusGeometry( radius, width * Math.sqrt(2), 8, 100 );
 
         for (let i = 0; i < 4; i++){
@@ -85,6 +87,7 @@
               // Avoid drawing (0, 1, 0) circle multiple times
               continue;
             } 
+            let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(2) } );
             var band = new THREE.Mesh( geometry, material );
             scene.add( band );
             band.rotation.x = Math.PI / 4 * i + Math.PI / 180 * document.getElementById('alphatilt').value;
@@ -113,6 +116,18 @@
           camera.rotation.x = -Math.asin(w/Math.sqrt(u**2 + w**2));
         }
         renderer.render(scene, camera);
+        // update the picking ray with the camera and mouse position
+				raycaster.setFromCamera( mouse, camera );
+
+        // calculate objects intersecting the picking ray
+        var intersects = raycaster.intersectObjects( pattern );
+        console.log(intersects);
+        for ( var i = 0; i < intersects.length; i++ ) {
+
+          intersects[0].object.material.color.set( 0xff0000 );
+
+        }
+        renderer.render(scene, camera);
       }
 
       // Function from https://github.com/mrdoob/three.js/blob/master/examples/webgl_animation_cloth.html
@@ -132,6 +147,18 @@
       }
 
       renderer.domElement.addEventListener('wheel', onMouseWheel, false);
+
+      function onMouseMove( event ) {
+
+        // calculate mouse position in normalized device coordinates
+        // (-1 to +1) for both components
+
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+        update();
+      }
+
+      window.addEventListener( 'mousemove', onMouseMove, false );
 
 		</script>
 	</body>
