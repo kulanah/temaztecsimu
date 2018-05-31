@@ -127,7 +127,7 @@
 				raycaster.setFromCamera( mouse, camera );
         // calculate objects intersecting the picking ray
         var intersects = raycaster.intersectObjects( pattern );
-        console.log(intersects);
+        //console.log(intersects);
         if(intersects.length > 0) {
           intersects[0].object.material.color.set( 0xff0000 );
           let axis = '';
