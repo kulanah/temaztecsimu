@@ -93,6 +93,18 @@
             if(i % 2 === 0 && j % 2 === 0){
               let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 } ); 
               band = new THREE.Mesh( geometries[0], material )
+              scene.add(band);
+              band.rotation.x = Math.PI / 4 * i + alphaTilt;
+              band.rotation.y = Math.PI / 4 * j + betaTilt;
+              pattern.push(band);
+              material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(2) } ); 
+              band = new THREE.Mesh( geometries[1], material )
+              scene.add(band);
+              band.rotation.x = Math.PI / 4 * i + alphaTilt;
+              band.rotation.y = Math.PI / 4 * j + betaTilt;
+              pattern.push(band);
+              material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(3) } ); 
+              band = new THREE.Mesh( geometries[2], material )
             } else if (i % 2 === 0 || j % 2 === 0){
               let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(2) } ); 
               band = new THREE.Mesh( geometries[1], material )
@@ -100,7 +112,7 @@
               let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(3) } ); 
               band = new THREE.Mesh( geometries[2], material )
             }
-            scene.add( band );
+            scene.add(band);
             band.rotation.x = Math.PI / 4 * i + alphaTilt;
             band.rotation.y = Math.PI / 4 * j + betaTilt;
             pattern.push(band);
