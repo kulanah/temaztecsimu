@@ -53,10 +53,15 @@
 			document.body.appendChild( renderer.domElement );
 
       let pattern = [];
+      let geometries = [];
       let cameraDistance = 50;
       var raycaster = new THREE.Raycaster();
       var mouse = new THREE.Vector2();
-      let geometries = [];
+      
+      // Register the mouse as off the sphere during the initial load
+      mouse.x = 1;
+      mouse.y = 1;
+
       setRadiusAndWidth();
 
       function setRadiusAndWidth(){
