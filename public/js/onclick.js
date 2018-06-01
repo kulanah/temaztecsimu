@@ -26,4 +26,5 @@ let clickFunctions = function(){
   tabs();
   tuneTab();
   floatStig();
+  aztec();
 };
