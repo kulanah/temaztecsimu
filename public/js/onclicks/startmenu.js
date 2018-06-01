@@ -67,4 +67,22 @@ let startMenu = function(){
     activeWindow = 1;
     setupbox.drawCanvas();
   });
+
+  $('#aztec').on('click', function(event){
+    if (openScreen != 2){
+      $('#basesetup').hide();
+      $('#openbox').hide();
+      $('#mainimage').attr('src', 'blank.png');
+      $('#mainmicroscopediv').hide();
+      $('#mainimage').css('background-color', 'grey');
+      $('.exposureinput').hide();
+      $('.mainscreenvalue').hide();
+      $('#magnificationvalue').hide();
+      $('#aztecscreen').show();
+      $('#aztecdiv').show();
+      $(window).trigger('resize');
+    }
+    openScreen = 2;
+    activeWindow = 0;
+  });
 };
