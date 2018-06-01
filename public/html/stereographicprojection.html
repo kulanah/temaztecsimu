@@ -236,6 +236,18 @@
                   case 3*Math.PI/4:
                     axis = '0, 1, 1';
                     break;
+                  case Math.atan(.5):
+                    axis = '0, 1, -2';
+                    break;
+                  case Math.atan(2):
+                    axis = '0, 2, -1';
+                    break;
+                  case Math.PI - Math.atan(2):
+                    axis = '0, 2, 1';
+                    break;
+                  case Math.PI - Math.atan(.5):
+                    axis = '0, 1, 2';
+                    break;
               }
               break;
               case 3*Math.PI/4:
@@ -252,7 +264,16 @@
               }
               break;
               case Math.atan(.5):
-                //axis = '2, 0, 1';
+                axis = '2, 0, -1';
+                break;
+              case Math.atan(2):
+                axis = '1, 0, -2';
+                break;
+              case Math.PI - Math.atan(2):
+                axis = '1, 0, 2';
+                break;
+              case Math.PI - Math.atan(.5):
+                axis = '2, 0, 1';
                 break;
           }
           document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + axis + ')';
