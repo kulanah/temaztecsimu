@@ -52,6 +52,8 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
 
+      let sphere = new THREE.Group();
+      scene.add(sphere);
       let pattern = [];
       let geometries = [];
       let cameraDistance = 20;
@@ -75,16 +77,17 @@
         update();
       }
 
-      function addBand(band, i, j, alphaTilt, betaTilt){
-        scene.add(band);
-        band.rotation.x = Math.PI / 4 * i + alphaTilt;
-        band.rotation.y = Math.PI / 4 * j + betaTilt;
+      function addBand(band, i, j){
+        sphere.add(band);
+        band.rotation.x = Math.PI / 4 * i;
+        band.rotation.y = Math.PI / 4 * j;
         pattern.push(band);
       }
 
       function update(){
         const OPACITY = .5;
         for(let band in pattern){
+          sphere.remove(pattern[band]);
           scene.remove(pattern[band]);
         }
         pattern = [];
@@ -102,19 +105,19 @@
               for(let k = 0; k < 5; k++){
                 let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(k + 1) } ); 
                 band = new THREE.Mesh( geometries[k], material );
-                addBand(band, i, j, alphaTilt, betaTilt);
+                addBand(band, i, j);
               }
             } else if (i % 2 === 0 || j % 2 === 0){
               let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(2) } ); 
               band = new THREE.Mesh( geometries[1], material );
-              addBand(band, i, j, alphaTilt, betaTilt);
+              addBand(band, i, j);
               material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / 2 } ); 
               band = new THREE.Mesh( geometries[3], material );
-              addBand(band, i, j, alphaTilt, betaTilt);
+              addBand(band, i, j);
             } else {
               let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(3) } ); 
               band = new THREE.Mesh( geometries[2], material );
-              addBand(band, i, j, alphaTilt, betaTilt);
+              addBand(band, i, j);
             }
           }
         }
@@ -133,7 +136,7 @@
             }
             let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(5) } ); 
             var band = new THREE.Mesh( geometries[4], material )
-            scene.add(band);
+            sphere.add(band);
             if(i % 3 === 1){
               band.rotation.x = Math.atan(.5);
             } else if(i % 3 === 2){
@@ -148,11 +151,14 @@
             } else {
               band.rotation.y = 0;
             }
-            band.rotation.x += Math.round(i / 3) * Math.PI / 2 + alphaTilt;
-            band.rotation.y += Math.round(j / 3) * Math.PI / 2 + betaTilt;
+            band.rotation.x += Math.round(i / 3) * Math.PI / 2;
+            band.rotation.y += Math.round(j / 3) * Math.PI / 2;
             pattern.push(band);
           }
         }
+
+        sphere.rotation.x = alphaTilt;
+        sphere.rotation.y = betaTilt;
 
         let u = Number(document.getElementById('u').value);
         let v = Number(document.getElementById('v').value);
@@ -178,14 +184,14 @@
         // update the picking ray with the camera and mouse position
 				raycaster.setFromCamera( mouse, camera );
         // calculate objects intersecting the picking ray
-        var intersects = raycaster.intersectObjects( pattern );
+        var intersects = raycaster.intersectObjects( sphere.children );
         //console.log(intersects);
         if(intersects.length > 0) {
           intersects[0].object.material.color.set( 0xff0000 );
           let axis = '';
-          switch(intersects[0].object.rotation.x - alphaTilt){
+          switch(intersects[0].object.rotation.x){
             case 0:
-              switch(intersects[0].object.rotation.y - betaTilt){
+              switch(intersects[0].object.rotation.y){
                 case 0:
                   axis = '1, 0, 0';
                   break;
@@ -213,7 +219,7 @@
               }
               break;
             case Math.PI/4:
-              switch(intersects[0].object.rotation.y - betaTilt){
+              switch(intersects[0].object.rotation.y){
                 case 0:
                   axis = '1, 0, -1';
                   break;
@@ -226,7 +232,7 @@
               }
               break;
             case Math.PI/2:
-              switch(intersects[0].object.rotation.y - betaTilt){
+              switch(intersects[0].object.rotation.y){
                   case 0:
                     axis = '0, 0, 1'
                     break;
@@ -251,7 +257,7 @@
               }
               break;
               case 3*Math.PI/4:
-              switch(intersects[0].object.rotation.y - betaTilt){
+              switch(intersects[0].object.rotation.y){
                 case 0:
                   axis = '1, 0, 1';
                   break;
