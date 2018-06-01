@@ -102,7 +102,7 @@
             } 
             var band;
             if(i % 2 === 0 && j % 2 === 0){
-              for(let k = 0; k < 5; k++){
+              for(let k = 0; k < 3; k++){
                 let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(k + 1) } ); 
                 band = new THREE.Mesh( geometries[k], material );
                 addBand(band, i, j);
