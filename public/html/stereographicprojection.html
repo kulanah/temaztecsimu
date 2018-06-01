@@ -75,7 +75,15 @@
         update();
       }
 
+      function addBand(band, i, j, alphaTilt, betaTilt){
+        scene.add(band);
+        band.rotation.x = Math.PI / 4 * i + alphaTilt;
+        band.rotation.y = Math.PI / 4 * j + betaTilt;
+        pattern.push(band);
+      }
+
       function update(){
+        const OPACITY = .5;
         for(let band in pattern){
           scene.remove(pattern[band]);
         }
@@ -91,31 +99,23 @@
             } 
             var band;
             if(i % 2 === 0 && j % 2 === 0){
-              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 } ); 
-              band = new THREE.Mesh( geometries[0], material )
-              scene.add(band);
-              band.rotation.x = Math.PI / 4 * i + alphaTilt;
-              band.rotation.y = Math.PI / 4 * j + betaTilt;
-              pattern.push(band);
-              material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(2) } ); 
-              band = new THREE.Mesh( geometries[1], material )
-              scene.add(band);
-              band.rotation.x = Math.PI / 4 * i + alphaTilt;
-              band.rotation.y = Math.PI / 4 * j + betaTilt;
-              pattern.push(band);
-              material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(3) } ); 
-              band = new THREE.Mesh( geometries[2], material )
+              for(let k = 0; k < 5; k++){
+                let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(k + 1) } ); 
+                band = new THREE.Mesh( geometries[k], material );
+                addBand(band, i, j, alphaTilt, betaTilt);
+              }
             } else if (i % 2 === 0 || j % 2 === 0){
-              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(2) } ); 
-              band = new THREE.Mesh( geometries[1], material )
+              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(2) } ); 
+              band = new THREE.Mesh( geometries[1], material );
+              addBand(band, i, j, alphaTilt, betaTilt);
+              material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / 2 } ); 
+              band = new THREE.Mesh( geometries[3], material );
+              addBand(band, i, j, alphaTilt, betaTilt);
             } else {
-              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(3) } ); 
-              band = new THREE.Mesh( geometries[2], material )
+              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(3) } ); 
+              band = new THREE.Mesh( geometries[2], material );
+              addBand(band, i, j, alphaTilt, betaTilt);
             }
-            scene.add(band);
-            band.rotation.x = Math.PI / 4 * i + alphaTilt;
-            band.rotation.y = Math.PI / 4 * j + betaTilt;
-            pattern.push(band);
           }
         }
 
@@ -131,7 +131,7 @@
               // Only draw when aligned with one of the zone axes
               continue;
             }
-            let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: .5 / Math.sqrt(5) } ); 
+            let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(5) } ); 
             var band = new THREE.Mesh( geometries[4], material )
             scene.add(band);
             if(i % 3 === 1){
