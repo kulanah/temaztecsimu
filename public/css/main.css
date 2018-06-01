@@ -153,3 +153,48 @@ body{
 button{
   cursor: pointer;
 }
+
+.tableimage{
+  height: 100%;
+  width: 100%;
+}
+
+#aztecdiv{
+  position: absolute;
+  top:0;
+  left: 14.33vw;
+  width: 85.67vw;
+  height: 94vh;
+  background: white;
+}
+
+#aztecscreen{
+  height: 80.09vh;
+  width: 100%;
+}
+
+#aztecfilebar{
+  height: 4.09%;
+}
+
+#aztecinfobar{
+  height: 11.5vh;
+}
+
+#aztecmainimage{
+  height: 74.5vh;
+}
+
+#aztecbottombar{
+  height:  3.5vh;
+}
+
+#aztecsidebar{
+  height: 86.1vh;
+}
+
+#aztecdropdown{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
