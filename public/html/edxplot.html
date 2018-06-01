@@ -49,7 +49,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/function-plot/1.18.1/function-plot.js"></script>
 		<script>
 			// See https://mauriciopoppe.github.io/function-plot/ for documentation and examples
-			// Example of using multiple user-inputted variables
+			let Z = '14';
+			let A = '(e ^ (-0.223 * x / (0.2998 * ' + Z + ' ^ 2)) - e ^ (-57 * x / (0.2998 * ' + Z + ' ^ 2)))';
+			let B = '(e ^ (-0.0828 * x / (0.2998 * ' + Z + ' ^ 2)) - e ^ (-84.9 * x / (0.2998 * ' + Z + ' ^ 2)))';
+			let a = '(1.47 * ' + B + ' - 0.507 * ' + A + ' - 0.833)';
+			let b = '(1.70 * ' + B + ' - 1.09 * ' + A + ' - 0.627)';
+			let backgroundFunction = '0.2998 * ' + Z + ' ^ 2 / x * abs(0.252 + ' + a + ' * (1 - 0.135) - ' + b + ' * (1 - 0.135) ^ 2) * 1.51 * 10 ^ -24'
 			function drawLine() {
 				try {
 					functionPlot({
@@ -73,7 +78,7 @@
 						},
 						grid: true,
 						data: [{
-							fn: 'sin(x/100) * 10000',
+							fn: backgroundFunction,
 							sampler: 'builtIn',  // this will make function-plot use the evaluator of math.js
 							graphType: 'polyline',
 							closed: true
