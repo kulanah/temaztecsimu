@@ -54,7 +54,8 @@
 			let B = '(e ^ (-0.0828 * x / (0.2998 * ' + Z + ' ^ 2)) - e ^ (-84.9 * x / (0.2998 * ' + Z + ' ^ 2)))';
 			let a = '(1.47 * ' + B + ' - 0.507 * ' + A + ' - 0.833)';
 			let b = '(1.70 * ' + B + ' - 1.09 * ' + A + ' - 0.627)';
-			let backgroundFunction = '0.2998 * ' + Z + ' ^ 2 / x * abs(0.252 + ' + a + ' * (1 - 0.135) - ' + b + ' * (1 - 0.135) ^ 2) * 1.51 * 10 ^ -24'
+			let backgroundFunction = '(0.2998 * ' + Z + ' ^ 2 / x * abs(0.252 + ' + a + ' * (1 - 0.135) - ' + b + ' * (1 - 0.135) ^ 2) * 1.51 * 10 ^ -24)'
+			let CFunction = '(sin(x / 100) * 10000)'
 			function drawLine() {
 				try {
 					functionPlot({
@@ -78,7 +79,7 @@
 						},
 						grid: true,
 						data: [{
-							fn: backgroundFunction,
+							fn: backgroundFunction + '+' + CFunction,
 							sampler: 'builtIn',  // this will make function-plot use the evaluator of math.js
 							graphType: 'polyline',
 							closed: true
