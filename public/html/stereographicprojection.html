@@ -198,6 +198,18 @@
                 case 3*Math.PI/4:
                   axis = '1, -1, 0';
                   break;
+                case Math.atan(.5):
+                  axis = '2, 1, 0';
+                  break;
+                case Math.atan(2):
+                  axis = '1, 2, 0';
+                  break;
+                case Math.PI/2 + Math.atan(.5):
+                  axis = '1, -2, 0';
+                  break;
+                case Math.PI - Math.atan(.5):
+                  axis = '2, -1, 0';
+                  break;
               }
               break;
             case Math.PI/4:
@@ -240,7 +252,7 @@
               }
               break;
               case Math.atan(.5):
-                //axis = 'TBD';
+                //axis = '2, 0, 1';
                 break;
           }
           document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + axis + ')';
