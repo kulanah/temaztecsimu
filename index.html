@@ -40,6 +40,53 @@
           </div>
         </td>
         <td rowspan='3'>
+          <div class='hidden' id='aztecdiv'>
+            <table id='aztecscreen'>
+              <tr>
+                <td colspan='2'>
+                  <div>
+                    <img id='aztecfilebar' src='./public/img/aztecfilebar.png' class='tableimage'>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <img id='aztecinfobar' width='1232' height='132' usemap='#aztecinfobarmap' src='./public/img/aztecinfobar.png' class='tableimage' />
+                    <map name='aztecinfobarmap'>
+                      <area shape='rect' id='aztecinfodropdown' coords='140,48,234,94' />
+                      <area shape='rect' id='aztecinfobutton1' coords='263,18,348,102' />
+                      <area shape='rect' id='aztecinfobutton2' coords='349,18,434,102' />
+                      <area shape='rect' id='aztecinfobutton3' coords='435,18,520,102' />
+                      <area shape='rect' id='aztecinfobutton4' coords='521,18,606,102' />
+                    </map>
+
+                  </div>
+                </td>
+                <td rowspan='2'>
+                  <div>
+                    <img id='aztecsidebar' src='./public/img/aztecsidebar.png' class='tableimage'>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <img id='aztecmainimage' src='./public/img/aztecmainimage.png' class='tableimage'>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan='2'>
+                  <div>
+                    <img id='aztecbottombar' src='./public/img/aztecbottombar.png' class='tableimage'>
+                  </div>
+                </td>
+              </tr>
+
+            </table>
+
+          </div>
           <div id='mainmicroscopediv'>
             <canvas class='mainmicroscopecanvas' id='mainmicroscopecanvas' width='1500' height='700'>
             </canvas>
@@ -218,7 +265,7 @@
             <area shape='rect' id='micrographstart' coords='232,4,389,23' />
             <area shape='rect' id='temuistart' coords='395,4,552,23' />
             <!-- <area shape='rect' id='unused' coords='559,4,710,23' /> -->
-            <!-- <area shape='rect' id='unused' coords='719,4,879,23' /> -->
+            <area shape='rect' id='aztec' coords='719,4,879,23' />
             <!-- <area shape='rect' id='unused' coords='883,4,1045,23' /> -->
             <!-- <area shape='rect' id='unused' coords='1046,3,1205,24' /> -->
           </map>
@@ -460,6 +507,16 @@
       <input id='daautohelp' type='checkbox' checked>
     </div>
 
+    <div class='hidden' id='aztecdropdown'>
+      <ul>
+        <li>Analyzer</li>
+        <li>Point & ID</li>
+        <li>Linescan</li>
+        <li>Map</li>
+        <li>Optimize</li>
+      </ul>
+    </div>
+
 
 
     <!-- Canvas Divs -->
@@ -583,6 +640,7 @@
     <script src='./public/js/onclicks/searchtab.js'></script>
     <script src='./public/js/onclicks/controller.js'></script>
     <script src='./public/js/onclicks/tunetab.js'></script>
+    <script src='./public/js/onclicks/aztec.js'></script>
 
     <!--functionality imports -->
     <script src='./public/js/pagesetup.js'></script>
