@@ -287,12 +287,24 @@
                   case 0:
                     axis = '1, 0, -2';
                     break;
+                  case Math.atan(.5):
+                    axis = '1, 1, -2';
+                    break;
+                  case Math.PI - Math.atan(.5):
+                    axis = '-1, 1, 2';
+                    break;
                 }
                 break;
               case Math.PI - Math.atan(2):
                 switch(intersects[0].object.rotation.y){
                   case 0:
                     axis = '1, 0, 2';
+                    break;
+                  case Math.atan(.5):
+                    axis = '1, -1, 2';
+                    break;
+                  case Math.PI - Math.atan(.5):
+                    axis = '1, 1, 2';
                     break;
                 }
                 break;
