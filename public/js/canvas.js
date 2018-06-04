@@ -302,32 +302,34 @@ class Canvas {
     if (alignmentMode == 'Pivot Point X' || alignmentMode == 'Pivot Point Y'){
       this.drawPPPath();
     }
-    
-    this.context.beginPath();
 
-    // Ellipse approach - extends out in both directions
-    this.beamAngle = Math.atan2(this.beamAstigmatismY, this.beamAstigmatismX);
-    let haloAngle = Math.atan2(this.haloY * Math.cos(this.beamAngle) - this.haloX * Math.sin(this.beamAngle), this.haloX * Math.cos(this.beamAngle) + this.haloY * Math.sin(this.beamAngle));
-    let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
-    let longRadius = Math.max(newRadius, haloDistance) * Math.max(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
-    let shortRadius = Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * Math.min(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
-    //console.log(this.beamAngle, haloAngle)
-    if(haloDistance > 0){
-      this.context.ellipse(this.maskX + c2x * this.intensity,this.maskY + c2y * this.intensity,longRadius,shortRadius,haloAngle,0,Math.PI * 2);
-    } else {
-      this.context.ellipse(this.maskX + c2x * this.intensity,this.maskY + c2y * this.intensity,longRadius,shortRadius,this.beamAngle,0,Math.PI * 2);
+    if(this != mainmicro){
+      this.context.beginPath();
+
+      // Ellipse approach - extends out in both directions
+      this.beamAngle = Math.atan2(this.beamAstigmatismY, this.beamAstigmatismX);
+      let haloAngle = Math.atan2(this.haloY * Math.cos(this.beamAngle) - this.haloX * Math.sin(this.beamAngle), this.haloX * Math.cos(this.beamAngle) + this.haloY * Math.sin(this.beamAngle));
+      let haloDistance = Math.sqrt(Math.pow(this.haloX, 2) + Math.pow(this.haloY,2));
+      let longRadius = Math.max(newRadius, haloDistance) * Math.max(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
+      let shortRadius = Math.min(newRadius, Math.pow(newRadius, 2) / haloDistance) * Math.min(Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)), Math.pow(1.0005, Math.abs(this.beamAstigmatismY) / (1 + this.maskR / 25)) / Math.pow(1.0005, Math.abs(this.beamAstigmatismX) / (1 + this.maskR / 25)));
+      //console.log(this.beamAngle, haloAngle)
+      if(haloDistance > 0){
+        this.context.ellipse(this.maskX + c2x * this.intensity,this.maskY + c2y * this.intensity,longRadius,shortRadius,haloAngle,0,Math.PI * 2);
+      } else {
+        this.context.ellipse(this.maskX + c2x * this.intensity,this.maskY + c2y * this.intensity,longRadius,shortRadius,this.beamAngle,0,Math.PI * 2);
+      }
+
+      // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
+      /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
+      if(Math.pow(newRadius, 2) < (Math.pow(this.haloX * 1.25, 2) + Math.pow(this.haloY * 1.25, 2))){
+        // Conditional avoids unnecessary manipulations when halo is within beam, mitigating odd shadow lines
+        let haloAngle = Math.atan2(this.haloY * -1, this.haloX);
+        this.context.moveTo(this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle));
+        this.context.quadraticCurveTo(this.maskX + this.haloX * 2.25, this.maskY + this.haloY * 2.25, this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle));
+      }*/
+
+      this.context.clip();
     }
-
-    // Quadratic curve approach - extends out in one direction, causes issue with shadowy lines appearing
-    /*this.context.arc(this.maskX,this.maskY,newRadius,0,Math.PI * 2,true);
-    if(Math.pow(newRadius, 2) < (Math.pow(this.haloX * 1.25, 2) + Math.pow(this.haloY * 1.25, 2))){
-      // Conditional avoids unnecessary manipulations when halo is within beam, mitigating odd shadow lines
-      let haloAngle = Math.atan2(this.haloY * -1, this.haloX);
-      this.context.moveTo(this.maskX + newRadius * Math.sin(haloAngle), this.maskY + newRadius * Math.cos(haloAngle));
-      this.context.quadraticCurveTo(this.maskX + this.haloX * 2.25, this.maskY + this.haloY * 2.25, this.maskX - newRadius * Math.sin(haloAngle), this.maskY - newRadius * Math.cos(haloAngle));
-    }*/
-
-    this.context.clip();
 
     if(saedInserted){
       this.context.beginPath();
@@ -361,8 +363,10 @@ class Canvas {
         }
       }
     }
-
-    this.drawHalo();
+    
+    if(this != mainmicro){
+      this.drawHalo();
+    }
 
     this.context.restore();
   };
