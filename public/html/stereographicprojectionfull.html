@@ -1,0 +1,393 @@
+<html>
+	<head>
+		<title>Stereographic Projection</title>
+		<style>
+			body { margin: 0; }
+      canvas { width: 100%; height: 100% }
+      #info {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        z-index: 100;
+        color: white;
+      }
+      input{
+				width: 50px;
+			}
+			label {
+				display:inline-block;
+				width:100px;
+				text-align:right;
+      }
+		</style>
+	</head>
+	<body>
+    <div id="info">
+      Stereographic Projection<br><br>
+      Use the mouse wheel to zoom in and out<br><br>
+      <label for='radius'>Sphere radius:</label>
+      <input id='radius' type='number' value='10' min='1' oninput='setRadiusAndWidth()'><br>
+      <label for='width'>Band width:</label>
+      <input id='width' type='number' value='0.05' min='0.01' step='0.01' oninput='setRadiusAndWidth()'>°<br>
+      <label for='alphatilt'>α tilt:</label>
+      <input id='alphatilt' type='number' value='0' min='-45' max='45' oninput='update()'>°<br>
+      <label for='betatilt'>β tilt:</label>
+      <input id='betatilt' type='number' value='0' min='-20' max='20' oninput='update()'>°<br>
+      <label for='u'>u:</label>
+      <input id='u' type='number'value='1' oninput='update()'><br>
+      <label for='v'>v:</label>
+      <input id='v' type='number' value='0' oninput='update()'><br>
+      <label for='w'>w:</label>
+      <input id='w' type='number' value='0' oninput='update()'>
+      <p id='hoverlabel'></p>
+      <!--p id='xrotation'></p>
+      <p id='yrotation'></p-->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 70, window.innerWidth/window.innerHeight, 0.01, 1000 );
+
+			var renderer = new THREE.WebGLRenderer({ antialias: true });
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+      let sphere = new THREE.Group();
+      scene.add(sphere);
+      let pattern = [];
+      let geometries = [];
+      let cameraDistance = 20;
+      var raycaster = new THREE.Raycaster();
+      var mouse = new THREE.Vector2();
+      
+      // Register the mouse as off the sphere during the initial load
+      mouse.x = 1;
+      mouse.y = 1;
+
+      setRadiusAndWidth();
+
+      function setRadiusAndWidth(){
+        geometries = [];
+        let radius = Number(document.getElementById('radius').value);
+        let width = radius * document.getElementById('width').value * Math.PI / 180;
+        for(let i = 1; i < 49; i++){
+          let geometry = new THREE.TorusGeometry( radius, width * Math.sqrt(i), 8, 100 );
+          geometries.push(geometry);
+        }
+        update();
+      }
+
+      function addBand(band, i, j){
+        sphere.add(band);
+        //band.rotation.x = Math.PI / 4 * i;
+        //band.rotation.y = Math.PI / 4 * j;
+        pattern.push(band);
+      }
+
+      function update(){
+        const OPACITY = .5;
+        for(let band in pattern){
+          sphere.remove(pattern[band]);
+          scene.remove(pattern[band]);
+        }
+        pattern = [];
+        let u, v, w;
+        for(u = -4; u < 5; u++){
+          for(v = -4; v < 5; v++){
+            for(w = -4; w < 5; w++){
+              if(u === 0 && v === 0 && w === 0){
+                continue;
+              }
+              let sum = Math.sqrt(u ** 2 + v ** 2 + w ** 2);
+              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / sum } ); 
+              band = new THREE.Mesh( geometries[u ** 2 + v ** 2 + w ** 2 - 1], material );
+              addBand(band, 0, 0);
+              if(u < 0){
+                band.rotation.y = -Math.asin(v/sum) + Math.PI;
+                band.rotation.x = Math.asin(w/Math.sqrt(u**2 + w**2));
+              } else if(u === 0 && w === 0){
+                band.rotation.y = Math.PI / 2 * Math.sign(v);
+                band.rotation.x = 0;
+              } else {
+                band.rotation.y = Math.asin(v/sum);
+                band.rotation.x = -Math.asin(w/Math.sqrt(u**2 + w**2));
+              }
+            }
+          }
+        }
+
+        let alphaTilt = Math.PI / 180 * document.getElementById('alphatilt').value;
+        let betaTilt = Math.PI / 180 * document.getElementById('betatilt').value;
+
+        /*for (let i = 0; i < 4; i++){
+          for (let j = 0; j < 4; j++){
+            if(i > 0 && j === 2){
+              // Avoid drawing (0, 1, 0) circle multiple times
+              continue;
+            } 
+            var band;
+            if(i % 2 === 0 && j % 2 === 0){
+              for(let k = 0; k < 4; k++){
+                let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(k + 1) } ); 
+                band = new THREE.Mesh( geometries[k], material );
+                addBand(band, i, j);
+              }
+            } else if (i % 2 === 0 || j % 2 === 0){
+              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(2) } ); 
+              band = new THREE.Mesh( geometries[1], material );
+              addBand(band, i, j);
+              material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / 2 } ); 
+              band = new THREE.Mesh( geometries[3], material );
+              addBand(band, i, j);
+            } else {
+              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(3) } ); 
+              band = new THREE.Mesh( geometries[2], material );
+              addBand(band, i, j);
+            }
+          }
+        }
+
+        for (let i = 0; i < 6; i++){
+          for (let j = 0; j < 6; j++){
+            if(i % 3 === 0 && j === 0){
+              // Avoid redrawing (1, 0, 0) and (0, 0, 1)
+              continue;
+            } else if(j === 3){
+              // Avoid drawing (0, 1, 0) circle multiple times
+              continue;
+            } else if(i % 3 != 0 && j % 3 != 0){
+              // Only draw when aligned with one of the zone axes
+              continue;
+            }
+            let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(5) } ); 
+            var band = new THREE.Mesh( geometries[4], material )
+            sphere.add(band);
+            if(i % 3 === 1){
+              band.rotation.x = Math.atan(.5);
+            } else if(i % 3 === 2){
+              band.rotation.x = -Math.atan(.5);
+            } else {
+              band.rotation.x = 0;
+            }
+            if(j % 3 === 1){
+              band.rotation.y = Math.atan(.5);
+            } else if(j % 3 === 2){
+              band.rotation.y = -Math.atan(.5);
+            } else {
+              band.rotation.y = 0;
+            }
+            band.rotation.x += Math.round(i / 3) * Math.PI / 2;
+            band.rotation.y += Math.round(j / 3) * Math.PI / 2;
+            pattern.push(band);
+          }
+        }*/
+
+        sphere.rotation.x = alphaTilt;
+        sphere.rotation.y = betaTilt;
+
+        u = Number(document.getElementById('u').value);
+        v = Number(document.getElementById('v').value);
+        w = Number(document.getElementById('w').value);
+        let sum = Math.sqrt(u ** 2 + v ** 2 + w ** 2);
+        // Positions: x = right, y = up, z = back
+        // Rotations: x = up, y = left, z = twist
+        camera.position.x = cameraDistance * v / sum;
+        camera.position.y = cameraDistance * w / sum;
+        camera.position.z = cameraDistance * u / sum;
+        if(u < 0){
+          camera.rotation.y = -Math.asin(v/sum) + Math.PI;
+          camera.rotation.x = Math.asin(w/Math.sqrt(u**2 + w**2));
+        } else if(u === 0 && w === 0){
+          camera.rotation.y = Math.PI / 2 * Math.sign(v);
+          camera.rotation.x = 0;
+        } else {
+          camera.rotation.y = Math.asin(v/sum);
+          camera.rotation.x = -Math.asin(w/Math.sqrt(u**2 + w**2));
+        }
+        // render the scene so raycaster detects rotations
+        renderer.render(scene, camera);
+        // update the picking ray with the camera and mouse position
+				raycaster.setFromCamera( mouse, camera );
+        // calculate objects intersecting the picking ray
+        var intersects = raycaster.intersectObjects( sphere.children );
+        //console.log(intersects);
+        if(intersects.length > 0) {
+          intersects[0].object.material.color.set( 0xff0000 );
+          let axis = '';
+          switch(intersects[0].object.rotation.x){
+            case 0:
+              switch(intersects[0].object.rotation.y){
+                case 0:
+                  axis = '1, 0, 0';
+                  break;
+                case Math.PI/4:
+                  axis = '1, 1, 0';
+                  break;
+                case Math.PI/2:
+                  axis = '0, 1, 0';
+                  break;
+                case 3*Math.PI/4:
+                  axis = '1, -1, 0';
+                  break;
+                case Math.atan(.5):
+                  axis = '2, 1, 0';
+                  break;
+                case Math.atan(2):
+                  axis = '1, 2, 0';
+                  break;
+                case Math.PI/2 + Math.atan(.5):
+                  axis = '1, -2, 0';
+                  break;
+                case Math.PI - Math.atan(.5):
+                  axis = '2, -1, 0';
+                  break;
+              }
+              break;
+            case Math.PI/4:
+              switch(intersects[0].object.rotation.y){
+                case 0:
+                  axis = '1, 0, -1';
+                  break;
+                case Math.PI/4:
+                  axis = '1, 1, -1';
+                  break;
+                case 3*Math.PI/4:
+                  axis = '-1, 1, 1';
+                  break;
+              }
+              break;
+            case Math.PI/2:
+              switch(intersects[0].object.rotation.y){
+                  case 0:
+                    axis = '0, 0, 1'
+                    break;
+                  case Math.PI/4:
+                    axis = '0, 1, -1';
+                    break;
+                  case 3*Math.PI/4:
+                    axis = '0, 1, 1';
+                    break;
+                  case Math.atan(.5):
+                    axis = '0, 1, -2';
+                    break;
+                  case Math.atan(2):
+                    axis = '0, 2, -1';
+                    break;
+                  case Math.PI - Math.atan(2):
+                    axis = '0, 2, 1';
+                    break;
+                  case Math.PI - Math.atan(.5):
+                    axis = '0, 1, 2';
+                    break;
+              }
+              break;
+              case 3*Math.PI/4:
+              switch(intersects[0].object.rotation.y){
+                case 0:
+                  axis = '1, 0, 1';
+                  break;
+                case Math.PI/4:
+                  axis = '1, -1, 1';
+                  break;
+                case 3*Math.PI/4:
+                  axis = '1, 1, 1';
+                  break;
+              }
+              break;
+              case Math.atan(.5):
+                switch(intersects[0].object.rotation.y){
+                  case 0:
+                    axis = '2, 0, -1';
+                    break;
+                  case Math.atan(.5):
+                    axis = '2, 1, -1';
+                    break;
+                  case Math.PI - Math.atan(.5):
+                    axis = '-2, 1, 1';
+                    break;
+                }
+                break;
+              case Math.atan(2):
+                switch(intersects[0].object.rotation.y){
+                  case 0:
+                    axis = '1, 0, -2';
+                    break;
+                  case Math.atan(.5):
+                    axis = '1, 1, -2';
+                    break;
+                  case Math.PI - Math.atan(.5):
+                    axis = '-1, 1, 2';
+                    break;
+                }
+                break;
+              case Math.PI - Math.atan(2):
+                switch(intersects[0].object.rotation.y){
+                  case 0:
+                    axis = '1, 0, 2';
+                    break;
+                  case Math.atan(.5):
+                    axis = '1, -1, 2';
+                    break;
+                  case Math.PI - Math.atan(.5):
+                    axis = '1, 1, 2';
+                    break;
+                }
+                break;
+              case Math.PI - Math.atan(.5):
+                switch(intersects[0].object.rotation.y){
+                  case 0:
+                    axis = '2, 0, 1';
+                    break;
+                  case Math.atan(.5):
+                    axis = '2, -1, 1';
+                    break;
+                  case Math.PI - Math.atan(.5):
+                    axis = '2, 1, 1';
+                    break;
+                }
+                break;
+          }
+          document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + axis + ')';
+          //document.getElementById('xrotation').textContent = 'x rotation: ' + intersects[0].object.rotation.x.toFixed(2);
+          //document.getElementById('yrotation').textContent = 'y rotation: ' + intersects[0].object.rotation.y.toFixed(2);
+        } else {
+          document.getElementById('hoverlabel').textContent = 'The mouse is over:';
+          //document.getElementById('xrotation').textContent = 'x rotation:';
+          //document.getElementById('yrotation').textContent = 'y rotation:';
+        }
+        renderer.render(scene, camera);
+      }
+
+      // Function from https://github.com/mrdoob/three.js/blob/master/examples/webgl_animation_cloth.html
+      function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        update();
+			}
+
+      window.addEventListener( 'resize', onWindowResize, false );
+
+      function onMouseWheel(event) {
+        cameraDistance += event.deltaY / 100;
+        //document.getElementById('radius').value = Math.max(1, Number(document.getElementById('radius').value) - event.deltaY / 100);
+        update();
+      }
+
+      renderer.domElement.addEventListener('wheel', onMouseWheel, false);
+
+      function onMouseMove( event ) {
+
+        // calculate mouse position in normalized device coordinates
+        // (-1 to +1) for both components
+
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+        update();
+      }
+
+      window.addEventListener( 'mousemove', onMouseMove, false );
+
+		</script>
+	</body>
+</html>
