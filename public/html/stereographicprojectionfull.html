@@ -70,7 +70,7 @@
         geometries = [];
         let radius = Number(document.getElementById('radius').value);
         let width = radius * document.getElementById('width').value * Math.PI / 180;
-        for(let i = 1; i < 49; i++){
+        for(let i = 1; i < 16; i++){
           let geometry = new THREE.TorusGeometry( radius, width * Math.sqrt(i), 8, 100 );
           geometries.push(geometry);
         }
@@ -92,13 +92,16 @@
         }
         pattern = [];
         let u, v, w;
-        for(u = -4; u < 5; u++){
-          for(v = -4; v < 5; v++){
-            for(w = -4; w < 5; w++){
+        for(u = -3; u < 4; u++){
+          for(v = -3; v < 4; v++){
+            for(w = -3; w < 4; w++){
               if(u === 0 && v === 0 && w === 0){
                 continue;
               }
               let sum = Math.sqrt(u ** 2 + v ** 2 + w ** 2);
+              if(sum >= 4){
+                continue;
+              }
               let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / sum } ); 
               band = new THREE.Mesh( geometries[u ** 2 + v ** 2 + w ** 2 - 1], material );
               addBand(band, 0, 0);
@@ -210,7 +213,8 @@
 				raycaster.setFromCamera( mouse, camera );
         // calculate objects intersecting the picking ray
         var intersects = raycaster.intersectObjects( sphere.children );
-        //console.log(intersects);
+        console.log(intersects);
+        // TODO: Adjust labels based on new drawing approach
         if(intersects.length > 0) {
           intersects[0].object.material.color.set( 0xff0000 );
           let axis = '';
