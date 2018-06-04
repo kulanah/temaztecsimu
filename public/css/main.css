@@ -197,4 +197,24 @@ button{
   position: absolute;
   top: 0;
   left: 0;
+  padding: 5px;
+  background: linear-gradient(#00335D, #0C233C);
+  border: 1px #527694 solid;
+  border-radius: 5px;
+  color: white;
+}
+#aztecdropdown > ul{
+  list-style-type: none;
+  line-height: 1em;
+}
+
+#aztecdropdown li{
+  padding-left: 2px;
+  padding-right: 2px;
+  font-family: 'MS Sans Serif', Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+#aztecdropdown li:hover{
+  background: linear-gradient(#6389A7, #3B81B5, #5295C8);
 }
