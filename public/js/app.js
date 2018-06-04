@@ -69,6 +69,7 @@ const openbox = new Canvas(micrographImage, 'micrographboxcanvas', micrographMag
 const mainmicro = new Canvas('./public/img/32.png', 'mainmicroscopecanvas', 63000, 2932);
 
 setupbox.hueRotateActive = true;
+mainmicro.animateScanLine();
 
 //when the html is all loaded it will call all the relevant javascript functions
 $(document).ready(function(event) {

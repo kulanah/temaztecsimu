@@ -172,6 +172,12 @@ class Canvas {
   };
 
   drawMainScreenValues(){
+    if(this === mainmicro && openScreen != 1){
+      return;
+    }
+    if(this != mainmicro && openScreen === 1){
+      return;
+    }
     if(this.zooms[this.mag] >= 100000){
       $('#magnificationvalue').text('  ' + this.zooms[this.mag] / 1000 + 'k x');
     } else {
@@ -364,7 +370,11 @@ class Canvas {
       }
     }
     
-    if(this != mainmicro){
+    if(this === mainmicro){
+      let y = Date.now() / 10 % this.selector[0].height;
+      this.context.fillStyle = 'white';
+      this.context.fillRect(0,y,this.selector[0].width,1);
+    } else {
       this.drawHalo();
     }
 
@@ -1214,8 +1224,11 @@ class Canvas {
     openbox.maskR = setupbox.maskR * 4;
   }
 
-  drawScanLine(y){
-    this.context.fillStyle = 'white';
-    this.context.fillRect(0,y,this.selector[0].width,y+1);
+  animateScanLine(){
+    setInterval(this.drawScanLine, 10, this);
+  }
+
+  drawScanLine(thisIn){
+    thisIn.drawCanvas();
   }
 };
