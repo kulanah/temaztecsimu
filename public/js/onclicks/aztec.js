@@ -5,7 +5,7 @@ let aztec = function(){
     let offsets = $(this).offset();
     let coordsArray = this.coords.split(',');
 
-    $('#aztecdropdown').css('top', (offsets.top + Number(coordsArray[3])));
+    $('#aztecdropdown').css('top', (offsets.top + 3 + Number(coordsArray[3])));
     $('#aztecdropdown').css('left', (offsets.left + Number(coordsArray[0])));
   });
 
