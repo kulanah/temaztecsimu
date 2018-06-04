@@ -1213,4 +1213,9 @@ class Canvas {
 
     openbox.maskR = setupbox.maskR * 4;
   }
+
+  drawScanLine(y){
+    this.context.fillStyle = 'white';
+    this.context.fillRect(0,y,this.selector[0].width,y+1);
+  }
 };
