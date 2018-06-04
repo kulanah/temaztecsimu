@@ -19,6 +19,9 @@ let startMenu = function(){
   });
 
   $('#temuistart').on('click', function(event){
+    if (openScreen == 2){
+      exitAztec();
+    }
     openScreen = 1;
     $('#mainimage').attr('src', './public/img/tiablank2.png');
     $('#mainmicroscopediv').show();
@@ -32,6 +35,9 @@ let startMenu = function(){
   });
 
   $('#micrographstart').on('click', function(event){
+    if (openScreen == 2){
+      exitAztec();
+    }
     openScreen = 0;
     $('#mainimage').attr('src', './public/img/mainscreenblank2.png');
     $('#mainmicroscopediv').hide();
@@ -70,6 +76,14 @@ let startMenu = function(){
 
   $('#aztec').on('click', function(event){
     if (openScreen != 2){
+      enterAztec();
+    }
+    openScreen = 2;
+    activeWindow = 0;
+  });
+
+
+  let enterAztec = function(){
       $('#basesetup').hide();
       $('#openbox').hide();
       $('#mainimage').attr('src', 'blank.png');
@@ -81,8 +95,19 @@ let startMenu = function(){
       $('#aztecscreen').show();
       $('#aztecdiv').show();
       $(window).trigger('resize');
-    }
-    openScreen = 2;
-    activeWindow = 0;
-  });
+  }
+
+  let exitAztec = function(){
+      $('#basesetup').show();
+      $('#openbox').show();
+      $('#mainimage').attr('src', 'blank.png');
+      $('#mainmicroscopediv').show();
+      $('#mainimage').css('background-color', 'grey');
+      $('.exposureinput').show();
+      $('.mainscreenvalue').show();
+      $('#magnificationvalue').show();
+      $('#aztecscreen').hide();
+      $('#aztecdiv').hide();
+      $(window).trigger('resize');
+  }
 };
