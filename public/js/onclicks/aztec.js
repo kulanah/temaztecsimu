@@ -39,21 +39,26 @@ let aztec = function(){
 
   $('#aztecinfobutton1').on('click', function(){
     $('#aztecmainimage').attr('src', 'public/img/pandidescribemain.png');
+    $('#aztecinfobar').attr('src', 'public/img/pandidescribeheader.png');
   });
 
   $('#aztecinfobutton2').on('click', function(){
     $('#aztecmainimage').attr('src', 'public/img/pandiscanmain.png');
+    $('#aztecinfobar').attr('src', 'public/img/pandiscanheader.png');
   });
 
   $('#aztecinfobutton3').on('click', function(){
     $('#aztecmainimage').attr('src', 'public/img/pandiaquiremain.png');
+    $('#aztecinfobar').attr('src', 'public/img/pandiaquireheader.png');
   });
 
   $('#aztecinfobutton4').on('click', function(){
     $('#aztecmainimage').attr('src', 'public/img/pandiconfirmmain.png');
+    $('#aztecinfobar').attr('src', 'public/img/pandiconfirmheader.png');
   });
 
   $('#aztecinfobutton5').on('click', function(){
     $('#aztecmainimage').attr('src', 'public/img/pandicalculatemain.png');
+    $('#aztecinfobar').attr('src', 'public/img/pandicalculateheader.png');
   });
 }
