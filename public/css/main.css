@@ -197,6 +197,7 @@ button{
   position: absolute;
   top: 0;
   left: 0;
+  width: 6vw;
   padding: 5px;
   background: linear-gradient(#00335D, #0C233C);
   border: 1px #527694 solid;
