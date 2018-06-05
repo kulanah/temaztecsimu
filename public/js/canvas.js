@@ -400,6 +400,9 @@ class Canvas {
   drawSplitImageDefocus(ctx, x, y){
     ctx.globalAlpha = .5;
     let defocusPx = Math.max(Math.min((this.defocus / 1000 + this.specimenHeight), 1), -1) * 10 * this.zooms[this.mag] / this.imgScale * 512 / this.widthNM; //convert from nanometers to pixels
+    if(this === mainmicro){
+      defocusPx += (Math.abs(this.intensity) + this.beamAstigmatismX + this.beamAstigmatismY) / 100;
+    }
     ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
       x - defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y + defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH);
     ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
