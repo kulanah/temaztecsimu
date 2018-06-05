@@ -11,6 +11,7 @@
     <link rel='stylesheet' href='./public/css/external.css'>
     <link rel='stylesheet' href='./public/css/highlighters.css'>
     <link rel='stylesheet' href='./public/css/jquery-ui.min.css'>
+    <link rel='stylesheet' href='./public/css/aztec.css'>
   </head>
   <body>
     <table id='maincontent'>
@@ -73,7 +74,10 @@
               <tr>
                 <td>
                   <div>
-                    <img id='aztecmainimage' src='./public/img/pandidescribemain.png' class='tableimage'>
+                    <img id='aztecmainimage' width='1457' height='837' usemap='#none' src='./public/img/pandidescribemain.png' class='tableimage'>
+                    <map name='aztecacquiremap'>
+                      <area shape='rect' id='aztecacquiresettingsbutton' coords='709,11,791,33' />
+                    </map>
                   </div>
                 </td>
               </tr>
@@ -516,6 +520,57 @@
         <li id='aztecdropdownmap'>Map</li>
         <li id='aztecdropdownorganize'>Optimize</li>
       </ul>
+    </div>
+
+    <div class='hidden' id='aztecacquiresettings'>
+      <div id='azctecsettingsbox'>
+        <div class='aztecsettingsheader'>
+          EDS Acquire Spectrum Settings
+          <img src='./public/img/pin.svg'>
+          <img id='azteccloseicon' src='./public/img/close.svg'>
+        </div>
+        <div class='aztecsettingsoptions'>
+          <div class='aztecsetting'>Energy Range (keV): 
+            <select>
+              <option value='auto'>Auto</option>
+              <option value='10'>10</option>
+              <option value='20'>20</option>
+              <option value='40'>40</option>
+            </select>
+          </div>
+          <div class='aztecsetting'>
+            Number of Channels:
+            <select>
+              <option value='auto'>Auto</option>
+              <option value='1024'>1024</option>
+              <option value='2048'>2048</option>
+              <option value='4096'>4096</option>
+            </select>
+          </div>
+          <div class='aztecsetting'>
+            Process Time:
+            <select>
+              <option value='default'>Default</option>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+              <option value='6'>6</option>
+            </select>
+          </div>
+          <div class='aztecsetting'>
+            Acquisition Mode:
+            <select>
+              <option value='auto'>Auto</option>
+              <option value='livetime'>Live Time</option>
+              <option value='counts'>Counts</option>
+            </select>
+          </div>
+          <div class='aztecsetting'>Count Limit: <input type='number' value='500000'></div>
+          <div class='aztecsetting'><input type='checkbox'>Pulse Pile Up Correction</div>
+        </div>
+      </div>
     </div>
 
 
