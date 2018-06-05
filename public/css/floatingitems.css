@@ -66,12 +66,14 @@
   position: absolute;
   top: 64.1vh;
   left: 0;
+  opacity: 0.7;
 }
 
 #rightControllerDiv{
   position: absolute;
   top: 64.1vh;
   left: 76.55vw;
+  opacity: 0.7;
 }
 
 #controlsLeft{

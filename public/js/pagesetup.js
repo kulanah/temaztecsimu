@@ -145,4 +145,24 @@ let pageSetup = function(){
         });
     })
   });
+
+  $('#leftControllerDiv').on('mouseenter', function(){
+    $('#leftControllerDiv').css('opacity', '1');
+  });
+
+  $('#leftControllerDiv').on('mouseleave', function(e){
+    if(event.relatedTarget || event.toElement){
+      $('#leftControllerDiv').css('opacity', '0.7');
+    }
+  });
+
+  $('#rightControllerDiv').on('mouseenter', function(){
+    $('#rightControllerDiv').css('opacity', '1');
+  });
+
+  $('#rightControllerDiv').on('mouseleave', function(e){
+    if(event.relatedTarget || event.toElement){
+      $('#rightControllerDiv').css('opacity', '0.7');
+    }
+  });
 };
