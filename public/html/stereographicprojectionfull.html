@@ -83,8 +83,20 @@
         for(u = -max; u <= max; u++){
           for(v = -max; v <= max; v++){
             for(w = -max; w <= max; w++){
-              if(u === 0 && v === 0 && w === 0){
+              // The following conditionals are designed to make sure that each band gets drawn exactly once, for consistent appearance and labeling and better performance
+              if(Math.abs(u) < max && Math.abs(v) < max && Math.abs(w) < max){
                 continue;
+              }
+              if(u + v + w < 0){
+                continue;
+              }
+              if(u + v + w === 0){
+                if(u < 0){
+                  continue;
+                }
+                if(u === 0 && v < 0){
+                  continue;
+                }
               }
               let sum = Math.sqrt(u ** 2 + v ** 2 + w ** 2);
               if(sum >= 4){
@@ -116,76 +128,13 @@
           scene.remove(pattern[band]);
         }
         pattern = [];
+        // Draw bands with smaller values first to ensure they get displayed
         addBands(1);
         addBands(2);
         addBands(3);
 
         let alphaTilt = Math.PI / 180 * document.getElementById('alphatilt').value;
         let betaTilt = Math.PI / 180 * document.getElementById('betatilt').value;
-
-        /*for (let i = 0; i < 4; i++){
-          for (let j = 0; j < 4; j++){
-            if(i > 0 && j === 2){
-              // Avoid drawing (0, 1, 0) circle multiple times
-              continue;
-            } 
-            var band;
-            if(i % 2 === 0 && j % 2 === 0){
-              for(let k = 0; k < 4; k++){
-                let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(k + 1) } ); 
-                band = new THREE.Mesh( geometries[k], material );
-                addBand(band, i, j);
-              }
-            } else if (i % 2 === 0 || j % 2 === 0){
-              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(2) } ); 
-              band = new THREE.Mesh( geometries[1], material );
-              addBand(band, i, j);
-              material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / 2 } ); 
-              band = new THREE.Mesh( geometries[3], material );
-              addBand(band, i, j);
-            } else {
-              let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(3) } ); 
-              band = new THREE.Mesh( geometries[2], material );
-              addBand(band, i, j);
-            }
-          }
-        }
-
-        for (let i = 0; i < 6; i++){
-          for (let j = 0; j < 6; j++){
-            if(i % 3 === 0 && j === 0){
-              // Avoid redrawing (1, 0, 0) and (0, 0, 1)
-              continue;
-            } else if(j === 3){
-              // Avoid drawing (0, 1, 0) circle multiple times
-              continue;
-            } else if(i % 3 != 0 && j % 3 != 0){
-              // Only draw when aligned with one of the zone axes
-              continue;
-            }
-            let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / Math.sqrt(5) } ); 
-            var band = new THREE.Mesh( geometries[4], material )
-            sphere.add(band);
-            if(i % 3 === 1){
-              band.rotation.x = Math.atan(.5);
-            } else if(i % 3 === 2){
-              band.rotation.x = -Math.atan(.5);
-            } else {
-              band.rotation.x = 0;
-            }
-            if(j % 3 === 1){
-              band.rotation.y = Math.atan(.5);
-            } else if(j % 3 === 2){
-              band.rotation.y = -Math.atan(.5);
-            } else {
-              band.rotation.y = 0;
-            }
-            band.rotation.x += Math.round(i / 3) * Math.PI / 2;
-            band.rotation.y += Math.round(j / 3) * Math.PI / 2;
-            pattern.push(band);
-          }
-        }*/
-
         sphere.rotation.x = alphaTilt;
         sphere.rotation.y = betaTilt;
 
@@ -215,143 +164,9 @@
         // calculate objects intersecting the picking ray
         var intersects = raycaster.intersectObjects( sphere.children );
         console.log(intersects);
-        // TODO: Adjust labels based on new drawing approach
         if(intersects.length > 0) {
           intersects[0].object.material.color.set( 0xff0000 );
           let axis = intersects[0].object.name;
-          /*switch(intersects[0].object.rotation.x){
-            case 0:
-              switch(intersects[0].object.rotation.y){
-                case 0:
-                  axis = '1, 0, 0';
-                  break;
-                case Math.PI/4:
-                  axis = '1, 1, 0';
-                  break;
-                case Math.PI/2:
-                  axis = '0, 1, 0';
-                  break;
-                case 3*Math.PI/4:
-                  axis = '1, -1, 0';
-                  break;
-                case Math.atan(.5):
-                  axis = '2, 1, 0';
-                  break;
-                case Math.atan(2):
-                  axis = '1, 2, 0';
-                  break;
-                case Math.PI/2 + Math.atan(.5):
-                  axis = '1, -2, 0';
-                  break;
-                case Math.PI - Math.atan(.5):
-                  axis = '2, -1, 0';
-                  break;
-              }
-              break;
-            case Math.PI/4:
-              switch(intersects[0].object.rotation.y){
-                case 0:
-                  axis = '1, 0, -1';
-                  break;
-                case Math.PI/4:
-                  axis = '1, 1, -1';
-                  break;
-                case 3*Math.PI/4:
-                  axis = '-1, 1, 1';
-                  break;
-              }
-              break;
-            case Math.PI/2:
-              switch(intersects[0].object.rotation.y){
-                  case 0:
-                    axis = '0, 0, 1'
-                    break;
-                  case Math.PI/4:
-                    axis = '0, 1, -1';
-                    break;
-                  case 3*Math.PI/4:
-                    axis = '0, 1, 1';
-                    break;
-                  case Math.atan(.5):
-                    axis = '0, 1, -2';
-                    break;
-                  case Math.atan(2):
-                    axis = '0, 2, -1';
-                    break;
-                  case Math.PI - Math.atan(2):
-                    axis = '0, 2, 1';
-                    break;
-                  case Math.PI - Math.atan(.5):
-                    axis = '0, 1, 2';
-                    break;
-              }
-              break;
-              case 3*Math.PI/4:
-              switch(intersects[0].object.rotation.y){
-                case 0:
-                  axis = '1, 0, 1';
-                  break;
-                case Math.PI/4:
-                  axis = '1, -1, 1';
-                  break;
-                case 3*Math.PI/4:
-                  axis = '1, 1, 1';
-                  break;
-              }
-              break;
-              case Math.atan(.5):
-                switch(intersects[0].object.rotation.y){
-                  case 0:
-                    axis = '2, 0, -1';
-                    break;
-                  case Math.atan(.5):
-                    axis = '2, 1, -1';
-                    break;
-                  case Math.PI - Math.atan(.5):
-                    axis = '-2, 1, 1';
-                    break;
-                }
-                break;
-              case Math.atan(2):
-                switch(intersects[0].object.rotation.y){
-                  case 0:
-                    axis = '1, 0, -2';
-                    break;
-                  case Math.atan(.5):
-                    axis = '1, 1, -2';
-                    break;
-                  case Math.PI - Math.atan(.5):
-                    axis = '-1, 1, 2';
-                    break;
-                }
-                break;
-              case Math.PI - Math.atan(2):
-                switch(intersects[0].object.rotation.y){
-                  case 0:
-                    axis = '1, 0, 2';
-                    break;
-                  case Math.atan(.5):
-                    axis = '1, -1, 2';
-                    break;
-                  case Math.PI - Math.atan(.5):
-                    axis = '1, 1, 2';
-                    break;
-                }
-                break;
-              case Math.PI - Math.atan(.5):
-                switch(intersects[0].object.rotation.y){
-                  case 0:
-                    axis = '2, 0, 1';
-                    break;
-                  case Math.atan(.5):
-                    axis = '2, -1, 1';
-                    break;
-                  case Math.PI - Math.atan(.5):
-                    axis = '2, 1, 1';
-                    break;
-                }
-                break;
-          }*/
           document.getElementById('hoverlabel').textContent = 'The mouse is over: (' + axis + ')';
           //document.getElementById('xrotation').textContent = 'x rotation: ' + intersects[0].object.rotation.x.toFixed(2);
           //document.getElementById('yrotation').textContent = 'y rotation: ' + intersects[0].object.rotation.y.toFixed(2);
@@ -375,7 +190,6 @@
 
       function onMouseWheel(event) {
         cameraDistance += event.deltaY / 100;
-        //document.getElementById('radius').value = Math.max(1, Number(document.getElementById('radius').value) - event.deltaY / 100);
         update();
       }
 
