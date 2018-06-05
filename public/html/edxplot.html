@@ -22,13 +22,17 @@
 		<table>
 			<tr>
 				<td>
+					<div title='Accelerating voltage (V)'>
+						<label for="v" style='font-size:smaller'>V:</label>
+						<input type="number" id="v" style="color:black" value="200000" step="20000" min="60000"/>
+					</div>
 					<div title='Minimum energy (eV)'>
 						<label for="xmin" style='font-size:smaller'>Min E:</label>
 						<input type="number" id="xmin" style="color:black" value="0" step="1000" min="0"/>
 					</div>
 					<div title='Maximum energy (eV)'>
 						<label for="xmax" style='font-size:smaller'>Max E:</label>
-						<input type="number" id="xmax" style="color:black" value="8000" step="1000" min="1000"/>
+						<input type="number" id="xmax" style="color:black" value="10000" step="10000" min="10000"/>
 					</div>
 					<div title='Minimum intensity'>
 						<label for="ymin" style='font-size:smaller'>Min I:</label>
@@ -54,9 +58,12 @@
 			let B = '(e ^ (-0.0828 * x / (0.2998 * ' + Z + ' ^ 2)) - e ^ (-84.9 * x / (0.2998 * ' + Z + ' ^ 2)))';
 			let a = '(1.47 * ' + B + ' - 0.507 * ' + A + ' - 0.833)';
 			let b = '(1.70 * ' + B + ' - 1.09 * ' + A + ' - 0.627)';
-			let backgroundFunction = '(0.2998 * ' + Z + ' ^ 2 / x * abs(0.252 + ' + a + ' * (10 ^ 14 - 0.135) - ' + b + ' * (10 ^ 14 - 0.135) ^ 2) * 1.51 * 10 ^ -24)'
 			let CFunction = '(sin(x / 100) * 10000)'
 			function drawLine() {
+				let V = Number(document.getElementById('v').value);
+				let lambda = 12.27 / Math.sqrt(V * (1 + 0.978 * 10 ** -6 * V));
+				let Eb = 1.2398 / lambda * 10 ** 13;
+				let backgroundFunction = '(0.2998 * ' + Z + ' ^ 2 / x * abs(0.252 + ' + a + ' * (' + Eb + ' / x - 0.135) - ' + b + ' * (' + Eb + ' / x - 0.135) ^ 2) * 1.51 * 10 ^ -24)'
 				try {
 					functionPlot({
 						target: '#plot',
@@ -129,6 +136,16 @@
 			};
 
 			document.getElementById('ymax').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('v').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('v').onkeyup = function (event) {
 				event.preventDefault();
 				drawLine();
 			};
