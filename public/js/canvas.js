@@ -360,10 +360,12 @@ class Canvas {
     this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
     // Block the specimen during tune alignments
     if(!blockSpecimen){
-      this.context.setTransform(1, this.imageAstigmatismX, this.imageAstigmatismY, 1, 0, 0);
       if(this === mainmicro){
+        this.imageAstigmatismX = 0;
+        this.imageAstigmatismY = 0;
         this.drawSplitImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact);
       } else {
+        this.context.setTransform(1, this.imageAstigmatismX, this.imageAstigmatismY, 1, 0, 0);
         if(this.defocus + this.specimenHeight * 1000 <= 0 && underFocusValue > 0){
           this.drawTwoImageDefocus(this.context, this.imgX + alphaTiltImpact, this.imgY + betaTiltImpact, underFocusImage, underFocusValue);
         } else if(this.defocus + this.specimenHeight * 1000 >= 0 && overFocusValue > 0){
