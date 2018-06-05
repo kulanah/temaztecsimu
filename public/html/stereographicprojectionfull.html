@@ -77,24 +77,12 @@
         update();
       }
 
-      function addBand(band, i, j){
-        sphere.add(band);
-        //band.rotation.x = Math.PI / 4 * i;
-        //band.rotation.y = Math.PI / 4 * j;
-        pattern.push(band);
-      }
-
-      function update(){
+      function addBands(max){
         const OPACITY = .5;
-        for(let band in pattern){
-          sphere.remove(pattern[band]);
-          scene.remove(pattern[band]);
-        }
-        pattern = [];
         let u, v, w;
-        for(u = -3; u < 4; u++){
-          for(v = -3; v < 4; v++){
-            for(w = -3; w < 4; w++){
+        for(u = -max; u <= max; u++){
+          for(v = -max; v <= max; v++){
+            for(w = -max; w <= max; w++){
               if(u === 0 && v === 0 && w === 0){
                 continue;
               }
@@ -104,7 +92,8 @@
               }
               let material = new THREE.MeshBasicMaterial( { color: 'silver', transparent: true, opacity: OPACITY / sum } ); 
               band = new THREE.Mesh( geometries[u ** 2 + v ** 2 + w ** 2 - 1], material );
-              addBand(band, 0, 0);
+              sphere.add(band);
+              pattern.push(band);
               if(u < 0){
                 band.rotation.y = -Math.asin(v/sum) + Math.PI;
                 band.rotation.x = Math.asin(w/Math.sqrt(u**2 + w**2));
@@ -118,6 +107,17 @@
             }
           }
         }
+      }
+
+      function update(){
+        for(let band in pattern){
+          sphere.remove(pattern[band]);
+          scene.remove(pattern[band]);
+        }
+        pattern = [];
+        addBands(1);
+        addBands(2);
+        addBands(3);
 
         let alphaTilt = Math.PI / 180 * document.getElementById('alphatilt').value;
         let betaTilt = Math.PI / 180 * document.getElementById('betatilt').value;
@@ -188,9 +188,9 @@
         sphere.rotation.x = alphaTilt;
         sphere.rotation.y = betaTilt;
 
-        u = Number(document.getElementById('u').value);
-        v = Number(document.getElementById('v').value);
-        w = Number(document.getElementById('w').value);
+        let u = Number(document.getElementById('u').value);
+        let v = Number(document.getElementById('v').value);
+        let w = Number(document.getElementById('w').value);
         let sum = Math.sqrt(u ** 2 + v ** 2 + w ** 2);
         // Positions: x = right, y = up, z = back
         // Rotations: x = up, y = left, z = twist
