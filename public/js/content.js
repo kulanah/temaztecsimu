@@ -397,6 +397,8 @@ function setChapter(sNum, chNum){
             $('#temlecture').attr('src', src);
             if (currentCh !== '0'){
                 $('#speakernotesplay').prop('disabled', false);
+            } else {
+                $('#speakernotesplay').prop('disabled', true);
             }
         }
     });
