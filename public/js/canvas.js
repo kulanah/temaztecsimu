@@ -207,6 +207,10 @@ class Canvas {
       this.context.restore();
       return;
     }
+    if(this === mainmicro && (c2Level < 4 || objectiveLevel < 5 || saedInserted)){
+      this.context.restore();
+      return;
+    }
 
     let alphaTiltImpact = Math.tan(this.alphaTilt * Math.PI / 180) * this.specimenHeight * this.zooms[this.mag] / this.imgScale * 3;
     alphaTiltImpact = Math.min(this.imgW / 2, Math.max(-this.imgW / 2, alphaTiltImpact)); // keep tilt impact limited to staying on specimen
