@@ -241,6 +241,7 @@ function showOverview(){
         $('#temlecture').attr('src', 'public/html/ch1v1.html')
         currentCh = 0;
         $('#speakernotesplay').prop('disabled', true);
+        $('#chapterselect').val(-1);
     })
 }
 
