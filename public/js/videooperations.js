@@ -1,14 +1,4 @@
-// Play/pause video on click
 let videos = document.getElementsByTagName('video');
-for(let video in videos){
-    videos[video].addEventListener('click', function(){
-        if(videos[video].paused){
-            videos[video].play();
-        } else {
-            videos[video].pause();
-        }
-    })
-}
 
 // Pause video when not visible
 // Visibility change code based on example in documentation at https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
@@ -38,5 +28,17 @@ if (typeof document.addEventListener === "undefined" || typeof document.hidden =
     console.log("This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.");
 } else {
     // Handle page visibility change   
+    console.log('Listening for visibility changes.');
     document.addEventListener(visibilityChange, handleVisibilityChange, false);
+}
+
+// Play/pause video on click
+for(let video in videos){
+    videos[video].addEventListener('click', function(){
+        if(videos[video].paused){
+            videos[video].play();
+        } else {
+            videos[video].pause();
+        }
+    })
 }
