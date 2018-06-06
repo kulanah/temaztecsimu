@@ -22,6 +22,12 @@ function handleVisibilityChange() {
         }
     }
 }
+
+function handleBlur() {
+    for(let video in videos){
+        videos[video].pause();
+    }
+}
   
 // Warn if the browser doesn't support addEventListener or the Page Visibility API
 if (typeof document.addEventListener === "undefined" || typeof document.hidden === "undefined") {
@@ -30,6 +36,7 @@ if (typeof document.addEventListener === "undefined" || typeof document.hidden =
     // Handle page visibility change   
     console.log('Listening for visibility changes.');
     document.addEventListener(visibilityChange, handleVisibilityChange, false);
+    document.addEventListener('blur', handleBlur, false);
 }
 
 // Play/pause video on click
