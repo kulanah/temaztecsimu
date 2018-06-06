@@ -522,13 +522,17 @@
   display: inline-block;
 }
 
-#speakernotesinfo{
+.speakernotesinfo{
   color:white;
   line-height: 1em;
 }
 
 #slidenumber{
-  width: 6em;
+  width: 3em;
+}
+
+#speakernotesspeed{
+  width: 3em;
 }
 
 #speakernotespause{

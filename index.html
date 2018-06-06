@@ -562,12 +562,16 @@
     <div id='lecturediv' class='hidden'>
       <iframe id='temlecture' src="public/html/ch1v1.html" width='582' height='360'></iframe>
       <br>
-      <span id='speakernotesinfo' class='lecturecontrol'>Read speaker notes aloud for slide number:</span>
+      <span class='lecturecontrol speakernotesinfo'>Read speaker notes aloud for slide number:</span>
       <div class='speakerelements'>
         <input id='slidenumber' type='number' class='lecturecontrol' min='1'>
         <button id='speakernotesplay' class='lecturecontrol' disabled>►</button>
         <button id='speakernotespause' class='lecturecontrol'>❚❚</button>
         <button id='speakernotesstop' class='lecturecontrol'>◼</button>
+      </div>
+      <div class='speakerelements'>
+        <span class='lecturecontrol speakernotesinfo'>Speed:</span>
+        <input id='speakernotesspeed' type='number' class='lecturecontrol' value='1' min='0.1' max='10' step='0.1'>
       </div>
       <button id='fullscreenbtn' class='lecturecontrol'>Toggle fullscreen</button>
       <br>

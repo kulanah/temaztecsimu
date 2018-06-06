@@ -13,6 +13,8 @@ function speak(text) {
     
     // Set the text.
       msg.text = text;
+
+      msg.rate = Number(document.getElementById('speakernotesspeed').value);
     
     // Queue this utterance.
       window.speechSynthesis.speak(msg);
