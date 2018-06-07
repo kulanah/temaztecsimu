@@ -23,6 +23,7 @@ function prepareContent(){
     helpClicked();
     labSessionClicked();
     modeAdjustment();
+    closePopup();
     closeNotes();
     copyNotes();
     saveNotes();
@@ -36,20 +37,20 @@ function swapPosition(id1, id2){
     let temptop = $(id1).css('top');
     let templeft = $(id1).css('left');
     let tempz = $(id1).css('z-index');
-    let tempwidth = $(id1).children().css('width');
-    let tempheight = $(id1).children().css('height');
+    let tempwidth = $(id1).children().last().css('width');
+    let tempheight = $(id1).children().last().css('height');
     
     $(id1).css('top', $(id2).css('top'));
     $(id1).css('left', $(id2).css('left'));
     $(id1).css('z-index', $(id2).css('z-index'));
-    $(id1).children().css('width', $(id2).children().css('width'));
-    $(id1).children().css('height', $(id2).children().css('height'));
+    $(id1).children().last().css('width', $(id2).children().last().css('width'));
+    $(id1).children().last().css('height', $(id2).children().last().css('height'));
 
     $(id2).css('top', temptop);
     $(id2).css('left', templeft);
     $(id2).css('z-index', tempz);
-    $(id2).children().css('width', tempwidth);
-    $(id2).children().css('height', tempheight);
+    $(id2).children().last().css('width', tempwidth);
+    $(id2).children().last().css('height', tempheight);
 }
 
 function popContentDisplay(id){
@@ -193,6 +194,12 @@ function modeAdjustment(){
 
 function getSimulatorMode(){
     return simulatorMode;
+}
+
+function closePopup(){
+    $('button.popclosebutton').click(function() {
+        popContentDisplay('#popplaceholder');
+    });
 }
 
 // Add functionality to notepad buttons
