@@ -404,7 +404,8 @@ class Canvas {
     if(this === mainmicro){
       this.context.clearRect(0, Date.now() / 5 % this.selector[0].height, this.selector[0].width, 5);
       this.context.fillRect(0, Date.now() / 5 % this.selector[0].height, this.selector[0].width, 5);
-      defocusPx += (Math.abs(this.intensity) + this.beamAstigmatismX + this.beamAstigmatismY) / 100;
+      let addedDefocus = (this.intensity + this.beamAstigmatismX + this.beamAstigmatismY) / 1000;
+      defocusPx = Math.max(Math.min((this.defocus / 1000 + addedDefocus + this.specimenHeight), 1), -1) * 10 * this.zooms[this.mag] / this.imgScale * 512 / this.widthNM;
       ctx.drawImage(this.img,0,(Date.now() / 5 % this.selector[0].height - y) / this.imgH * this.img.height,this.img.width,5 / this.imgH * this.img.height,
         x - defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, (Date.now() / 5) % this.selector[0].height,this.imgW,5);
       ctx.drawImage(this.img,0,(Date.now() / 5 % this.selector[0].height - y) / this.imgH * this.img.height,this.img.width,5 / this.imgH * this.img.height,
