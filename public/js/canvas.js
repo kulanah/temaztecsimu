@@ -201,7 +201,9 @@ class Canvas {
     this.drawMainScreenValues();
     this.context.save();
     this.context.fillStyle = 'black';
-    this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
+    if(this !== mainmicro || (!colopen || !highTension) || (c2Level < 4 || objectiveLevel < 5 || saedInserted)){
+      this.context.fillRect(0,0,this.selector[0].width,this.selector[0].height);
+    }
     this.glowSelector[0].getContext('2d').clearRect(0,0,this.glowSelector[0].width,this.glowSelector[0].height);
     if(!colopen || !highTension){
       this.context.restore();
@@ -357,7 +359,9 @@ class Canvas {
 
     this.context.globalAlpha = 1;
     this.context.fillStyle = '#CCC';
-    this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
+    if(this !== mainmicro){
+      this.context.fillRect(0, 0, this.selector[0].width, this.selector[0].height);
+    }
     // Block the specimen during tune alignments
     if(!blockSpecimen){
       if(this === mainmicro){
@@ -377,9 +381,6 @@ class Canvas {
     }
     
     if(this === mainmicro){
-      let y = Date.now() / 10 % this.selector[0].height;
-      this.context.fillStyle = 'white';
-      this.context.fillRect(0,y,this.selector[0].width,1);
     } else {
       this.drawHalo();
     }
@@ -401,12 +402,19 @@ class Canvas {
     ctx.globalAlpha = .5;
     let defocusPx = Math.max(Math.min((this.defocus / 1000 + this.specimenHeight), 1), -1) * 10 * this.zooms[this.mag] / this.imgScale * 512 / this.widthNM; //convert from nanometers to pixels
     if(this === mainmicro){
+      this.context.clearRect(0, Date.now() / 5 % this.selector[0].height, this.selector[0].width, 5);
+      this.context.fillRect(0, Date.now() / 5 % this.selector[0].height, this.selector[0].width, 5);
       defocusPx += (Math.abs(this.intensity) + this.beamAstigmatismX + this.beamAstigmatismY) / 100;
+      ctx.drawImage(this.img,0,(Date.now() / 5 % this.selector[0].height - y) / this.imgH * this.img.height,this.img.width,5 / this.imgH * this.img.height,
+        x - defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, (Date.now() / 5) % this.selector[0].height,this.imgW,5);
+      ctx.drawImage(this.img,0,(Date.now() / 5 % this.selector[0].height - y) / this.imgH * this.img.height,this.img.width,5 / this.imgH * this.img.height,
+        x + defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, (Date.now() / 5) % this.selector[0].height,this.imgW,5); 
+    } else {
+      ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
+        x - defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y + defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH);
+      ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
+        x + defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y - defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH); 
     }
-    ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
-      x - defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y + defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH);
-    ctx.drawImage(this.img,0,0,this.img.width,this.img.height,
-      x + defocusPx * Math.cos(this.imgAngle) - this.imageAstigmatismY * this.img.width / 2, y - defocusPx * Math.sin(this.imgAngle) - this.imageAstigmatismX * this.img.height / 2,this.imgW,this.imgH); 
   }
 
   zoom(delta){
