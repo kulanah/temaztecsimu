@@ -1,0 +1,119 @@
+<html>
+	<head>
+		<title>Diffraction Model</title>
+		<style>
+			body { margin: 0; }
+      canvas { width: 100%; height: 100% }
+      #info {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        z-index: 100;
+        color: white;
+      }
+		</style>
+	</head>
+	<body>
+    <div id="info">
+      Diffraction Model<br><br>
+      Click to tilt zone axis
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/91/three.min.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 70, window.innerWidth/window.innerHeight, 0.01, 1000 );
+
+			var renderer = new THREE.WebGLRenderer({ antialias: true });
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var geometry = new THREE.SphereGeometry();
+			var material = new THREE.MeshBasicMaterial( { color: 'silver', wireframe: true } );
+			var sphere = new THREE.Mesh( geometry, material );
+      scene.add( sphere );
+      sphere.rotation.x = .3;
+      sphere.rotation.y = .3;
+      
+      geometry = new THREE.CylinderGeometry(.01, .01, 10);
+			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
+			var beam = new THREE.Mesh( geometry, material );
+      scene.add( beam );
+      beam.rotation.x = .3;
+      
+      geometry = new THREE.CircleGeometry(1.2,64);
+			material = new THREE.MeshBasicMaterial( { color: 0x001100 } );
+			var circle = new THREE.Mesh( geometry, material );
+      scene.add( circle );
+      circle.rotation.x = -Math.PI / 2 + .3;
+
+      geometry = new THREE.BoxGeometry(.01);
+			material = new THREE.MeshBasicMaterial( { color: 'green' } );
+			var tilt = new THREE.Mesh( geometry, material );
+      scene.add( tilt );
+      tilt.rotation.x = .3;
+      tilt.rotation.z = 1;
+
+      geometry = new THREE.CylinderGeometry(.01, .01, 2.25);
+			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
+			var normal = new THREE.Mesh( geometry, material );
+      scene.add( normal );
+      normal.rotation.x = .3;
+
+      geometry = new THREE.CylinderGeometry(.01, .01, 2.1);
+			material = new THREE.MeshBasicMaterial( { color: 0x88ff99 } );
+			var PS = new THREE.Mesh( geometry, material );
+      scene.add( PS );
+      PS.rotation.x = .3;
+      PS.position.y = -1;
+
+      drawDeflection();
+
+      camera.position.z = 5;
+      renderer.render(scene, camera);
+
+      var mouseDown = 0;
+      document.body.onmousedown = function() { 
+        ++mouseDown;
+      }
+      document.body.onmouseup = function() {
+        --mouseDown;
+      }
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+				//sphere.rotation.x += 0.01;
+        sphere.rotation.y += 0.01;
+        tilt.rotation.y += 0.01;
+        normal.rotation.y += 0.01;
+        PS.rotation.y += 0.01;
+        if(mouseDown){
+          tilt.rotation.z = (tilt.rotation.z + .01) % (Math.PI);
+          drawDeflection();
+        }
+
+				renderer.render(scene, camera);
+      };
+      
+      function drawDeflection(){
+          normal.rotation.z = -Math.PI / 2 + tilt.rotation.z;
+          let theta = Math.PI / 2 - normal.rotation.z;
+          let a = Math.cos(theta);
+          let b = Math.sin(theta);
+          PS.rotation.z = Math.PI / 2 - Math.atan((b + 1) / a);
+          PS.scale.y = Math.sqrt(a**2 + (1 + b)**2);
+      }
+
+      // Function from https://github.com/mrdoob/three.js/blob/master/examples/webgl_animation_cloth.html
+      function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+
+      window.addEventListener( 'resize', onWindowResize, false );
+
+			animate();
+		</script>
+	</body>
+</html>

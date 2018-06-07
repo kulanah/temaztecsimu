@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+  		<label> Search: <input ng-model="search.$"></label> <br>
+  		<br>
+  		<div id="searchObjResults">
+  			<div ng-repeat="qa in data | filter:search:strict">
+          <p> <strong> Question: </strong>
+            <div ng-bind-html="qa.question">  {{qa.question}} </div>
+          </p>
+          <p> <strong> Answer:  </strong>
+            <div ng-bind-html="qa.answer">  {{qa.answer}} </div>
+          </p>
+          </div>
+  			</div>
+  		</div>
+  </div>
+</body>
+<script>
+  angular.module('myApp', ['ngSanitize']).controller('myCtrl', function($scope) {
+      $scope.data =
+        [
+            {"question":"Which voltage should I use for biological samples?","answer":"Lower accelerating voltage should be used for biological samples to minimize the electron beam damage."}
+        ]
+  });
+</script>
+</html>

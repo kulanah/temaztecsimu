@@ -1,0 +1,19 @@
+
+#filtercontrol{
+  position: absolute;
+}
+
+#startmenu{
+  height: 2.91vh;
+  width: 100vw;
+}
+
+#clock{
+  position: absolute;
+  white-space: nowrap;
+  right: .4vw;
+  bottom: 4.45vh;
+  font-size: 12px;
+  font-family: Tahoma, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}

@@ -1,0 +1,92 @@
+<html>
+<head>
+  <!-- <link rel='stylesheet' src='./public/css/main.css'> -->
+</head>
+<body>
+  <img src='./public/img/controlsLeft.png' id='controller' usemap='#left'>
+  <map name='left'>
+    <area id='cont1' href='#' shape='rect' coords='75,75,110,110'>
+    <area id='cont2' href='#' shape='rect' coords='123,65,150,100'>
+    <area id='cont3' href='#' shape='rect' coords='180,65,205,90'>
+    <area id='cont4' href='#' shape='rect' coords='248,65,270,85'>
+  </map>
+  <img id='map2' src="https://github.com/jamietre/ImageMapster/raw/master/examples/images/usa_map_720.png" usemap="#usa">
+  <map name="usa">
+    <area href="#" data-state="AA,AE" shape="rect" coords="512,29,586,44">
+    <area href="#" data-state="AD" shape="rect" coords="515,68,585,80">
+    <area href="#" data-state="AC" shape="rect" coords="650,149,711,161">
+    <area href="#" data-state="AB" shape="rect" coords="655,167,711,179">
+    <area href="#" data-state='AA' shape="rect" coords="543,49,586,62">
+  </map>
+</body>
+<script src='./public/js/jquery-3.2.1.min.js'></script> 
+<script type='text/javascript' src='./public/js/jquery.imagemapster.js'></script>
+<script>
+
+  let img = $('#map2');
+  let clearMap = function(imgSelector){
+    imgSelector.mapster({
+      isSelectable: false
+    }).mapster({
+      isSelectable: false,
+      staticState: false
+    }).mapster('unbind', true);
+  };
+
+  $('img').mapster({
+    fillColor: '3EACBA',
+  });
+
+
+
+  $('#controller').mapster({
+    staticState: true,
+    fillColor: '3EACBA',
+    fillOpacity: 0.7
+  });
+
+  $('#map2').mapster({
+    fillColor: '3EACBA'
+  })
+  .mapster('unbind', true);
+
+  $('#cont1').on('click', function(){
+    clearMap(img);
+  });
+
+  $('#cont2').on('click', function(){
+    let group = 'AA';
+    clearMap(img);
+    
+    $('#map2').mapster({
+      mapKey: 'data-state',
+      isSelectable: false,
+      fillColor: '3EACBA'
+    }).mapster('set', true, group).mapster('unbind', true);
+  });
+
+  $('#cont3').on('click', function(){
+    let group = 'AB';
+    clearMap(img);
+
+    $('#map2').mapster({
+      mapKey: 'data-state',
+      isSelectable: false,
+      fillColor: '3EACBA'
+    }).mapster('set', true, group).mapster('unbind', true);
+  });
+
+  $('#cont4').on('click', function(){
+    clearMap(img);
+  });
+</script>
+</html>
+
+
+<!-- 
+
+  1. highlight selected flags
+  2. remove binding WITRHOUT losing highlight
+
+
+-->

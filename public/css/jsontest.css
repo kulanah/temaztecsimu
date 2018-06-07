@@ -1,0 +1,21 @@
+#helptext{
+  resize: none;
+  width: 10vw;
+  height: 10vw;
+  background: white;
+  color: black;
+  user-select: none;
+}
+
+ul{
+  padding-left: 8px;
+}
+
+#alignmenttext{
+  margin-left: 0;
+  font-size: 12px;
+  width: 10vw;
+  height: 10vw;
+  overflow: auto;
+  border: 1px solid grey;
+}

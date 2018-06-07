@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <style>
+			input{
+				width: 80px;
+			}
+			label {
+				display:inline-block;
+				width:50px;
+				text-align:right;
+			}
+		</style>
+    </head>
+    <body>
+        <!--Range for a: 20000 to 400000, Range for lambda: .0018 to .004-->
+        <!--Adjustable x and y for second function-->
+        <table>
+            <tr>
+                <td>
+                    <label for='a'>a:</label>
+                    <input id='a' name='a' type='number' value='200000' step='10000' title='Value for a (in nm)' min='20000' max='400000'>
+                    <br>
+                    <label for='lambda'>𝜆:</label>
+                    <input id='lambda' name='lambda' type='number' value='0.0025' step='0.0001' title='Value for 𝜆 (in nm)' min='0.0018' max='0.004'>
+                    <br>
+                    <label for='xOffset'>x:</label>
+                    <input id='xOffset' name='xOffset' type='number' value='2000000' step='100000' title='x Offset (in nm)'>
+                    <br>
+                    <label for='yOffset'>y:</label>
+                    <input id='yOffset' name='yOffset' type='number' value='0' step='100000' title='y Offset (in nm)'>
+                </td>
+                <td>
+                    <div id="myDiv"></div>
+                </td>
+            </tr>
+        </table>
+        <script>
+            let init = true;
+
+            function draw(){
+                let oldCamera = {};
+                if(!init){
+                    oldCamera = document.getElementById('myDiv').layout.scene.camera;
+                }
+                let a = document.getElementById('a').value;
+                let lambda = document.getElementById('lambda').value;
+                let x_data = [];
+                let y_data = [];
+                let x_data2 = [];
+                let y_data2 = [];
+                var z_data=[ ];
+                let xOffset = Number(document.getElementById('xOffset').value);
+                let yOffset = Number(document.getElementById('yOffset').value);
+                for(let i=-2000000;i<=4000000;i+=20000)
+                {
+                    let xrow = [];
+                    let yrow = [];
+                    let zrow = [];
+                    for(let j=-3000000;j<=3000000;j+=20000){
+                        let k1 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 500000000 ** 2)) / 
+                            (Math.PI * a / lambda * Math.sqrt(i ** 2 + j ** 2) / Math.sqrt(i ** 2 + j ** 2 + 500000000 ** 2))) ** 2
+                        let k2 = 10 ** 15 * (Math.sin(Math.PI * a / lambda * Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2) / Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2 + 500000000 ** 2)) / 
+                            (Math.PI * a / lambda * Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2) / Math.sqrt((i - xOffset) ** 2 + (j - yOffset) ** 2 + 500000000 ** 2))) ** 2
+                        zrow.push(Math.min(Math.max(k1, k2), 10000));
+                        xrow.push(i);
+                        yrow.push(j);
+                    }
+                    z_data.push(zrow);
+                    x_data.push(xrow);
+                    y_data.push(yrow);
+                }
+
+                var data = [{
+                    x: x_data,
+                    y: y_data,
+                    z: z_data,
+                    type: 'surface'
+                }];
+                var layout = {
+                    title: 'Microscope Resolution Function',
+                    autosize: true,
+                    height: 500,
+                    margin: {
+                        l: 65,
+                        r: 50,
+                        b: 65,
+                        t: 90,
+                    },
+                    scene: {
+                    camera: {
+                        center: {
+                                x: 0, y: 0, z: 0}, 
+                        eye: { 
+                                x:0, y:2, z:0}, 
+                        up: {
+                                x: 0, y: 0, z: 1}
+                        },
+                    }
+                };
+                if(!init){
+                    // Retain prior camera position
+                    layout.scene.camera = oldCamera;
+                }
+                Plotly.newPlot('myDiv', data, layout);
+                init = false;
+            }
+
+            draw();
+
+			document.getElementById('a').onclick = function (event) {
+				draw();
+            };
+            
+            document.getElementById('a').onkeyup = function (event) {
+				draw();
+            };
+            
+            document.getElementById('lambda').onclick = function (event) {
+				draw();
+            };
+            
+            document.getElementById('lambda').onkeyup = function (event) {
+				draw();
+            };
+
+            document.getElementById('xOffset').onclick = function (event) {
+				draw();
+            };
+            
+            document.getElementById('xOffset').onkeyup = function (event) {
+				draw();
+            };
+            
+            document.getElementById('yOffset').onclick = function (event) {
+				draw();
+            };
+            
+            document.getElementById('yOffset').onkeyup = function (event) {
+				draw();
+            };
+            
+			window.addEventListener('resize', function ( event ) { 
+				draw();
+			});
+        </script>
+    </body>
+</html>

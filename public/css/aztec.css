@@ -1,0 +1,134 @@
+#aztecdiv{
+  position: absolute;
+  top:0;
+  left: 14.33vw;
+  width: 85.67vw;
+  height: 94vh;
+  background: white;
+}
+
+#aztecscreen{
+  height: 80.09vh;
+  width: 100%;
+}
+
+#aztecfilebar{
+  height: 4.09%;
+}
+
+.aztecheaderimg{
+  height: 11.5vh;
+}
+
+.aztecmainimage{
+  height: 74.5vh;
+}
+
+#aztecbottombar{
+  height:  3.5vh;
+}
+
+#aztecsidebar{
+  height: 86.1vh;
+}
+
+#aztecdropdown{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6vw;
+  padding: 5px;
+  background: linear-gradient(#00335D, #0C233C);
+  border: 1px #527694 solid;
+  border-radius: 5px;
+  color: white;
+}
+#aztecdropdown > ul{
+  list-style-type: none;
+  line-height: 1em;
+}
+
+#aztecdropdown li{
+  padding-left: 2px;
+  padding-right: 2px;
+  font-family: 'MS Sans Serif', Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+#aztecdropdown li:hover{
+  background: linear-gradient(#6389A7, #3B81B5, #5295C8);
+}
+
+
+#aztecacquiresettings{
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 1em;
+  box-shadow: 1px 1px 1px 1px #444444;
+  border-radius: 1px;
+}
+
+#aztecsettingbox{
+  display: flex;
+  flex-direction: column;
+  font-family: 'MS Sans Serif', Tahoma, Arial, Helvetica, sans-serif;
+}
+
+#aztecacquiresettings img {
+  padding: 0.1em;
+  height: 1em;
+  width: 1em;
+  border: 1px solid #8999AA;
+}
+
+.aztecsettingsheader{
+  border: 2px solid #6A94B7;
+  border-bottom: 1px solid #375777;
+  background:  linear-gradient(#163E64, #0C223C);
+  color: white;
+  padding: 0.25em;
+}
+
+.aztecsettingsoptions{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  padding-top: 0.5em;
+  color: white;
+  border: 2px solid #6A94B7;
+  border-top: 1px solid #375777;
+  background:  linear-gradient(#163E64, #0C223C);
+}
+
+.aztecsettingsoptions select{
+  background: #092542;
+  border-radius: 9px;
+  box-shadow: 0.5px 0.5px 0px 1px #365371;
+  border: 1px;
+  color: #E8EFF5;
+  padding: 0.25em;
+  width: 6em;
+}
+
+.aztecsettingsoptions input{
+  background: #0D2A4B;
+  border: 1px solid #55718E;
+  border-radius: 1px;
+  color: #E8EFF5;
+  padding-left: 0.5em;
+  width: 5em;
+}
+
+.aztecsettingsoptions > div{
+  padding-top: .5em;
+}
+
+.aztecsetting{
+  display: flex;
+  justify-content: space-between;
+}
+
+#azteccloseicon{
+  cursor: pointer;
+}

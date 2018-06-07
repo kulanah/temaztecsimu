@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        li {
+            color: blue;
+            text-decoration: underline;
+        }
+        li:hover{
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center
+        }
+    </style>
+</head>
+<body>
+    <h2>TEM Syllabus</h2>
+    <!--
+    <h1>Abstract</h1>
+    <p>
+        Practical introduction to the operation of transmission electron microscopes.
+        Microscope design and function; imaging and diffraction modes and image content;
+        instrument operation. Required of all students who use the TEM in their research.
+    </p>
+    -->
+    <h3>Course Goals:</h3>
+    <p>The course goal is for the students to become comptent,
+        research-level transmission electron microscopists.
+        They will understand the functions of the TEM and how it works.
+        They will be competent in basic operating techniques, and ready to learn more advanced ones as needed.
+    </p>
+
+    <h3>Course Content:</h3>
+    <h4>I. Transmission Electron Microscope</h4>
+    <ol>
+        <li>Introduction to transmission electron microscopy</li>
+        <li>Electron source working principle and characterization</li>
+        <li>Electron optics and TEM alignment</li>
+        <li>Resolution and lens aberration</li>
+        <li>Vacuum system and maintenance</li>
+        <li>Electrons and specimen interaction</li>
+        <li>Electron detectors and digital imaging</li>
+    </ol>
+
+    <h4>II. Electron Diffraction</h4>
+    <ol>
+        <li>Introduction to crystallography</li>
+        <li>Reciprocal space and Ewald reconstruction</li>
+        <li>Stereo projection</li>
+        <li>Electron diffraction—kinematic theory</li>
+        <li>Electron diffraction—dynamic theory</li>
+        <li>Shape factors and the deviation parameter</li>
+        <li>SAED patterns and applications</li>
+        <li>Kikuchi diffraction patterns and applications</li>
+        <li>Convergent-beam electron diffraction (CBED) and applications</li>
+        <li>Double diffraction, twins, polycrystalline materials, amorphous materials</li>
+    </ol>
+
+    <h4>III. Imaging</h4>
+    <ol>
+        <li>Contrast mechanisms in TEM/STEM</li>
+        <li>Defect analysis with TEM imaging</li>
+        <li>High resolution imaging: Phase contrast</li>
+        <li>Scanning transmission electron microscopy and Z contrast imaging</li>
+        <li>Moiré, Lorentz, and holographic imaging</li>
+        <li>Digital image processing</li>
+    </ol>
+
+    <h4>IV. Microanalysis</h4>
+    <ol>
+        <li>Inelastic electronic scatterings and microanalysis</li>
+        <li>Introduction to energy dispersive X-ray spectroscopy</li>
+        <li>Qualitative and quantitative analysis with EDX</li>
+        <li>Introduction to electron energy-loss spectroscopy (EELS)</li>
+        <li>Energy-filtered imaging and energy-filtered diffraction</li>
+        <li>Electron-beam-induced specimen damage and contamination</li>
+    </ol>
+
+    <footer class="footer">
+      <div class="container">
+        <a href='https://www.pdx.edu/' target='_blank'><img src="../img/Portland_State_University_Logo.svg.png" class="img-fluid" alt="Portland State University" style="width:88vw"></a>
+        <a href='https://www.pdx.edu/cemn/welcome' target='_blank'><img src="../img/LogoFull.jpg" class="img-fluid" alt="Center for Electron Microscopy and Nanofabrication" style="width:88vw"></a>
+      </div>
+    </footer>
+    <script>
+        let chapters = document.getElementsByTagName('li');
+        for (i = 1; i <= chapters.length; i++){
+            let n = i;
+            (chapters[i-1]).addEventListener('click',function(){
+                parent.setChapter(n);
+                if(parent.getSimulatorMode() === 'self-assessment'){
+                    parent.popContentDisplay('#homework');
+                } else {
+                    parent.$('#lecturediv').show();
+                }
+            });
+        }
+    </script>
+</body>

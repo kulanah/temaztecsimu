@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function goToLearningMode(){
+        //console.log(parent.window.location.href);
+        let url = parent.window.location.href.replace(/mode=[a-z-]*/, 'mode=learning');
+        //console.log(url);
+        parent.window.location.href = url;
+      }
+    </script>
+  </head>
+  <body>
+    This feature is available in <a href=? onclick='goToLearningMode()'>Learning Mode</a>.
+  </body>
+</html>

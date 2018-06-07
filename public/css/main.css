@@ -1,0 +1,160 @@
+*{
+  /*stops highlighting*/
+  user-select: none;
+
+  padding: 0;
+  border: 0;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+body{
+  overflow: hidden;
+  line-height: 0;
+}
+
+.grabbing{
+  cursor: -webkit-grabbing;  
+}
+
+#grabbingdiv{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wintext{
+  font-family: 'MS Sans Serif', Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+#mainimage{
+  height: 94.09vh;
+  width: 85.67vw;
+  background-color: grey;
+}
+
+.hidden{
+  display: none;
+}
+
+.mainmicroscopecanvas{
+  position: absolute;
+  top: 6vh;
+  left: 14.28vw;
+}
+#mainmicroscopecanvas{
+  z-index: -2;
+}
+
+#mainmicroscopecanvasglow{
+  pointer-events: none;
+  z-index: -1;
+}
+
+#maincontent{
+  position: absolute;
+  z-index: -5;
+  width: 10vw;
+  max-height: 75vw;
+}
+
+#viewexposure{
+  position: absolute;
+  top: 19.6vh;
+}
+
+#acquireexposure{
+  position: absolute;
+  top: 39.9vh;
+}
+
+.exposureinput{
+  left: 18.9vw;
+  width: 2.5vw;
+}
+
+#objdisplay{
+  position: absolute;
+  top: 86vh;
+  right: 57vw;
+}
+
+#magnificationdisplay{
+  position: absolute;
+  top: 88.5vh;
+  left: 25.2vw;
+}
+
+#magnificationvalue{
+  background-color: #fffbf0;
+  font-size: xx-large;
+  font-size: 1.8vw;
+  font-family: monospace;
+  white-space: pre;
+}
+
+#focusstepdisplay{
+  position: absolute;
+  top: 88.8vh;
+  right: 42.75vw;
+}
+
+.mainscreenvalue{
+  background-color: #fffbf0;
+  font-size: x-large;
+  font-size: 1.4vw;
+  font-family: monospace;
+  white-space: pre;
+}
+
+#spotsizedisplay{
+  position: absolute;
+  top: 91.6vh;
+  right: 42.75vw;
+}
+
+#defocusdisplay{
+  position: absolute;
+  top: 86vh;
+  right: 28.5vw;
+}
+
+#xdisplay{
+  position: absolute;
+  top: 86vh;
+  right: 17vw;
+}
+
+#ydisplay{
+  position: absolute;
+  top: 88.8vh;
+  right: 17vw;
+}
+
+#zdisplay{
+  position: absolute;
+  top: 91.6vh;
+  right: 17vw;
+}
+
+#alphadisplay{
+  position: absolute;
+  top: 86vh;
+  right: 3.7vw;
+}
+
+#betadisplay{
+  position: absolute;
+  top: 88.8vh;
+  right: 3.7vw;
+}
+
+button{
+  cursor: pointer;
+}
+
+.tableimage{
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,255 @@
+#extractFinal{
+  position: absolute;
+  top: 56.8vh;
+  left: 11vw; 
+  text-align: right;
+}
+
+#fegvalue{
+  position: absolute;
+  top: 62.2vh;
+  left: 11.8vw;
+}
+
+#extractVal{
+  position: absolute;
+  top: 54.7vh;
+  left: 9vw;
+  text-align: right;
+}
+
+#gunLenseVal  {
+  position: absolute;
+  top: 52.3vh;
+  left: 10vw;
+}
+
+#beamrange{
+  position: absolute;
+  width: 13vw;
+  top: 59vh;
+  left: .6vw;
+}
+
+#beamvalue{
+  position: absolute;
+  top: 55.2vh;
+  left: 3.7vw;
+}
+
+#kvval{
+  position: absolute;
+  top: 31.7vh;
+  right: 87vw;
+  font-size: 16px;
+}
+
+#alignmenttexttune{
+  position: absolute;
+  top: 30.8vh;
+  left: 0.8vw;
+  width: 12.5vw;
+  height: 17.1vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  line-height: 1em;
+}
+
+#alignmenthelptune{
+  line-height: 1em;
+  position: absolute;
+  top: 53.6vh;
+  left: 0.9vw;
+  width: 12.4vw;
+  height: 11.6vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: pre-wrap;
+}
+
+.leftcol{
+  width: 14.28vw;
+}
+
+#leftcolumnvacuum{
+  height: 20.37vh;
+}
+
+#leftcolumntension{
+  height: 20.37vh;
+}
+
+#leftcolumnfegcontrol{
+  height: 21.34vh;
+}
+
+#leftcolumnsetupfiller{
+  height: 11.64vh;
+}
+
+#leftcolumnstage{
+  height: 43.65vh;
+}
+
+#leftcolumnbeamsettings{
+  height: 22.31vh;
+}
+
+#leftcolumnsearchfiller{
+  height: 7.76vh;
+}
+
+#leftcolumnimaging{
+  height: 23.28vh;
+}
+
+#leftcolumndetector{
+  height: 23.765vh;
+}
+
+#leftcolumndirectalignments{
+  height: 23.28vh;
+}
+
+#leftcolumnstemfiller{
+  height: 3.2vh;
+}
+
+#leftcolumnstigmator{
+  height: 19.4vh;
+}
+
+#leftcolumnfilter{
+  height: 23.28vh;
+}
+
+#leftcolumnpeels{
+  height: 23.28vh;
+}
+
+#leftcolumneftemstigmator{
+  height: 23.28vh;
+}
+
+#leftcolumneftemfiller{
+  height: 3.69vh;
+}
+
+#leftcolumnalignments{
+  height: 48.5vh;
+}
+
+#leftcolumntunefiller{
+  height:  5.82vh;
+}
+
+#leftcolumnnotification{
+  position: absolute;
+  top: 26.2vh;
+  left: 14.28vw;
+  width: 11.5vw;
+}
+
+#leftcolumnfegregisters{
+  height: 22.795vh;
+}
+
+#leftcolumnfegregisteralignments{
+  height: 42.9vh;  
+}
+
+#alignmenttextfeg{
+  position: absolute;
+  top: 33.6vh;
+  left: 0.8vw;
+  width: 12.5vw;
+  height: 15.2vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  line-height: 1em;
+}
+
+#alignmenthelpfeg{
+  position: absolute;
+  top: 53.9vh;
+  left: 0.9vw;
+  width: 12.4vw;
+  height: 10.5vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#leftcolumnregisterfiller{
+  height: 7.76vh;
+}
+
+#leftcolumndarkfield{
+  height: 25.6vh;
+}
+
+#leftcolumnholography{
+  height: 25.6vh;
+}
+
+#leftcolumndarkfieldfiller{
+  height: 22.601vh;
+}
+
+#infopanel{
+  height: 13.58vh;
+  width: 14.28vw;
+}
+
+.infopanelvalue{
+  background-color: #fffbf0;
+  font-family: sans-serif;
+  white-space: pre;
+  font-size: small;
+  font-size: 1.4vh;
+}
+
+#mfxdisplay{
+  position: absolute;
+  top: 81.9vh;
+  right: 86.4vw;
+}
+
+#mfydisplay{
+  position: absolute;
+  top: 87.8vh;
+  right: 86.4vw;
+}
+
+#r2display{
+  position: absolute;
+  top: 90.5vh;
+  right: 86.4vw;
+}
+
+.tabs{
+  height: 6.79vh;
+  width: 14.28vw;
+}
+
+#tunealignmentstepdisplay{
+  position: absolute;
+  top: 51vh;
+  left: 7vw;
+}
+
+#tunealignmentstepvalue{
+  font-size: .85vw;
+}
+
+details{
+  cursor: pointer;
+}
+
+#filealignments{
+  position: absolute;
+  top: 97px;
+  left: 16px;
+  line-height: 1em;
+  list-style-type: none;
+  cursor: pointer;
+}

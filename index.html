@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF8'>
+    <title> TEM Training Software </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' href='./public/css/main.css'> 
+    <link rel='stylesheet' href='./public/css/leftcol.css'>
+    <link rel='stylesheet' href='./public/css/floatingitems.css'>
+    <link rel='stylesheet' href='./public/css/startmenu.css'>
+    <link rel='stylesheet' href='./public/css/external.css'>
+    <link rel='stylesheet' href='./public/css/highlighters.css'>
+    <link rel='stylesheet' href='./public/css/jquery-ui.min.css'>
+    <link rel='stylesheet' href='./public/css/aztec.css'>
+  </head>
+  <body>
+    <table id='maincontent'>
+      <tr>  
+        <td>
+          <div id='tabsleft'>
+            <img src='./public/img/tabs1.png' class='tabs' id='tabs1img' usemap='#tabs1' width='238' height='69'/>
+            <map name='tabs1'>
+              <area shape='rect' class='required' id='setup' coords='3,25,47,42' />
+              <area shape='rect' class='required' id='search' coords='48,25,91,42' />
+              <area shape='rect' class='required' id='tune' coords='93,25,133,42' />
+              <area shape='rect' class='wx' id='stem' coords='134,25,175,42' />
+              <area shape='rect' id='fegregtab1' coords='176,25,199,42' />
+              <area shape='rect' class='leftbutton' coords='201,27,216,42' />
+              <area shape='rect' class='rightbutton' coords='217,27,233,42' />
+            </map>
+          </div>
+          <div id='tabsright' class='hidden'>
+            <img src='./public/img/tabs2.png' class='tabs' id='tabs2' usemap='#tabs2' width='238' height='69'/>
+            <map name='tabs2'>
+              <area shape='rect' id='fegregister' coords='4,25,78,42' />
+              <area shape='rect' id='eftem' coords='79,25,124,42' />
+              <area shape='rect' id='darkfield' coords='125,25,188,42' />
+              <area shape='rect' class='leftbutton' coords='201,27,216,42' />
+              <area shape='rect' class='rightbutton' coords='217,27,233,42' />
+            </map>
+          </div>
+        </td>
+        <td rowspan='3'>
+          <div class='hidden' id='aztecdiv'>
+            <table id='aztecscreen'>
+              <tr>
+                <td colspan='2'>
+                  <div>
+                    <img id='aztecfilebar' src='./public/img/aztecfilebar.png' class='tableimage'>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <!--headers divs  -->
+                  <div id='pandiheader'>
+                    <img id='pandiheaderimg' width='1460' height='120' usemap='#pandiheadermap' src='./public/img/pandidescribeheader.png' class='tableimage aztecheaderimg' />
+                    <map name='pandiheadermap'>
+                      <area shape='rect' class='aztecinfodropdown' coords='126,48,275,72' />
+                      <area shape='rect' id='pandidescribebutton' coords='289,10,389,111' />
+                      <area shape='rect' id='pandiscanbutton' coords='390,10,465,111' />
+                      <area shape='rect' id='pandiacquirebutton' coords='466,10,550,111' />
+                      <area shape='rect' id='pandiconfirmbutton' coords='551,10,626,111' />
+                      <area shape='rect' id='pandicalculatebutton' coords='627,10,704,111' />
+                    </map>
+
+                  </div>
+                  <div class='hidden' id='analyzerheader'>
+                    <img id='analyzerheaderimg' width='1460' height='120' usemap='#analyzerheadermap' src='./public/img/analyzerdescribeheader.png' class='tableimage aztecheaderimg' />
+                    <map name='analyzerheadermap'>
+                      <area shape='rect' class='aztecinfodropdown' coords='126,48,275,72' />
+                      <area shape='rect' id='analyzerdescribebutton' coords='289,10,389,111' />
+                      <area shape='rect' id='analyzeracquirebutton' coords='390,10,465,111' />
+                      <area shape='rect' id='analyzerconfirmbutton' coords='466,10,550,111' />
+                      <area shape='rect' id='analyzercalculatebutton' coords='551,10,626,111' />
+                    </map>
+                  </div>
+
+                  <div class='hidden' id='linescanheader'>
+                    <img id='linescanheaderimg' width='1460' height='120' usemap='#linescanheadermap' src='./public/img/linescandescribeheader.png' class='tableimage aztecheaderimg' />
+                    <map name='linescanheadermap'>
+                      <area shape='rect' class='aztecinfodropdown' coords='126,48,275,72' />
+                      <area shape='rect' id='linescandescribebutton' coords='289,10,389,111' />
+                      <area shape='rect' id='linescanscanbutton' coords='390,10,465,111' />
+                      <area shape='rect' id='linescanacquirebutton' coords='466,10,550,111' />
+                      <area shape='rect' id='linescanconstructbutton' coords='551,10,626,111' />
+                    </map>
+                  </div>
+
+                  <div class='hidden' id='mapheader'>
+                    <img id='mapheaderimg' width='1460' height='120' usemap='#mapheadermap' src='./public/img/mapdescribeheader.png' class='tableimage aztecheaderimg' />
+                    <map name='mapheadermap'>
+                      <area shape='rect' class='aztecinfodropdown' coords='126,48,275,72' />
+                      <area shape='rect' id='mapdescribebutton' coords='289,10,389,111' />
+                      <area shape='rect' id='mapscanbutton' coords='390,10,465,111' />
+                      <area shape='rect' id='mapacquirebutton' coords='466,10,550,111' />
+                      <area shape='rect' id='mapconstructbutton' coords='551,10,626,111' />
+                    </map>
+                  </div>
+
+                  <div class='hidden' id='optimizeheader'>
+                    <img id='optimizeheaderimg' width='1460' height='120' usemap='#optimizeheadermap' src='./public/img/optimizecalibrateheader.png' class='tableimage aztecheaderimg' />
+                    <map name='optimizeheadermap'>
+                      <area shape='rect' class='aztecinfodropdown' coords='126,48,275,72' />
+                      <area shape='rect' id='optimizecalibratebutton' coords='610,20,696,103' />
+                      <area shape='rect' id='optimizestandardizebutton' coords='702,20,785,103' />
+                      <area shape='rect' id='optimizepileupbutton' coords='789,20,872,103' />
+                    </map>
+                  </div>
+                </td>
+
+                <td rowspan='2'>
+                  <div>
+                    <img id='aztecsidebar' src='./public/img/pandisidebar.png' class='tableimage'>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <!-- main image divs -->
+                  <div id='pandimain' class='aztecmaindiv'>
+                    <div id='pandidescribemain' class='pandimain'>
+                      <img id='pandidescribemainimg' width='1457' height='837' src='./public/img/pandidescribemain.png' class='tableimage aztecmainimage'>
+                    </div>
+                    <div id='pandiacquiremain' class='pandimain hidden'>
+                      <img id='pandiacquiremainimg' width='1457' height='837' usemap='#aztecacquiremap' src='./public/img/pandiacquiremain.png' class='tableimage aztecmainimage'>
+                      <map name='aztecacquiremap'>
+                        <area shape='rect' id='aztecacquiresettingsbutton' coords='709,11,791,33' />
+                      </map>
+                    </div>
+                    <div id='pandiscanmain' class='pandimain hidden'>
+                      <img id='pandiscanmainimg' width='1457' height='837' usemap='#none' src='./public/img/pandiscanmain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='pandiconfirmmain' class='pandimain hidden'>
+                      <img id='pandiconfirmmainimg' width='1457' height='837' usemap='#none' src='./public/img/pandiconfirmmain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='pandicalculatemain' class='pandimain hidden'>
+                      <img id='pandicalculatemainimg' width='1457' height='837' usemap='#none' src='./public/img/pandicalculatemain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                  </div>
+
+                  <div id='analyzermain' class='aztecmaindiv hidden'>
+                    <div id='analyzerdescribemain' class='analyzermain'>
+                      <img id='analyzerdescribemainimg' width='1457' height='837' usemap='#none' src='./public/img/analyzerdescribemain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='analyzeracquiremain' class='analyzermain hidden'>
+                      <img id='analyzeracquiremainimg' width='1457' height='837' usemap='#none' src='./public/img/analyzeracquiremain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='analyzerconfirmmain' class='analyzermain hidden'>
+                      <img id='analyzerconfirmmainimg' width='1457' height='837' usemap='#none' src='./public/img/analyzerconfirmmain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='analyzercalculatemain' class='analyzermain hidden'>
+                      <img id='analyzercalculatemainimg' width='1457' height='837' usemap='#none' src='./public/img/analyzercalculatemain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                  </div>
+
+                  <div id='linescanmain' class='aztecmaindiv hidden'>
+                    <div id='linescandescribemain' class='linescanmain'>
+                      <img id='linescandescribemainimg' width='1457' height='837' usemap='#none' src='./public/img/linescandescribemain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='linescanscanmain' class='linescanmain hidden'>
+                      <img id='linescanscanmainimg' width='1457' height='837' usemap='#none' src='./public/img/linescanscanmain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='linescanacquiremain' class='linescanmain hidden'>
+                      <img id='linescanacquiremainimg' width='1457' height='837' usemap='#none' src='./public/img/linescanacquiremain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='linescanconstructmain' class='linescanmain hidden'>
+                      <img id='linescanconstructmainimg' width='1457' height='837' usemap='#none' src='./public/img/linescanconstructmain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                  </div>
+
+                  <div id='mapmain' class='aztecmaindiv hidden'>
+                    <div id='mapdescribemain' class='mapmain'>
+                      <img id='mapdescribemainimg' width='1457' height='837' usemap='#none' src='./public/img/mapdescribemain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='mapscanmain' class='mapmain hidden'>
+                      <img id='mapscanmainimg' width='1457' height='837' usemap='#none' src='./public/img/mapscanmain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='mapacquiremain' class='mapmain hidden'>
+                      <img id='mapacquiremainimg' width='1457' height='837' usemap='#none' src='./public/img/mapacquiremain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='mapconstructmain' class='mapmain hidden'>
+                      <img id='mapconstructmainimg' width='1457' height='837' usemap='#none' src='./public/img/mapconstructmain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                  </div>
+
+                  <div id='optimizemain' class='aztecmaindiv hidden'>
+                    <div id='optimizecalibratemain' class='optimizemain'>
+                      <img id='optimizecalibratemainimg' width='1457' height='837' usemap='#none' src='./public/img/optimizecalibratemain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='optimizestandardizemain' class='optimizemain hidden'>
+                      <img id='optimizestandardizemainimg' width='1457' height='837' usemap='#none' src='./public/img/optimizestandardizemain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                    <div id='optimizepileupmain' class='optimizemain hidden'>
+                      <img id='optimizepileupmainimg' width='1457' height='837' usemap='#none' src='./public/img/optimizepileupmain.png' class='tableimage aztecmainimage'>
+                      <map name='none'>
+                      </map>
+                    </div>
+                  </div>
+
+                </td>
+              </tr>
+              <tr>
+                <td colspan='2'>
+                  <div>
+                    <img id='aztecbottombar' src='./public/img/pandistatus.png' class='tableimage'>
+                  </div>
+                </td>
+              </tr>
+
+            </table>
+
+          </div>
+          <div id='mainmicroscopediv'>
+            <canvas class='mainmicroscopecanvas' id='mainmicroscopecanvas' width='1500' height='700'>
+            </canvas>
+            <canvas class='mainmicroscopecanvas' id='mainmicroscopecanvasglow' width='1500' height='700'>
+            </canvas>
+          </div>
+          <img src='./public/img/mainscreenblank2.png' class='mainwindow wx' id='mainimage' usemap='#mainscreen' width='1437' height='1019'/>
+          <input id='viewexposure' class='exposureinput' type='number' value='0.2' disabled>
+          <input id='acquireexposure' class='exposureinput' type='number' value='1' disabled>
+          <div id='objdisplay'>
+            <span id='objvalue' class='mainscreenvalue'></span>
+          </div>
+          <div id='magnificationdisplay'>
+            <span id='magnificationvalue'>  ---- x</span>
+          </div>
+          <div id='focusstepdisplay'>
+            <span id='focusstepvalue' class='mainscreenvalue'>3</span>
+          </div>
+          <div id='spotsizedisplay'>
+            <span id='spotsizevalue' class='mainscreenvalue'>5</span>
+          </div>
+          <div id='defocusdisplay'>
+            <span id='defocusvalue' class='mainscreenvalue'>Defoc.:       0 nm</span>
+          </div>
+          <div id='xdisplay'>
+            <span id='xvalue' class='mainscreenvalue'>0.00</span>
+          </div>
+          <div id='ydisplay'>
+            <span id='yvalue' class='mainscreenvalue'> 0.00</span>
+          </div>
+          <div id='zdisplay'>
+            <span id='zvalue' class='mainscreenvalue'>0.00</span>
+          </div>
+          <div id='alphadisplay'>
+            <span id='alphavalue' class='mainscreenvalue'>0.00</span>
+          </div>
+          <div id='betadisplay'>
+            <span id='betavalue' class='mainscreenvalue'>0.00</span>
+          </div>
+          <map name='mainscreen' id='mainscreen'>
+            <area shape='rect' id='filebutton' coords='6,72,31,83' />
+            <area shape='rect' id='openbutton' coords='13,91,34,105' />
+            <area shape='rect' id='savebutton' coords='60,91,79,105' />
+            <area shape='rect' class='wx' id='startacquire' coords='61,445,135,476' />
+            <area shape='rect' id='mainscreendropdown' coords='1293,878,1409,895' />
+            <area shape='rect' id='closedrop' coords='1410,879,1425,895' />
+            <area shape='rect' id='startview' coords='78,236,139,257' testprop='1,2,3,4' />
+          </map>
+        </td>
+      </tr>
+      <tr>  
+        <td>
+          <div id='leftcolsetup'>
+            <img src='./public/img/vacuummenuclosed.png' class='leftcol' id='leftcolumnvacuum' usemap='#vacuum' width='243' height='224' />
+            <map name='vacuum' id='vacuum'>
+              <area shape='rect' id='colvalves' coords='12,169,77,204' />
+              <area shape='rect' id='turbo' coords='87,169,152,204' />
+            </map>  
+            <img src='./public/img/hightension.png' class='leftcol' id='leftcolumntension' usemap='#tension' width='243' height='225' />
+            <map name='tension'>
+              <area shape='rect' id='hightension' coords='13,40,86,62' />
+            </map>
+            <img src='./public/img/fegcontrol.png' class='leftcol' id='leftcolumnfegcontrol' usemap='#feg' width='243' height='225'/>
+            <map name='feg'>
+              <area shape='rect' id='gunLenseUp' coords='134,40,149,48' />
+              <area shape='rect' id='gunLenseDown' coords='134,49,149,59' />
+              <area shape='rect' id='extractUp' coords='134,66,149,74' />
+              <area shape='rect' id='extractDown' coords='134,75,149,84' />
+              <area shape='rect' id='extractSubmit' coords='192,66,204,84' />
+              <area shape='rect' id='operate' coords='13,40,77,62' />
+            </map>
+            <img src='./public/img/filler.png' class='leftcol' id='leftcolumnsetupfiller' width='240' height='119'/>
+            <div id='leftcolsetuptext'>
+              <p class='wintext' id='extractFinal'>4500 V </p>
+              <p class='wintext' id='kvval'>200 kV</p>
+              <p class='wintext' id='extractVal'>3500 V</p>
+              <p class='wintext' id='gunLenseVal'>1</p>
+              <p class='wintext' id='fegvalue'>69</p>
+            </div>
+          </div>
+          <div id='leftcolsearch' class='hidden'>
+            <img class='leftcol' id='leftcolumnstage' src='./public/img/stage.png' width='239' height='448'/>
+            <img class='leftcol' id='leftcolumnbeamsettings' src='./public/img/beamsettingsmicro.png' usemap='#leftcolbeamsettings' width='239' height='225'/>
+            <map name='leftcolbeamsettings' id='leftcolbeamsettings'> 
+              <area shape='rect' id='nano' coords='10,110,78,138' />
+              <area shape='rect' id='micro' coords='160,110,260,138' />
+            </map>
+            <img class='leftcol' id='leftcolumnsearchfiller' src='./public/img/filler.png' width='240' height='119'/>
+            <input type='range' id='beamrange' name='beamrange' value='5' min='1' max='11'>
+            <p id='beamvalue'>5</p>
+          </div>
+          <div id='leftcoltune' class='hidden'>
+            <img class='leftcol' id='leftcolumnstigmator' src='./public/img/stigmator.png' usemap='#tunestig' width='243' height='225'/>
+            <map name='tunestig' id='tunestig'>
+              <!--area shape='rect' id='tuneexpand' coords='219,6,234,21' /-->
+              <area shape='rect' id='tunecondensor' coords='12,40,77,62' />
+              <area shape='rect' id='tuneobjective' coords='87,40,152,62' />
+              <area shape='rect' id='tunediffraction' coords='162,40,227,62' />
+              <area shape='rect' id='tunenone' coords='12,76,77,98' />
+            </map>
+            <img class='leftcol' id='leftcolumnalignments' src='./public/img/alignments.png' usemap='#tunealign' width='243' height'450'/>
+            <map name='tunealign' id='tunealign'>
+              <area shape='rect' id='tunealignexpand' coords='217,6,234,21' />
+              <area shape='rect' id='tunealignleft' coords='47,217,75,239' />
+              <area shape='rect' id='tunealignright' coords='81,217,109,239' />
+              <area shape='rect' id='tunealigndone' coords='162,217,227,239' />
+            </map>
+            <img id='leftcolumnnotification' class='hidden' src='./public/img/tunenotif.png'/>
+            <img class='leftcol' id='leftcolumntunefiller' src='./public/img/filler.png' width='240' height='119' />
+            <div id='alignmenttexttune'>
+              <ul class='alignmenttextdata'>
+              </ul>
+            </div>
+            <div id='alignmenthelptune'></div>
+            <div id='tunealignmentstepdisplay'>
+              <span id='tunealignmentstepvalue'></span>
+            </div>
+          </div>
+          <div id='leftcolstem' class='hidden'>
+            <img class='leftcol' id='leftcolumnimaging' src='./public/img/imaging.png' width='243' height='225'/>
+            <img class='leftcol' id='leftcolumndetector' src='./public/img/detector.png' width='243' height='225'/>
+            <img class='leftcol' id='leftcolumndirectalignments' src='./public/img/directalignments.png' width='243' height='225'/>
+            <img class='leftcol' id='leftcolumnstemfiller' src='./public/img/filler.png' width='240' height='119'/>
+          </div>
+          <div id='leftcolfegregister' class='hidden'>
+            <img class='leftcol' id='leftcolumnfegregisters' src='./public/img/fegregisters.png' width='243' height='226'/>
+            <img class='leftcol' id='leftcolumnfegregisteralignments' src='./public/img/alignments.png' usemap='#fegregalign' width='243' height='450'/>
+            <map name='fegregalign' id='fegregalign'>
+              <area shape='rect' id='fegregalignleft' coords='47,217,75,239' />
+              <area shape='rect' id='fegredalignright' coords='81,217,109,239' />
+            </map>
+            <object id='alignmenttextfeg' data='./public/docs/alignmentboxfeg.html'></object>
+            <object id='alignmenthelpfeg'></object>
+            <img class='leftcol' id='leftcolumnregisterfiller' src='./public/img/filler.png' width='240' height='119'/>
+          </div>
+          <div id='leftcoleftem' class='hidden'>
+            <img class='leftcol' id='leftcolumnfilter' src='./public/img/filter.png' width='242' height='226'/>
+            <img class='leftcol' id='leftcolumnpeels' src='./public/img/peels.png' width='242' height='225'/>
+            <img class='leftcol' id='leftcolumneftemstigmator' src='./public/img/stigmator.png' usemap='#stigmator' width='242' height='225'/>
+            <map name='stigmator' id='stigmator'>
+              <area shape='rect' id='stigexpand' coords='217,5,232,19' />
+              <area shape='rect' id='condensor' coords='12,40,77,62' />
+              <area shape='rect' id='objective' coords='87,40,152,62' />
+              <area shape='rect' id='diffraction' coords='162,40,227,62' />
+              <area shape='rect' id='none' coords='12,76,77,98' />
+            </map>
+            <img class='leftcol' id='leftcolumneftemfiller' src='./public/img/filler.png' width='240' height='119'/>
+          </div>
+          <div id='leftcoldarkfield' class='hidden'>
+            <img class='leftcol' id='leftcolumndarkfield' src='./public/img/darkfield.png' width='243' height='225' />  
+            <img class='leftcol' id='leftcolumnholography' src='./public/img/holography.png' width='243' height='225'/>
+            <img class='leftcol' id='leftcolumndarkfieldfiller' src='./public/img/filler.png' width='240' height='119'/>
+          </div>
+        </td>
+      </tr>
+      <tr>  
+        <td>
+          <img src='./public/img/infopanelnomxmyr2.png' id='infopanel' widht='244' height='150'/>
+          <div id='mfxdisplay'>
+            <span id='mfxvalue' class='infopanelvalue'></span>
+          </div>
+          <div id='mfydisplay'>
+            <span id='mfyvalue' class='infopanelvalue'></span>
+          </div>
+          <div id='r2display'>
+            <span id='r2value' class='infopanelvalue'></span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan='2'>
+          <p id='clock'>12:00 AM</p>
+          <img id='startmenu' src='./public/img/startmenu.png' usemap='#startmenu' height='29' width'1680'/>
+          <map name='startmenu' id='startmenu'>
+            <area shape='rect' id='filtercontrol' coords='69,4,228,23' />
+            <area shape='rect' id='micrographstart' coords='232,4,389,23' />
+            <area shape='rect' id='temuistart' coords='395,4,552,23' />
+            <!-- <area shape='rect' id='unused' coords='559,4,710,23' /> -->
+            <area shape='rect' id='aztec' coords='719,4,879,23' />
+            <!-- <area shape='rect' id='unused' coords='883,4,1045,23' /> -->
+            <!-- <area shape='rect' id='unused' coords='1046,3,1205,24' /> -->
+          </map>
+        </td>
+      </tr>
+      <tr>
+        <td colspan='2'>
+          <div id='button-div'>
+            <button type='button' id='columnbtn' class='external-button first'>Microscope Column</button>
+            <button type='button' id='controlbtn' class='external-button'>Microscope Controls</button>
+            <button type='button' id='setupbtn' class='external-button'>Microscope Setup</button>
+            <button type='button' id='lecturebtn' class='external-button'>Lecture</button>
+            <button type='button' id='qabtn' class='external-button'>Q&A</button>
+            <button type='button' id='examplebtn' class='external-button'>Examples and Applications</button>
+            <button type='button' id='homeworkbtn' class='external-button'>Homework</button>
+            <button type='button' id='curriculumbtn' class='external-button'>My Curriculum</button>
+            <button type='button' id='notepadbtn' class='external-button'>Notepad</button>
+            <button type='button' id='helpbtn' class='external-button'>Help</button>
+            <button type='button' id='labbtn' class='external-button last'>PSU Lab Session</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div id='microControls' class='hidden'>
+      <div id='controlsinstruction'>
+        <span id='controlsinstructiontext'>Click and drag to use dials and trackballs.</span>
+      </div>
+      <div id='apertures'>
+        <div id='c2label' class='aperturelabel'>C2 Aperture: 4</div>
+        <img id='c2image' class='apertureimage' src='./public/img/C21.png' usemap='#c2settings' width='552' height='475'/>
+        <map name='c2settings'>
+          <area shape='circle' id='c21' coords='391,204,43'/>
+          <area shape='circle' id='c22' coords='355,329,44'/>
+          <area shape='circle' id='c23' coords='235,389,51'/>
+          <area shape='circle' id='c24' coords='113,334,55'/>
+          <area shape='circle' id='c2xdial' coords='237,232,90'/>
+          <area shape='rect' id='c2ydial' coords='495,183,550,294'/>
+        </map>
+        <div id='objectivelabel' class='aperturelabel'>Objective Aperture: 3</div>
+        <img id='objectiveimage' class='apertureimage' src='./public/img/Objective1.png' usemap='#objectivesettings' width='592' height='520' />
+        <map name='objectivesettings'>
+          <area shape='circle' id='objective1' coords='354,108,44'/>
+          <area shape='circle' id='objective2' coords='413,195,41'/>
+          <area shape='circle' id='objective3' coords='407,300,39'/>
+          <area shape='circle' id='objective4' coords='345,386,42'/>
+          <area shape='circle' id='objective5' coords='242,420,43'/>
+          <area shape='circle' id='objective6' coords='143,387,43'/>
+          <area shape='circle' id='objective7' coords='85,301,39'/>
+          <area shape='circle' id='objectivexdial' coords='190,193,101'/>
+          <area shape='rect' id='objectiveydial' coords='517,190,591,314'/>
+        </map>
+        <div id='saedlabel' class='aperturelabel'>SAED Aperture: Out</div>
+        <img id='saedimage' class='apertureimage' src='./public/img/SAED.png' usemap='#saedsettings' width='551' height='786'/>
+        <map name='saedsettings'>
+          <area shape='circle' id='saed1' coords='394,434,43'/>
+          <area shape='circle' id='saed2' coords='358,557,46'/>
+          <area shape='circle' id='saed3' coords='235,617,49'/>
+          <area shape='circle' id='saed4' coords='108,567,50'/>
+          <area shape='circle' id='saedxdial' coords='188,333,123'/>
+          <area shape='rect' id='saedydial' coords='489,417,544,531'/>
+          <area shape='rect' id='saedswitch' coords='100,670,370,777'/>
+        </map>
+      </div>
+      <div id='leftControllerDiv'>
+        <img class='controls' id='controlsLeft' src='./public/img/controlsLeftLabeled.png' usemap='#leftcontrol' width='500' height='325' /> 
+        <map name='leftcontrol' id='leftcontrol'>
+          <area shape='poly' id='beamstepdown' coords='340,11,373,11,373,29,346,44,334,44' />
+          <area shape='poly' id='beamstepup' coords='393,19,423,27,423,60,417,60,393,32' />
+          <area shape='circle' id='buttontoprow1' coords='91,91,15' />
+          <area shape='circle' id='buttonstigmator' coords='137,81,15' />
+          <area shape='circle' id='alphatiltleft' coords='193,77,11' />
+          <area shape='circle' id='alphatiltright' coords='217,75,11' />
+          <area shape='circle' id='betatiltleft' coords='260,75,11' />
+          <area shape='circle' id='betatiltright' coords='284,75,11' />
+          <area shape='circle' id='buttonl1' coords='450,111,15' />
+          <area shape='circle' id='buttonl2' coords='460,153,15' />
+          <area shape='circle' id='buttonl3' coords='455,200,15' />
+          <area shape='circle' id='buttonrollerl' coords='379,60,30' />
+          <area shape='circle' id='buttonintensity' coords='261,129,25' />
+          <area shape='circle' id='multix' coords='123,150,17' />
+          <area shape='circle' id='multistepdown' coords='67,164,11' />
+          <area shape='circle' id='multistepup' coords='90,161,11' />
+          <area shape='circle' id='intensitystepdown' coords='204,150,11' />
+          <area shape='circle' id='intensitystepup' coords='227,148,11' />
+        </map>
+      </div>
+      <div id='rightControllerDiv'>
+        <img class='controls' id='controlsRight' src='./public/img/controlsRightLabeled.png' usemap='#rightcontrol' width='500' height='325' />
+        <map name='rightcontrol' id='rightcontrol'>
+          <area shape='poly' id='buttonpolyleftr' coords='75,26,102,20,105,33,85,58,75,59' />
+          <area shape='poly' id='buttonpolyrightr' coords='127,13,161,13,167,42,151,44,127,49' />
+          
+          <area shape='square' id='buttonupr' coords='201,63,232,76' />
+          <area shape='square' id='buttondownr' coords='201,78,232,89' />
+          <area shape='circle' id='buttontop1r' coords='263,73,20' />
+          <area shape='circle' id='buttontop2r' coords='307,75,20' />
+          <area shape='circle' id='buttondiffraction' coords='362,82,15'>
+          <area shape='circle' id='buttontop4r' coords='407,90,20' />
+          <area shape='circle' id='buttonr1' coords='49,111,15' />
+          <area shape='circle' id='buttonr2' coords='39,153,15' />
+          <area shape='circle' id='buttonr3' coords='45,200,15' />
+          <area shape='circle' id='buttonrollerr' coords='122,66,25' />
+          <area shape='circle' id='buttonfocus' coords='236,131,16' />          
+          <area shape='circle' id='buttonfocusstep' coords='239,137,22' />       
+          <area shape='circle' id='buttonmagnification' coords='301,136,25' />
+          <area shape='circle' id='multiy' coords='377,150,17' />
+        </map>
+        <div id='r1warning' class='hidden'>
+          <span id='r1text'>Warning: pressing this button may cause damage to the microscope.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating box divs -->
+    <div id='vacuumoverview' class='hidden'>
+      <img id='vacuumimg' src='./public/img/vacuumclosed.png' width='384' height='559'  />
+    </div>
+
+    <div id='floatingstigmatordiv' class='hidden'>
+      <img id='floatingstigmator' src='./public/img/stigmator.png' usemap='#floatstig' width='243' height='225'/>
+      <map name='floatstig' id='floatstig'>
+        <!--area shape='rect' id='floatexpand' coords='219,6,234,21' /-->
+        <area shape='rect' id='floatcondensor' coords='12,40,77,62' />
+        <area shape='rect' id='floatobjective' coords='87,40,152,62' />
+        <area shape='rect' id='floatdiffraction' coords='162,40,227,62' />
+        <area shape='rect' id='floatnone' coords='12,76,77,98' />
+      </map>
+      <!--input id='floatcondensorx' size='2' style='position:absolute; top:145px; left:24px' value=100>
+      <input id='floatcondensory' size='2' style='position:absolute; top:181px; left:24px' value=100>
+      <input id='floatdiffractionx' size='2' style='position:absolute; top:145px; left:168px' value=64>
+      <input id='floatdiffractiony' size='2' style='position:absolute; top:181px; left:168px' value=64-->
+    </div>
+
+    <div id='columndiv' class='hidden'>
+      <img id='microscopebg' src='./public/img/TEM_04blue.png'/>
+      <canvas id='columncanvas'></canvas>
+      <canvas id='labelcanvas'></canvas>
+    </div>
+
+    <div id='columndivzoom' class='hidden'>
+      <img id='zoomexit' src='./public/img/exitbox.png' />
+      <div id='zoomedwrapperdiv'>
+        <canvas id='columncanvaszoom'></canvas>
+        <canvas id='labelcanvaszoom'></canvas>
+      </div>
+    </div>
+
+    <div id='maindropdown' class='hidden'>
+      <div id='maindropdowntext'>
+        <ul id='maindroplist'>
+          <li class='highlightitem'>- None -</li>
+          <li class='highlightitem' id='alignmentdrop'>Alignments</li>
+          <li class='highlightitem'>Application Preferences</li>
+          <li class='highlightitem'>Application Selection</li>
+          <li class='highlightitem'>Control Pads</li>
+          <li class='highlightitem'>Dark Field</li>
+          <li class='highlightitem' id='directalignmentdrop'>Direct Alignments</li>
+          <li class='highlightitem'>FEG Control (Expert)</li>
+          <li class='highlightitem'>FEG Registers</li>
+          <li class='highlightitem'>Filter</li>
+          <li class='highlightitem'>High Tension</li>
+          <li class='highlightitem'>Holography</li>
+          <li class='highlightitem'>Normalizations</li>
+          <li class='highlightitem'>Peels</li>
+          <li class='highlightitem'>STEM Detector (User)</li>
+          <li class='highlightitem'>STEM Detector (Expert)</li>
+          <li class='highlightitem' id='stigmatordrop'>Stigmator</li>
+          <li class='highlightitem'>System Status</li>
+          <li class='highlightitem vacuumbutton'>Vacuum (User)</li>
+          <li class='highlightitem vacuumbutton'>Vacuum Overview</li>
+          <li class='highlightitem'>Workspace Layout</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id='filtercontroldiv' class='hidden'>
+      <img src='./public/img/filtercontrol.png' usemap='#filtercontrolwindow' width='256' height='822'/>
+      <map name='filtercontrolwindow' id='filtercontrolwindow'>
+        <area shape='rect' id='filtercontrolclosebox' coords='234,6,250,19' />
+      </map>
+    </div>
+
+    <div id='filemenu' class='hidden'>
+      <img src='./public/img/filedialogue.png' usemap='#filemenu' width='174' height='408'/>
+      <map name='filemenu'>
+        <area shape='rect' id='fileopen' coords='1,19,170,35' />  
+        <area shape='rect' id='filesaveas' coords='1,156,170,172' />  
+      </map>
+    </div>
+
+    <div id='openfiledialogue' class='hidden'>
+      <img src='./public/img/fileopendialogue.png' usemap='#openfile' width='712' height='563'/>
+      <map id='openfile' name='openfile'>
+        <area shape='rect' id='xbox' coords='689,7,705,22' />
+        <area shape='rect' id='cancel' coords='627,504,700,528' />
+        <area shape='rect' id='imagefile' coords='106,77,242,96' />
+      </map>  
+    </div>
+
+    <div id='deflectorbox' class='hidden'>
+      <img src='./public/img/Deflector.png' id='deflectorimg' usemap='#deflectormap' width='243' height='452' />
+      <ul id='filealignments' class='hidden'>
+        <li id='factoryalignment'>Factory alignment</li>
+        <li id='supervisoralignment'>Supervisor alignment</li>
+      </ul>
+      <map name='deflectormap'>
+        <area shape='rect' id='deflectortab' coords='10,5,69,26' />
+        <area shape='rect' id='filetab' coords='71,5,130,26' />
+      </map>
+    </div>
+
+    <div id='errordiv' class='hidden'>
+      <h4 id='errortitle'>ERROR</h4>
+      <p id='errormessage'>What you're doing could be damaging to the microscope, please spread the beam to half screen before you use the CCD camera to acquire the image.</p>
+      <div style='text-align: center'>
+        <button id='errorokay'>OKAY</button>
+      </div>
+    </div>
+
+    <div id='directalignmentspopout' class='hidden'>
+      <div id='directalignmentspopouttext'>
+        <ul id='directalignmentslist'>
+          <li class='highlightitem' id='daguntilt' title='Tilt the gun within the beam'>Gun Tilt</li>
+          <li class='highlightitem' id='dagunshift' title='Position the gun within the beam'>Gun Shift</li>
+          <li class='highlightitem ppxtoggle' title='Shrink rotation size'>Beam tilt pp X</li>
+          <li class='highlightitem ppytoggle' title='Shrink rotation size'>Beam tilt pp Y</li>
+          <li class='highlightitem' id='dabeamshift' title='Position the beam'>Beam shift</li>
+          <li class='highlightitem' id='darotationcenter' title='Minimize wobbling'>Rotation center</li>
+          <li class='highlightitem' id='dacomafreealignmentx' title='Make the diffractograms match'>Coma-free Alignment X</li>
+          <li class='highlightitem' id='dacomafreealignmenty' title='Make the diffractograms match'>Coma-free Alignment Y</li>
+          <li class='highlightitem ppxtoggle' title='Shrink rotation size'>Coma-free Pivot Point X</li>
+          <li class='highlightitem ppytoggle' title='Shrink rotation size'>Coma-free Pivot Point Y</li>
+        </ul>
+      </div>
+      <img src='./public/img/directalignmentspopout.png' usemap='#directalignmentbuttons' width='242' height='225' />
+      <map id='directalignmentbuttons' name='directalignmentbuttons'>
+        <area shape='rect' id='dadone' coords='11, 182, 76, 204' />
+      </map>
+      <input id='daautohelp' type='checkbox' checked>
+    </div>
+
+    <div class='hidden' id='aztecdropdown'>
+      <ul>
+        <li id='aztecdropdownanalyzer'>Analyzer</li>
+        <li id='aztecdropdownpointandid'>Point & ID</li>
+        <li id='aztecdropdownlinescan'>Linescan</li>
+        <li id='aztecdropdownmap'>Map</li>
+        <li id='aztecdropdownorganize'>Optimize</li>
+      </ul>
+    </div>
+
+    <div class='hidden' id='aztecacquiresettings'>
+      <div id='azctecsettingsbox'>
+        <div class='aztecsettingsheader'>
+          EDS Acquire Spectrum Settings
+          <img src='./public/img/pin.svg'>
+          <img id='azteccloseicon' src='./public/img/close.svg'>
+        </div>
+        <div class='aztecsettingsoptions'>
+          <div class='aztecsetting'>Energy Range (keV): 
+            <select>
+              <option value='auto'>Auto</option>
+              <option value='10'>10</option>
+              <option value='20'>20</option>
+              <option value='40'>40</option>
+            </select>
+          </div>
+          <div class='aztecsetting'>
+            Number of Channels:
+            <select>
+              <option value='auto'>Auto</option>
+              <option value='1024'>1024</option>
+              <option value='2048'>2048</option>
+              <option value='4096'>4096</option>
+            </select>
+          </div>
+          <div class='aztecsetting'>
+            Process Time:
+            <select>
+              <option value='default'>Default</option>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+              <option value='5'>5</option>
+              <option value='6'>6</option>
+            </select>
+          </div>
+          <div class='aztecsetting'>
+            Acquisition Mode:
+            <select>
+              <option value='auto'>Auto</option>
+              <option value='livetime'>Live Time</option>
+              <option value='counts'>Counts</option>
+            </select>
+          </div>
+          <div class='aztecsetting'>Count Limit: <input type='number' value='500000'></div>
+          <div class='aztecsetting'><input type='checkbox'>Pulse Pile Up Correction</div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Canvas Divs -->
+    <div id='openbox' class='hidden'>
+      <canvas class='micrographboxcanvas' id='micrographboxcanvas' width='518' height='537' >
+      </canvas>
+      <canvas class='micrographboxcanvas' id='micrographboxcanvasglow' width='518' height='537'>
+      </canvas>
+      <img src='./public/img/openbox.png' usemap='#micrographbox' id='openboxborder' width='518' height='537'/>
+      <map id='micrographbox' name='micrographbox'>
+        <area shape='rect' id='micrographxbox' coords='497,6,512,20' />
+      </map>
+    </div>
+
+    <div id='basesetup' class='hidden'>
+      <canvas class='setupcanvas' id='setupboxcanvas' width='518' height='537' >
+      </canvas>
+      <canvas class='setupcanvas' id='setupboxcanvasglow' width='518' height='537'>
+      </canvas>
+      <canvas class='hidden' id='setupboxcanvasimage' width='3' height='3' >
+      </canvas>
+      <img src='./public/img/basesetupwindowdarkblue.png' usemap='#setupbox' id='basesetupbox' width='520' height='539'/>
+      <img src='./public/img/screenmirroredrotated.png' id='setupcrosshair' width='1071' height='1071'/>
+      <map id='setupbox' name='setupbox'>
+        <area shape='circle' id='setupboxxbox' coords='506,10,15' />
+      </map>
+    </div>
+
+    <div id='diffractograms' class='hidden'>
+      <img src='./public/img/noise1024.png' id='noise' style="display:none">
+      <div class='stage'>
+        <canvas class='diffractogramcanvas' id='diffractogram1' width='256' height='256'></canvas>
+      </div>
+      <div class='stage'>          
+        <canvas class='diffractogramcanvas' id='diffractogram2' width='256' height='256'></canvas>
+      </div>
+    </div>
+
+    <!--iframe divs-->
+    <div id='popplaceholder' class='hidden'>
+      <iframe class='popcontent'></iframe>
+    </div>
+    <div id='qanda' class='popcontainer'>
+      <iframe class='popcontent' src='public/html/QandA.html'></iframe>
+    </div>
+    <div id='examples' class='popcontainer'>
+      <iframe class='popcontent' src='public/html/sphere.html'></iframe>
+    </div>
+    <div id='homework' class='popcontainer'>
+      <iframe id='homeworkiframe' class='popcontent' src='public/html/hw2.html'></iframe>
+    </div>
+    <div id='curriculum' class='popcontainer'>
+      <iframe class='popcontent' src='public/html/syllabus.html'></iframe>
+    </div>
+    <!--div id='generalhelp' class='popcontainer'>
+      <iframe class='popcontent' src='public/docs/OEMP Functions.htm'></iframe>
+    </div-->
+    <div id='learningmode' class='popcontainer'>
+      <iframe class='popcontent' src='public/html/learningmode.html'></iframe>
+    </div>
+
+    <div id='lecturediv' class='hidden'>
+      <!--img id='blocker' src='public/img/iconmonstr-x-mark-1-240.png'-->
+      <iframe id='temlecture' src="public/html/ch1v1.html" width='582' height='360'></iframe>
+      <br>
+      <span id='speakernotesinfo' class='lecturecontrol'>Read speaker notes aloud for slide number:</span>
+      <input id='slidenumber' type='number' class='lecturecontrol'>
+      <button id='speakernotesplay' class='lecturecontrol' disabled>►</button>
+      <button id='speakernotespause' class='lecturecontrol'>❚❚</button>
+      <button id='speakernotesstop' class='lecturecontrol'>◼</button>
+      <button id='fullscreenbtn' class='lecturecontrol'>Toggle fullscreen</button>
+      <br>
+      <button id='overviewbtn' class='lecturetab'>Overview</button>
+    </div>
+
+    <div id='tunehelppopup' class='hidden'>
+      <iframe id='tunehelpcontent' src='https://onedrive.live.com/embed?resid=4438293664F5F344%21183&authkey=AArU9KRe0jvE7vs&em=2' width='582' height='360'></iframe>
+    </div>
+
+    <div id='generalhelppopup' class='hidden'>
+        <iframe id='generalhelpcontent' src='public/docs/OEMP Functions.htm' width='582' height='360'></iframe>
+      </div>
+
+    <div id='notepad' class='hidden'>
+      <table style='display:inline'>
+        <tr>
+          <td rowspan="3"><textarea id='notes'></textarea></td>
+          <!--Button images found at https://iconmonstr.com/-->
+          <td style='padding-left:5px'><button id='closenotes'><img src='./public/img/iconmonstr-x-mark-1-240.png' alt='Close' width=30vw height=30vw style='padding:2px'></button></td>
+        </tr>
+        <tr>
+          <td style='padding-left:5px;padding-top:5px;padding-bottom:5px;'><button id='copynotes'><img src=./public/img/iconmonstr-clipboard-4-240.png alt='Copy' width=30vw height=30vw style='padding:2px'></button></td>
+        </tr>
+        <tr>
+          <td style='padding-left:5px'><button id='downloadnotes'><img src=./public/img/iconmonstr-download-4-240.png alt='Download' width=30vw height=30vw style='padding:2px'></button></td>
+        </tr>
+      </table>
+    </div>
+
+    <div id='grabbingdiv' class='hidden'></div>
+
+    <!--library imports-->
+    <script src='./public/js/jquery-3.2.1.min.js'></script>
+    <script src='./public/js/jquery-ui.min.js'></script>
+    <script src='./public/js/mapping.js'></script>
+    <script src='./public/js/jquery.imagemapster.js'></script>
+
+    <!--class declarations-->
+    <script src='./public/js/canvas.js'></script>
+    <script src='./public/js/alignmentBox.js'></script>
+    <script src='./public/docs/temlist/doc.js'></script>
+    <script src='./public/js/column.js'></script>
+    <script src='./public/js/simulatorData.js'></script>
+    
+    <!--onclick sets-->
+    <script src='./public/js/onclicks/column.js'></script>
+    <script src='./public/js/onclicks/setuptab.js'></script>
+    <script src='./public/js/onclicks/tabs.js'></script>
+    <script src='./public/js/onclicks/startmenu.js'></script>
+    <script src='./public/js/onclicks/mainscreen.js'></script>
+    <script src='./public/js/onclicks/searchtab.js'></script>
+    <script src='./public/js/onclicks/controller.js'></script>
+    <script src='./public/js/onclicks/tunetab.js'></script>
+    <script src='./public/js/onclicks/aztec.js'></script>
+
+    <!--functionality imports -->
+    <script src='./public/js/pagesetup.js'></script>
+    <script src='./public/js/clock.js'></script>
+    <script src='./public/js/onclick.js'></script>
+    <script src='./public/js/app.js'></script>
+    <script src='./public/js/diffractionFunctions.js'></script>
+    <script src='./public/js/CTFFunctions.js'></script>
+    <script src='./public/js/content.js'></script>
+    <script src='./public/js/alignmentFunctions.js'></script>
+    <script src='./public/js/textToSpeech.js'></script>
+    <!--script src='./public/js/userActivity.js'></script-->
+
+  </body>
+</html>

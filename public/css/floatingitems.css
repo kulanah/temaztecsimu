@@ -1,0 +1,501 @@
+#columndiv{
+  position: absolute;
+  height: 90vh;
+  width: 40vh;
+  background: black;
+  overflow: hidden;
+  border: 2px white solid;
+}
+
+.columnZoomButton{
+  cursor: pointer;
+}
+
+#microscopebg{
+  position: absolute;
+  height: 120vh;
+  width: 67.5vh;
+  left: -18.9vh;
+  top: -28vh;
+}
+
+#columndivzoom{
+  height: 40vh;
+  width: 40vh;
+  background: black;
+  border: 2px white solid;
+  overflow: hidden;
+  position: absolute;
+  top: 0vh;
+  left: 20vw;
+  
+}
+
+#zoomwrapperdiv{
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: center;
+}
+
+#columncanvaszoom{
+  width: 40vh;
+  display: block;
+  margin: auto;
+  padding: 0;
+}
+
+#labelcanvaszoom{
+  width: 40vh;
+  margin: auto;
+  padding: 0;
+  display: block;
+  /* width: 30vh; */
+}
+
+
+#zoomexit{
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+#leftControllerDiv{
+  position: absolute;
+  top: 64.1vh;
+  left: 0;
+}
+
+#rightControllerDiv{
+  position: absolute;
+  top: 64.1vh;
+  left: 76.55vw;
+}
+
+#controlsLeft{
+  width: 23.4vw;
+  height: 15.184vw;
+}
+
+#controlsRight{
+  width: 23.4vw;
+  height: 15.184vw;
+}
+
+#r1warning{
+  position: absolute;
+  bottom: 22vh;
+}
+
+#r1text{
+  background-color: #003F87;
+  color: white;
+  font-family: sans-serif;
+  font-size: small;
+  padding: 2px;
+}
+
+#controlsinstruction{
+  position: absolute;
+  top: 77vh;
+  left: 23vw;
+}
+
+#controlsinstructiontext{
+  background-color: #003F87;
+  color: white;
+  font-family: sans-serif;
+  font-size: small;
+  padding: 2px;
+}
+
+#apertures{
+  position: absolute;
+  left: 90vw;
+  border: 5px solid black;
+  background-color: #003F87;
+}
+
+.aperturelabel{
+  padding: 10px 2px;
+  color: white;
+  font-family: sans-serif;
+  font-size: small;
+  white-space: nowrap;
+  border-top: 2px solid black;
+  text-align: center;
+}
+
+.apertureimage{
+  width: 9vw;
+  display: block;
+  margin: auto;
+}
+
+#c2label{
+  border: none;
+}
+
+#c2image{
+  height: 7.745vw;
+}
+
+#objectiveimage{
+  height: 7.905vw;
+}
+
+#saedimage{
+  height: 12.838vw;
+}
+
+#filtercontroldiv{
+  position: absolute;
+  top: 10vh;
+  left: 60vw;
+}
+
+#openfiledialogue{
+  position: absolute;
+  top: 22vh;
+  left: 35vw;
+}
+
+#filemenu{
+  position: absolute;
+  top: 8.2vh;
+  left: 14.5vw;
+}
+
+#openbox{
+  position: absolute;
+  z-index: 0;
+  top: 11vh;
+  left: 28vw;
+  max-width: 518px;
+  max-height: 537px;
+  overflow: hidden;
+  background-color: white;
+}
+
+#openboximage{
+  position: absolute;
+  z-index: -1;  
+  top: 2.5vh;
+  left: 0.3vw;
+  max-width: 28.2vw;
+  max-height: 51.5vh;
+  width: 28.2vw;
+  height: 51.5vh;
+}
+
+#basesetup{
+  position: absolute;
+  z-index: 0;
+  top: 10.3vh;
+  left: 26vw;
+  max-width: 33vw;
+  max-height: 33vw;
+  overflow: hidden;
+  background: black;
+  
+}
+
+#basesetupbox{
+  position: relative;
+  width: 32.8vw;  
+  height: 32.8vw;
+  z-index: 2;
+  border: 2px solid black;
+  /*pointer-events: none;*/
+}
+
+.setupcanvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#setupboxcanvas{
+  z-index: -2;
+}
+#setupboxcanvasglow{
+  z-index: -1;
+  pointer-events: none;
+}
+
+#setupcrosshair{
+  position: absolute; 
+  top: 6vw;
+  left: 6vw;
+  width: 21vw;
+  height: 21vw;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#micrographboxcanvas{
+  z-index: -2;
+
+}
+
+#micrographboxcanvasglow{
+  z-index: -1;
+}
+
+.micrographboxcanvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#vacuumoverview{
+  position: absolute;
+  top: 5.5vh;
+  left: 59.5vw;
+}
+
+#deflectorbox{
+  position: absolute;
+  top: 6.79vh;
+  left: 14.28vw;
+}
+
+#errordiv{
+  width: 35vw;
+  position: absolute;
+  top: 40vh;
+  left: 40vw;
+  background-color: #003F87;
+  color: white;
+  font-size: x-large;
+  line-height: 1.4em;
+  font-family: sans-serif;
+}
+
+#errortitle{
+  border-bottom: solid white 2px;
+  padding: 10px;
+}
+
+#errormessage{
+  padding: 20px;
+}
+
+#errorokay{
+  font-size: xx-large;
+  padding: 20px;
+  color: inherit;
+  background-color: inherit;
+  border: solid white 1px;
+  margin: 20px;
+}
+
+#directalignmentspopout{
+  position: absolute;
+  top: 50vh;
+  left: 59.5vw;
+}
+
+#directalignmentspopouttext{
+  position: absolute;
+  top: 41px;
+  left: 13px;
+  height: 128px;
+  width: 211px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-collapse: inital;
+  line-height: 15px;
+}
+
+#daautohelp{
+  position: absolute;
+  left: 161px;
+  top: 190px;
+}
+
+.highlightitem{
+  padding-left: 2px;
+}
+
+.highlightitem:hover{
+  color: white;
+  background: #0A246A;
+  cursor: pointer; 
+  cursor: hand;
+}
+
+#maindropdowntext{
+  height: 315px;
+  width: 125px;
+  font: Helvetica;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-collapse: inital;
+  line-height: 15px;
+  font-size: 11px;
+}
+
+#maindropdown{
+  position: absolute;
+  bottom: 19vh;
+  right: 0.8vw;
+  border: 1px black solid;
+  background: white;
+}
+
+#diffractograms{
+  position: absolute;
+  z-index: -1;
+  top: 10.3vh;
+  left: 12.1vw;
+  max-width: 33vw;
+  max-height: 66vw;
+  overflow: hidden;
+  background: black;
+}
+
+.diffractogramcanvas{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stage {
+  width: 256px;
+  height: 256px;
+  position: relative;
+  border: 2px solid black;
+}
+
+#tunehelppopup{
+  position: absolute;  
+  top: 0vh;
+  left: 59.5vw;
+  overflow: hidden;
+  border: 5px solid black;
+  background-color: white;
+}
+
+#tunehelpcontent{
+  width: 40vw;
+  height: 48vh;
+}
+
+#generalhelppopup{
+  position: absolute;  
+  top: 1vh;
+  left: 59.5vw;
+  overflow: hidden;
+  border: 5px solid black;
+  background-color: white;
+}
+
+#generalhelpcontent{
+  width: 40vw;
+  height: 48vh;
+}
+
+#lecturediv {
+  position: absolute;  
+  top: 0vh;
+  left: 59.5vw;
+  overflow: hidden;
+  border: 5px solid black;
+  background: black;
+}
+
+#temlecture {
+  width: 40vw;
+  height: 57.5vh;
+  resize: none;
+}
+
+#blocker {
+  position: absolute;
+  top: 55vh;
+  left: 35vw;
+  width: 100px;
+  height: 23px;
+}
+
+.lecturecontrol{
+  font-size: large;
+  padding: 5px;
+  margin: 2px 0px;
+}
+
+.lecturetab{
+  padding: 2px;
+}
+
+#speakernotesinfo{
+  color:white;
+  line-height: 1em;
+}
+
+#slidenumber{
+  width: 6em;
+}
+
+#speakernotespause{
+  padding-top: 2px;
+}
+
+#speakernotesstop{
+  padding-top: 2px;
+}
+
+#fullscreenbtn{
+  float:right;
+}
+
+#popplaceholder {
+  position: absolute;  
+  top: 50vh;
+  left: 59.5vw;
+}
+
+.popcontainer {
+  position: absolute;
+  left: -999vw;
+  border: 5px solid black;
+}
+
+.popcontent {
+  background-color: white;
+  height: 45.7vh;
+  width: 16.5vw;
+}
+
+iframe {
+  resize: both;
+}
+
+#notepad {
+  position: absolute;
+  top: 77vh;
+  left: 26vw;
+  overflow: hidden;
+  border: 5px solid #422000;
+  background: #422000;
+}
+
+#notes {
+  width: 30.5vw;
+  height: 16vh;
+  font-size: large;
+  padding: 2px;
+}
+
+#floatingstigmatordiv {
+  position: absolute;
+  top: 6.8vh;
+  left: 79.1vw;  
+}

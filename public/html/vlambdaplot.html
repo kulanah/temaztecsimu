@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<script type= "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<style>
+			input{
+				width: 60px;
+			}
+			label {
+				display: inline-block;
+				width: 50px;
+				text-align: right;
+			}
+		</style>
+    </head>
+    <body>
+		$$\lambda  = {h \over p} = {h \over {\sqrt {2{m_0}qV(1 + {{qV} \over {2{m_0}{C^2}}}} )}} \approx {{12.27} \over {\sqrt {V(1 + 0.978 \times {{10}^{ - 6}}V} )}}$$
+		<table>
+			<tr>
+				<td>
+					<div title='Minimum accelerating voltage'>
+						<label for="xmin" style='font-size:smaller'>Min V:</label>
+						<input type="number" id="xmin" style="color:black" value="100000" step="10000" min="0"/>
+					</div>
+					<div title='Maximum accelerating voltage'>
+						<label for="xmax" style='font-size:smaller'>Max V:</label>
+						<input type="number" id="xmax" style="color:black" value="200000" step="10000" min="10000"/>
+					</div>
+					<div title='Minimum electron wavelength'>
+						<label for="ymin" style='font-size:smaller'>Min λ:</label>
+						<input type="number" id="ymin" style="color:black" value="0" step="0.01" min="0"/>
+					</div>
+					<div title='Maximum electron wavelength'>
+						<label for="ymax" style='font-size:smaller'>Max λ:</label>
+						<input type="number" id="ymax" style="color:black" value="0.05" step="0.01" min="0.01"/>
+					</div>
+				</td>
+				<td>
+					<div id="plot"></div>
+				</td>
+			</tr>
+		</table>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/4.1.2/math.min.js"></script>		
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/function-plot/1.18.1/function-plot.js"></script>
+		<script>
+			// See https://mauriciopoppe.github.io/function-plot/ for documentation and examples
+			// Example of using multiple user-inputted variables
+			function drawLine() {
+				try {
+					functionPlot({
+						target: '#plot',
+						width: window.innerWidth * .875,
+						height: window.innerHeight * .75,
+						tip: {
+							xLine: true,
+							yLine: true,
+							renderer: function (x, y, index) {
+								// the returning value will be shown in the tip
+								return 'V: ' + x.toFixed(0) + ', λ: ' + y.toFixed(3);
+							}
+						},
+						xAxis: {
+							label: 'V',
+							domain: [Number(document.getElementById('xmin').value), Number(document.getElementById('xmax').value)]
+						},
+						yAxis: {
+							label: 'λ',
+							domain: [Number(document.getElementById('ymin').value), Number(document.getElementById('ymax').value)]
+						},
+						grid: true,
+						data: [{
+							fn: '12.27 / (x * (1 + .978 * 10 ^ -6 * x)) ^ .5',
+							sampler: 'builtIn',  // this will make function-plot use the evaluator of math.js
+							graphType: 'polyline',
+							closed: true
+						}]
+					});
+				}
+				catch (err) {
+					console.log(err);
+				}
+			}
+			
+			// .onclick detects changes to a number input field with the arrows on the side
+			document.getElementById('xmin').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			// .onkeyup gives immediate feedback to changes as the user enters numbers with the keyboard
+			document.getElementById('xmin').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('xmax').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('xmax').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+			
+			document.getElementById('ymin').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('ymin').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+			
+			document.getElementById('ymax').onclick = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			document.getElementById('ymax').onkeyup = function (event) {
+				event.preventDefault();
+				drawLine();
+			};
+
+			window.addEventListener('resize', function ( event ) { 
+				event.preventDefault();
+				drawLine();
+			});
+
+			drawLine();
+		</script>
+    </body>
+</html>
